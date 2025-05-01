@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static java.lang.Float.isNaN;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
@@ -239,9 +240,26 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                            final int initialCapacity) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection);
+        return __core(collection, initialCapacity);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     ///
@@ -253,9 +271,26 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                            final int initialCapacity) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection);
+        return __core(collection, initialCapacity);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     ///
@@ -267,7 +302,23 @@ public final class ToMutableHashSet
     public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                            final int initialCapacity) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
+        return __core(collection, initialCapacity);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> HashSet<T> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                           final @Nullable Integer initialCapacity) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection);
         return __core(collection, initialCapacity);
     }
 
@@ -288,9 +339,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -306,9 +378,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -324,7 +417,27 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
+        return __core(collection, initialCapacity, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
         return __core(collection, initialCapacity, transform);
     }
 
@@ -345,9 +458,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -363,9 +497,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -381,7 +536,27 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
+        return __core(collection, initialCapacity, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
         return __core(collection, initialCapacity, transform);
     }
 
@@ -402,9 +577,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][MinimalistCollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -420,9 +616,30 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
         return __core(collection, initialCapacity, transform);
     }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the <code>collection.[size][CollectionHolder#size()]</code>)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
+        return __core(collection, initialCapacity, transform);
+    }
+
 
     /// Convert the `collection` to a new mutable [HashSet]
     /// applying a transformation
@@ -438,7 +655,27 @@ public final class ToMutableHashSet
                                                                                                        final int initialCapacity,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity);
+            return __empty(initialCapacity);
+        return __core(collection, initialCapacity, transform);
+    }
+
+    /// Convert the `collection` to a new mutable [HashSet]
+    /// applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection to convert
+    /// @param initialCapacity The [HashSet] initial capacity (if it over the `collection.length`)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> HashSet<U> toMutableHashSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                       final @Nullable Integer initialCapacity,
+                                                                                                       final Supplier<? extends U> transform) {
+        if (collection == null)
+            return __empty(initialCapacity);
+        if (initialCapacity == null)
+            return __core(collection, transform);
         return __core(collection, initialCapacity, transform);
     }
 
@@ -458,7 +695,16 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -474,7 +720,16 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -490,7 +745,16 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -507,8 +771,19 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -525,8 +800,19 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -543,8 +829,19 @@ public final class ToMutableHashSet
                                                                            final int initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -562,9 +859,23 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
-            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+            if (isNaN(loadFactor))
+                return __core(collection);
+            else if (loadFactor <= 0F)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -580,9 +891,23 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
-            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+            if (isNaN(loadFactor))
+                return __core(collection);
+            else if (loadFactor <= 0F)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -598,9 +923,23 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
-            return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+            if (isNaN(loadFactor))
+                return __core(collection);
+            else if (loadFactor <= 0F)
+                return __core(collection);
+            else
+                return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
 
@@ -617,13 +956,28 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection);
+            else if (loadFactor.isNaN())
+                return __core(collection);
+            else if (loadFactor <= 0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -640,13 +994,28 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection);
+            else if (loadFactor.isNaN())
+                return __core(collection);
+            else if (loadFactor <= 0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -663,13 +1032,28 @@ public final class ToMutableHashSet
                                                                            final @Nullable Integer initialCapacity,
                                                                            final @Nullable Float loadFactor) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection);
+            else if (loadFactor.isNaN())
+                return __core(collection);
+            else if (loadFactor <= 0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (loadFactor == null)
+            return __core(collection, initialCapacity);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -693,7 +1077,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -713,7 +1106,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -733,7 +1135,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -754,8 +1165,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -776,8 +1198,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -798,8 +1231,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -821,9 +1265,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -843,9 +1301,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -865,9 +1337,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -887,13 +1373,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -914,13 +1415,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -941,13 +1457,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -971,7 +1502,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -991,7 +1531,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1011,7 +1560,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1032,8 +1590,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1054,8 +1623,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1076,8 +1656,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1099,9 +1690,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1121,9 +1726,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1143,9 +1762,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1166,13 +1799,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1193,13 +1841,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1220,13 +1883,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1250,7 +1928,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1270,7 +1957,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1290,7 +1986,16 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1311,8 +2016,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1333,8 +2049,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1355,8 +2082,19 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1378,9 +2116,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1400,9 +2152,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1422,9 +2188,23 @@ public final class ToMutableHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (isNaN(loadFactor))
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
+            if (isNaN(loadFactor))
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
+                return __core(collection, transform);
+            else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
+        if (isNaN(loadFactor))
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
+            return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
 
@@ -1445,13 +2225,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1472,13 +2267,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1499,13 +2309,28 @@ public final class ToMutableHashSet
                                                                                                        final @Nullable Float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return new MutableHashSet<>(initialCapacity, loadFactor);
+            if (loadFactor == null)
+                return __empty(initialCapacity);
+            else if (loadFactor.isNaN())
+                return __empty(initialCapacity);
+            else if (loadFactor <= 0F)
+                return __empty(initialCapacity);
+            else
+                return __empty(initialCapacity, loadFactor.floatValue());
         if (initialCapacity == null)
             if (loadFactor == null)
+                return __core(collection, transform);
+            else if (loadFactor.isNaN())
+                return __core(collection, transform);
+            else if (loadFactor <= 0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (loadFactor == null)
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor.isNaN())
+            return __core(collection, initialCapacity, transform);
+        if (loadFactor <= 0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1515,24 +2340,41 @@ public final class ToMutableHashSet
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Core methods --------------------
 
+    //README: The loadFactor is already > 0 and != NaN
+
+    //#region -------------------- empty --------------------
+
+    private static <T extends @Nullable Object> HashSet<T> __empty(final int initialCapacity) { return new MutableHashSet<>(initialCapacity); }
+
+    private static <T extends @Nullable Object> HashSet<T> __empty(final @Nullable Integer initialCapacity) { return new MutableHashSet<>(initialCapacity); }
+
+
+    private static <T extends @Nullable Object> HashSet<T> __empty(final int initialCapacity,
+                                                                   final float loadFactor) { return new MutableHashSet<>(initialCapacity, loadFactor); }
+
+    private static <T extends @Nullable Object> HashSet<T> __empty(final @Nullable Integer initialCapacity,
+                                                                   final float loadFactor) { return new MutableHashSet<>(initialCapacity, loadFactor); }
+
+    //#endregion -------------------- empty --------------------
+
     //#region -------------------- ∅ --------------------
 
-    private static <T extends @Nullable Object> MutableHashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
+    private static <T extends @Nullable Object> HashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
         if (size == 0)
             return new MutableHashSet<>();
         return new MutableHashSet<>(_uniqueValues(collection, size));
     }
 
-    private static <T extends @Nullable Object> MutableHashSet<T> __core(final CollectionHolder<? extends T> collection) {
+    private static <T extends @Nullable Object> HashSet<T> __core(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return new MutableHashSet<>();
         if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()));
+            return new MutableHashSet<>(_values(collection, collection.size()));
         return new MutableHashSet<>(_uniqueValues(collection, collection.size()));
     }
 
-    private static <T extends @Nullable Object> MutableHashSet<T> __core(final T @Unmodifiable [] collection) {
+    private static <T extends @Nullable Object> HashSet<T> __core(final T @Unmodifiable [] collection) {
         final var size = collection.length;
         if (size == 0)
             return new MutableHashSet<>();
@@ -1629,7 +2471,7 @@ public final class ToMutableHashSet
         if (collection.isEmpty())
             return new MutableHashSet<>(initialCapacity);
         if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity);
+            return new MutableHashSet<>(_values(collection, collection.size()), initialCapacity);
         return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity);
     }
 
@@ -1659,7 +2501,7 @@ public final class ToMutableHashSet
         if (collection.isEmpty())
             return new MutableHashSet<>(initialCapacity, loadFactor);
         if (collection.hasDuplicate())
-            return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity, loadFactor);
+            return new MutableHashSet<>(_values(collection, collection.size()), initialCapacity, loadFactor);
         return new MutableHashSet<>(_uniqueValues(collection, collection.size()), initialCapacity, loadFactor);
     }
 
