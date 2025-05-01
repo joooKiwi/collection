@@ -37,12 +37,12 @@ public final class ToMutableConcurrentLinkedDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ConcurrentLinkedDeque<T> toMutableConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __withNoTransform(collection, size);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -53,10 +53,10 @@ public final class ToMutableConcurrentLinkedDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ConcurrentLinkedDeque<T> toMutableConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
         if (collection.isEmpty())
-            return __empty();
-        return __withNoTransform(collection, collection.size());
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -67,12 +67,12 @@ public final class ToMutableConcurrentLinkedDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ConcurrentLinkedDeque<T> toMutableConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __withNoTransform(collection, size);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -90,12 +90,12 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with2Argument(collection, size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -110,10 +110,10 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
         if (collection.isEmpty())
-            return __empty();
-        return __with2Argument(collection, collection.size(), transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -128,12 +128,12 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with2Argument(collection, size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -151,12 +151,12 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with1Argument(collection, size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -171,10 +171,10 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
         if (collection.isEmpty())
-            return __empty();
-        return __with1Argument(collection, collection.size(), transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -189,12 +189,12 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with1Argument(collection, size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -211,12 +211,12 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with0Argument(size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(size, transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -231,10 +231,10 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
         if (collection.isEmpty())
-            return __empty();
-        return __with0Argument(collection.size(), transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ConcurrentLinkedDeque]
@@ -249,66 +249,16 @@ public final class ToMutableConcurrentLinkedDeque
     public static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> toMutableConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableConcurrentLinkedDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with0Argument(size, transform);
+            return new MutableConcurrentLinkedDeque<>();
+        return new MutableConcurrentLinkedDeque<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> ConcurrentLinkedDeque<T> __empty() {
-        return new MutableConcurrentLinkedDeque<>();
-    }
-
-
-    private static <T> ConcurrentLinkedDeque<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                  final int size) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size));
-    }
-
-    private static <T> ConcurrentLinkedDeque<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                  final int size) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size));
-    }
-
-
-    private static <U extends @Nullable Object> ConcurrentLinkedDeque<U> __with0Argument(final int size,
-                                                                                         final Supplier<? extends U> transform) {
-        return new MutableConcurrentLinkedDeque<>(_values(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final int size,
-                                                                                            final Function<? super T, ? extends U> transform) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                            final int size,
-                                                                                            final Function<? super T, ? extends U> transform) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final int size,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> ConcurrentLinkedDeque<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                            final int size,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableConcurrentLinkedDeque<>(_values(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
