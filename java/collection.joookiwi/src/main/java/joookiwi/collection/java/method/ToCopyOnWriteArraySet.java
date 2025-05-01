@@ -40,7 +40,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __withNoTransform(collection, size);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -54,8 +54,8 @@ public final class ToCopyOnWriteArraySet
         if (collection.isEmpty())
             return emptyCopyOnWriteArraySet();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new ImmutableCopyOnWriteArraySet<>(_values(collection, collection.size()));
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -70,7 +70,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __withNoTransform(collection, size);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -109,7 +109,8 @@ public final class ToCopyOnWriteArraySet
             return emptyCopyOnWriteArraySet();
         if (collection.isEmpty())
             return emptyCopyOnWriteArraySet();
-        return __with2Argument(collection, collection.size(), transform);
+        int size = collection.size();
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -128,7 +129,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with2Argument(collection, size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +151,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -167,7 +168,7 @@ public final class ToCopyOnWriteArraySet
             return emptyCopyOnWriteArraySet();
         if (collection.isEmpty())
             return emptyCopyOnWriteArraySet();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -186,7 +187,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with1Argument(collection, size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +209,7 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with0Argument(size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -225,7 +226,7 @@ public final class ToCopyOnWriteArraySet
             return emptyCopyOnWriteArraySet();
         if (collection.isEmpty())
             return emptyCopyOnWriteArraySet();
-        return __with0Argument(collection.size(), transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable-like][Unmodifiable] [CopyOnWriteArraySet]
@@ -244,60 +245,11 @@ public final class ToCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return emptyCopyOnWriteArraySet();
-        return __with0Argument(size, transform);
+        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> @Unmodifiable CopyOnWriteArraySet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                              final int size) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
-    }
-
-
-    private static <T> @Unmodifiable CopyOnWriteArraySet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                              final int size) {
-        return new ImmutableCopyOnWriteArraySet<>(_values(collection, size));
-    }
-
-    private static <T> @Unmodifiable CopyOnWriteArraySet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                              final int size) {
-        return new ImmutableCopyOnWriteArraySet<>(_values(collection, size));
-    }
-
-
-    private static <U> @Unmodifiable CopyOnWriteArraySet<U> __with0Argument(final int size,
-                                                                            final Supplier<? extends U> transform) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable CopyOnWriteArraySet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                        final int size,
-                                                                                                        final Function<? super T, ? extends U> transform) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable CopyOnWriteArraySet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                        final int size,
-                                                                                                        final Function<? super T, ? extends U> transform) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable CopyOnWriteArraySet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection, int size,
-                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable CopyOnWriteArraySet<U> __with2Argument(final T @Unmodifiable [] collection, int size,
-                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
-        return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
