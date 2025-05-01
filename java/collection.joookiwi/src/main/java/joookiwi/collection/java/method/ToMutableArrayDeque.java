@@ -38,12 +38,12 @@ public final class ToMutableArrayDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __withNoTransform(collection, size, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size), size);
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -54,12 +54,10 @@ public final class ToMutableArrayDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
         if (collection.isEmpty())
-            return __empty();
-
-        final var size = collection.size();
-        return __withNoTransform(collection, size, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -70,12 +68,12 @@ public final class ToMutableArrayDeque
     @Contract(ALWAYS_NEW_1)
     public static <T> ArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __withNoTransform(collection, size, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -93,12 +91,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with2Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -113,12 +111,10 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
         if (collection.isEmpty())
-            return __empty();
-
-        final var size = collection.size();
-        return __with2Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -133,12 +129,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with2Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -156,12 +152,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with1Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -176,12 +172,10 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
         if (collection.isEmpty())
-            return __empty();
-
-        final var size = collection.size();
-        return __with1Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -196,12 +190,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with1Argument(collection, size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -219,12 +213,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.size();
         if (size == 0)
-            return __empty();
-        return __with0Argument(size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(size, transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -239,12 +233,10 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
         if (collection.isEmpty())
-            return __empty();
-
-        final var size = collection.size();
-        return __with0Argument(size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to a mutable [ArrayDeque]
@@ -259,12 +251,12 @@ public final class ToMutableArrayDeque
     public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty();
+            return new MutableArrayDeque<>();
 
         final var size = collection.length;
         if (size == 0)
-            return __empty();
-        return __with0Argument(size, transform, size);
+            return new MutableArrayDeque<>();
+        return new MutableArrayDeque<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
@@ -282,12 +274,12 @@ public final class ToMutableArrayDeque
     public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                         final int initialCapacity) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return __empty(initialCapacity);
-        return __withNoTransform(collection, size, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -301,10 +293,10 @@ public final class ToMutableArrayDeque
     public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
                                                         final int initialCapacity) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
-            return __empty(initialCapacity);
-        return __withNoTransform(collection, collection.size(), initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size()), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -318,12 +310,12 @@ public final class ToMutableArrayDeque
     public static <T> ArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
                                                         final int initialCapacity) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return __empty(initialCapacity);
-        return __withNoTransform(collection, size, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
     }
 
     //#endregion -------------------- initialCapacity --------------------
@@ -344,12 +336,12 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with2Argument(collection, size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -367,10 +359,10 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
-            return __empty(initialCapacity);
-        return __with2Argument(collection, collection.size(), transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -388,12 +380,12 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with2Argument(collection, size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
     //#endregion -------------------- initialCapacity, (T, int) → U --------------------
@@ -414,12 +406,12 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with1Argument(collection, size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -437,10 +429,10 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
-            return __empty(initialCapacity);
-        return __with1Argument(collection, collection.size(), transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -458,12 +450,12 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with1Argument(collection, size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
     //#endregion -------------------- initialCapacity, (T) → U --------------------
@@ -484,12 +476,12 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.size();
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with0Argument(size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -507,10 +499,10 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
-            return __empty(initialCapacity);
-        return __with0Argument(collection.size(), transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(collection.size(), transform), initialCapacity);
     }
 
     /// Convert the `collection` to a new mutable [ArrayDeque]
@@ -528,93 +520,16 @@ public final class ToMutableArrayDeque
                                                                                     final int initialCapacity,
                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return __empty(initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
 
         final var size = collection.length;
         if (size == 0)
-            return __empty(initialCapacity);
-        return __with0Argument(size, transform, initialCapacity);
+            return new MutableArrayDeque<>(initialCapacity);
+        return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
     }
 
     //#endregion -------------------- initialCapacity, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> ArrayDeque<T> __empty() {
-        return new MutableArrayDeque<>();
-    }
-
-    private static <T> ArrayDeque<T> __empty(final int initialCapacity) {
-        if (initialCapacity < 0)
-            return new MutableArrayDeque<>(0);
-        return new MutableArrayDeque<>(initialCapacity);
-    }
-
-
-    private static <T> ArrayDeque<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                       final int size,
-                                                       final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size));
-        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
-    }
-
-    private static <T> ArrayDeque<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                       final int size,
-                                                       final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size));
-        return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
-    }
-
-
-    private static <U> ArrayDeque<U> __with0Argument(final int size,
-                                                     final Supplier<? extends U> transform,
-                                                     final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(size, transform));
-        return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
-    }
-
-
-    private static <T extends @Nullable Object, U> ArrayDeque<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                 final int size,
-                                                                                 final Function<? super T, ? extends U> transform,
-                                                                                 final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size, transform));
-        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
-    }
-
-    private static <T extends @Nullable Object, U> ArrayDeque<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                 final int size,
-                                                                                 final Function<? super T, ? extends U> transform,
-                                                                                 final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size, transform));
-        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
-    }
-
-
-    private static <T extends @Nullable Object, U> ArrayDeque<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                 final int size,
-                                                                                 final ObjIntFunction<? super T, ? extends U> transform,
-                                                                                 final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size, transform));
-        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
-    }
-
-    private static <T extends @Nullable Object, U> ArrayDeque<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                 final int size,
-                                                                                 final ObjIntFunction<? super T, ? extends U> transform,
-                                                                                 final int initialCapacity) {
-        if (initialCapacity < size)
-            return new MutableArrayDeque<>(_values(collection, size, transform));
-        return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
