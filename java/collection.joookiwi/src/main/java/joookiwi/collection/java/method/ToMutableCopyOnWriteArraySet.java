@@ -42,7 +42,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __withNoTransform(collection, size);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -57,8 +57,8 @@ public final class ToMutableCopyOnWriteArraySet
         if (collection.isEmpty())
             return new MutableCopyOnWriteArraySet<>();
         if (collection.hasDuplicate())
-            return __withNoDuplicate(collection, collection.size());
-        return __withNoTransform(collection, collection.size());
+            return new MutableCopyOnWriteArraySet<>(_values(collection, collection.size()));
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -74,7 +74,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __withNoTransform(collection, size);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -97,7 +97,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -115,9 +115,7 @@ public final class ToMutableCopyOnWriteArraySet
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
             return new MutableCopyOnWriteArraySet<>();
-        if (collection.hasDuplicate())
-            return __with2Argument(collection, collection.size(), transform);
-        return __with2Argument(collection, collection.size(), transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -137,7 +135,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with2Argument(collection, size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -160,7 +158,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -178,9 +176,7 @@ public final class ToMutableCopyOnWriteArraySet
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
             return new MutableCopyOnWriteArraySet<>();
-        if (collection.hasDuplicate())
-            return __with1Argument(collection, collection.size(), transform);
-        return __with1Argument(collection, collection.size(), transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -200,7 +196,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with1Argument(collection, size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -223,7 +219,7 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.size();
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with0Argument(size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -241,9 +237,7 @@ public final class ToMutableCopyOnWriteArraySet
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
             return new MutableCopyOnWriteArraySet<>();
-        if (collection.hasDuplicate())
-            return __with0Argument(collection.size(), transform);
-        return __with0Argument(collection.size(), transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
@@ -263,62 +257,11 @@ public final class ToMutableCopyOnWriteArraySet
         final var size = collection.length;
         if (size == 0)
             return new MutableCopyOnWriteArraySet<>();
-        return __with0Argument(size, transform);
+        return new MutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> CopyOnWriteArraySet<T> __withNoDuplicate(final CollectionHolder<? extends T> collection,
-                                                                final int size) {
-        return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
-    }
-
-
-    private static <T> CopyOnWriteArraySet<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                final int size) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size));
-    }
-
-    private static <T> CopyOnWriteArraySet<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                final int size) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size));
-    }
-
-
-    private static <U> CopyOnWriteArraySet<U> __with0Argument(final int size,
-                                                              final Supplier<? extends U> transform) {
-        return new MutableCopyOnWriteArraySet<>(_values(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                          final int size,
-                                                                                          final Function<? super T, ? extends U> transform) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                          final int size,
-                                                                                          final Function<? super T, ? extends U> transform) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                          final int size,
-                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                          final int size,
-                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
-        return new MutableCopyOnWriteArraySet<>(_values(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
