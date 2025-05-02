@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.LinkedList;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -28,12 +27,12 @@ public final class ToLinkedList
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable LinkedList<T> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableLinkedList<T> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -43,12 +42,12 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable LinkedList<T> toLinkedList(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableLinkedList<T> toLinkedList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyLinkedList();
         if (collection.isEmpty())
@@ -56,12 +55,12 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable LinkedList<T> toLinkedList(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> ImmutableLinkedList<T> toLinkedList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -74,7 +73,7 @@ public final class ToLinkedList
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -82,8 +81,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -93,7 +92,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -101,8 +100,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
         if (collection.isEmpty())
@@ -110,7 +109,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -118,8 +117,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -132,7 +131,7 @@ public final class ToLinkedList
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -140,8 +139,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -151,7 +150,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -159,8 +158,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
         if (collection.isEmpty())
@@ -168,7 +167,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -176,8 +175,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -190,7 +189,7 @@ public final class ToLinkedList
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -198,8 +197,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
@@ -209,7 +208,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -217,8 +216,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
         if (collection.isEmpty())
@@ -226,7 +225,7 @@ public final class ToLinkedList
         return new ImmutableLinkedList<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedList]
+    /// Convert the `collection` to an [ImmutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -234,8 +233,8 @@ public final class ToLinkedList
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableLinkedList<U> toLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedList();
 
