@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -28,12 +27,12 @@ public final class ToLinkedBlockingQueue
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable LinkedBlockingQueue<T> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> ImmutableLinkedBlockingQueue<T> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -43,12 +42,12 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable LinkedBlockingQueue<T> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> ImmutableLinkedBlockingQueue<T> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
         if (collection.isEmpty())
@@ -56,12 +55,12 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable LinkedBlockingQueue<T> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> ImmutableLinkedBlockingQueue<T> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -74,7 +73,7 @@ public final class ToLinkedBlockingQueue
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -82,8 +81,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -93,7 +92,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -101,8 +100,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
         if (collection.isEmpty())
@@ -110,7 +109,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -118,8 +117,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -132,7 +131,7 @@ public final class ToLinkedBlockingQueue
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -140,8 +139,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -151,7 +150,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -159,8 +158,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
         if (collection.isEmpty())
@@ -168,7 +167,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -176,8 +175,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -190,7 +189,7 @@ public final class ToLinkedBlockingQueue
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -198,8 +197,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                             final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
@@ -209,7 +208,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -217,8 +216,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                             final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
         if (collection.isEmpty())
@@ -226,7 +225,7 @@ public final class ToLinkedBlockingQueue
         return new ImmutableLinkedBlockingQueue<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [LinkedBlockingQueue]
+    /// Convert the `collection` to an [ImmutableLinkedBlockingQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -234,8 +233,8 @@ public final class ToLinkedBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable LinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                             final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableLinkedBlockingQueue<U> toLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyLinkedBlockingQueue();
 
