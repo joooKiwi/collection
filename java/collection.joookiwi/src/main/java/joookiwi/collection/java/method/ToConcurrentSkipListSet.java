@@ -31,12 +31,12 @@ public final class ToConcurrentSkipListSet
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<? super T>> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends Comparable<? super T>> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -46,12 +46,12 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<? super T>> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends Comparable<? super T>> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -61,12 +61,12 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Comparable<? super T>> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends Comparable<? super T>> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -79,7 +79,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -87,8 +87,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -98,7 +98,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -106,8 +106,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -115,7 +115,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -123,8 +123,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -137,7 +137,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -145,8 +145,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                               final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -156,7 +156,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -164,8 +164,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                               final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -173,7 +173,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -181,8 +181,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                               final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -195,7 +195,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -203,8 +203,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                               final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -214,7 +214,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -222,8 +222,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                               final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
         if (collection.isEmpty())
@@ -231,7 +231,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -239,8 +239,8 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Comparable<? super U>> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                               final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentSkipListSet();
 
@@ -254,15 +254,15 @@ public final class ToConcurrentSkipListSet
 
     //#region -------------------- comparator --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final Comparator<? super T> comparator) {
+    public static <T> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                final Comparator<? super T> comparator) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -272,15 +272,15 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final Comparator<? super T> comparator) {
+    public static <T> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                final Comparator<? super T> comparator) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
@@ -290,15 +290,15 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size()), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> @Unmodifiable ConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final Comparator<? super T> comparator) {
+    public static <T> ImmutableConcurrentSkipListSet<T> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                final Comparator<? super T> comparator) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -311,7 +311,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- comparator, (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -321,9 +321,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -333,7 +333,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -343,9 +343,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
@@ -353,7 +353,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -363,9 +363,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -378,7 +378,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- comparator, (T, int) → U --------------------
     //#region -------------------- comparator, (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -388,9 +388,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -400,7 +400,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, size, transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -410,9 +410,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
@@ -420,7 +420,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection, collection.size(), transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -430,9 +430,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -445,7 +445,7 @@ public final class ToConcurrentSkipListSet
     //#endregion -------------------- comparator, (T) → U --------------------
     //#region -------------------- comparator, () → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -455,9 +455,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
@@ -467,7 +467,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(size, transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -477,9 +477,9 @@ public final class ToConcurrentSkipListSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
         if (collection.isEmpty())
@@ -487,7 +487,7 @@ public final class ToConcurrentSkipListSet
         return new ImmutableConcurrentSkipListSet<>(_uniqueValues(collection.size(), transform), comparator);
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [ConcurrentSkipListSet]
+    /// Convert the `collection` to an [ImmutableConcurrentSkipListSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -496,9 +496,10 @@ public final class ToConcurrentSkipListSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final Comparator<? super U> comparator,
-                                                                                                                 final Supplier<? extends U> transform) {
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutableConcurrentSkipListSet<U> toConcurrentSkipListSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final Comparator<? super U> comparator,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return new ImmutableConcurrentSkipListSet<>(comparator);
 
