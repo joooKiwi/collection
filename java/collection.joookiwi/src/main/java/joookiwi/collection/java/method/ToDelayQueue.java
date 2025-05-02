@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -29,12 +28,12 @@ public final class ToDelayQueue
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Delayed> @Unmodifiable DelayQueue<T> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends Delayed> ImmutableDelayQueue<T> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -44,12 +43,12 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Delayed> @Unmodifiable DelayQueue<T> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends Delayed> ImmutableDelayQueue<T> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyDelayQueue();
         if (collection.isEmpty())
@@ -57,12 +56,12 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends Delayed> @Unmodifiable DelayQueue<T> toDelayQueue(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends Delayed> ImmutableDelayQueue<T> toDelayQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -75,7 +74,7 @@ public final class ToDelayQueue
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -83,8 +82,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -94,7 +93,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -102,8 +101,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
         if (collection.isEmpty())
@@ -111,7 +110,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -119,8 +118,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -133,7 +132,7 @@ public final class ToDelayQueue
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -141,8 +140,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                           final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -152,7 +151,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -160,8 +159,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                           final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
         if (collection.isEmpty())
@@ -169,7 +168,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -177,8 +176,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                           final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -191,7 +190,7 @@ public final class ToDelayQueue
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -199,8 +198,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
@@ -210,7 +209,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -218,8 +217,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
         if (collection.isEmpty())
@@ -227,7 +226,7 @@ public final class ToDelayQueue
         return new ImmutableDelayQueue<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [DelayQueue]
+    /// Convert the `collection` to an [ImmutableDelayQueue]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -235,8 +234,8 @@ public final class ToDelayQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends Delayed> @Unmodifiable DelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Delayed> ImmutableDelayQueue<U> toDelayQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyDelayQueue();
 
