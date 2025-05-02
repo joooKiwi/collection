@@ -1,5 +1,7 @@
 package joookiwi.collection.java.method;
 
+import java.util.function.Function;
+import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -10,10 +12,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.LinkedList;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
@@ -32,13 +30,13 @@ public final class ToMutableLinkedList
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> LinkedList<T> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> MutableLinkedList<T> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -48,13 +46,13 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> LinkedList<T> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> MutableLinkedList<T> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableLinkedList<>();
         if (collection.isEmpty())
@@ -62,13 +60,13 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> LinkedList<T> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> MutableLinkedList<T> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -81,7 +79,7 @@ public final class ToMutableLinkedList
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -90,8 +88,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -101,7 +99,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -110,8 +108,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
         if (collection.isEmpty())
@@ -119,7 +117,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -128,8 +126,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -142,7 +140,7 @@ public final class ToMutableLinkedList
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -151,8 +149,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -162,7 +160,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -171,8 +169,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
         if (collection.isEmpty())
@@ -180,7 +178,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -189,8 +187,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> LinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                             final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -203,7 +201,7 @@ public final class ToMutableLinkedList
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -212,8 +210,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
@@ -223,7 +221,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -232,8 +230,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
         if (collection.isEmpty())
@@ -241,7 +239,7 @@ public final class ToMutableLinkedList
         return new MutableLinkedList<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [LinkedList]
+    /// Convert the `collection` to a new [MutableLinkedList]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -250,8 +248,8 @@ public final class ToMutableLinkedList
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable LinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                           final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableLinkedList<U> toMutableLinkedList(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableLinkedList<>();
 
