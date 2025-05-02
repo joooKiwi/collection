@@ -38,8 +38,8 @@ public final class ToMutableEnumSet
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
@@ -56,8 +56,8 @@ public final class ToMutableEnumSet
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` [was empty][CollectionHolder#isEmpty]
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
@@ -74,8 +74,8 @@ public final class ToMutableEnumSet
     /// @param <T>        The `collection` type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_1)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             throw new NullCollectionException(NullCollectionException.DEFAULT_CONVERSION_MESSAGE);
@@ -98,8 +98,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -120,8 +120,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` [was empty][CollectionHolder#isEmpty]
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -140,8 +140,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
@@ -165,8 +165,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -187,8 +187,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` [was empty][CollectionHolder#isEmpty]
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -207,8 +207,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final Function<? super T, ? extends U> transform) {
         if (collection == null)
@@ -232,8 +232,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
@@ -254,8 +254,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` [was empty][CollectionHolder#isEmpty]
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
@@ -274,8 +274,8 @@ public final class ToMutableEnumSet
     /// @param <U>        The new type
     /// @throws NullCollectionException  The `collection` was `null`
     /// @throws EmptyCollectionException The `collection` **was empty**
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_NEW_2)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final Supplier<? extends U> transform) {
         if (collection == null)
@@ -296,8 +296,8 @@ public final class ToMutableEnumSet
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param clazz      The enum class type if the `collection` is `null` or empty
     /// @param <T>        The `collection` type
-    @Contract(ALWAYS_NEW_2)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                   final Class<T> clazz) {
         if (collection == null)
@@ -314,8 +314,8 @@ public final class ToMutableEnumSet
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param clazz      The enum class type if the `collection` is `null` or [empty][CollectionHolder#isEmpty]
     /// @param <T>        The `collection` type
-    @Contract(ALWAYS_NEW_2)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                   final Class<T> clazz) {
         if (collection == null)
@@ -332,8 +332,8 @@ public final class ToMutableEnumSet
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param clazz      The enum class type if the `collection` is `null` or empty
     /// @param <T>        The `collection` type
-    @Contract(ALWAYS_NEW_2)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
     public static <T extends Enum<T>> EnumSet<T> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                   final Class<T> clazz) {
         if (collection == null)
@@ -356,8 +356,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
@@ -378,8 +378,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
@@ -398,8 +398,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final Class<U> clazz,
                                                                                               final ObjIntFunction<? super T, ? extends U> transform) {
@@ -423,8 +423,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final Function<? super T, ? extends U> transform) {
@@ -445,8 +445,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final Function<? super T, ? extends U> transform) {
@@ -465,8 +465,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final Class<U> clazz,
                                                                                               final Function<? super T, ? extends U> transform) {
@@ -490,8 +490,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final Supplier<? extends U> transform) {
@@ -512,8 +512,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                               final Class<U> clazz,
                                                                                               final Supplier<? extends U> transform) {
@@ -532,8 +532,8 @@ public final class ToMutableEnumSet
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
-    @Contract(ALWAYS_NEW_3)
     @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object, U extends Enum<U>> EnumSet<U> toMutableEnumSet(final T @Nullable @Unmodifiable [] collection,
                                                                                               final Class<U> clazz,
                                                                                               final Supplier<? extends U> transform) {
