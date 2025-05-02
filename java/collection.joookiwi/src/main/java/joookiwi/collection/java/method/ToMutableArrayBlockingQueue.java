@@ -32,7 +32,7 @@ public final class ToMutableArrayBlockingQueue
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
@@ -41,7 +41,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -51,7 +51,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
@@ -60,7 +60,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
         if (collection.isEmpty())
@@ -68,7 +68,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
@@ -77,7 +77,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -90,7 +90,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -102,8 +102,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -113,7 +113,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -125,8 +125,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
         if (collection.isEmpty())
@@ -134,7 +134,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -146,8 +146,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -160,7 +160,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -172,8 +172,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -183,7 +183,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -195,8 +195,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
         if (collection.isEmpty())
@@ -204,7 +204,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -216,8 +216,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -230,7 +230,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -242,8 +242,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -253,7 +253,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -265,8 +265,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
         if (collection.isEmpty())
@@ -274,7 +274,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -286,8 +286,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>();
 
@@ -301,7 +301,7 @@ public final class ToMutableArrayBlockingQueue
 
     //#region -------------------- capacity --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -310,8 +310,8 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final int capacity) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int capacity) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -325,7 +325,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -334,8 +334,8 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final int capacity) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final int capacity) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -349,7 +349,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -358,8 +358,8 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                        final int capacity) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final int capacity) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -376,7 +376,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity --------------------
     //#region -------------------- capacity, (T, int) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -389,9 +389,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -405,7 +405,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -418,9 +418,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -434,7 +434,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -447,9 +447,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -466,7 +466,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity, (T, int) → U --------------------
     //#region -------------------- capacity, (T) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -479,9 +479,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -495,7 +495,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -508,9 +508,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -524,7 +524,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -537,9 +537,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -556,7 +556,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity, (T) → U --------------------
     //#region -------------------- capacity, () → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -569,9 +569,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -585,7 +585,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -598,9 +598,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -614,7 +614,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
@@ -627,9 +627,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -647,7 +647,7 @@ public final class ToMutableArrayBlockingQueue
 
     //#region -------------------- capacity, isFair --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -657,9 +657,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final int capacity,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int capacity,
+                                                                               final boolean isFair) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -673,7 +673,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -683,9 +683,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final int capacity,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final int capacity,
+                                                                               final boolean isFair) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -699,7 +699,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -709,9 +709,9 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                        final int capacity,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final int capacity,
+                                                                               final boolean isFair) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -728,7 +728,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity, isFair --------------------
     //#region -------------------- capacity, isFair, (T, int) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -742,10 +742,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -759,7 +759,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -773,10 +773,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -790,7 +790,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -804,10 +804,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -824,7 +824,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity, isFair, (T, int) → U --------------------
     //#region -------------------- capacity, isFair, (T) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -838,10 +838,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -855,7 +855,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -869,10 +869,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -886,7 +886,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -900,10 +900,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -920,7 +920,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- capacity, isFair, (T) → U --------------------
     //#region -------------------- capacity, isFair, () → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -934,10 +934,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -951,7 +951,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -965,10 +965,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -982,7 +982,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with the `capacity` and the `fairness` specified
     ///
@@ -996,10 +996,10 @@ public final class ToMutableArrayBlockingQueue
     /// @throws ImpossibleCapacity The `capacity` was under the collection size
     @ExtensionFunction
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final int capacity,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final int capacity,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (capacity < 1)
             throw new ImpossibleCapacity("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
@@ -1017,7 +1017,7 @@ public final class ToMutableArrayBlockingQueue
 
     //#region -------------------- isFair --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and the `fairness` specified
@@ -1027,8 +1027,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                               final boolean isFair) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1038,7 +1038,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and the `fairness` specified
@@ -1048,8 +1048,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                               final boolean isFair) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
         if (collection.isEmpty())
@@ -1057,7 +1057,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size()), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
     /// and the `fairness` specified
@@ -1067,8 +1067,8 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                        final boolean isFair) {
+    public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                               final boolean isFair) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1081,7 +1081,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- isFair --------------------
     //#region -------------------- isFair, (T, int) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1094,9 +1094,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1106,7 +1106,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1119,9 +1119,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
         if (collection.isEmpty())
@@ -1129,7 +1129,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1142,9 +1142,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1157,7 +1157,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- isFair, (T, int) → U --------------------
     //#region -------------------- isFair, (T) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1170,9 +1170,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1182,7 +1182,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1195,9 +1195,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
         if (collection.isEmpty())
@@ -1205,7 +1205,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection, collection.size(), transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1218,9 +1218,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1233,7 +1233,7 @@ public final class ToMutableArrayBlockingQueue
     //#endregion -------------------- isFair, (T) → U --------------------
     //#region -------------------- isFair, () → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1246,9 +1246,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
@@ -1258,7 +1258,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(size, transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1271,9 +1271,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
         if (collection.isEmpty())
@@ -1281,7 +1281,7 @@ public final class ToMutableArrayBlockingQueue
         return new MutableArrayBlockingQueue<>(_values(collection.size(), transform), isFair);
     }
 
-    /// Convert the `collection` to a mutable [ArrayBlockingQueue]
+    /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
     /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
@@ -1294,9 +1294,9 @@ public final class ToMutableArrayBlockingQueue
     /// @param transform  The given transform
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                    final boolean isFair,
-                                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayBlockingQueue<U> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                           final boolean isFair,
+                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayBlockingQueue<>(isFair);
 
