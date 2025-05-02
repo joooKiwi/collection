@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -29,13 +28,13 @@ public final class ToMutableCopyOnWriteArraySet
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> CopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> MutableCopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -45,13 +44,13 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> CopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> MutableCopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
@@ -61,13 +60,13 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> CopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> MutableCopyOnWriteArraySet<T> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -80,7 +79,7 @@ public final class ToMutableCopyOnWriteArraySet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -89,8 +88,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -100,7 +99,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -109,8 +108,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
@@ -118,7 +117,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -127,8 +126,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -141,7 +140,7 @@ public final class ToMutableCopyOnWriteArraySet
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -150,8 +149,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -161,7 +160,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -170,8 +169,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
@@ -179,7 +178,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -188,8 +187,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -202,7 +201,7 @@ public final class ToMutableCopyOnWriteArraySet
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -211,8 +210,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
@@ -222,7 +221,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -231,8 +230,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
         if (collection.isEmpty())
@@ -240,7 +239,7 @@ public final class ToMutableCopyOnWriteArraySet
         return new MutableCopyOnWriteArraySet<>(_uniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to a new mutable [CopyOnWriteArraySet]
+    /// Convert the `collection` to a new [MutableCopyOnWriteArraySet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -249,8 +248,8 @@ public final class ToMutableCopyOnWriteArraySet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> CopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableCopyOnWriteArraySet<U> toMutableCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableCopyOnWriteArraySet<>();
 
