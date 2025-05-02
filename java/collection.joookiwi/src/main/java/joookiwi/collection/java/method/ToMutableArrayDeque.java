@@ -30,13 +30,13 @@ public final class ToMutableArrayDeque
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -46,13 +46,13 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size), size);
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableArrayDeque<>();
         if (collection.isEmpty())
@@ -60,13 +60,13 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -79,7 +79,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -88,8 +88,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -99,7 +99,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -108,8 +108,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
         if (collection.isEmpty())
@@ -117,7 +117,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -126,8 +126,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -140,7 +140,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -149,8 +149,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -160,7 +160,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -169,8 +169,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
         if (collection.isEmpty())
@@ -178,7 +178,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -187,8 +187,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -201,7 +201,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -210,8 +210,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -221,7 +221,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -230,8 +230,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
         if (collection.isEmpty())
@@ -239,7 +239,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to a mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -248,8 +248,8 @@ public final class ToMutableArrayDeque
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>();
 
@@ -263,7 +263,7 @@ public final class ToMutableArrayDeque
 
     //#region -------------------- initialCapacity --------------------
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -271,8 +271,8 @@ public final class ToMutableArrayDeque
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final int initialCapacity) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                               final int initialCapacity) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -282,7 +282,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
@@ -290,8 +290,8 @@ public final class ToMutableArrayDeque
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final int initialCapacity) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                               final int initialCapacity) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
@@ -299,7 +299,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size()), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] collection
@@ -307,8 +307,8 @@ public final class ToMutableArrayDeque
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T> ArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                        final int initialCapacity) {
+    public static <T> MutableArrayDeque<T> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                               final int initialCapacity) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -321,7 +321,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- initialCapacity, (T, int) → U --------------------
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -332,9 +332,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -344,7 +344,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -355,9 +355,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
@@ -365,7 +365,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -376,9 +376,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final int initialCapacity,
-                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final int initialCapacity,
+                                                                                           final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -391,7 +391,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- initialCapacity, (T, int) → U --------------------
     //#region -------------------- initialCapacity, (T) → U --------------------
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -402,9 +402,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -414,7 +414,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, size, transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -425,9 +425,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
@@ -435,7 +435,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection, collection.size(), transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -446,9 +446,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -461,7 +461,7 @@ public final class ToMutableArrayDeque
     //#endregion -------------------- initialCapacity, (T) → U --------------------
     //#region -------------------- initialCapacity, () → U --------------------
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -472,9 +472,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
@@ -484,7 +484,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(size, transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -495,9 +495,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
         if (collection.isEmpty())
@@ -505,7 +505,7 @@ public final class ToMutableArrayDeque
         return new MutableArrayDeque<>(_values(collection.size(), transform), initialCapacity);
     }
 
-    /// Convert the `collection` to a new mutable [ArrayDeque]
+    /// Convert the `collection` to a new [MutableArrayDeque]
     /// with an initial capacity
     /// and applying a transformation
     ///
@@ -516,9 +516,9 @@ public final class ToMutableArrayDeque
     /// @param <U>             The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object, U> ArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                    final int initialCapacity,
-                                                                                    final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableArrayDeque<U> toMutableArrayDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                           final int initialCapacity,
+                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableArrayDeque<>(initialCapacity);
 
