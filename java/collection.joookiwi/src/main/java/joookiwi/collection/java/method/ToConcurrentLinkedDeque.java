@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -28,12 +27,12 @@ public final class ToConcurrentLinkedDeque
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable ConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> ImmutableConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -43,12 +42,12 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable ConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> ImmutableConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
         if (collection.isEmpty())
@@ -56,12 +55,12 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable ConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> ImmutableConcurrentLinkedDeque<T> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -74,7 +73,7 @@ public final class ToConcurrentLinkedDeque
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -82,8 +81,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -93,7 +92,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -101,8 +100,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
         if (collection.isEmpty())
@@ -110,7 +109,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -118,8 +117,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -132,7 +131,7 @@ public final class ToConcurrentLinkedDeque
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -140,8 +139,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -151,7 +150,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -159,8 +158,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
         if (collection.isEmpty())
@@ -168,7 +167,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -176,8 +175,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -190,7 +189,7 @@ public final class ToConcurrentLinkedDeque
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -198,8 +197,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                 final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
@@ -209,7 +208,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -217,8 +216,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                 final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
         if (collection.isEmpty())
@@ -226,7 +225,7 @@ public final class ToConcurrentLinkedDeque
         return new ImmutableConcurrentLinkedDeque<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [ConcurrentLinkedDeque]
+    /// Convert the `collection` to an [ImmutableConcurrentLinkedDeque]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -234,8 +233,8 @@ public final class ToConcurrentLinkedDeque
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable ConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                 final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> ImmutableConcurrentLinkedDeque<U> toConcurrentLinkedDeque(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyConcurrentLinkedDeque();
 
