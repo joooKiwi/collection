@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -27,12 +26,12 @@ public final class ToMutableTreeSet
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -42,12 +41,12 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -57,12 +56,12 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> @Unmodifiable TreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -75,7 +74,7 @@ public final class ToMutableTreeSet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -83,8 +82,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -94,7 +93,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -102,8 +101,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -111,7 +110,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -119,8 +118,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -133,7 +132,7 @@ public final class ToMutableTreeSet
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -141,8 +140,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -152,7 +151,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -160,8 +159,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -169,7 +168,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -177,8 +176,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -191,7 +190,7 @@ public final class ToMutableTreeSet
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -199,8 +198,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -210,7 +209,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -218,8 +217,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -227,7 +226,7 @@ public final class ToMutableTreeSet
         return new MutableTreeSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [TreeSet]
+    /// Convert the `collection` to a new [MutableTreeSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -235,8 +234,8 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> @Unmodifiable TreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
