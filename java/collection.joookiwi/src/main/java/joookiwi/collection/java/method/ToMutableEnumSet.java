@@ -32,7 +32,7 @@ public final class ToMutableEnumSet
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param <T>        The `collection` type
@@ -50,7 +50,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param <T>        The `collection` type
@@ -68,7 +68,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param <T>        The `collection` type
@@ -89,7 +89,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -111,7 +111,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -131,7 +131,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -156,7 +156,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -178,7 +178,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -198,7 +198,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -223,7 +223,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -245,7 +245,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -265,7 +265,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -291,7 +291,7 @@ public final class ToMutableEnumSet
 
     //#region -------------------- Class<T> --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
     /// @param clazz      The enum class type if the `collection` is `null` or empty
@@ -309,7 +309,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
     /// @param clazz      The enum class type if the `collection` is `null` or [empty][CollectionHolder#isEmpty]
@@ -327,7 +327,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
     /// @param clazz      The enum class type if the `collection` is `null` or empty
@@ -348,7 +348,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- Class<T> --------------------
     //#region -------------------- Class<U>, (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -370,7 +370,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -390,7 +390,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -415,7 +415,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- Class<U>, (T, int) → U --------------------
     //#region -------------------- Class<U>, (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -437,7 +437,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -457,7 +457,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
@@ -482,7 +482,7 @@ public final class ToMutableEnumSet
     //#endregion -------------------- Class<U>, (T) → U --------------------
     //#region -------------------- Class<U>, () → U --------------------
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
@@ -504,7 +504,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
@@ -524,7 +524,7 @@ public final class ToMutableEnumSet
         return __new(_uniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable-like][Unmodifiable] [EnumSet]
+    /// Convert the `collection` to an [EnumSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
