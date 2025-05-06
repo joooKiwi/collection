@@ -17,7 +17,6 @@ import org.jetbrains.annotations.UnmodifiableView;
 import static joookiwi.collection.java.CollectionConstants.emptySequencedCollection;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
-import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 
 /// A definition of an immutable [SequencedCollection] to have a common ancestor
 ///
@@ -48,7 +47,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @Override public T getFirst() {
         if (isEmpty())
-            throw new NoSuchElementException(DEFAULT_MESSAGE);
+            throw new NoSuchElementException(new EmptyCollectionException());
         return GetFirst.getFirst(_reference());
     }
 
@@ -60,7 +59,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @Override public T getLast() {
         if (isEmpty())
-            throw new NoSuchElementException(DEFAULT_MESSAGE);
+            throw new NoSuchElementException(new EmptyCollectionException());
         return GetLast.getLast(_reference());
     }
 
