@@ -143,6 +143,7 @@ public class ImmutableStack<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public T push(final @Nullable T value) { throw new UnsupportedOperationException("The method “push” is not supported in an immutable Stack."); }
 
+
     /// Fail to add a `value` to the current [ImmutableStack]
     ///
     /// @param value The (_never used_) element to add
@@ -215,6 +216,7 @@ public class ImmutableStack<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_0)
     @Override public void removeAllElements() { throw new UnsupportedOperationException("The method “removeAllElements” is not supported in an immutable Stack."); }
 
+
     /// Fail to change the [size][#size()] of the [ImmutableStack]
     ///
     /// @param newSize The (_never used_) new size
@@ -228,6 +230,7 @@ public class ImmutableStack<T extends @Nullable Object>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override public T pop() { throw new UnsupportedOperationException("The method “pop” is not supported in an immutable Stack."); }
+
 
     /// Fail to remove a `value` in the current [ImmutableStack]
     ///

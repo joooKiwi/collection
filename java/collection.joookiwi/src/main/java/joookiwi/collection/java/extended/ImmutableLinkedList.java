@@ -107,19 +107,6 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable LinkedList."); }
 
-    /// Never add a `value` to the current [ImmutableLinkedList]
-    ///
-    /// @param value The (_never used_) element to add
-    @Contract(ALWAYS_FALSE_1)
-    @Override public boolean offer(final @Nullable T value) { return false; }
-
-    /// Fail to add a `value` to the current [ImmutableLinkedList]
-    ///
-    /// @param value The (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void push(final @Nullable T value) { throw new UnsupportedOperationException("The method “push” is not supported in an immutable LinkedList."); }
-
     /// Fail to add a `value` to the current [ImmutableLinkedList]
     ///
     /// @param index The (_never used_) index
@@ -135,24 +122,12 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable LinkedList."); }
 
-    /// Never add a `value` to the current [ImmutableLinkedList]
-    ///
-    /// @param value The (_never used_) element to add
-    @Contract(ALWAYS_FALSE_1)
-    @Override public boolean offerFirst(final @Nullable T value) { return false; }
-
     /// Fail to add a `value` to the current [ImmutableLinkedList]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable LinkedList."); }
-
-    /// Never add a `value` to the current [ImmutableLinkedList]
-    ///
-    /// @param value The (_never used_) element to add
-    @Contract(ALWAYS_FALSE_1)
-    @Override public boolean offerLast(final @Nullable T value) { return false; }
 
     /// Fail to add the `values` in the current [ImmutableLinkedList]
     ///
@@ -168,6 +143,33 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
     @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable LinkedList."); }
+
+
+    /// Never add a `value` to the current [ImmutableLinkedList]
+    ///
+    /// @param value The (_never used_) element to add
+    @Contract(ALWAYS_FALSE_1)
+    @Override public boolean offer(final @Nullable T value) { return false; }
+
+    /// Never add a `value` to the current [ImmutableLinkedList]
+    ///
+    /// @param value The (_never used_) element to add
+    @Contract(ALWAYS_FALSE_1)
+    @Override public boolean offerFirst(final @Nullable T value) { return false; }
+
+    /// Never add a `value` to the current [ImmutableLinkedList]
+    ///
+    /// @param value The (_never used_) element to add
+    @Contract(ALWAYS_FALSE_1)
+    @Override public boolean offerLast(final @Nullable T value) { return false; }
+
+
+    /// Fail to add a `value` to the current [ImmutableLinkedList]
+    ///
+    /// @param value The (_never used_) element to add
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void push(final @Nullable T value) { throw new UnsupportedOperationException("The method “push” is not supported in an immutable LinkedList."); }
 
 
     /// Fail to clear the current [ImmutableLinkedList]
@@ -210,24 +212,6 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeFirstOccurrence(final @Nullable Object value) { throw new UnsupportedOperationException("The method “removeFirstOccurrence” is not supported in an immutable LinkedList."); }
 
-    /// Fail to remove the first value in the current [ImmutableLinkedList]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T pop() { throw new UnsupportedOperationException("The method “pop” is not supported in an immutable LinkedList."); }
-
-    /// Fail to remove and retrieve the first value in the current [ImmutableLinkedList]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T poll() { throw new UnsupportedOperationException("The method “poll” is not supported in an immutable LinkedList."); }
-
-    /// Fail to remove and retrieve the first value in the current [ImmutableLinkedList]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T pollFirst() { throw new UnsupportedOperationException("The method “pollFirst” is not supported in an immutable LinkedList."); }
-
     /// Fail to remove the last value in the current [ImmutableLinkedList]
     ///
     /// @throws UnsupportedOperationException The method is not supported
@@ -240,12 +224,6 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeLastOccurrence(final @Nullable Object value) { throw new UnsupportedOperationException("The method “removeLastOccurrence” is not supported in an immutable LinkedList."); }
-
-    /// Fail to remove and retrieve the last value in the current [ImmutableLinkedList]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T pollLast() { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable LinkedList."); }
 
     /// Fail to remove a value in the current [ImmutableLinkedList]
     ///
@@ -269,12 +247,40 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable LinkedList."); }
 
+
+    /// Fail to remove the first value in the current [ImmutableLinkedList]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T pop() { throw new UnsupportedOperationException("The method “pop” is not supported in an immutable LinkedList."); }
+
+
+    /// Fail to remove and retrieve the first value in the current [ImmutableLinkedList]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T poll() { throw new UnsupportedOperationException("The method “poll” is not supported in an immutable LinkedList."); }
+
+    /// Fail to remove and retrieve the first value in the current [ImmutableLinkedList]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T pollFirst() { throw new UnsupportedOperationException("The method “pollFirst” is not supported in an immutable LinkedList."); }
+
+    /// Fail to remove and retrieve the last value in the current [ImmutableLinkedList]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T pollLast() { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable LinkedList."); }
+
+
     /// Fail to keep the `values` in the current [ImmutableLinkedList]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable LinkedList."); }
+
 
     /// Fail to replace any value in the current [ImmutableLinkedList]
     ///

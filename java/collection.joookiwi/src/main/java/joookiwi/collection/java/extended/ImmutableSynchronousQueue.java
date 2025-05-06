@@ -109,6 +109,7 @@ public class ImmutableSynchronousQueue<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable TreeSet."); }
 
+
     /// Fail to add a `value` to the current [ImmutableSynchronousQueue]
     ///
     /// @param value The (_never used_) element to add
@@ -125,6 +126,7 @@ public class ImmutableSynchronousQueue<T>
     @Contract(ALWAYS_FAIL_3)
     @Override public boolean offer(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable SynchronousQueue."); }
 
+
     /// Fail to remove and retrieve the head of the current [ImmutableSynchronousQueue]
     ///
     /// @throws UnsupportedOperationException The method is not supported
@@ -138,6 +140,7 @@ public class ImmutableSynchronousQueue<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
     @Override public T poll(final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “poll” is not supported in an immutable SynchronousQueue."); }
+
 
     /// Fail to add a `value` to the current [ImmutableSynchronousQueue]
     ///

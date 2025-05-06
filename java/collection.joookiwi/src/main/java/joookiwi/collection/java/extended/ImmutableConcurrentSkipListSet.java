@@ -259,6 +259,19 @@ public class ImmutableConcurrentSkipListSet<T>
     @Override public void clear() { throw new UnsupportedOperationException("The method “clear” is not supported in an immutable ConcurrentSkipListSet."); }
 
 
+    /// Fail to retrieve and remove the first value in the current [ImmutableConcurrentSkipListSet]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T pollFirst() { throw new UnsupportedOperationException("The method “pollFirst” is not supported in an immutable ConcurrentSkipListSet."); }
+
+    /// Fail to retrieve and remove the last value in the current [ImmutableConcurrentSkipListSet]
+    ///
+    /// @throws UnsupportedOperationException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T pollLast() { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable ConcurrentSkipListSet."); }
+
+
     /// Fail to remove a `value` in the current [ImmutableConcurrentSkipListSet]
     ///
     /// @param value The (_never used_) element to remove
@@ -299,19 +312,6 @@ public class ImmutableConcurrentSkipListSet<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable ConcurrentSkipListSet."); }
-
-
-    /// Fail to retrieve and remove the first value in the current [ImmutableConcurrentSkipListSet]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T pollFirst() { throw new UnsupportedOperationException("The method “pollFirst” is not supported in an immutable ConcurrentSkipListSet."); }
-
-    /// Fail to retrieve and remove the last value in the current [ImmutableConcurrentSkipListSet]
-    ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T pollLast() { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable ConcurrentSkipListSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

@@ -216,12 +216,14 @@ public class ImmutableArrayList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable ArrayList."); }
 
+
     /// Fail to keep the `values` in the current [ImmutableArrayList]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable ArrayList."); }
+
 
     /// Fail to replace any value in the current [ImmutableArrayList]
     ///

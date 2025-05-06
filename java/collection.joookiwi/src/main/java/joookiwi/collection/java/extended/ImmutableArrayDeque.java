@@ -121,6 +121,7 @@ public class ImmutableArrayDeque<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ArrayDeque."); }
 
+
     /// Fail to add a `value` to the current [ImmutableArrayDeque]
     ///
     /// @param value The (_never used_) element to add
@@ -141,6 +142,7 @@ public class ImmutableArrayDeque<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean offerLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable ArrayDeque."); }
+
 
     /// Fail to remove and retrieve the head of the current [ImmutableArrayDeque]
     ///
@@ -173,6 +175,7 @@ public class ImmutableArrayDeque<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override public T pop() { throw new UnsupportedOperationException("The method “pop” is not supported in an immutable ArrayDeque."); }
+
 
     /// Fail to remove the head of the current [ImmutableArrayDeque]
     ///

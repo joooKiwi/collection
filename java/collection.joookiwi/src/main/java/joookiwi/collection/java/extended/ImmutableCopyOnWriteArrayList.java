@@ -205,6 +205,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable CopyOnWriteArrayList."); }
 
+
     /// Fail to replace any value in the current [ImmutableCopyOnWriteArrayList]
     ///
     /// @param operator the (_never used_) operator

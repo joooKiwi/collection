@@ -138,6 +138,7 @@ public class ImmutableLinkedBlockingDeque<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable LinkedBlockingDeque."); }
 
+
     /// Fail to add a `value` to the current [ImmutableLinkedBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
@@ -186,6 +187,7 @@ public class ImmutableLinkedBlockingDeque<T>
     @Contract(ALWAYS_FAIL_3)
     @Override public boolean offerLast(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable LinkedBlockingDeque."); }
 
+
     /// Fail to remove and retrieve the head of the current [ImmutableLinkedBlockingDeque]
     ///
     /// @throws UnsupportedOperationException The method is not supported
@@ -227,6 +229,7 @@ public class ImmutableLinkedBlockingDeque<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
     @Override public T pollLast(final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “pollLast” is not supported in an immutable LinkedBlockingDeque."); }
+
 
     /// Fail to add a `value` to the current [ImmutableLinkedBlockingDeque]
     ///
@@ -281,6 +284,7 @@ public class ImmutableLinkedBlockingDeque<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override public T pop() { throw new UnsupportedOperationException("The method “pop” is not supported in an immutable LinkedBlockingDeque."); }
+
 
     /// Fail to remove the head of the current [ImmutableLinkedBlockingDeque]
     ///
@@ -340,6 +344,7 @@ public class ImmutableLinkedBlockingDeque<T>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable LinkedBlockingDeque."); }
+
 
     /// Fail to transfer the `values` from the current [ImmutableLinkedBlockingDeque]
     ///

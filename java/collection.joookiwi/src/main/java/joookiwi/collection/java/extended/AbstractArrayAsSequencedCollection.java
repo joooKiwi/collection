@@ -38,6 +38,8 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
 
     //#region -------------------- Supported methods --------------------
 
+    //#region -------------------- Get methods --------------------
+
     /// Get the first element in the current [instance][SequencedCollection]
     ///
     /// @throws NoSuchElementException The current [instance][SequencedCollection] [is empty][#isEmpty]
@@ -62,6 +64,9 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
         return GetLast.getLast(_reference());
     }
 
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- To reverse methods --------------------
+
     /// Give a reversed-view of the current [instance][SequencedCollection]
     ///
     /// @see SequencedCollection#reversed()
@@ -74,6 +79,8 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
             return emptySequencedCollection();
         return new ReversedArrayAsSequencedCollection<>(this, new ReversedArray<>(_reference()));
     }
+
+    //#endregion -------------------- To reverse methods --------------------
 
     @Override public abstract AbstractArrayAsSequencedCollection<T> clone();
 

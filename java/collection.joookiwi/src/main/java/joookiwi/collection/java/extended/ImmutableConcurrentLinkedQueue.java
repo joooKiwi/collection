@@ -97,12 +97,14 @@ public class ImmutableConcurrentLinkedQueue<T>
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable TreeSet."); }
 
+
     /// Fail to add a `value` to the current [ImmutableConcurrentLinkedQueue]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean offer(final @Nullable T value) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable ConcurrentLinkedQueue."); }
+
 
     /// Fail to remove and retrieve the head of the current [ImmutableConcurrentLinkedQueue]
     ///
