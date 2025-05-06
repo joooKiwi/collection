@@ -1,8 +1,11 @@
 package joookiwi.collection.java.extended;
 
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.SortedSet;
+import java.util.function.Predicate;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -152,32 +155,81 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
-    /// Fail to add a `value` as the start of the current [ArrayAsSortedSet]
+    /// Fail to add a `value` to the current [instance][SortedSet]
     ///
-    /// @param value the (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @param value The (_never used_) element to add
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable SortedSet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable SortedSet."); }
 
-    /// Fail to add a `value` as the end of the current [ArrayAsSortedSet]
+    /// Fail to add a `value` to the current [instance][SortedSet]
     ///
-    /// @param value the (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @param value The (_never used_) element to add at the start
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable SortedSet."); }
+    @Override public void addFirst(T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable SortedSet."); }
 
-
-    /// Fail to remove the first value of the current [ArrayAsSortedSet]
+    /// Fail to add a `value` to the current [instance][SortedSet]
     ///
-    /// @throws UnsupportedOperationException The method is not supported
-    @Contract(ALWAYS_FAIL_0)
-    @Override public T removeFirst() { throw new UnsupportedOperationException("The method “removeFirst” is not supported in an immutable SortedSet."); }
+    /// @param value The (_never used_) element to add at the end
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void addLast(T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable SortedSet."); }
 
-    /// Fail to remove the last value of the current [ArrayAsSortedSet]
+    /// Fail to add the `values` in the current [instance][SortedSet]
     ///
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @param values The (_never used_) elements to add
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable SortedSet."); }
+
+
+    /// Fail to clear the current [instance][SortedSet]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public T removeLast() { throw new UnsupportedOperationException("The method “removeLast” is not supported in an immutable SortedSet."); }
+    @Override public void clear() { throw new UnsupportedMethodException("The method “clear” is not supported in an immutable SortedSet."); }
+
+
+    /// Fail to remove a `value` in the current [instance][SortedSet]
+    ///
+    /// @param value The (_never used_) element to remove
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable SortedSet."); }
+
+    /// Fail to remove the first value in the current [instance][SortedSet]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T removeFirst() { throw new UnsupportedMethodException("The method “removeFirst” is not supported in an immutable SortedSet."); }
+
+    /// Fail to remove the last value in the current [instance][SortedSet]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T removeLast() { throw new UnsupportedMethodException("The method “removeLast” is not supported in an immutable SortedSet."); }
+
+    /// Fail to remove the `values` in the current [instance][SortedSet]
+    ///
+    /// @param values The (_never used_) elements to remove
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable SortedSet."); }
+
+    /// Fail to remove anything to the current [instance][SortedSet]
+    ///
+    /// @param filter The (_never used_) predicate
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable SortedSet."); }
+
+    /// Fail to keep the `values` in the current [instance][SortedSet]
+    ///
+    /// @param values The (_never used_) values to keep
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable SortedSet."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

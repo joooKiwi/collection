@@ -10,6 +10,7 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
@@ -192,52 +193,52 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
     /// Fail to add a `value` to the current [instance][Collection]
     ///
     /// @param value The (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable Collection."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
 
     /// Fail to add the `values` in the current [instance][Collection]
     ///
     /// @param values The (_never used_) elements to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable Collection."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable Collection."); }
 
 
     /// Fail to clear the current [instance][Collection]
     ///
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public void clear() { throw new UnsupportedOperationException("The method “clear” is not supported in an immutable Collection."); }
+    @Override public void clear() { throw new UnsupportedMethodException("The method “clear” is not supported in an immutable Collection."); }
 
 
     /// Fail to remove a `value` in the current [instance][Collection]
     ///
     /// @param value The (_never used_) element to remove
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable Collection."); }
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Collection."); }
 
     /// Fail to remove the `values` in the current [instance][Collection]
     ///
     /// @param values The (_never used_) elements to remove
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “removeAll” is not supported in an immutable Collection."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable Collection."); }
 
     /// Fail to remove anything to the current [instance][Collection]
     ///
     /// @param filter The (_never used_) predicate
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable Collection."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable Collection."); }
 
     /// Fail to keep the `values` in the current [instance][Collection]
     ///
     /// @param values The (_never used_) values to keep
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable Collection."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable Collection."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

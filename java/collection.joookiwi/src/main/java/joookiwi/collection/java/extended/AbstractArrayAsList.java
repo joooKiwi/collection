@@ -5,10 +5,12 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.method.FirstIndexOfOrNull;
 import joookiwi.collection.java.method.LastIndexOfOrNull;
 import org.jetbrains.annotations.Contract;
@@ -20,6 +22,7 @@ import org.jetbrains.annotations.UnmodifiableView;
 
 import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
@@ -170,6 +173,14 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_2)
     @Override public T set(final int index, final T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
 
+
+    /// Fail to add a `value` to the current [instance][List]
+    ///
+    /// @param value The (_never used_) element to add
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
+
     /// Fail to add a `value` to the current [instance][List]
     ///
     /// @param index The (_never used_) index
@@ -177,6 +188,27 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
     @Override public void add(final int index, final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
+
+    /// Fail to add a `value` to the current [instance][List]
+    ///
+    /// @param value The (_never used_) element to add at the start
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void addFirst(T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable List."); }
+
+    /// Fail to add a `value` to the current [instance][List]
+    ///
+    /// @param value The (_never used_) element to add at the end
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public void addLast(T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable List."); }
+
+    /// Fail to add the `values` in the current [instance][List]
+    ///
+    /// @param values The (_never used_) elements to add
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable List."); }
 
     /// Fail to add the `values` in the current [instance][List]
     ///
@@ -186,12 +218,54 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_2)
     @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable List."); }
 
+
+    /// Fail to clear the current [instance][List]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public void clear() { throw new UnsupportedMethodException("The method “clear” is not supported in an immutable List."); }
+
+
+    /// Fail to remove a `value` in the current [instance][List]
+    ///
+    /// @param value The (_never used_) element to remove
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean remove(final @Nullable Object value) { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable List."); }
+
     /// Fail to remove a `value` in the current [instance][List]
     ///
     /// @param index The (_never used_) index
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public T remove(final int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
+
+    /// Fail to remove the first value in the current [instance][List]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T removeFirst() { throw new UnsupportedMethodException("The method “removeFirst” is not supported in an immutable List."); }
+
+    /// Fail to remove the last value in the current [instance][List]
+    ///
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_0)
+    @Override public T removeLast() { throw new UnsupportedMethodException("The method “removeLast” is not supported in an immutable List."); }
+
+    /// Fail to remove the `values` in the current [instance][List]
+    ///
+    /// @param values The (_never used_) elements to remove
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable List."); }
+
+    /// Fail to remove anything to the current [instance][List]
+    ///
+    /// @param filter The (_never used_) predicate
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable List."); }
+
 
     /// Fail to replace any value in the current [instance][List]
     ///
@@ -201,12 +275,23 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     @Override public void replaceAll(final @Nullable UnaryOperator<T> operator) { throw new UnsupportedOperationException("The method “replaceAll” is not supported in an immutable List."); }
 
 
+    /// Fail to keep the `values` in the current [instance][List]
+    ///
+    /// @param values The (_never used_) values to keep
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable List."); }
+
+
     /// Fail to sort the current [instance][List]
     ///
     /// @param comparator The (_never used_) [comparator][Comparator]
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable List."); }
+
+    //#endregion -------------------- Unsupported methods --------------------
+    //#region -------------------- Unsupported methods --------------------
 
     //#endregion -------------------- Unsupported methods --------------------
 
