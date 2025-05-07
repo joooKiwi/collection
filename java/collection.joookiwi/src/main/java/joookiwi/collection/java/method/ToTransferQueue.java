@@ -8,6 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.ArrayAsTransferQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -39,7 +40,7 @@ public final class ToTransferQueue
         final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
-        return __withNoTransform(collection, size);
+        return new ArrayAsTransferQueue<>(_values(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -52,7 +53,7 @@ public final class ToTransferQueue
             return emptyTransferQueue();
         if (collection.isEmpty())
             return emptyTransferQueue();
-        return __withNoTransform(collection, collection.size());
+        return new ArrayAsTransferQueue<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -67,7 +68,7 @@ public final class ToTransferQueue
         final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
-        return __withNoTransform(collection, size);
+        return new ArrayAsTransferQueue<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -89,7 +90,7 @@ public final class ToTransferQueue
         final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsTransferQueue<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -106,7 +107,7 @@ public final class ToTransferQueue
             return emptyTransferQueue();
         if (collection.isEmpty())
             return emptyTransferQueue();
-        return __with2Argument(collection, collection.size(), transform);
+        return new ArrayAsTransferQueue<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -125,7 +126,7 @@ public final class ToTransferQueue
         final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
-        return __with2Argument(collection, size, transform);
+        return new ArrayAsTransferQueue<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -147,7 +148,7 @@ public final class ToTransferQueue
         final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsTransferQueue<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -164,7 +165,7 @@ public final class ToTransferQueue
             return emptyTransferQueue();
         if (collection.isEmpty())
             return emptyTransferQueue();
-        return __with1Argument(collection, collection.size(), transform);
+        return new ArrayAsTransferQueue<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -183,7 +184,7 @@ public final class ToTransferQueue
         final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
-        return __with1Argument(collection, size, transform);
+        return new ArrayAsTransferQueue<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -205,7 +206,7 @@ public final class ToTransferQueue
         final var size = collection.size();
         if (size == 0)
             return emptyTransferQueue();
-        return __with0Argument(size, transform);
+        return new ArrayAsTransferQueue<>(_values(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -222,7 +223,7 @@ public final class ToTransferQueue
             return emptyTransferQueue();
         if (collection.isEmpty())
             return emptyTransferQueue();
-        return __with0Argument(collection.size(), transform);
+        return new ArrayAsTransferQueue<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [TransferQueue]
@@ -241,63 +242,11 @@ public final class ToTransferQueue
         final var size = collection.length;
         if (size == 0)
             return emptyTransferQueue();
-        return __with0Argument(size, transform);
+        return new ArrayAsTransferQueue<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
-    //#region -------------------- Loop methods --------------------
-
-    private static <T> @Unmodifiable TransferQueue<T> __withNoTransform(final MinimalistCollectionHolder<? extends T> collection,
-                                                                        final int size) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size));
-    }
-
-    private static <T> @Unmodifiable TransferQueue<T> __withNoTransform(final T @Unmodifiable [] collection,
-                                                                        final int size) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size));
-    }
-
-
-    private static <U> @Unmodifiable TransferQueue<U> __with0Argument(final int size,
-                                                                      final Supplier<? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TransferQueue<U> __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                  final int size,
-                                                                                                  final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TransferQueue<U> __with1Argument(final T @Unmodifiable [] collection,
-                                                                                                  final int size,
-                                                                                                  final Function<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size, transform));
-    }
-
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TransferQueue<U> __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                                                                  final int size,
-                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size, transform));
-    }
-
-    private static <T extends @Nullable Object, U> @Unmodifiable TransferQueue<U> __with2Argument(final T @Unmodifiable [] collection,
-                                                                                                  final int size,
-                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
-        throw new RuntimeException(); // TODO add ImmutableTransferQueue initialization
-//        return new ImmutableTransferQueue<>(_values(collection, size, transform));
-    }
-
-    //#endregion -------------------- Loop methods --------------------
 
 }
