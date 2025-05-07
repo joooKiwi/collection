@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Range;
 
 import static java.lang.Integer.MAX_VALUE;
 
-/// A bare-bone implementation of a [java Collection][java.util.Deque]
+/// A bare-bone implementation of a [java Deque][java.util.Deque]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
@@ -33,7 +33,7 @@ public class ArrayAsDeque<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.Deque] and allowing `null` in the `reference`
+    /// Create an instance of a [java.util.Deque] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsDeque(final T[] reference) {

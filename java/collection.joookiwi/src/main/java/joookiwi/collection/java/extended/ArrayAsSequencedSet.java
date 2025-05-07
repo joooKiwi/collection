@@ -34,10 +34,11 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.SequencedSet]
-    /// but allowing `null`, implying that it has no duplicate in the `reference`
+    /// Create an instance of a [java.util.SequencedSet] from the `reference`
     ///
     /// @param reference The array to be the internal structure
+    /// @throws RuntimeException A duplicate value exists in the `reference`
+    /// @see java.util.Collections#unmodifiableSequencedSet(java.util.SequencedSet) Collections.unmodifiableSequencedSet(SequencedSet&#60T&#62)
     public ArrayAsSequencedSet(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)

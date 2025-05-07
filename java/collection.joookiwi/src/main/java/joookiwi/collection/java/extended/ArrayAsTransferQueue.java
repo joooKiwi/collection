@@ -7,12 +7,12 @@ import org.jetbrains.annotations.Range;
 import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 
-/// A bare-bone implementation of a [java Collection][java.util.concurrent.TransferQueue]
+/// A bare-bone implementation of a [java TransferQueue][java.util.concurrent.TransferQueue]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
-/// Note that `null` is permitted in this instance.
-/// It is up to the implementor to specify it.
+/// Note that `null` is **not** permitted in this instance
+/// due to the [java.util.concurrent.TransferQueue] declaration.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
@@ -33,7 +33,7 @@ public class ArrayAsTransferQueue<T>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.concurrent.TransferQueue] and allowing `null` in the `reference`
+    /// Create an instance of a [java.util.concurrent.TransferQueue] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsTransferQueue(final T[] reference) {

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Range;
 
 import static java.lang.Integer.MAX_VALUE;
 
-/// A bare-bone implementation of a [java Collection][java.util.Queue]
+/// A bare-bone implementation of a [java Queue][java.util.Queue]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
@@ -33,7 +33,7 @@ public class ArrayAsQueue<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.Queue] and allowing `null` in the `reference`
+    /// Create an instance of a [java.util.Queue] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsQueue(final T[] reference) {

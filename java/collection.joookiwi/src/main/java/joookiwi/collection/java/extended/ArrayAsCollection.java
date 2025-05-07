@@ -33,10 +33,10 @@ public class ArrayAsCollection<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance similar to [java.util.Collections#unmodifiableCollection(java.util.Collection)]
-    /// but allowing `null` in the `reference`
+    /// Create an instance of a [java.util.Collection] from the `reference`
     ///
     /// @param reference The array to be the internal structure
+    /// @see java.util.Collections#unmodifiableCollection(java.util.Collection) Collections.unmodifiableCollection(Collection&#60T&#62)
     public ArrayAsCollection(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)

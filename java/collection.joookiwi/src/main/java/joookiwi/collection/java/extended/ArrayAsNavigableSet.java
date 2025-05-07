@@ -39,10 +39,15 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
-    /// Create an instance of a [java.util.NavigableSet] but allowing `null` in the `reference`.
-    /// It also has by default its natural ordering.
+    /// Create an instance of a [java.util.NavigableSet] from the `reference`
+    /// using its natural ordering to compare its values
     ///
     /// @param reference The array to be the internal structure
+    /// @throws RuntimeException   A duplicate value exists in the `reference`
+    /// @throws RuntimeException   A value was not ordered in the `reference`
+    /// @throws ClassCastException At least one value was not [Comparable]
+    /// @see java.util.Collections#unmodifiableNavigableSet(java.util.NavigableSet) Collections.unmodifiableNavigableSet(NavigableSet&#60T&#62)
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ArrayAsNavigableSet(final T[] reference) {
         super();
         __comparator = null;
@@ -50,11 +55,16 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
             return;
         _hashCode = 0; }
 
-    /// Create an instance of a [java.util.NavigableSet] but allowing `null` in the `reference`
+    /// Create an instance of a [java.util.NavigableSet] from the `reference`
     /// using a `comparator` to compare its values
     ///
     /// @param reference  The array to be the internal structure
     /// @param comparator The [Comparator] to use on its comparisons
+    /// @throws RuntimeException   A duplicate value exists in the `reference`
+    /// @throws RuntimeException   A value was not ordered in the `reference`
+    /// @throws ClassCastException If the `comparator` was `null`, at least one value was not [Comparable]
+    /// @see java.util.Collections#unmodifiableNavigableSet(java.util.NavigableSet) Collections.unmodifiableNavigableSet(NavigableSet&#60T&#62)
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ArrayAsNavigableSet(final T[] reference, final @Nullable Comparator<? super T> comparator) {
         super();
         __comparator = comparator;

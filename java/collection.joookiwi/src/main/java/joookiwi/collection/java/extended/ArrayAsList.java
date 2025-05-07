@@ -33,10 +33,11 @@ public class ArrayAsList<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance similar to {@link java.util.List#of(Object[])},
-    /// but allowing `null` in the `reference`
+    /// Create an instance of a [java.util.List] from the `reference`
     ///
     /// @param reference The array to be the internal structure
+    /// @see java.util.List#of(Object[]) List.of(T...)
+    /// @see java.util.Collections#unmodifiableList(java.util.List) Collections.unmodifiableList(List&#60T&#62)
     public ArrayAsList(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)

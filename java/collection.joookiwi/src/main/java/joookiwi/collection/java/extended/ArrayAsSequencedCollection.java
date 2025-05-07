@@ -33,7 +33,7 @@ public class ArrayAsSequencedCollection<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.SequencedCollection] and allowing `null` in the `reference`
+    /// Create an instance of a [java.util.SequencedCollection] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsSequencedCollection(final T[] reference) {

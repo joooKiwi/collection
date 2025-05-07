@@ -6,12 +6,12 @@ import org.jetbrains.annotations.Range;
 
 import static java.lang.Integer.MAX_VALUE;
 
-/// A bare-bone implementation of a [java Collection][java.util.concurrent.BlockingQueue]
+/// A bare-bone implementation of a [java BlockingQueue][java.util.concurrent.BlockingQueue]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
 /// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
-/// Note that `null` is permitted in this instance.
-/// It is up to the implementor to specify it.
+/// Note that `null` is **not** permitted in this instance
+/// due to the [java.util.concurrent.BlockingQueue] declaration.
 ///
 /// The instance uses the [methods][joookiwi.collection.java.method]
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
@@ -32,7 +32,7 @@ public class ArrayAsBlockingQueue<T>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance of a [java.util.concurrent.BlockingQueue] and allowing `null` in the `reference`
+    /// Create an instance of a [java.util.concurrent.BlockingQueue] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsBlockingQueue(final T[] reference) {

@@ -33,10 +33,12 @@ public class ArrayAsSet<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    /// Create an instance similar to {@link java.util.Set#of(Object[])},
-    /// but allowing `null` and implying that it has no duplicate in the `reference`
+    /// Create an instance of a [java.util.Set] from the `reference`
     ///
     /// @param reference The array to be the internal structure
+    /// @throws RuntimeException A duplicate value exists in the `reference`
+    /// @see java.util.Set#of(Object[]) Set.of(T...)
+    /// @see java.util.Collections#unmodifiableSet(java.util.Set) Collections.unmodifiableSet(Set&#60T&#62)
     public ArrayAsSet(final T[] reference) {
         super();
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
