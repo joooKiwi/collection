@@ -50,6 +50,7 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ArrayAsNavigableSet(final T[] reference) {
         super();
+        _validateValues(reference);
         __comparator = null;
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
@@ -67,6 +68,7 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ArrayAsNavigableSet(final T[] reference, final @Nullable Comparator<? super T> comparator) {
         super();
+        _validateValues(reference, comparator);
         __comparator = comparator;
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;

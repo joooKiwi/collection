@@ -41,6 +41,7 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     /// @see java.util.Collections#unmodifiableSequencedSet(java.util.SequencedSet) Collections.unmodifiableSequencedSet(SequencedSet&#60T&#62)
     public ArrayAsSequencedSet(final T[] reference) {
         super();
+        _validateValues(reference);
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
         _hashCode = 0;

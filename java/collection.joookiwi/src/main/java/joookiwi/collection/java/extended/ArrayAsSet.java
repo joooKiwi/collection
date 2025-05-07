@@ -41,6 +41,7 @@ public class ArrayAsSet<T extends @Nullable Object>
     /// @see java.util.Collections#unmodifiableSet(java.util.Set) Collections.unmodifiableSet(Set&#60T&#62)
     public ArrayAsSet(final T[] reference) {
         super();
+        _validateValues(reference);
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
         _hashCode = 0;

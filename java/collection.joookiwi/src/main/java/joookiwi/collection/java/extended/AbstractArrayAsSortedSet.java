@@ -42,6 +42,49 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
 
     protected AbstractArrayAsSortedSet() { super(); }
 
+    /// Validate that no duplicate exists in the `reference` received
+    /// and that is ordered (according to its natural ordering)
+    ///
+    /// @apiNote This method should only be called during the construction
+    /// @param reference The reference to validate no duplicate exists
+    /// @throws RuntimeException   A duplicate value exists
+    /// @throws RuntimeException   One value was not ordered
+    /// @throws ClassCastException At least one value was not [Comparable]
+    @Override protected void _validateValues(final T[] reference) {
+        super._validateValues(reference);
+
+        final var size = reference.length;
+        var index = -1;
+        while (++index < size)
+            if (_comparatorHelper().compare(reference[index], reference[index + 1]) > 0)
+                throw new RuntimeException("A value was not ordered during the creation of a SortedSet.");
+        _comparatorHelper().compare("", null);
+    }
+
+    /// Validate that no duplicate exists in the `reference` received
+    /// and that is ordered (using the `comparator`)
+    ///
+    /// @apiNote This method should only be called during the construction
+    /// @param reference  The reference to validate no duplicate exists
+    /// @param comparator The [Comparator] to use on its comparisons
+    /// @throws RuntimeException   A duplicate value exists
+    /// @throws RuntimeException   One value was not ordered
+    /// @throws ClassCastException If the `comparator` was `null`, at least one value was not [Comparable]
+    protected void _validateValues(final T[] reference, final @Nullable Comparator<? super T> comparator) {
+        if (comparator == null) {
+            _validateValues(reference);
+            return;
+        }
+
+        super._validateValues(reference);
+
+        final var size = reference.length;
+        var index = -1;
+        while (++index < size)
+            if (_comparatorHelper().compare(reference[index], reference[index + 1], comparator) > 0)
+                throw new RuntimeException("A value was not ordered during the creation of a SortedSet.");
+    }
+
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
