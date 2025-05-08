@@ -32,7 +32,7 @@ public class MutableConcurrentLinkedDeque<T>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [ConcurrentLinkedDeque]
-    public MutableConcurrentLinkedDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) { super(new ArrayAsCollection<>(values)); }
+    public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(new ArrayAsCollection<>(values)); }
 
     /// Create an mutable instance of [ConcurrentLinkedDeque]
     public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }

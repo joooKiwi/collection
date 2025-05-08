@@ -51,7 +51,7 @@ public class ImmutableStack<T extends @Nullable Object>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [Stack]
     /// with a capacity as the `values.length` (or `1` if it is empty)
-    public ImmutableStack(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableStack(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = __size = elementCount = values.length;
         if (__isEmpty = size == 0)

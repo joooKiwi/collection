@@ -52,7 +52,7 @@ public class ImmutableLinkedBlockingDeque<T>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [LinkedBlockingDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
-    public ImmutableLinkedBlockingDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length == 0 ? 1 : values.length);
         final var size = __size = values.length;
         if (__isEmpty = size == 0)

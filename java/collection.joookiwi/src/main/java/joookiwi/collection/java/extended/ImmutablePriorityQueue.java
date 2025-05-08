@@ -125,7 +125,7 @@ public class ImmutablePriorityQueue<T>
     /// ordered according to the `comparator` received
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public ImmutablePriorityQueue(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                   final @Nullable Comparator<? super T> comparator) {
         super(new ArrayAsSortedSet<>(values, comparator));
         __isEmpty = (__size = values.length) == 0;

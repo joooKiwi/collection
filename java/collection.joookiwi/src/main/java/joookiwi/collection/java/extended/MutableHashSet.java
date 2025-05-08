@@ -229,7 +229,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
         final var size = values.length;
@@ -257,7 +257,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -272,7 +272,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -287,7 +287,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -302,7 +302,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -317,7 +317,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final int initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -332,7 +332,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [HashSet]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Integer initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
@@ -425,7 +425,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final byte initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -443,7 +443,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final byte initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
@@ -461,7 +461,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Byte initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -479,7 +479,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Byte initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
@@ -497,7 +497,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final short initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -515,7 +515,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final short initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
@@ -533,7 +533,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Short initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -551,7 +551,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Short initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
@@ -569,7 +569,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final int initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -587,7 +587,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final int initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
@@ -605,7 +605,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Integer initialCapacity,
                           final float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
@@ -623,7 +623,7 @@ public class MutableHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Integer initialCapacity,
                           final @Nullable Float loadFactor) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);

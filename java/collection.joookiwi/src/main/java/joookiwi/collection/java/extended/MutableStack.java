@@ -34,7 +34,7 @@ public class MutableStack<T extends @Nullable Object>
 
     /// Create a mutable instance of [Stack]
     /// that starts with the `values` received
-    public MutableStack(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableStack(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = elementCount = values.length;
         if (size == 0)

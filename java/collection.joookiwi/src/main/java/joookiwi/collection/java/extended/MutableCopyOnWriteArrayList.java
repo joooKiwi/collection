@@ -31,7 +31,7 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [CopyOnWriteArrayList]
-    public MutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) { super(values); }
+    public MutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(values); }
 
     /// Create a mutable instance of [CopyOnWriteArrayList]
     public MutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }

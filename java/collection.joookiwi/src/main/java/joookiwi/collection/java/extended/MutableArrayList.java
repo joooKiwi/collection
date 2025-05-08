@@ -63,7 +63,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     /// Create a mutable instance of [ArrayList]
     /// with the initial capacity as the `values.length`
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length);
         final var size = values.length;
         if (size == 0)
@@ -87,7 +87,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;
@@ -101,7 +101,7 @@ public class MutableArrayList<T extends @Nullable Object>
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final @Nullable Byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;
@@ -114,7 +114,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;
@@ -128,7 +128,7 @@ public class MutableArrayList<T extends @Nullable Object>
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final @Nullable Short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;
@@ -141,7 +141,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final int initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;
@@ -155,7 +155,7 @@ public class MutableArrayList<T extends @Nullable Object>
     /// Create a mutable instance of [ArrayList]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final @Nullable Integer initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
         final var size = values.length;

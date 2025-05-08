@@ -240,7 +240,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [LinkedHashSet]
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableLinkedHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
         final var size = values.length;
@@ -270,7 +270,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableLinkedHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final float loadFactor) {
         super(values.length, loadFactor);
         __loadFactor = loadFactor;
@@ -287,7 +287,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableLinkedHashSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Float loadFactor) {
         super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;

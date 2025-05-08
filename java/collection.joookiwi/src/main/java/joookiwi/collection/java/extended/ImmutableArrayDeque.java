@@ -47,7 +47,7 @@ public class ImmutableArrayDeque<T>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
-    public ImmutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(new ArrayAsCollection<>(values));
         __isEmpty = (__size = values.length) == 0;
     }

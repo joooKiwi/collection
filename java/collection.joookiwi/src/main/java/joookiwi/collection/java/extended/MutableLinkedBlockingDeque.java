@@ -78,7 +78,7 @@ public class MutableLinkedBlockingDeque<T>
 
     /// Create a mutable instance of [LinkedBlockingDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
-    public MutableLinkedBlockingDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length == 0 ? 1 : values.length);
         final var size = values.length;
         if (size == 0)

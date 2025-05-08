@@ -71,7 +71,7 @@ public class ImmutableConcurrentSkipListSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (__isEmpty = size == 0) {
@@ -161,7 +161,7 @@ public class ImmutableConcurrentSkipListSet<T>
     /// ordered according to the `comparator` received
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public ImmutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public ImmutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                           final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         final var size = values.length;

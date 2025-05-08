@@ -35,7 +35,7 @@ public class MutableCopyOnWriteArraySet<T>
     /// Create a mutable instance of [CopyOnWriteArraySet]
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)

@@ -54,7 +54,7 @@ public class ImmutableVector<T extends @Nullable Object>
     /// (similar to {@link java.util.List#of(Object[])})
     /// with the initial capacity as the `values.length`
     /// and the capacity increment of `0`
-    public ImmutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length, 0);
         final var size = __size = elementCount = values.length;
         if (__isEmpty =- size == 0)

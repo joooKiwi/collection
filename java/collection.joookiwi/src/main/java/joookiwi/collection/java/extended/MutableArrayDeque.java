@@ -63,7 +63,7 @@ public class MutableArrayDeque<T>
 
     /// Create a mutable instance of [ArrayDeque]
     /// with an initial capacity as the `values.length`
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(new ArrayAsCollection<>(values));
     }
 
@@ -78,7 +78,7 @@ public class MutableArrayDeque<T>
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 
@@ -94,7 +94,7 @@ public class MutableArrayDeque<T>
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Byte initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 
@@ -109,7 +109,7 @@ public class MutableArrayDeque<T>
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 
@@ -125,7 +125,7 @@ public class MutableArrayDeque<T>
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Short initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 
@@ -140,7 +140,7 @@ public class MutableArrayDeque<T>
 
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final int initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 
@@ -156,7 +156,7 @@ public class MutableArrayDeque<T>
     /// Create a mutable instance of [ArrayDeque]
     /// with the largest value between the `initialCapacity` and the `values.length`
     /// (if null provided, then it is the `values.length`)
-    public MutableArrayDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Integer initialCapacity) {
         super(NumberComparator.getInstance().max(initialCapacity, values.length));
 

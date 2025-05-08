@@ -46,7 +46,7 @@ public class ImmutableConcurrentLinkedDeque<T>
     //#region -------------------- values --------------------
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ConcurrentLinkedDeque]
-    public ImmutableConcurrentLinkedDeque(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(new ArrayAsCollection<>(values));
         __isEmpty = (__size = values.length) == 0;
     }

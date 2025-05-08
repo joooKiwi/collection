@@ -52,7 +52,7 @@ public class MutableConcurrentSkipListSet<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (size == 0)
@@ -124,7 +124,7 @@ public class MutableConcurrentSkipListSet<T>
     /// ordered according to the `comparator` received
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutableConcurrentSkipListSet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values,
+    public MutableConcurrentSkipListSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                         final @Nullable Comparator<? super T> comparator) {
         super(comparator);
         final var size = values.length;

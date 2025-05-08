@@ -53,7 +53,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// (similar to {@link java.util.Set#of(Object[])})
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the `values.length`
-    public ImmutableCopyOnWriteArraySet(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableCopyOnWriteArraySet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = values.length;
         if (__isEmpty = size == 0) {

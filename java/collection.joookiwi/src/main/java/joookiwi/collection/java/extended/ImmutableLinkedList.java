@@ -50,7 +50,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
 
     /// Create an [immutable-like][Unmodifiable] instance of [LinkedList]
     /// (similar to {@link java.util.List#of(Object[])})
-    public ImmutableLinkedList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableLinkedList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
         final var size = __size = values.length;
         if (__isEmpty = size == 0)

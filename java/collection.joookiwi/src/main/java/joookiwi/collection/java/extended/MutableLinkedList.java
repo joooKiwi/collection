@@ -31,7 +31,7 @@ public class MutableLinkedList<T extends @Nullable Object>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [LinkedList]
-    public MutableLinkedList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableLinkedList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super();
 
         final var size = values.length;

@@ -78,7 +78,7 @@ public class MutableVector<T extends @Nullable Object>
     /// Create a mutable instance of [Vector]
     /// with the initial capacity as the `values.length`
     /// and the capacity increment of `0`
-    public MutableVector(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public MutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values.length, DEFAULT_EMPTY_CAPACITY_INCREMENT);
         final var size = elementCount = values.length;
         if (size == 0)

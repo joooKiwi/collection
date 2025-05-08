@@ -49,7 +49,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     /// Create an [immutable-like][Unmodifiable] instance of [CopyOnWriteArrayList]
     /// (similar to {@link java.util.List#of(Object[])})
-    public ImmutableCopyOnWriteArrayList(final T @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable [] values) {
+    public ImmutableCopyOnWriteArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(values);
         __isEmpty = (__size = values.length) == 0;
     }
