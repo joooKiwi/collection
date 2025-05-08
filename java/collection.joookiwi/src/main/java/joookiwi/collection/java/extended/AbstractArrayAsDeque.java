@@ -27,7 +27,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 @NotNullByDefault
 public abstract class AbstractArrayAsDeque<T extends @Nullable Object>
         extends AbstractArrayAsSequencedCollection<T>
-        implements Deque<T> {
+        implements Deque<T>,
+                   BasicStack<T> {
 
     //#region -------------------- Constructor --------------------
 
