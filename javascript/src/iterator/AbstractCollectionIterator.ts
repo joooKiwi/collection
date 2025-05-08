@@ -181,13 +181,15 @@ export abstract class AbstractCollectionIterator<const T,
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
             if (this._hasOnly1Element) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = null
-                return this._getValue(this._currentIndex = 0,)
+                return this._getValue(0,)
             }
 
             this._previousIndex = null
+            this._currentIndex = 0
             this._nextIndex = 1
-            return this._getValue(this._currentIndex = 0,)
+            return this._getValue(0,)
         }
 
         if (this._hasOnly1Element)
@@ -198,25 +200,29 @@ export abstract class AbstractCollectionIterator<const T,
         if (this._previousIndex == null) { // At the start of the line
             if (this._hasOnly2Elements) {
                 this._previousIndex = 0
+                this._currentIndex = 1
                 this._nextIndex = null
-                return this._getValue(this._currentIndex = 1,)
+                return this._getValue(1,)
             }
 
             this._previousIndex = 0
+            this._currentIndex = 1
             this._nextIndex = 2
-            return this._getValue(this._currentIndex = 1,)
+            return this._getValue(1,)
         }
 
         if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
+            const nextCurrentIndex = this._currentIndex = currentIndex + 1
             this._nextIndex = null
-            return this._getValue(this._currentIndex = currentIndex + 1,)
+            return this._getValue(nextCurrentIndex,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex
+        const nextCurrentIndex = this._currentIndex = currentIndex + 1
         this._nextIndex = currentIndex + 2
-        return this._getValue(this._currentIndex = currentIndex + 1,)
+        return this._getValue(nextCurrentIndex,)
     }
 
 
@@ -229,13 +235,15 @@ export abstract class AbstractCollectionIterator<const T,
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
             if (this._hasOnly1Element) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = null
-                return this._getIteratorValue(this._currentIndex = 0,)
+                return this._getIteratorValue(0,)
             }
 
             this._previousIndex = null
+            this._currentIndex = 0
             this._nextIndex = 1
-            return this._getIteratorValue(this._currentIndex = 0,)
+            return this._getIteratorValue(0,)
         }
 
         if (this._hasOnly1Element)
@@ -258,14 +266,15 @@ export abstract class AbstractCollectionIterator<const T,
         if (currentIndex == this._sizeMinus2) { // At the end of the line (but no internal value set)
             this._previousIndex = currentIndex
             this._nextIndex = null
-            this._currentIndex = currentIndex + 1
-            return this._getIteratorValue(this._currentIndex = currentIndex + 1,)
+            const nextCurrentIndex = this._currentIndex = currentIndex + 1
+            return this._getIteratorValue(nextCurrentIndex,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex
+        const nextCurrentIndex = this._currentIndex = currentIndex + 1
         this._nextIndex = currentIndex + 2
-        return this._getIteratorValue(this._currentIndex = currentIndex + 1,)
+        return this._getIteratorValue(nextCurrentIndex,)
     }
 
     //#endregion -------------------- Next methods --------------------
@@ -319,13 +328,15 @@ export abstract class AbstractCollectionIterator<const T,
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
             if (this._hasOnly1Element) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = null
-                return this._getValue(this._currentIndex = 0,)
+                return this._getValue(0,)
             }
 
             this._previousIndex = this._sizeMinus2
+            const previousCurrentIndex = this._currentIndex = this._sizeMinus1
             this._nextIndex = null
-            return this._getValue(this._currentIndex = this._sizeMinus1,)
+            return this._getValue(previousCurrentIndex,)
         }
 
         if (this._hasOnly1Element)
@@ -336,25 +347,29 @@ export abstract class AbstractCollectionIterator<const T,
         if (this._nextIndex == null) { // At the end of the line
             if (this._hasOnly2Elements) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = 1
-                return this._getValue(this._currentIndex = 0,)
+                return this._getValue(0,)
             }
 
             this._previousIndex = currentIndex - 2
+            const previousCurrentIndex = this._currentIndex = currentIndex - 1
             this._nextIndex = currentIndex
-            return this._getValue(this._currentIndex = currentIndex - 1,)
+            return this._getValue(previousCurrentIndex,)
         }
 
         if (currentIndex == 1) { // At the 2nd index
             this._previousIndex = null
+            this._currentIndex = 0
             this._nextIndex = 1
-            return this._getValue(this._currentIndex = 0,)
+            return this._getValue(0,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex - 2
+        const previousCurrentIndex = this._currentIndex = currentIndex - 1
         this._nextIndex = currentIndex
-        return this._getValue(this._currentIndex = currentIndex - 1,)
+        return this._getValue(previousCurrentIndex,)
     }
 
 
@@ -367,13 +382,15 @@ export abstract class AbstractCollectionIterator<const T,
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
             if (this._hasOnly1Element) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = null
-                return this._getIteratorValue(this._currentIndex = 0,)
+                return this._getIteratorValue(0,)
             }
 
             this._previousIndex = this._sizeMinus2
+            const previousCurrentIndex = this._currentIndex = this._sizeMinus1
             this._nextIndex = null
-            return this._getIteratorValue(this._currentIndex = this._sizeMinus1,)
+            return this._getIteratorValue(previousCurrentIndex,)
         }
 
         if (this._hasOnly1Element)
@@ -384,25 +401,29 @@ export abstract class AbstractCollectionIterator<const T,
         if (this._nextIndex == null) { // At the end of the line
             if (this._hasOnly2Elements) {
                 this._previousIndex = null
+                this._currentIndex = 0
                 this._nextIndex = 1
-                return this._getIteratorValue(this._currentIndex = 0,)
+                return this._getIteratorValue(0,)
             }
 
             this._previousIndex = currentIndex - 2
+            const previousCurrentIndex = this._currentIndex = currentIndex - 1
             this._nextIndex = currentIndex
-            return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
+            return this._getIteratorValue(previousCurrentIndex,)
         }
 
         if (currentIndex == 1) { // At the 2nd index
             this._previousIndex = null
+            this._currentIndex = 0
             this._nextIndex = 1
-            return this._getIteratorValue(this._currentIndex = 0,)
+            return this._getIteratorValue(0,)
         }
 
         // Somewhere in the line
         this._previousIndex = currentIndex - 2
+        const previousCurrentIndex = this._currentIndex = currentIndex - 1
         this._nextIndex = currentIndex
-        return this._getIteratorValue(this._currentIndex = currentIndex - 1,)
+        return this._getIteratorValue(previousCurrentIndex,)
     }
 
     //#endregion -------------------- Previous methods --------------------
