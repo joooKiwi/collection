@@ -12,7 +12,6 @@ import static java.lang.Integer.MAX_VALUE;
 
 /// A bare-bone implementation of a [java NavigableSet][java.util.NavigableSet]
 /// with the [immutability][Unmodifiable] in place.
-/// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.

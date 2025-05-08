@@ -9,7 +9,6 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 
 /// A bare-bone implementation of a [java TransferQueue][java.util.concurrent.TransferQueue]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
-/// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is **not** permitted in this instance
 /// due to the [java.util.concurrent.TransferQueue] declaration.

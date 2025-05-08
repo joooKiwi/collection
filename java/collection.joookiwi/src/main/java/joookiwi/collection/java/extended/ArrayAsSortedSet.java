@@ -11,7 +11,6 @@ import static java.lang.Integer.MAX_VALUE;
 
 /// A bare-bone implementation of a [java SortedSet][java.util.SortedSet]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
-/// During its creation, it <u>implies</u> that the array received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
