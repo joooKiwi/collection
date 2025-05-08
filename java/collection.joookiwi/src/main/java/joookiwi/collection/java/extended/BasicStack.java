@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 /// @apiNote This is not part of the <a href="https://docs.oracle.com/en/java/javase/24/core/java-collections-framework.html">Java collection framework</a>,
 ///          but it is an extension of it
 @NotNullByDefault
-public interface BasicStack<T>
+public interface BasicStack<T extends @Nullable Object>
         extends Collection<T> {
 
     /// Retrieves the first value of the current [stack][BasicStack] without removing it.
