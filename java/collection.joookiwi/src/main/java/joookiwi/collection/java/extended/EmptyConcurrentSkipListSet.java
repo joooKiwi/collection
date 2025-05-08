@@ -86,13 +86,13 @@ public class EmptyConcurrentSkipListSet<T>
     @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getLast() { throw new NoSuchElementException("No element could be found in an empty ConcurrentSkipListSet."); }
 
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T lower(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T lower(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T floor(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T floor(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T ceiling(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T ceiling(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T higher(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T higher(final @Nullable T value) { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
