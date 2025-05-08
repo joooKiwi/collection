@@ -50,14 +50,21 @@ export class GenericCollectionIterator<const T = unknown,
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
+    /** @initializedOnFirstCall */
     public override get size(): COLLECTION["size"] { return this.#size ??= super.size }
+    /** @initializedOnFirstCall */
     protected override get _sizeMinus1(): number { return this.#sizeMinus1 ??= super._sizeMinus1 }
+    /** @initializedOnFirstCall */
     protected override get _sizeMinus2(): number { return this.#sizeMinus2 ??= super._sizeMinus2 }
 
+    /** @initializedOnFirstCall */
     public override get isEmpty(): boolean { return this.#isEmpty ??= super.isEmpty }
+    /** @initializedOnFirstCall */
     public override get isNotEmpty(): boolean { return this.#isNotEmpty ??= super.isNotEmpty }
 
+    /** @initializedOnFirstCall */
     protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
+    /** @initializedOnFirstCall */
     protected override get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= super._hasOnly2Elements }
 
     //#endregion -------------------- Size methods --------------------

@@ -58,18 +58,10 @@ export abstract class AbstractCollectionIterator<const T,
     public get count(): number { return this.size }
 
 
-    /**
-     * The {@link size} minus 1
-     *
-     * @initializedOnFirstCall
-     */
+    /** The {@link size} minus 1 */
     protected get _sizeMinus1(): number { return this.size - 1 }
 
-    /**
-     * The {@link size} minus 2
-     *
-     * @initializedOnFirstCall
-     */
+    /** The {@link size} minus 2 */
     protected get _sizeMinus2(): number { return this.size - 2 }
 
 
@@ -77,18 +69,10 @@ export abstract class AbstractCollectionIterator<const T,
     public get isNotEmpty(): boolean { return this.size != 0 }
 
 
-    /**
-     * Tell that the {@link size} is only of <b>1</b>
-     *
-     * @initializedOnFirstCall
-     */
+    /** Tell that the {@link size} is only of <b>1</b> */
     protected get _hasOnly1Element(): boolean { return this.size == 1 }
 
-    /**
-     * Tell that the {@link size} is only of <b>2</b>
-     *
-     * @initializedOnFirstCall
-     */
+    /** Tell that the {@link size} is only of <b>2</b> */
     protected get _hasOnly2Elements(): boolean { return this.size == 2 }
 
     //#endregion -------------------- Size methods --------------------
@@ -130,14 +114,14 @@ export abstract class AbstractCollectionIterator<const T,
     public get currentIndex(): NullOrNumber { return this._currentIndex }
 
     /**
-     * Get the index that the {@link GenericCollectionIterator} is at
+     * Get the index that the {@link AbstractCollectionIterator instance} is at
      *
      * @synchronyzedWith<{@link _previousIndex}, {@link _nextIndex}>
      */
     protected get _currentIndex(): NullOrNumber { return this.#currentIndex }
 
     /**
-     * Set the index that the {@link GenericCollectionIterator} is at
+     * Set the index that the {@link AbstractCollectionIterator instance} is at
      *
      * @param value The value to set
      */
@@ -166,7 +150,7 @@ export abstract class AbstractCollectionIterator<const T,
     public get nextIndex(): NullOrNumber { return this._nextIndex }
 
     /**
-     * Get the next index that the {@link GenericCollectionIterator} should be at
+     * Get the next index that the {@link AbstractCollectionIterator instance} should be at
      *
      * @initializedOnFirstCall
      * @synchronyzedWith<{@link _previousIndex}, {@link _currentIndex}>
@@ -179,7 +163,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
     /**
-     * Set the next index that the {@link GenericCollectionIterator} should be at
+     * Set the next index that the {@link AbstractCollectionIterator instance} should be at
      *
      * @param value The value to set
      */
@@ -307,7 +291,7 @@ export abstract class AbstractCollectionIterator<const T,
     public get previousIndex(): NullOrNumber { return this._previousIndex }
 
     /**
-     * Get the previous index that the {@link GenericCollectionIterator} should be at
+     * Get the previous index that the {@link AbstractCollectionIterator instance} should be at
      *
      * @initializedOnFirstCall
      * @synchronyzedWith<{@link _currentIndex}, {@link _nextIndex}>
@@ -320,7 +304,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
     /**
-     * Set the previous index that the {@link GenericCollectionIterator} should be at
+     * Set the previous index that the {@link AbstractCollectionIterator instance} should be at
      *
      * @param value The value to set
      */
