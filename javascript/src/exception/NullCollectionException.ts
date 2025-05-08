@@ -22,6 +22,13 @@ export class NullCollectionException<const T extends NullOr<NumericOrObject> = n
     const CAUSE extends Error = never, >
     extends EmptyCollectionException<T, CAUSE> {
 
+    /**
+     * The default message that is used in the {@link constructor} when the message is `null`
+     *
+     * @see CollectionConstants.NULL_COLLECTION_MESSAGE
+     */
+    public static override readonly DEFAULT_MESSAGE: string = "Null collection. No element at any index could be found since it is null."
+
     public constructor(message?: NullableString, invalidIndex?: T, cause?: Nullable<CAUSE>,) {
         super(message ?? "Null collection. No element at any index could be found since it is null.", invalidIndex, cause,)
     }

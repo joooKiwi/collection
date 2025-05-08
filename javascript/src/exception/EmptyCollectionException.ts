@@ -22,6 +22,13 @@ export class EmptyCollectionException<const T extends NullOr<NumericOrObject> = 
     const CAUSE extends Error = never, >
     extends IndexOutOfBoundsException<T, CAUSE> {
 
+    /**
+     * The default message that is used in the {@link constructor} when the message is `null`
+     *
+     * @see CollectionConstants.EMPTY_COLLECTION_MESSAGE
+     */
+    public static readonly DEFAULT_MESSAGE: string = "Empty collection. No element at any index could be found since it it empty."
+
     public constructor(message?: NullableString, invalidIndex: T = null as T, cause?: Nullable<CAUSE>,) {
         super(message ?? "Empty collection. No element at any index could be found since it it empty.", invalidIndex, cause,)
     }

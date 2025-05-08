@@ -135,6 +135,35 @@ export class CollectionConstants {
     public static readonly DEFAULT_EMPTY_COLLECTION = "[]"
 
     //#endregion -------------------- Default references --------------------
+    //#region -------------------- Messages --------------------
+
+    /**
+     * The default message of a {@link NullCollectionException} when its message received is `null`
+     *
+     * @see NullCollectionException.DEFAULT_MESSAGE
+     */
+    public static readonly NULL_COLLECTION_MESSAGE = "Null collection. No element at any index could be found since it is null."
+    /**
+     * The default message of an {@link EmptyCollectionException} when its message received is `null`
+     *
+     * @see EmptyCollectionException.DEFAULT_MESSAGE
+     */
+    public static readonly EMPTY_COLLECTION_MESSAGE = "Empty collection. No element at any index could be found since it it empty."
+
+    /**
+     * The message when {@link CollectionIterator.previousValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_THE_START_MESSAGE
+     */
+    public static readonly ITERATOR_IS_AT_THE_START_MESSAGE = "No element found. The collection iterator is at or before the start of the line."
+    /**
+     * The message when {@link CollectionIterator.nextValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_THE_END_MESSAGE
+     */
+    public static readonly ITERATOR_IS_AT_THE_END_MESSAGE = "No element found. The collection iterator is at or after the end of the line."
+
+    //#endregion -------------------- Messages --------------------
     //#region -------------------- Symbol.toString references --------------------
 
     /**
