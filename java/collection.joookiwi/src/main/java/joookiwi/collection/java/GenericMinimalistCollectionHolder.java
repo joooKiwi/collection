@@ -31,7 +31,6 @@ import joookiwi.collection.java.callback.CollectionSupplier;
 import joookiwi.collection.java.callback.DequeSupplier;
 import joookiwi.collection.java.callback.ListSupplier;
 import joookiwi.collection.java.callback.MinimalistCollectionHolderSupplier;
-import joookiwi.collection.java.callback.MinimalistCollectionIteratorSupplier;
 import joookiwi.collection.java.callback.QueueSupplier;
 import joookiwi.collection.java.callback.SetSupplier;
 import joookiwi.collection.java.exception.EmptyCollectionException;
@@ -74,7 +73,6 @@ import joookiwi.collection.java.extended.SubArrayAsNavigableSet;
 import joookiwi.collection.java.extended.SubArrayAsSortedSet;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
-import joookiwi.collection.java.iterator.MinimalistCollectionIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -171,37 +169,6 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (collection iterator) --------------------
-    //#region -------------------- Constructor (minimalist collection iterator) --------------------
-
-    @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final MinimalistCollectionIteratorSupplier<? extends T> lateReference) { this(lateReference.get()); }
-
-    @Contract(mutates = "param")
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MinimalistCollectionIterator<? extends T> reference) {
-        if (!(reference.hasNext())) {
-            __size = 0;
-            __array = emptyArray();
-            return;
-        }
-
-        final var value1 = reference.nextValue();
-        if (!reference.hasNext()) {
-            __size = 1;
-            __array = _arrayCreator().newArray(value1);
-            return;
-        }
-
-        final var value2 = reference.nextValue();
-        if (!reference.hasNext()) {
-            __size = 2;
-            __array = _arrayCreator().newArray(value1, value2);
-            return;
-        }
-
-        __size = (__array = _arrayCreator().newArray(reference, value1, value2)).length;
-    }
-
-    //#endregion -------------------- Constructor (minimalist collection iterator) --------------------
 
     //#region -------------------- Constructor (iterator) --------------------
 
@@ -1517,6 +1484,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Getter methods --------------------
 
     /// The `array` stored (from the construction) for the current [collection][GenericMinimalistCollectionHolder]
+    @Contract(pure = true)
     protected T @Unmodifiable [] _array() { return __array; }
 
     /// A helper class to create an array
@@ -1531,6 +1499,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @OnlyGivePositiveValue
+    @Contract(pure = true)
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
 
     @Override public T get(final int index) {
@@ -1538,9 +1507,9 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         if (size == 0)
             throw new EmptyCollectionException(null, index);
         if (index > size)
-            throw new joookiwi.collection.java.exception.IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
         if (index == size)
-            throw new joookiwi.collection.java.exception.IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is the size of the collection (" + size + ").", index);
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is the size of the collection (" + size + ").", index);
         if (index >= 0)
             return _array()[index];
 
