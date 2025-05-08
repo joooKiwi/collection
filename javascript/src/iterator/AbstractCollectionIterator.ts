@@ -476,7 +476,8 @@ export abstract class AbstractCollectionIterator<const T,
         const collection = this.collection
         const size = this.size
 
-        let index = (this._currentIndex ?? 0) - 1
+        const currentIndex = this._currentIndex
+        let index = currentIndex == null ? -1 : currentIndex - 1
         while (++index < size)
             operation(collection.get(index,), index,)
         this._previousIndex = index - 2
@@ -504,7 +505,8 @@ export abstract class AbstractCollectionIterator<const T,
         const collection = this.collection
         const size = this.size
 
-        let index = (this._currentIndex ?? 0) - 1
+        const currentIndex = this._currentIndex
+        let index = currentIndex == null ? -1 : currentIndex - 1
         while (++index < size)
             operation(index, collection.get(index,),)
         this._previousIndex = index - 2
