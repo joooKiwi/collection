@@ -87,8 +87,8 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    public reset(... _: readonly unknown[]): this
-    public reset() { return this }
+    public reset(... _: readonly unknown[]): void
+    public reset() {}
 
     //#endregion -------------------- Reset methods --------------------
 

@@ -131,7 +131,7 @@ export interface CollectionIterator<out T = unknown, >
     //#region -------------------- Reset methods --------------------
 
     /** Reset the index to the initial state (current {@link currentIndex index} / {@link currentValue value} at <b>null</b>) */
-    reset(): this
+    reset(): void
 
     //#endregion -------------------- Reset methods --------------------
 

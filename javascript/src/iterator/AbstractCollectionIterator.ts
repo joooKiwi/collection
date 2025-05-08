@@ -446,11 +446,10 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    public reset(): this {
+    public reset(): void {
         this._previousIndex = null
         this._currentIndex = null
         this._nextIndex = null
-        return this
     }
 
     //#endregion -------------------- Reset methods --------------------
