@@ -136,7 +136,6 @@ export abstract class AbstractCollectionIterator<const T,
     public get hasNext(): boolean {
         if (this.isEmpty)
             return false
-
         if (this._isNextIndexInitialized)
             return this._nextIndex != null
 
@@ -193,7 +192,6 @@ export abstract class AbstractCollectionIterator<const T,
 
         if (this._hasOnly1Element)
             throw new NoElementFoundInCollectionException("The collection iterator is at or after the end of the line.",)
-
         if (this._nextIndex == null) // At the end of the line
             throw new NoElementFoundInCollectionException("The collection iterator is at or after the end of the line.",)
 
@@ -242,7 +240,6 @@ export abstract class AbstractCollectionIterator<const T,
 
         if (this._hasOnly1Element)
             return GenericAfterLastIteratorValue.get
-
         if (this._nextIndex == null) // At the end of the line
             return GenericAfterLastIteratorValue.get
 
@@ -277,7 +274,6 @@ export abstract class AbstractCollectionIterator<const T,
     public get hasPrevious(): boolean {
         if (this.isEmpty)
             return false
-
         if (this._isPreviousIndexInitialized)
             return this._previousIndex != null
 
@@ -334,7 +330,6 @@ export abstract class AbstractCollectionIterator<const T,
 
         if (this._hasOnly1Element)
             throw new NoElementFoundInCollectionException("The collection iterator is at or before the start of the line.",)
-
         if (this._previousIndex == null) // At the start of the line
             throw new NoElementFoundInCollectionException("The collection iterator is at or before the start of the line.",)
 
@@ -383,7 +378,6 @@ export abstract class AbstractCollectionIterator<const T,
 
         if (this._hasOnly1Element)
             return GenericBeforeFirstIteratorValue.get
-
         if (this._previousIndex == null) // At the start of the line
             return GenericBeforeFirstIteratorValue.get
 
