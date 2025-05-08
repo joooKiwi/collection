@@ -112,6 +112,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
      * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
      * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
