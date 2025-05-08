@@ -1,0 +1,1555 @@
+package joookiwi.collection.java;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NavigableSet;
+import java.util.Queue;
+import java.util.SequencedCollection;
+import java.util.SequencedSet;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.Spliterator;
+import java.util.Stack;
+import java.util.TreeSet;
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Supplier;
+import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
+import joookiwi.collection.java.callback.ArraySupplier;
+import joookiwi.collection.java.callback.CollectionHolderSupplier;
+import joookiwi.collection.java.callback.CollectionIteratorSupplier;
+import joookiwi.collection.java.callback.CollectionSupplier;
+import joookiwi.collection.java.callback.DequeSupplier;
+import joookiwi.collection.java.callback.ListSupplier;
+import joookiwi.collection.java.callback.MinimalistCollectionHolderSupplier;
+import joookiwi.collection.java.callback.MinimalistCollectionIteratorSupplier;
+import joookiwi.collection.java.callback.QueueSupplier;
+import joookiwi.collection.java.callback.SetSupplier;
+import joookiwi.collection.java.exception.EmptyCollectionException;
+import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.extended.ArrayAsCollection;
+import joookiwi.collection.java.extended.ArrayAsDeque;
+import joookiwi.collection.java.extended.ArrayAsList;
+import joookiwi.collection.java.extended.ArrayAsNavigableSet;
+import joookiwi.collection.java.extended.ArrayAsQueue;
+import joookiwi.collection.java.extended.ArrayAsSequencedCollection;
+import joookiwi.collection.java.extended.ArrayAsSequencedSet;
+import joookiwi.collection.java.extended.ArrayAsSet;
+import joookiwi.collection.java.extended.ArrayAsSortedSet;
+import joookiwi.collection.java.extended.BasicStack;
+import joookiwi.collection.java.extended.ImmutableArrayList;
+import joookiwi.collection.java.extended.ImmutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.ImmutableHashSet;
+import joookiwi.collection.java.extended.ImmutableLinkedHashSet;
+import joookiwi.collection.java.extended.ImmutableLinkedList;
+import joookiwi.collection.java.extended.ImmutableStack;
+import joookiwi.collection.java.extended.ImmutableTreeSet;
+import joookiwi.collection.java.extended.ImmutableVector;
+import joookiwi.collection.java.extended.MutableArrayList;
+import joookiwi.collection.java.extended.MutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.MutableHashSet;
+import joookiwi.collection.java.extended.MutableLinkedHashSet;
+import joookiwi.collection.java.extended.MutableLinkedList;
+import joookiwi.collection.java.extended.MutableStack;
+import joookiwi.collection.java.extended.MutableTreeSet;
+import joookiwi.collection.java.extended.MutableVector;
+import joookiwi.collection.java.extended.OrderableCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsDeque;
+import joookiwi.collection.java.extended.ReversedArrayAsList;
+import joookiwi.collection.java.extended.ReversedArrayAsNavigableSet;
+import joookiwi.collection.java.extended.ReversedArrayAsSequencedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsSequencedSet;
+import joookiwi.collection.java.extended.ReversedArrayAsSortedSet;
+import joookiwi.collection.java.extended.SubArrayAsList;
+import joookiwi.collection.java.extended.SubArrayAsNavigableSet;
+import joookiwi.collection.java.extended.SubArrayAsSortedSet;
+import joookiwi.collection.java.helper.ArrayCreator;
+import joookiwi.collection.java.iterator.CollectionIterator;
+import joookiwi.collection.java.iterator.MinimalistCollectionIterator;
+import org.intellij.lang.annotations.Flow;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
+import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CollectionConstants.emptyArray;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+
+@NotNullByDefault
+public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
+        extends AbstractMinimalistCollectionHolder<T> {
+
+    //#region -------------------- Fields --------------------
+
+    private final int __size;
+    private final T @Unmodifiable [] __array;
+
+    //#region -------------------- Helper fields --------------------
+
+    private @Nullable ArrayCreator __arrayCreator;
+
+    //#endregion -------------------- Helper fields --------------------
+
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructors --------------------
+
+    //#region -------------------- Constructor (collection holder) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final CollectionHolderSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) CollectionHolder<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (collection holder) --------------------
+    //#region -------------------- Constructor (minimalist collection holder) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final MinimalistCollectionHolderSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MinimalistCollectionHolder<? extends T> reference) {
+        super();
+        final var size = this.__size = reference.size();
+        if (size == 0)
+            __array = emptyArray();
+        else if (size == 1)
+            __array = _arrayCreator().newArray(reference.get(0));
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.get(0), reference.get(1));
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (minimalist collection holder) --------------------
+
+    //#region -------------------- Constructor (collection iterator) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final CollectionIteratorSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) CollectionIterator<? extends T> reference) {
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = __size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.nextValue());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.nextValue(), reference.nextValue());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (collection iterator) --------------------
+    //#region -------------------- Constructor (minimalist collection iterator) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final MinimalistCollectionIteratorSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MinimalistCollectionIterator<? extends T> reference) {
+        if (!(reference.hasNext())) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = reference.nextValue();
+        if (!reference.hasNext()) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (__array = _arrayCreator().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (minimalist collection iterator) --------------------
+
+    //#region -------------------- Constructor (iterator) --------------------
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Iterator<? extends T> reference) {
+        if (!reference.hasNext()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = reference.next();
+        if (!reference.hasNext()) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = reference.next();
+        if (!reference.hasNext()) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (__array = _arrayCreator().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (iterator) --------------------
+    //#region -------------------- Constructor (list iterator) --------------------
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ListIterator<? extends T> reference) {
+        if (!reference.hasNext()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = reference.next();
+        if (!reference.hasNext()) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = reference.next();
+        if (!reference.hasNext()) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (__array = _arrayCreator().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (list iterator) --------------------
+    //#region -------------------- Constructor (enumeration) --------------------
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Enumeration<? extends T> reference) {
+        if (!(reference.hasMoreElements())) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = reference.nextElement();
+        if (!reference.hasMoreElements()) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = reference.nextElement();
+        if (!reference.hasMoreElements()) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (__array = _arrayCreator().newArray(reference, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (enumeration) --------------------
+    //#region -------------------- Constructor (spliterator) --------------------
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Spliterator<? extends T> reference) {
+        final AtomicReference<@Nullable T> tempValue = new AtomicReference<>();
+        if (!(reference.tryAdvance(tempValue::set))) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = tempValue.get();
+        if (!reference.tryAdvance(tempValue::set)) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = tempValue.get();
+        if (!reference.tryAdvance(tempValue::set)) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (__array = _arrayCreator().newArray(reference, value1, value2, tempValue.get())).length;
+    }
+
+    //#endregion -------------------- Constructor (spliterator) --------------------
+
+    //#region -------------------- Constructor (iterable) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final Supplier<? extends Iterable<? extends T>> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Iterable<? extends T> reference) {
+        super();
+        final var iterator = reference.iterator();
+
+        if (!(iterator.hasNext())) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var value1 = iterator.next();
+        if (!iterator.hasNext()) {
+            __size = 1;
+            __array = _arrayCreator().newArray(value1);
+            return;
+        }
+
+        final var value2 = iterator.next();
+        if (!iterator.hasNext()) {
+            __size = 2;
+            __array = _arrayCreator().newArray(value1, value2);
+            return;
+        }
+
+        __size = (this.__array = _arrayCreator().newArray(iterator, value1, value2)).length;
+    }
+
+    //#endregion -------------------- Constructor (iterable) --------------------
+
+    //#region -------------------- Constructor (collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final CollectionSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        }
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (collection) --------------------
+    //#region -------------------- Constructor (orderable collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        }
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (orderable collection) --------------------
+    //#region -------------------- Constructor (sequenced collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SequencedCollection<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sequenced collection) --------------------
+    //#region -------------------- Constructor (array as collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsCollection<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        }
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as collection) --------------------
+    //#region -------------------- Constructor (array as sequenced collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSequencedCollection<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as sequenced collection) --------------------
+    //#region -------------------- Constructor (reversed array as sequenced collection) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSequencedCollection<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as sequenced collection) --------------------
+
+    //#region -------------------- Constructor (list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ListSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable List<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (list) --------------------
+    //#region -------------------- Constructor (array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable ArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array list) --------------------
+    //#region -------------------- Constructor (copy on white array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable CopyOnWriteArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (copy on write array list) --------------------
+    //#region -------------------- Constructor (linked list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable LinkedList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (linked list) --------------------
+    //#region -------------------- Constructor (vector) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Vector<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (vector) --------------------
+    //#region -------------------- Constructor (array as list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as list) --------------------
+    //#region -------------------- Constructor (sub array as list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsList<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sub array as list) --------------------
+    //#region -------------------- Constructor (reversed array as list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsList<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as list) --------------------
+    //#region -------------------- Constructor (immutable array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable list) --------------------
+    //#region -------------------- Constructor (immutable copy on white array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableCopyOnWriteArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable copy on write array list) --------------------
+    //#region -------------------- Constructor (immutable linked list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableLinkedList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable linked list) --------------------
+    //#region -------------------- Constructor (immutable vector) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableVector<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable vector) --------------------
+    //#region -------------------- Constructor (mutable array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable list) --------------------
+    //#region -------------------- Constructor (mutable copy on white array list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableCopyOnWriteArrayList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable copy on write array list) --------------------
+    //#region -------------------- Constructor (mutable linked list) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableLinkedList<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable linked list) --------------------
+    //#region -------------------- Constructor (mutable vector) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableVector<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable vector) --------------------
+
+    //#region -------------------- Constructor (set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final SetSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Set<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        } else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (set) --------------------
+    //#region -------------------- Constructor (sequenced set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SequencedSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sequenced set) --------------------
+    //#region -------------------- Constructor (sorted set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sorted set) --------------------
+    //#region -------------------- Constructor (navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable NavigableSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (navigable set) --------------------
+    //#region -------------------- Constructor (hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable HashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        } else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (hash set) --------------------
+    //#region -------------------- Constructor (linked hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable LinkedHashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (linked hash set) --------------------
+    //#region -------------------- Constructor (tree set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable TreeSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (tree set) --------------------
+    //#region -------------------- Constructor (array as set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        } else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as set) --------------------
+    //#region -------------------- Constructor (array as sequenced set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSequencedSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as sequenced set) --------------------
+    //#region -------------------- Constructor (array as sorted set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSortedSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as sorted set) --------------------
+    //#region -------------------- Constructor (array as navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsNavigableSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as navigable set) --------------------
+    //#region -------------------- Constructor (sub array as sorted set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsSortedSet<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sub array as sorted set) --------------------
+    //#region -------------------- Constructor (sub array as navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsNavigableSet<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (sub array as navigable set) --------------------
+    //#region -------------------- Constructor (reversed array as sequenced set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSequencedSet<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as sequenced set) --------------------
+    //#region -------------------- Constructor (reversed array as sorted set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSortedSet<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as sorted set) --------------------
+    //#region -------------------- Constructor (reversed array as navigable set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsNavigableSet<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as navigable set) --------------------
+    //#region -------------------- Constructor (immutable hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableHashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        } else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable hash set) --------------------
+    //#region -------------------- Constructor (immutable linked hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableLinkedHashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable linked hash set) --------------------
+    //#region -------------------- Constructor (immutable tree set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableTreeSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable tree set) --------------------
+    //#region -------------------- Constructor (mutable hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableHashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.iterator().next());
+        else if (size == 2) {
+            final var iterator = reference.iterator();
+            __array = _arrayCreator().newArray(iterator.next(), iterator.next());
+        } else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable hash set) --------------------
+    //#region -------------------- Constructor (mutable linked hash set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableLinkedHashSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable linked hash set) --------------------
+    //#region -------------------- Constructor (mutable tree set) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableTreeSet<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable tree set) --------------------
+
+    //#region -------------------- Constructor (queue) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final QueueSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Queue<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.element());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (queue) --------------------
+    //#region -------------------- Constructor (array as queue) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsQueue<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.element());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as queue) --------------------
+
+    //#region -------------------- Constructor (deque) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final DequeSupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Deque<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (deque) --------------------
+    //#region -------------------- Constructor (basic stack) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable BasicStack<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (basic stack) --------------------
+    //#region -------------------- Constructor (stack) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Stack<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (stack) --------------------
+    //#region -------------------- Constructor (array as deque) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsDeque<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (array as deque) --------------------
+    //#region -------------------- Constructor (reversed array as deque) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsDeque<? extends T, ?, ?> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (reversed array as deque) --------------------
+    //#region -------------------- Constructor (immutable stack) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableStack<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (immutable stack) --------------------
+    //#region -------------------- Constructor (mutable stack) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableStack<? extends T> reference) {
+        super();
+        if (reference.isEmpty()) {
+            __size = 0;
+            __array = emptyArray();
+            return;
+        }
+
+        final var size = this.__size = reference.size();
+        if (size == 1)
+            __array = _arrayCreator().newArray(reference.getFirst());
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference.getFirst(), reference.getLast());
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructor (mutable stack) --------------------
+
+    //#region -------------------- Constructors (array) --------------------
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final ArraySupplier<? extends T> lateReference) { this(lateReference.get()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] reference) {
+        super();
+        final var size = this.__size = reference.length;
+        if (size == 0)
+            __array = emptyArray();
+        else if (size == 1)
+            __array = _arrayCreator().newArray(reference[0]);
+        else if (size == 2)
+            __array = _arrayCreator().newArray(reference[0], reference[1]);
+        else
+            __array = _arrayCreator().newArray(reference, size);
+    }
+
+    //#endregion -------------------- Constructors (array) --------------------
+
+    //#endregion -------------------- Constructors --------------------
+    //#region -------------------- Getter methods --------------------
+
+    /// The `array` stored (from the construction) for the current [collection][GenericMinimalistCollectionHolder]
+    protected T @Unmodifiable [] _array() { return __array; }
+
+    /// A helper class to create an array
+    protected ArrayCreator _arrayCreator() {
+        final var value = __arrayCreator;
+        if (value != null)
+            return value;
+        return __arrayCreator = ArrayCreator.getInstance();
+    }
+
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    @OnlyGivePositiveValue
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
+
+    @Override public T get(final int index) {
+        final var size = size();
+        if (size == 0)
+            throw new EmptyCollectionException(null, index);
+        if (index > size)
+            throw new joookiwi.collection.java.exception.IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        if (index == size)
+            throw new joookiwi.collection.java.exception.IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is the size of the collection (" + size + ").", index);
+        if (index >= 0)
+            return _array()[index];
+
+        final var indexToRetrieve = index + size;
+        if (indexToRetrieve < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” (" + indexToRetrieve + " after calculation) is under 0.", index);
+        return _array()[indexToRetrieve];
+    }
+
+    //#endregion -------------------- Methods --------------------
+
+}
