@@ -291,9 +291,6 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable List."); }
 
     //#endregion -------------------- Unsupported methods --------------------
-    //#region -------------------- Unsupported methods --------------------
-
-    //#endregion -------------------- Unsupported methods --------------------
 
     //#endregion -------------------- Methods --------------------
 
