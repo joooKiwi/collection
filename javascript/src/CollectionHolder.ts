@@ -63,14 +63,20 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
-     * @see length
-     * @see count
      */
     get size(): number
 
     /**
      * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
      *
+     * @see ReadonlyArray.length
+     * @see ReadonlySet.size
+     * @see ReadonlyMap.size
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html Kotlin Collection.size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html Kotlin Map.size()
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      * @alias CollectionHolder.size
      */
     get length(): this["size"]
@@ -78,6 +84,14 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder collection}
      *
+     * @see ReadonlyArray.length
+     * @see ReadonlySet.size
+     * @see ReadonlyMap.size
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html Kotlin Collection.size()
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html Kotlin Map.size()
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#size() Java Collection.size()
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
+     * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      * @alias CollectionHolder.size
      */
     get count(): this["size"]
@@ -126,6 +140,13 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
+     * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
+     * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.at
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#get(int) Java get(index)
+     * @canReceiveNegativeValue
      * @alias CollectionHolder.get
      */
     at(index: number,): T
@@ -134,6 +155,13 @@ export interface CollectionHolder<out T = unknown, >
      * Get the element at the specified index in the current {@link CollectionHolder collection}
      *
      * @param index The index to retrieve a value
+     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
+     * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
+     * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.at
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html Kotlin get(index)
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/List.html#get(int) Java get(index)
+     * @canReceiveNegativeValue
      * @alias CollectionHolder.get
      */
     elementAt(index: number,): T
