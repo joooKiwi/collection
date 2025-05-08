@@ -19,7 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
-public class MutableTreeSet<T>
+public class MutableTreeSet<T extends @Nullable Object>
         extends TreeSet<T>
         implements OrderableCollection<T> {
 
