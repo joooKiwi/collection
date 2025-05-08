@@ -1,5 +1,7 @@
 package joookiwi.collection.java.extended;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -37,7 +39,10 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// @see joookiwi.collection.java.CollectionConstants#emptyDelayQueue
 @NotNullByDefault
 public class EmptyDelayQueue<T extends Delayed>
-        extends ImmutableDelayQueue<T> {
+        extends ImmutableDelayQueue<T>
+        implements Serializable {
+
+    @Serial private static final long serialVersionUID = 3526388858082136063L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -131,6 +136,12 @@ public class EmptyDelayQueue<T extends Delayed>
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyDelayQueue<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- Serializable methods --------------------
+
+    @Serial
+    private Object readResolve() { return getInstance(); }
+
+    //#endregion -------------------- Serializable methods --------------------
     //#region -------------------- To string methods --------------------
 
     @Contract(pure = true) @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }

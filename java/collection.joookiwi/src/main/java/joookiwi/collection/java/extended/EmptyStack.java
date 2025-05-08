@@ -179,6 +179,12 @@ public class EmptyStack<T extends @Nullable Object>
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyStack<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- Serializable methods --------------------
+
+    @Serial
+    private Object readResolve() { return getInstance(); }
+
+    //#endregion -------------------- Serializable methods --------------------
     //#region -------------------- Copy into methods --------------------
 
     @Override public void copyInto(final @Nullable Object @Nullable @Unmodifiable [] reference) {}

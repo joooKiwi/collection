@@ -176,6 +176,12 @@ public class EmptyTreeSet<T>
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyTreeSet<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- Serializable methods --------------------
+
+    @Serial
+    private Object readResolve() { return getInstance(); }
+
+    //#endregion -------------------- Serializable methods --------------------
     //#region -------------------- To string methods --------------------
 
     @Contract(pure = true) @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }
