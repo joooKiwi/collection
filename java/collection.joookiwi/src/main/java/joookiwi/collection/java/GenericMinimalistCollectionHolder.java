@@ -83,6 +83,14 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
+/// A [MinimalistCollectionHolder] having the values eagerly retrieved.
+///
+/// Meaning that every value is retrieved during the construction,
+/// and will never change after the initialization.
+///
+/// @param <T> The type
+/// @see GenericCollectionHolder
+/// @see EmptyCollectionHolder
 @NotNullByDefault
 public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         extends AbstractMinimalistCollectionHolder<T> {
