@@ -8,6 +8,7 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
@@ -61,7 +62,7 @@ public final class GetFirstOrElse
     /// @param collection   The [nullable][Nullable] collection
     /// @param defaultValue The callback to retrieve the default value if it is over the `size` (after calculation)
     @ExtensionFunction
-    public static <T extends @Nullable Object> T getFirstOrElse(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> T getFirstOrElse(final T @Nullable @Unmodifiable [] collection,
                                                                 final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();

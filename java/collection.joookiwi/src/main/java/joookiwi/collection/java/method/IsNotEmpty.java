@@ -7,6 +7,7 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
@@ -53,7 +54,7 @@ public final class IsNotEmpty
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html">Kotlin isNotEmpty()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T extends @Nullable Object> boolean isNotEmpty(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> boolean isNotEmpty(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return false;
         return collection.length != 0;

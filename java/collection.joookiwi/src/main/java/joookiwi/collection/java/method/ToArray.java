@@ -65,7 +65,7 @@ public final class ToArray
     /// @see java.util.Collection#toArray()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/to-typed-array.html">Kotlin toTypedArray()</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> T[] toArray(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> T[] toArray(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptyArray();
 

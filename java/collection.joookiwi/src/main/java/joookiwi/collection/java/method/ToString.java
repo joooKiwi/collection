@@ -7,6 +7,7 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
@@ -60,7 +61,7 @@ public final class ToString
     /// @param collection The [nullable][Nullable] collection
     /// @see Object#toString()
     @ExtensionFunction
-    public static <T extends @Nullable Object> String toString(final T @Nullable [] collection) {
+    public static <T extends @Nullable Object> String toString(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 

@@ -120,7 +120,7 @@ public final class ToSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Set<U> toSet(final @Nullable T @Nullable @Unmodifiable [] collection,
+    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable Set<U> toSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                       final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySet();

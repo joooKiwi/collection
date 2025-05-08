@@ -10,6 +10,7 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
@@ -97,7 +98,7 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> T getOrElse(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> T getOrElse(final T @Nullable @Unmodifiable [] collection,
                                                            final int index,
                                                            final IntFunction<? extends T> defaultValue) {
         if (collection == null)
@@ -193,7 +194,7 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> T getOrElse(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> T getOrElse(final T @Nullable @Unmodifiable [] collection,
                                                            final int index,
                                                            final Supplier<? extends T> defaultValue) {
         if (collection == null)

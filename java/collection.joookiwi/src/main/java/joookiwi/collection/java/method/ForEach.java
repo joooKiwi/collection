@@ -9,6 +9,7 @@ import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
@@ -70,7 +71,7 @@ public final class ForEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">JavaScript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> void forEach(final T @Nullable @Unmodifiable [] collection,
                                                             final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return;
@@ -131,7 +132,7 @@ public final class ForEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">JavaScript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> void forEach(final T @Nullable @Unmodifiable [] collection,
                                                             final Consumer<? super T> action) {
         if (collection == null)
             return;
@@ -192,7 +193,7 @@ public final class ForEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each.html">Kotlin forEach(action)</a>
     @ExtensionFunction
-    public static <T extends @Nullable Object> void forEach(final T @Nullable [] collection,
+    public static <T extends @Nullable Object> void forEach(final T @Nullable @Unmodifiable [] collection,
                                                             final Runnable action) {
         if (collection == null)
             return;
