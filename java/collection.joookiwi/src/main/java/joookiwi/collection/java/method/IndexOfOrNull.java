@@ -12,11 +12,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_3;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_4;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
 public final class IndexOfOrNull
@@ -38,8 +38,8 @@ public final class IndexOfOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -50,8 +50,8 @@ public final class IndexOfOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -62,8 +62,8 @@ public final class IndexOfOrNull
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element); }
 
     //#endregion -------------------- element --------------------
     //#region -------------------- element, from --------------------
@@ -80,9 +80,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -96,9 +96,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -112,9 +112,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -129,9 +129,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -145,9 +145,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -161,9 +161,9 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from); }
 
     //#endregion -------------------- element, from --------------------
     //#region -------------------- element, from, to --------------------
@@ -181,10 +181,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -199,10 +199,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -217,10 +217,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -236,10 +236,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -254,10 +254,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -272,10 +272,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final int from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final int from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -291,10 +291,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -309,10 +309,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -327,10 +327,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final int to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -346,10 +346,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -364,10 +364,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// or `null` if it was not in the `collection`
@@ -382,10 +382,10 @@ public final class IndexOfOrNull
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                final T element,
-                                                                                                                final @Nullable Integer from,
-                                                                                                                final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                    final T element,
+                                                                                                                    final @Nullable Integer from,
+                                                                                                                    final @Nullable Integer to) { return FirstIndexOfOrNull.firstIndexOfOrNull(collection, element, from, to); }
 
     //#endregion -------------------- element, from, to --------------------
 

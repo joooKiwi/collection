@@ -16,11 +16,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_3;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_4;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
 public final class IndexOf
@@ -48,8 +48,8 @@ public final class IndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
 
     /// Get the **first** occurrence equivalent to the value received
     ///
@@ -66,8 +66,8 @@ public final class IndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
 
     /// Get the **first** occurrence equivalent to the value received
     ///
@@ -84,8 +84,8 @@ public final class IndexOf
     @ExtensionFunction
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element) { return FirstIndexOf.firstIndexOf(collection, element); }
 
     //#endregion -------------------- element --------------------
     //#region -------------------- element, from --------------------
@@ -109,9 +109,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting index` and the end of the `collection`
@@ -132,9 +132,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting index` and the end of the `collection`
@@ -155,9 +155,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -179,9 +179,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// from a start to the end of the `collection`
@@ -202,9 +202,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// from a start to the end of the `collection`
@@ -225,9 +225,9 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from) { return FirstIndexOf.firstIndexOf(collection, element, from); }
 
     //#endregion -------------------- element, from --------------------
     //#region -------------------- element, from, to --------------------
@@ -253,10 +253,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -279,10 +279,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -305,10 +305,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -332,10 +332,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -358,10 +358,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -384,10 +384,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final int from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final int from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -411,10 +411,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -437,10 +437,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -463,10 +463,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final int to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
 
     /// Get the **first** occurrence equivalent to the value received
@@ -490,10 +490,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -516,10 +516,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     /// Get the **first** occurrence equivalent to the value received
     /// between the `starting` and the `ending` index
@@ -542,10 +542,10 @@ public final class IndexOf
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final T element,
-                                                                                            final @Nullable Integer from,
-                                                                                            final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final T @Nullable @Unmodifiable [] collection,
+                                                                                                final T element,
+                                                                                                final @Nullable Integer from,
+                                                                                                final @Nullable Integer to) { return FirstIndexOf.firstIndexOf(collection, element, from, to); }
 
     //#endregion -------------------- element, from, to --------------------
 

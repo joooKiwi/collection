@@ -12,11 +12,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_3;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_4;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
 public final class LastIndexOfOrNull
@@ -37,8 +37,8 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element) {
         if (collection == null)
             return null;
         return __core(collection, element);
@@ -52,8 +52,8 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element) {
         if (collection == null)
             return null;
         return __core(collection, element);
@@ -67,8 +67,8 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element) {
         if (collection == null)
             return null;
         return __core(collection, element);
@@ -88,9 +88,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from) {
         if (collection == null)
             return null;
         return __core(collection, element, from);
@@ -107,9 +107,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from) {
         if (collection == null)
             return null;
         return __core(collection, element, from);
@@ -126,9 +126,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from) {
         if (collection == null)
             return null;
         return __core(collection, element, from);
@@ -146,9 +146,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -167,9 +167,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -188,9 +188,9 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from) {
         if (collection == null)
             return null;
         if (from == null)
@@ -213,10 +213,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         return __core(collection, element, from, to);
@@ -234,10 +234,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         return __core(collection, element, from, to);
@@ -255,10 +255,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         return __core(collection, element, from, to);
@@ -277,10 +277,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -300,10 +300,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -323,10 +323,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final int from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final int from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -347,10 +347,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -370,10 +370,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -393,10 +393,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final int to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final int to) {
         if (collection == null)
             return null;
         if (from == null)
@@ -417,10 +417,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -445,10 +445,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
@@ -473,10 +473,10 @@ public final class LastIndexOfOrNull
     @ExtensionFunction
     @CanReceiveNegativeValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
-    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                    final T element,
-                                                                                                                    final @Nullable Integer from,
-                                                                                                                    final @Nullable Integer to) {
+    public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                        final T element,
+                                                                                                                        final @Nullable Integer from,
+                                                                                                                        final @Nullable Integer to) {
         if (collection == null)
             return null;
         if (to == null)
