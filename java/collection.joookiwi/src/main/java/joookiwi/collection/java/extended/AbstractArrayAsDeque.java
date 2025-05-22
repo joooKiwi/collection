@@ -58,7 +58,7 @@ public abstract class AbstractArrayAsDeque<T extends @Nullable Object>
     @Override public @Nullable T peekLast() { return GetLastOrNull.getLastOrNull(_reference()); }
 
     //#endregion -------------------- Get methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Override public @UnmodifiableView Deque<T> reversed() {
         if (isEmpty())
@@ -66,7 +66,7 @@ public abstract class AbstractArrayAsDeque<T extends @Nullable Object>
         return new ReversedArrayAsDeque<>(this, new ReversedArray<>(_reference()));
     }
 
-    //#endregion -------------------- To reverse methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
     @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }

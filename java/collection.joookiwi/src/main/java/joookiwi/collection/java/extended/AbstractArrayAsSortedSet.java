@@ -178,7 +178,7 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Override public @UnmodifiableView SortedSet<T> reversed() {
         if (isEmpty())
@@ -186,7 +186,7 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
         return new ReversedArrayAsSortedSet<>(this, new ReversedArray<>(_reference()));
     }
 
-    //#endregion -------------------- To reverse methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparator methods --------------------
 
     @Override public abstract @Nullable Comparator<? super T> comparator();

@@ -124,12 +124,12 @@ public class EmptyLinkedBlockingDeque<T>
     @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable LinkedBlockingDeque<T> reversed() { return this; }
 
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -143,7 +143,7 @@ public class EmptyLinkedBlockingDeque<T>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyLinkedBlockingDeque<T> clone() { return this; }

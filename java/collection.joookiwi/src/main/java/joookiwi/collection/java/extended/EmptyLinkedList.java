@@ -144,12 +144,12 @@ public class EmptyLinkedList<T extends @Nullable Object>
     @Override public List<T> subList(final int from, final int to) { return emptyList(); }
 
     //#endregion -------------------- Sublist methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable LinkedList<T> reversed() { return this; }
 
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -163,7 +163,7 @@ public class EmptyLinkedList<T extends @Nullable Object>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyLinkedList<T> clone() { return this; }

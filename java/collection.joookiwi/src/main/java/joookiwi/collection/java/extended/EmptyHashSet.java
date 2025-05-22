@@ -106,7 +106,7 @@ public class EmptyHashSet<T extends @Nullable Object>
     @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -120,7 +120,7 @@ public class EmptyHashSet<T extends @Nullable Object>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyHashSet<T> clone() { return this; }

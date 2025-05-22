@@ -116,7 +116,7 @@ public class EmptyDelayQueue<T extends Delayed>
     @Contract(pure = true)                       @Override public <U> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -130,7 +130,7 @@ public class EmptyDelayQueue<T extends Delayed>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyDelayQueue<T> clone() { return this; }

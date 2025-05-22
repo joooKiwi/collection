@@ -64,7 +64,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     }
 
     //#endregion -------------------- Get methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     /// Give a reversed-view of the current [instance][SequencedCollection]
     ///
@@ -79,7 +79,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
         return new ReversedArrayAsSequencedCollection<>(this, new ReversedArray<>(_reference()));
     }
 
-    //#endregion -------------------- To reverse methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
 
     @Override public abstract AbstractArrayAsSequencedCollection<T> clone();
 

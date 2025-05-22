@@ -146,12 +146,12 @@ public class EmptyConcurrentSkipListSet<T>
     @Override public @Unmodifiable NavigableSet<T> descendingSet() { return emptyNavigableSet(); }
 
     //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable NavigableSet<T> reversed() { return this; }
 
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -165,7 +165,7 @@ public class EmptyConcurrentSkipListSet<T>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Comparator methods --------------------
 
     @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable Comparator<? super T> comparator() { return null; }

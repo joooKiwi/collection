@@ -157,7 +157,7 @@ public abstract class AbstractArrayAsNavigableSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     @Override public @UnmodifiableView NavigableSet<T> reversed() {
         if (isEmpty())
@@ -168,7 +168,7 @@ public abstract class AbstractArrayAsNavigableSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public @UnmodifiableView NavigableSet<T> descendingSet() { return reversed(); }
 
-    //#endregion -------------------- To reverse methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
     @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }
