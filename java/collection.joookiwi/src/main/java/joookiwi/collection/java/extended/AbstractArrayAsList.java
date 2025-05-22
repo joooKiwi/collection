@@ -136,14 +136,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     @Override public @UnmodifiableView List<T> reversed() {
         if (isEmpty())
             return emptyList();
-
-        final var reference = _reference();
-        final var size = size();
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
-        var index = size;
-        while (--index >= 0)
-            newArray[index] = reference[index];
-        return new ArrayAsList<>(newArray);
+        return new ReversedArrayAsList<>(this, new ReversedArray<>(_reference()));
     }
 
 
