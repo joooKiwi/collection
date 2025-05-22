@@ -221,8 +221,8 @@ public final class Map
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <U> U @Unmodifiable [] __with0Argument(final Supplier<? extends U> action,
-                                                          final int size) {
+    private static <U extends @Nullable Object> U @Unmodifiable [] __with0Argument(final Supplier<? extends U> action,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -231,9 +231,9 @@ public final class Map
     }
 
 
-    private static <T, U> U @Unmodifiable [] __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                             final Function<? super T, ? extends U> transform,
-                                                             final int size) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> U @Unmodifiable [] __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final Function<? super T, ? extends U> transform,
+                                                                                                               final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -241,9 +241,9 @@ public final class Map
         return newArray;
     }
 
-    private static <T, U> U @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
-                                                             final Function<? super T, ? extends U> transform,
-                                                             final int size) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> U @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
+                                                                                                               final Function<? super T, ? extends U> transform,
+                                                                                                               final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -252,9 +252,9 @@ public final class Map
     }
 
 
-    private static <T, U> U @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                             final ObjIntFunction<? super T, ? extends U> transform,
-                                                             final int size) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> U @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                                               final ObjIntFunction<? super T, ? extends U> transform,
+                                                                                                               final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -262,9 +262,9 @@ public final class Map
         return newArray;
     }
 
-    private static <T, U> U @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
-                                                             final ObjIntFunction<? super T, ? extends U> transform,
-                                                             final int size) {
+    private static <T extends @Nullable Object, U extends @Nullable Object> U @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
+                                                                                                               final ObjIntFunction<? super T, ? extends U> transform,
+                                                                                                               final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (U[]) new Object[size];
         var index = -1;
         while (++index < size)
