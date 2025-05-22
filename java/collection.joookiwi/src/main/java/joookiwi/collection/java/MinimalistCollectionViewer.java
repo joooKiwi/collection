@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A [MinimalistCollectionHolder] that hold another [MinimalistCollectionHolder]
 /// (which could be [mutable][MutableMinimalistCollectionHolder])
@@ -26,7 +26,7 @@ public class MinimalistCollectionViewer<T extends @Nullable Object,
 
     public REFERENCE getReference() { return __reference; }
 
-    @Override public @Range(from = 0, to = MAX_VALUE) int size() { return getReference().size(); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return getReference().size(); }
 
     @Override public T get(final int index) { return getReference().get(index); }
 
