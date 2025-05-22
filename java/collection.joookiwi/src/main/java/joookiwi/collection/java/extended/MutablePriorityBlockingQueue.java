@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.io.Serial;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.PriorityQueue;
