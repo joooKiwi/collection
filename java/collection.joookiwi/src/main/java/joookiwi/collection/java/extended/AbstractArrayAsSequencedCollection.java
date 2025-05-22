@@ -91,21 +91,21 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable SequencedCollection."); }
+    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable SequencedCollection."); }
 
     /// Fail to add a `value` to the current [instance][SequencedCollection]
     ///
     /// @param value The (_never used_) element to add at the start
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable SequencedCollection."); }
+    @Override public void addFirst(final T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable SequencedCollection."); }
 
     /// Fail to add a `value` to the current [instance][SequencedCollection]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable SequencedCollection."); }
+    @Override public void addLast(final T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable SequencedCollection."); }
 
     /// Fail to add the `values` in the current [instance][SequencedCollection]
     ///

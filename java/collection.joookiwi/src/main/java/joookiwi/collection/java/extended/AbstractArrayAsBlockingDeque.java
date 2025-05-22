@@ -42,28 +42,28 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void push(final @Nullable T value) { throw new UnsupportedOperationException("The method “push” is not supported in an immutable BlockingDeque."); }
+    @Override public void push(final T value) { throw new UnsupportedOperationException("The method “push” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the start of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable BlockingDeque."); }
+    @Override public void addFirst(final T value) { throw new UnsupportedOperationException("The method “addFirst” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the end of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable BlockingDeque."); }
+    @Override public void addLast(final T value) { throw new UnsupportedOperationException("The method “addLast” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add the `values` in the current [AbstractArrayAsBlockingDeque]
     ///
@@ -77,7 +77,7 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean offer(final @Nullable T value) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offer(final T value) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the current [AbstractArrayAsBlockingDeque]
     ///
@@ -86,14 +86,14 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param unit The (_never used_) time unit
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_3)
-    @Override public boolean offer(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offer(final T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the start of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean offerFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “offerFirst” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offerFirst(final T value) { throw new UnsupportedOperationException("The method “offerFirst” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the start of the current [AbstractArrayAsBlockingDeque]
     ///
@@ -102,14 +102,14 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param unit The (_never used_) time unit
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_3)
-    @Override public boolean offerFirst(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offerFirst” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offerFirst(final T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offerFirst” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the end of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean offerLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offerLast(final T value) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the end of the current [AbstractArrayAsBlockingDeque]
     ///
@@ -118,7 +118,7 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param unit The (_never used_) time unit
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_3)
-    @Override public boolean offerLast(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean offerLast(final T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “offerLast” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to remove and retrieve the head of the current [AbstractArrayAsBlockingDeque]
     ///
@@ -167,21 +167,21 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void put(final @Nullable T value) { throw new UnsupportedOperationException("The method “put” is not supported in an immutable BlockingDeque."); }
+    @Override public void put(final T value) { throw new UnsupportedOperationException("The method “put” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the start of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void putFirst(final @Nullable T value) { throw new UnsupportedOperationException("The method “putFirst” is not supported in an immutable BlockingDeque."); }
+    @Override public void putFirst(final T value) { throw new UnsupportedOperationException("The method “putFirst” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the end of the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void putLast(final @Nullable T value) { throw new UnsupportedOperationException("The method “putLast” is not supported in an immutable BlockingDeque."); }
+    @Override public void putLast(final T value) { throw new UnsupportedOperationException("The method “putLast” is not supported in an immutable BlockingDeque."); }
 
 
     /// Fail to remove and retrieve the head of the current [AbstractArrayAsBlockingDeque]
