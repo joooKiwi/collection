@@ -11,10 +11,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A mutable behaviour of a [LinkedHashSet]
 ///
@@ -50,7 +50,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity) {
         super(initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -60,7 +60,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -70,7 +70,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) short initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity) {
         super(initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -80,7 +80,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -90,7 +90,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) int initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity) {
         super(initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -100,7 +100,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity) {
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR);
         __loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -111,7 +111,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor`received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -122,7 +122,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -133,7 +133,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;
@@ -144,7 +144,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;
@@ -154,7 +154,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) short initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -165,7 +165,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -176,7 +176,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) short initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;
@@ -187,7 +187,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;
@@ -195,7 +195,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
 
 
     /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor` received
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) int initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -206,7 +206,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
                                 final float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor);
         __loadFactor = loadFactor;
@@ -217,7 +217,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) int initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;
@@ -228,7 +228,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity,
+    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
                                 final @Nullable Float loadFactor) {
         super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         __loadFactor = loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor;

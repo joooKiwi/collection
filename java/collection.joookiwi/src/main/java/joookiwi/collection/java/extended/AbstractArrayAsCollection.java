@@ -22,12 +22,12 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.UnknownNullability;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static joookiwi.collection.java.method.Has.has;
 import static joookiwi.collection.java.method.HasAll.hasAll;
 
@@ -71,7 +71,7 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/size.html">Kotlin Collection.size()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/size.html">Kotlin Map.size()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count">C# Count()</a>
-    @Override public abstract @Range(from = 0, to = MAX_VALUE) int size();
+    @Override public abstract @Range(from = 0, to = MAX_INT_VALUE) int size();
 
     /// Tell if the current [instance][Collection] has no values
     ///
@@ -195,7 +195,7 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
+    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
 
     /// Fail to add the `values` in the current [instance][Collection]
     ///

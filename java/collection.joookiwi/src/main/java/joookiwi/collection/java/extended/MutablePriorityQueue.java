@@ -15,9 +15,9 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A mutable behaviour of a [PriorityQueue]
 ///
@@ -50,7 +50,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) byte initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) byte initialCapacity) { super(initialCapacity, null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -58,7 +58,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -66,7 +66,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) short initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) short initialCapacity) { super(initialCapacity, null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -74,7 +74,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -82,7 +82,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) int initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) int initialCapacity) { super(initialCapacity, null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -90,7 +90,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- comparator --------------------
@@ -111,8 +111,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) byte initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) byte initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -120,8 +120,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Byte initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received
@@ -129,8 +129,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) short initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) short initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -138,8 +138,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Short initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received
@@ -147,8 +147,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) int initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) int initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -156,8 +156,8 @@ public class MutablePriorityQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Range(from = 1, to = MAX_VALUE) @Nullable Integer initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
 
     //#endregion -------------------- initialCapacity, comparator --------------------
     //#region -------------------- values --------------------

@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A container to create a subdivided array lazily via [#subSource]
 ///
@@ -19,8 +19,8 @@ public class SubArray<T extends @Nullable Object> {
 
     private final T[] __source;
     private T @Nullable [] __subSource;
-    private final @Range(from = 0, to = MAX_VALUE) int __startingIndex;
-    private final @Range(from = 0, to = MAX_VALUE) int __endingIndex;
+    private final @Range(from = 0, to = MAX_INT_VALUE) int __startingIndex;
+    private final @Range(from = 0, to = MAX_INT_VALUE) int __endingIndex;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -31,8 +31,8 @@ public class SubArray<T extends @Nullable Object> {
     /// @param startingIndex The starting index that should be the beginning of the [sub-source][#subSource]
     /// @param endingIndex   The ending index that should be the end of the [sub-source][#subSource]
     public SubArray(final T[] source,
-                    @Range(from = 0, to = MAX_VALUE) final int startingIndex,
-                    @Range(from = 0, to = MAX_VALUE) final int endingIndex) {
+                    @Range(from = 0, to = MAX_INT_VALUE) final int startingIndex,
+                    @Range(from = 0, to = MAX_INT_VALUE) final int endingIndex) {
         __source = source;
         __startingIndex = startingIndex;
         __endingIndex = endingIndex;
@@ -69,10 +69,10 @@ public class SubArray<T extends @Nullable Object> {
     }
 
     /// The starting index that should be the beginning of the [sub-source][#subSource]
-    public @Range(from = 0, to = MAX_VALUE) int startingIndex() { return __startingIndex; }
+    public @Range(from = 0, to = MAX_INT_VALUE) int startingIndex() { return __startingIndex; }
 
     /// The ending index that should be the end of the [sub-source][#subSource]
-    public @Range(from = 0, to = MAX_VALUE) int endingIndex() { return __endingIndex; }
+    public @Range(from = 0, to = MAX_INT_VALUE) int endingIndex() { return __endingIndex; }
 
     //#endregion -------------------- Getter methods --------------------
 

@@ -10,10 +10,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_CAPACITY_INCREMENT;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A mutable behaviour of a [Vector]
 ///
@@ -40,37 +40,37 @@ public class MutableVector<T extends @Nullable Object>
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) byte initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) short initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) int initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity) { super(initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     /// Create a mutable instance of [Vector]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableVector(final @Range(from = 0, to = MAX_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
+    public MutableVector(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_EMPTY_CAPACITY_INCREMENT); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- values --------------------

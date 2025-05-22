@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java List][java.util.List]
 /// with the [immutability][org.jetbrains.annotations.Unmodifiable] in place.
@@ -51,7 +51,7 @@ public class ArrayAsList<T extends @Nullable Object>
     @Override protected T[] _reference() { return __reference; }
 
     @Contract(pure = true)
-    @Override public @Range(from = 0, to = MAX_VALUE) int size() { return __size; }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }

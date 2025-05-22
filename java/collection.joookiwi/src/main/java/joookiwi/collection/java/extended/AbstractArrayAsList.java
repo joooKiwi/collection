@@ -20,12 +20,12 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static java.lang.Integer.MAX_VALUE;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 
 /// A definition of an immutable [List] to have a common ancestor.
@@ -75,7 +75,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Javascript ReadonlyArray.indexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html">Kotlin indexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, from?, to?)</a>
-    @Override public @Range(from = -1, to = MAX_VALUE) int indexOf(final @Nullable Object element) {
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object element) {
         final var index = FirstIndexOfOrNull.firstIndexOfOrNull(_reference(), element);
         if (index == null)
             return -1;
@@ -90,7 +90,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">Javascript ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html">Kotlin lastIndexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
-    @Override public @Range(from = -1, to = MAX_VALUE) int lastIndexOf(final @Nullable Object element) {
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object element) {
         final var index = LastIndexOfOrNull.lastIndexOfOrNull(_reference(), element);
         if (index == null)
             return -1;
@@ -179,7 +179,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
+    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
@@ -194,14 +194,14 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) element to add at the start
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable List."); }
+    @Override public void addFirst(final T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable List."); }
+    @Override public void addLast(final T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable List."); }
 
     /// Fail to add the `values` in the current [instance][List]
     ///

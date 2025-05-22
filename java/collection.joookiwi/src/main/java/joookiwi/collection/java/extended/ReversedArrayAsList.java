@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static java.lang.Integer.MAX_VALUE;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [List] similar to the [ArrayAsList] in its behaviour.
 /// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
@@ -70,7 +70,7 @@ public class ReversedArrayAsList<T extends @Nullable Object,
         return reference;
     }
 
-    @Override public @Range(from = 0, to = MAX_VALUE) int size() {
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
         if (__isInitialized)
             return __size;
         return __size = _reference().length;
