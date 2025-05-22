@@ -5,6 +5,7 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
@@ -46,6 +47,7 @@ public final class LastIndexOf
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element) {
@@ -67,6 +69,7 @@ public final class LastIndexOf
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element) {
@@ -88,6 +91,7 @@ public final class LastIndexOf
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html">Kotlin lastIndexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element) {
@@ -116,6 +120,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -142,6 +147,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -168,6 +174,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,
@@ -195,6 +202,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -223,6 +231,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -251,6 +260,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,
@@ -284,6 +294,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -313,6 +324,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -342,6 +354,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,
@@ -372,6 +385,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -403,6 +417,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -434,6 +449,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,
@@ -466,6 +482,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -497,6 +514,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -528,6 +546,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,
@@ -560,6 +579,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -596,6 +616,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                     final T element,
@@ -632,6 +653,7 @@ public final class LastIndexOf
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final T @Nullable @Unmodifiable [] collection,
                                                                                                     final T element,

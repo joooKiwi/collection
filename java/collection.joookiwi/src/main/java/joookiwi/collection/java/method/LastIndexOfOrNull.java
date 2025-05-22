@@ -5,6 +5,7 @@ import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.annotation.OnlyGivePositiveValue;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -36,6 +37,7 @@ public final class LastIndexOfOrNull
     /// @param element    The element to find
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element) {
@@ -51,6 +53,7 @@ public final class LastIndexOfOrNull
     /// @param element    The element to find
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element) {
@@ -66,6 +69,7 @@ public final class LastIndexOfOrNull
     /// @param element    The element to find
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_2)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element) {
@@ -87,6 +91,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -106,6 +111,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -125,6 +131,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
@@ -145,6 +152,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -166,6 +174,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -187,6 +196,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
@@ -212,6 +222,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -233,6 +244,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -254,6 +266,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
@@ -276,6 +289,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -299,6 +313,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -322,6 +337,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
@@ -346,6 +362,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -369,6 +386,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -392,6 +410,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
@@ -416,6 +435,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -444,6 +464,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                         final T element,
@@ -472,6 +493,7 @@ public final class LastIndexOfOrNull
     /// @param <T>        The `collection` and `element` type
     @ExtensionFunction
     @CanReceiveNegativeValue
+    @OnlyGivePositiveValue
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer lastIndexOfOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                         final T element,
