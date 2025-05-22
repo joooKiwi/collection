@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java NavigableSet][java.util.NavigableSet]
@@ -75,9 +76,10 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The internal reference passed through the constructor
+    @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
     @Contract(pure = true)
@@ -89,6 +91,10 @@ public class ArrayAsNavigableSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public @Nullable Comparator<? super T> comparator() { return __comparator; }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsNavigableSet<T> clone() { return new ArrayAsNavigableSet<>(_reference().clone(), comparator()); }
 
     //#endregion -------------------- Methods --------------------

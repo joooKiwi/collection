@@ -1,14 +1,17 @@
 package joookiwi.collection.java.extended;
 
 import java.util.List;
+
+import joookiwi.collection.java.annotation.InitializedOnFirstCall;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [List] similar to the [ArrayAsList] in its behaviour.
-/// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -51,16 +54,19 @@ public class ReversedArrayAsList<T extends @Nullable Object,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The source passed through the constructor
+    @Contract(pure = true)
     protected SOURCE _source() { return __source; }
 
     /// The [ReversedArray] passed through the constructor
+    @Contract(pure = true)
     protected REVERSED_ARRAY _reversedArray() { return __reversedArray; }
 
     /// The internal referenced generated from the [reversed-array][#_reversedArray] [source][ReversedArray#reversedSource]
-    protected T[] _reference() {
+    @InitializedOnFirstCall
+    @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
@@ -70,18 +76,26 @@ public class ReversedArrayAsList<T extends @Nullable Object,
         return reference;
     }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    @InitializedOnFirstCall
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
         if (__isInitialized)
             return __size;
         return __size = _reference().length;
     }
 
+    @Contract(pure = true)
+    @InitializedOnFirstCall
     @Override public boolean isEmpty() {
         if (__isInitialized)
             return __isEmpty;
         return __isEmpty = size() == 0;
     }
 
+
+    @Contract(ALWAYS_NEW_0)
     @Override public ReversedArrayAsList<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsList<>(_source(), _reversedArray()); }
 
     //#endregion -------------------- Methods --------------------

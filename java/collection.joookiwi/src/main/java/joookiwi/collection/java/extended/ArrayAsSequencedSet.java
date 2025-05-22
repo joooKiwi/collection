@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java SequencedSet][java.util.SequencedSet]
@@ -47,9 +48,10 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The internal reference passed through the constructor
+    @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
     @Contract(pure = true)
@@ -58,6 +60,10 @@ public class ArrayAsSequencedSet<T extends @Nullable Object>
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsSequencedSet<T> clone() { return new ArrayAsSequencedSet<>(_reference().clone()); }
 
     //#endregion -------------------- Methods --------------------

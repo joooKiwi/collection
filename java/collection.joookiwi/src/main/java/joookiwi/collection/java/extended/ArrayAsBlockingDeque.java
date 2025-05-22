@@ -2,9 +2,9 @@ package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java BlockingDeque][java.util.concurrent.BlockingDeque]
@@ -44,9 +44,10 @@ public class ArrayAsBlockingDeque<T>
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The internal reference passed through the constructor
+    @Contract(pure = true)
     @Override protected T[] _reference() { return __reference; }
 
     @Contract(pure = true)
@@ -55,9 +56,13 @@ public class ArrayAsBlockingDeque<T>
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
+
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
 
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsBlockingDeque<T> clone() { return new ArrayAsBlockingDeque<>(_reference().clone()); }
 
     //#endregion -------------------- Methods --------------------

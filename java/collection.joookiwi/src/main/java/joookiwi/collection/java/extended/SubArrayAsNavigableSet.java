@@ -2,11 +2,15 @@ package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
 import java.util.NavigableSet;
+
+import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[NavigableSet] similar to the [ArrayAsNavigableSet] in its behaviour.
@@ -53,16 +57,19 @@ public class SubArrayAsNavigableSet<T extends @Nullable Object,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The source passed through the constructor
+    @Contract(pure = true)
     protected SOURCE _source() { return __source; }
 
     /// The [SubArray] passed through the constructor
+    @Contract(pure = true)
     protected SUB_ARRAY _subArray() { return __subArray; }
 
     /// The internal referenced generated from the [sub-array][#_subArray] [source][SubArray#subSource]
-    protected T[] _reference() {
+    @InitializedOnFirstCall
+    @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
@@ -72,21 +79,28 @@ public class SubArrayAsNavigableSet<T extends @Nullable Object,
         return reference;
     }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
+    @InitializedOnFirstCall
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
         if (__isInitialized)
             return __size;
         return __size = _reference().length;
     }
 
+    @Contract(pure = true)
+    @InitializedOnFirstCall
     @Override public boolean isEmpty() {
         if (__isInitialized)
             return __isEmpty;
         return __isEmpty = size() == 0;
     }
 
+
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
+    @Contract(ALWAYS_NEW_0)
     @Override public SubArrayAsNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsNavigableSet<>(_source(), _subArray()); }
 
     //#endregion -------------------- Methods --------------------

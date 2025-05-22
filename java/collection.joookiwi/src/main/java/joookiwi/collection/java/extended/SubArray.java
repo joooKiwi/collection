@@ -1,5 +1,7 @@
 package joookiwi.collection.java.extended;
 
+import joookiwi.collection.java.annotation.InitializedOnFirstCall;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -42,6 +44,7 @@ public class SubArray<T extends @Nullable Object> {
     //#region -------------------- Getter methods --------------------
 
     /// The original source received in the constructor
+    @Contract(pure = true)
     public T[] source() { return __source; }
 
     /// The new source that is created within the range
@@ -52,6 +55,7 @@ public class SubArray<T extends @Nullable Object> {
     ///
     /// @implNote The array created should not be modified.
     /// It is only there to help referencing the source trimmed.
+    @InitializedOnFirstCall
     public T[] subSource() {
         final var value = __subSource;
         if (value != null)
@@ -69,9 +73,11 @@ public class SubArray<T extends @Nullable Object> {
     }
 
     /// The starting index that should be the beginning of the [sub-source][#subSource]
+    @Contract(pure = true)
     public @Range(from = 0, to = MAX_INT_VALUE) int startingIndex() { return __startingIndex; }
 
     /// The ending index that should be the end of the [sub-source][#subSource]
+    @Contract(pure = true)
     public @Range(from = 0, to = MAX_INT_VALUE) int endingIndex() { return __endingIndex; }
 
     //#endregion -------------------- Getter methods --------------------

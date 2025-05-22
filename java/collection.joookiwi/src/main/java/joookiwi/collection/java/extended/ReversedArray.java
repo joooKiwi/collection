@@ -1,5 +1,7 @@
 package joookiwi.collection.java.extended;
 
+import joookiwi.collection.java.annotation.InitializedOnFirstCall;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,6 +33,7 @@ public class ReversedArray<T extends @Nullable Object> {
     //#region -------------------- Getter methods --------------------
 
     /// The original source received in the constructor
+    @Contract(pure = true)
     public T[] source() { return __source; }
 
     ///  The new source that is created in reverse order.
@@ -40,6 +43,7 @@ public class ReversedArray<T extends @Nullable Object> {
     ///
     /// @implNote The array created should not be modified.
     /// It is only there to help referencing the source reversed.
+    @InitializedOnFirstCall
     public T[] reversedSource() {
         final var value = __reversedSource;
         if (value != null)

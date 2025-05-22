@@ -1,15 +1,18 @@
 package joookiwi.collection.java.extended;
 
 import java.util.List;
+
+import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[List] similar to the [ArrayAsList] in its behaviour.
-/// During its creation, it <u>implies</u> that the [SUB_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -52,16 +55,19 @@ public class SubArrayAsList<T extends @Nullable Object,
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Methods --------------------
+    //#region -------------------- Getter methods --------------------
 
     /// The source passed through the constructor
+    @Contract(pure = true)
     protected SOURCE _source() { return __source; }
 
     /// The [SubArray] passed through the constructor
+    @Contract(pure = true)
     protected SUB_ARRAY _subArray() { return __subArray; }
 
     /// The internal referenced generated from the [sub-array][#_subArray] [source][SubArray#subSource]
-    protected T[] _reference() {
+    @InitializedOnFirstCall
+    @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
@@ -71,19 +77,26 @@ public class SubArrayAsList<T extends @Nullable Object,
         return reference;
     }
 
+    //#endregion -------------------- Getter methods --------------------
+    //#region -------------------- Methods --------------------
 
+    @InitializedOnFirstCall
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
         if (__isInitialized)
             return __size;
         return __size = _reference().length;
     }
 
+    @InitializedOnFirstCall
+    @Contract(pure = true)
     @Override public boolean isEmpty() {
         if (__isInitialized)
             return __isEmpty;
         return __isEmpty = size() == 0;
     }
 
+
+    @Contract(ALWAYS_NEW_0)
     @Override public SubArrayAsList<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsList<>(_source(), _subArray()); }
 
     //#endregion -------------------- Methods --------------------
