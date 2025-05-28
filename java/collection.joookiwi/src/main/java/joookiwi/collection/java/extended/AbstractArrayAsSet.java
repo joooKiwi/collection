@@ -24,15 +24,6 @@ public abstract class AbstractArrayAsSet<T extends @Nullable Object>
         extends AbstractArrayAsCollection<T>
         implements Set<T> {
 
-    //#region -------------------- Fields --------------------
-
-    //#region -------------------- Helper fields --------------------
-
-    private @Nullable EqualsHelper __equalsHelper;
-
-    //#endregion -------------------- Helper fields --------------------
-
-    //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     protected AbstractArrayAsSet() { super(); }
@@ -42,39 +33,9 @@ public abstract class AbstractArrayAsSet<T extends @Nullable Object>
     /// @apiNote This method should only be called during the construction
     /// @param reference The reference to validate no duplicate exists
     /// @throws RuntimeException A duplicate value exists
-    protected void _validateValues(final T[] reference) {
-        final var size = reference.length;
-        if (size == 0)
-            return; // Useless to validate since it is empty
-        if (size == 1)
-            return; // Useless to validate if it has only 1 element
-
-        final var equalHelper = _equalsHelper();
-        final var tempArray = new Object[size];
-        tempArray[0] = reference[0];
-        var index1 = 0;
-        while (++index1 < size) {
-            final var value = reference[index1];
-            var index2 = -1; //The index2 should always be under the element that has been validated
-
-            while (++index2 < index1)
-                if (equalHelper.equals(tempArray[index2], value))
-                    throw new RuntimeException("A duplicate value exist during the creation of a Set.");
-            tempArray[index2] = value;
-        }
-    }
+    protected void _validateValues(final T[] reference) { UtilityForArray.validateValuesForSet(reference); }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
-
-    protected EqualsHelper _equalsHelper() {
-        final var value = __equalsHelper;
-        if (value != null)
-            return value;
-        return __equalsHelper = EqualsHelper.getInstance();
-    }
-
-    //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
     //#region -------------------- Supported methods --------------------
