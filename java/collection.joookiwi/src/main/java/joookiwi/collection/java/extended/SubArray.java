@@ -33,8 +33,8 @@ public class SubArray<T extends @Nullable Object> {
     /// @param startingIndex The starting index that should be the beginning of the [sub-source][#subSource]
     /// @param endingIndex   The ending index that should be the end of the [sub-source][#subSource]
     public SubArray(final T[] source,
-                    @Range(from = 0, to = MAX_INT_VALUE) final int startingIndex,
-                    @Range(from = 0, to = MAX_INT_VALUE) final int endingIndex) {
+                    final @Range(from = 0, to = MAX_INT_VALUE) int startingIndex,
+                    final @Range(from = 0, to = MAX_INT_VALUE) int endingIndex) {
         __source = source;
         __startingIndex = startingIndex;
         __endingIndex = endingIndex;
