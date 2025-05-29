@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.helper.EqualsHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +62,7 @@ public abstract class AbstractArrayAsSet<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Set."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Set."); }
 
     /// Fail to add the `values` in the current [instance][Set]
     ///

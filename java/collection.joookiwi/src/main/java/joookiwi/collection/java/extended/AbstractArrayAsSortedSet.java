@@ -2,18 +2,15 @@ package joookiwi.collection.java.extended;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.NoSuchElementException;
 import java.util.SortedSet;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -103,21 +100,21 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable SortedSet."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable SortedSet."); }
 
     /// Fail to add a `value` to the current [instance][SortedSet]
     ///
     /// @param value The (_never used_) element to add at the start
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable SortedSet."); }
+    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable SortedSet."); }
 
     /// Fail to add a `value` to the current [instance][SortedSet]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable SortedSet."); }
+    @Override public void addLast(final @Nullable T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable SortedSet."); }
 
     /// Fail to add the `values` in the current [instance][SortedSet]
     ///

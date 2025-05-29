@@ -195,7 +195,7 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable Collection."); }
 
     /// Fail to add the `values` in the current [instance][Collection]
     ///

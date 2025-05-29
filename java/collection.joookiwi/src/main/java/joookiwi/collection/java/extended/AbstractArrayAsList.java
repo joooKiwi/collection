@@ -142,7 +142,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) value to set
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public T set(final int index, final T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public T set(final int index, final @Nullable T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
 
 
     /// Fail to add a `value` to the current [instance][List]
@@ -150,7 +150,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean add(final T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
+    @Override public boolean add(final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
@@ -158,21 +158,21 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public void add(final int index, final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
+    @Override public void add(final int index, final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
     /// @param value The (_never used_) element to add at the start
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addFirst(final T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable List."); }
+    @Override public void addFirst(final @Nullable T value) { throw new UnsupportedMethodException("The method “addFirst” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
     /// @param value The (_never used_) element to add at the end
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void addLast(final T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable List."); }
+    @Override public void addLast(final @Nullable T value) { throw new UnsupportedMethodException("The method “addLast” is not supported in an immutable List."); }
 
     /// Fail to add the `values` in the current [instance][List]
     ///
