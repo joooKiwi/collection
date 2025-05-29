@@ -29,15 +29,6 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
         implements SortedSet<T>,
                    OrderableCollection<T> {
 
-    //#region -------------------- Fields --------------------
-
-    //#region -------------------- Helper fields --------------------
-
-    private @Nullable ComparatorHelper __comparatorHelper;
-
-    //#endregion -------------------- Helper fields --------------------
-
-    //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     protected AbstractArrayAsSortedSet() { super(); }
@@ -64,39 +55,7 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
     protected void _validateValues(final T[] reference, final @Nullable Comparator<? super T> comparator) { UtilityForArray.validateValuesForSortedSet(reference, comparator); }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
-
-    protected ComparatorHelper _comparatorHelper() {
-        final var value = __comparatorHelper;
-        if (value != null)
-            return value;
-        return __comparatorHelper = ComparatorHelper.getInstance();
-    }
-
-    //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
-
-    protected int _compare(final T value1, final T value2) throws ClassCastException { return _comparatorHelper().compare(value1, value2, comparator()); }
-
-    protected int _indexFromHashCodeHigherOrEqual(final T value) { return _indexFromHashCodeHigherOrEqual(value, _reference(), size()); }
-    protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigherOrEqual(value, reference, size()); }
-    protected int _indexFromHashCodeHigherOrEqual(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = -1;
-        while (++index < size)
-            if (_compare(value, reference[index]) >= 0)
-                return index - 1;
-        return index - 1;
-    }
-
-    protected int _indexFromHashCodeHigher(final T value) { return _indexFromHashCodeHigher(value, _reference(), size()); }
-    protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeHigher(value, reference, size()); }
-    protected int _indexFromHashCodeHigher(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = -1;
-        while (++index < size)
-            if (_compare(value, reference[index]) > 0)
-                return index - 1;
-        return index - 1;
-    }
 
     //#region -------------------- Supported methods --------------------
 
@@ -104,65 +63,28 @@ public abstract class AbstractArrayAsSortedSet<T extends @Nullable Object>
 
     @Contract(pure = true) @Override public T first() { return getFirst(); }
 
-    @Override public T getFirst() {
-        if (isEmpty())
-            throw new NoSuchElementException("No element could be found in an empty SortedSet.");
-        return _reference()[0];
-    }
+    @Override public T getFirst() { return UtilityForArray.getFirst(_reference()); }
 
 
     @Contract(pure = true) @Override public T last() { return getLast(); }
 
-    @Override public T getLast() {
-        if (isEmpty())
-            throw new NoSuchElementException("No element could be found in an empty SortedSet.");
-        return _reference()[size() - 1];
-    }
+    @Override public T getLast() { return UtilityForArray.getLast(_reference()); }
 
     //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Subset methods --------------------
+    //#region -------------------- As subdivided methods --------------------
 
     // README: By default, “from” is inclusive and “to” is exclusive
 
-    @Override public @UnmodifiableView SortedSet<T> subSet(final T from, final T to) {
-        if (!contains(from))
-            if (!contains(to))
-                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the SortedSet.");
-            else
-                throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
+    @Override public @UnmodifiableView SortedSet<T> subSet(final T from, final T to) { return UtilityForArray.asSubdivided(this, _reference(), from, to); }
 
-        final var size = size();
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), _indexFromHashCodeHigher(to, reference, size)));
-    }
+    @Override public @UnmodifiableView SortedSet<T> headSet(final T to) { return UtilityForArray.asHeadSubdivided(this, _reference(), to); }
 
-    @Override public @UnmodifiableView SortedSet<T> headSet(final T to) {
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
+    @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) { return UtilityForArray.asTailSubdivided(this, _reference(), from); }
 
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference)));
-    }
-
-    @Override public @UnmodifiableView SortedSet<T> tailSet(final T from) {
-        if (!contains(from))
-            throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-
-        final var size = size();
-        final var reference = _reference();
-        return new SubArrayAsSortedSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), size - 1));
-    }
-
-    //#endregion -------------------- Subset methods --------------------
+    //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Override public @UnmodifiableView SortedSet<T> reversed() {
-        if (isEmpty())
-            return emptySortedSet();
-        return new ReversedArrayAsSortedSet<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView SortedSet<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparator methods --------------------

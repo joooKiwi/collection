@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -33,142 +32,36 @@ public abstract class AbstractArrayAsNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    protected int _indexFromHashCodeLowerOrEqual(final T value) { return _indexFromHashCodeLowerOrEqual(value, _reference(), size()); }
-    protected int _indexFromHashCodeLowerOrEqual(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeLowerOrEqual(value, reference, size()); }
-    protected int _indexFromHashCodeLowerOrEqual(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = size;
-        while (--index >= 0)
-            if (_compare(value, reference[index]) <= 0)
-                return index + 1;
-        return index + 1;
-    }
-
-    protected int _indexFromHashCodeLower(final T value) { return _indexFromHashCodeLower(value, _reference(), size()); }
-    protected int _indexFromHashCodeLower(final T value, final T @Unmodifiable [] reference) { return _indexFromHashCodeLower(value, reference, size()); }
-    protected int _indexFromHashCodeLower(final T value, final T @Unmodifiable [] reference, final int size) {
-        var index = size;
-        while (--index >= 0)
-            if (_compare(value, reference[index]) < 0)
-                return index + 1;
-        return index + 1;
-    }
-
     //#region -------------------- Supported methods --------------------
 
     //#region -------------------- Get methods --------------------
 
-    @Override public @Nullable T floor(final T value) { // ≼ than the value
-        if (isEmpty())
-            return null;
-        if (!contains(value))
-            return null;
+    @Override public @Nullable T floor(final T value) { return UtilityForArray.getFirstOrNullUnderOrEqual(this, _reference(), value); }
 
-        final var reference = _reference();
-        final var size = size();
-        final var indexFound = _indexFromHashCodeLowerOrEqual(value, reference, size);
-        if (indexFound == size - 1)
-            return null;
-        return reference[indexFound + 1];
-    }
+    @Override public @Nullable T lower(final T value) { return UtilityForArray.getFirstOrNullUnder(this, _reference(), value); }
 
-    @Override public @Nullable T lower(final T value) { // < than the value
-        if (isEmpty())
-            return null;
-        if (!contains(value))
-            return null;
+    @Override public @Nullable T ceiling(final T value) { return UtilityForArray.getFirstOrNullOverOrEqual(this, _reference(), value); }
 
-        final var reference = _reference();
-        final var size = size();
-        final var indexFound = _indexFromHashCodeLower(value, reference, size);
-        if (indexFound == size - 1)
-            return null;
-        return reference[indexFound + 1];
-    }
-
-    @Override public @Nullable T ceiling(final T value) { // ≽ than the value
-        if (isEmpty())
-            return null;
-        if (!contains(value))
-            return null;
-
-        final var reference = _reference();
-        final var indexFound = _indexFromHashCodeHigherOrEqual(value, reference);
-        if (indexFound == 0)
-            return null;
-        return reference[indexFound - 1];
-    }
-
-    @Override public @Nullable T higher(final T value) { // > than the value
-        if (isEmpty())
-            return null;
-        if (!contains(value))
-            return null;
-
-        final var reference = _reference();
-        final var indexFound = _indexFromHashCodeHigher(value, reference);
-        if (indexFound == 0)
-            return null;
-        return reference[indexFound - 1];
-    }
+    @Override public @Nullable T higher(final T value) { return UtilityForArray.getFirstOrNullOver(this, _reference(), value); }
 
     //#endregion -------------------- Get methods --------------------
-    //#region -------------------- Subset methods --------------------
+    //#region -------------------- As subdivided methods --------------------
 
-    @Override public @UnmodifiableView NavigableSet<T> subSet(final T from, final boolean fromIsInclusive, final T to, final boolean toIsInclusive) {
-        if (!contains(from))
-            if (!contains(to))
-                throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the NavigableSet.");
-            else
-                throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
+    @Override public @UnmodifiableView NavigableSet<T> subSet(final T from, final boolean fromIsInclusive, final T to, final boolean toIsInclusive) { return UtilityForArray.asSubdivided(this, _reference(), from, fromIsInclusive, to, toIsInclusive); }
 
-        final var size = size();
-        final var reference = _reference();
-        if (fromIsInclusive)
-            if (toIsInclusive)
-                return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), _indexFromHashCodeHigherOrEqual(to, reference, size)));
-            else
-                return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), _indexFromHashCodeHigher(to, reference, size)));
-        if (toIsInclusive)
-            return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size), _indexFromHashCodeHigherOrEqual(to, reference, size)));
-        return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size), _indexFromHashCodeHigher(to, reference, size)));
-    }
+    @Override public @UnmodifiableView NavigableSet<T> headSet(final T to, final boolean isInclusive) { return UtilityForArray.asHeadSubdivided(this, _reference(), to, isInclusive); }
 
-    @Override public @UnmodifiableView NavigableSet<T> headSet(final T to, final boolean isInclusive) {
-        if (!contains(to))
-            throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
+    @Override public @UnmodifiableView NavigableSet<T> tailSet(final T from, final boolean isInclusive) { return UtilityForArray.asTailSubdivided(this, _reference(), from, isInclusive); }
 
-        final var reference = _reference();
-        if (isInclusive)
-            return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference)));
-        return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference)));
-    }
+    //#endregion -------------------- As subdivided methods --------------------
+    //#region -------------------- As reversed methods --------------------
 
-    @Override public @UnmodifiableView NavigableSet<T> tailSet(final T from, final boolean isInclusive) {
-        if (!contains(from))
-            throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
-
-        final var size = size();
-        final var reference = _reference();
-        if (isInclusive)
-            return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size), size - 1));
-        return new SubArrayAsNavigableSet<>(this, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size), size - 1));
-    }
-
-    //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- As reverse methods --------------------
-
-    @Override public @UnmodifiableView NavigableSet<T> reversed() {
-        if (isEmpty())
-            return emptyNavigableSet();
-        return new ReversedArrayAsNavigableSet<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView NavigableSet<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     @Contract(pure = true)
     @Override public @UnmodifiableView NavigableSet<T> descendingSet() { return reversed(); }
 
-    //#endregion -------------------- As reverse methods --------------------
+    //#endregion -------------------- As reversed methods --------------------
     //#region -------------------- Iterator methods --------------------
 
     @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }

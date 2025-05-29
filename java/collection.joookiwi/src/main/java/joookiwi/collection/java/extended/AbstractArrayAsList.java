@@ -11,8 +11,6 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.method.FirstIndexOfOrNull;
-import joookiwi.collection.java.method.LastIndexOfOrNull;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -20,13 +18,11 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
 
 /// A definition of an immutable [List] to have a common ancestor.
 /// This class is similar to [java.util.AbstractList] or [java.util.AbstractSequentialList] but for array specifically.
@@ -50,6 +46,8 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
 
     //#region -------------------- Supported methods --------------------
 
+    //#region -------------------- Get methods --------------------
+
     /// Get the element at the specified `index` in the current [instance][List]
     ///
     /// @param index The index to retrieve a value
@@ -58,14 +56,11 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see List#get(int)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/at">Javascript ReadonlyArray.at(index)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html">Kotlin get(index)</a>
-    @Override public T get(int index) {
-        if (isEmpty())
-            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
-        final var size = size();
-        if (index > size)
-            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
-        return _reference()[index];
-    }
+    @Contract(pure = true)
+    @Override public T get(int index) { return UtilityForArray.get(_reference(), index); }
+
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Index methods --------------------
 
     /// Get the **first** occurrence equivalent to the value received
     ///
@@ -75,12 +70,7 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf">Javascript ReadonlyArray.indexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html">Kotlin indexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof">C# IndexOf(item, from?, to?)</a>
-    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object element) {
-        final var index = FirstIndexOfOrNull.firstIndexOfOrNull(_reference(), element);
-        if (index == null)
-            return -1;
-        return index;
-    }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object element) { return UtilityForArray.firstIndexOf(_reference(), element); }
 
     /// Get the **last** occurrence equivalent to the value received
     ///
@@ -90,18 +80,10 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">Javascript ReadonlyArray.lastIndexOf(element, from?)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-index-of.html">Kotlin lastIndexOf(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof">C# LastIndexOf(item, from?, to?)</a>
-    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object element) {
-        final var index = LastIndexOfOrNull.lastIndexOfOrNull(_reference(), element);
-        if (index == null)
-            return -1;
-        return index;
-    }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object element) { return UtilityForArray.lastIndexOf(_reference(), element); }
 
-
-    @Override public ListIterator<T> listIterator() { return new ArrayAsListIterator<>(_reference()); }
-
-    @Override public ListIterator<T> listIterator(final int index) { return new ArrayAsListIterator<>(_reference(), index); }
-
+    //#endregion -------------------- Index methods --------------------
+    //#region -------------------- As subdivided methods --------------------
 
     /// Gibe a subdivided-array of the current [instance][List] between both indexes (`from` and `to`)
     ///
@@ -109,21 +91,10 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @param to   The ending index (exclusive)
     /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
     /// @throws IndexOutOfBoundsException `to` is before `from` with a [InvalidIndexRangeException] as the cause
-    @Override public @UnmodifiableView List<T> subList(final int from, final int to) {
-        if (from < 0)
-            throw new IndexOutOfBoundsException("Index out of bound. The starting index “" + from + "” cannot be under 0.", from);
-        if (to > size())
-            throw new IndexOutOfBoundsException("Index out of bound. The ending index “" + to + "” cannot be over the size of the collection (" + size() + ").", to);
-        if (from > to) {
-            final var message = "Invalid index range. The ending index “" + to + "” is over the starting index “" + from + "”.";
-            throw new IndexOutOfBoundsException(message, (Number) null, new InvalidIndexRangeException(message, from, to));
-        }
-        if (isEmpty())
-            return emptyList();
-        if (from == to)
-            return emptyList();
-        return new SubArrayAsList<>(this, new SubArray<>(_reference(), from, to));
-    }
+    @Override public @UnmodifiableView List<T> subList(final int from, final int to) { return UtilityForArray.asSubdivided(this, _reference(), from, to); }
+
+    //#endregion -------------------- As subdivided methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
     /// Give a reversed-view of the current [instance][List]
     ///
@@ -133,12 +104,17 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-    @Override public @UnmodifiableView List<T> reversed() {
-        if (isEmpty())
-            return emptyList();
-        return new ReversedArrayAsList<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView List<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Iterator methods --------------------
+
+    @Override public ListIterator<T> listIterator() { return new ArrayAsListIterator<>(_reference()); }
+
+    @Override public ListIterator<T> listIterator(final int index) { return new ArrayAsListIterator<>(_reference(), index); }
+
+    //#endregion -------------------- Iterator methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
     @Override public boolean equals(final @Nullable Object other) {
@@ -152,6 +128,8 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
             return false;
         return containsAll(otherConverted);
     }
+
+    //#endregion -------------------- Comparison methods --------------------
 
     @Override public abstract AbstractArrayAsList<T> clone();
 

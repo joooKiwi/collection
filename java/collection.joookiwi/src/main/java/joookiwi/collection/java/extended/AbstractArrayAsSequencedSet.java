@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -33,11 +32,7 @@ public abstract class AbstractArrayAsSequencedSet<T extends @Nullable Object>
 
     //#region -------------------- Supported methods --------------------
 
-    @Override public @UnmodifiableView SequencedSet<T> reversed() {
-        if (isEmpty())
-            return emptySequencedSet();
-        return new ReversedArrayAsSequencedSet<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView SequencedSet<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     @Override public abstract AbstractArrayAsSequencedSet<T> clone();
 

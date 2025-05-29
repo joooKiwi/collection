@@ -3,10 +3,7 @@ package joookiwi.collection.java.extended;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.function.Predicate;
-import joookiwi.collection.java.exception.EmptyCollectionException;
-import joookiwi.collection.java.method.GetFirst;
 import joookiwi.collection.java.method.GetFirstOrNull;
 import joookiwi.collection.java.method.GetLastOrNull;
 import org.jetbrains.annotations.Contract;
@@ -15,7 +12,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptyDeque;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -42,11 +38,7 @@ public abstract class AbstractArrayAsDeque<T extends @Nullable Object>
     //#region -------------------- Get methods --------------------
 
     @Contract(pure = true)
-    @Override public T element() {
-        if (isEmpty())
-            throw new NoSuchElementException(new EmptyCollectionException());
-        return GetFirst.getFirst(_reference());
-    }
+    @Override public T element() { return UtilityForArray.getFirst(_reference()); }
 
     @Contract(pure = true)
     @Override public @Nullable T peek() { return peekFirst(); }
@@ -60,11 +52,7 @@ public abstract class AbstractArrayAsDeque<T extends @Nullable Object>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Override public @UnmodifiableView Deque<T> reversed() {
-        if (isEmpty())
-            return emptyDeque();
-        return new ReversedArrayAsDeque<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView Deque<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------

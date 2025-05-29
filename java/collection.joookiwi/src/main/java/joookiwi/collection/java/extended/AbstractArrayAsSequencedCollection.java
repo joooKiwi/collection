@@ -4,17 +4,13 @@ import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.SequencedCollection;
 import java.util.function.Predicate;
-import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.method.GetFirst;
-import joookiwi.collection.java.method.GetLast;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptySequencedCollection;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
@@ -45,11 +41,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @see SequencedCollection#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
-    @Override public T getFirst() {
-        if (isEmpty())
-            throw new NoSuchElementException(new EmptyCollectionException());
-        return GetFirst.getFirst(_reference());
-    }
+    @Override public T getFirst() { return UtilityForArray.getFirst(_reference()); }
 
     /// Get the last element in the current [instance][SequencedCollection]
     ///
@@ -57,11 +49,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @see SequencedCollection#getLast()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
-    @Override public T getLast() {
-        if (isEmpty())
-            throw new NoSuchElementException(new EmptyCollectionException());
-        return GetLast.getLast(_reference());
-    }
+    @Override public T getLast() { return UtilityForArray.getLast(_reference()); }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- As reverse methods --------------------
@@ -73,11 +61,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
-    @Override public @UnmodifiableView SequencedCollection<T> reversed() {
-        if (isEmpty())
-            return emptySequencedCollection();
-        return new ReversedArrayAsSequencedCollection<>(this, new ReversedArray<>(_reference()));
-    }
+    @Override public @UnmodifiableView SequencedCollection<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     //#endregion -------------------- As reverse methods --------------------
 

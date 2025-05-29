@@ -1,9 +1,6 @@
 package joookiwi.collection.java.extended;
 
-import java.util.NoSuchElementException;
 import java.util.Queue;
-import joookiwi.collection.java.exception.EmptyCollectionException;
-import joookiwi.collection.java.method.GetFirst;
 import joookiwi.collection.java.method.GetFirstOrNull;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -34,11 +31,7 @@ public abstract class AbstractArrayAsQueue<T extends @Nullable Object>
     //#region -------------------- Get methods --------------------
 
     @Contract(pure = true)
-    @Override public T element() {
-        if (isEmpty())
-            throw new NoSuchElementException(new EmptyCollectionException());
-        return GetFirst.getFirst(_reference());
-    }
+    @Override public T element() { return UtilityForArray.getFirst(_reference()); }
 
     @Contract(pure = true)
     @Override public @Nullable T peek() { return GetFirstOrNull.getFirstOrNull(_reference()); }
