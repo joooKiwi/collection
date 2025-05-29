@@ -140,9 +140,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     ///
     /// @param index The (_never used_) index
     /// @param value The (_never used_) value to set
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public T set(final int index, final @Nullable T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable List."); }
+    @Override public T set(final int index, final @Nullable T value) { throw new UnsupportedMethodException("The method “set” is not supported in an immutable List."); }
 
 
     /// Fail to add a `value` to the current [instance][List]
@@ -156,9 +156,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     ///
     /// @param index The (_never used_) index
     /// @param value The (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public void add(final int index, final @Nullable T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable List."); }
+    @Override public void add(final int index, final @Nullable T value) { throw new UnsupportedMethodException("The method “add” is not supported in an immutable List."); }
 
     /// Fail to add a `value` to the current [instance][List]
     ///
@@ -185,9 +185,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     ///
     /// @param index  The (_never used_) starting index
     /// @param values The (_never used_) elements to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable List."); }
+    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable List."); }
 
 
     /// Fail to clear the current [instance][List]
@@ -207,9 +207,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// Fail to remove a `value` in the current [instance][List]
     ///
     /// @param index The (_never used_) index
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public T remove(final int index) { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable List."); }
+    @Override public T remove(final int index) { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable List."); }
 
     /// Fail to remove the first value in the current [instance][List]
     ///
@@ -241,9 +241,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// Fail to replace any value in the current [instance][List]
     ///
     /// @param operator the (_never used_) operator
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void replaceAll(final @Nullable UnaryOperator<T> operator) { throw new UnsupportedOperationException("The method “replaceAll” is not supported in an immutable List."); }
+    @Override public void replaceAll(final @Nullable UnaryOperator<T> operator) { throw new UnsupportedMethodException("The method “replaceAll” is not supported in an immutable List."); }
 
 
     /// Fail to keep the `values` in the current [instance][List]
@@ -257,9 +257,9 @@ public abstract class AbstractArrayAsList<T extends @Nullable Object>
     /// Fail to sort the current [instance][List]
     ///
     /// @param comparator The (_never used_) [comparator][Comparator]
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedOperationException("The method “sort” is not supported in an immutable List."); }
+    @Override public void sort(final @Nullable Comparator<? super T> comparator) { throw new UnsupportedMethodException("The method “sort” is not supported in an immutable List."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

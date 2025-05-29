@@ -2,6 +2,7 @@ package joookiwi.collection.java.extended;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -35,25 +36,25 @@ public abstract class AbstractArrayAsTransferQueue<T>
     /// Fail to transfer the `value` to a consumer in the current [AbstractArrayAsTransferQueue]
     ///
     /// @param value The (_never used_) value to transfer
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public void transfer(final @Nullable T value) { throw new UnsupportedOperationException("The method “transfer” is not supported in an immutable TransferQueue."); }
+    @Override public void transfer(final @Nullable T value) { throw new UnsupportedMethodException("The method “transfer” is not supported in an immutable TransferQueue."); }
 
     /// Fail to transfer the `value` to a consumer in the current [AbstractArrayAsTransferQueue]
     ///
     /// @param value The (_never used_) value to transfer
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean tryTransfer(final @Nullable T value) { throw new UnsupportedOperationException("The method “tryTransfer” is not supported in an immutable TransferQueue."); }
+    @Override public boolean tryTransfer(final @Nullable T value) { throw new UnsupportedMethodException("The method “tryTransfer” is not supported in an immutable TransferQueue."); }
 
     /// Fail to transfer the `value` to a consumer in the current [AbstractArrayAsTransferQueue]
     ///
     /// @param value The (_never used_) value to transfer
     /// @param timeout The (_never used_) unit of `unit`
     /// @param unit The (_never used_) time unit
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_3)
-    @Override public boolean tryTransfer(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedOperationException("The method “tryTransfer” is not supported in an immutable TransferQueue."); }
+    @Override public boolean tryTransfer(final @Nullable T value, final long timeout, final @Nullable TimeUnit unit) { throw new UnsupportedMethodException("The method “tryTransfer” is not supported in an immutable TransferQueue."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

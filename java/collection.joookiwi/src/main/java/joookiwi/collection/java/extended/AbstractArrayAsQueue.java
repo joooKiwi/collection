@@ -1,6 +1,7 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Queue;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.method.GetFirstOrNull;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -46,22 +47,22 @@ public abstract class AbstractArrayAsQueue<T extends @Nullable Object>
     /// Fail to add a `value` to the current [AbstractArrayAsQueue]
     ///
     /// @param value The (_never used_) element to add
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean offer(final @Nullable T value) { throw new UnsupportedOperationException("The method “offer” is not supported in an immutable Queue."); }
+    @Override public boolean offer(final @Nullable T value) { throw new UnsupportedMethodException("The method “offer” is not supported in an immutable Queue."); }
 
     /// Fail to remove and retrieve the head of the current [AbstractArrayAsQueue]
     ///
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public T poll() { throw new UnsupportedOperationException("The method “poll” is not supported in an immutable Queue."); }
+    @Override public T poll() { throw new UnsupportedMethodException("The method “poll” is not supported in an immutable Queue."); }
 
 
     /// Fail to remove the head of the current [AbstractArrayAsQueue]
     ///
-    /// @throws UnsupportedOperationException The method is not supported
+    /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override public T remove() { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable Queue."); }
+    @Override public T remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Queue."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 
