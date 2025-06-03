@@ -280,6 +280,9 @@ final class UtilityForArray {
                                                                                            final T @Unmodifiable [] reference,
                                                                                            final T from,
                                                                                            final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             if (!has(reference, to))
                 throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the SortedSet.");
@@ -288,7 +291,6 @@ final class UtilityForArray {
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
 
-        final var size = reference.length;
         final var comparator = source.comparator();
         final var comparatorHelper = ComparatorHelper.getInstance();
         return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
@@ -301,6 +303,9 @@ final class UtilityForArray {
                                                                                               final boolean fromIsInclusive,
                                                                                               final T to,
                                                                                               final boolean toIsInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             if (!has(reference, to))
                 throw new IllegalArgumentException("Both starting and ending values (“from” and “to”) do not exist in the NavigableSet.");
@@ -309,7 +314,6 @@ final class UtilityForArray {
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
 
-        final var size = reference.length;
         final var comparator = source.comparator();
         final var comparatorHelper = ComparatorHelper.getInstance();
         if (fromIsInclusive)
@@ -328,10 +332,12 @@ final class UtilityForArray {
     public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asHeadSubdivided(final SortedSet<? super T> source,
                                                                                                final T @Unmodifiable [] reference,
                                                                                                final T to) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
-
-        return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, reference.length, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_4)
@@ -339,22 +345,25 @@ final class UtilityForArray {
                                                                                                   final T @Unmodifiable [] reference,
                                                                                                   final T to,
                                                                                                   final boolean isInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
-
         if (isInclusive)
-            return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, reference.length, source.comparator(), ComparatorHelper.getInstance())));
-        return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, reference.length, source.comparator(), ComparatorHelper.getInstance())));
+            return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asTailSubdivided(final SortedSet<? super T> source,
                                                                                                final T @Unmodifiable [] reference,
                                                                                                final T from) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-
-        final var size = reference.length;
         return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
@@ -363,10 +372,11 @@ final class UtilityForArray {
                                                                                                   final T @Unmodifiable [] reference,
                                                                                                   final T from,
                                                                                                   final boolean isInclusive) {
+        final var size = reference.length;
+        if (size == 0)
+            throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
-
-        final var size = reference.length;
         if (isInclusive)
             return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
         return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
