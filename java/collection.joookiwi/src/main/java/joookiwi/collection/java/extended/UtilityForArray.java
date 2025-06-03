@@ -424,6 +424,32 @@ final class UtilityForArray {
     }
 
     //#endregion -------------------- As reversed --------------------
+    //#region -------------------- To subdivided --------------------
+
+    public static <T extends @Nullable Object> T[] toSubdivided(final T @Unmodifiable [] source,
+                                                                final int startingIndex,
+                                                                final int endingIndex) {
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
+        var indexToAdd = -1;
+        var index = startingIndex - 1;
+        while (++index <= endingIndex)
+            newArray[++indexToAdd] = source[index];
+        return newArray;
+    }
+
+    //#endregion -------------------- To subdivided --------------------
+    //#region -------------------- To reversed --------------------
+
+    public static <T extends @Nullable Object> T[] toReversed(final T @Unmodifiable [] source) {
+        final var size = source.length;
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
+        var index = size;
+        while (--index >= 0)
+            newArray[index] = source[index];
+        return newArray;
+    }
+
+    //#endregion -------------------- To reversed --------------------
 
     //#region -------------------- Utility search --------------------
 

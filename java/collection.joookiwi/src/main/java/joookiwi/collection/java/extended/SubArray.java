@@ -60,16 +60,7 @@ public class SubArray<T extends @Nullable Object> {
         final var value = __subSource;
         if (value != null)
             return value;
-
-        final var source = source();
-        final var startingIndex = startingIndex();
-        final var endingIndex = endingIndex();
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[endingIndex - startingIndex];
-        var indexToAdd = -1;
-        var index = startingIndex - 1;
-        while (++index <= endingIndex)
-            newArray[++indexToAdd] = source[index];
-        return __subSource = newArray;
+        return __subSource = UtilityForArray.toSubdivided(source(), startingIndex(), endingIndex());
     }
 
     /// The starting index that should be the beginning of the [sub-source][#subSource]

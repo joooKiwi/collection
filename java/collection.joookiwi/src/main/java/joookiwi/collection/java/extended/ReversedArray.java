@@ -48,14 +48,7 @@ public class ReversedArray<T extends @Nullable Object> {
         final var value = __reversedSource;
         if (value != null)
             return value;
-
-        final var source = source();
-        final var size = source.length;
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
-        var index = size;
-        while (--index >= 0)
-            newArray[index] = source[index];
-        return __reversedSource = newArray;
+        return __reversedSource = UtilityForArray.toReversed(source());
     }
 
     //#endregion -------------------- Getter methods --------------------
