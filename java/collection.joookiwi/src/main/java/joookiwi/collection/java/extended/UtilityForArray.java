@@ -385,48 +385,48 @@ final class UtilityForArray {
     //#endregion -------------------- As subdivided --------------------
     //#region -------------------- As reversed --------------------
 
-    public static <T> @UnmodifiableView SequencedCollection<T> asReversed(final SequencedCollection<? super T> source,
-                                                                          final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView SequencedCollection<T> asReversed(final SequencedCollection<? super T> source,
+                                                                                                   final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyList();
         return new ReversedArrayAsSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T> @UnmodifiableView List<T> asReversed(final List<? super T> source,
-                                                           final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView List<T> asReversed(final List<? super T> source,
+                                                                                    final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyList();
         return new ReversedArrayAsList<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T> @UnmodifiableView SequencedSet<T> asReversed(final SequencedSet<? super T> source,
-                                                                   final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView SequencedSet<T> asReversed(final SequencedSet<? super T> source,
+                                                                                            final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptySortedSet();
         return new ReversedArrayAsSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T> @UnmodifiableView SortedSet<T> asReversed(final SortedSet<? super T> source,
-                                                                final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asReversed(final SortedSet<? super T> source,
+                                                                                         final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptySortedSet();
         return new ReversedArrayAsSortedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T> @UnmodifiableView NavigableSet<T> asReversed(final NavigableSet<? super T> source,
-                                                                   final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asReversed(final NavigableSet<? super T> source,
+                                                                                            final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyNavigableSet();
         return new ReversedArrayAsNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T> @UnmodifiableView Deque<T> asReversed(final Deque<? super T> source,
-                                                            final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> @UnmodifiableView Deque<T> asReversed(final Deque<? super T> source,
+                                                                                     final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyDeque();
