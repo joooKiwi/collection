@@ -185,7 +185,11 @@ public abstract class AbstractArrayAsCollection<T extends @Nullable Object>
         return containsAll(otherConverted);
     }
 
+    //#region -------------------- Clone methods --------------------
+
     @Override public abstract AbstractArrayAsCollection<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

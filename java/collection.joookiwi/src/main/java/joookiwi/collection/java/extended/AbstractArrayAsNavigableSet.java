@@ -67,8 +67,11 @@ public abstract class AbstractArrayAsNavigableSet<T extends @Nullable Object>
     @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }
 
     //#endregion -------------------- Iterator methods --------------------
+    //#region -------------------- Clone methods --------------------
 
     @Override public abstract AbstractArrayAsNavigableSet<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

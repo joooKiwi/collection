@@ -64,8 +64,11 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     @Override public @UnmodifiableView SequencedCollection<T> reversed() { return UtilityForArray.asReversed(this, _reference()); }
 
     //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Clone methods --------------------
 
     @Override public abstract AbstractArrayAsSequencedCollection<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

@@ -53,7 +53,8 @@ public class ArrayAsSortedSet<T extends @Nullable Object>
         __comparator = null;
         if (__isEmpty = (__size = (__reference = reference).length) == 0)
             return;
-        _hashCode = 0; }
+        _hashCode = 0;
+    }
 
     /// Create an instance of a [java.util.SortedSet] from the `reference`
     /// using a `comparator` to compare its values
