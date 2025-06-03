@@ -71,7 +71,7 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to add a `value` to the current [AbstractArrayAsBlockingDeque]
     ///
@@ -259,14 +259,14 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to remove anything to the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super @Nullable T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable BlockingDeque."); }
 
 
     /// Fail to keep the `values` in the current [AbstractArrayAsBlockingDeque]
@@ -274,14 +274,14 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable BlockingDeque."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to transfer the `values` from the current [AbstractArrayAsBlockingDeque]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super T> values) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingDeque."); }
+    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super @Nullable T> values) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingDeque."); }
 
     /// Fail to transfer the `values` from the current [AbstractArrayAsBlockingDeque]
     ///
@@ -289,7 +289,7 @@ public abstract class AbstractArrayAsBlockingDeque<T>
     /// @param maximum The (_never used_) maximum of elements to transfer
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super T> values, int maximum) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingDeque."); }
+    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super @Nullable T> values, int maximum) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingDeque."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

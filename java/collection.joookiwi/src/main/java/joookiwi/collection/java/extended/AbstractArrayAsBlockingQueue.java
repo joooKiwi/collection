@@ -74,7 +74,7 @@ public abstract class AbstractArrayAsBlockingQueue<T>
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super T> values) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingQueue."); }
+    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super @Nullable T> values) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingQueue."); }
 
     /// Fail to transfer the `values` from the current [AbstractArrayAsBlockingQueue]
     ///
@@ -82,7 +82,7 @@ public abstract class AbstractArrayAsBlockingQueue<T>
     /// @param maximum The (_never used_) maximum of elements to transfer
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super T> values, int maximum) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingQueue."); }
+    @Override public int drainTo(final @Nullable @Unmodifiable Collection<? super @Nullable T> values, int maximum) { throw new UnsupportedMethodException("The method “drainTo” is not supported in an immutable BlockingQueue."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

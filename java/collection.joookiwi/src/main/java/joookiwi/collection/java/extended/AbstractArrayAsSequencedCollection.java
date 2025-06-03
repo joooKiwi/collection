@@ -99,7 +99,7 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable SequencedCollection."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable SequencedCollection."); }
 
 
     /// Fail to clear the current [instance][SequencedCollection]
@@ -133,21 +133,21 @@ public abstract class AbstractArrayAsSequencedCollection<T extends @Nullable Obj
     /// @param values The (_never used_) elements to remove
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable SequencedCollection."); }
+    @Override public boolean removeAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedMethodException("The method “removeAll” is not supported in an immutable SequencedCollection."); }
 
     /// Fail to remove anything to the current [instance][SequencedCollection]
     ///
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable SequencedCollection."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super @Nullable T> filter) { throw new UnsupportedMethodException("The method “removeIf” is not supported in an immutable SequencedCollection."); }
 
     /// Fail to keep the `values` in the current [instance][SequencedCollection]
     ///
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable SequencedCollection."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedMethodException("The method “retainAll” is not supported in an immutable SequencedCollection."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 
