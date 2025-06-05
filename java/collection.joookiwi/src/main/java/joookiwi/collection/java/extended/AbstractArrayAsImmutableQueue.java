@@ -44,21 +44,21 @@ public abstract class AbstractArrayAsImmutableQueue<T extends @Nullable Object>
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
-    /// Fail to add a `value` to the current [AbstractArrayAsQueue]
+    /// Fail to add a `value` to the current [instance][Queue]
     ///
     /// @param value The (_never used_) element to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
     @Override public boolean offer(final @Nullable T value) { throw new UnsupportedMethodException("The method “offer” is not supported in an immutable Queue."); }
 
-    /// Fail to remove and retrieve the head of the current [AbstractArrayAsQueue]
+    /// Fail to remove and retrieve the head of the current [instance][Queue]
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
     @Override public T poll() { throw new UnsupportedMethodException("The method “poll” is not supported in an immutable Queue."); }
 
 
-    /// Fail to remove the head of the current [AbstractArrayAsQueue]
+    /// Fail to remove the head of the current [instance][Queue]
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)

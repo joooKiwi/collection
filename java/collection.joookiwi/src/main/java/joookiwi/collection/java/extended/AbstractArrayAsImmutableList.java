@@ -136,7 +136,7 @@ public abstract class AbstractArrayAsImmutableList<T extends @Nullable Object>
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
-    /// Fail to set the `value` at the `index` specified
+    /// Fail to set the `value` at the `index` specified in the current [instance][List]
     ///
     /// @param index The (_never used_) index
     /// @param value The (_never used_) value to set
