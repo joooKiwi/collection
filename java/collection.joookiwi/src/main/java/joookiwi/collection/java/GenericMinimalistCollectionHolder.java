@@ -35,15 +35,15 @@ import joookiwi.collection.java.callback.QueueSupplier;
 import joookiwi.collection.java.callback.SetSupplier;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
-import joookiwi.collection.java.extended.ArrayAsCollection;
-import joookiwi.collection.java.extended.ArrayAsDeque;
-import joookiwi.collection.java.extended.ArrayAsList;
-import joookiwi.collection.java.extended.ArrayAsNavigableSet;
-import joookiwi.collection.java.extended.ArrayAsQueue;
-import joookiwi.collection.java.extended.ArrayAsSequencedCollection;
-import joookiwi.collection.java.extended.ArrayAsSequencedSet;
-import joookiwi.collection.java.extended.ArrayAsSet;
-import joookiwi.collection.java.extended.ArrayAsSortedSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableDeque;
+import joookiwi.collection.java.extended.ArrayAsImmutableList;
+import joookiwi.collection.java.extended.ArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableQueue;
+import joookiwi.collection.java.extended.ArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ArrayAsImmutableSequencedSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.BasicStack;
 import joookiwi.collection.java.extended.ImmutableArrayList;
 import joookiwi.collection.java.extended.ImmutableCopyOnWriteArrayList;
@@ -62,15 +62,15 @@ import joookiwi.collection.java.extended.MutableStack;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
 import joookiwi.collection.java.extended.OrderableCollection;
-import joookiwi.collection.java.extended.ReversedArrayAsDeque;
-import joookiwi.collection.java.extended.ReversedArrayAsList;
-import joookiwi.collection.java.extended.ReversedArrayAsNavigableSet;
-import joookiwi.collection.java.extended.ReversedArrayAsSequencedCollection;
-import joookiwi.collection.java.extended.ReversedArrayAsSequencedSet;
-import joookiwi.collection.java.extended.ReversedArrayAsSortedSet;
-import joookiwi.collection.java.extended.SubArrayAsList;
-import joookiwi.collection.java.extended.SubArrayAsNavigableSet;
-import joookiwi.collection.java.extended.SubArrayAsSortedSet;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableDeque;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableList;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedSet;
+import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.SubArrayAsImmutableList;
+import joookiwi.collection.java.extended.SubArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.SubArrayAsImmutableSortedSet;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import org.intellij.lang.annotations.Flow;
@@ -397,10 +397,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (sequenced collection) --------------------
-    //#region -------------------- Constructor (array as collection) --------------------
+    //#region -------------------- Constructor (array as immutable collection) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsCollection<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableCollection<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -419,11 +419,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as collection) --------------------
-    //#region -------------------- Constructor (array as sequenced collection) --------------------
+    //#endregion -------------------- Constructor (array as immutable collection) --------------------
+    //#region -------------------- Constructor (array as immutable sequenced collection) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSequencedCollection<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSequencedCollection<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -440,11 +440,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as sequenced collection) --------------------
-    //#region -------------------- Constructor (reversed array as sequenced collection) --------------------
+    //#endregion -------------------- Constructor (array as immutable sequenced collection) --------------------
+    //#region -------------------- Constructor (reversed array as immutable sequenced collection) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSequencedCollection<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSequencedCollection<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -461,7 +461,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as sequenced collection) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable sequenced collection) --------------------
 
     //#region -------------------- Constructor (list) --------------------
 
@@ -574,7 +574,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Constructor (array as list) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsList<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableList<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -592,10 +592,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (array as list) --------------------
-    //#region -------------------- Constructor (sub array as list) --------------------
+    //#region -------------------- Constructor (sub array as immutable list) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsList<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsImmutableList<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -612,11 +612,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (sub array as list) --------------------
-    //#region -------------------- Constructor (reversed array as list) --------------------
+    //#endregion -------------------- Constructor (sub array as immutable list) --------------------
+    //#region -------------------- Constructor (reversed array as immutable list) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsList<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableList<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -633,7 +633,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as list) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable list) --------------------
     //#region -------------------- Constructor (immutable array list) --------------------
 
     @Contract(pure = true)
@@ -955,10 +955,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (tree set) --------------------
-    //#region -------------------- Constructor (array as set) --------------------
+    //#region -------------------- Constructor (array as immutable set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSet<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSet<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -976,11 +976,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as set) --------------------
-    //#region -------------------- Constructor (array as sequenced set) --------------------
+    //#endregion -------------------- Constructor (array as immutable set) --------------------
+    //#region -------------------- Constructor (array as immutable sequenced set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSequencedSet<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSequencedSet<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -997,11 +997,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as sequenced set) --------------------
-    //#region -------------------- Constructor (array as sorted set) --------------------
+    //#endregion -------------------- Constructor (array as immutable sequenced set) --------------------
+    //#region -------------------- Constructor (array as immutable sorted set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsSortedSet<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSortedSet<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1018,11 +1018,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as sorted set) --------------------
-    //#region -------------------- Constructor (array as navigable set) --------------------
+    //#endregion -------------------- Constructor (array as immutable sorted set) --------------------
+    //#region -------------------- Constructor (array as immutable navigable set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsNavigableSet<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableNavigableSet<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1039,11 +1039,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as navigable set) --------------------
-    //#region -------------------- Constructor (sub array as sorted set) --------------------
+    //#endregion -------------------- Constructor (array as immutable navigable set) --------------------
+    //#region -------------------- Constructor (sub array as immutable sorted set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsSortedSet<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsImmutableSortedSet<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1060,11 +1060,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (sub array as sorted set) --------------------
-    //#region -------------------- Constructor (sub array as navigable set) --------------------
+    //#endregion -------------------- Constructor (sub array as immutable sorted set) --------------------
+    //#region -------------------- Constructor (sub array as immutable navigable set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsNavigableSet<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) SubArrayAsImmutableNavigableSet<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1081,11 +1081,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (sub array as navigable set) --------------------
-    //#region -------------------- Constructor (reversed array as sequenced set) --------------------
+    //#endregion -------------------- Constructor (sub array as immutable navigable set) --------------------
+    //#region -------------------- Constructor (reversed array as immutable sequenced set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSequencedSet<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSequencedSet<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1102,11 +1102,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as sequenced set) --------------------
-    //#region -------------------- Constructor (reversed array as sorted set) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable sequenced set) --------------------
+    //#region -------------------- Constructor (reversed array as immutable sorted set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsSortedSet<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableSortedSet<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1123,11 +1123,11 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as sorted set) --------------------
-    //#region -------------------- Constructor (reversed array as navigable set) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable sorted set) --------------------
+    //#region -------------------- Constructor (reversed array as immutable navigable set) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsNavigableSet<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableNavigableSet<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1144,7 +1144,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as navigable set) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable navigable set) --------------------
     //#region -------------------- Constructor (immutable hash set) --------------------
 
     @Contract(pure = true)
@@ -1296,10 +1296,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (queue) --------------------
-    //#region -------------------- Constructor (array as queue) --------------------
+    //#region -------------------- Constructor (array as immutable queue) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsQueue<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableQueue<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1314,7 +1314,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (array as queue) --------------------
+    //#endregion -------------------- Constructor (array as immutable queue) --------------------
 
     //#region -------------------- Constructor (deque) --------------------
 
@@ -1385,7 +1385,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Constructor (array as deque) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsDeque<? extends T> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableDeque<? extends T> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1403,10 +1403,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     }
 
     //#endregion -------------------- Constructor (array as deque) --------------------
-    //#region -------------------- Constructor (reversed array as deque) --------------------
+    //#region -------------------- Constructor (reversed array as immutable deque) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsDeque<? extends T, ?, ?> reference) {
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ReversedArrayAsImmutableDeque<? extends T, ?, ?> reference) {
         super();
         if (reference.isEmpty()) {
             __size = 0;
@@ -1423,7 +1423,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
             __array = _arrayCreator().newArray(reference, size);
     }
 
-    //#endregion -------------------- Constructor (reversed array as deque) --------------------
+    //#endregion -------------------- Constructor (reversed array as immutable deque) --------------------
     //#region -------------------- Constructor (immutable stack) --------------------
 
     @Contract(pure = true)

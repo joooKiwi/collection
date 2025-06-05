@@ -11,9 +11,9 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// A container to create a subdivided array lazily via [#subSource]
 ///
 /// @param <T> The type
-/// @see SubArrayAsList
-/// @see SubArrayAsSortedSet
-/// @see SubArrayAsNavigableSet
+/// @see SubArrayAsImmutableList
+/// @see SubArrayAsImmutableSortedSet
+/// @see SubArrayAsImmutableNavigableSet
 @NotNullByDefault
 public class SubArray<T extends @Nullable Object> {
 

@@ -271,7 +271,7 @@ final class UtilityForArray {
             return emptyList();
         if (from == to)
             return emptyList();
-        return new SubArrayAsList<>(source, new SubArray<>(reference, from, to));
+        return new SubArrayAsImmutableList<>(source, new SubArray<>(reference, from, to));
     }
 
 
@@ -293,7 +293,7 @@ final class UtilityForArray {
 
         final var comparator = source.comparator();
         final var comparatorHelper = ComparatorHelper.getInstance();
-        return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
     }
 
     @Contract(ALWAYS_NEW_6)
@@ -318,12 +318,12 @@ final class UtilityForArray {
         final var comparatorHelper = ComparatorHelper.getInstance();
         if (fromIsInclusive)
             if (toIsInclusive)
-                return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+                return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
             else
-                return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+                return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
         if (toIsInclusive)
-            return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
-        return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
 
     }
 
@@ -337,7 +337,7 @@ final class UtilityForArray {
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
-        return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_4)
@@ -351,8 +351,8 @@ final class UtilityForArray {
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
         if (isInclusive)
-            return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
-        return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_3)
@@ -364,7 +364,7 @@ final class UtilityForArray {
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-        return new SubArrayAsSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
     @Contract(ALWAYS_NEW_4)
@@ -378,8 +378,8 @@ final class UtilityForArray {
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
         if (isInclusive)
-            return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
-        return new SubArrayAsNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
     //#endregion -------------------- As subdivided --------------------
@@ -390,7 +390,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptyList();
-        return new ReversedArrayAsSequencedCollection<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> @UnmodifiableView List<T> asReversed(final List<? super T> source,
@@ -398,7 +398,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptyList();
-        return new ReversedArrayAsList<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> @UnmodifiableView SequencedSet<T> asReversed(final SequencedSet<? super T> source,
@@ -406,7 +406,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptySortedSet();
-        return new ReversedArrayAsSequencedSet<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asReversed(final SortedSet<? super T> source,
@@ -414,7 +414,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptySortedSet();
-        return new ReversedArrayAsSortedSet<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableSortedSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asReversed(final NavigableSet<? super T> source,
@@ -422,7 +422,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptyNavigableSet();
-        return new ReversedArrayAsNavigableSet<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
     public static <T extends @Nullable Object> @UnmodifiableView Deque<T> asReversed(final Deque<? super T> source,
@@ -430,7 +430,7 @@ final class UtilityForArray {
         final var size = reference.length;
         if (size == 0)
             return emptyDeque();
-        return new ReversedArrayAsDeque<>(source, new ReversedArray<>(reference));
+        return new ReversedArrayAsImmutableDeque<>(source, new ReversedArray<>(reference));
     }
 
     //#endregion -------------------- As reversed --------------------
