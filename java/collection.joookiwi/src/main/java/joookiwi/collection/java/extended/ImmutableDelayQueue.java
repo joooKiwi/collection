@@ -65,7 +65,8 @@ public class ImmutableDelayQueue<T extends Delayed>
         __size = values.size();
         if (__isEmpty = values.isEmpty())
             return;
-        for (final T value : values)
+
+        for (final var value : values)
             super.offer(value);
     }
 

@@ -47,8 +47,14 @@ public class ImmutableConcurrentLinkedDeque<T>
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ConcurrentLinkedDeque]
     public ImmutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(new ArrayAsCollection<>(values));
-        __isEmpty = (__size = values.length) == 0;
+        super();
+        final var size = __size = values.length;
+        if (__isEmpty = size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            super.offerLast(values[index]);
     }
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ConcurrentLinkedDeque]

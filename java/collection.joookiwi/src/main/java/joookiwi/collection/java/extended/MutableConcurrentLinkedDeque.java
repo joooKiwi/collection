@@ -19,7 +19,7 @@ public class MutableConcurrentLinkedDeque<T>
         implements BasicStack<T>,
                    Cloneable {
 
-    @Serial private static final long serialVersionUID = -1158958160598704896L;
+    @Serial private static final long serialVersionUID = 1612193267985161344L;
 
     //#region -------------------- Constructors --------------------
 
@@ -32,7 +32,16 @@ public class MutableConcurrentLinkedDeque<T>
     //#region -------------------- values --------------------
 
     /// Create a mutable instance of [ConcurrentLinkedDeque]
-    public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(new ArrayAsCollection<>(values)); }
+    public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
+        super();
+        final var size = values.length;
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offerLast(values[index]);
+    }
 
     /// Create an mutable instance of [ConcurrentLinkedDeque]
     public MutableConcurrentLinkedDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }

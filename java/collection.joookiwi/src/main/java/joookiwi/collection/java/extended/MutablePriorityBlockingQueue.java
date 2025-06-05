@@ -7,6 +7,7 @@ import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.PriorityBlockingQueue;
+import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -167,7 +168,16 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(new ArrayAsSortedSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
+        super(NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY), null);
+        final var size = values.length;
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            super.offer(values[index]);
+    }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -175,7 +185,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) { super(values); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -183,7 +193,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable OrderableCollection<? extends T> values) { super(values); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -191,7 +201,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> values) { super(values); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -199,7 +209,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityBlockingQueue<? extends T> values) { super(values); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -207,7 +217,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<? extends T> values) { super(new ImmutableTreeSet<>(values)); }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
     //#region -------------------- values, comparator --------------------
@@ -219,7 +229,16 @@ public class MutablePriorityBlockingQueue<T>
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                        final @Nullable Comparator<? super T> comparator) { super(new ArrayAsSortedSet<>(values, comparator)); }
+                                        final @Nullable Comparator<? super T> comparator) {
+        super(NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY), comparator);
+        final var size = values.length;
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            super.offer(values[index]);
+    }
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -228,7 +247,14 @@ public class MutablePriorityBlockingQueue<T>
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                                        final @Nullable Comparator<? super T> comparator) { super(new ImmutableTreeSet<>(values, comparator)); }
+                                        final @Nullable Comparator<? super T> comparator) {
+        super(NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            super.offer(value);
+    }
 
     //#endregion -------------------- values, comparator --------------------
 

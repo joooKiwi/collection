@@ -64,7 +64,15 @@ public class MutableArrayDeque<T>
     /// Create a mutable instance of [ArrayDeque]
     /// with an initial capacity as the `values.length`
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(new ArrayAsCollection<>(values));
+        super(values.length);
+
+        final var size = values.length;
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            addLast(values[index]);
     }
 
     /// Create a mutable instance of [ArrayDeque]

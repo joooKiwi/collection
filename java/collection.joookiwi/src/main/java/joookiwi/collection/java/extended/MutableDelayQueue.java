@@ -35,6 +35,7 @@ public class MutableDelayQueue<T extends Delayed>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
             super.offer(values[index]);
@@ -45,7 +46,8 @@ public class MutableDelayQueue<T extends Delayed>
     public MutableDelayQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         if (values.isEmpty())
             return;
-        for (final T value : values)
+
+        for (final var value : values)
             super.offer(value);
     }
 

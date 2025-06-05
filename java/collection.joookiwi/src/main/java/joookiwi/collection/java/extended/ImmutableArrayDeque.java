@@ -48,15 +48,26 @@ public class ImmutableArrayDeque<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
     public ImmutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(new ArrayAsCollection<>(values));
-        __isEmpty = (__size = values.length) == 0;
+        super(values.length);
+        final var size = __size = values.length;
+        if (__isEmpty = size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            super.addLast(values[index]);
     }
 
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayDeque]
     /// with a capacity as the <code>values.[size][Collection#size()]</code> (or `1` if it is empty)
     public ImmutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values);
-        __isEmpty = (__size = values.size()) == 0;
+        super(values.size());
+        final var size = __size = values.size();
+        if (__isEmpty = size == 0)
+            return;
+
+        for (final var value : values)
+            super.addLast(value);
     }
 
     //#endregion -------------------- values --------------------
