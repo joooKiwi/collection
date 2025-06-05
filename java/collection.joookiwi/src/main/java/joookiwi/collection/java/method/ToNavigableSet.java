@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsNavigableSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableNavigableSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToNavigableSet
         final var size = collection.size();
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -54,8 +54,8 @@ public final class ToNavigableSet
         if (collection.isEmpty())
             return emptyNavigableSet();
         if (collection.hasDuplicate())
-            return new ArrayAsNavigableSet<>(_orderedValues(collection, collection.size()));
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, collection.size()));
+            return new ArrayAsImmutableNavigableSet<>(_orderedValues(collection, collection.size()));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -70,7 +70,7 @@ public final class ToNavigableSet
         final var size = collection.length;
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToNavigableSet
         final var size = collection.size();
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -109,7 +109,7 @@ public final class ToNavigableSet
             return emptyNavigableSet();
         if (collection.isEmpty())
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -128,7 +128,7 @@ public final class ToNavigableSet
         final var size = collection.length;
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToNavigableSet
         final var size = collection.size();
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -167,7 +167,7 @@ public final class ToNavigableSet
             return emptyNavigableSet();
         if (collection.isEmpty())
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -186,7 +186,7 @@ public final class ToNavigableSet
         final var size = collection.length;
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToNavigableSet
         final var size = collection.size();
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -225,7 +225,7 @@ public final class ToNavigableSet
             return emptyNavigableSet();
         if (collection.isEmpty())
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(collection.size(), transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [NavigableSet]
@@ -244,7 +244,7 @@ public final class ToNavigableSet
         final var size = collection.length;
         if (size == 0)
             return emptyNavigableSet();
-        return new ArrayAsNavigableSet<>(_orderedUniqueValues(size, transform));
+        return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------

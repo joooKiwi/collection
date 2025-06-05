@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToSet
         final var size = collection.size();
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -54,8 +54,8 @@ public final class ToSet
         if (collection.isEmpty())
             return emptySet();
         if (collection.hasDuplicate())
-            return new ArrayAsSet<>(_values(collection, collection.size()));
-        return new ArrayAsSet<>(_uniqueValues(collection, collection.size()));
+            return new ArrayAsImmutableSet<>(_values(collection, collection.size()));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -70,7 +70,7 @@ public final class ToSet
         final var size = collection.length;
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToSet
         final var size = collection.size();
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -109,7 +109,7 @@ public final class ToSet
             return emptySet();
         if (collection.isEmpty())
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -128,7 +128,7 @@ public final class ToSet
         final var size = collection.length;
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToSet
         final var size = collection.size();
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -167,7 +167,7 @@ public final class ToSet
             return emptySet();
         if (collection.isEmpty())
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -186,7 +186,7 @@ public final class ToSet
         final var size = collection.length;
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToSet
         final var size = collection.size();
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -225,7 +225,7 @@ public final class ToSet
             return emptySet();
         if (collection.isEmpty())
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(collection.size(), transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Set]
@@ -244,7 +244,7 @@ public final class ToSet
         final var size = collection.length;
         if (size == 0)
             return emptySet();
-        return new ArrayAsSet<>(_uniqueValues(size, transform));
+        return new ArrayAsImmutableSet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------

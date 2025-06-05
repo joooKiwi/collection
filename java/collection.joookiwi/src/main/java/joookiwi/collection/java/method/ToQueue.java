@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsQueue;
+import joookiwi.collection.java.extended.ArrayAsImmutableQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToQueue
         final var size = collection.size();
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size));
+        return new ArrayAsImmutableQueue<>(_values(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -53,7 +53,7 @@ public final class ToQueue
             return emptyQueue();
         if (collection.isEmpty())
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, collection.size()));
+        return new ArrayAsImmutableQueue<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -68,7 +68,7 @@ public final class ToQueue
         final var size = collection.length;
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size));
+        return new ArrayAsImmutableQueue<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -90,7 +90,7 @@ public final class ToQueue
         final var size = collection.size();
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size, transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -107,7 +107,7 @@ public final class ToQueue
             return emptyQueue();
         if (collection.isEmpty())
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, collection.size(), transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -126,7 +126,7 @@ public final class ToQueue
         final var size = collection.length;
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size, transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -148,7 +148,7 @@ public final class ToQueue
         final var size = collection.size();
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size, transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -165,7 +165,7 @@ public final class ToQueue
             return emptyQueue();
         if (collection.isEmpty())
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, collection.size(), transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -184,7 +184,7 @@ public final class ToQueue
         final var size = collection.length;
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection, size, transform));
+        return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -206,7 +206,7 @@ public final class ToQueue
         final var size = collection.size();
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(size, transform));
+        return new ArrayAsImmutableQueue<>(_values(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -223,7 +223,7 @@ public final class ToQueue
             return emptyQueue();
         if (collection.isEmpty())
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(collection.size(), transform));
+        return new ArrayAsImmutableQueue<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [Queue]
@@ -242,7 +242,7 @@ public final class ToQueue
         final var size = collection.length;
         if (size == 0)
             return emptyQueue();
-        return new ArrayAsQueue<>(_values(size, transform));
+        return new ArrayAsImmutableQueue<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------

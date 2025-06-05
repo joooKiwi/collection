@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsSequencedSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSequencedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToSequencedSet
         final var size = collection.size();
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -54,8 +54,8 @@ public final class ToSequencedSet
         if (collection.isEmpty())
             return emptySequencedSet();
         if (collection.hasDuplicate())
-            return new ArrayAsSequencedSet<>(_values(collection, collection.size()));
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, collection.size()));
+            return new ArrayAsImmutableSequencedSet<>(_values(collection, collection.size()));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -70,7 +70,7 @@ public final class ToSequencedSet
         final var size = collection.length;
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToSequencedSet
         final var size = collection.size();
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -109,7 +109,7 @@ public final class ToSequencedSet
             return emptySequencedSet();
         if (collection.isEmpty())
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -128,7 +128,7 @@ public final class ToSequencedSet
         final var size = collection.length;
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToSequencedSet
         final var size = collection.size();
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -167,7 +167,7 @@ public final class ToSequencedSet
             return emptySequencedSet();
         if (collection.isEmpty())
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -186,7 +186,7 @@ public final class ToSequencedSet
         final var size = collection.length;
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToSequencedSet
         final var size = collection.size();
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -225,7 +225,7 @@ public final class ToSequencedSet
             return emptySequencedSet();
         if (collection.isEmpty())
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(collection.size(), transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedSet]
@@ -244,7 +244,7 @@ public final class ToSequencedSet
         final var size = collection.length;
         if (size == 0)
             return emptySequencedSet();
-        return new ArrayAsSequencedSet<>(_uniqueValues(size, transform));
+        return new ArrayAsImmutableSequencedSet<>(_uniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------

@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsBlockingDeque;
+import joookiwi.collection.java.extended.ArrayAsImmutableBlockingDeque;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToBlockingDeque
         final var size = collection.size();
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -53,7 +53,7 @@ public final class ToBlockingDeque
             return emptyBlockingDeque();
         if (collection.isEmpty())
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, collection.size()));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -68,7 +68,7 @@ public final class ToBlockingDeque
         final var size = collection.length;
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -90,7 +90,7 @@ public final class ToBlockingDeque
         final var size = collection.size();
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -107,7 +107,7 @@ public final class ToBlockingDeque
             return emptyBlockingDeque();
         if (collection.isEmpty())
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, collection.size(), transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -126,7 +126,7 @@ public final class ToBlockingDeque
         final var size = collection.length;
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -148,7 +148,7 @@ public final class ToBlockingDeque
         final var size = collection.size();
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -165,7 +165,7 @@ public final class ToBlockingDeque
             return emptyBlockingDeque();
         if (collection.isEmpty())
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, collection.size(), transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -184,7 +184,7 @@ public final class ToBlockingDeque
         final var size = collection.length;
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection, size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -206,7 +206,7 @@ public final class ToBlockingDeque
         final var size = collection.size();
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -223,7 +223,7 @@ public final class ToBlockingDeque
             return emptyBlockingDeque();
         if (collection.isEmpty())
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(collection.size(), transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [BlockingDeque]
@@ -242,7 +242,7 @@ public final class ToBlockingDeque
         final var size = collection.length;
         if (size == 0)
             return emptyBlockingDeque();
-        return new ArrayAsBlockingDeque<>(_values(size, transform));
+        return new ArrayAsImmutableBlockingDeque<>(_values(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------

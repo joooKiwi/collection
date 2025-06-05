@@ -8,7 +8,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
-import joookiwi.collection.java.extended.ArrayAsSortedSet;
+import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +40,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -54,8 +54,8 @@ public final class ToSortedSet
         if (collection.isEmpty())
             return emptySortedSet();
         if (collection.hasDuplicate())
-            return new ArrayAsSortedSet<>(_orderedValues(collection, collection.size()));
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size()));
+            return new ArrayAsImmutableSortedSet<>(_orderedValues(collection, collection.size()));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -70,7 +70,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -92,7 +92,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -109,7 +109,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -128,7 +128,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T, int) → U --------------------
@@ -150,7 +150,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -167,7 +167,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -186,7 +186,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection, size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
     //#endregion -------------------- (T) → U --------------------
@@ -208,7 +208,7 @@ public final class ToSortedSet
         final var size = collection.size();
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -225,7 +225,7 @@ public final class ToSortedSet
             return emptySortedSet();
         if (collection.isEmpty())
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(collection.size(), transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
     /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
@@ -244,7 +244,7 @@ public final class ToSortedSet
         final var size = collection.length;
         if (size == 0)
             return emptySortedSet();
-        return new ArrayAsSortedSet<>(_orderedUniqueValues(size, transform));
+        return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
