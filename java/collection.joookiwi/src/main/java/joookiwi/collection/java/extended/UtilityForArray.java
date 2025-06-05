@@ -126,25 +126,154 @@ final class UtilityForArray {
 
     //#region -------------------- Research --------------------
 
+    //#region -------------------- Get --------------------
+
+    /// Get the element at the specified `index` in the `collection`
     ///
-    ///
-    /// @param reference
-    /// @param index
-    /// @return
-    /// @param <T>
-    /// @throws EmptyCollectionException  The reference is empty
-    /// @throws IndexOutOfBoundsException The index is over the `reference.length`
-    public static <T extends @Nullable Object> T get(final T @Unmodifiable [] reference,
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @param <T> The `collection` type
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static <T extends @Nullable Object> T get(final T @Unmodifiable [] collection,
                                                      final int index) {
-        final var size = reference.length;
+        final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
         if (index > size)
             throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
-        return reference[index];
+        return collection[index];
     }
 
+    /// Get the element at the specified `index` in the `collection`
     ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static boolean get(final boolean @Unmodifiable [] collection,
+                              final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static char get(final char @Unmodifiable [] collection,
+                           final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static byte get(final byte @Unmodifiable [] collection,
+                           final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static short get(final short @Unmodifiable [] collection,
+                            final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static int get(final int @Unmodifiable [] collection,
+                          final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static long get(final long @Unmodifiable [] collection,
+                           final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static float get(final float @Unmodifiable [] collection,
+                            final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    /// Get the element at the specified `index` in the `collection`
+    ///
+    /// @param collection The array to find an index and retrieve a value
+    /// @param index The index to retrieve a value
+    /// @throws EmptyCollectionException  The `collection` is empty
+    /// @throws IndexOutOfBoundsException The index is over the `collection.length`
+    public static double get(final double @Unmodifiable [] collection,
+                             final int index) {
+        final var size = collection.length;
+        if (size == 0)
+            throw new EmptyCollectionException(DEFAULT_MESSAGE, index);
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ").", index);
+        return collection[index];
+    }
+
+    //#endregion -------------------- Get --------------------
     ///
     /// @param reference
     /// @return
