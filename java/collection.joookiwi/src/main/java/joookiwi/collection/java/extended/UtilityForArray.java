@@ -274,29 +274,35 @@ final class UtilityForArray {
     }
 
     //#endregion -------------------- Get --------------------
+    //#region -------------------- Get first --------------------
+
+    /// Get the first element in the `collection`
     ///
-    /// @param reference
-    /// @return
-    /// @param <T>
-    /// @throws NoElementFoundInCollectionException The reference `is empty`
-    public static <T extends @Nullable Object> T getFirst(final T @Unmodifiable [] reference) {
-        if (reference.length == 0)
+    /// @param collection The collection
+    /// @param <T> The `collection` type
+    /// @throws NoElementFoundInCollectionException The collection `is empty`
+    public static <T extends @Nullable Object> T getFirst(final T @Unmodifiable [] collection) {
+        if (collection.length == 0)
             throw new NoElementFoundInCollectionException(DEFAULT_MESSAGE);
-        return reference[0];
+        return collection[0];
     }
 
+    //#endregion -------------------- Get first --------------------
+    //#region -------------------- Get last --------------------
+
+    /// Get the last element in the `collection`
     ///
-    ///
-    /// @param reference
-    /// @return
-    /// @param <T>
-    /// @throws NoElementFoundInCollectionException The reference `is empty`
-    public static <T extends @Nullable Object> T getLast(final T @Unmodifiable [] reference) {
-        final var size = reference.length;
+    /// @param collection The collection
+    /// @param <T> The `collection` type
+    /// @throws NoElementFoundInCollectionException The collection `is empty`
+    public static <T extends @Nullable Object> T getLast(final T @Unmodifiable [] collection) {
+        final var size = collection.length;
         if (size == 0)
             throw new NoElementFoundInCollectionException("No element could be found in an empty SortedSet.");
-        return reference[size - 1];
+        return collection[size - 1];
     }
+
+    //#endregion -------------------- Get last --------------------
 
 
     public static <T extends @Nullable Object> @Nullable T getFirstOrNullUnderOrEqual(final NavigableSet<? super T> source,
