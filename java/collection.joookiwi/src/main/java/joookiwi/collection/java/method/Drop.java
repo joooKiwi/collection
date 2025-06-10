@@ -148,7 +148,7 @@ public final class Drop
         if (size == 0)
             return emptyCollectionHolder();
         if (n == 0)
-            return new GenericCollectionHolder<>(() -> collection);
+            return new GenericCollectionHolder<>(collection);
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
@@ -157,14 +157,14 @@ public final class Drop
             if (n >= size)
                 return emptyCollectionHolder();
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size, n));
+                return new GenericCollectionHolder<>(__getAll(collection, size, n));
         if (n <= -size)
-            return new GenericCollectionHolder<>(() -> collection);
+            return new GenericCollectionHolder<>(collection);
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(sizeMinus1)});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size, n2));
+        return new GenericCollectionHolder<>(__getAll(collection, size, n2));
     }
 
     @SuppressWarnings("unchecked cast")
@@ -173,7 +173,7 @@ public final class Drop
         if (collection.isEmpty())
             return emptyCollectionHolder();
         if (n == 0)
-            return new GenericCollectionHolder<>(() -> collection);
+            return collection;
 
         final var size = collection.size();
         final var sizeMinus1 = size - 1;
@@ -183,14 +183,14 @@ public final class Drop
             if (n >= size)
                 return emptyCollectionHolder();
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size, n));
+                return new GenericCollectionHolder<>(__getAll(collection, size, n));
         if (n <= -size)
-            return new GenericCollectionHolder<>(() -> collection);
+            return collection;
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getLast()});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size, n2));
+        return new GenericCollectionHolder<>(__getAll(collection, size, n2));
     }
 
     @SuppressWarnings("unchecked cast")
@@ -200,7 +200,7 @@ public final class Drop
         if (size == 0)
             return emptyCollectionHolder();
         if (n == 0)
-            return new GenericCollectionHolder<>(() -> collection);
+            return new GenericCollectionHolder<>(collection);
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
@@ -209,14 +209,14 @@ public final class Drop
             if (n >= size)
                 return emptyCollectionHolder();
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size, n));
+                return new GenericCollectionHolder<>(__getAll(collection, size, n));
         if (n <= -size)
-            return new GenericCollectionHolder<>(() -> collection);
+            return new GenericCollectionHolder<>(collection);
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[sizeMinus1]});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size, n + size));
+        return new GenericCollectionHolder<>(__getAll(collection, size, n + size));
     }
 
 

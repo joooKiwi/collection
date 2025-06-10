@@ -46,7 +46,7 @@ public final class TakeWhileIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with2Argument(collection, predicate, size));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -66,7 +66,7 @@ public final class TakeWhileIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, predicate, collection.size()));
+        return new GenericCollectionHolder<>(__with2Argument(collection, predicate, collection.size()));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -88,7 +88,7 @@ public final class TakeWhileIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with2Argument(collection, predicate, size));
     }
 
     //#endregion -------------------- predicate (int, T) → boolean --------------------
@@ -113,7 +113,7 @@ public final class TakeWhileIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with1Argument(collection, predicate, size));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -133,7 +133,7 @@ public final class TakeWhileIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(collection, predicate, collection.size()));
+        return new GenericCollectionHolder<>(__with1Argument(collection, predicate, collection.size()));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -155,7 +155,7 @@ public final class TakeWhileIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with1Argument(collection, predicate, size));
     }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
@@ -180,7 +180,7 @@ public final class TakeWhileIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with0Argument(collection, predicate, size));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -200,7 +200,7 @@ public final class TakeWhileIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(collection, predicate, collection.size()));
+        return new GenericCollectionHolder<>(__with0Argument(collection, predicate, collection.size()));
     }
 
     /// Get a new [CollectionHolder] having the first elements satisfying the given `predicate`
@@ -222,7 +222,7 @@ public final class TakeWhileIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(collection, predicate, size));
+        return new GenericCollectionHolder<>(__with0Argument(collection, predicate, size));
     }
 
     //#endregion -------------------- predicate () → boolean --------------------

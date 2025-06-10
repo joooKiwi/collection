@@ -48,7 +48,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, size));
+        return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -70,7 +70,7 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, collection.size()));
+        return new GenericCollectionHolder<>(__with2Argument(collection, transform, collection.size()));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -94,7 +94,7 @@ public final class MapIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with2Argument(collection, transform, size));
+        return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
     //#endregion -------------------- predicate (int, T) → boolean --------------------
@@ -121,7 +121,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(transform, size));
+        return new GenericCollectionHolder<>(__with1Argument(transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -143,7 +143,7 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(transform, collection.size()));
+        return new GenericCollectionHolder<>(__with1Argument(transform, collection.size()));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -167,7 +167,7 @@ public final class MapIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with1Argument(transform, size));
+        return new GenericCollectionHolder<>(__with1Argument(transform, size));
     }
 
     //#endregion -------------------- predicate (int) → boolean --------------------
@@ -194,7 +194,7 @@ public final class MapIndexed
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(transform, size));
+        return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -216,7 +216,7 @@ public final class MapIndexed
             return emptyCollectionHolder();
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(transform, collection.size()));
+        return new GenericCollectionHolder<>(__with0Argument(transform, collection.size()));
     }
 
     /// Create a new [CollectionHolder] applying a `transform` function
@@ -240,7 +240,7 @@ public final class MapIndexed
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __with0Argument(transform, size));
+        return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 
     //#endregion -------------------- predicate () → boolean --------------------

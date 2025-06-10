@@ -152,16 +152,16 @@ public final class Take
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
         if (n > 0)
             if (n >= size)
-                return new GenericCollectionHolder<>(() -> collection);
+                return new GenericCollectionHolder<>(collection);
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size - n));
+                return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
             return emptyCollectionHolder();
 
         final var n2 = n + size;
         if (n2 == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size - n2));
+        return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<T> collection,
@@ -176,16 +176,16 @@ public final class Take
         final var size = collection.size();
         if (n > 0)
             if (n >= size)
-                return new GenericCollectionHolder<>(() -> collection);
+                return collection;
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size - n));
+                return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
             return emptyCollectionHolder();
 
         final var n2 = n + size;
         if (n2 == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size - n2));
+        return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
@@ -199,16 +199,16 @@ public final class Take
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
         if (n > 0)
             if (n >= size)
-                return new GenericCollectionHolder<>(() -> collection);
+                return new GenericCollectionHolder<>(collection);
             else
-                return new GenericCollectionHolder<>(() -> __getAll(collection, size - n));
+                return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
             return emptyCollectionHolder();
 
         final var n2 = n + size;
         if (n2 == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
-        return new GenericCollectionHolder<>(() -> __getAll(collection, size - n2));
+        return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
 

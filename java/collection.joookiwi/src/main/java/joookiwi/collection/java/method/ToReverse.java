@@ -555,20 +555,20 @@ public final class ToReverse
         final var size = collection.size();
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __all(collection, size));
+        return new GenericCollectionHolder<>(__all(collection, size));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __all(collection, collection.size()));
+        return new GenericCollectionHolder<>(__all(collection, collection.size()));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection) {
         final var size = collection.length;
         if (size == 0)
             return emptyCollectionHolder();
-        return new GenericCollectionHolder<>(() -> __all(collection, size));
+        return new GenericCollectionHolder<>(__all(collection, size));
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -581,7 +581,7 @@ public final class ToReverse
             return emptyCollectionHolder();
 
         final var startingIndex = _startingIndex(from, size);
-        return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
+        return new GenericCollectionHolder<>(__withAStartingIndex(collection, startingIndex, size));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
@@ -591,7 +591,7 @@ public final class ToReverse
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(from, size);
-        return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
+        return new GenericCollectionHolder<>(__withAStartingIndex(collection, startingIndex, size));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
@@ -601,7 +601,7 @@ public final class ToReverse
             return emptyCollectionHolder();
 
         final var startingIndex = _startingIndex(from, size);
-        return new GenericCollectionHolder<>(() -> __withAStartingIndex(collection, startingIndex, size));
+        return new GenericCollectionHolder<>(__withAStartingIndex(collection, startingIndex, size));
     }
 
     //#endregion -------------------- from --------------------
@@ -618,7 +618,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex < startingIndex)
             throw new InvalidIndexRangeException("Invalid index range. The ending index “" + to + '”' + (to == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + from + '”' + (from == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', from, to);
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
@@ -632,7 +632,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex < startingIndex)
             throw new InvalidIndexRangeException("Invalid index range. The ending index “" + to + '”' + (to == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + from + '”' + (from == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', from, to);
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection,
@@ -646,7 +646,7 @@ public final class ToReverse
         final var endingIndex = _endingIndex(to, size);
         if (endingIndex < startingIndex)
             throw new InvalidIndexRangeException("Invalid index range. The ending index “" + to + '”' + (to == startingIndex ? "" : " (“" + startingIndex + "” after calculation)") + " is over the starting index “" + from + '”' + (from == endingIndex ? "" : " (“" + endingIndex + "” after calculation") + '.', from, to);
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, startingIndex, endingIndex));
     }
 
     //#endregion -------------------- from, to --------------------
@@ -658,7 +658,7 @@ public final class ToReverse
         if (size == 0)
             return emptyCollectionHolder();
         final var endingIndex = _endingIndex(to, size);
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final CollectionHolder<? extends T> collection,
@@ -666,7 +666,7 @@ public final class ToReverse
         if (collection.isEmpty())
             return emptyCollectionHolder();
         final var endingIndex = _endingIndex(to, collection.size());
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final T @Unmodifiable [] collection,
@@ -675,7 +675,7 @@ public final class ToReverse
         if (size == 0)
             return emptyCollectionHolder();
         final var endingIndex = _endingIndex(to, size);
-        return new GenericCollectionHolder<>(() -> __withAStartingAndEndingIndex(collection, 0, endingIndex));
+        return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
 
     //#endregion -------------------- to --------------------
