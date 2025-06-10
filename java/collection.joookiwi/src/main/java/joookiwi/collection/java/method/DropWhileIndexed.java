@@ -2,7 +2,6 @@ package joookiwi.collection.java.method;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.IntPredicate;
-import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
@@ -34,7 +33,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -53,7 +55,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -70,7 +75,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final T @Nullable @Unmodifiable [] collection,
@@ -92,7 +100,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -111,7 +122,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -128,7 +142,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final T @Nullable @Unmodifiable [] collection,
@@ -150,7 +167,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -169,7 +189,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -186,7 +209,10 @@ public final class DropWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#dropWhile(Predicate)
+    /// @see java.util.stream.Stream#dropWhile(java.util.function.Predicate) Stream.dropWhile(predicate)
+    /// @see java.util.stream.IntStream#dropWhile(java.util.function.IntPredicate) IntStream.dropWhile(predicate)
+    /// @see java.util.stream.LongStream#dropWhile(java.util.function.LongPredicate) LongStream.dropWhile(predicate)
+    /// @see java.util.stream.DoubleStream#dropWhile(java.util.function.DoublePredicate) DoubleStream.dropWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-while.html">Kotlin dropWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> dropWhileIndexed(final T @Nullable @Unmodifiable [] collection,

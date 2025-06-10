@@ -33,6 +33,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [size][#size] is not **0** otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
@@ -49,6 +52,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [isNotEmpty][#isNotEmpty] otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
@@ -65,6 +71,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [size][#size] is not **0** otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
@@ -86,6 +95,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -112,6 +124,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -136,6 +151,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -165,6 +183,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -191,6 +212,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -215,6 +239,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -244,6 +271,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -270,6 +300,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
@@ -294,6 +327,9 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>

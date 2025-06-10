@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
@@ -29,7 +28,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -49,7 +52,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -67,7 +74,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -90,7 +101,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -110,7 +125,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -128,7 +147,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -151,7 +174,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -171,7 +198,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>
@@ -189,7 +220,11 @@ public final class ForEachIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param action     The given action
-    /// @see Iterable#forEach(Consumer)
+    /// @see java.lang.Iterable#forEach(java.util.function.Consumer) Iterable.forEach(action)
+    /// @see java.util.stream.Stream#forEach(java.util.function.Consumer) Stream.forEach(action)
+    /// @see java.util.stream.IntStream#forEach(java.util.function.IntConsumer) IntStream.forEach(action)
+    /// @see java.util.stream.LongStream#forEach(java.util.function.LongConsumer) LongStream.forEach(action)
+    /// @see java.util.stream.DoubleStream#forEach(java.util.function.DoubleConsumer) DoubleStream.forEach(action)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">Javascript ReadonlyArray.forEach</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html">Kotlin forEachIndexed(action)</a>

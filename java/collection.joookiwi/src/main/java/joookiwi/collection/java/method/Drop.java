@@ -28,7 +28,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][MinimalistCollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -44,7 +47,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][CollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -60,7 +66,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] collection
     /// @param n          The number of arguments (if negative, then it is plus `size`)
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -77,7 +86,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][MinimalistCollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -93,7 +105,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][CollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -109,7 +124,10 @@ public final class Drop
     /// @param collection The [nullable][Nullable] collection
     /// @param n          The number of arguments (if negative, then it is plus `size`)
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#skip
+    /// @see java.util.stream.Stream#skip(long) Stream.skip(n)
+    /// @see java.util.stream.IntStream#skip(long) IntStream.skip(n)
+    /// @see java.util.stream.LongStream#skip(long) LongStream.skip(n)
+    /// @see java.util.stream.DoubleStream#skip(long) DoubleStream.skip(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html">Kotlin drop(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue

@@ -34,6 +34,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -58,6 +61,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -80,6 +86,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -107,6 +116,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -131,6 +143,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -154,6 +169,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -181,6 +199,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -205,6 +226,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
@@ -227,6 +251,9 @@ public final class All
     /// @param <T>        The `collection` type
     /// @return `true` only if every value in the `collection` is applicable to the `predicate`
     /// @see java.util.stream.Stream#allMatch(java.util.function.Predicate) Stream.allMatch(predicate)
+    /// @see java.util.stream.IntStream#allMatch(java.util.function.IntPredicate) IntStream.allMatch(predicate)
+    /// @see java.util.stream.LongStream#allMatch(java.util.function.LongPredicate) LongStream.allMatch(predicate)
+    /// @see java.util.stream.DoubleStream#allMatch(java.util.function.DoublePredicate) DoubleStream.allMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/every">JavaScript every(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>

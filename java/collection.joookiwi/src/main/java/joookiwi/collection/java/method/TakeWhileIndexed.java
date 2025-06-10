@@ -2,7 +2,6 @@ package joookiwi.collection.java.method;
 
 import java.util.function.BooleanSupplier;
 import java.util.function.IntPredicate;
-import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
@@ -33,7 +32,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -52,7 +54,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -69,7 +74,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final T @Nullable @Unmodifiable [] collection,
@@ -91,7 +99,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -110,7 +121,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -127,7 +141,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final T @Nullable @Unmodifiable [] collection,
@@ -149,7 +166,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
@@ -168,7 +188,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final @Nullable CollectionHolder<? extends T> collection,
@@ -185,7 +208,10 @@ public final class TakeWhileIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see java.util.stream.Stream#takeWhile(Predicate)
+    /// @see java.util.stream.Stream#takeWhile(java.util.function.Predicate) Stream.takeWhile(predicate)
+    /// @see java.util.stream.IntStream#takeWhile(java.util.function.IntPredicate) IntStream.takeWhile(predicate)
+    /// @see java.util.stream.LongStream#takeWhile(java.util.function.LongPredicate) LongStream.takeWhile(predicate)
+    /// @see java.util.stream.DoubleStream#takeWhile(java.util.function.DoublePredicate) DoubleStream.takeWhile(predicate)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-while.html">Kotlin takeWhile(predicate)</a>
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> takeWhileIndexed(final T @Nullable @Unmodifiable [] collection,

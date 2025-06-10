@@ -28,7 +28,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][MinimalistCollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -44,7 +47,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][CollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -60,7 +66,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] collection
     /// @param n          The number of arguments (if negative, then it is plus `size`)
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -77,7 +86,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][MinimalistCollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -93,7 +105,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param n          The number of arguments (if negative, then it is plus [size][CollectionHolder#size])
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -109,7 +124,10 @@ public final class Take
     /// @param collection The [nullable][Nullable] collection
     /// @param n          The number of arguments (if negative, then it is plus `size`)
     /// @param <T>        The `collection` and `element` type
-    /// @see java.util.stream.Stream#limit
+    /// @see java.util.stream.Stream#limit(long) Stream.limit(n)
+    /// @see java.util.stream.IntStream#limit(long) IntStream.limit(n)
+    /// @see java.util.stream.LongStream#limit(long) LongStream.limit(n)
+    /// @see java.util.stream.DoubleStream#limit(long) DoubleStream.limit(n)
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html">Kotlin take(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue

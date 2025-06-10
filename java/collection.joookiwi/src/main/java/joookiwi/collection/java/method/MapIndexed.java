@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -33,7 +32,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -54,7 +56,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -73,7 +78,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -97,7 +105,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -118,7 +129,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -137,7 +151,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -161,7 +178,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -182,7 +202,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
@@ -201,7 +224,10 @@ public final class MapIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param transform  The given transform
-    /// @see java.util.stream.Stream#map(Function) Java map(transform)
+    /// @see java.util.stream.Stream#map(java.util.function.Function) Stream.map(transform)
+    /// @see java.util.stream.IntStream#map(java.util.function.IntUnaryOperator) IntStream.map(transform)
+    /// @see java.util.stream.LongStream#map(java.util.function.LongUnaryOperator) LongStream.map(transform)
+    /// @see java.util.stream.DoubleStream#map(java.util.function.DoubleUnaryOperator) DoubleStream.map(transform)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/map">Javascript map(transform)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html">Kotlin mapIndexed(transform)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select">C# Select(transform)</a>
