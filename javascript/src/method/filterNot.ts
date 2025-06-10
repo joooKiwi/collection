@@ -22,6 +22,7 @@ import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
+import {__reduceTo}                    from "./_array utility"
 
 //#region -------------------- Facade method --------------------
 
@@ -219,67 +220,73 @@ export function filterNotByArray<const T, >(collection: Nullable<readonly T[]>, 
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size)
         if (!predicate())
-            newArray.push(collection.get(index,),)
-    return newArray
+            tempArray[++amountOfItemsAdded] = collection.get(index,)
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size)
         if (!predicate())
-            newArray.push(collection[index] as T,)
-    return newArray
+            tempArray[++amountOfItemsAdded] = collection[index] as T
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 
 function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T,) => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
         if (!predicate(value,))
-            newArray.push(value,)
+            tempArray[++amountOfItemsAdded] = value
     }
-    return newArray
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T,) => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
         if (!predicate(value,))
-            newArray.push(value,)
+            tempArray[++amountOfItemsAdded] = value
     }
-    return newArray
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 
 function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
         if (!predicate(value, index,))
-            newArray.push(value,)
+            tempArray[++amountOfItemsAdded] = value
     }
-    return newArray
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
-    const newArray: T[] = []
+    const tempArray = new Array<T>(size,)
+    let amountOfItemsAdded = -1;
     let index = -1
     while (++index < size) {
         const value = collection[index] as T
         if (!predicate(value, index,))
-            newArray.push(value,)
+            tempArray[++amountOfItemsAdded] = value
     }
-    return newArray
+    return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
 //#endregion -------------------- Loop methods --------------------

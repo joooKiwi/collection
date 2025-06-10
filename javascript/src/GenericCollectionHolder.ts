@@ -27,6 +27,7 @@ import {CollectionConstants}                         from "./CollectionConstants
 import {EmptyCollectionException}                    from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                     from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                   from "./exception/IndexOutOfBoundsException"
+import {__reduceTo}                                  from "./method/_array utility"
 import {allByArray}                                  from "./method/all"
 import {anyByArray}                                  from "./method/any"
 import {dropByArray}                                 from "./method/drop"
@@ -1312,15 +1313,16 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.hasNull)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const array = this._array
-                const newArray: NonNullable<T>[] = []
-                const size = this.size
+                const size = array.length;
+                const tempArray = new Array<NonNullable<T>>(size,)
+                let amountOfItemsAdded = -1
                 let index = -1
                 while (++index < size) {
                     const value = array[index] as T
                     if (value != null)
-                        newArray.push(value,)
+                        tempArray[++amountOfItemsAdded] = value
                 }
-                return newArray
+                return __reduceTo(tempArray, amountOfItemsAdded + 1,)
             },)
         return this as CollectionHolder<NonNullable<T>>
     }
