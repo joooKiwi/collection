@@ -1396,7 +1396,6 @@ export class GenericCollectionHolder<const T = unknown,
         return takeLastByArray(this._array, n,)
     }
 
-
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
     public override takeLastWhile(predicate: BooleanCallback<T>,) {
