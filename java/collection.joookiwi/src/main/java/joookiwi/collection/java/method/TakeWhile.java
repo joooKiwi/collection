@@ -230,9 +230,9 @@ public final class TakeWhile
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> T @Unmodifiable [] __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                          final BooleanSupplier predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final BooleanSupplier predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -243,9 +243,9 @@ public final class TakeWhile
         return newArray;
     }
 
-    private static <T> T @Unmodifiable [] __with0Argument(final T @Unmodifiable [] collection,
-                                                          final BooleanSupplier predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with0Argument(final T @Unmodifiable [] collection,
+                                                                                   final BooleanSupplier predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size)
@@ -257,9 +257,9 @@ public final class TakeWhile
     }
 
 
-    private static <T> T @Unmodifiable [] __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                          final Predicate<? super T> predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final Predicate<? super T> predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size) {
@@ -272,9 +272,9 @@ public final class TakeWhile
         return newArray;
     }
 
-    private static <T> T @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
-                                                          final Predicate<? super T> predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with1Argument(final T @Unmodifiable [] collection,
+                                                                                   final Predicate<? super T> predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size) {
@@ -288,9 +288,9 @@ public final class TakeWhile
     }
 
 
-    private static <T> T @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
-                                                          final ObjIntPredicate<? super T> predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                   final ObjIntPredicate<? super T> predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size) {
@@ -303,9 +303,9 @@ public final class TakeWhile
         return newArray;
     }
 
-    private static <T> T @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
-                                                          final ObjIntPredicate<? super T> predicate,
-                                                          final int size) {
+    private static <T extends @Nullable Object> T @Unmodifiable [] __with2Argument(final T @Unmodifiable [] collection,
+                                                                                   final ObjIntPredicate<? super T> predicate,
+                                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
         var index = -1;
         while (++index < size) {
