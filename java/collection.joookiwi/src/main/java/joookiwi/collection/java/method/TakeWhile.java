@@ -239,7 +239,7 @@ public final class TakeWhile
             if (predicate.getAsBoolean())
                 newArray[index] = collection.get(index);
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         return newArray;
     }
 
@@ -252,7 +252,7 @@ public final class TakeWhile
             if (predicate.getAsBoolean())
                 newArray[index] = collection[index];
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         return newArray;
     }
 
@@ -267,7 +267,7 @@ public final class TakeWhile
             if (predicate.test(value))
                 newArray[index] = value;
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         }
         return newArray;
     }
@@ -282,7 +282,7 @@ public final class TakeWhile
             if (predicate.test(value))
                 newArray[index] = value;
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         }
         return newArray;
     }
@@ -298,7 +298,7 @@ public final class TakeWhile
             if (predicate.test(value, index))
                 newArray[index] = value;
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         }
         return newArray;
     }
@@ -313,7 +313,7 @@ public final class TakeWhile
             if (predicate.test(value, index))
                 newArray[index] = value;
             else
-                return _reduceTo(newArray, index);
+                return __reduceTo(newArray, index);
         }
         return newArray;
     }
