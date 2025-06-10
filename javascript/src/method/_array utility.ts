@@ -10,6 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {CollectionConstants}       from "../CollectionConstants"
 import {EmptyCollectionException}  from "../exception/EmptyCollectionException"
 import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
@@ -49,6 +50,9 @@ export function __get<const T, >(array: readonly T[], index: number,): T {
  * @internal
  */
 export function __reduceTo<const T,>(array: readonly T[], newSize: number,): readonly T[] {
+    if (newSize == 0)
+        return CollectionConstants.EMPTY_ARRAY
+
     const newArray = new Array<T>(newSize,)
     let index = -1
     while (++index < newSize)
