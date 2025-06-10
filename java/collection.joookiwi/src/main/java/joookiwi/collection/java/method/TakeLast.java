@@ -31,7 +31,7 @@ public final class TakeLast
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html">Kotlin takeLast(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable MinimalistCollectionHolder<T> collection,
+    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                      final int n) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -46,7 +46,7 @@ public final class TakeLast
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html">Kotlin takeLast(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable CollectionHolder<T> collection,
+    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                             final int n) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -77,7 +77,7 @@ public final class TakeLast
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html">Kotlin takeLast(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable MinimalistCollectionHolder<T> collection,
+    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                             final Integer n) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -92,7 +92,7 @@ public final class TakeLast
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html">Kotlin takeLast(n)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable CollectionHolder<T> collection,
+    public static <T extends @Nullable Object> CollectionHolder<T> takeLast(final @Nullable CollectionHolder<? extends T> collection,
                                                                             final Integer n) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -118,7 +118,7 @@ public final class TakeLast
     //#region -------------------- Core methods --------------------
 
     @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<T> collection,
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                            final int n) {
         final var size = collection.size();
         if (size == 0)
@@ -142,7 +142,7 @@ public final class TakeLast
     }
 
     @SuppressWarnings("unchecked cast")
-    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<T> collection,
+    private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
                                                                            final int n) {
         if (collection.isEmpty())
             return emptyCollectionHolder();
@@ -154,7 +154,7 @@ public final class TakeLast
         final var size = collection.size();
         if (n > 0)
             if (n >= size)
-                return collection;
+                return (CollectionHolder<T>) collection;
             else
                 return new GenericCollectionHolder<>(__getAll(collection, size, n));
         if (n <= -size)
@@ -194,7 +194,7 @@ public final class TakeLast
     //#endregion -------------------- Core methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> T @Unmodifiable [] __getAll(final MinimalistCollectionHolder<T> collection,
+    private static <T extends @Nullable Object> T @Unmodifiable [] __getAll(final MinimalistCollectionHolder<? extends T> collection,
                                                                             final int size,
                                                                             final int amount) {
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[amount];
