@@ -28,9 +28,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
- * @see requireNoNulls
  * @extensionFunction
  */
 export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<NonNullable<T>> {
@@ -55,9 +53,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
- * @see requireNoNulls
  * @extensionFunction
  */
 export function filterNotNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
@@ -80,9 +76,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
- * @see requireNoNulls
  * @extensionFunction
  */
 export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
@@ -99,9 +93,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
- * @see requireNoNulls
  * @extensionFunction
  */
 export function filterNotNullByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<NonNullable<T>> {
