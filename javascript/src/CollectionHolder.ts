@@ -2804,7 +2804,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
+     * <b>not</b> matching the given {@link predicate}
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
@@ -2820,7 +2820,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
+     * <b>not</b> matching the given {@link predicate}
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
@@ -2838,7 +2838,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
+     * <b>not</b> matching the given {@link predicate}
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
@@ -2854,7 +2854,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get a new {@link CollectionHolder}
-     * not matching the given {@link predicate}
+     * <b>not</b> matching the given {@link predicate}
      *
      * @param predicate The given predicate
      * @see ReadonlyArray.filter
