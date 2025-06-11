@@ -16,16 +16,16 @@ public class ReversedArrayAsImmutableIterator<T extends @Nullable Object,
     //#region -------------------- Fields --------------------
 
     private final REVERSED_ARRAY __reference;
-    private final int __size;
-    private int __cursor;
+    private final @Range(from = 0, to = MAX_INT_VALUE) int __size;
+    private @Range(from = 0, to = MAX_INT_VALUE) int __currentIndex;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
-    public ReversedArrayAsImmutableIterator(final REVERSED_ARRAY reference, int cursor) {
+    public ReversedArrayAsImmutableIterator(final REVERSED_ARRAY reference, final @Range(from = 0, to = MAX_INT_VALUE) int currentIndex) {
         super();
         __size = (this.__reference = reference).source().length;
-        __cursor = cursor;
+        __currentIndex = currentIndex;
     }
 
     public ReversedArrayAsImmutableIterator(final REVERSED_ARRAY reference) { this(reference, 0); }
@@ -43,10 +43,10 @@ public class ReversedArrayAsImmutableIterator<T extends @Nullable Object,
     @Override protected @Range(from = 0, to = MAX_INT_VALUE) int _size() { return __size; }
 
     @Contract(pure = true)
-    protected int _currentIndex() { return __cursor; }
+    protected @Range(from = 0, to = MAX_INT_VALUE) int _currentIndex() { return __currentIndex; }
 
     @Contract(mutates = "this")
-    protected void _currentIndex(final int value) { __cursor = value; }
+    protected void _currentIndex(final @Range(from = 0, to = MAX_INT_VALUE) int value) { __currentIndex = value; }
 
     //#endregion -------------------- Getter/setter methods --------------------
 

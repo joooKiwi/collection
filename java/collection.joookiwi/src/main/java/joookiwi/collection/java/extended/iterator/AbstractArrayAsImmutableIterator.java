@@ -33,13 +33,13 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
     protected @Range(from = 0, to = MAX_INT_VALUE) int _size() { return _array().length; }
 
     /// The index where it is at
-    protected abstract int _currentIndex();
+    protected abstract @Range(from = 0, to = MAX_INT_VALUE) int _currentIndex();
 
     /// Set the index located
     ///
     /// @param value The index to set
     @Contract(mutates = "this")
-    protected abstract void _currentIndex(final int value);
+    protected abstract void _currentIndex(final @Range(from = 0, to = MAX_INT_VALUE) int value);
 
     //#endregion -------------------- Getter / setter methods --------------------
     //#region -------------------- Methods --------------------

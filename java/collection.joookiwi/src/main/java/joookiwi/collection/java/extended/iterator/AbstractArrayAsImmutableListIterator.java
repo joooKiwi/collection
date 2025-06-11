@@ -4,8 +4,10 @@ import java.util.ListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A definition of an immutable [java.util.ListIterator] to have a common ancestor
 ///
@@ -25,9 +27,9 @@ public abstract class AbstractArrayAsImmutableListIterator<T extends @Nullable O
 
     //#region -------------------- Supported methods --------------------
 
-    @Override public int nextIndex() { return _currentIndex(); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int nextIndex() { return _currentIndex(); }
 
-    @Override public int previousIndex() { return _currentIndex() - 1; }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int previousIndex() { return _currentIndex() - 1; }
     @Override public boolean hasPrevious() { return _currentIndex() != 0; }
 
     @Contract(mutates = "this")

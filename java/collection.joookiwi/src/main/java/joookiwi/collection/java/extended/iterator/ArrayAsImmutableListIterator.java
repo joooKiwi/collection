@@ -20,13 +20,13 @@ public class ArrayAsImmutableListIterator<T extends @Nullable Object>
     protected static final int INITIAL_CURRENT_INDEX = 0;
 
     private final T[] __reference;
-    private final int __size;
-    private int __currentIndex;
+    private final @Range(from = 0, to = MAX_INT_VALUE) int __size;
+    private @Range(from = 0, to = MAX_INT_VALUE) int __currentIndex;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
-    public ArrayAsImmutableListIterator(final T[] reference, int currentIndex) {
+    public ArrayAsImmutableListIterator(final T[] reference, final @Range(from = 0, to = MAX_INT_VALUE) int currentIndex) {
         super();
         __size = (__reference = reference).length;
         __currentIndex = currentIndex;}
@@ -47,10 +47,10 @@ public class ArrayAsImmutableListIterator<T extends @Nullable Object>
     protected @Override @Range(from = 0, to = MAX_INT_VALUE) int _size() { return __size; }
 
     @Contract(pure = true)
-    protected @Override int _currentIndex() { return __currentIndex; }
+    protected @Override @Range(from = 0, to = MAX_INT_VALUE) int _currentIndex() { return __currentIndex; }
 
     @Contract(mutates = "this")
-    protected @Override void _currentIndex(final int value) { __currentIndex = value; }
+    protected @Override void _currentIndex(final @Range(from = 0, to = MAX_INT_VALUE) int value) { __currentIndex = value; }
 
     //#endregion -------------------- Getter / setter methods --------------------
 
