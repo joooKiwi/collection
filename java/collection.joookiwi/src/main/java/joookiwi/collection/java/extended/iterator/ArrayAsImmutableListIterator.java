@@ -5,8 +5,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
-
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A [ListIterator] adaptation to the [immutable][org.jetbrains.annotations.Unmodifiable] behaviour.
