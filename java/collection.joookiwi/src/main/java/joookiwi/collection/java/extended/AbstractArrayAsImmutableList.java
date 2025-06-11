@@ -11,6 +11,7 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.iterator.ArrayAsListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;

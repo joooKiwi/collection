@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.iterator.ArrayAsIterator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
