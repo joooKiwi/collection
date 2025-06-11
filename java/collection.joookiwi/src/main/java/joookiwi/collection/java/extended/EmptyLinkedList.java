@@ -2,10 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 import java.util.Spliterator;
@@ -13,6 +11,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +22,6 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECT
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
-import static joookiwi.collection.java.CollectionConstants.emptyListIterator;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CollectionConstants.emptyStream;
@@ -118,11 +116,11 @@ public class EmptyLinkedList<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public Iterator<T>     iterator(                   ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public Iterator<T>     descendingIterator(         ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public ListIterator<T> listIterator(               ) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public ListIterator<T> listIterator(final int index) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public Spliterator<T>  spliterator(                ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>           iterator(               ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator(               ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(               ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>       listIterator(final int index) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T  >        spliterator(               ) { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
