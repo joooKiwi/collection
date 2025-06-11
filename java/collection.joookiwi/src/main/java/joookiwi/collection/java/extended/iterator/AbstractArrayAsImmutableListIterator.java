@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.ListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -16,7 +15,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 @NotNullByDefault
 public abstract class AbstractArrayAsImmutableListIterator<T extends @Nullable Object>
         extends AbstractArrayAsImmutableIterator<T>
-        implements ListIterator<T> {
+        implements ImmutableListIterator<T> {
 
     //#region -------------------- Constructor --------------------
 
