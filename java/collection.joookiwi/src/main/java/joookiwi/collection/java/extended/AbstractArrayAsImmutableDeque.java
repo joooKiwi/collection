@@ -2,9 +2,10 @@ package joookiwi.collection.java.extended;
 
 import java.util.Collection;
 import java.util.Deque;
-import java.util.Iterator;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.iterator.ImmutableIterator;
+import joookiwi.collection.java.extended.iterator.ReversedArrayAsImmutableIterator;
 import joookiwi.collection.java.method.GetFirstOrNull;
 import joookiwi.collection.java.method.GetLastOrNull;
 import org.jetbrains.annotations.Contract;
@@ -58,7 +59,7 @@ public abstract class AbstractArrayAsImmutableDeque<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }
+    @Override public ImmutableIterator<T> descendingIterator() { return new ReversedArrayAsImmutableIterator<>(new ReversedArray<>(_reference())); }
 
     //#endregion -------------------- Iterator methods --------------------
 

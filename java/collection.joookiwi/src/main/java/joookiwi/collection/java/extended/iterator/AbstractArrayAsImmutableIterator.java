@@ -18,7 +18,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableIterator
 @NotNullByDefault
 public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Object>
-        implements Iterator<T> {
+        implements ImmutableIterator<T> {
 
     //#region -------------------- Constructor --------------------
 
@@ -27,8 +27,10 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter / setter methods --------------------
 
+    /// The array to do calculation and retrieval
     protected abstract T[] _array();
 
+    /// The size of the [reference][#_array]
     protected @Range(from = 0, to = MAX_INT_VALUE) int _size() { return _array().length; }
 
     /// The index where it is at
@@ -62,11 +64,21 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
         return next;
     }
 
+    @Contract(mutates = "this")
+    @Override public void forEachRemaining(final Consumer<? super T> operation) {
+        final var reference = _array();
+        final var size = reference.length;
+        var index = _currentIndex();
+        while (++index < size)
+            operation.accept(reference[index]);
+        _currentIndex(index);
+    }
+
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     @Contract(ALWAYS_FAIL_0)
-    @Override public void remove() { throw new UnsupportedOperationException("The method “remove” is not supported in an immutable Iterator."); }
+    @Override public void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Iterator."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

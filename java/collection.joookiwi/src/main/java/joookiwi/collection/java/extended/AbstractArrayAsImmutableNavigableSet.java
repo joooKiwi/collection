@@ -1,10 +1,11 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.NavigableSet;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
+import joookiwi.collection.java.extended.iterator.ImmutableIterator;
+import joookiwi.collection.java.extended.iterator.ReversedArrayAsImmutableIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -64,7 +65,7 @@ public abstract class AbstractArrayAsImmutableNavigableSet<T extends @Nullable O
     //#endregion -------------------- As reversed methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public Iterator<T> descendingIterator() { return new ReversedArrayAsIterator<>(new ReversedArray<>(_reference())); }
+    @Override public ImmutableIterator<T> descendingIterator() { return new ReversedArrayAsImmutableIterator<>(new ReversedArray<>(_reference())); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------
