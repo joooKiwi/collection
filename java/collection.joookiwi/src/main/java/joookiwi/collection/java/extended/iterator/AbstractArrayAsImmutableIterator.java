@@ -1,7 +1,9 @@
 package joookiwi.collection.java.extended.iterator;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
+import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -25,11 +27,9 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter / setter methods --------------------
 
-    /// The reference to do calculation and retrieval
-    protected abstract T[] _reference();
+    protected abstract T[] _array();
 
-    /// The size of the [reference][#_reference]
-    protected @Range(from = 0, to = MAX_INT_VALUE) int _size() { return _reference().length; }
+    protected @Range(from = 0, to = MAX_INT_VALUE) int _size() { return _array().length; }
 
     /// The index where it is at
     protected abstract int _currentIndex();
@@ -49,7 +49,7 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
         final var size = _size();
         if (index > size)
             throw new NoElementFoundInCollectionException("The element retrieved was not existant in the array", new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is over the size of the collection (" + size + ")."));
-        return _reference()[index];
+        return _array()[index];
     }
 
     @Override public boolean hasNext() { return _currentIndex() != _size(); }

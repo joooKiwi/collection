@@ -39,7 +39,11 @@ public class ArrayAsImmutableListIterator<T extends @Nullable Object>
     //#region -------------------- Getter / setter methods --------------------
 
     @Contract(pure = true)
-    protected @Override T[] _reference() { return __reference; }
+    protected @Override T[] _array() { return _reference(); }
+
+    /// The array passed through the constructor
+    @Contract(pure = true)
+    protected T[] _reference() { return __reference; }
 
     @Contract(pure = true)
     protected @Override @Range(from = 0, to = MAX_INT_VALUE) int _size() { return __size; }
