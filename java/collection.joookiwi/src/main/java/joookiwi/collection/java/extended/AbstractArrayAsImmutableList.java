@@ -11,7 +11,7 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.extended.iterator.ArrayAsListIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -110,9 +110,9 @@ public abstract class AbstractArrayAsImmutableList<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public ListIterator<T> listIterator() { return new ArrayAsListIterator<>(_reference()); }
+    @Override public ListIterator<T> listIterator() { return new ArrayAsImmutableListIterator<>(_reference()); }
 
-    @Override public ListIterator<T> listIterator(final int index) { return new ArrayAsListIterator<>(_reference(), index); }
+    @Override public ListIterator<T> listIterator(final int index) { return new ArrayAsImmutableListIterator<>(_reference(), index); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Comparison methods --------------------

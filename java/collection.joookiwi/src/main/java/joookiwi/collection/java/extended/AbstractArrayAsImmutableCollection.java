@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
-import joookiwi.collection.java.extended.iterator.ArrayAsIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableIterator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
@@ -159,7 +159,7 @@ public abstract class AbstractArrayAsImmutableCollection<T extends @Nullable Obj
 
     @Override public Stream<T> stream() { return Arrays.stream(_reference()); }
 
-    @Override public Iterator<T> iterator() { return new ArrayAsIterator<>(_reference()); }
+    @Override public Iterator<T> iterator() { return new ArrayAsImmutableIterator<>(_reference()); }
 
     @Override public Spliterator<T> spliterator() { return Arrays.spliterator(_reference()); }
 
