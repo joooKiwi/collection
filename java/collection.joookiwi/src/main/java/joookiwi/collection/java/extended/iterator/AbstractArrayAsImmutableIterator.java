@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.Iterator;
 import java.util.function.Consumer;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// A definition of an immutable [Iterator] to have a common ancestor
+/// A definition of an immutable [java.util.Iterator] to have a common ancestor
 ///
 /// @param <T> The type
 /// @see ArrayAsImmutableIterator

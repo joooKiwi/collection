@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.Iterator;
 import java.util.ListIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -8,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 
-/// A definition of an immutable [ListIterator] to have a common ancestor
+/// A definition of an immutable [java.util.ListIterator] to have a common ancestor
 ///
 /// @param <T> The type
 /// @see ArrayAsImmutableListIterator
