@@ -15,6 +15,9 @@ public class ReversedArrayAsImmutableIterator<T extends @Nullable Object,
 
     //#region -------------------- Fields --------------------
 
+    /// The starting index that the [java.util.Iterator] will start at
+    protected static final int INITIAL_CURRENT_INDEX = 0;
+
     private final REVERSED_ARRAY __reference;
     private final @Range(from = 0, to = MAX_INT_VALUE) int __size;
     private @Range(from = 0, to = MAX_INT_VALUE) int __currentIndex;
@@ -28,7 +31,7 @@ public class ReversedArrayAsImmutableIterator<T extends @Nullable Object,
         __currentIndex = currentIndex;
     }
 
-    public ReversedArrayAsImmutableIterator(final REVERSED_ARRAY reference) { this(reference, 0); }
+    public ReversedArrayAsImmutableIterator(final REVERSED_ARRAY reference) { this(reference, INITIAL_CURRENT_INDEX); }
 
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Getter/setter methods --------------------
