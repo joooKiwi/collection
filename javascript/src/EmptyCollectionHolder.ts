@@ -363,12 +363,14 @@ export class EmptyCollectionHolder
 
     /** @return {true} */
     public all<const S extends never, >(..._: readonly unknown[]): this is CollectionHolder<S>
+    public all(..._: readonly unknown[]): true
     public all() {
         return true
     }
 
     /** @return {true} */
     public every<const S extends never, >(..._: readonly unknown[]): this is CollectionHolder<S>
+    public every(..._: readonly unknown[]): true
     public every() {
         return this.all()
     }
