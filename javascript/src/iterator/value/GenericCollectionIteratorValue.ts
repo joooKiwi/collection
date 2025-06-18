@@ -42,6 +42,7 @@ export class GenericCollectionIteratorValue<const T = unknown,
     public get index(): INDEX { return this.#index }
 
     public override isDone(): false { return false }
+    public override isNotDone(): true { return true }
 
     public override get value(): T { return this.collection.get(this.index,) }
 

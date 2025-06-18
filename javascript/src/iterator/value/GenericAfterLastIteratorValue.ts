@@ -39,6 +39,7 @@ export class GenericAfterLastIteratorValue
     //#endregion -------------------- Singleton usage --------------------
 
     public override isDone(): true { return true }
+    public override isNotDone(): false { return false }
 
     public override get value(): AfterLastValueInCollectionIteratorSymbol {
         return CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL

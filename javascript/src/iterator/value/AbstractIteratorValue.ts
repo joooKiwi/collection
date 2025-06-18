@@ -23,6 +23,8 @@ export abstract class AbstractIteratorValue<const T,
 
     public get done(): IS_DONE { return this.isDone() }
 
+    public isNotDone(): boolean { return !this.isDone() }
+
     public abstract get value(): T
 
 }

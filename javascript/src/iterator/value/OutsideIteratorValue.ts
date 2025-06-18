@@ -23,15 +23,18 @@ export interface OutsideIteratorValue<out T extends symbol = symbol, >
     extends IteratorValue<T>,
             IteratorReturnResult<T> {
 
-    /** Tell that the {@link OutsideIteratorValue iterator value} has nothing to do anymore */
+    /** Tell that the {@link OutsideIteratorValue iterator value} is never able to progress any further */
     isDone(): true
 
     /**
-     * Tell that the {@link OutsideIteratorValue iterator value} has nothing to do anymore
+     * Tell that the {@link OutsideIteratorValue iterator value} is never able to progress any further
      *
      * @alias OutsideIteratorValue.isDone
      */
     get done(): true
+
+    /** Tell that the {@link OutsideIteratorValue iterator value} is always unable to progress any further */
+    isNotDone(): false
 
 
     /** The consistent value retrieved */

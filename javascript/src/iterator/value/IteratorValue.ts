@@ -19,15 +19,18 @@
  */
 export interface IteratorValue<out T = unknown, > {
 
-    /** Tell that the iterator container is not done yet */
+    /** Tell that the {@link IteratorValue iterator value} could be able to progress */
     isDone(): boolean
 
     /**
-     * Tell that the iterator container is not done yet
+     * Tell that the {@link IteratorValue iterator value} could be able to progress
      *
      * @alias IteratorValue.isDone
      */
     get done(): boolean
+
+    /** Tell that the {@link IteratorValue iterator value} could not be able to progress */
+    isNotDone(): boolean
 
 
     /** The value to retrieve by the iterator */

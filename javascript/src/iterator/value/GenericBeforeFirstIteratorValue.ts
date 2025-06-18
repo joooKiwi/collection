@@ -39,6 +39,7 @@ export class GenericBeforeFirstIteratorValue
     //#endregion -------------------- Singleton usage --------------------
 
     public override isDone(): true { return true }
+    public override isNotDone(): false { return false }
 
     public override get value(): BeforeFirstValueInCollectionIteratorSymbol {
         return CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL

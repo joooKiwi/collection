@@ -31,15 +31,18 @@ export interface CollectionIteratorValue<out T = unknown, >
     get index(): number
 
 
-    /** Tell that the iterator container is not done yet (<i>at the moment of its creation</i>) */
+    /** Tell that the {@link CollectionIteratorValue iterator value} is able to progress (<i>at the moment of its creation</i>) */
     isDone(): false
 
     /**
-     * Tell that the iterator container is not done yet (<i>at the moment of its creation</i>)
+     * Tell that the {@link CollectionIteratorValue iterator value} is able to progress (<i>at the moment of its creation</i>)
      *
      * @alias CollectionIteratorValue.isDone
      */
     get done(): false
+
+    /** Tell that the {@link CollectionIteratorValue iterator value} is not able to progress (<i>at the moment of its creation</i>) */
+    isNotDone(): true
 
 
     /** The value to retrieve by the iterator */
