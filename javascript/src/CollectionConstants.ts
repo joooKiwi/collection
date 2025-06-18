@@ -76,18 +76,6 @@ export class CollectionConstants {
 
     //#region -------------------- Empty references --------------------
 
-    /** An empty {@link ReadonlyArray array} */
-    public static readonly EMPTY_ARRAY = Object.freeze([],) as EmptyArray
-    /** An empty {@link ReadonlySet set} */
-    public static readonly EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
-    /** An empty {@link WeakSet weak set} */
-    public static readonly EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet<never>
-    /** An empty {@link ReadonlyMap map} */
-    public static readonly EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap<never>
-    /** An empty {@link WeakSet weak set} */
-    public static readonly EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap<never>
-
-
     /** An {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
         return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
@@ -121,65 +109,6 @@ export class CollectionConstants {
     }
 
     //#endregion -------------------- Empty references --------------------
-    //#region -------------------- Default references --------------------
-
-    /** The default value for the separator {@link String string} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    public static readonly DEFAULT_JOIN_SEPARATOR = ", "
-    /** The default value for the prefix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    public static readonly DEFAULT_JOIN_PREFIX = '['
-    /** The default value for the truncated {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    public static readonly DEFAULT_JOIN_TRUNCATED = '…'
-    /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
-    public static readonly DEFAULT_JOIN_POSTFIX = ']'
-    /** The default {@link String} value for an empty {@link CollectionHolder} */
-    public static readonly DEFAULT_EMPTY_COLLECTION = "[]"
-
-    //#endregion -------------------- Default references --------------------
-    //#region -------------------- Messages --------------------
-
-    /**
-     * The default message of a {@link NullCollectionException} when its message received is <code>null</code>
-     *
-     * @see NullCollectionException.DEFAULT_MESSAGE
-     */
-    public static readonly NULL_COLLECTION_MESSAGE = "Null collection. No element at any index could be found since it is null."
-    /**
-     * The default message of an {@link EmptyCollectionException} when its message received is <code>null</code>
-     *
-     * @see EmptyCollectionException.DEFAULT_MESSAGE
-     */
-    public static readonly EMPTY_COLLECTION_MESSAGE = "Empty collection. No element at any index could be found since it it empty."
-
-    /**
-     * The message when {@link CollectionIterator.previousValue} is not present
-     *
-     * @see NoElementFoundInCollectionException.AT_THE_START_MESSAGE
-     */
-    public static readonly ITERATOR_IS_AT_THE_START_MESSAGE = "No element found. The collection iterator is at or before the start of the line."
-    /**
-     * The message when {@link CollectionIterator.nextValue} is not present
-     *
-     * @see NoElementFoundInCollectionException.AT_THE_END_MESSAGE
-     */
-    public static readonly ITERATOR_IS_AT_THE_END_MESSAGE = "No element found. The collection iterator is at or after the end of the line."
-
-    //#endregion -------------------- Messages --------------------
-    //#region -------------------- Symbol.toString references --------------------
-
-    /**
-     * The {@link Symbol.toStringTag} of an {@link CollectionHolder}
-     *
-     * @uniqueJavascriptVariable
-     */
-    public static readonly COLLECTION_HOLDER_TO_STRING_TAG = "CollectionHolder"
-    /**
-     * The {@link Symbol.toStringTag} of an {@link CollectionIterator}
-     *
-     * @uniqueJavascriptVariable
-     */
-    public static readonly COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
-
-    //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- Members references --------------------
 
     //#region -------------------- Members references (minimalist collection holder) --------------------
@@ -533,12 +462,90 @@ export class CollectionConstants {
     }
 
     //#endregion -------------------- Constructor references --------------------
+
+}
+
+export namespace CollectionConstants {
+
+    //#region -------------------- Empty references --------------------
+
+    /** An empty {@link ReadonlyArray array} */
+    export const EMPTY_ARRAY = Object.freeze([],) as EmptyArray
+    /** An empty {@link ReadonlySet set} */
+    export const EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
+    /** An empty {@link WeakSet weak set} */
+    export const EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet<never>
+    /** An empty {@link ReadonlyMap map} */
+    export const EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap<never>
+    /** An empty {@link WeakSet weak set} */
+    export const EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap<never>
+
+    //#endregion -------------------- Empty references --------------------
+    //#region -------------------- Default references --------------------
+
+    /** The default value for the separator {@link String string} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
+    export const DEFAULT_JOIN_SEPARATOR = ", "
+    /** The default value for the prefix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
+    export const DEFAULT_JOIN_PREFIX = '['
+    /** The default value for the truncated {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
+    export const DEFAULT_JOIN_TRUNCATED = '…'
+    /** The default value for the postfix {@link String character} in the {@link CollectionHolder}{@link CollectionHolder.join join} method */
+    export const DEFAULT_JOIN_POSTFIX = ']'
+    /** The default {@link String} value for an empty {@link CollectionHolder} */
+    export const DEFAULT_EMPTY_COLLECTION = "[]"
+
+    //#endregion -------------------- Default references --------------------
+    //#region -------------------- Messages --------------------
+
+    /**
+     * The default message of a {@link NullCollectionException} when its message received is <code>null</code>
+     *
+     * @see NullCollectionException.DEFAULT_MESSAGE
+     */
+    export const NULL_COLLECTION_MESSAGE = "Null collection. No element at any index could be found since it is null."
+    /**
+     * The default message of an {@link EmptyCollectionException} when its message received is <code>null</code>
+     *
+     * @see EmptyCollectionException.DEFAULT_MESSAGE
+     */
+    export const EMPTY_COLLECTION_MESSAGE = "Empty collection. No element at any index could be found since it it empty."
+
+    /**
+     * The message when {@link CollectionIterator.previousValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_THE_START_MESSAGE
+     */
+    export const ITERATOR_IS_AT_THE_START_MESSAGE = "No element found. The collection iterator is at or before the start of the line."
+    /**
+     * The message when {@link CollectionIterator.nextValue} is not present
+     *
+     * @see NoElementFoundInCollectionException.AT_THE_END_MESSAGE
+     */
+    export const ITERATOR_IS_AT_THE_END_MESSAGE = "No element found. The collection iterator is at or after the end of the line."
+
+    //#endregion -------------------- Messages --------------------
+    //#region -------------------- Symbol.toString references --------------------
+
+    /**
+     * The {@link Symbol.toStringTag} of an {@link CollectionHolder}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const COLLECTION_HOLDER_TO_STRING_TAG = "CollectionHolder"
+    /**
+     * The {@link Symbol.toStringTag} of an {@link CollectionIterator}
+     *
+     * @uniqueJavascriptVariable
+     */
+    export const COLLECTION_ITERATOR_TO_STRING_TAG = "CollectionIterator"
+
+    //#endregion -------------------- Symbol.toString references --------------------
     //#region -------------------- Symbol references --------------------
 
     /** The value before the first value in a {@link CollectionIterator} */
-    public static readonly BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL = Symbol("Before first CollectionIterator value",)
+    export const BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL = Symbol("Before first CollectionIterator value",)
     /** The value after the last value in a {@link CollectionIterator} */
-    public static readonly AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL = Symbol("After last CollectionIterator value",)
+    export const AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL = Symbol("After last CollectionIterator value",)
 
     //#endregion -------------------- Symbol references --------------------
 
