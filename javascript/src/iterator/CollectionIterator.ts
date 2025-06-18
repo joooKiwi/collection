@@ -18,7 +18,45 @@ import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollect
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 /**
- * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
+ * An {@link Iterator} that goes through a series of data in normal or reverse order
+ * depending on the first call.
+ *
+ * When the first call it {@link CollectionIterator.next next()} or {@link CollectionIterator.nextValue nextValue},
+ * it is in the order from start to end.
+ * <pre>
+ * function normalOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.next()     // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.previous() // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.next()     // 3rd element
+ * }
+ * </pre>
+ *
+ * When the first call it {@link CollectionIterator.previous previous()} or {@link CollectionIterator.previousValue previousValue},
+ * it is in the order from end to start.
+ * <pre>
+ * function reverseOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.previous() // last element
+ *     iterator.previous() // 2nd last element
+ *     iterator.next()     // last element
+ *     iterator.previous() // 2nd last element
+ *     iterator.previous() // 3rd last element
+ * }
+ * </pre>
+ *
+ * And when there is a {@link CollectionIterator.reset reset()} being called,
+ * everything (excluding {@link CollectionIterator.firstIndex firstIndex} and {@link CollectionIterator.lastIndex lastIndex})
+ * is being changed to its initial value
+ * <pre>
+ * function varyingOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.next()     // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.reset()
+ *     iterator.previous() // last element
+ *     iterator.previous() // 2nd last element
+ * }
+ * </pre>
  *
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator Kotlin Iterator
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
