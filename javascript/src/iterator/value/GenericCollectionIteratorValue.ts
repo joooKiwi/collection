@@ -17,7 +17,7 @@ import type {CollectionIteratorValue}    from "./CollectionIteratorValue"
 import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
 export class GenericCollectionIteratorValue<const T = unknown,
-    const ITERATOR extends CollectionIterator<T> = CollectionIterator<T>,
+    const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
     const INDEX extends number = number, >
     extends AbstractIteratorValue<T, false>
@@ -27,7 +27,7 @@ export class GenericCollectionIteratorValue<const T = unknown,
     readonly #collection
     readonly #index
 
-    public constructor(iterator: ITERATOR, collection: COLLECTION, index: INDEX,) {
+    public constructor(iterator: REFERENCE, collection: COLLECTION, index: INDEX,) {
         super()
         this.#iterator = iterator
         this.#collection = collection
@@ -35,7 +35,7 @@ export class GenericCollectionIteratorValue<const T = unknown,
     }
 
     /** The {@link CollectionIterator} that was the origin of the current {@link CollectionIteratorValue instance} */
-    protected get _iterator() { return this.#iterator }
+    protected get _iterator(): REFERENCE { return this.#iterator }
 
     public get collection(): COLLECTION { return this.#collection }
 
