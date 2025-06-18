@@ -10,12 +10,12 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionIterator} from "../../src/iterator/CollectionIterator"
-import type {IteratorValue}      from "../../src/iterator/value/IteratorValue"
+import type {CollectionIterator}      from "../../src/iterator/CollectionIterator"
+import type {CollectionIteratorValue} from "../../src/iterator/value/CollectionIteratorValue"
 
-import {AbstractCollectionIterator} from "../../src/iterator/AbstractCollectionIterator"
-import {GenericIteratorValue}       from "../../src/iterator/value/GenericIteratorValue"
-import {CollectionHolderFromArray}  from "./CollectionHolderFromArray"
+import {AbstractCollectionIterator}     from "../../src/iterator/AbstractCollectionIterator"
+import {GenericCollectionIteratorValue} from "../../src/iterator/value/GenericCollectionIteratorValue"
+import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
 
 /**
  * A {@link CollectionIterator} having the functionality from an {@link ReadonlyArray array}.
@@ -38,8 +38,8 @@ export class CollectionIteratorFromArray<const T, >
         return this.array.length
     }
 
-    protected override _getIteratorValue(index: number,): IteratorValue<T> {
-        return new GenericIteratorValue(this.collection, index,)
+    protected override _getIteratorValue(index: number,): CollectionIteratorValue<T> {
+        return new GenericCollectionIteratorValue(this, this.collection, index,)
     }
 
     protected override _getValue(index: number,): T {

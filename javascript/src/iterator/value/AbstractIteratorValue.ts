@@ -10,27 +10,19 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-/**
- * An {@link IteratorResult iterator value} declaration to have
- * the core functionalities on a collection and an outside {@link IteratorValue}
- *
- * @see CollectionIteratorValue
- * @see OutsideIteratorValue
- */
-export interface IteratorValue<out T = unknown, > {
+import type {IteratorValue} from "./IteratorValue"
 
-    /** Tell that the iterator container is not done yet */
-    isDone(): boolean
+export abstract class AbstractIteratorValue<const T,
+    const IS_DONE extends boolean = boolean, >
+    implements IteratorValue<T> {
 
-    /**
-     * Tell that the iterator container is not done yet
-     *
-     * @alias IteratorValue.isDone
-     */
-    get done(): boolean
+    protected constructor() {}
 
 
-    /** The value to retrieve by the iterator */
-    get value(): T
+    public abstract isDone(): IS_DONE
+
+    public get done(): IS_DONE { return this.isDone() }
+
+    public abstract get value(): T
 
 }

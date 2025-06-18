@@ -14,7 +14,7 @@ import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
-import type {IteratorValue}                                                                        from "./value/IteratorValue"
+import type {CollectionIteratorValue}                                                              from "./value/CollectionIteratorValue"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
@@ -430,11 +430,11 @@ export abstract class AbstractCollectionIterator<const T,
     //#region -------------------- Value methods --------------------
 
     /**
-     * Get the value encapsulated in an {@link IteratorValue} at the specified {@link index}
+     * Get the value encapsulated in a {@link CollectionIteratorValue} at the specified {@link index}
      *
      * @param index The positive in-bound index to retrieve the value
      */
-    protected abstract _getIteratorValue(index: number,): IteratorValue<T>
+    protected abstract _getIteratorValue(index: number,): CollectionIteratorValue<T>
 
     /**
      * Get the value directly from the {@link collection} at the specified {@link index}

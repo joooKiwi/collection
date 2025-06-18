@@ -12,10 +12,10 @@
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "./CollectionIterator"
-import type {IteratorValue}              from "./value/IteratorValue"
+import type {CollectionIteratorValue}    from "./value/CollectionIteratorValue"
 
-import {GenericIteratorValue}       from "./value/GenericIteratorValue"
-import {AbstractCollectionIterator} from "./AbstractCollectionIterator"
+import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
+import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
 
 export class GenericCollectionIterator<const T = unknown,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
@@ -71,7 +71,7 @@ export class GenericCollectionIterator<const T = unknown,
 
     //#region -------------------- Value methods --------------------
 
-    protected override _getIteratorValue(index: number,): IteratorValue<T> { return new GenericIteratorValue(this.collection, index,) }
+    protected override _getIteratorValue(index: number,): CollectionIteratorValue<T> { return new GenericCollectionIteratorValue(this, this.collection, index,) }
 
     protected override _getValue(index: number,): T { return this.collection.get(index,) }
 

@@ -38,42 +38,42 @@ export interface CollectionIterator<out T = unknown, >
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
-    /** The {@link collection} {@link CollectionHolder.size size} */
-    get size(): this["collection"]["size"]
+    /** The {@link CollectionIterator iterator} size */
+    get size(): number
 
     /**
-     * The {@link collection} {@link CollectionHolder.size size}
+     * The {@link CollectionIterator iterator} size
      *
      * @alias size
      */
     get length(): this["size"]
 
     /**
-     * The {@link collection} {@link CollectionHolder.size size}
+     * The {@link CollectionIterator iterator} size
      *
      * @alias size
      */
     get count(): this["size"]
 
 
-    /** The {@link collection} {@link CollectionHolder.isEmpty is empty} */
+    /** The {@link CollectionIterator iterator} is empty */
     get isEmpty(): boolean
 
-    /** The {@link collection} {@link CollectionHolder.isNotEmpty is not empty} */
+    /** The {@link CollectionIterator iterator} is not empty */
     get isNotEmpty(): boolean
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
 
     /**
-     * Get the first index of the {@link collection}.
+     * Get the first index of the {@link CollectionIterator iterator}.
      * If it is <b>null</b>, then it is empty, otherwise, it should be <b>0</b>.
      */
     get firstIndex(): NullOrZeroNumber
 
     /**
-     * Get the last index of the {@link collection}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>size - 1</code>.
+     * Get the last index of the {@link CollectionIterator iterator}.
+     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>{@link CollectionIterator.size} - 1</code>.
      */
     get lastIndex(): NullOrNumber
 
@@ -85,7 +85,7 @@ export interface CollectionIterator<out T = unknown, >
     get currentIndex(): NullOrNumber
 
     /**
-     * Get the index that the {@link CollectionIterator} is at
+     * Get the index that the {@link CollectionIterator iterator} is at
      *
      * @alias currentIndex
      */

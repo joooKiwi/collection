@@ -10,7 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+export {AbstractIteratorValue}           from "./AbstractIteratorValue"
+export type {CollectionIteratorValue}    from "./CollectionIteratorValue"
 export {GenericAfterLastIteratorValue}   from "./GenericAfterLastIteratorValue"
 export {GenericBeforeFirstIteratorValue} from "./GenericBeforeFirstIteratorValue"
+export {GenericCollectionIteratorValue}  from "./GenericCollectionIteratorValue"
 export {GenericIteratorValue}            from "./GenericIteratorValue"
 export type {IteratorValue}              from "./IteratorValue"
+export type {OutsideIteratorValue}       from "./OutsideIteratorValue"
