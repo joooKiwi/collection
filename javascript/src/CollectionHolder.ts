@@ -53,7 +53,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Size methods --------------------
 
     /**
-     * Get the size ({@link CollectionHolder.length length} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
+     * Get the size ({@link CollectionHolder.length length} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -67,7 +67,7 @@ export interface CollectionHolder<out T = unknown, >
     get size(): number
 
     /**
-     * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder collection}
+     * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -82,7 +82,7 @@ export interface CollectionHolder<out T = unknown, >
     get length(): this["size"]
 
     /**
-     * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder collection}
+     * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -123,10 +123,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get --------------------
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      *
      * @param index The index to retrieve a value
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} is empty
      * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
      * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
@@ -137,10 +137,10 @@ export interface CollectionHolder<out T = unknown, >
     get(index: number,): T
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      *
      * @param index The index to retrieve a value
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} is empty
      * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
      * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
@@ -152,10 +152,10 @@ export interface CollectionHolder<out T = unknown, >
     at(index: number,): T
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      *
      * @param index The index to retrieve a value
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} is empty
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} is empty
      * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
      * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.at
@@ -170,9 +170,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get first --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -183,9 +183,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get last --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -197,9 +197,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get or else --------------------
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size}
@@ -210,9 +210,9 @@ export interface CollectionHolder<out T = unknown, >
     getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -224,9 +224,9 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -235,9 +235,9 @@ export interface CollectionHolder<out T = unknown, >
     atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -247,9 +247,9 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -258,9 +258,9 @@ export interface CollectionHolder<out T = unknown, >
     elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
 
     /**
-     * Get the element at the specified index in the current {@link CollectionHolder collection}
+     * Get the element at the specified index in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      *
      * @param index        The index to retrieve a value
      * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
@@ -272,16 +272,16 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get first or else --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      */
     getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): NullOr<| T | U>
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      */
     getFirstOrElse(defaultValue: ReturnCallback<T>,): NullOr<T>
 
@@ -289,16 +289,16 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get last or else --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      */
     getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): NullOr<| T | U>
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      * or calling the {@link defaultValue} function
-     * if it is out of bound of the current {@link CollectionHolder collection}
+     * if it is out of bound of the current {@link CollectionHolder instance}
      */
     getLastOrElse(defaultValue: ReturnCallback<T>,): NullOr<T>
 
@@ -339,7 +339,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get first or null --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -351,7 +351,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Get last or null --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -364,9 +364,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- First --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -378,7 +378,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -391,7 +391,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -403,7 +403,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- First or null --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -443,9 +443,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- First indexed --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getFirst() Java getFirst()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First()
@@ -457,7 +457,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the first element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -470,7 +470,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -482,7 +482,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- First indexed or null --------------------
 
     /**
-     * Get the first element in the current {@link CollectionHolder collection}
+     * Get the first element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
@@ -523,9 +523,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Last --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -537,7 +537,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -550,7 +550,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -562,7 +562,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Last or null --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -572,7 +572,7 @@ export interface CollectionHolder<out T = unknown, >
     lastOrNull(): NullOr<T>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
@@ -586,7 +586,7 @@ export interface CollectionHolder<out T = unknown, >
     lastOrNull<const S extends T, >(predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
@@ -602,9 +602,9 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Last indexed --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      *
-     * @throws EmptyCollectionException The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
@@ -616,7 +616,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -629,7 +629,7 @@ export interface CollectionHolder<out T = unknown, >
      * Find the last element from the {@link predicate} in the {@link collection}
      *
      * @param predicate The matching predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -641,7 +641,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Last indexed or null --------------------
 
     /**
-     * Get the last element in the current {@link CollectionHolder collection}
+     * Get the last element in the current {@link CollectionHolder instance}
      * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
@@ -651,7 +651,7 @@ export interface CollectionHolder<out T = unknown, >
     lastIndexedOrNull(): NullOr<T>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
@@ -665,7 +665,7 @@ export interface CollectionHolder<out T = unknown, >
     lastIndexedOrNull<const S extends T, >(predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The matching predicate
@@ -682,10 +682,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find first --------------------
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -694,10 +694,10 @@ export interface CollectionHolder<out T = unknown, >
     findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -706,10 +706,10 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -719,10 +719,10 @@ export interface CollectionHolder<out T = unknown, >
     find<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html Kotlin first(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first C# First(predicate)
@@ -734,7 +734,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find first or null --------------------
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -747,7 +747,7 @@ export interface CollectionHolder<out T = unknown, >
     findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -760,7 +760,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -774,7 +774,7 @@ export interface CollectionHolder<out T = unknown, >
     findOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -790,7 +790,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find first indexed --------------------
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param callback The given predicate
@@ -801,7 +801,7 @@ export interface CollectionHolder<out T = unknown, >
     findFirstIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -812,7 +812,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param callback The given predicate
@@ -824,7 +824,7 @@ export interface CollectionHolder<out T = unknown, >
     findIndexed<const S extends T, >(callback: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -838,7 +838,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find first indexed or null --------------------
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -851,7 +851,7 @@ export interface CollectionHolder<out T = unknown, >
     findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -864,7 +864,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -878,7 +878,7 @@ export interface CollectionHolder<out T = unknown, >
     findIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the first element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the first element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -895,10 +895,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find last --------------------
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -907,11 +907,11 @@ export interface CollectionHolder<out T = unknown, >
     findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -922,7 +922,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find last or null --------------------
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -935,7 +935,7 @@ export interface CollectionHolder<out T = unknown, >
     findLastOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -950,10 +950,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find last indexed --------------------
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -962,10 +962,10 @@ export interface CollectionHolder<out T = unknown, >
     findLastIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No element could be found from the {@link predicate}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last(predicate)
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last(predicate)
@@ -976,7 +976,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Find last indexed or null --------------------
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -989,7 +989,7 @@ export interface CollectionHolder<out T = unknown, >
     findLastIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 
     /**
-     * Find the last element from the {@link predicate} in the current {@link CollectionHolder collection}
+     * Find the last element from the {@link predicate} in the current {@link CollectionHolder instance}
      * or <b>null</b> otherwise
      *
      * @param predicate The given predicate
@@ -1012,7 +1012,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The first index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -1025,12 +1025,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param element The element to find
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index associated to the {@link element} found after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1051,7 +1051,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1071,7 +1071,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The first index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.indexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of.html Kotlin indexOf(element)
@@ -1085,12 +1085,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * between the {@link from starting index} and the end of the `collection`
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param element The element to find
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index associated to the {@link element} found after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1112,7 +1112,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1132,7 +1132,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
@@ -1146,7 +1146,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>first</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
@@ -1168,7 +1168,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param element The element to find
      * @return {number} The last index associated to the {@link element} found
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.lastIndexOf
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/last-index-of.html Kotlin lastIndexOf(element)
@@ -1181,12 +1181,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
-     * between the {@link from starting} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting} and the end of the current {@link CollectionHolder instance}
      *
      * @param element The element to find
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index associated to the {@link element} found after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1207,7 +1207,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1226,7 +1226,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the <b>last</b> occurrence equivalent to the value received
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
@@ -1247,7 +1247,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1258,12 +1258,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1282,7 +1282,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1300,7 +1300,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1312,12 +1312,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1337,7 +1337,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1356,7 +1356,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1368,12 +1368,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1393,7 +1393,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1411,7 +1411,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1425,7 +1425,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1440,7 +1440,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1461,7 +1461,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1472,12 +1472,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1496,7 +1496,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1514,7 +1514,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1526,12 +1526,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1551,7 +1551,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1570,7 +1570,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
@@ -1582,12 +1582,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1607,7 +1607,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1625,7 +1625,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1639,7 +1639,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1654,7 +1654,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the first index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1676,7 +1676,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1687,12 +1687,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1711,7 +1711,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1729,7 +1729,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1741,12 +1741,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1766,7 +1766,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1784,7 +1784,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1798,7 +1798,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1819,7 +1819,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1830,12 +1830,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1854,7 +1854,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1872,7 +1872,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param predicate The given predicate
      * @return {number} The last index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findLastIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
@@ -1884,12 +1884,12 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
      *
      * @param predicate The given predicate
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
      * @throws IndexOutOfBoundsException No index could be found
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1909,7 +1909,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
      * @throws IndexOutOfBoundsException  No index could be found
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -1927,7 +1927,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1941,7 +1941,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Get the last index matching the {@link predicate}
-     * or <b>null</b> if it was not in the current {@link CollectionHolder collection}
+     * or <b>null</b> if it was not in the current {@link CollectionHolder instance}
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
@@ -1962,11 +1962,11 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- All --------------------
 
     /**
-     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * Check if <b>every</b> element in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -1979,11 +1979,11 @@ export interface CollectionHolder<out T = unknown, >
     all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
 
     /**
-     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * Check if <b>every</b> element in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -1996,11 +1996,11 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * Check if <b>every</b> element in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2014,11 +2014,11 @@ export interface CollectionHolder<out T = unknown, >
     every<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
 
     /**
-     * Check if <b>every</b> element in the current {@link CollectionHolder collection}
+     * Check if <b>every</b> element in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The matching predicate
-     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder collection} is applicable to the {@link predicate}
+     * @return {boolean} <b>true</b> only if is empty or if every value in the current {@link CollectionHolder instance} is applicable to the {@link predicate}
      * @see ReadonlyArray.every
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
@@ -2034,7 +2034,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Any --------------------
 
     /**
-     * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
+     * Tell if the current {@link CollectionHolder instance} {@link CollectionHolder.isNotEmpty is not empty}
      *
      * @return {boolean} {@link CollectionHolder.isNotEmpty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
@@ -2048,11 +2048,11 @@ export interface CollectionHolder<out T = unknown, >
     any(): this["isNotEmpty"]
 
     /**
-     * Check if <b>one</b> of the elements in the current {@link CollectionHolder collection}
+     * Check if <b>one</b> of the elements in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
      * @see ReadonlyArray.some
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
@@ -2065,7 +2065,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell if the current {@link CollectionHolder collection} {@link CollectionHolder.isNotEmpty is not empty}
+     * Tell if the current {@link CollectionHolder instance} {@link CollectionHolder.isNotEmpty is not empty}
      *
      * @return {boolean} {@link CollectionHolder.isNotEmpty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
@@ -2079,11 +2079,11 @@ export interface CollectionHolder<out T = unknown, >
     some(): this["isNotEmpty"]
 
     /**
-     * Check if <b>one</b> of the elements in the current {@link CollectionHolder collection}
+     * Check if <b>one</b> of the elements in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
      * @see ReadonlyArray.some
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
@@ -2099,7 +2099,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- None --------------------
 
     /**
-     * Tell if the current {@link CollectionHolder collection} {@link isEmpty is empty}
+     * Tell if the current {@link CollectionHolder instance} {@link isEmpty is empty}
      *
      * @return {boolean} {@link CollectionHolder.isEmpty}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
@@ -2108,11 +2108,11 @@ export interface CollectionHolder<out T = unknown, >
     none(): this["isEmpty"]
 
     /**
-     * Check if <b>no</b> element in the current {@link CollectionHolder collection}
+     * Check if <b>no</b> element in the current {@link CollectionHolder instance}
      * match the given {@link predicate}
      *
      * @param predicate The condition to check on each value
-     * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder collection}
+     * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the current {@link CollectionHolder instance}
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#noneMatch(java.util.function.Predicate) Java Stream.noneMatch(predicate)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#noneMatch(java.util.function.IntPredicate) Java IntStream.noneMatch(predicate)
@@ -2231,10 +2231,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has --------------------
 
     /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2246,10 +2246,10 @@ export interface CollectionHolder<out T = unknown, >
     has(value: T,): boolean
 
     /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2262,10 +2262,10 @@ export interface CollectionHolder<out T = unknown, >
     includes(value: T,): boolean
 
     /**
-     * Tell whenever the {@link value} exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is present in the current {@link CollectionHolder instance}
      * @see ReadonlyArray.includes
      * @see ReadonlySet.has
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
@@ -2281,27 +2281,27 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has not --------------------
 
     /**
-     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>true</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>true</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
      */
     hasNot(value: T,): boolean
 
     /**
-     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
      * @alias CollectionHolder.hasNot
      */
     includesNot(value: T,): boolean
 
     /**
-     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder collection}
+     * Tell whenever the {@link value} <b>does not</b> exist in the current {@link CollectionHolder instance}
      *
      * @param value The value to compare
-     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder collection}
+     * @return {boolean} <b>false</b> if the {@link value} is not present in the current {@link CollectionHolder instance}
      * @alias CollectionHolder.hasNot
      */
     containsNot(value: T,): boolean
@@ -2310,56 +2310,56 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has one --------------------
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: readonly T[],): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
     hasOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @typescriptDefinition
@@ -2369,7 +2369,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has one methods (aliases) --------------------
 
     /**
-     * Tell whenever at least one exist in the current {@link CollectionHolder collection}
+     * Tell whenever at least one exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2377,7 +2377,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: readonly T[],): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2385,7 +2385,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2393,7 +2393,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2401,7 +2401,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2409,7 +2409,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2417,7 +2417,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2425,7 +2425,7 @@ export interface CollectionHolder<out T = unknown, >
     includesOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2435,7 +2435,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2443,7 +2443,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: readonly T[],): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2451,7 +2451,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2459,7 +2459,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2467,7 +2467,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2475,7 +2475,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2483,7 +2483,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2491,7 +2491,7 @@ export interface CollectionHolder<out T = unknown, >
     containsOne(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
@@ -2505,7 +2505,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has all --------------------
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2514,7 +2514,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2523,7 +2523,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2532,7 +2532,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2541,7 +2541,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2550,7 +2550,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2559,7 +2559,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2568,7 +2568,7 @@ export interface CollectionHolder<out T = unknown, >
     hasAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
@@ -2580,7 +2580,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Has all methods (aliases) --------------------
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2588,7 +2588,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2596,7 +2596,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2604,7 +2604,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2612,7 +2612,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2620,7 +2620,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2628,7 +2628,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2636,7 +2636,7 @@ export interface CollectionHolder<out T = unknown, >
     includesAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2646,7 +2646,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2654,7 +2654,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: readonly T[],): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2662,7 +2662,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: ReadonlySet<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2670,7 +2670,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2678,7 +2678,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: MinimalistCollectionHolder<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2686,7 +2686,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: CollectionIterator<T>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2694,7 +2694,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: Iterator<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2702,7 +2702,7 @@ export interface CollectionHolder<out T = unknown, >
     containsAll(values: Iterable<T, unknown, unknown>,): boolean
 
     /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder collection}
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
@@ -2717,7 +2717,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Require no nulls --------------------
 
     /**
-     * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder collection}
+     * Require that no items are <b>null</b> or <b>undefined</b> in the current {@link CollectionHolder instance}
      *
      * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the current collection
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -2886,7 +2886,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder}
-     * with all the values from the current {@link CollectionHolder collection}
+     * with all the values from the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.slice
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -2895,10 +2895,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder}
-     * from the {@link from starting index} to the end of the current {@link CollectionHolder collection}
+     * from the {@link from starting index} to the end of the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
-     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -2907,11 +2907,11 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder}
-     * from the {@link from starting} to the {@link to ending} index in the current {@link CollectionHolder collection}
+     * from the {@link from starting} to the {@link to ending} index in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before the {@link from} after the calculation
      * @see ReadonlyArray.slice
@@ -2924,10 +2924,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2937,10 +2937,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2949,10 +2949,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2961,10 +2961,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2973,10 +2973,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2985,10 +2985,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -2997,10 +2997,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -3009,10 +3009,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indices The given indices
-     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder collection}
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
      * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -3025,7 +3025,7 @@ export interface CollectionHolder<out T = unknown, >
     /**
      * Create a new {@link CollectionHolder} from the {@link indicesOrFrom indices}
      * or from the {@link indicesOrFrom starting} to {@link to ending} index
-     * in the current {@link CollectionHolder collection}
+     * in the current {@link CollectionHolder instance}
      *
      * @param indicesOrFrom The given indices (or inclusive starting index)
      * @param to            The inclusive ending index
@@ -3544,7 +3544,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
-     * on each element of the current {@link CollectionHolder collection}
+     * on each element of the current {@link CollectionHolder instance}
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
@@ -3563,7 +3563,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
-     * on each element of the current {@link CollectionHolder collection}
+     * on each element of the current {@link CollectionHolder instance}
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
@@ -3583,7 +3583,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
-     * on each non-null element of the current {@link CollectionHolder collection}
+     * on each non-null element of the current {@link CollectionHolder instance}
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
@@ -3602,7 +3602,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Create a new {@link CollectionHolder} applying a {@link transform} function
-     * on each non-null element of the current {@link CollectionHolder collection}
+     * on each non-null element of the current {@link CollectionHolder instance}
      *
      * @param transform The given transform
      * @see ReadonlyArray.map
@@ -3662,7 +3662,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Perform a given {@link action} on each element
-     * and return the current {@link CollectionHolder collection} afterwards
+     * and return the current {@link CollectionHolder instance} afterwards
      *
      * @param action The given action
      * @see ReadonlyArray.forEach
@@ -3681,7 +3681,7 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Perform a given {@link action} on each element
-     * and return the current {@link CollectionHolder collection} afterwards
+     * and return the current {@link CollectionHolder instance} afterwards
      *
      * @param action The given action
      * @see ReadonlyArray.forEach
@@ -3703,7 +3703,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- To reverse --------------------
 
     /**
-     * Reverse the current {@link CollectionHolder collection} to a new {@link CollectionHolder}
+     * Reverse the current {@link CollectionHolder instance} to a new {@link CollectionHolder}
      *
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3716,10 +3716,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
+     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
      *
      * @param from The inclusive starting index (<code>0</code> by default)
-     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3732,11 +3732,11 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
+     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see Array.reverse
@@ -3750,7 +3750,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Reverse the current {@link CollectionHolder collection} to a new {@link CollectionHolder}
+     * Reverse the current {@link CollectionHolder instance} to a new {@link CollectionHolder}
      *
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3764,10 +3764,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
+     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
      *
      * @param from The inclusive starting index (<code>0</code> by default)
-     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3781,11 +3781,11 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
+     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see Array.reverse
@@ -3800,7 +3800,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Reverse the current {@link CollectionHolder collection} to a new {@link CollectionHolder}
+     * Reverse the current {@link CollectionHolder instance} to a new {@link CollectionHolder}
      *
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3814,10 +3814,10 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
+     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
      *
      * @param from The inclusive starting index (<code>0</code> by default)
-     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
      * @see ReadonlyArray.toReversed
@@ -3831,11 +3831,11 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
+     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder instance} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
      * @see Array.reverse
@@ -3873,34 +3873,34 @@ export interface CollectionHolder<out T = unknown, >
 
     //#region -------------------- To iterator --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a {@link CollectionIterator} */
+    /** Convert the current {@link CollectionHolder instance} to a {@link CollectionIterator} */
     toIterator(): CollectionIterator<T>
 
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlyArray array} */
+    /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlyArray array} */
     toArray(): readonly T[]
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Array mutable array} */
+    /** Convert the current {@link CollectionHolder instance} to a new {@link Array mutable array} */
     toMutableArray(): T[]
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlySet set} */
+    /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlySet set} */
     toSet(): ReadonlySet<T>
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Set mutable set} */
+    /** Convert the current {@link CollectionHolder instance} to a new {@link Set mutable set} */
     toMutableSet(): Set<T>
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
-    /** Convert the current {@link CollectionHolder collection} to a {@link ReadonlyMap map} */
+    /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlyMap map} */
     toMap(): ReadonlyMap<number, T>
 
-    /** Convert the current {@link CollectionHolder collection} to a new {@link Map mutable map} */
+    /** Convert the current {@link CollectionHolder instance} to a new {@link Map mutable map} */
     toMutableMap(): Map<number, T>
 
     //#endregion -------------------- To map --------------------
@@ -3908,7 +3908,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- To string --------------------
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link Object.toString toString()}</i>" method
      *
      * @see Array.toString
@@ -3917,7 +3917,7 @@ export interface CollectionHolder<out T = unknown, >
     toString(): string
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
      *
      * @param locale The possible locale to apply on each value
@@ -3931,7 +3931,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
      *
      * @see String.toLowerCase
@@ -3939,7 +3939,7 @@ export interface CollectionHolder<out T = unknown, >
     toLowerCaseString(): string
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
      *
      * @param locale The possible locale to apply on each value
@@ -3949,7 +3949,7 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
      *
      * @see String.toUpperCase
@@ -3957,7 +3957,7 @@ export interface CollectionHolder<out T = unknown, >
     toUpperCaseString(): string
 
     /**
-     * Convert the current {@link CollectionHolder collection} to a {@link String} on every value
+     * Convert the current {@link CollectionHolder instance} to a {@link String} on every value
      * by calling its "<i>{@link String.toLocaleUpperCase toLocaleUpperCase()}</i>" method
      *
      * @param locale The possible locale to apply on each value
@@ -3969,10 +3969,10 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Join to string --------------------
 
     /**
-     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
+     * Create a new {@link String} from every element in the current {@link CollectionHolder instance} using a {@link separator}
      * utilizing the given {@link prefix} and {@link postfix} if supplied.
      *
-     * Note that if the current {@link CollectionHolder collection} is huge,
+     * Note that if the current {@link CollectionHolder instance} is huge,
      * a {@link limit} can be specified followed by a {@link truncated} value.
      *
      * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
@@ -3990,10 +3990,10 @@ export interface CollectionHolder<out T = unknown, >
     joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
     /**
-     * Create a new {@link String} from every element in the current {@link CollectionHolder collection} using a {@link separator}
+     * Create a new {@link String} from every element in the current {@link CollectionHolder instance} using a {@link separator}
      * utilizing the given {@link prefix} and {@link postfix} if supplied.
      *
-     * Note that if the current {@link CollectionHolder collection} is huge,
+     * Note that if the current {@link CollectionHolder instance} is huge,
      * a {@link limit} can be specified followed by a {@link truncated} value.
      *
      * @param separator The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
