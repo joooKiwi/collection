@@ -41,7 +41,7 @@ export interface CollectionIteratorValue<out T = unknown, >
      */
     get done(): false
 
-    /** Tell that the {@link CollectionIteratorValue iterator value} is not able to progress (<i>at the moment of its creation</i>) */
+    /** Tell that the {@link CollectionIteratorValue iterator value} is <b>not</b> able to progress (<i>at the moment of its creation</i>) */
     isNotDone(): true
 
 

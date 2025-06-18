@@ -29,7 +29,7 @@ export interface IteratorValue<out T = unknown, > {
      */
     get done(): boolean
 
-    /** Tell that the {@link IteratorValue iterator value} could not be able to progress */
+    /** Tell that the {@link IteratorValue iterator value} could <b>not</b> be able to progress */
     isNotDone(): boolean
 
 
