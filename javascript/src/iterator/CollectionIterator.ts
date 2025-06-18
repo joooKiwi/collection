@@ -28,7 +28,11 @@ export interface CollectionIterator<out T = unknown, >
 
     //#region -------------------- Reference methods --------------------
 
-    /** The {@link MinimalistCollectionHolder collection} to loop over */
+    /**
+     * The {@link MinimalistCollectionHolder collection} to loop over
+     *
+     * @deprecated This is not always applicable. It will be removed in version 1.14
+     */
     get collection(): MinimalistCollectionHolder<T>
 
     //#endregion -------------------- Reference methods --------------------
