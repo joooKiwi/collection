@@ -3186,6 +3186,7 @@ export interface CollectionHolder<out T = unknown, >
     limitWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Take while indexed --------------------
+
     //#region -------------------- Take last --------------------
 
     /**
@@ -3435,6 +3436,7 @@ export interface CollectionHolder<out T = unknown, >
     skipWhileIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
 
     //#endregion -------------------- Drop while indexed --------------------
+
     //#region -------------------- Drop last --------------------
 
     /**
