@@ -166,7 +166,8 @@ export interface CollectionIterator<out T = unknown, >
     [Symbol.iterator](): CollectionIterator<T>
 
     /**
-     * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionIterator] instead of [object Object]
+     * Give an output for the call from {@link ObjectConstructor.toString.call}
+     * <code>[object CollectionIterator]</code> instead of <code>[object Object]</code>
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
      * @readonly
