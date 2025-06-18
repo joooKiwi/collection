@@ -53,7 +53,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public get size(): number { return this.collection.size }
+    public abstract get size(): number
     public get length(): number { return this.size }
     public get count(): number { return this.size }
 
@@ -437,7 +437,7 @@ export abstract class AbstractCollectionIterator<const T,
     protected abstract _getIteratorValue(index: number,): CollectionIteratorValue<T>
 
     /**
-     * Get the value directly from the {@link collection} at the specified {@link index}
+     * Get the value directly at the specified {@link index}
      *
      * @param index The positive in-bound index to retrieve the value
      */
@@ -465,20 +465,32 @@ export abstract class AbstractCollectionIterator<const T,
             if (currentIndex != null)
                 return this
 
-            operation(this.collection.get(0,), 0,)
+            operation(this._getValue(0,), 0,)
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = null
             return this
         }
 
-        const collection = this.collection
+        if (this._hasOnly2Elements) {
+            const currentIndex = this._currentIndex
+            if (currentIndex != null)
+                return this
+
+            operation(this._getValue(0,), 0,)
+            operation(this._getValue(1,), 1,)
+            this._previousIndex = 0
+            this._currentIndex = 1
+            this._nextIndex = null
+            return this
+        }
+
         const size = this.size
 
         const currentIndex = this._currentIndex
         let index = currentIndex == null ? -1 : currentIndex - 1
         while (++index < size)
-            operation(collection.get(index,), index,)
+            operation(this._getValue(index,), index,)
         this._previousIndex = index - 2
         this._currentIndex = index - 1
         this._nextIndex = null
@@ -494,20 +506,32 @@ export abstract class AbstractCollectionIterator<const T,
             if (currentIndex != null)
                 return this
 
-            operation(0, this.collection.get(0,),)
+            operation(0, this._getValue(0,),)
             this._previousIndex = null
             this._currentIndex = 0
             this._nextIndex = null
             return this
         }
 
-        const collection = this.collection
+        if (this._hasOnly2Elements) {
+            const currentIndex = this._currentIndex
+            if (currentIndex != null)
+                return this
+
+            operation(0, this._getValue(0,),)
+            operation(1, this._getValue(1,),)
+            this._previousIndex = 0
+            this._currentIndex = 1
+            this._nextIndex = null
+            return this
+        }
+
         const size = this.size
 
         const currentIndex = this._currentIndex
         let index = currentIndex == null ? -1 : currentIndex - 1
         while (++index < size)
-            operation(index, collection.get(index,),)
+            operation(index, this._getValue(index,),)
         this._previousIndex = index - 2
         this._currentIndex = index - 1
         this._nextIndex = null
