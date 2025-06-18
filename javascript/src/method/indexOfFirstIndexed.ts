@@ -50,7 +50,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<| Minimalist
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -70,8 +70,8 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<| Minimalist
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
- * @param to         The inclusive ending index (`size - 1` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
@@ -122,7 +122,7 @@ export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(colle
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -142,7 +142,7 @@ export function indexOfFirstIndexedByMinimalistCollectionHolder<const T, >(colle
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -193,7 +193,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -213,7 +213,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -264,7 +264,7 @@ export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<reado
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The first index found by the {@link predicate} after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -284,7 +284,7 @@ export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<reado
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param predicate  The given predicate
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>

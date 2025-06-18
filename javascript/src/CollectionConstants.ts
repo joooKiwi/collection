@@ -138,13 +138,13 @@ export class CollectionConstants {
     //#region -------------------- Messages --------------------
 
     /**
-     * The default message of a {@link NullCollectionException} when its message received is `null`
+     * The default message of a {@link NullCollectionException} when its message received is <code>null</code>
      *
      * @see NullCollectionException.DEFAULT_MESSAGE
      */
     public static readonly NULL_COLLECTION_MESSAGE = "Null collection. No element at any index could be found since it is null."
     /**
-     * The default message of an {@link EmptyCollectionException} when its message received is `null`
+     * The default message of an {@link EmptyCollectionException} when its message received is <code>null</code>
      *
      * @see EmptyCollectionException.DEFAULT_MESSAGE
      */

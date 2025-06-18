@@ -1028,7 +1028,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1048,7 +1048,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1088,7 +1088,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the `collection`
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1109,7 +1109,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1136,7 +1136,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1150,7 +1150,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element   The element to find
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.firstIndexOfOrNull
@@ -1184,7 +1184,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the end of the current {@link CollectionHolder collection}
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index associated to the {@link element} found after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1204,7 +1204,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1230,7 +1230,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param element The element to find
-     * @param from    The inclusive starting index (`0` by default)
+     * @param from    The inclusive starting index (<code>0</code> by default)
      * @param to      The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The last index associated to the {@link element} found between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1261,7 +1261,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1279,7 +1279,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1315,7 +1315,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1334,7 +1334,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1371,7 +1371,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1390,7 +1390,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1415,7 +1415,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1429,7 +1429,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfFirstOrNull
@@ -1444,7 +1444,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfFirstOrNull
@@ -1475,7 +1475,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1493,7 +1493,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1529,7 +1529,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1548,7 +1548,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1585,7 +1585,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The first index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1604,7 +1604,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1629,7 +1629,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1643,7 +1643,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfFirstIndexed
@@ -1658,7 +1658,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The first index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfFirstIndexed
@@ -1690,7 +1690,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1708,7 +1708,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1744,7 +1744,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1763,7 +1763,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1788,7 +1788,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1802,7 +1802,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfLastOrNull
@@ -1833,7 +1833,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1851,7 +1851,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1887,7 +1887,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting index} and the end of the current {@link CollectionHolder collection}
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @return {number} The last index found by the {@link predicate} after {@link from}
      * @throws EmptyCollectionException  The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
      * @throws IndexOutOfBoundsException {@link from} is not within a valid range
@@ -1906,7 +1906,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
      * @throws EmptyCollectionException   The current {@link CollectionHolder collection} {@link CollectionHolder.isEmpty is empty}
@@ -1931,7 +1931,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @canReceiveNegativeValue
@@ -1945,7 +1945,7 @@ export interface CollectionHolder<out T = unknown, >
      * between the {@link from starting} and the {@link to ending} index
      *
      * @param predicate The given predicate
-     * @param from      The inclusive starting index (`0` by default)
+     * @param from      The inclusive starting index (<code>0</code> by default)
      * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @return {NullOrNumber} The last index found by the {@link predicate} between {@link from} and {@link to} or <b>null</b>
      * @alias CollectionHolder.indexOfLastIndexedOrNull
@@ -2897,7 +2897,7 @@ export interface CollectionHolder<out T = unknown, >
      * Create a new {@link CollectionHolder}
      * from the {@link from starting index} to the end of the current {@link CollectionHolder collection}
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see ReadonlyArray.slice
@@ -2909,7 +2909,7 @@ export interface CollectionHolder<out T = unknown, >
      * Create a new {@link CollectionHolder}
      * from the {@link from starting} to the {@link to ending} index in the current {@link CollectionHolder collection}
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -3718,7 +3718,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
@@ -3734,7 +3734,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -3766,7 +3766,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
@@ -3783,7 +3783,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -3816,7 +3816,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the start of the current {@link CollectionHolder collection} to the {@link from starting} index
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
      * @see Array.reverse
@@ -3833,7 +3833,7 @@ export interface CollectionHolder<out T = unknown, >
      * Reverse to a new {@link CollectionHolder}
      * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder collection}
      *
-     * @param from The inclusive starting index (`0` by default)
+     * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
      * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the current {@link CollectionHolder collection} {@link size}
      * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})

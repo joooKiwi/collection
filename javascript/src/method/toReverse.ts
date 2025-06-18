@@ -42,7 +42,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * from the start of the {@link collection} to the {@link from starting} index
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @see Array.reverse
@@ -59,8 +59,8 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
- * @param from       The inclusive starting index (`0` by default)
- * @param to         The inclusive ending index (`size - 1` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -103,7 +103,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * from the start of the {@link collection} to the {@link from starting} index
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} s a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -121,7 +121,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -164,7 +164,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * from the start of the {@link collection} to the {@link from starting} index
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -182,7 +182,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -225,7 +225,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,)
  * from the start of the {@link collection} to the {@link from starting} index
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
@@ -242,7 +242,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
  * from the {@link to ending} to the {@link from starting} index in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} or {@link to} are a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})

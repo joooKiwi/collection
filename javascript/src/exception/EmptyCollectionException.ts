@@ -23,7 +23,7 @@ export class EmptyCollectionException<const T extends NullOr<NumericOrObject> = 
     extends IndexOutOfBoundsException<T, CAUSE> {
 
     /**
-     * The default message that is used in the {@link constructor} when the message is `null`
+     * The default message that is used in the {@link constructor} when the message is <code>null</code>
      *
      * @see CollectionConstants.EMPTY_COLLECTION_MESSAGE
      */

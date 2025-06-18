@@ -53,7 +53,7 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index associated to the {@link element} found after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -76,8 +76,8 @@ export function lastIndexOf<const T, >(collection: Nullable<| MinimalistCollecti
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
- * @param to         The inclusive ending index (`size - 1` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>size - 1</code> by default)
  * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
@@ -134,7 +134,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index associated to the {@link element} found after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -157,7 +157,7 @@ export function lastIndexOfByMinimalistCollectionHolder<const T, >(collection: N
  *
  * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -214,7 +214,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index associated to the {@link element} found after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -237,7 +237,7 @@ export function lastIndexOfByCollectionHolder<const T, >(collection: Nullable<Co
  *
  * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -294,7 +294,7 @@ export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index associated to the {@link element} found after {@link from}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -317,7 +317,7 @@ export function lastIndexOfByArray<const T, >(collection: Nullable<readonly T[]>
  *
  * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
  * @param element    The element to find
- * @param from       The inclusive starting index (`0` by default)
+ * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @return {number} The last index associated to the {@link element} found between {@link from} and {@link to}
  * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>

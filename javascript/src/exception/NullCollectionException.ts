@@ -15,7 +15,7 @@ import type {Nullable, NullableString, NullOr, NumericOrObject} from "@joookiwi/
 import {EmptyCollectionException} from "./EmptyCollectionException"
 
 /**
- * An {@link Error exception} made to tell that the {@code collection}
+ * An {@link Error exception} made to tell that the <code>collection</code>
  * was <b>null</b> or <b>undefined</b> while not being expected to be
  */
 export class NullCollectionException<const T extends NullOr<NumericOrObject> = null,
@@ -23,7 +23,7 @@ export class NullCollectionException<const T extends NullOr<NumericOrObject> = n
     extends EmptyCollectionException<T, CAUSE> {
 
     /**
-     * The default message that is used in the {@link constructor} when the message is `null`
+     * The default message that is used in the {@link constructor} when the message is <code>null</code>
      *
      * @see CollectionConstants.NULL_COLLECTION_MESSAGE
      */
