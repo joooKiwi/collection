@@ -69,19 +69,6 @@ public class EmptyIterator<T extends @Nullable Object>
 
     //#endregion -------------------- Loop methods --------------------
 
-    //#region -------------------- Unsupported methods --------------------
-
-    @Contract(ALWAYS_FAIL_0)
-    @Override public void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Iterator."); }
-
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void set(final T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable ListIterator."); }
-
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable ListIterator."); }
-
-    //#endregion -------------------- Unsupported methods --------------------
-
     //#endregion -------------------- Methods --------------------
 
 }

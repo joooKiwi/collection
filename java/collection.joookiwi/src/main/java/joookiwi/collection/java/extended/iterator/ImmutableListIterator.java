@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
@@ -52,9 +53,24 @@ public interface ImmutableListIterator<T extends @Nullable Object>
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override void remove();
+    @Override default void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable ListIterator."); }
 
-    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableIterator]
+    /// Fail to add a `value` for the current [instance][ImmutableIterator] in the list held
+    ///
+    /// @param value The (_never used_) element to add
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override default void add(final @Nullable T value) { throw new UnsupportedMethodException("The method “set” is not supported in an immutable ListIterator."); }
+
+    /// Fail to replace the `value` in the current [instance][ImmutableIterator]
+    ///
+    /// @param value The (_never used_) element to replace
+    /// @throws UnsupportedMethodException The method is not supported
+    @Contract(ALWAYS_FAIL_1)
+    @Override default void set(final @Nullable T value) { throw new UnsupportedMethodException("The method “set” is not supported in an immutable ListIterator."); }
+
+
+    /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableListIterator]
     @Contract(mutates = "this")
     @Override void forEachRemaining(Consumer<? super T> operation);
 

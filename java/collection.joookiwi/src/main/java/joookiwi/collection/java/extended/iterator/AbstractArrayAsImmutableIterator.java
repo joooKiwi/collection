@@ -2,16 +2,14 @@ package joookiwi.collection.java.extended.iterator;
 
 import java.util.function.Consumer;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
-import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// A definition of an immutable [java.util.Iterator] to have a common ancestor
+/// A definition of an [ImmutableIterator] to have a common ancestor
 ///
 /// @param <T> The type
 /// @see ArrayAsImmutableIterator
@@ -44,8 +42,6 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
     //#endregion -------------------- Getter / setter methods --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Supported methods --------------------
-
     protected T _get(final int index) {
         final var size = _size();
         if (index > size)
@@ -72,14 +68,6 @@ public abstract class AbstractArrayAsImmutableIterator<T extends @Nullable Objec
             operation.accept(reference[index]);
         _currentIndex(index);
     }
-
-    //#endregion -------------------- Supported methods --------------------
-    //#region -------------------- Unsupported methods --------------------
-
-    @Contract(ALWAYS_FAIL_0)
-    @Override public void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Iterator."); }
-
-    //#endregion -------------------- Unsupported methods --------------------
 
     //#endregion -------------------- Methods --------------------
 

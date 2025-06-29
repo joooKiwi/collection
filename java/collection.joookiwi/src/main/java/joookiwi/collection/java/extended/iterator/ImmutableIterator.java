@@ -27,7 +27,7 @@ public interface ImmutableIterator<T>
     ///
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_0)
-    @Override void remove();
+    @Override default void remove() { throw new UnsupportedMethodException("The method “remove” is not supported in an immutable Iterator."); }
 
     /// Do a certain operation for the rest of the elements in the current [iterator][ImmutableIterator]
     @Contract(mutates = "this")

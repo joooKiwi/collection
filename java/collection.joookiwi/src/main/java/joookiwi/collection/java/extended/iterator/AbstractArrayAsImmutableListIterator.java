@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A definition of an immutable [java.util.ListIterator] to have a common ancestor
@@ -24,8 +23,6 @@ public abstract class AbstractArrayAsImmutableListIterator<T extends @Nullable O
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Supported methods --------------------
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int nextIndex() { return _currentIndex(); }
 
     @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int previousIndex() { return _currentIndex() - 1; }
@@ -37,17 +34,6 @@ public abstract class AbstractArrayAsImmutableListIterator<T extends @Nullable O
         _currentIndex(newIndex);
         return _get(newIndex);
     }
-
-    //#endregion -------------------- Supported methods --------------------
-    //#region -------------------- Unsupported methods --------------------
-
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void set(final T value) { throw new UnsupportedOperationException("The method “set” is not supported in an immutable ListIterator."); }
-
-    @Contract(ALWAYS_FAIL_1)
-    @Override public void add(final T value) { throw new UnsupportedOperationException("The method “add” is not supported in an immutable ListIterator."); }
-
-    //#endregion -------------------- Unsupported methods --------------------
 
     //#endregion -------------------- Methods --------------------
 
