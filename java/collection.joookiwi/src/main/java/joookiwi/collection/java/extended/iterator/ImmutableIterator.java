@@ -2,7 +2,6 @@ package joookiwi.collection.java.extended.iterator;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
-
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
