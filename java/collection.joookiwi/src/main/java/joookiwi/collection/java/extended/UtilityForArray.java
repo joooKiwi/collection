@@ -23,6 +23,7 @@ import org.jetbrains.annotations.UnmodifiableView;
 import static joookiwi.collection.java.CollectionConstants.emptyDeque;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
+import static joookiwi.collection.java.CollectionConstants.emptySequencedCollection;
 import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
@@ -521,11 +522,11 @@ final class UtilityForArray {
     //#endregion -------------------- As subdivided --------------------
     //#region -------------------- As reversed --------------------
 
-    public static <T extends @Nullable Object> @UnmodifiableView SequencedCollection<T> asReversed(final SequencedCollection<? super T> source,
-                                                                                                   final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> asReversed(final SequencedCollection<? super T> source,
+                                                                                          final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptyList();
+            return emptySequencedCollection();
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
