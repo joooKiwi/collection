@@ -71,12 +71,14 @@ import joookiwi.collection.java.extended.MutableStack;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
 import joookiwi.collection.java.extended.OrderableCollection;
+import joookiwi.collection.java.extended.ReversedArray;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableDeque;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableList;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedCollection;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableSequencedSet;
 import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.SubdividedArray;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableList;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableSortedSet;
@@ -781,6 +783,13 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         else
             __array = ArrayCreator.getInstance().newArray(reference, size);
     }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.subdividedSource", targetIsContainer = true) @Unmodifiable SubdividedArray<? extends T> reference) { this(reference.subdividedSource()); }
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, source="param1.reversedSource", targetIsContainer = true) @Unmodifiable ReversedArray<? extends T> reference) { this(reference.reversedSource()); }
 
     //#endregion -------------------- Constructors (array) --------------------
 
