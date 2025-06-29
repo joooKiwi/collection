@@ -61,11 +61,11 @@ public class EmptyIterator<T extends @Nullable Object>
 
     //#region -------------------- Loop methods --------------------
 
-    @Contract(pure = true)           public void forEachRemaining(                                                   ) {}
-    @Contract(pure = true)           public void forEachRemaining(final @Nullable ObjIntConsumer<? super T> operation) {}
-    @Contract(pure = true) @Override public void forEachRemaining(final @Nullable Consumer<? super T>       operation) {}
-    @Contract(pure = true)           public void forEachRemaining(final @Nullable Runnable                  operation) {}
-    @Contract(pure = true)           public void forEachRemaining(final @Nullable Object @Nullable ...        ignored) {}
+    @Contract(pure = true)           public void forEachRemaining(                                                             ) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable ObjIntConsumer<? super @Nullable T> operation) {}
+    @Contract(pure = true) @Override public void forEachRemaining(final @Nullable Consumer<? super @Nullable T>       operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable Runnable                            operation) {}
+    @Contract(pure = true)           public void forEachRemaining(final @Nullable Object @Nullable ...                  ignored) {}
 
     //#endregion -------------------- Loop methods --------------------
 

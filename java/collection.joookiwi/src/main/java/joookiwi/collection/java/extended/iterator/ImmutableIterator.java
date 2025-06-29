@@ -6,11 +6,12 @@ import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
-public interface ImmutableIterator<T>
+public interface ImmutableIterator<T extends @Nullable Object>
         extends Iterator<T> {
 
     /// Tell if the iteration has more elements **after** the current element
