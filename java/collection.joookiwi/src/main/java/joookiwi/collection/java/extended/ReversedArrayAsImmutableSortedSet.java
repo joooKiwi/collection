@@ -24,10 +24,10 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 ///
 /// @param <T>               The type
 /// @param <SOURCE>          The original source of the instance
-///                          (generally a [ArrayAsImmutableSortedSet], [SubArrayAsImmutableSortedSet] or [ReversedArrayAsImmutableSortedSet])
+///                          (generally a [ArrayAsImmutableSortedSet], [SubdividedArrayAsImmutableSortedSet] or [ReversedArrayAsImmutableSortedSet])
 /// @param <REVERSED_ARRAY>> The array that should contain the new reference
 /// @see ArrayAsImmutableSortedSet
-/// @see SubArrayAsImmutableSortedSet
+/// @see SubdividedArrayAsImmutableSortedSet
 @NotNullByDefault
 public class ReversedArrayAsImmutableSortedSet<T extends @Nullable Object,
         SOURCE extends SortedSet<? super T>,

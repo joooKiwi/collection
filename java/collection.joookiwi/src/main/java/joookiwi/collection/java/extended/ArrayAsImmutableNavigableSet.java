@@ -22,7 +22,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T> The type
-/// @see SubArrayAsImmutableNavigableSet
+/// @see SubdividedArrayAsImmutableNavigableSet
 /// @see ReversedArrayAsImmutableNavigableSet
 @NotNullByDefault
 public class ArrayAsImmutableNavigableSet<T extends @Nullable Object>

@@ -11,11 +11,11 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// A container to create a subdivided array lazily via [#subSource]
 ///
 /// @param <T> The type
-/// @see SubArrayAsImmutableList
-/// @see SubArrayAsImmutableSortedSet
-/// @see SubArrayAsImmutableNavigableSet
+/// @see SubdividedArrayAsImmutableList
+/// @see SubdividedArrayAsImmutableSortedSet
+/// @see SubdividedArrayAsImmutableNavigableSet
 @NotNullByDefault
-public class SubArray<T extends @Nullable Object> {
+public class SubdividedArray<T extends @Nullable Object> {
 
     //#region -------------------- Fields --------------------
 
@@ -32,9 +32,9 @@ public class SubArray<T extends @Nullable Object> {
     /// @param source        The array source to create a new [sub-source][#subSource]
     /// @param startingIndex The starting index that should be the beginning of the [sub-source][#subSource]
     /// @param endingIndex   The ending index that should be the end of the [sub-source][#subSource]
-    public SubArray(final T[] source,
-                    final @Range(from = 0, to = MAX_INT_VALUE) int startingIndex,
-                    final @Range(from = 0, to = MAX_INT_VALUE) int endingIndex) {
+    public SubdividedArray(final T[] source,
+                           final @Range(from = 0, to = MAX_INT_VALUE) int startingIndex,
+                           final @Range(from = 0, to = MAX_INT_VALUE) int endingIndex) {
         __source = source;
         __startingIndex = startingIndex;
         __endingIndex = endingIndex;

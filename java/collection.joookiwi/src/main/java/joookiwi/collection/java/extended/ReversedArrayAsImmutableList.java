@@ -22,10 +22,10 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 ///
 /// @param <T>               The type
 /// @param <SOURCE>          The original source of the instance
-///                          (generally a [ArrayAsImmutableList], [SubArrayAsImmutableList] or [ReversedArrayAsImmutableList])
+///                          (generally a [ArrayAsImmutableList], [SubdividedArrayAsImmutableList] or [ReversedArrayAsImmutableList])
 /// @param <REVERSED_ARRAY>> The array that should contain the new reference
 /// @see ArrayAsImmutableList
-/// @see SubArrayAsImmutableList
+/// @see SubdividedArrayAsImmutableList
 @NotNullByDefault
 public class ReversedArrayAsImmutableList<T extends @Nullable Object,
         SOURCE extends List<? super T>,

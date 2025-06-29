@@ -21,7 +21,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T> The type
-/// @see SubArrayAsImmutableSortedSet
+/// @see SubdividedArrayAsImmutableSortedSet
 /// @see ReversedArrayAsImmutableSortedSet
 @NotNullByDefault
 public class ArrayAsImmutableSortedSet<T extends @Nullable Object>

@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-import org.jetbrains.annotations.UnmodifiableView;
 
 import static joookiwi.collection.java.CollectionConstants.emptyDeque;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
@@ -408,7 +407,7 @@ final class UtilityForArray {
             return emptyList();
         if (from == to)
             return emptyList();
-        return new SubArrayAsImmutableList<>(source, new SubArray<>(reference, from, to));
+        return new SubdividedArrayAsImmutableList<>(source, new SubdividedArray<>(reference, from, to));
     }
 
 
@@ -430,7 +429,7 @@ final class UtilityForArray {
 
         final var comparator = source.comparator();
         final var comparatorHelper = ComparatorHelper.getInstance();
-        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+        return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
     }
 
     @Contract(ALWAYS_NEW_6)
@@ -455,12 +454,12 @@ final class UtilityForArray {
         final var comparatorHelper = ComparatorHelper.getInstance();
         if (fromIsInclusive)
             if (toIsInclusive)
-                return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+                return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
             else
-                return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+                return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
         if (toIsInclusive)
-            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
-        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
+            return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigherOrEqual(to, reference, size, comparator, comparatorHelper)));
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
 
     }
 
@@ -474,7 +473,7 @@ final class UtilityForArray {
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the SortedSet.");
-        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_4)
@@ -488,8 +487,8 @@ final class UtilityForArray {
         if (!has(reference, to))
             throw new IllegalArgumentException("The ending value (“to”) does not exist in the NavigableSet.");
         if (isInclusive)
-            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
-        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+            return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigherOrEqual(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
     @Contract(ALWAYS_NEW_3)
@@ -501,7 +500,7 @@ final class UtilityForArray {
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the SortedSet.");
-        return new SubArrayAsImmutableSortedSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+        return new SubdividedArrayAsImmutableSortedSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
     @Contract(ALWAYS_NEW_4)
@@ -515,8 +514,8 @@ final class UtilityForArray {
         if (!has(reference, from))
             throw new IllegalArgumentException("The starting value (“from”) does not exist in the NavigableSet.");
         if (isInclusive)
-            return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
-        return new SubArrayAsImmutableNavigableSet<>(source, new SubArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+            return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
+        return new SubdividedArrayAsImmutableNavigableSet<>(source, new SubdividedArray<>(reference, _indexFromHashCodeHigher(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
     //#endregion -------------------- As subdivided --------------------

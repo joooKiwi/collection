@@ -1,7 +1,7 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
-import java.util.SortedSet;
+import java.util.NavigableSet;
 
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[SortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
+/// An implementation of a subdivided-[NavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [SUB_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
@@ -24,16 +24,16 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T>         The type
-/// @param <SUB_ARRAY> The array that should contain the new reference
 /// @param <SOURCE>    The original source of the instance
-///                    (generally a [ArrayAsImmutableSortedSet], [SubArrayAsImmutableSortedSet] or [ReversedArrayAsImmutableSortedSet])
-/// @see ArrayAsImmutableSortedSet
-/// @see ReversedArrayAsImmutableSortedSet
+///                    (generally a [ArrayAsImmutableNavigableSet], [SubdividedArrayAsImmutableNavigableSet] or [ReversedArrayAsImmutableNavigableSet])
+/// @param <SUB_ARRAY> The array that should contain the new reference
+/// @see ArrayAsImmutableNavigableSet
+/// @see ReversedArrayAsImmutableNavigableSet
 @NotNullByDefault
-public class SubArrayAsImmutableSortedSet<T extends @Nullable Object,
-        SOURCE extends SortedSet<? super T>,
-        SUB_ARRAY extends SubArray<? extends T>>
-        extends AbstractArrayAsImmutableSortedSet<T> {
+public class SubdividedArrayAsImmutableNavigableSet<T extends @Nullable Object,
+        SOURCE extends NavigableSet<? super T>,
+        SUB_ARRAY extends SubdividedArray<? extends T>>
+        extends AbstractArrayAsImmutableNavigableSet<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -49,8 +49,8 @@ public class SubArrayAsImmutableSortedSet<T extends @Nullable Object,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public SubArrayAsImmutableSortedSet(final SOURCE source,
-                                        final SUB_ARRAY subArray) {
+    public SubdividedArrayAsImmutableNavigableSet(final SOURCE source,
+                                                  final SUB_ARRAY subArray) {
         super();
         __source = source;
         __subArray = subArray;
@@ -63,11 +63,11 @@ public class SubArrayAsImmutableSortedSet<T extends @Nullable Object,
     @Contract(pure = true)
     protected SOURCE _source() { return __source; }
 
-    /// The [SubArray] passed through the constructor
+    /// The [SubdividedArray] passed through the constructor
     @Contract(pure = true)
     protected SUB_ARRAY _subArray() { return __subArray; }
 
-    /// The internal referenced generated from the [sub-array][#_subArray] [source][SubArray#subSource]
+    /// The internal referenced generated from the [sub-array][#_subArray] [source][SubdividedArray#subSource]
     @InitializedOnFirstCall
     @Override protected T[] _reference() {
         final var value = __reference;
@@ -101,7 +101,7 @@ public class SubArrayAsImmutableSortedSet<T extends @Nullable Object,
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
     @Contract(ALWAYS_NEW_0)
-    @Override public SubArrayAsImmutableSortedSet<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsImmutableSortedSet<>(_source(), _subArray()); }
+    @Override public SubdividedArrayAsImmutableNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return new SubdividedArrayAsImmutableNavigableSet<>(_source(), _subArray()); }
 
     //#endregion -------------------- Methods --------------------
 

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 ///
 /// @param <T> The type
 /// @see ArrayAsImmutableNavigableSet
-/// @see SubArrayAsImmutableNavigableSet
+/// @see SubdividedArrayAsImmutableNavigableSet
 /// @see ReversedArrayAsImmutableNavigableSet
 @NotNullByDefault
 public abstract class AbstractArrayAsImmutableNavigableSet<T extends @Nullable Object>

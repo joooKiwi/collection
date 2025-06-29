@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
-import java.util.Comparator;
-import java.util.NavigableSet;
+import java.util.List;
 
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
@@ -13,8 +12,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[NavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
-/// During its creation, it <u>implies</u> that the [SUB_ARRAY] received has no duplicate.
+/// An implementation of a subdivided-[List] similar to the [ArrayAsImmutableList] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -24,16 +22,16 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T>         The type
-/// @param <SOURCE>    The original source of the instance
-///                    (generally a [ArrayAsImmutableNavigableSet], [SubArrayAsImmutableNavigableSet] or [ReversedArrayAsImmutableNavigableSet])
 /// @param <SUB_ARRAY> The array that should contain the new reference
-/// @see ArrayAsImmutableNavigableSet
-/// @see ReversedArrayAsImmutableNavigableSet
+/// @param <SOURCE>    The original source of the instance
+///                    (generally a [ArrayAsImmutableList], [SubdividedArrayAsImmutableList] or [ReversedArrayAsImmutableList])
+/// @see ArrayAsImmutableList
+/// @see ReversedArrayAsImmutableList
 @NotNullByDefault
-public class SubArrayAsImmutableNavigableSet<T extends @Nullable Object,
-        SOURCE extends NavigableSet<? super T>,
-        SUB_ARRAY extends SubArray<? extends T>>
-        extends AbstractArrayAsImmutableNavigableSet<T> {
+public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
+        SOURCE extends List<? super T>,
+        SUB_ARRAY extends SubdividedArray<? extends T>>
+        extends AbstractArrayAsImmutableList<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -49,8 +47,8 @@ public class SubArrayAsImmutableNavigableSet<T extends @Nullable Object,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public SubArrayAsImmutableNavigableSet(final SOURCE source,
-                                           final SUB_ARRAY subArray) {
+    public SubdividedArrayAsImmutableList(final SOURCE source,
+                                          final SUB_ARRAY subArray) {
         super();
         __source = source;
         __subArray = subArray;
@@ -63,11 +61,11 @@ public class SubArrayAsImmutableNavigableSet<T extends @Nullable Object,
     @Contract(pure = true)
     protected SOURCE _source() { return __source; }
 
-    /// The [SubArray] passed through the constructor
+    /// The [SubdividedArray] passed through the constructor
     @Contract(pure = true)
     protected SUB_ARRAY _subArray() { return __subArray; }
 
-    /// The internal referenced generated from the [sub-array][#_subArray] [source][SubArray#subSource]
+    /// The internal referenced generated from the [sub-array][#_subArray] [source][SubdividedArray#subSource]
     @InitializedOnFirstCall
     @Override protected T[] _reference() {
         final var value = __reference;
@@ -89,8 +87,8 @@ public class SubArrayAsImmutableNavigableSet<T extends @Nullable Object,
         return __size = _reference().length;
     }
 
-    @Contract(pure = true)
     @InitializedOnFirstCall
+    @Contract(pure = true)
     @Override public boolean isEmpty() {
         if (__isInitialized)
             return __isEmpty;
@@ -98,10 +96,8 @@ public class SubArrayAsImmutableNavigableSet<T extends @Nullable Object,
     }
 
 
-    @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
-
     @Contract(ALWAYS_NEW_0)
-    @Override public SubArrayAsImmutableNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return new SubArrayAsImmutableNavigableSet<>(_source(), _subArray()); }
+    @Override public SubdividedArrayAsImmutableList<T, SOURCE, SUB_ARRAY> clone() { return new SubdividedArrayAsImmutableList<>(_source(), _subArray()); }
 
     //#endregion -------------------- Methods --------------------
 

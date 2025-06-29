@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 ///
 /// @param <T> The type
 /// @see ArrayAsImmutableSortedSet
-/// @see SubArrayAsImmutableSortedSet
+/// @see SubdividedArrayAsImmutableSortedSet
 /// @see ReversedArrayAsImmutableSortedSet
 @NotNullByDefault
 public abstract class AbstractArrayAsImmutableSortedSet<T extends @Nullable Object>
