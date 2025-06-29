@@ -18,7 +18,7 @@ public class ArrayAsImmutableIterator<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    /// The starting index that the [Iterator] will start at
+    /// The starting index that the [ImmutableIterator] will start at
     protected static final int INITIAL_CURRENT_INDEX = 0;
 
     private final T[] __reference;
