@@ -3,7 +3,6 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.concurrent.Delayed;
@@ -11,6 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -42,7 +42,7 @@ public class EmptyDelayQueue<T extends Delayed>
         extends ImmutableDelayQueue<T>
         implements Serializable {
 
-    @Serial private static final long serialVersionUID = 3526388858082136063L;
+    @Serial private static final long serialVersionUID = 3331830012704199422L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -98,8 +98,8 @@ public class EmptyDelayQueue<T extends Delayed>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public Iterator<T>    iterator(   ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> iterator(   ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T>   spliterator() { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Stream methods --------------------
@@ -111,9 +111,9 @@ public class EmptyDelayQueue<T extends Delayed>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object[] toArray(                                ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U[]      toArray(final U[]                  array) { return array; }
-    @Contract(pure = true)                       @Override public <U> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final U[]               newArray) { return newArray; }
+    @Contract(pure = true)                       @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Comparison methods --------------------

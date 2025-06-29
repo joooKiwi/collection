@@ -562,8 +562,8 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> @UnmodifiableView Deque<T> asReversed(final Deque<? super T> source,
-                                                                                     final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableDeque<T> asReversed(final Deque<? super T> source,
+                                                                            final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyDeque();
