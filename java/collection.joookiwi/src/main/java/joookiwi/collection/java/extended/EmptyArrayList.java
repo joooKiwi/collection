@@ -30,6 +30,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
@@ -44,7 +45,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyArrayList<T extends @Nullable Object>
         extends ImmutableArrayList<T> {
 
-    @Serial private static final long serialVersionUID = 9003684186252806563L;
+    @Serial private static final long serialVersionUID = 6135708985080564803L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -117,9 +118,9 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object[] toArray(                                ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U[]      toArray(final U[]                  array) { return array; }
-    @Contract(pure = true)                       @Override public <U> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final U[]               newArray) { return newArray; }
+    @Contract(pure = true)                       @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
@@ -131,12 +132,12 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------
 
-    @Override public List<T> subList(final int from, final int to) { return emptyList(); }
+    @Contract(value = ALWAYS_THIS_2, pure = true) @Override public EmptyArrayList<T> subList(final int from, final int to) { return this; }
 
     //#endregion -------------------- Sublist methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable ArrayList<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyArrayList<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparison methods --------------------

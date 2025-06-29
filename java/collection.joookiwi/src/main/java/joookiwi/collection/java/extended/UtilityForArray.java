@@ -387,10 +387,10 @@ final class UtilityForArray {
     //#endregion -------------------- Index --------------------
     //#region -------------------- As subdivided --------------------
 
-    public static <T extends @Nullable Object> @UnmodifiableView List<T> asSubdivided(final List<? super T> source,
-                                                                                      final T @Unmodifiable [] reference,
-                                                                                      final int from,
-                                                                                      final int to) {
+    public static <T extends @Nullable Object> ImmutableList<T> asSubdivided(final List<? super T> source,
+                                                                             final T @Unmodifiable [] reference,
+                                                                             final int from,
+                                                                             final int to) {
         if (from < 0)
             throw new IndexOutOfBoundsException("Index out of bound. The starting index “" + from + "” cannot be under 0.", from);
 
@@ -528,8 +528,8 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> @UnmodifiableView List<T> asReversed(final List<? super T> source,
-                                                                                    final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableList<T> asReversed(final List<? super T> source,
+                                                                           final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyList();
