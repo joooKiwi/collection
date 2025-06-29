@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 /// @param <T> The type
 /// @see EmptyCollectionHolder
 /// @see GenericMinimalistCollectionHolder
+/// @see MinimalistCollectionViewer
 public abstract class AbstractMinimalistCollectionHolder<T extends @Nullable Object>
         implements MinimalistCollectionHolder<T> {
 
