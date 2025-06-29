@@ -14,7 +14,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see CollectionViewer
 @NotNullByDefault
 public class MinimalistCollectionViewer<T extends @Nullable Object,
-        REFERENCE extends MinimalistCollectionHolder<T>>
+        REFERENCE extends MinimalistCollectionHolder<? extends T>>
         extends AbstractMinimalistCollectionHolder<T> {
 
     private final REFERENCE __reference;
