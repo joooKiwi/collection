@@ -29,6 +29,7 @@ import joookiwi.collection.java.callback.CollectionHolderSupplier;
 import joookiwi.collection.java.callback.CollectionIteratorSupplier;
 import joookiwi.collection.java.callback.CollectionSupplier;
 import joookiwi.collection.java.callback.DequeSupplier;
+import joookiwi.collection.java.callback.IterableSupplier;
 import joookiwi.collection.java.callback.ListSupplier;
 import joookiwi.collection.java.callback.MinimalistCollectionHolderSupplier;
 import joookiwi.collection.java.callback.QueueSupplier;
@@ -295,7 +296,7 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Constructor (iterable) --------------------
 
     @Contract(pure = true)
-    public GenericMinimalistCollectionHolder(final Supplier<? extends Iterable<? extends T>> lateReference) { this(lateReference.get()); }
+    public GenericMinimalistCollectionHolder(final IterableSupplier<? extends T> lateReference) { this(lateReference.get()); }
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Iterable<? extends T> reference) {
