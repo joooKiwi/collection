@@ -13,6 +13,7 @@ import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAUL
 /// An [ImmutableSequencedSet] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see joookiwi.collection.java.CollectionConstants#emptySequencedSet
 @Singleton
 @NotNullByDefault
 public class EmptySequencedSet<T extends @Nullable Object>

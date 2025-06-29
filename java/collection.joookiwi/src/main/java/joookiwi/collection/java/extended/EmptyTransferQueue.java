@@ -1,12 +1,20 @@
 package joookiwi.collection.java.extended;
 
+import joookiwi.collection.java.annotation.Singleton;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 
+/// An [ImmutableTransferQueue] with no values (as a [singleton][Singleton] instance)
+///
+/// @param <T> The type
+/// @see joookiwi.collection.java.CollectionConstants#emptyTransferQueue
+@Singleton
+@NotNullByDefault
 public class EmptyTransferQueue<T>
         extends EmptyBlockingQueue<T>
         implements ImmutableTransferQueue<T> {

@@ -1,13 +1,21 @@
 package joookiwi.collection.java.extended;
 
+import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 
+/// An [ImmutableQueue] with no values (as a [singleton][Singleton] instance)
+///
+/// @param <T> The type
+/// @see joookiwi.collection.java.CollectionConstants#emptyQueue
+@Singleton
+@NotNullByDefault
 public class EmptyQueue<T extends @Nullable Object>
         extends EmptyCollection<T>
         implements ImmutableQueue<T> {

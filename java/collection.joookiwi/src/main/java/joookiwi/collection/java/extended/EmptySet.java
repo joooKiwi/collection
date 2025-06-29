@@ -13,6 +13,8 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// An [ImmutableSet] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see java.util.Collections#emptySet
+/// @see joookiwi.collection.java.CollectionConstants#emptySet
 @Singleton
 @NotNullByDefault
 public class EmptySet<T extends @Nullable Object>

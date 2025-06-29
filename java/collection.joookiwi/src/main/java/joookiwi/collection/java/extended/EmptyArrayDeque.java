@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.io.Serial;
-import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
@@ -31,7 +30,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [ArrayDeque],
+/// A [Singleton] implementation of the [java.util.ArrayDeque],
 /// but in an empty form
 ///
 /// @param <T> The type of the element

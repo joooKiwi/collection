@@ -18,6 +18,8 @@ import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAUL
 /// An [ImmutableSortedSet] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see java.util.Collections#emptySortedSet
+/// @see joookiwi.collection.java.CollectionConstants#emptySortedSet
 @Singleton
 @NotNullByDefault
 public class EmptySortedSet<T extends @Nullable Object>

@@ -16,6 +16,8 @@ import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAUL
 /// An [ImmutableNavigableSet] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see java.util.Collections#emptyNavigableSet
+/// @see joookiwi.collection.java.CollectionConstants#emptyNavigableSet
 @Singleton
 @NotNullByDefault
 public class EmptyNavigableSet<T extends @Nullable Object>

@@ -1,5 +1,6 @@
 package joookiwi.collection.java.extended;
 
+import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
@@ -11,6 +12,11 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
 
+/// An [ImmutableDeque] with no values (as a [singleton][Singleton] instance)
+///
+/// @param <T> The type
+/// @see joookiwi.collection.java.CollectionConstants#emptyDeque
+@Singleton
 @NotNullByDefault
 public class EmptyDeque<T extends @Nullable Object>
         extends EmptySequencedCollection<T>

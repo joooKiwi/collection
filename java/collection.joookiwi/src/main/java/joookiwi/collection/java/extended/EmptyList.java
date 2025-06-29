@@ -19,6 +19,8 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// An [ImmutableList] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see java.util.Collections#emptyList
+/// @see joookiwi.collection.java.CollectionConstants#emptyList
 @Singleton
 @NotNullByDefault
 public class EmptyList<T extends @Nullable Object>

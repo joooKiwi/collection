@@ -36,6 +36,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 ///
 /// @param <T> The type of the element
 /// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentLinkedQueue
+@Singleton
 @NotNullByDefault
 public class EmptyConcurrentLinkedQueue<T>
         extends ImmutableConcurrentLinkedQueue<T> {

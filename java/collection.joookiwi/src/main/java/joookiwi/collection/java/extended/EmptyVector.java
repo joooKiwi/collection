@@ -6,7 +6,6 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
-import java.util.Vector;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
@@ -35,11 +34,10 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [Vector],
+/// A [Singleton] implementation of the [java.util.Vector],
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see java.util.Collections#emptyList()
 /// @see joookiwi.collection.java.CollectionConstants#emptyVector
 @Singleton
 @NotNullByDefault
