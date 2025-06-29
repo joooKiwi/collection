@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// A container to create a subdivided array lazily via [#subSource]
+/// A container to create a subdivided array lazily via [#subdividedSource]
 ///
 /// @param <T> The type
 /// @see SubdividedArrayAsImmutableList
@@ -20,7 +20,7 @@ public class SubdividedArray<T extends @Nullable Object> {
     //#region -------------------- Fields --------------------
 
     private final T[] __source;
-    private T @Nullable [] __subSource;
+    private T @Nullable [] __subdividedSource;
     private final @Range(from = 0, to = MAX_INT_VALUE) int __startingIndex;
     private final @Range(from = 0, to = MAX_INT_VALUE) int __endingIndex;
 
@@ -29,9 +29,9 @@ public class SubdividedArray<T extends @Nullable Object> {
 
     /// Create a new container from a source array, a starting and ending index
     ///
-    /// @param source        The array source to create a new [sub-source][#subSource]
-    /// @param startingIndex The starting index that should be the beginning of the [sub-source][#subSource]
-    /// @param endingIndex   The ending index that should be the end of the [sub-source][#subSource]
+    /// @param source        The array source to create a new [subdivided-source][#subdividedSource]
+    /// @param startingIndex The starting index that should be the beginning of the [subdivided-source][#subdividedSource]
+    /// @param endingIndex   The ending index that should be the end of the [subdivided-source][#subdividedSource]
     public SubdividedArray(final T[] source,
                            final @Range(from = 0, to = MAX_INT_VALUE) int startingIndex,
                            final @Range(from = 0, to = MAX_INT_VALUE) int endingIndex) {
@@ -56,18 +56,18 @@ public class SubdividedArray<T extends @Nullable Object> {
     /// @implNote The array created should not be modified.
     /// It is only there to help referencing the source trimmed.
     @InitializedOnFirstCall
-    public T[] subSource() {
-        final var value = __subSource;
+    public T[] subdividedSource() {
+        final var value = __subdividedSource;
         if (value != null)
             return value;
-        return __subSource = UtilityForArray.toSubdivided(source(), startingIndex(), endingIndex());
+        return __subdividedSource = UtilityForArray.toSubdivided(source(), startingIndex(), endingIndex());
     }
 
-    /// The starting index that should be the beginning of the [sub-source][#subSource]
+    /// The starting index that should be the beginning of the [subdivided-source][#subdividedSource]
     @Contract(pure = true)
     public @Range(from = 0, to = MAX_INT_VALUE) int startingIndex() { return __startingIndex; }
 
-    /// The ending index that should be the end of the [sub-source][#subSource]
+    /// The ending index that should be the end of the [subdivided-source][#subdividedSource]
     @Contract(pure = true)
     public @Range(from = 0, to = MAX_INT_VALUE) int endingIndex() { return __endingIndex; }
 

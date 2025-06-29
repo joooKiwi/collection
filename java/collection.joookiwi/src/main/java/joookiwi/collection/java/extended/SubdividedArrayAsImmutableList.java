@@ -65,14 +65,14 @@ public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
     @Contract(pure = true)
     protected SUB_ARRAY _subArray() { return __subArray; }
 
-    /// The internal referenced generated from the [sub-array][#_subArray] [source][SubdividedArray#subSource]
+    /// The internal referenced generated from the [subdivided-array][#_subArray] [source][SubdividedArray#subdividedSource]
     @InitializedOnFirstCall
     @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
 
-        final var reference = __reference = _subArray().subSource();
+        final var reference = __reference = _subArray().subdividedSource();
         __isInitialized = true;
         return reference;
     }
