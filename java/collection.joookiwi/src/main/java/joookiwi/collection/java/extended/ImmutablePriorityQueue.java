@@ -6,17 +6,25 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
+import joookiwi.collection.java.extended.iterator.ImmutableIterator;
+import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [PriorityQueue]
 ///
@@ -24,12 +32,12 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 @NotNullByDefault
 public class ImmutablePriorityQueue<T>
         extends PriorityQueue<T>
-        implements OrderableCollection<T>,
-                   Cloneable {
+        implements ImmutableQueue<T>,
+                   OrderableCollection<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -5976385428744770366L;
+    @Serial private static final long serialVersionUID = -5402866038492554146L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -165,15 +173,76 @@ public class ImmutablePriorityQueue<T>
 
     //#region -------------------- Supported methods --------------------
 
+    //#region -------------------- Size methods --------------------
+
     @Contract(pure = true)
-    @Override public int size() { return __size; }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Get methods --------------------
+
+    @Override public T element() { return super.element(); }
+
+    @Override public @Nullable T peek() { return super.peek(); }
+
+    //#endregion -------------------- Get methods --------------------
+    //#region -------------------- Has methods --------------------
+
+    @Contract(pure = true)
+    @Override public boolean contains(final @Nullable Object value) { return super.contains(value); }
+
+    @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return super.containsAll(values); }
+
+    //#endregion -------------------- Has methods --------------------
+    //#region -------------------- For each methods --------------------
+
+    @Override public void forEach(final Consumer<? super T> action) { super.forEach(action); }
+
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- Iterator methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public ImmutableIterator<T> iterator() { return new IteratorAsImmutableIterator<>(super.iterator()); }
+
+    //#endregion -------------------- Iterator methods --------------------
+    //#region -------------------- To array methods --------------------
+
+    @Override public Object[] toArray() { return super.toArray(); }
+
+    @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return super.toArray(newArray); }
+
+    @Contract(ALWAYS_NEW_1)
+    @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return super.toArray(generator); }
+
+    //#endregion -------------------- To array methods --------------------
+    //#region -------------------- Stream methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Stream<T> stream() { return super.stream(); }
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Stream<T> parallelStream() { return super.parallelStream(); }
+
+    //#endregion -------------------- Stream methods --------------------
+    //#region -------------------- Comparator methods --------------------
+
+    @Override public @Nullable Comparator<? super T> comparator() { return super.comparator(); }
+
+    //#endregion -------------------- Comparator methods --------------------
+    //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_NEW_0, pure = true)
     @Override public ImmutablePriorityQueue<T> clone() { return new ImmutablePriorityQueue<>(this, comparator()); }
+
+    //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- To string methods --------------------
+
+    @Override public String toString() { return super.toString(); }
+
+    //#endregion -------------------- To string methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
