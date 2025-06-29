@@ -3,11 +3,18 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
+import joookiwi.collection.java.extended.iterator.ImmutableIterator;
+import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_INITIAL_CAPACITY;
@@ -16,17 +23,20 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [HashSet]
 ///
 /// @param <T> The type of the element
 @NotNullByDefault
 public class ImmutableHashSet<T extends @Nullable Object>
-        extends HashSet<T> {
+        extends HashSet<T>
+        implements ImmutableSet<T> {
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 6089911639288839861L;
+    @Serial private static final long serialVersionUID = -7344297456931727274L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -196,7 +206,9 @@ public class ImmutableHashSet<T extends @Nullable Object>
 
     //#region -------------------- Supported methods --------------------
 
-    @Override public int size() {
+    //#region -------------------- Size methods --------------------
+
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
         if (__isInitialized)
             return __size;
 
@@ -215,10 +227,60 @@ public class ImmutableHashSet<T extends @Nullable Object>
         return value;
     }
 
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Has methods --------------------
+
+    @Contract(pure = true)
+    @Override public boolean contains(final @Nullable Object value) { return super.contains(value); }
+
+    @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return super.containsAll(values); }
+
+    //#endregion -------------------- Has methods --------------------
+    //#region -------------------- For each methods --------------------
+
+    @Override public void forEach(final Consumer<? super T> action) { super.forEach(action); }
+
+    //#endregion -------------------- For each methods --------------------
+    //#region -------------------- Iterator methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public ImmutableIterator<T> iterator() { return new IteratorAsImmutableIterator<>(super.iterator()); }
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Spliterator<T> spliterator() { return super.spliterator(); }
+
+    //#endregion -------------------- Iterator methods --------------------
+    //#region -------------------- To array methods --------------------
+
+    @Override public Object[] toArray() { return super.toArray(); }
+
+    @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return super.toArray(newArray); }
+
+    @Contract(ALWAYS_NEW_1)
+    @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return super.toArray(generator); }
+
+    //#endregion -------------------- To array methods --------------------
+    //#region -------------------- Stream methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Stream<T> stream() { return super.stream(); }
+
+    @Contract(ALWAYS_NEW_0)
+    @Override public Stream<T> parallelStream() { return super.parallelStream(); }
+
+    //#endregion -------------------- Stream methods --------------------
+    //#region -------------------- Clone methods --------------------
 
     @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
     @Override public ImmutableHashSet<T> clone() { return new ImmutableHashSet<>((HashSet<T>) super.clone()); }
+
+    //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- To string methods --------------------
+
+    @Override public String toString() { return super.toString(); }
+
+    //#endregion -------------------- To string methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

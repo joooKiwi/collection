@@ -3,8 +3,6 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Spliterator;
@@ -12,6 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -46,7 +45,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyConcurrentSkipListSet<T>
         extends ImmutableConcurrentSkipListSet<T> {
 
-    @Serial private static final long serialVersionUID = -175439926840083523L;
+    @Serial private static final long serialVersionUID = 2912163353868699472L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -113,16 +112,16 @@ public class EmptyConcurrentSkipListSet<T>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public Iterator<T>    iterator(          ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public Spliterator<T> spliterator(       ) { return emptySpliterator(); }
-    @Contract(pure = true) @Override public Iterator<T>    descendingIterator() { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> iterator(          ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T>   spliterator(       ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator() { return emptyIterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public     Object[] toArray(                                ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U> U[]      toArray(final U[]                  array) { return array; }
-    @Contract(pure = true)                       @Override public <U> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final U[]               newArray) { return newArray; }
+    @Contract(pure = true)                       @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
@@ -134,21 +133,21 @@ public class EmptyConcurrentSkipListSet<T>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Subset methods --------------------
 
-    @Override public @Unmodifiable NavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
-    @Override public @Unmodifiable NavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
 
-    @Override public @Unmodifiable NavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public @Unmodifiable NavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
 
-    @Override public @Unmodifiable NavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public @Unmodifiable NavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
 
-    @Override public @Unmodifiable NavigableSet<T> descendingSet() { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> descendingSet() { return emptyNavigableSet(); }
 
     //#endregion -------------------- Subset methods --------------------
     //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @Unmodifiable NavigableSet<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyConcurrentSkipListSet<T> reversed() { return this; }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Comparison methods --------------------

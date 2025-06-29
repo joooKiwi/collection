@@ -23,6 +23,7 @@ import org.jetbrains.annotations.UnmodifiableView;
 import static joookiwi.collection.java.CollectionConstants.emptyDeque;
 import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
+import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_4;
@@ -411,10 +412,10 @@ final class UtilityForArray {
 
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asSubdivided(final SortedSet<? super T> source,
-                                                                                           final T @Unmodifiable [] reference,
-                                                                                           final T from,
-                                                                                           final T to) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asSubdivided(final SortedSet<? super T> source,
+                                                                                  final T @Unmodifiable [] reference,
+                                                                                  final T from,
+                                                                                  final T to) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -432,12 +433,12 @@ final class UtilityForArray {
     }
 
     @Contract(ALWAYS_NEW_6)
-    public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asSubdivided(final NavigableSet<? super T> source,
-                                                                                              final T @Unmodifiable [] reference,
-                                                                                              final T from,
-                                                                                              final boolean fromIsInclusive,
-                                                                                              final T to,
-                                                                                              final boolean toIsInclusive) {
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final NavigableSet<? super T> source,
+                                                                                     final T @Unmodifiable [] reference,
+                                                                                     final T from,
+                                                                                     final boolean fromIsInclusive,
+                                                                                     final T to,
+                                                                                     final boolean toIsInclusive) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -464,9 +465,9 @@ final class UtilityForArray {
 
 
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asHeadSubdivided(final SortedSet<? super T> source,
-                                                                                               final T @Unmodifiable [] reference,
-                                                                                               final T to) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asHeadSubdivided(final SortedSet<? super T> source,
+                                                                                      final T @Unmodifiable [] reference,
+                                                                                      final T to) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -476,10 +477,10 @@ final class UtilityForArray {
     }
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asHeadSubdivided(final NavigableSet<? super T> source,
-                                                                                                  final T @Unmodifiable [] reference,
-                                                                                                  final T to,
-                                                                                                  final boolean isInclusive) {
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final NavigableSet<? super T> source,
+                                                                                         final T @Unmodifiable [] reference,
+                                                                                         final T to,
+                                                                                         final boolean isInclusive) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -491,9 +492,9 @@ final class UtilityForArray {
     }
 
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asTailSubdivided(final SortedSet<? super T> source,
-                                                                                               final T @Unmodifiable [] reference,
-                                                                                               final T from) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asTailSubdivided(final SortedSet<? super T> source,
+                                                                                      final T @Unmodifiable [] reference,
+                                                                                      final T from) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -503,10 +504,10 @@ final class UtilityForArray {
     }
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asTailSubdivided(final NavigableSet<? super T> source,
-                                                                                                  final T @Unmodifiable [] reference,
-                                                                                                  final T from,
-                                                                                                  final boolean isInclusive) {
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asTailSubdivided(final NavigableSet<? super T> source,
+                                                                                         final T @Unmodifiable [] reference,
+                                                                                         final T from,
+                                                                                         final boolean isInclusive) {
         final var size = reference.length;
         if (size == 0)
             throw new IllegalArgumentException(DEFAULT_MESSAGE);
@@ -536,24 +537,24 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> @UnmodifiableView SequencedSet<T> asReversed(final SequencedSet<? super T> source,
-                                                                                            final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableSequencedSet<T> asReversed(final SequencedSet<? super T> source,
+                                                                                   final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptySortedSet();
+            return emptySequencedSet();
         return new ReversedArrayAsImmutableSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> @UnmodifiableView SortedSet<T> asReversed(final SortedSet<? super T> source,
-                                                                                         final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asReversed(final SortedSet<? super T> source,
+                                                                                final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptySortedSet();
         return new ReversedArrayAsImmutableSortedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> @UnmodifiableView NavigableSet<T> asReversed(final NavigableSet<? super T> source,
-                                                                                            final T @Unmodifiable [] reference) {
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asReversed(final NavigableSet<? super T> source,
+                                                                                   final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
             return emptyNavigableSet();
