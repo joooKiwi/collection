@@ -46,10 +46,19 @@ import joookiwi.collection.java.extended.ArrayAsImmutableSet;
 import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.BasicStack;
 import joookiwi.collection.java.extended.ImmutableArrayList;
+import joookiwi.collection.java.extended.ImmutableCollection;
 import joookiwi.collection.java.extended.ImmutableCopyOnWriteArrayList;
+import joookiwi.collection.java.extended.ImmutableDeque;
 import joookiwi.collection.java.extended.ImmutableHashSet;
 import joookiwi.collection.java.extended.ImmutableLinkedHashSet;
 import joookiwi.collection.java.extended.ImmutableLinkedList;
+import joookiwi.collection.java.extended.ImmutableList;
+import joookiwi.collection.java.extended.ImmutableNavigableSet;
+import joookiwi.collection.java.extended.ImmutableQueue;
+import joookiwi.collection.java.extended.ImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ImmutableSequencedSet;
+import joookiwi.collection.java.extended.ImmutableSet;
+import joookiwi.collection.java.extended.ImmutableSortedSet;
 import joookiwi.collection.java.extended.ImmutableStack;
 import joookiwi.collection.java.extended.ImmutableTreeSet;
 import joookiwi.collection.java.extended.ImmutableVector;
@@ -71,6 +80,14 @@ import joookiwi.collection.java.extended.ReversedArrayAsImmutableSortedSet;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableList;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableNavigableSet;
 import joookiwi.collection.java.extended.SubdividedArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsMutableIterator;
+import joookiwi.collection.java.extended.iterator.ArrayAsMutableListIterator;
+import joookiwi.collection.java.extended.iterator.ImmutableIterator;
+import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
+import joookiwi.collection.java.extended.iterator.MutableIterator;
+import joookiwi.collection.java.extended.iterator.MutableListIterator;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import org.intellij.lang.annotations.Flow;
@@ -201,11 +218,39 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         __size = (__array = ArrayCreator.getInstance().newArray(reference, value1, value2)).length;
     }
 
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsMutableIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
     //#endregion -------------------- Constructor (iterator) --------------------
     //#region -------------------- Constructor (list iterator) --------------------
 
     @Contract(mutates = "param")
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) MutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
+
+    @Contract(mutates = "param")
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsMutableListIterator<? extends T> reference) { this((Iterator<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (list iterator) --------------------
     //#region -------------------- Constructor (enumeration) --------------------
@@ -330,6 +375,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
 
     @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
+
+
+    @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableCollection<? extends T> reference) { this((Collection<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (collection) --------------------
@@ -358,6 +407,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         else
             __array = ArrayCreator.getInstance().newArray(reference, size);
     }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSequencedCollection<? extends T> reference) { this((SequencedCollection<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -391,6 +444,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         else
             __array = ArrayCreator.getInstance().newArray(reference, size);
     }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableList<? extends T> reference) { this((List<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -483,6 +540,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
 
     @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
+
+
+    @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSet<? extends T> reference) { this((Set<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (set) --------------------
@@ -508,6 +569,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
 
     @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSequencedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+
+    @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableSequencedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
     @Contract(pure = true)
@@ -518,6 +583,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable SortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableSortedSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -534,6 +603,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
     @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable NavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableNavigableSet<? extends T> reference) { this((SequencedSet<? extends T>) reference); }
 
 
     @Contract(pure = true)
@@ -610,6 +683,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
 
     @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
+
+
+    @Contract(pure = true)
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ArrayAsImmutableQueue<? extends T> reference) { this((Queue<? extends T>) reference); }
 
     //#endregion -------------------- Constructor (queue) --------------------
@@ -637,6 +714,10 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         else
             __array = ArrayCreator.getInstance().newArray(reference, size);
     }
+
+
+    @Contract(pure = true)
+    public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) ImmutableDeque<? extends T> reference) { this((Deque<? extends T>) reference); }
 
 
     @Contract(pure = true)
