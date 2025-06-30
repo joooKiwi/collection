@@ -1,11 +1,12 @@
 package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Range;
 
+
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java TransferQueue][java.util.concurrent.TransferQueue]
@@ -68,8 +69,8 @@ public class ArrayAsImmutableTransferQueue<T>
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int getWaitingConsumerCount() { return 0; }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsImmutableTransferQueue<T> clone() { return new ArrayAsImmutableTransferQueue<>(_reference().clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ArrayAsImmutableTransferQueue<T> clone() { return (ArrayAsImmutableTransferQueue<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

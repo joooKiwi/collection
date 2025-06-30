@@ -2,6 +2,7 @@ package joookiwi.collection.java.extended;
 
 import java.util.Set;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,7 +50,8 @@ public abstract class AbstractArrayAsImmutableSet<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableSet<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableSet<T> clone() { return (AbstractArrayAsImmutableSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

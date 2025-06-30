@@ -7,13 +7,12 @@ import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.PriorityBlockingQueue;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ConcurrentSkipListSet]
 ///
@@ -152,8 +151,16 @@ public class MutableConcurrentSkipListSet<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableConcurrentSkipListSet<T> clone() { return new MutableConcurrentSkipListSet<>(this, comparator()); }
+    @MustBeInvokedByOverriders
+    @Override public MutableConcurrentSkipListSet<T> clone() {
+        try {
+            return (MutableConcurrentSkipListSet<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() == null) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

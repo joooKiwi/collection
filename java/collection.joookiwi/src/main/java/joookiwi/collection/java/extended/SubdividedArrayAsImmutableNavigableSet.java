@@ -2,15 +2,14 @@ package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
 import java.util.NavigableSet;
-
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[NavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
@@ -100,8 +99,8 @@ public class SubdividedArrayAsImmutableNavigableSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public SubdividedArrayAsImmutableNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return new SubdividedArrayAsImmutableNavigableSet<>(_source(), _subArray()); }
+    @MustBeInvokedByOverriders
+    @Override public SubdividedArrayAsImmutableNavigableSet<T, SOURCE, SUB_ARRAY> clone() { return (SubdividedArrayAsImmutableNavigableSet<T, SOURCE, SUB_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

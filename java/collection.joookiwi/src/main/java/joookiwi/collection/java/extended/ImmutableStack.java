@@ -7,18 +7,19 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Spliterator;
 import java.util.Stack;
-import java.util.Vector;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ListIteratorAsImmutableListIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -339,9 +340,17 @@ public class ImmutableStack<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
-    @Override public synchronized ImmutableStack<T> clone() { return new ImmutableStack<>((Vector<T>) super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ImmutableStack<T> clone() {
+        try {
+            return (ImmutableStack<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() instanceof CloneNotSupportedException)
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- Copy into methods --------------------

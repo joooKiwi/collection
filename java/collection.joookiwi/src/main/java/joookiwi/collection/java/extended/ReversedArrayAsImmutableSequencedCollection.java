@@ -1,14 +1,13 @@
 package joookiwi.collection.java.extended;
 
 import java.util.SequencedCollection;
-
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [SequencedCollection] similar to the [ArrayAsImmutableSequencedCollection] in its behaviour.
@@ -95,8 +94,8 @@ public class ReversedArrayAsImmutableSequencedCollection<T extends @Nullable Obj
     }
 
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ReversedArrayAsImmutableSequencedCollection<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsImmutableSequencedCollection<>(_source(), _reversedArray()); }
+    @MustBeInvokedByOverriders
+    @Override public ReversedArrayAsImmutableSequencedCollection<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableSequencedCollection<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

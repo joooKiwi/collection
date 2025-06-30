@@ -1,5 +1,6 @@
 package joookiwi.collection.java.extended;
 
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +35,8 @@ public abstract class AbstractArrayAsImmutableSequencedSet<T extends @Nullable O
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableSequencedSet<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableSequencedSet<T> clone() { return (AbstractArrayAsImmutableSequencedSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

@@ -3,17 +3,16 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.HashSet;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [HashSet]
 ///
@@ -822,9 +821,17 @@ public class MutableHashSet<T extends @Nullable Object>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
-    @Override public MutableHashSet<T> clone() { return new MutableHashSet<>((HashSet<T>) super.clone(), (Integer) null, __loadFactor); }
+    @MustBeInvokedByOverriders
+    @Override public MutableHashSet<T> clone() {
+        try {
+            return (MutableHashSet<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() instanceof CloneNotSupportedException) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

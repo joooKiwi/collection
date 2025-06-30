@@ -1,5 +1,6 @@
 package joookiwi.collection.java.extended;
 
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 
 /// A definition of an [ImmutableBlockingQueue] to have a common ancestor
@@ -18,7 +19,8 @@ public abstract class AbstractArrayAsImmutableBlockingQueue<T>
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableBlockingQueue<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableBlockingQueue<T> clone() { return (AbstractArrayAsImmutableBlockingQueue<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

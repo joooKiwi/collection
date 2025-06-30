@@ -1,5 +1,6 @@
 package joookiwi.collection.java.extended;
 
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 
 /// A definition of an [ImmutableBlockingDeque] to have a common ancestor
@@ -20,7 +21,8 @@ public abstract class AbstractArrayAsImmutableBlockingDeque<T>
 
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableBlockingDeque<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableBlockingDeque<T> clone() { return (AbstractArrayAsImmutableBlockingDeque<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

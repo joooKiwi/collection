@@ -1,6 +1,7 @@
 package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,8 +38,8 @@ public abstract class AbstractArrayAsImmutableSequencedCollection<T extends @Nul
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public abstract AbstractArrayAsImmutableSequencedCollection<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableSequencedCollection<T> clone() { return (AbstractArrayAsImmutableSequencedCollection<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

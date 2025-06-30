@@ -3,12 +3,11 @@ package joookiwi.collection.java.extended;
 import java.util.Collection;
 import java.util.concurrent.DelayQueue;
 import java.util.concurrent.Delayed;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
-
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [DelayQueue]
 ///
@@ -56,8 +55,15 @@ public class MutableDelayQueue<T extends Delayed>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableDelayQueue<T> clone() { return new MutableDelayQueue<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableDelayQueue<T> clone() {
+        try {
+            return (MutableDelayQueue<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

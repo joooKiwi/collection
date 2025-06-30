@@ -3,12 +3,12 @@ package joookiwi.collection.java.extended;
 import java.util.Comparator;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java NavigableSet][java.util.NavigableSet]
@@ -94,8 +94,8 @@ public class ArrayAsImmutableNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsImmutableNavigableSet<T> clone() { return new ArrayAsImmutableNavigableSet<>(_reference().clone(), comparator()); }
+    @MustBeInvokedByOverriders
+    @Override public ArrayAsImmutableNavigableSet<T> clone() { return (ArrayAsImmutableNavigableSet<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

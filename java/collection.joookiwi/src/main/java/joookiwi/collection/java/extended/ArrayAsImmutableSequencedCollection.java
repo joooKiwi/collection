@@ -1,11 +1,11 @@
 package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java SequencedCollection][java.util.SequencedCollection]
@@ -59,8 +59,8 @@ public class ArrayAsImmutableSequencedCollection<T extends @Nullable Object>
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsImmutableSequencedCollection<T> clone() { return new ArrayAsImmutableSequencedCollection<>(_reference().clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ArrayAsImmutableSequencedCollection<T> clone() { return (ArrayAsImmutableSequencedCollection<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

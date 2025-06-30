@@ -2,6 +2,7 @@ package joookiwi.collection.java.extended;
 
 import joookiwi.collection.java.method.GetFirstOrNull;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +34,8 @@ public abstract class AbstractArrayAsImmutableQueue<T extends @Nullable Object>
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableQueue<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableQueue<T> clone() { return (AbstractArrayAsImmutableQueue<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

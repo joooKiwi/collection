@@ -2,6 +2,7 @@ package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -79,7 +80,8 @@ public abstract class AbstractArrayAsImmutableSortedSet<T extends @Nullable Obje
     //#endregion -------------------- Comparator methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableSortedSet<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableSortedSet<T> clone() { return (AbstractArrayAsImmutableSortedSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

@@ -3,12 +3,12 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
-
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ConcurrentLinkedDeque]
 ///
@@ -70,8 +70,15 @@ public class MutableConcurrentLinkedDeque<T>
     @Override public T removeLast() { return super.removeLast(); }
 
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableConcurrentLinkedDeque<T> clone() { return new MutableConcurrentLinkedDeque<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableConcurrentLinkedDeque<T> clone() {
+        try {
+            return (MutableConcurrentLinkedDeque<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

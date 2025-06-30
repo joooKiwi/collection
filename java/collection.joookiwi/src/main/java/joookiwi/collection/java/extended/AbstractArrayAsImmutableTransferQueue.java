@@ -1,5 +1,6 @@
 package joookiwi.collection.java.extended;
 
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 
 /// A definition of an [ImmutableTransferQueue] to have a common ancestor
@@ -18,7 +19,8 @@ public abstract class AbstractArrayAsImmutableTransferQueue<T>
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableTransferQueue<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableTransferQueue<T> clone() { return (AbstractArrayAsImmutableTransferQueue<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

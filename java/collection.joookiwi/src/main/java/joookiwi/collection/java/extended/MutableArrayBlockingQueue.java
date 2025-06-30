@@ -3,8 +3,9 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.ArrayBlockingQueue;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -12,7 +13,6 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [ArrayBlockingQueue]
@@ -603,8 +603,15 @@ public class MutableArrayBlockingQueue<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableArrayBlockingQueue<T> clone() { return new MutableArrayBlockingQueue<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableArrayBlockingQueue<T> clone() {
+        try {
+            return (MutableArrayBlockingQueue<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

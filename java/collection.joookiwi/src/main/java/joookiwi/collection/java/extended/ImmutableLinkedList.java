@@ -12,6 +12,7 @@ import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
@@ -19,6 +20,7 @@ import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ListIteratorAsImmutableListIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -363,9 +365,17 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
-    @Override public ImmutableLinkedList<T> clone() { return new ImmutableLinkedList<>((LinkedList<T>) super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ImmutableLinkedList<T> clone() {
+        try {
+            return (ImmutableLinkedList<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() instanceof CloneNotSupportedException) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------

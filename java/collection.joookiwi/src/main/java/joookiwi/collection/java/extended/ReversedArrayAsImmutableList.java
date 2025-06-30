@@ -1,14 +1,13 @@
 package joookiwi.collection.java.extended;
 
 import java.util.List;
-
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [List] similar to the [ArrayAsImmutableList] in its behaviour.
@@ -95,8 +94,8 @@ public class ReversedArrayAsImmutableList<T extends @Nullable Object,
     }
 
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ReversedArrayAsImmutableList<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsImmutableList<>(_source(), _reversedArray()); }
+    @MustBeInvokedByOverriders
+    @Override public ReversedArrayAsImmutableList<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableList<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

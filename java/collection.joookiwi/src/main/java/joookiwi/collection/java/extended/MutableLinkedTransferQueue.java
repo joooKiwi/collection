@@ -3,12 +3,12 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.LinkedTransferQueue;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [LinkedTransferQueue]
@@ -44,8 +44,15 @@ public class MutableLinkedTransferQueue<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableLinkedTransferQueue<T> clone() { return new MutableLinkedTransferQueue<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableLinkedTransferQueue<T> clone() {
+        try {
+            return (MutableLinkedTransferQueue<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

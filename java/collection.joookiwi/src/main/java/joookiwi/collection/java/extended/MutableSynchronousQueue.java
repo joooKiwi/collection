@@ -2,17 +2,15 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.SynchronousQueue;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [SynchronousQueue]
 ///
@@ -151,8 +149,15 @@ public class MutableSynchronousQueue<T>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableSynchronousQueue<T> clone() { return new MutableSynchronousQueue<>(this, __isFair); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableSynchronousQueue<T> clone() {
+        try {
+            return (MutableSynchronousQueue<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

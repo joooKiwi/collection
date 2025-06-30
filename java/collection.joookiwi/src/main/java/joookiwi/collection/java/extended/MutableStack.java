@@ -3,14 +3,12 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Stack;
-import java.util.Vector;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An mutable behaviour of a [Stack]
 ///
@@ -78,9 +76,17 @@ public class MutableStack<T extends @Nullable Object>
     @Override public T removeLast() { return super.removeLast(); }
 
 
-    @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
-    @Override public MutableStack<T> clone() { return new MutableStack<>((Vector<T>) super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public MutableStack<T> clone() {
+        try {
+            return (MutableStack<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() instanceof CloneNotSupportedException) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

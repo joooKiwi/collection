@@ -3,16 +3,15 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collection;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ArrayList]
 ///
@@ -235,9 +234,17 @@ public class MutableArrayList<T extends @Nullable Object>
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
     @SuppressWarnings("unchecked cast")
-    @Override public MutableArrayList<T> clone() { return new MutableArrayList<>((ArrayList<T>) super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public MutableArrayList<T> clone() {
+        try {
+            return (MutableArrayList<T>) super.clone();
+        } catch (InternalError error) {
+            if (error.getCause() instanceof CloneNotSupportedException) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

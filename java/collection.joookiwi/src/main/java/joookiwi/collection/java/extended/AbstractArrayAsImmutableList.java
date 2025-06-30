@@ -4,6 +4,7 @@ import java.util.List;
 import joookiwi.collection.java.extended.iterator.ArrayAsImmutableListIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -78,7 +79,8 @@ public abstract class AbstractArrayAsImmutableList<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableList<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableList<T> clone() { return (AbstractArrayAsImmutableList<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

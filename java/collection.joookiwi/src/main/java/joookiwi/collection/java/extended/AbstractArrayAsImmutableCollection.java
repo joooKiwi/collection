@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ArrayAsImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.helper.HashCodeCreator;
@@ -14,6 +15,7 @@ import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
 import joookiwi.collection.java.method.ToString;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -146,8 +148,15 @@ public abstract class AbstractArrayAsImmutableCollection<T extends @Nullable Obj
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public abstract AbstractArrayAsImmutableCollection<T> clone();
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableCollection<T> clone() {
+        try {
+            return (AbstractArrayAsImmutableCollection<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------

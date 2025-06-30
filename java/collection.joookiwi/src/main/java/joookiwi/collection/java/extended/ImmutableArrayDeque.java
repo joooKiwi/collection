@@ -9,10 +9,12 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -298,8 +300,16 @@ public class ImmutableArrayDeque<T>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableArrayDeque<T> clone() { return new ImmutableArrayDeque<>(super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ImmutableArrayDeque<T> clone() {
+        try {
+            return (ImmutableArrayDeque<T>) super.clone();
+        } catch (AssertionError error) {
+            if (error.getCause() == null) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------

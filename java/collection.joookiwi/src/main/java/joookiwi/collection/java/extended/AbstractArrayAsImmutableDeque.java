@@ -5,6 +5,7 @@ import joookiwi.collection.java.extended.iterator.ReversedArrayAsImmutableIterat
 import joookiwi.collection.java.method.GetFirstOrNull;
 import joookiwi.collection.java.method.GetLastOrNull;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,7 +53,8 @@ public abstract class AbstractArrayAsImmutableDeque<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableDeque<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableDeque<T> clone() { return (AbstractArrayAsImmutableDeque<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

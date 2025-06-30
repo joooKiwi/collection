@@ -10,10 +10,12 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -302,8 +304,15 @@ public class ImmutableLinkedBlockingDeque<T>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public ImmutableLinkedBlockingDeque<T> clone() { return new ImmutableLinkedBlockingDeque<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public ImmutableLinkedBlockingDeque<T> clone() {
+        try {
+            return (ImmutableLinkedBlockingDeque<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------

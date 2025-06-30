@@ -3,15 +3,16 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.concurrent.LinkedBlockingDeque;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An mutable behaviour of a [LinkedBlockingDeque]
 ///
@@ -122,8 +123,15 @@ public class MutableLinkedBlockingDeque<T>
     @Override public T removeLast() { return super.removeLast(); }
 
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public MutableLinkedBlockingDeque<T> clone() { return new MutableLinkedBlockingDeque<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Override public MutableLinkedBlockingDeque<T> clone() {
+        try {
+            return (MutableLinkedBlockingDeque<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 

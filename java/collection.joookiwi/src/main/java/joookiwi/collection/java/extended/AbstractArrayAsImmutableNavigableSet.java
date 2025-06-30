@@ -3,6 +3,7 @@ package joookiwi.collection.java.extended;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ReversedArrayAsImmutableIterator;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -59,7 +60,8 @@ public abstract class AbstractArrayAsImmutableNavigableSet<T extends @Nullable O
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Override public abstract AbstractArrayAsImmutableNavigableSet<T> clone();
+    @MustBeInvokedByOverriders
+    @Override public AbstractArrayAsImmutableNavigableSet<T> clone() { return (AbstractArrayAsImmutableNavigableSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 

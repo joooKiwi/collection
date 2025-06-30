@@ -3,15 +3,16 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.ArrayDeque;
 import java.util.Collection;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [ArrayDeque]
 ///
@@ -271,8 +272,16 @@ public class MutableArrayDeque<T>
     @Override public T removeLast() { return super.removeLast(); }
 
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public MutableArrayDeque<T> clone() { return new MutableArrayDeque<>(super.clone()); }
+    @MustBeInvokedByOverriders
+    @Override public MutableArrayDeque<T> clone() {
+        try {
+            return (MutableArrayDeque<T>) super.clone();
+        } catch (AssertionError error) {
+            if (error.getCause() == null) // We only want a CloneNotSupportedException that have been thrown, not a similar exception
+                throw new UnexpectedCloneableExceptionThrownError(getClass(), error);
+            throw error;
+        }
+    }
 
     //#endregion -------------------- Methods --------------------
 }

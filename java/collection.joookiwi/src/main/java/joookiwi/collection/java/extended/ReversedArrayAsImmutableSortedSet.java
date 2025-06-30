@@ -2,14 +2,13 @@ package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
 import java.util.SortedSet;
-
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [SortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
@@ -99,8 +98,8 @@ public class ReversedArrayAsImmutableSortedSet<T extends @Nullable Object,
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ReversedArrayAsImmutableSortedSet<T, SOURCE, REVERSED_ARRAY> clone() { return new ReversedArrayAsImmutableSortedSet<>(_source(), _reversedArray()); }
+    @MustBeInvokedByOverriders
+    @Override public ReversedArrayAsImmutableSortedSet<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableSortedSet<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

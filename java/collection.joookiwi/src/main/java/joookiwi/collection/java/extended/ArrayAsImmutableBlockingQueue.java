@@ -1,10 +1,10 @@
 package joookiwi.collection.java.extended;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java BlockingQueue][java.util.concurrent.BlockingQueue]
@@ -62,8 +62,8 @@ public class ArrayAsImmutableBlockingQueue<T>
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ArrayAsImmutableBlockingQueue<T> clone() { return new ArrayAsImmutableBlockingQueue<>(_reference().clone()); }
+    @MustBeInvokedByOverriders
+    @Override public ArrayAsImmutableBlockingQueue<T> clone() { return (ArrayAsImmutableBlockingQueue<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 
