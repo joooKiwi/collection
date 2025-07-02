@@ -253,7 +253,7 @@ public class ImmutableHashSet<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Override public Object[] toArray() { return super.toArray(); }
+    @Override public @Nullable Object[] toArray() { return super.toArray(); }
 
     @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return super.toArray(newArray); }
 

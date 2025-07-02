@@ -17,7 +17,8 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 @NotNullByDefault
 public interface ImmutableSortedSet<T extends @Nullable Object>
         extends ImmutableSequencedSet<T>,
-                SortedSet<T> {
+                SortedSet<T>,
+                OrderableCollection<T> {
 
     //#region -------------------- Supported methods --------------------
 

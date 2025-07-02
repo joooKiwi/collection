@@ -19,7 +19,6 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
-import org.jetbrains.annotations.UnknownNullability;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
@@ -88,7 +87,7 @@ public abstract class AbstractArrayAsImmutableCollection<T extends @Nullable Obj
     //#region -------------------- To array methods --------------------
 
     @Contract(pure = true)
-    @Override public @UnknownNullability Object[] toArray() { return ToArray.toArray(_reference()); }
+    @Override public @Nullable Object[] toArray() { return ToArray.toArray(_reference()); }
 
     @SuppressWarnings("unchecked cast")
     @Contract(value = ALWAYS_1ST_1, mutates = "param1")

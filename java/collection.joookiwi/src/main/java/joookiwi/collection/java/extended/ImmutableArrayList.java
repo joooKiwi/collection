@@ -146,7 +146,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
         //#region -------------------- To array methods --------------------
 
         @Contract(pure = true)
-        @Override public Object[] toArray() { return __reference.toArray(); }
+        @Override public @Nullable Object[] toArray() { return __reference.toArray(); }
 
         @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return __reference.toArray(newArray); }
 
@@ -297,7 +297,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Override public Object[] toArray() { return super.toArray(); }
+    @Override public @Nullable Object[] toArray() { return super.toArray(); }
 
     @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return super.toArray(newArray); }
 

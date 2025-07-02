@@ -101,7 +101,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
 
     /// Convert the current [instance][Collection] to an `array`
     @Contract(pure = true)
-    @Override @UnknownNullability Object[] toArray();
+    @Override @Nullable Object[] toArray();
 
     /// Put the values inside the `newArray`
     ///
