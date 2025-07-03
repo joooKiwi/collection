@@ -22,18 +22,18 @@ public interface ImmutableSequencedCollection<T extends @Nullable Object>
 
     //#region -------------------- Get methods --------------------
 
-    /// Get the first element in the current [instance][SequencedCollection]
+    /// Get the first element in the current [instance][ImmutableSequencedCollection]
     ///
-    /// @throws NoSuchElementException The current [instance][SequencedCollection] [is empty][#isEmpty]
+    /// @throws NoSuchElementException The current [instance][ImmutableSequencedCollection] [is empty][#isEmpty]
     /// @see java.util.SequencedCollection#getFirst()
     /// @see java.util.SequencedSet#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @Override T getFirst();
 
-    /// Get the last element in the current [instance][SequencedCollection]
+    /// Get the last element in the current [instance][ImmutableSequencedCollection]
     ///
-    /// @throws NoSuchElementException The current [instance][SequencedCollection] [is empty][#isEmpty]
+    /// @throws NoSuchElementException The current [instance][ImmutableSequencedCollection] [is empty][#isEmpty]
     /// @see java.util.SequencedCollection#getLast()
     /// @see java.util.SequencedSet#getLast()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
