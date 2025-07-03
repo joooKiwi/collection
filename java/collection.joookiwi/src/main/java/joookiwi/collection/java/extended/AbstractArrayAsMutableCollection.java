@@ -169,8 +169,8 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
         return true;
     }
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, mutates = "this")
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) {
+    @Contract(mutates = "this")
+    @Override public boolean addAll(final @Unmodifiable Collection<? extends T> values) {
         final var reference = _reference();
         final var newArray = UtilityForMutableArray.addAll(reference, values);
         if (reference != newArray)
