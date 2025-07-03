@@ -81,7 +81,7 @@ public interface MutableCollection<T extends @Nullable Object>
     @Override boolean add(T value);
 
     @Contract(mutates = "this")
-    @Override boolean addAll(Collection<? extends T> values);
+    @Override boolean addAll(@Unmodifiable Collection<? extends T> values);
 
     //#endregion -------------------- Add methods --------------------
     //#region -------------------- Clear methods --------------------
@@ -96,7 +96,7 @@ public interface MutableCollection<T extends @Nullable Object>
     @Override boolean remove(@Nullable Object value);
 
     @Contract(mutates = "this")
-    @Override boolean removeAll(Collection<? extends @Nullable Object> values);
+    @Override boolean removeAll(@Unmodifiable Collection<? extends @Nullable Object> values);
 
     /// Removes all the elements that satisfies the given `filter` predicate
     ///
