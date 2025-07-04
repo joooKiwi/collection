@@ -64,6 +64,174 @@ public final class UtilityForMutableArray
         return originalValue;
     }
 
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static boolean set(final boolean[] collection,
+                              final int index,
+                              final boolean value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static char set(final char[] collection,
+                           final int index,
+                           final char value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static byte set(final byte[] collection,
+                           final int index,
+                           final byte value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static short set(final short[] collection,
+                            final int index,
+                            final short value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static int set(final int[] collection,
+                          final int index,
+                          final int value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static long set(final long[] collection,
+                           final int index,
+                           final long value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static float set(final float[] collection,
+                            final int index,
+                            final float value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
+    /// Set the `value` at the specified `index` in the `collection`
+    ///
+    /// @param collection The collection
+    /// @param index      The index to set the `value`
+    /// @param value      The value to set
+    @Contract(mutates = "param1")
+    public static double set(final double[] collection,
+                             final int index,
+                             final double value) {
+        if (index < 0)
+            throw new IndexOutOfBoundsException("Index out of bound. The index is under 0.", index);
+
+        final var size = collection.length;
+        if (index > size)
+            throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
+
+        final var originalValue = collection[index];
+        collection[index] = value;
+        return originalValue;
+    }
+
     //#endregion -------------------- Set methods --------------------
 
     //#region -------------------- Add methods --------------------
