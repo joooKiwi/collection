@@ -1,11 +1,9 @@
 package joookiwi.collection.java.extended;
 
+import java.util.Collection;
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.List;
 import java.util.NavigableSet;
-import java.util.SequencedCollection;
-import java.util.SequencedSet;
 import java.util.SortedSet;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
@@ -35,7 +33,8 @@ import static joookiwi.collection.java.method.LastIndexOfOrNull.lastIndexOfOrNul
 
 @Internal
 @NotNullByDefault
-final class UtilityForArray {
+sealed class UtilityForArray
+        permits UtilityForMutableArray {
 
     //#region -------------------- Validation --------------------
 
@@ -521,7 +520,7 @@ final class UtilityForArray {
     //#endregion -------------------- As subdivided --------------------
     //#region -------------------- As reversed --------------------
 
-    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> asReversed(final SequencedCollection<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> asReversed(final ImmutableSequencedCollection<T> source,
                                                                                           final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -529,7 +528,7 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> ImmutableList<T> asReversed(final List<? super T> source,
+    public static <T extends @Nullable Object> ImmutableList<T> asReversed(final ImmutableList<T> source,
                                                                            final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -537,7 +536,7 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> ImmutableSequencedSet<T> asReversed(final SequencedSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSequencedSet<T> asReversed(final ImmutableSequencedSet<T> source,
                                                                                    final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -545,7 +544,7 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> ImmutableSortedSet<T> asReversed(final SortedSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asReversed(final ImmutableSortedSet<T> source,
                                                                                 final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -553,7 +552,7 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableSortedSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asReversed(final NavigableSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asReversed(final ImmutableNavigableSet<T> source,
                                                                                    final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -561,7 +560,7 @@ final class UtilityForArray {
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
-    public static <T extends @Nullable Object> ImmutableDeque<T> asReversed(final Deque<? super T> source,
+    public static <T extends @Nullable Object> ImmutableDeque<T> asReversed(final ImmutableDeque<T> source,
                                                                             final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
@@ -586,6 +585,15 @@ final class UtilityForArray {
     //#endregion -------------------- To subdivided --------------------
     //#region -------------------- To reversed --------------------
 
+    public static <T extends @Nullable Object> T[] toReversed(final @Unmodifiable Collection<? extends T> source) {
+        final var size = source.size();
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
+        var index = size;
+        for (final var value : source)
+            newArray[--index] = value;
+        return newArray;
+    }
+
     public static <T extends @Nullable Object> T[] toReversed(final T @Unmodifiable [] source) {
         final var size = source.length;
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
@@ -599,11 +607,11 @@ final class UtilityForArray {
 
     //#region -------------------- Utility search --------------------
 
-    private static <T extends @Nullable Object> int _indexFromHashCodeHigherOrEqual(final T value,
-                                                                                    final T @Unmodifiable [] reference,
-                                                                                    final int size,
-                                                                                    final @Nullable Comparator<? super T> comparator,
-                                                                                    final ComparatorHelper comparatorHelper) {
+    protected static <T extends @Nullable Object> int _indexFromHashCodeHigherOrEqual(final T value,
+                                                                                      final T @Unmodifiable [] reference,
+                                                                                      final int size,
+                                                                                      final @Nullable Comparator<? super T> comparator,
+                                                                                      final ComparatorHelper comparatorHelper) {
         var index = -1;
         while (++index < size)
             if (comparatorHelper.compare(value, reference[index], comparator) >= 0)
@@ -611,11 +619,11 @@ final class UtilityForArray {
         return index - 1;
     }
 
-    private static <T extends @Nullable Object> int _indexFromHashCodeHigher(final T value,
-                                                                             final T @Unmodifiable [] reference,
-                                                                             final int size,
-                                                                             final @Nullable Comparator<? super T> comparator,
-                                                                             final ComparatorHelper comparatorHelper) {
+    protected static <T extends @Nullable Object> int _indexFromHashCodeHigher(final T value,
+                                                                               final T @Unmodifiable [] reference,
+                                                                               final int size,
+                                                                               final @Nullable Comparator<? super T> comparator,
+                                                                               final ComparatorHelper comparatorHelper) {
         var index = -1;
         while (++index < size)
             if (comparatorHelper.compare(value, reference[index], comparator) > 0)
@@ -624,11 +632,11 @@ final class UtilityForArray {
     }
 
 
-    private static <T extends @Nullable Object> int _indexFromHashCodeLowerOrEqual(final T value,
-                                                                                   final T @Unmodifiable [] reference,
-                                                                                   final int size,
-                                                                                   final @Nullable Comparator<? super T> comparator,
-                                                                                   final ComparatorHelper comparatorHelper) {
+    protected static <T extends @Nullable Object> int _indexFromHashCodeLowerOrEqual(final T value,
+                                                                                     final T @Unmodifiable [] reference,
+                                                                                     final int size,
+                                                                                     final @Nullable Comparator<? super T> comparator,
+                                                                                     final ComparatorHelper comparatorHelper) {
         var index = size;
         while (--index >= 0)
             if (comparatorHelper.compare(value, reference[index], comparator) <= 0)
@@ -636,11 +644,11 @@ final class UtilityForArray {
         return index + 1;
     }
 
-    private static <T extends @Nullable Object> int _indexFromHashCodeLower(final T value,
-                                                                            final T @Unmodifiable [] reference,
-                                                                            final int size,
-                                                                            final @Nullable Comparator<? super T> comparator,
-                                                                            final ComparatorHelper comparatorHelper) {
+    protected static <T extends @Nullable Object> int _indexFromHashCodeLower(final T value,
+                                                                              final T @Unmodifiable [] reference,
+                                                                              final int size,
+                                                                              final @Nullable Comparator<? super T> comparator,
+                                                                              final ComparatorHelper comparatorHelper) {
         var index = size;
         while (--index >= 0)
             if (comparatorHelper.compare(value, reference[index], comparator) < 0)
