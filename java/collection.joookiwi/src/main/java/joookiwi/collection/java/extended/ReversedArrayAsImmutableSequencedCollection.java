@@ -4,6 +4,7 @@ import java.util.SequencedCollection;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -27,7 +28,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableSequencedCollection
 @NotNullByDefault
 public class ReversedArrayAsImmutableSequencedCollection<T extends @Nullable Object,
-        SOURCE extends SequencedCollection<? super T>,
+        SOURCE extends @NotNull ImmutableSequencedCollection<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableSequencedCollection<T> {
 
@@ -93,6 +94,8 @@ public class ReversedArrayAsImmutableSequencedCollection<T extends @Nullable Obj
         return __isEmpty = size() == 0;
     }
 
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
     @Override public ReversedArrayAsImmutableSequencedCollection<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableSequencedCollection<T, SOURCE, REVERSED_ARRAY>) super.clone(); }

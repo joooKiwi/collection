@@ -4,6 +4,7 @@ import java.util.SequencedSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -27,7 +28,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableSequencedSet
 @NotNullByDefault
 public class ReversedArrayAsImmutableSequencedSet<T extends @Nullable Object,
-        SOURCE extends SequencedSet<? super T>,
+        SOURCE extends @NotNull ImmutableSequencedSet<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableSequencedSet<T> {
 
@@ -92,6 +93,8 @@ public class ReversedArrayAsImmutableSequencedSet<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
     @Override public ReversedArrayAsImmutableSequencedSet<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableSequencedSet<T, SOURCE, REVERSED_ARRAY>) super.clone(); }

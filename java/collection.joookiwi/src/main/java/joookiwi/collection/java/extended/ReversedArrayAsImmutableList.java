@@ -4,6 +4,7 @@ import java.util.List;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -27,7 +28,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see SubdividedArrayAsImmutableList
 @NotNullByDefault
 public class ReversedArrayAsImmutableList<T extends @Nullable Object,
-        SOURCE extends List<? super T>,
+        SOURCE extends @NotNull ImmutableList<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableList<T> {
 
@@ -93,6 +94,8 @@ public class ReversedArrayAsImmutableList<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
     @Override public ReversedArrayAsImmutableList<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableList<T, SOURCE, REVERSED_ARRAY>) super.clone(); }

@@ -3,6 +3,7 @@ package joookiwi.collection.java.extended;
 import java.util.SequencedCollection;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -25,7 +26,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// @see ArrayAsMutableSequencedCollection
 @NotNullByDefault
 public class ReversedArrayAsMutableSequencedCollection<T extends @Nullable Object,
-        SOURCE extends SequencedCollection<? super T>,
+        SOURCE extends @NotNull MutableSequencedCollection<T>,
         REVERSED_ARRAY extends ReversedMutableArray<T>>
         extends AbstractArrayAsMutableSequencedCollection<T> {
 
@@ -65,6 +66,8 @@ public class ReversedArrayAsMutableSequencedCollection<T extends @Nullable Objec
 
     //#endregion -------------------- Getter / setter methods --------------------
     //#region -------------------- Methods --------------------
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
     @Override public ReversedArrayAsMutableSequencedCollection<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsMutableSequencedCollection<T, SOURCE, REVERSED_ARRAY>) super.clone(); }

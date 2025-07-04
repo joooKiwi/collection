@@ -5,6 +5,7 @@ import java.util.SortedSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -29,7 +30,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see SubdividedArrayAsImmutableSortedSet
 @NotNullByDefault
 public class ReversedArrayAsImmutableSortedSet<T extends @Nullable Object,
-        SOURCE extends SortedSet<? super T>,
+        SOURCE extends @NotNull ImmutableSortedSet<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableSortedSet<T> {
 
@@ -95,6 +96,8 @@ public class ReversedArrayAsImmutableSortedSet<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 

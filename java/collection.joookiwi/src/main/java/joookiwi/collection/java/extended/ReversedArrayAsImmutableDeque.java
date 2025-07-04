@@ -4,6 +4,7 @@ import java.util.Deque;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -26,7 +27,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ArrayAsImmutableDeque
 @NotNullByDefault
 public class ReversedArrayAsImmutableDeque<T extends @Nullable Object,
-        SOURCE extends Deque<? super T>,
+        SOURCE extends @NotNull ImmutableDeque<T>,
         REVERSED_ARRAY extends ReversedArray<? extends T>>
         extends AbstractArrayAsImmutableDeque<T> {
 
@@ -92,6 +93,8 @@ public class ReversedArrayAsImmutableDeque<T extends @Nullable Object,
         return __isEmpty = size() == 0;
     }
 
+
+    @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
     @Override public ReversedArrayAsImmutableDeque<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableDeque<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
