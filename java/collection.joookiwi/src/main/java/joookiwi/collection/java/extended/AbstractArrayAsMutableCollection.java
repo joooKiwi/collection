@@ -12,6 +12,7 @@ import java.util.stream.StreamSupport;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ArrayAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
+import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
@@ -172,7 +173,7 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
     @Contract(mutates = "this")
     @Override public boolean addAll(final @Unmodifiable Collection<? extends T> values) {
         final var reference = _reference();
-        final var newArray = UtilityForMutableArray.addAll(reference, values);
+        final var newArray = UtilityForMutableArray.join(reference, values);
         if (reference != newArray)
             return false;
         _reference(newArray);
@@ -303,11 +304,16 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
     @Override public AbstractArrayAsMutableCollection<T> clone() {
+        @Nullable AbstractArrayAsMutableCollection<T> instance;
         try {
-            return (AbstractArrayAsMutableCollection<T>) super.clone();
+            instance = (AbstractArrayAsMutableCollection<T>) super.clone();
         } catch (CloneNotSupportedException exception) {
             throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
         }
+
+        final var reference = instance._reference();
+        instance._reference(ArrayCreator.getInstance().newArray(reference, reference.length));
+        return instance;
     }
 
     //#endregion -------------------- Clone methods --------------------
