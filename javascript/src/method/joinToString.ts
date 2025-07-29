@@ -29,14 +29,14 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
  * utilizing the given {@link prefix} and {@link postfix} if supplied.
  *
- * Note that if the {@link collection} is huge,
+ * Note that if the {@link collection} is huge (not infinite),
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
- * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit     The maximum number of values to loop (<b>null</b> by default)
+ * @param collection The nullable collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -72,14 +72,14 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
  * utilizing the given {@link prefix} and {@link postfix} if supplied.
  *
- * Note that if the {@link collection} is huge,
+ * Note that if the {@link collection} is huge (not infinite),
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit     The maximum number of values to loop (<b>null</b> by default)
+ * @param collection The nullable collection
+ * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -143,14 +143,14 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
  * utilizing the given {@link prefix} and {@link postfix} if supplied.
  *
- * Note that if the {@link collection} is huge,
+ * Note that if the {@link collection} is huge (not infinite),
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit     The maximum number of values to loop (<b>null</b> by default)
+ * @param collection The nullable collection
+ * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
@@ -215,14 +215,14 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
  * utilizing the given {@link prefix} and {@link postfix} if supplied.
  *
- * Note that if the {@link collection} is huge,
+ * Note that if the {@link collection} is huge (not infinite),
  * a {@link limit} can be specified followed by a {@link truncated} value.
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param separator  The {@link String} to separate the values ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
- * @param prefix     The {@link String} before the join ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
- * @param postfix    The {@link String} after the join ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
- * @param limit     The maximum number of values to loop (<b>null</b> by default)
+ * @param collection The nullable collection
+ * @param separator  The value to separate the items ({@link CollectionConstants.DEFAULT_JOIN_SEPARATOR ", "} by default)
+ * @param prefix     The value before the juncture ({@link CollectionConstants.DEFAULT_JOIN_PREFIX '['} by default)
+ * @param postfix    The value after the juncture ({@link CollectionConstants.DEFAULT_JOIN_POSTFIX ']'} by default)
+ * @param limit      The maximum number of items to loop (to the end by default if <b>null</b>)
  * @param truncated  The truncated string if there is a limit ({@link CollectionConstants.DEFAULT_JOIN_TRUNCATED '…'} by default)
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
