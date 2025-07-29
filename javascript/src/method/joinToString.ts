@@ -41,8 +41,13 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
- * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
+ * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
 export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
@@ -79,8 +84,13 @@ export function joinToString<const T, >(collection: Nullable<| MinimalistCollect
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
- * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
+ * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
 export function joinToStringByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
@@ -145,8 +155,13 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
- * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
+ * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
 export function joinToStringByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
@@ -212,8 +227,13 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * @param transform  A callback to transform into a {@link String}
  * @throws ForbiddenIndexException  The {@link limit} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see ReadonlyArray.join
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString()
- * @see https://learn.microsoft.com/dotnet/api/system.string.join C# string.Join()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable) Java String.join(separator, iterable)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...) Java String.join(separator, collection)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining() Java Collectors.joining()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence) Java Collectors.joining(separator)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence,java.lang.CharSequence,java.lang.CharSequence) Java Collectors.joining(separator, prefix, postfix)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/join-to-string.html Kotlin joinToString(separator?, prefix?, postfix?, limit?, truncated?, transform?)
+ * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
 export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
