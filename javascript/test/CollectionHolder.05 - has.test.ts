@@ -2526,6 +2526,24 @@ describe("CollectionHolderTest (has)", () => {
                         test("non-empty", () => expect(new instance(ABCD,).execute(it => it.hasOne(newIterable(AB,),),).amountOfCall,).toBe(1,),)
                     },)
                 },)
+                describe.each(everyIterableInstances,)("hasNotOne: “%s”", ({value: newIterable,},) => {
+                    describe("empty", () => {
+                        test("empty",     () => expect(new instance(EMPTY,).execute(it => it.hasNotOne(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance<string>(EMPTY,).execute(it => it.hasNotOne(newIterable(AB,),),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("empty",     () => expect(new instance(A,).execute(it => it.hasNotOne(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance<string>(A,).execute(it => it.hasNotOne(newIterable(AB,),),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("empty",     () => expect(new instance(AB,).execute(it => it.hasNotOne(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance(AB,).execute(it => it.hasNotOne(newIterable(AB,),),).amountOfCall,).toBe(1,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("empty",     () => expect(new instance(ABCD,).execute(it => it.hasNotOne(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance(ABCD,).execute(it => it.hasNotOne(newIterable(AB,),),).amountOfCall,).toBe(1,),)
+                    },)
+                },)
                 describe.each(everyIterableInstances,)("hasAll: “%s”", ({value: newIterable,},) => {
                     describe("empty", () => {
                         test("empty",     () => expect(new instance(EMPTY,).execute(it => it.hasAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
@@ -2542,6 +2560,24 @@ describe("CollectionHolderTest (has)", () => {
                     describe("4 fields", () => {
                         test("empty",     () => expect(new instance(ABCD,).execute(it => it.hasAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
                         test("non-empty", () => expect(new instance(ABCD,).execute(it => it.hasAll(newIterable(AB,),),).amountOfCall,).toBe(3,),)
+                    },)
+                },)
+                describe.each(everyIterableInstances,)("hasNotAll: “%s”", ({value: newIterable,},) => {
+                    describe("empty", () => {
+                        test("empty",     () => expect(new instance(EMPTY,).execute(it => it.hasNotAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance<string>(EMPTY,).execute(it => it.hasNotAll(newIterable(AB,),),).amountOfCall,).toBe(0,),)
+                    },)
+                    describe("1 field", () => {
+                        test("empty",     () => expect(new instance(A,).execute(it => it.hasNotAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance<string>(A,).execute(it => it.hasNotAll(newIterable(AB,),),).amountOfCall,).toBe(2,),)
+                    },)
+                    describe("2 fields", () => {
+                        test("empty",     () => expect(new instance(AB,).execute(it => it.hasNotAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance(AB,).execute(it => it.hasNotAll(newIterable(AB,),),).amountOfCall,).toBe(3,),)
+                    },)
+                    describe("4 fields", () => {
+                        test("empty",     () => expect(new instance(ABCD,).execute(it => it.hasNotAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                        test("non-empty", () => expect(new instance(ABCD,).execute(it => it.hasNotAll(newIterable(AB,),),).amountOfCall,).toBe(3,),)
                     },)
                 },)
             },)
