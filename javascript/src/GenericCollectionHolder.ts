@@ -1389,7 +1389,7 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.hasNull)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const array = this._array
-                const size = array.length;
+                const size = array.length
                 const tempArray = new Array<NonNullable<T>>(size,)
                 let amountOfItemsAdded = -1
                 let index = -1

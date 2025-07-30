@@ -191,7 +191,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     while (++index < size)
         if (!predicate()) {
             const newArray = new Array<T>(size - index,)
-            let indexToRetrieve = index - 1;
+            let indexToRetrieve = index - 1
             let indexToAdd = -1
             while (++indexToRetrieve < size)
                 newArray[++indexToAdd] = collection.get(indexToRetrieve,)
@@ -205,7 +205,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], size: numbe
     while (++index < size)
         if (!predicate()) {
             const newArray = new Array<T>(size - index,)
-            let indexToRetrieve = index - 1;
+            let indexToRetrieve = index - 1
             let indexToAdd = -1
             while (++indexToRetrieve < size)
                 newArray[++indexToAdd] = collection[indexToRetrieve] as T

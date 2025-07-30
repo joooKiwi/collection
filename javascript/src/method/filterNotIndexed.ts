@@ -221,7 +221,7 @@ export function filterNotIndexedByArray<const T, >(collection: Nullable<readonly
 
 function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: () => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size)
         if (!predicate())
@@ -231,7 +231,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
 
 function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size)
         if (!predicate())
@@ -242,7 +242,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: 
 
 function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size)
         if (!predicate(index,))
@@ -252,7 +252,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
 
 function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size)
         if (!predicate(index,))
@@ -263,7 +263,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: 
 
 function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, predicate: (index: number, value: T,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
@@ -275,7 +275,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
 
 function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number, value: T,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size) {
         const value = collection[index] as T

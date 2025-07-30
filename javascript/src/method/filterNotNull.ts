@@ -119,7 +119,7 @@ export function filterNotNullByArray<const T, >(collection: Nullable<readonly T[
 function __filterNotNull<const T, >(collection: MinimalistCollectionHolder<T>,): readonly NonNullable<T>[] {
     const size = collection.size
     const tempArray = new Array<NonNullable<T>>(size,)
-    let amountOfItemsAdded = -1;
+    let amountOfItemsAdded = -1
     let index = -1
     while (++index < size) {
         const value = collection.get(index,)
