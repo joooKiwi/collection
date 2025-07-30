@@ -271,16 +271,11 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    //#region -------------------- All --------------------
-
     public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) {
         return allByMinimalistCollectionHolder(this, predicate,)
     }
-
-    //#endregion -------------------- All --------------------
-    //#region -------------------- Any --------------------
 
     public override any(): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -288,18 +283,12 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return anyByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- Any --------------------
-    //#region -------------------- None --------------------
-
     public override none(): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) {
         return noneByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None --------------------
-
-    //#region -------------------- Has null --------------------
 
     public override get hasNull(): boolean {
         return hasNullByMinimalistCollectionHolder(this,)
@@ -309,8 +298,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasNoNullsByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByMinimalistCollectionHolder(this,)
@@ -320,9 +307,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasNoDuplicatesByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Has duplicate --------------------
-
-    //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
         return hasByMinimalistCollectionHolder(this, value,)
@@ -331,9 +315,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     public override hasNot(value: T,): boolean {
         return hasNotByMinimalistCollectionHolder(this, value,)
     }
-
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has one --------------------
 
     public override hasOne(values: readonly T[],): boolean
     public override hasOne(values: ReadonlySet<T>,): boolean
@@ -347,8 +328,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasOneByMinimalistCollectionHolder(this, values,)
     }
 
-    //#endregion -------------------- Has one --------------------
-    //#region -------------------- Has all --------------------
 
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean
@@ -362,15 +341,11 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
-    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return requireNoNullsByMinimalistCollectionHolder<T>(this,)
     }
-
-    //#endregion -------------------- Require no nulls --------------------
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
@@ -521,8 +496,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByMinimalistCollectionHolder(this, action,)
     }
@@ -531,8 +504,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         forEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         return onEachByMinimalistCollectionHolder(this, action,)
@@ -542,18 +513,12 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return onEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
-
-    //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return toReverseByMinimalistCollectionHolder(this, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
@@ -565,69 +530,49 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    //#region -------------------- To other structure --------------------
-
     public override toArray(): readonly T[] {
         return toArrayByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableArray(): T[] {
         return toMutableArrayByMinimalistCollectionHolder(this,)
     }
 
-
     public override toSet(): ReadonlySet<T> {
         return toSetByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableSet(): Set<T> {
         return toMutableSetByMinimalistCollectionHolder(this,)
     }
 
-
     public override toMap(): ReadonlyMap<number, T> {
         return toMapByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableMap(): Map<number, T> {
         return toMutableMapByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- To other structure --------------------
-    //#region -------------------- To string --------------------
-
     public override toString(): string {
         return toStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByMinimalistCollectionHolder(this, locale,)
     }
-
     public override toLowerCaseString(): string {
         return toLowerCaseStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByMinimalistCollectionHolder(this, locale,)
     }
-
     public override toUpperCaseString(): string {
         return toUpperCaseStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- To string --------------------
-    //#region -------------------- Join to string --------------------
-
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
-
-    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

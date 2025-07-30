@@ -290,16 +290,11 @@ export class CollectionHolder_FromArrayFunction<const T, >
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
 
-    //#region -------------------- All --------------------
-
     public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
     public override all(predicate: BooleanCallback<T>,) {
         return allByArray(this.array, predicate,)
     }
-
-    //#endregion -------------------- All --------------------
-    //#region -------------------- Any --------------------
 
     public override any(): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -307,18 +302,12 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return anyByArray(this.array, predicate,)
     }
 
-    //#endregion -------------------- Any --------------------
-    //#region -------------------- None --------------------
-
     public override none(): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) {
         return noneByArray(this.array, predicate,)
     }
 
-    //#endregion -------------------- None --------------------
-
-    //#region -------------------- Has null --------------------
 
     public override get hasNull(): boolean {
         return hasNullByArray(this.array,)
@@ -328,8 +317,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasNoNullsByArray(this.array,)
     }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByArray(this.array,)
@@ -339,9 +326,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasNoDuplicatesByArray(this.array,)
     }
 
-    //#endregion -------------------- Has duplicate --------------------
-
-    //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
         return hasByArray(this.array, value,)
@@ -350,9 +334,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
     public override hasNot(value: T,): boolean {
         return hasNotByArray(this.array, value,)
     }
-
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has one --------------------
 
     public override hasOne(values: readonly T[],): boolean
     public override hasOne(values: ReadonlySet<T>,): boolean
@@ -366,8 +347,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasOneByArray(this.array, values,)
     }
 
-    //#endregion -------------------- Has one --------------------
-    //#region -------------------- Has all --------------------
 
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean
@@ -381,9 +360,7 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasAllByArray(this.array, values,)
     }
 
-    //#endregion -------------------- Has all --------------------
 
-    //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
         const array = requireNoNullsByArray(this.array,)
@@ -391,8 +368,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
             return CollectionConstants.EMPTY_COLLECTION_HOLDER
         return new CollectionHolder_FromArrayFunction(array,)
     }
-
-    //#endregion -------------------- Require no nulls --------------------
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
@@ -543,8 +518,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByArray(this.array, action,)
     }
@@ -553,8 +526,6 @@ export class CollectionHolder_FromArrayFunction<const T, >
         forEachIndexedByArray(this.array, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         onEachByArray(this.array, action,)
@@ -566,18 +537,12 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return this
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
-
-    //#region -------------------- To reverse --------------------
 
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return toReverseByArray(this.array, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
@@ -589,69 +554,49 @@ export class CollectionHolder_FromArrayFunction<const T, >
     //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    //#region -------------------- To other structure --------------------
-
     public override toArray(): readonly T[] {
         return toArrayByArray(this.array,)
     }
-
     public override toMutableArray(): T[] {
         return toMutableArrayByArray(this.array,)
     }
 
-
     public override toSet(): ReadonlySet<T> {
         return toSetByArray(this.array,)
     }
-
     public override toMutableSet(): Set<T> {
         return toMutableSetByArray(this.array,)
     }
 
-
     public override toMap(): ReadonlyMap<number, T> {
         return toMapByArray(this.array,)
     }
-
     public override toMutableMap(): Map<number, T> {
         return toMutableMapByArray(this.array,)
     }
 
-    //#endregion -------------------- To other structure --------------------
-    //#region -------------------- To string --------------------
-
     public override toString(): string {
         return toStringByArray(this.array,)
     }
-
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByArray(this.array, locale,)
     }
-
     public override toLowerCaseString(): string {
         return toLowerCaseStringByArray(this.array,)
     }
-
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByArray(this.array, locale,)
     }
-
     public override toUpperCaseString(): string {
         return toUpperCaseStringByArray(this.array,)
     }
-
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByArray(this.array, locale,)
     }
 
-    //#endregion -------------------- To string --------------------
-    //#region -------------------- Join to string --------------------
-
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByArray(this.array, separator, prefix, postfix, limit, truncated, transform,)
     }
-
-    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 
