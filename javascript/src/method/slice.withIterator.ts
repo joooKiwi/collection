@@ -57,7 +57,7 @@ export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCo
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -80,7 +80,7 @@ export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collect
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -103,7 +103,7 @@ export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nulla
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)

@@ -75,7 +75,7 @@ export function findFirst<const T, >(collection: Nullable<| MinimalistCollection
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -89,7 +89,7 @@ export function findFirstByMinimalistCollectionHolder<const T, const S extends T
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -116,7 +116,7 @@ export function findFirstByMinimalistCollectionHolder<const T, >(collection: Nul
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -130,7 +130,7 @@ export function findFirstByCollectionHolder<const T, const S extends T, >(collec
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -155,7 +155,7 @@ export function findFirstByCollectionHolder<const T, >(collection: Nullable<Coll
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
@@ -169,7 +169,7 @@ export function findFirstByArray<const T, const S extends T, >(collection: Nulla
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException             The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException            The {@link collection} <b>is empty</b>

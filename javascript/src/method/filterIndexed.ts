@@ -81,7 +81,7 @@ export function filterIndexed<const T, >(collection: Nullable<| MinimalistCollec
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
@@ -98,7 +98,7 @@ export function filterIndexedByMinimalistCollectionHolder<const T, const S exten
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
@@ -128,7 +128,7 @@ export function filterIndexedByMinimalistCollectionHolder<const T, >(collection:
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
@@ -145,7 +145,7 @@ export function filterIndexedByCollectionHolder<const T, const S extends T, >(co
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
@@ -173,7 +173,7 @@ export function filterIndexedByCollectionHolder<const T, >(collection: Nullable<
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)
@@ -190,7 +190,7 @@ export function filterIndexedByArray<const T, const S extends T, >(collection: N
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-indexed.html Kotlin filterIndexed(predicate)

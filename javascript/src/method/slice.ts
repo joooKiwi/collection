@@ -249,7 +249,7 @@ export function slice<const T, >(collection: Nullable<| MinimalistCollectionHold
  * Create a new {@link CollectionHolder}
  * with all the values in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @canReceiveNegativeValue
@@ -261,7 +261,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * Create a new {@link CollectionHolder}
  * from the {@link from starting index} to the end of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -276,7 +276,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * Create a new {@link CollectionHolder}
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
@@ -292,7 +292,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -305,7 +305,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -318,7 +318,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -331,7 +331,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -344,7 +344,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -357,7 +357,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -370,7 +370,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -383,7 +383,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -400,7 +400,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * or from the {@link indicesOrFrom starting} to the {@link to ending} index
  * in the {@link collection}
  *
- * @param collection    The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection    The nullable collection
  * @param indicesOrFrom The given indices (or inclusive starting index)
  * @param to            The inclusive ending index
  * @see ReadonlyArray.slice
@@ -453,7 +453,7 @@ export function sliceByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * Create a new {@link CollectionHolder}
  * with all the values in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @canReceiveNegativeValue
@@ -465,7 +465,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * Create a new {@link CollectionHolder}
  * from the {@link from starting index} to the end of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -480,7 +480,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * Create a new {@link CollectionHolder}
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @see ReadonlyArray.slice
@@ -496,7 +496,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -509,7 +509,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -522,7 +522,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -535,7 +535,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -548,7 +548,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -561,7 +561,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -574,7 +574,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -587,7 +587,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -604,7 +604,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * or from the {@link indicesOrFrom starting} to the {@link to ending} index
  * in the {@link collection}
  *
- * @param collection    The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection    The nullable collection
  * @param indicesOrFrom The given indices (or inclusive starting index)
  * @param to            The inclusive ending index
  * @see ReadonlyArray.slice
@@ -657,7 +657,7 @@ export function sliceByCollectionHolder<const T, >(collection: Nullable<Collecti
  * Create a new {@link CollectionHolder}
  * with all the values in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
  * @canReceiveNegativeValue
@@ -669,7 +669,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>,): Co
  * Create a new {@link CollectionHolder}
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @see ReadonlyArray.slice
  * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(from, to)
@@ -684,7 +684,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, from
  * Create a new {@link CollectionHolder}
  * from the {@link from starting} to the {@link to ending} index in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @see ReadonlyArray.slice
@@ -700,7 +700,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, from
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -713,7 +713,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -726,7 +726,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -739,7 +739,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -752,7 +752,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -765,7 +765,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -778,7 +778,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -791,7 +791,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices    The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -808,7 +808,7 @@ export function sliceByArray<const T, >(collection: Nullable<readonly T[]>, indi
  * or from the {@link indicesOrFrom starting} to the {@link to ending} index
  * in the {@link collection}
  *
- * @param collection    The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection    The nullable collection
  * @param indicesOrFrom The given indices (or inclusive starting index)
  * @param to            The inclusive ending index
  * @see ReadonlyArray.slice

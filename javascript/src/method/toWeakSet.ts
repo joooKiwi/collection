@@ -52,7 +52,7 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| Mini
 /**
  * Convert the {@link collection} to an {@link WeakSet weak set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Readonly<WeakSet<T>> {
@@ -68,7 +68,7 @@ export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >
 /**
  * Convert the {@link collection} to an {@link WeakSet weak set}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): Readonly<WeakSet<T>> {
@@ -84,7 +84,7 @@ export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collectio
 /**
  * Convert the {@link collection} to an {@link WeakSet weak set}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable<readonly T[]>,): Readonly<WeakSet<T>> {

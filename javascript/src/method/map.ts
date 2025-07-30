@@ -62,7 +62,7 @@ export function map<const T, const U, >(collection: Nullable<| MinimalistCollect
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
@@ -91,7 +91,7 @@ export function mapByMinimalistCollectionHolder<const T, const U, >(collection: 
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)
@@ -118,7 +118,7 @@ export function mapByCollectionHolder<const T, const U, >(collection: Nullable<C
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html Kotlin map(transform)

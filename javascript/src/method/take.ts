@@ -59,7 +59,7 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
 /**
  * Get a new {@link CollectionHolder} until the {@link n} received
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
@@ -78,7 +78,7 @@ export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable
 /**
  * Get a new {@link CollectionHolder} from the first {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)
@@ -97,7 +97,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
 /**
  * Get a new {@link CollectionHolder} from the first {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take.html Kotlin take(n)

@@ -51,7 +51,7 @@ export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHol
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */
@@ -68,7 +68,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */
@@ -83,7 +83,7 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is not present in the {@link collection}
  */

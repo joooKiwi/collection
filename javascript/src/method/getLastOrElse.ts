@@ -67,7 +67,7 @@ export function getLastOrElse<const T, >(collection: Nullable<| MinimalistCollec
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
@@ -77,7 +77,7 @@ export function getLastOrElseByMinimalistCollectionHolder<const T, const U, >(co
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
@@ -97,7 +97,7 @@ export function getLastOrElseByMinimalistCollectionHolder<const T, >(collection:
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
@@ -107,7 +107,7 @@ export function getLastOrElseByCollectionHolder<const T, const U, >(collection: 
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
@@ -126,7 +126,7 @@ export function getLastOrElseByCollectionHolder<const T, >(collection: Nullable<
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
@@ -136,7 +136,7 @@ export function getLastOrElseByArray<const T, const U, >(collection: Nullable<re
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection   The nullable collection
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */

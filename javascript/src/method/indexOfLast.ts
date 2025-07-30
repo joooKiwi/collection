@@ -103,7 +103,7 @@ export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollecti
 /**
  * Get the last index matching the {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -120,7 +120,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  * Get the last index matching the {@link predicate}
  * between the {@link from starting index} and the end of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
@@ -140,7 +140,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
  * Get the last index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
@@ -174,7 +174,7 @@ export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: N
 /**
  * Get the last index matching the {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -191,7 +191,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  * Get the last index matching the {@link predicate}
  * between the {@link from starting index} and the end of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
@@ -211,7 +211,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
  * Get the last index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -245,7 +245,7 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
 /**
  * Get the last index matching the {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
@@ -262,7 +262,7 @@ export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>
  * Get the last index matching the {@link predicate}
  * between the {@link from starting index} and the end of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @return {number} The last index found by the {@link predicate} after {@link from}
@@ -282,7 +282,7 @@ export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>
  * Get the last index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)

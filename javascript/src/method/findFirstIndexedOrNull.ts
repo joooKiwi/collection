@@ -69,7 +69,7 @@ export function findFirstIndexedOrNull<const T, >(collection: Nullable<| Minimal
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -81,7 +81,7 @@ export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, cons
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -106,7 +106,7 @@ export function findFirstIndexedOrNullByMinimalistCollectionHolder<const T, >(co
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -118,7 +118,7 @@ export function findFirstIndexedOrNullByCollectionHolder<const T, const S extend
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -141,7 +141,7 @@ export function findFirstIndexedOrNullByCollectionHolder<const T, >(collection: 
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)
@@ -153,7 +153,7 @@ export function findFirstIndexedOrNullByArray<const T, const S extends T, >(coll
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault(predicate)

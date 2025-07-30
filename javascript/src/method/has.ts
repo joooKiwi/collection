@@ -58,7 +58,7 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
@@ -82,7 +82,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
@@ -104,7 +104,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
  * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes

@@ -75,7 +75,7 @@ export function findLast<const T, >(collection: Nullable<| MinimalistCollectionH
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -89,7 +89,7 @@ export function findLastByMinimalistCollectionHolder<const T, const S extends T,
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -116,7 +116,7 @@ export function findLastByMinimalistCollectionHolder<const T, >(collection: Null
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -130,7 +130,7 @@ export function findLastByCollectionHolder<const T, const S extends T, >(collect
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -155,7 +155,7 @@ export function findLastByCollectionHolder<const T, >(collection: Nullable<Colle
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -169,7 +169,7 @@ export function findLastByArray<const T, const S extends T, >(collection: Nullab
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}

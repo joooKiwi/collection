@@ -27,7 +27,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -45,7 +45,7 @@ export function none<const T, const COLLECTION extends MinimalistCollectionHolde
 /**
  * Tell if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -87,7 +87,7 @@ export function none<const T, >(collection: Nullable<| MinimalistCollectionHolde
 /**
  * Tell if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -97,7 +97,7 @@ export function noneByMinimalistCollectionHolder<const T, const COLLECTION exten
  * Check if <b>no</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
@@ -127,7 +127,7 @@ export function noneByMinimalistCollectionHolder<const T, >(collection: Nullable
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -137,7 +137,7 @@ export function noneByCollectionHolder<const T, const COLLECTION extends Collect
  * Check if <b>no</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)
@@ -165,7 +165,7 @@ export function noneByCollectionHolder<const T, >(collection: Nullable<Collectio
 /**
  * Tell if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> if null is received or the {@link collection} <b>is empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none()
  * @extensionFunction
@@ -175,7 +175,7 @@ export function noneByArray<const T, const COLLECTION extends readonly T[] = rea
  * Check if <b>no</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate The given predicate
  * @return {boolean} <b>false</b> if at least one {@link predicate} is <b>true</b> on a value of the {@link collection}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/none.html Kotlin none(predicate)

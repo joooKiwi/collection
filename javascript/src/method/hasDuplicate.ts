@@ -51,7 +51,7 @@ export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollect
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
@@ -68,7 +68,7 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
@@ -83,7 +83,7 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */

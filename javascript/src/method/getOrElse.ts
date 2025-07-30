@@ -75,7 +75,7 @@ export function getOrElse<const T, >(collection: Nullable<| MinimalistCollection
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
@@ -89,7 +89,7 @@ export function getOrElseByMinimalistCollectionHolder<const T, const U, >(collec
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
@@ -127,7 +127,7 @@ export function getOrElseByMinimalistCollectionHolder<const T, >(collection: Nul
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
@@ -141,7 +141,7 @@ export function getOrElseByCollectionHolder<const T, const U, >(collection: Null
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
@@ -180,7 +180,7 @@ export function getOrElseByCollectionHolder<const T, >(collection: Nullable<Coll
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)
@@ -194,7 +194,7 @@ export function getOrElseByArray<const T, const U, >(collection: Nullable<readon
  * or calling the {@link defaultValue} function
  * if it is out of bound of the {@link collection}
  *
- * @param collection   The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection   The nullable collection
  * @param index        The index to retrieve a value
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-else.html Kotlin getOrElse(key, defaultValue)

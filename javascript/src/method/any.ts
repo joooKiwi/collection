@@ -28,7 +28,7 @@ import {isMinimalistCollectionHolder}                                           
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
@@ -94,7 +94,7 @@ export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder
 /**
  * Tell if the {@link collection} <b>is not empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
@@ -109,7 +109,7 @@ export function anyByMinimalistCollectionHolder<const T, const COLLECTION extend
  * Check if <b>one</b> of the elements in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
@@ -131,7 +131,7 @@ export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
@@ -146,7 +146,7 @@ export function anyByCollectionHolder<const T, const COLLECTION extends Collecti
  * Check if <b>one</b> of the elements in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
@@ -168,7 +168,7 @@ export function anyByCollectionHolder<const T, >(collection: Nullable<Collection
 /**
  * Tell if the {@link collection} <b>is not empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
@@ -183,7 +183,7 @@ export function anyByArray<const T, const COLLECTION extends readonly T[] = read
  * Check if <b>one</b> of the elements in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some

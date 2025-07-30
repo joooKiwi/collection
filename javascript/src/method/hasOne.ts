@@ -146,7 +146,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -155,7 +155,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -164,7 +164,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -173,7 +173,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -182,7 +182,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -191,7 +191,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -200,7 +200,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -209,7 +209,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -248,7 +248,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -257,7 +257,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -266,7 +266,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -275,7 +275,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -284,7 +284,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -293,7 +293,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -302,7 +302,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -311,7 +311,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -350,7 +350,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -359,7 +359,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -368,7 +368,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -377,7 +377,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -386,7 +386,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -395,7 +395,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -404,7 +404,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction
@@ -413,7 +413,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  * @facadeFunction

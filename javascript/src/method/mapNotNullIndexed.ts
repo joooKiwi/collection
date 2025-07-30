@@ -62,7 +62,7 @@ export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>,
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each non-null element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed-not-null.html Kotlin mapIndexedNotNull(transform)
@@ -91,7 +91,7 @@ export function mapNotNullIndexedByMinimalistCollectionHolder<const T, const U e
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each non-null element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed-not-null.html Kotlin mapIndexedNotNull(transform)
@@ -118,7 +118,7 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each non-null element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed-not-null.html Kotlin mapIndexedNotNull(transform)

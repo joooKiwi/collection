@@ -63,7 +63,7 @@ export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollec
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
@@ -93,7 +93,7 @@ export function onEachIndexedByMinimalistCollectionHolder<const T, const COLLECT
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
@@ -121,7 +121,7 @@ export function onEachIndexedByCollectionHolder<const T, const COLLECTION extend
  * Perform a given {@link action} on each element
  * and return the {@link collection} afterwards
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param action     The given action
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach

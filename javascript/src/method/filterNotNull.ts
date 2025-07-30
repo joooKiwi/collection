@@ -53,7 +53,7 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
 /**
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @extensionFunction
  */
@@ -76,7 +76,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
 /**
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @extensionFunction
  */
@@ -93,7 +93,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
 /**
  * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
  * @extensionFunction
  */

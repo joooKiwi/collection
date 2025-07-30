@@ -51,7 +51,7 @@ export function hasOneWithSet<const T, >(collection: Nullable<| MinimalistCollec
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */
@@ -72,7 +72,7 @@ export function hasOneWithSetByMinimalistCollectionHolder<const T, >(collection:
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */
@@ -91,7 +91,7 @@ export function hasOneWithSetByCollectionHolder<const T, >(collection: Nullable<
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */

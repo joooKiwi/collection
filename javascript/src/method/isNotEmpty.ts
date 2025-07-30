@@ -57,7 +57,7 @@ export function isNotEmpty<const T, const COLLECTION extends | MinimalistCollect
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -65,7 +65,7 @@ export function isNotEmpty<const T, const COLLECTION extends Nullable<Collection
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -73,7 +73,7 @@ export function isNotEmpty<const T, const COLLECTION extends Nullable<Minimalist
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -123,7 +123,7 @@ export function isNotEmptyByMinimalistCollectionHolder<const T, const COLLECTION
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -131,7 +131,7 @@ export function isNotEmptyByMinimalistCollectionHolder<const T, const COLLECTION
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -153,7 +153,7 @@ export function isNotEmptyByCollectionHolder<const T, const COLLECTION extends C
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */
@@ -175,7 +175,7 @@ export function isNotEmptyByArray<const T, const COLLECTION extends readonly T[]
 /**
  * The {@link collection} has at least one value
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/is-not-empty.html Kotlin isNotEmpty()
  * @extensionFunction
  */

@@ -59,7 +59,7 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
 /**
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link MinimalistCollectionHolder.size size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
@@ -78,7 +78,7 @@ export function dropByMinimalistCollectionHolder<const T, >(collection: Nullable
 /**
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)
@@ -97,7 +97,7 @@ export function dropByCollectionHolder<const T, >(collection: Nullable<Collectio
 /**
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop.html Kotlin drop(n)

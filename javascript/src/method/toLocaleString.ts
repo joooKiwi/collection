@@ -59,7 +59,7 @@ export function toLocaleString<const T, >(collection: Nullable<| MinimalistColle
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see Array.toLocaleString
  * @see Object.toLocaleString
@@ -84,7 +84,7 @@ export function toLocaleStringByMinimalistCollectionHolder<const T, >(collection
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see Array.toLocaleString
  * @see Object.toLocaleString
@@ -107,7 +107,7 @@ export function toLocaleStringByCollectionHolder<const T, >(collection: Nullable
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toLocaleString toLocaleString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see Array.toLocaleString
  * @see Object.toLocaleString

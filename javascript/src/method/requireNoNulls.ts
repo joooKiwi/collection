@@ -26,7 +26,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -37,7 +37,7 @@ export function requireNoNulls<const T, >(collection: Nullable<CollectionHolder<
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -48,7 +48,7 @@ export function requireNoNulls<const T, >(collection: Nullable<MinimalistCollect
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link CollectionConstants.EMPTY_ARRAY empty array} if it is empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -77,7 +77,7 @@ export function requireNoNulls<const T, >(collection: Nullable<| MinimalistColle
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -88,7 +88,7 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -114,7 +114,7 @@ export function requireNoNullsByMinimalistCollectionHolder<const T, >(collection
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()
@@ -135,7 +135,7 @@ export function requireNoNullsByCollectionHolder<const T, >(collection: Nullable
 /**
  * Require that no items are <b>null</b> or <b>undefined</b> in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {CollectionHolder} The {@link collection} or an {@link CollectionConstants.EMPTY_ARRAY empty array}{@link EmptyCollectionHolder} if it is <b>null</b> or empty
  * @throws TypeError There is <b>null</b> or <b>undefined</b> value in the {@link collection} or it is <b>null</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/require-no-nulls.html Kotlin requireNoNulls()

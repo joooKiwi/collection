@@ -52,7 +52,7 @@ export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHold
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlySet<T> {
@@ -68,7 +68,7 @@ export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlySet<T> {
@@ -84,7 +84,7 @@ export function toSetByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByArray<const T, >(collection: Nullable<readonly T[]>,): ReadonlySet<T> {

@@ -51,7 +51,7 @@ export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectio
 /**
  * Convert the {@link collection} to a new {@link Set mutable set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Set<T> {
@@ -67,7 +67,7 @@ export function toMutableSetByMinimalistCollectionHolder<const T, >(collection: 
 /**
  * Convert the {@link collection} to a new {@link Set mutable set}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {
@@ -83,7 +83,7 @@ export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<C
 /**
  * Convert the {@link collection} to a new {@link Set mutable set}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableSetByArray<const T, >(collection: Nullable<readonly T[]>,): Set<T> {

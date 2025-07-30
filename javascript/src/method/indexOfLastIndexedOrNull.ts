@@ -58,7 +58,7 @@ export function indexOfLastIndexedOrNull<const T, >(collection: Nullable<| Minim
  * or <b>null</b> if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
@@ -85,7 +85,7 @@ export function indexOfLastIndexedOrNullByMinimalistCollectionHolder<const T, >(
  * or <b>null</b> if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -112,7 +112,7 @@ export function indexOfLastIndexedOrNullByCollectionHolder<const T, >(collection
  * or <b>null</b> if it was not in the {@link collection}
  * between the {@link from starting} and the {@link to ending} index
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)

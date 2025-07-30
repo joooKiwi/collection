@@ -81,7 +81,7 @@ export function filterNot<const T, >(collection: Nullable<| MinimalistCollection
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -98,7 +98,7 @@ export function filterNotByMinimalistCollectionHolder<const T, const S extends T
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -128,7 +128,7 @@ export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nul
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -145,7 +145,7 @@ export function filterNotByCollectionHolder<const T, const S extends T, >(collec
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -173,7 +173,7 @@ export function filterNotByCollectionHolder<const T, >(collection: Nullable<Coll
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)
@@ -190,7 +190,7 @@ export function filterNotByArray<const T, const S extends T, >(collection: Nulla
  * Get a new {@link CollectionHolder}
  * <b>not</b> matching the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.filter
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html Kotlin filterNot(predicate)

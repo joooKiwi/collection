@@ -52,7 +52,7 @@ export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHold
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<number, T> {
@@ -68,7 +68,7 @@ export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {
@@ -82,7 +82,7 @@ export function toMapByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Convert the {@link collection} to an {@link ReadonlyMap map}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMapByArray<const T, >(collection: Nullable<readonly T[]>,): ReadonlyMap<number, T> {

@@ -51,7 +51,7 @@ export function hasNoNulls<const T, >(collection: Nullable<| MinimalistCollectio
 /**
  * The {@link collection} has no <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
@@ -68,7 +68,7 @@ export function hasNoNullsByMinimalistCollectionHolder<const T, >(collection: Nu
 /**
  * The {@link collection} has no <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
@@ -83,7 +83,7 @@ export function hasNoNullsByCollectionHolder<const T, >(collection: Nullable<Col
 /**
  * The {@link collection} has no <b>null</b> or <b>undefined</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */

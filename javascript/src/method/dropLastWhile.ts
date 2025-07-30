@@ -63,7 +63,7 @@ export function dropLastWhile<const T, >(collection: Nullable<| MinimalistCollec
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -72,7 +72,7 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, const S exten
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
@@ -94,7 +94,7 @@ export function dropLastWhileByMinimalistCollectionHolder<const T, >(collection:
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -103,7 +103,7 @@ export function dropLastWhileByCollectionHolder<const T, const S extends T, >(co
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
@@ -123,7 +123,7 @@ export function dropLastWhileByCollectionHolder<const T, >(collection: Nullable<
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -132,7 +132,7 @@ export function dropLastWhileByArray<const T, const S extends T, >(collection: N
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */

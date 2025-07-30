@@ -56,7 +56,7 @@ export function getOrNull<const T, >(collection: Nullable<| MinimalistCollection
  * Get the element at the specified {@link index} in the {@link collection}
  * or <b>null</b> if it is over the {@link MinimalistCollectionHolder.size size}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param index      The index to retrieve a value
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)
@@ -92,7 +92,7 @@ export function getOrNullByMinimalistCollectionHolder<const T, >(collection: Nul
  * Get the element at the specified index in the {@link collection}
  * or <b>null</b> if it is over the {@link CollectionHolder.size size}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param index      The index to retrieve a value
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)
@@ -128,7 +128,7 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
  * Get the element at the specified index in the {@link collection}
  * or <b>null</b> if it is over the {@link ReadonlyArray.length size}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param index      The index to retrieve a value
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/get-or-null.html Kotlin getOrNull(index)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-null.html Kotlin elementAtOrNull(index)

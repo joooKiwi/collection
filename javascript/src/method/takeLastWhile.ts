@@ -63,7 +63,7 @@ export function takeLastWhile<const T, >(collection: Nullable<| MinimalistCollec
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -72,7 +72,7 @@ export function takeLastWhileByMinimalistCollectionHolder<const T, const S exten
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
@@ -94,7 +94,7 @@ export function takeLastWhileByMinimalistCollectionHolder<const T, >(collection:
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -103,7 +103,7 @@ export function takeLastWhileByCollectionHolder<const T, const S extends T, >(co
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
@@ -123,7 +123,7 @@ export function takeLastWhileByCollectionHolder<const T, >(collection: Nullable<
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -132,7 +132,7 @@ export function takeLastWhileByArray<const T, const S extends T, >(collection: N
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */

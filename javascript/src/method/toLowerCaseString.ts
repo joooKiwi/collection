@@ -54,7 +54,7 @@ export function toLowerCaseString<const T, >(collection: Nullable<| MinimalistCo
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see String.toLowerCase
  * @extensionFunction
  */
@@ -72,7 +72,7 @@ export function toLowerCaseStringByMinimalistCollectionHolder<const T, >(collect
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see String.toLowerCase
  * @extensionFunction
  */
@@ -88,7 +88,7 @@ export function toLowerCaseStringByCollectionHolder<const T, >(collection: Nulla
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLowerCase toLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see String.toLowerCase
  * @extensionFunction
  */

@@ -89,7 +89,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
 /**
  * Reverse the {@link collection} to a new {@link CollectionHolder}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -102,7 +102,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * Reverse to a new {@link CollectionHolder}
  * from the start of the {@link collection} to the {@link from starting} index
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} s a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -120,7 +120,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
  * from the {@link to ending} to the {@link from starting} index
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
@@ -150,7 +150,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
 /**
  * Reverse the {@link collection} to a new {@link CollectionHolder}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -163,7 +163,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * Reverse to a new {@link CollectionHolder}
  * from the start of the {@link collection} to the {@link from starting} index
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -181,7 +181,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * from the {@link to ending} to the {@link from starting} index
  * in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
@@ -211,7 +211,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 /**
  * Reverse the {@link collection} to a new {@link CollectionHolder}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
+ * @param collection The nullable collection to reverse
  * @see Array.reverse
  * @see ReadonlyArray.toReversed
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html Kotlin reverse()
@@ -224,7 +224,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,)
  * Reverse to a new {@link CollectionHolder}
  * from the start of the {@link collection} to the {@link from starting} index
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} is not within the {@link collection} {@link CollectionHolder.size size}
  * @throws ForbiddenIndexException    {@link from} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
@@ -241,7 +241,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
  * Reverse to a new {@link CollectionHolder}
  * from the {@link to ending} to the {@link from starting} index in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to reverse
+ * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
  * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
  * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within the {@link collection} {@link CollectionHolder.size size}
