@@ -699,12 +699,12 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The iterable received in the constructor */
+    /** The raw value received in the constructor */
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> {
         return this.#reference
     }
 
-    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
+    /** The {@link Array} stored (from the construction) for the current {@link GenericMinimalistCollectionHolder instance} */
     protected get _array(): readonly T[] {
         return this.#array
     }

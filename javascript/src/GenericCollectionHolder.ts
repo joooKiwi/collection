@@ -962,10 +962,10 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    /** The iterable received in the constructor */
+    /** The raw value received in the constructor */
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference }
 
-    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
+    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder instance} */
     protected get _array(): readonly T[] { return this.#array }
 
     //#endregion -------------------- Reference methods --------------------
