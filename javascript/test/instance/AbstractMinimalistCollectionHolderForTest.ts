@@ -57,6 +57,7 @@ import {hasDuplicateByMinimalistCollectionHolder}              from "../../src/m
 import {hasNoDuplicatesByMinimalistCollectionHolder}           from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByMinimalistCollectionHolder}                from "../../src/method/hasNoNulls"
 import {hasNotByMinimalistCollectionHolder}                    from "../../src/method/hasNot"
+import {hasNotAllByMinimalistCollectionHolder}                 from "../../src/method/hasNotAll"
 import {hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {hasOneByMinimalistCollectionHolder}                    from "../../src/method/hasOne"
 import {indexOfFirstByMinimalistCollectionHolder}              from "../../src/method/indexOfFirst"
@@ -341,6 +342,17 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
+    public override hasNotAll(values: readonly T[],): boolean
+    public override hasNotAll(values: ReadonlySet<T>,): boolean
+    public override hasNotAll(values: CollectionHolder<T>,): boolean
+    public override hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotAll(values: CollectionIterator<T>,): boolean
+    public override hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return hasNotAllByMinimalistCollectionHolder(this, values,)
+    }
 
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {

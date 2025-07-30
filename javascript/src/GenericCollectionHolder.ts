@@ -1263,6 +1263,37 @@ export class GenericCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    protected override _hasNotAllByArray(values: readonly T[],): boolean {
+        return hasNotAllWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotAllWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotAllWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotAllWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotAllWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIterableByArray(this._array, values,)
+    }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 

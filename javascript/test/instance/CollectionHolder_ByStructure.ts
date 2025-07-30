@@ -373,6 +373,39 @@ export class CollectionHolder_ByStructure<const T, >
     public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsAll(values,) }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    public hasNotAll(values: readonly T[],): boolean
+    public hasNotAll(values: ReadonlySet<T>,): boolean
+    public hasNotAll(values: CollectionHolder<T>,): boolean
+    public hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public hasNotAll(values: CollectionIterator<T>,): boolean
+    public hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasNotAll(values,) }
+
+    public includesNotAll(values: readonly T[],): boolean
+    public includesNotAll(values: ReadonlySet<T>,): boolean
+    public includesNotAll(values: CollectionHolder<T>,): boolean
+    public includesNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public includesNotAll(values: CollectionIterator<T>,): boolean
+    public includesNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public includesNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesNotAll(values,) }
+
+    public containsNotAll(values: readonly T[],): boolean
+    public containsNotAll(values: ReadonlySet<T>,): boolean
+    public containsNotAll(values: CollectionHolder<T>,): boolean
+    public containsNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public containsNotAll(values: CollectionIterator<T>,): boolean
+    public containsNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public containsNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsNotAll(values,) }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 

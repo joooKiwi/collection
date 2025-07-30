@@ -524,6 +524,69 @@ export class EmptyCollectionHolder
     public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>,) { return this.hasAll(values,) }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    public hasNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
+        if (values == null)
+            return false
+        if (isArray(values,))
+            return values.length != 0
+        if (isSet(values,))
+            return values.size != 0
+        if (isCollectionHolder(values,))
+            return values.isNotEmpty
+        if (isMinimalistCollectionHolder(values,))
+            return values.size != 0
+        if (isCollectionIterator(values,))
+            return values.size != 0
+        if (isIterator(values,))
+            return values.next().done === false
+
+        if (isArrayByStructure(values,))
+            return values.length != 0
+        if (isSetByStructure(values,))
+            return values.size != 0
+        if (isCollectionHolderByStructure<unknown>(values,))
+            return values.isNotEmpty
+        if (isMinimalistCollectionHolderByStructure<unknown>(values,))
+            return values.size != 0
+        if (isCollectionIteratorByStructure<unknown>(values,))
+            return values.size != 0
+        if (isIteratorByStructure<unknown>(values,))
+            return values.next().done === false
+
+        return !values[Symbol.iterator]().next().done
+    }
+
+    public includesNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasNotAll(values,) }
+
+    public containsNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasNotAll(values,) }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 

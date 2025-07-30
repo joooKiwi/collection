@@ -206,6 +206,17 @@ export class CollectionHolder_ByLazyCollection<const T, >
     public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
     public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasAll(values,) }
 
+    public override hasNotAll(values: readonly T[],): boolean
+    public override hasNotAll(values: ReadonlySet<T>,): boolean
+    public override hasNotAll(values: CollectionHolder<T>,): boolean
+    public override hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotAll(values: CollectionIterator<T>,): boolean
+    public override hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasNotAll(values,) }
+
+
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
         if (this.instance.requireNoNulls() !== this.instance)
             throw new Error("The expected return type for the method “requireNoNulls” was supposed to be the same instance",)

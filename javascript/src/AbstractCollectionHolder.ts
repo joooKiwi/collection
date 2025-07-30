@@ -930,6 +930,107 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    public hasNotAll(values: readonly T[],): boolean
+    public hasNotAll(values: ReadonlySet<T>,): boolean
+    public hasNotAll(values: CollectionHolder<T>,): boolean
+    public hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public hasNotAll(values: CollectionIterator<T>,): boolean
+    public hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        if (isArray(values))
+            return this._hasNotAllByArray(values,)
+        if (isSet(values))
+            return this._hasNotAllBySet(values,)
+        if (isCollectionHolder(values))
+            return this._hasNotAllByCollectionHolder(values,)
+        if (isMinimalistCollectionHolder(values,))
+            return this._hasNotAllByMinimalistCollectionHolder(values,)
+        if (isCollectionIterator(values,))
+            return this._hasNotAllByCollectionIterator(values,)
+        if (isIterator(values,))
+            return this._hasNotAllByIterator(values,)
+
+        if (isArrayByStructure<T>(values))
+            return this._hasNotAllByArray(values,)
+        if (isSetByStructure<T>(values))
+            return this._hasNotAllBySet(values,)
+        if (isCollectionHolderByStructure<T>(values))
+            return this._hasNotAllByCollectionHolder(values,)
+        if (isMinimalistCollectionHolderByStructure<T>(values,))
+            return this._hasNotAllByMinimalistCollectionHolder(values,)
+        if (isCollectionIteratorByStructure<T>(values,))
+            return this._hasNotAllByCollectionIterator(values,)
+        if (isIteratorByStructure<T>(values,))
+            return this._hasNotAllByIterator(values,)
+        return this._hasNotAllByIterable(values,)
+    }
+
+    public includesNotAll(values: readonly T[],): boolean
+    public includesNotAll(values: ReadonlySet<T>,): boolean
+    public includesNotAll(values: CollectionHolder<T>,): boolean
+    public includesNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public includesNotAll(values: CollectionIterator<T>,): boolean
+    public includesNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public includesNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return this.hasNotAll(values,)
+    }
+
+    public containsNotAll(values: readonly T[],): boolean
+    public containsNotAll(values: ReadonlySet<T>,): boolean
+    public containsNotAll(values: CollectionHolder<T>,): boolean
+    public containsNotAll(values: CollectionHolder<T>,): boolean
+    public containsNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public containsNotAll(values: CollectionIterator<T>,): boolean
+    public containsNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public containsNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return this.hasNotAll(values,)
+    }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T>)} */
+    protected _hasNotAllByArray(values: readonly T[],): boolean {
+        return hasNotAllWithArrayByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T>)} */
+    protected _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotAllWithSetByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: MinimalistCollectionHolder<T>)} */
+    protected _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotAllWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionHolder<T>)} */
+    protected _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotAllWithCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: CollectionIterator<T>)} */
+    protected _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotAllWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterator<T>)} */
+    protected _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Iterable<T>)} */
+    protected _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIterableByCollectionHolder(this, values,)
+    }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
