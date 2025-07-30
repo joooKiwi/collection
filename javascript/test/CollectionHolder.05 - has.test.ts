@@ -10,6 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {expectToBeInstance}                                                                                                                                                                                                                                                                          from "./expect/expectToBeInstance"
 import {CollectionHolderFromArray}                                                                                                                                                                                                                                                                   from "./instance/CollectionHolderFromArray"
 import {CollectionIteratorFromArray}                                                                                                                                                                                                                                                                 from "./instance/CollectionIteratorFromArray"
 import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                                from "./instance/EmptyCollectionHolderForTest"
@@ -194,6 +195,7 @@ import {includesOneWithIterable, includesOneWithIterableByArray, includesOneWith
 import {includesOneWithIterator, includesOneWithIteratorByArray, includesOneWithIteratorByCollectionHolder, includesOneWithIteratorByMinimalistCollectionHolder}                                                                                     from "../src/method/includesOne.withIterator"
 import {includesOneWithMinimalistCollectionHolder, includesOneWithMinimalistCollectionHolderByArray, includesOneWithMinimalistCollectionHolderByCollectionHolder, includesOneWithMinimalistCollectionHolderByMinimalistCollectionHolder}             from "../src/method/includesOne.withMinimalistCollectionHolder"
 import {includesOneWithSet, includesOneWithSetByArray, includesOneWithSetByCollectionHolder, includesOneWithSetByMinimalistCollectionHolder}                                                                                                         from "../src/method/includesOne.withSet"
+import {requireNoNulls, requireNoNullsByArray, requireNoNullsByCollectionHolder, requireNoNullsByMinimalistCollectionHolder}                                                                                                                         from "../src/method/requireNoNulls"
 
 describe("CollectionHolderTest (has)", () => {
     const everyEmptyInstances = [
@@ -256,6 +258,8 @@ describe("CollectionHolderTest (has)", () => {
         test("hasNoDuplicates",      () => expect(new EmptyCollectionHolderForTest().hasNoDuplicates,).toBeTrue(),)
         test("includesNoDuplicates", () => expect(new EmptyCollectionHolderForTest().includesNoDuplicates,).toBeTrue(),)
         test("containsNoDuplicates", () => expect(new EmptyCollectionHolderForTest().containsNoDuplicates,).toBeTrue(),)
+
+        test("requireNoNulls",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.requireNoNulls(),),)
     },)
 
     describe("aliases", () => {
@@ -2485,9 +2489,21 @@ describe("CollectionHolderTest (has)", () => {
                 test("array",                        () => expect(hasNotAllWithIterableByArray(it, A,),).toBeTrue(),)
             },)
         },)
+
+        describe("requireNoNulls", () => {
+            test("all",                          () => expect(() => requireNoNulls(it,),).toThrow(TypeError,),)
+            test("minimalist collection holder", () => expect(() => requireNoNullsByMinimalistCollectionHolder(it,),).toThrow(TypeError,),)
+            test("collection holder",            () => expect(() => requireNoNullsByCollectionHolder(it,),).toThrow(TypeError,),)
+            test("array",                        () => expect(() => requireNoNullsByArray(it,),).toThrow(TypeError,),)
+        },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+        /** The instance is a {@link GenericCollectionHolder} */
+        const isNormal = type === "normal"
+        /** The instance is a {@link CollectionHolder} for the {@link ReadonlyArray} extension methods */
+        const isArrayExtension = type === "array extension"
+
         if (!isExtension)
             describe("get() being called", () => {
                 describe("has", () => {
@@ -2579,6 +2595,12 @@ describe("CollectionHolderTest (has)", () => {
                         test("empty",     () => expect(new instance(ABCD,).execute(it => it.hasNotAll(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
                         test("non-empty", () => expect(new instance(ABCD,).execute(it => it.hasNotAll(newIterable(AB,),),).amountOfCall,).toBe(3,),)
                     },)
+                },)
+                describe("requireNoNulls", () => {
+                    test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(0,),)
+                    test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 2 : 1,),)
+                    test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist ? 4 : 2,),)
+                    test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),).amountOfCall,).toBe(isMinimalist || isNormal ? 8 : 4,),)//TODO remove the type == normal validation
                 },)
             },)
 
@@ -2858,6 +2880,80 @@ describe("CollectionHolderTest (has)", () => {
                 test("1 null + 2 undefined", () => expect(new instance(A_NULL_UNDEFINED_UNDEFINED_B,).hasNoDuplicates,).toBeFalse(),)
                 test("2 a + 1 b",            () => expect(new instance(AABC,).hasNoDuplicates,).toBeFalse(),)
                 test("1 a + 2 b",            () => expect(new instance(ABBC,).hasNoDuplicates,).toBeFalse(),)
+            },)
+        },)
+        describe("requireNoNulls", () => {
+            test("empty", () => {
+                if (isArrayExtension)
+                    expect(() => new instance(EMPTY,).requireNoNulls(),).not.toThrow()
+                else
+                    expectToBeInstance(new instance(EMPTY,), it => it.requireNoNulls(),)
+            },)
+            describe("1 field", () => {
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(A,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(A,), it => it.requireNoNulls(),)
+                },)
+
+                test("null",      () => expect(() => new instance(NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined", () => expect(() => new instance(UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+            },)
+            describe("2 fields", () => {
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(AB,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(AB,), it => it.requireNoNulls(),)
+                },)
+
+                test("null at start",      () => expect(() => new instance(NULL_A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("null at end",        () => expect(() => new instance(A_NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined at start", () => expect(() => new instance(UNDEFINED_A,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined at end",   () => expect(() => new instance(A_UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("null + undefined",   () => expect(() => new instance(NULL_UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+            },)
+            describe("4 fields", () => {
+                test("non-null", () => {
+                    if (isArrayExtension)
+                        expect(() => new instance(ABCD,).requireNoNulls(),).not.toThrow()
+                    else
+                        expectToBeInstance(new instance(ABCD,), it => it.requireNoNulls(),)
+                },)
+
+                test("null at start",       () => expect(() => new instance(NULL_AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("null at center",      () => expect(() => new instance(A_NULL_B,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("null at end",         () => expect(() => new instance(AB_NULL,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined at start",  () => expect(() => new instance(UNDEFINED_AB,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined at center", () => expect(() => new instance(A_UNDEFINED_B,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("undefined at end",    () => expect(() => new instance(AB_UNDEFINED,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+                test("null + undefined",    () => expect(() => new instance(A_NULL_UNDEFINED_B,).executeWhileHavingIndexesOnField(it => it.requireNoNulls(),),).toThrow(TypeError,),)
+            },)
+
+            if (isMinimalist || isExtension)
+                return // We only do some test that require the CollectionHolder.hasNull method and is not an extension method instance
+            describe("non-minimalist collection", () => {
+                describe("1 field", () => {
+                    test("null",      () => expect(() => new instance(NULL,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined", () => expect(() => new instance(UNDEFINED,).requireNoNulls(),).toThrow(TypeError,),)
+                },)
+                describe("2 fields", () => {
+                    test("null at start",      () => expect(() => new instance(NULL_A,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("null at end",        () => expect(() => new instance(A_NULL,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined at start", () => expect(() => new instance(UNDEFINED_A,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined at end",   () => expect(() => new instance(A_UNDEFINED,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("null + undefined",   () => expect(() => new instance(NULL_UNDEFINED,).requireNoNulls(),).toThrow(TypeError,),)
+                },)
+                describe("4 fields", () => {
+                    test("null at start",       () => expect(() => new instance(NULL_AB,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("null at center",      () => expect(() => new instance(A_NULL_B,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("null at end",         () => expect(() => new instance(AB_NULL,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined at start",  () => expect(() => new instance(UNDEFINED_AB,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined at center", () => expect(() => new instance(A_UNDEFINED_B,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("undefined at end",    () => expect(() => new instance(AB_UNDEFINED,).requireNoNulls(),).toThrow(TypeError,),)
+                    test("null + undefined",    () => expect(() => new instance(A_NULL_UNDEFINED_B,).requireNoNulls(),).toThrow(TypeError,),)
+                },)
             },)
         },)
     },)
