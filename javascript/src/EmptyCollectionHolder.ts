@@ -479,15 +479,17 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public hasAll(values: readonly unknown[], ..._: readonly unknown[]): boolean
-    public hasAll(values: ReadonlySet<unknown>, ..._: readonly unknown[]): boolean
-    public hasAll(values: CollectionHolder, ..._: readonly unknown[]): boolean
-    public hasAll(values: MinimalistCollectionHolder, ..._: readonly unknown[]): boolean
-    public hasAll(values: CollectionIterator, ..._: readonly unknown[]): boolean
-    public hasAll(values: Iterator<unknown, unknown, unknown>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Iterable<unknown, unknown, unknown>, ..._: readonly unknown[]): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>, ..._: readonly unknown[]): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>,) {
+    public hasAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
+        if (values == null)
+            return true
         if (isArray(values,))
             return values.length == 0
         if (isSet(values,))
@@ -517,23 +519,25 @@ export class EmptyCollectionHolder
         return values[Symbol.iterator]().next().done
     }
 
-    public includesAll(values: readonly unknown[], ..._: readonly unknown[]): boolean
-    public includesAll(values: ReadonlySet<unknown>, ..._: readonly unknown[]): boolean
-    public includesAll(values: CollectionHolder, ..._: readonly unknown[]): boolean
-    public includesAll(values: MinimalistCollectionHolder, ..._: readonly unknown[]): boolean
-    public includesAll(values: CollectionIterator, ..._: readonly unknown[]): boolean
-    public includesAll(values: Iterable<unknown, unknown, unknown>, ..._: readonly unknown[]): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>, ..._: readonly unknown[]): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>,) { return this.hasAll(values,) }
+    public includesAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasAll(values,) }
 
-    public containsAll(values: readonly unknown[], ..._: readonly unknown[]): boolean
-    public containsAll(values: ReadonlySet<unknown>, ..._: readonly unknown[]): boolean
-    public containsAll(values: CollectionHolder, ..._: readonly unknown[]): boolean
-    public containsAll(values: MinimalistCollectionHolder, ..._: readonly unknown[]): boolean
-    public containsAll(values: CollectionIterator, ..._: readonly unknown[]): boolean
-    public containsAll(values: Iterable<unknown, unknown, unknown>, ..._: readonly unknown[]): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>, ..._: readonly unknown[]): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<unknown>,) { return this.hasAll(values,) }
+    public containsAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasAll(values,) }
 
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
