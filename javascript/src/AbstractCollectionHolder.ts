@@ -829,6 +829,106 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    public hasNotOne(values: readonly T[],): boolean
+    public hasNotOne(values: ReadonlySet<T>,): boolean
+    public hasNotOne(values: CollectionHolder<T>,): boolean
+    public hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public hasNotOne(values: CollectionIterator<T>,): boolean
+    public hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        if (isArray(values))
+            return this._hasNotOneByArray(values,)
+        if (isSet(values))
+            return this._hasNotOneBySet(values,)
+        if (isCollectionHolder(values))
+            return this._hasNotOneByCollectionHolder(values,)
+        if (isMinimalistCollectionHolder(values,))
+            return this._hasNotOneByMinimalistCollectionHolder(values,)
+        if (isCollectionIterator(values,))
+            return this._hasNotOneByCollectionIterator(values,)
+        if (isIterator(values,))
+            return this._hasNotOneByIterator(values,)
+
+        if (isArrayByStructure<T>(values))
+            return this._hasNotOneByArray(values,)
+        if (isSetByStructure<T>(values))
+            return this._hasNotOneBySet(values,)
+        if (isCollectionHolderByStructure<T>(values))
+            return this._hasNotOneByCollectionHolder(values,)
+        if (isMinimalistCollectionHolderByStructure<T>(values,))
+            return this._hasNotOneByMinimalistCollectionHolder(values,)
+        if (isCollectionIteratorByStructure<T>(values,))
+            return this._hasNotOneByCollectionIterator(values,)
+        if (isIteratorByStructure<T>(values,))
+            return this._hasNotOneByIterator(values,)
+        return this._hasNotOneByIterable(values,)
+    }
+
+    public includesNotOne(values: readonly T[],): boolean
+    public includesNotOne(values: ReadonlySet<T>,): boolean
+    public includesNotOne(values: CollectionHolder<T>,): boolean
+    public includesNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public includesNotOne(values: CollectionIterator<T>,): boolean
+    public includesNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public includesNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return this.hasNotOne(values,)
+    }
+
+    public containsNotOne(values: readonly T[],): boolean
+    public containsNotOne(values: ReadonlySet<T>,): boolean
+    public containsNotOne(values: CollectionHolder<T>,): boolean
+    public containsNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public containsNotOne(values: CollectionIterator<T>,): boolean
+    public containsNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public containsNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return this.hasNotOne(values,)
+    }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
+    protected _hasNotOneByArray(values: readonly T[],): boolean {
+        return hasNotOneWithArrayByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T>)} */
+    protected _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotOneWithSetByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: MinimalistCollectionHolder<T>)} */
+    protected _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotOneWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionHolder<T>)} */
+    protected _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotOneWithCollectionHolderByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: CollectionIterator<T>)} */
+    protected _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotOneWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterator<T>)} */
+    protected _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIteratorByCollectionHolder(this, values,)
+    }
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Iterable<T>)} */
+    protected _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIterableByCollectionHolder(this, values,)
+    }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly T[],): boolean

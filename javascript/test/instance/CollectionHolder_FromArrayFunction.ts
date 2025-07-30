@@ -59,6 +59,7 @@ import {hasNoDuplicatesByArray}           from "../../src/method/hasNoDuplicates
 import {hasNoNullsByArray}                from "../../src/method/hasNoNulls"
 import {hasNotByArray}                    from "../../src/method/hasNot"
 import {hasNotAllByArray}                 from "../../src/method/hasNotAll"
+import {hasNotOneByArray}                 from "../../src/method/hasNotOne"
 import {hasNullByArray}                   from "../../src/method/hasNull"
 import {hasOneByArray}                    from "../../src/method/hasOne"
 import {indexOfFirstByArray}              from "../../src/method/indexOfFirst"
@@ -348,6 +349,17 @@ export class CollectionHolder_FromArrayFunction<const T, >
         return hasOneByArray(this.array, values,)
     }
 
+    public override hasNotOne(values: readonly T[],): boolean
+    public override hasNotOne(values: ReadonlySet<T>,): boolean
+    public override hasNotOne(values: CollectionHolder<T>,): boolean
+    public override hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotOne(values: CollectionIterator<T>,): boolean
+    public override hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return hasNotOneByArray(this.array, values,)
+    }
 
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean

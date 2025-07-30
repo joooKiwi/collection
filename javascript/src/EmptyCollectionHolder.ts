@@ -465,6 +465,18 @@ export class EmptyCollectionHolder
     public containsOne() { return this.hasOne() }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    public hasNotOne(..._: readonly unknown[]): true
+    public hasNotOne() { return true }
+
+    public includesNotOne(..._: readonly unknown[]): true
+    public includesNotOne() { return this.hasNotOne() }
+
+    public containsNotOne(..._: readonly unknown[]): true
+    public containsNotOne() { return this.hasNotOne() }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly unknown[], ..._: readonly unknown[]): boolean

@@ -527,6 +527,28 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    public abstract hasNotOne(values: readonly T[],): boolean
+    public abstract hasNotOne(values: ReadonlySet<T>,): boolean
+    public abstract hasNotOne(values: CollectionHolder<T>,): boolean
+    public abstract hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public abstract hasNotOne(values: CollectionIterator<T>,): boolean
+    public abstract hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+
+    public includesNotOne(..._: readonly unknown[]): never
+    public includesNotOne() {
+        throw new Error("The method “includesNotOne” was not expected to be called.",)
+    }
+
+    public containsNotOne(..._: readonly unknown[]): never
+    public containsNotOne() {
+        throw new Error("The method “containsNotOne” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     public abstract hasAll(values: readonly T[],): boolean

@@ -193,6 +193,16 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
     public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasOne(values,) }
 
+    public override hasNotOne(values: readonly T[],): boolean
+    public override hasNotOne(values: ReadonlySet<T>,): boolean
+    public override hasNotOne(values: CollectionHolder<T>,): boolean
+    public override hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotOne(values: CollectionIterator<T>,): boolean
+    public override hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasNotOne(values,) }
+
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean
     public override hasAll(values: CollectionHolder<T>,): boolean

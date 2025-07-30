@@ -340,6 +340,39 @@ export class CollectionHolder_ByStructure<const T, >
     public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsOne(values,) }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    public hasNotOne(values: readonly T[],): boolean
+    public hasNotOne(values: ReadonlySet<T>,): boolean
+    public hasNotOne(values: CollectionHolder<T>,): boolean
+    public hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public hasNotOne(values: CollectionIterator<T>,): boolean
+    public hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasNotOne(values,) }
+
+    public includesNotOne(values: readonly T[],): boolean
+    public includesNotOne(values: ReadonlySet<T>,): boolean
+    public includesNotOne(values: CollectionHolder<T>,): boolean
+    public includesNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public includesNotOne(values: CollectionIterator<T>,): boolean
+    public includesNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public includesNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesNotOne(values,) }
+
+    public containsNotOne(values: readonly T[],): boolean
+    public containsNotOne(values: ReadonlySet<T>,): boolean
+    public containsNotOne(values: CollectionHolder<T>,): boolean
+    public containsNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public containsNotOne(values: CollectionIterator<T>,): boolean
+    public containsNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public containsNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsNotOne(values,) }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     public hasAll(values: readonly T[],): boolean

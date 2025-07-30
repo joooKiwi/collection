@@ -1232,6 +1232,37 @@ export class GenericCollectionHolder<const T = unknown,
     }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    protected override _hasNotOneByArray(values: readonly T[],): boolean {
+        return hasNotOneWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotOneWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotOneWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotOneWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotOneWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIterableByArray(this._array, values,)
+    }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     protected override _hasAllByArray(values: readonly T[],): boolean {
