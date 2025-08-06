@@ -455,7 +455,7 @@ public class ImmutableStack<T extends @Nullable Object>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable Stack."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable Stack."); }
 
     /// Fail to add the `values` in the current [ImmutableStack]
     ///
@@ -463,7 +463,7 @@ public class ImmutableStack<T extends @Nullable Object>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable Stack."); }
+    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable Stack."); }
 
 
     /// Fail to clear the current [ImmutableStack]

@@ -195,7 +195,7 @@ public class ImmutableCopyOnWriteArraySet<T>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArraySet."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArraySet."); }
 
 
     /// Fail to clear the current [ImmutableCopyOnWriteArraySet]

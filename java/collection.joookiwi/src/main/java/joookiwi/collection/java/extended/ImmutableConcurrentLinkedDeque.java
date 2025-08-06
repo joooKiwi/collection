@@ -345,7 +345,7 @@ public class ImmutableConcurrentLinkedDeque<T>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ConcurrentLinkedDeque."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ConcurrentLinkedDeque."); }
 
 
     /// Fail to add a `value` to the current [ImmutableConcurrentLinkedDeque]

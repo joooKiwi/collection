@@ -253,7 +253,7 @@ public class ImmutableArrayDeque<T>
     @Contract(pure = true)
     @Override public boolean contains(final @Nullable Object value) { return super.contains(value); }
 
-    @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return super.containsAll(values); }
+    @Override public boolean containsAll(final @Unmodifiable Collection<? extends @Nullable Object> values) { return super.containsAll(values); }
 
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- For each methods --------------------
@@ -354,7 +354,7 @@ public class ImmutableArrayDeque<T>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ArrayDeque."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable ArrayDeque."); }
 
 
     /// Fail to add a `value` to the current [ImmutableArrayDeque]
@@ -461,7 +461,7 @@ public class ImmutableArrayDeque<T>
     /// @param filter The (_never used_) predicate
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean removeIf(final @Nullable Predicate<? super T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable ArrayDeque."); }
+    @Override public boolean removeIf(final @Nullable Predicate<? super @Nullable T> filter) { throw new UnsupportedOperationException("The method “removeIf” is not supported in an immutable ArrayDeque."); }
 
 
     /// Fail to keep the `values` in the current [ImmutableArrayDeque]
@@ -469,7 +469,7 @@ public class ImmutableArrayDeque<T>
     /// @param values The (_never used_) values to keep
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<?> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable ArrayDeque."); }
+    @Override public boolean retainAll(final @Nullable @Unmodifiable Collection<? extends @Nullable Object> values) { throw new UnsupportedOperationException("The method “retainAll” is not supported in an immutable ArrayDeque."); }
 
     //#endregion -------------------- Unsupported methods --------------------
 

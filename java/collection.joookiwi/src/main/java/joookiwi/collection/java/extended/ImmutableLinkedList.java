@@ -430,7 +430,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable LinkedList."); }
+    @Override public boolean addAll(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable LinkedList."); }
 
     /// Fail to add the `values` in the current [instance][ImmutableLinkedList]
     ///
@@ -438,7 +438,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedMethodException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable LinkedList."); }
+    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedMethodException("The method “addAll” is not supported in an immutable LinkedList."); }
 
 
     /// Never add a `value` to the current [instance][ImmutableLinkedList]

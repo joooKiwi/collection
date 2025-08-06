@@ -384,14 +384,14 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_2)
-    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArrayList."); }
+    @Override public boolean addAll(final int index, final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAll” is not supported in an immutable CopyOnWriteArrayList."); }
 
     /// Fail to add the `values` in the current [ImmutableCopyOnWriteArrayList]
     ///
     /// @param values The (_never used_) elements to add
     /// @throws UnsupportedOperationException The method is not supported
     @Contract(ALWAYS_FAIL_1)
-    @Override public int addAllAbsent(Collection<? extends T> values) { throw new UnsupportedOperationException("The method “addAllAbsent” is not supported in an immutable CopyOnWriteArrayList."); }
+    @Override public int addAllAbsent(final @Nullable @Unmodifiable Collection<? extends @Nullable T> values) { throw new UnsupportedOperationException("The method “addAllAbsent” is not supported in an immutable CopyOnWriteArrayList."); }
 
 
     /// Fail to clear the current [ImmutableCopyOnWriteArrayList]
