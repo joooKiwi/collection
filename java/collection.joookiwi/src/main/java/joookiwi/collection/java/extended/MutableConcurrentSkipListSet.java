@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A mutable behaviour of a [ConcurrentSkipListSet]
 ///
 /// @param <T> The type of the element
@@ -152,6 +154,7 @@ public class MutableConcurrentSkipListSet<T>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableConcurrentSkipListSet<T> clone() {
         try {
             return (MutableConcurrentSkipListSet<T>) super.clone();

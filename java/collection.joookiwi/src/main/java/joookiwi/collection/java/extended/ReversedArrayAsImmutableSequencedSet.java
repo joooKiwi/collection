@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a reversed-order [SequencedSet] similar to the [ArrayAsImmutableSequencedSet] in its behaviour.
@@ -97,6 +98,7 @@ public class ReversedArrayAsImmutableSequencedSet<T extends @Nullable Object,
     @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ReversedArrayAsImmutableSequencedSet<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsImmutableSequencedSet<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

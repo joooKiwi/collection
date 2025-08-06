@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_QUEUE_CAPACITY;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// An mutable behaviour of a [LinkedBlockingDeque]
 ///
@@ -125,6 +126,7 @@ public class MutableLinkedBlockingDeque<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableLinkedBlockingDeque<T> clone() {
         try {
             return (MutableLinkedBlockingDeque<T>) super.clone();

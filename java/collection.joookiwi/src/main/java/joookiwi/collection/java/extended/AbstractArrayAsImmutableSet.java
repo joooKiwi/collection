@@ -6,6 +6,7 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 /// A definition of an [ImmutableSet] to have a common ancestor.
@@ -51,6 +52,7 @@ public abstract class AbstractArrayAsImmutableSet<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableSet<T> clone() { return (AbstractArrayAsImmutableSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

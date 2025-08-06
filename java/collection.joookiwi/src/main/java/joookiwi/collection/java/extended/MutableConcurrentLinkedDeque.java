@@ -10,6 +10,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A mutable behaviour of a [ConcurrentLinkedDeque]
 ///
 /// @param <T> The type of the element
@@ -72,6 +74,7 @@ public class MutableConcurrentLinkedDeque<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableConcurrentLinkedDeque<T> clone() {
         try {
             return (MutableConcurrentLinkedDeque<T>) super.clone();

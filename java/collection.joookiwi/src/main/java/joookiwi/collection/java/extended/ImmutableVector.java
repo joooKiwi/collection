@@ -183,8 +183,9 @@ public class ImmutableVector<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableVectorView<T> clone() { return new ImmutableVectorView<>(__reference); }
+        @Override public ImmutableVectorView<T> clone() { return (ImmutableVectorView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -369,6 +370,7 @@ public class ImmutableVector<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableVector<T> clone() {
         try {
             return (ImmutableVector<T>) super.clone();

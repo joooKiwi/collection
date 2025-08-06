@@ -195,8 +195,9 @@ public class ImmutableConcurrentSkipListSet<T>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableConcurrentSkipListSetView<T> clone() { return new ImmutableConcurrentSkipListSetView<>(__reference); }
+        @Override public ImmutableConcurrentSkipListSetView<T> clone() { return (ImmutableConcurrentSkipListSetView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -504,6 +505,7 @@ public class ImmutableConcurrentSkipListSet<T>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableConcurrentSkipListSet<T> clone() {
         try {
             return (ImmutableConcurrentSkipListSet<T>) super.clone();

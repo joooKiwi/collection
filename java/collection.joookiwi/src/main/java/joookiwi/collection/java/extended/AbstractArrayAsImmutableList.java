@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
@@ -80,6 +81,7 @@ public abstract class AbstractArrayAsImmutableList<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableList<T> clone() { return (AbstractArrayAsImmutableList<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

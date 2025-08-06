@@ -165,6 +165,7 @@ public class ImmutableCopyOnWriteArraySet<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableCopyOnWriteArraySet<T> clone() {
         try {
             return (ImmutableCopyOnWriteArraySet<T>) super.clone();

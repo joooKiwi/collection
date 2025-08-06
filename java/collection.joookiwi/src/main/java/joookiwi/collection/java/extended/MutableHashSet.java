@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A mutable behaviour of a [HashSet]
 ///
@@ -823,6 +824,7 @@ public class MutableHashSet<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableHashSet<T> clone() {
         try {
             return (MutableHashSet<T>) super.clone();

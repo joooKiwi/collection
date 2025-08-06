@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CollectionConstants.emptyArray;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public class ArrayAsMutableList<T extends @Nullable Object>
@@ -42,6 +43,7 @@ public class ArrayAsMutableList<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsMutableList<T> clone() { return (ArrayAsMutableList<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

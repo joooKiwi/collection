@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// An mutable behaviour of a [Stack]
 ///
 /// @param <T> The type of the element
@@ -78,6 +80,7 @@ public class MutableStack<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableStack<T> clone() {
         try {
             return (MutableStack<T>) super.clone();

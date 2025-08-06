@@ -14,6 +14,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public interface ImmutableBlockingDeque<T>
@@ -21,6 +22,16 @@ public interface ImmutableBlockingDeque<T>
                 ImmutableDeque<T>,
                 BlockingDeque<T> {
 
+    //#region -------------------- Supported methods --------------------
+
+    //#region -------------------- Clone methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override ImmutableBlockingDeque<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
+
+    //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------
 
     /// Fail to add a `value` to the start of the current [instance][BlockingDeque]

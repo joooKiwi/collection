@@ -195,8 +195,9 @@ public class ImmutableTreeSet<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableTreeSetView<T> clone() { return new ImmutableTreeSetView<>(__reference); }
+        @Override public ImmutableTreeSetView<T> clone() { return (ImmutableTreeSetView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -500,6 +501,7 @@ public class ImmutableTreeSet<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableTreeSet<T> clone() {
         try {
             return (ImmutableTreeSet<T>) super.clone();

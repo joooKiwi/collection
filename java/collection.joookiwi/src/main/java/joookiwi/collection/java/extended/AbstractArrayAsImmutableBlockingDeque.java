@@ -1,7 +1,10 @@
 package joookiwi.collection.java.extended;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A definition of an [ImmutableBlockingDeque] to have a common ancestor
 ///
@@ -22,6 +25,7 @@ public abstract class AbstractArrayAsImmutableBlockingDeque<T>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableBlockingDeque<T> clone() { return (AbstractArrayAsImmutableBlockingDeque<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

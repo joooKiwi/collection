@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public interface ImmutableSequencedSet<T extends @Nullable Object>
@@ -59,6 +60,7 @@ public interface ImmutableSequencedSet<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     @Override ImmutableSequencedSet<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

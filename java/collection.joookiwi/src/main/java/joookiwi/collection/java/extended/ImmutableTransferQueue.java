@@ -15,6 +15,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 @NotNullByDefault
@@ -31,6 +32,12 @@ public interface ImmutableTransferQueue<T>
     @Override @Range(from = 0, to = MAX_INT_VALUE) int getWaitingConsumerCount();
 
     //#endregion -------------------- Consumer methods --------------------
+    //#region -------------------- Clone methods --------------------
+
+    @Contract(ALWAYS_NEW_0)
+    @Override ImmutableTransferQueue<T> clone();
+
+    //#endregion -------------------- Clone methods --------------------
 
     //#endregion -------------------- Supported methods --------------------
     //#region -------------------- Unsupported methods --------------------

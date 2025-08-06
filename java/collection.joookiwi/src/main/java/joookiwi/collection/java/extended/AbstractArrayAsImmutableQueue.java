@@ -6,6 +6,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A definition of an [ImmutableQueue] to have a common ancestor.
 /// This class is similar to [java.util.AbstractQueue] but for array specifically.
 ///
@@ -35,6 +37,7 @@ public abstract class AbstractArrayAsImmutableQueue<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableQueue<T> clone() { return (AbstractArrayAsImmutableQueue<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

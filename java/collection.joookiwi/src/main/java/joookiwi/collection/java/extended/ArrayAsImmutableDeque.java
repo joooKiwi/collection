@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java Deque][java.util.Deque]
@@ -60,6 +61,7 @@ public class ArrayAsImmutableDeque<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsImmutableDeque<T> clone() { return (ArrayAsImmutableDeque<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 import org.jetbrains.annotations.UnmodifiableView;
 
-import static joookiwi.collection.java.CollectionConstants.emptyArray;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
@@ -142,6 +142,7 @@ public abstract class AbstractArrayAsMutableList<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsMutableList<T> clone() { return (AbstractArrayAsMutableList<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

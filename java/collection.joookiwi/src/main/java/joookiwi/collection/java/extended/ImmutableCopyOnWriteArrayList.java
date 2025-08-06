@@ -164,8 +164,9 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableCopyOnWriteArrayListView<T> clone() { return new ImmutableCopyOnWriteArrayListView<>(__reference); }
+        @Override public ImmutableCopyOnWriteArrayListView<T> clone() { return (ImmutableCopyOnWriteArrayListView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -306,6 +307,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableCopyOnWriteArrayList<T> clone() {
         try {
             return (ImmutableCopyOnWriteArrayList<T>) super.clone();

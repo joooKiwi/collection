@@ -9,6 +9,7 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [ConcurrentLinkedQueue]
@@ -46,6 +47,7 @@ public class MutableConcurrentLinkedQueue<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableConcurrentLinkedQueue<T> clone() {
         try {
             return (MutableConcurrentLinkedQueue<T>) super.clone();

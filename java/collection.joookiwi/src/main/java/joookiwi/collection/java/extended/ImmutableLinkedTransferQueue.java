@@ -148,6 +148,7 @@ public class ImmutableLinkedTransferQueue<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableLinkedTransferQueue<T> clone() {
         try {
             return (ImmutableLinkedTransferQueue<T>) super.clone();

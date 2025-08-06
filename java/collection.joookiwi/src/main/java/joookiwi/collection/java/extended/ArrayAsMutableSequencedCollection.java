@@ -5,6 +5,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A bare-bone implementation of a [java SequencedCollection][java.util.SequencedCollection]
 /// with the mutability in place.
 ///
@@ -49,6 +51,7 @@ public class ArrayAsMutableSequencedCollection<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsMutableSequencedCollection<T> clone() { return (ArrayAsMutableSequencedCollection<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

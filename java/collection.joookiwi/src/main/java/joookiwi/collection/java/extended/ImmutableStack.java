@@ -166,8 +166,9 @@ public class ImmutableStack<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableStackView<T> clone() { return new ImmutableStackView<>(__reference); }
+        @Override public ImmutableStackView<T> clone() { return (ImmutableStackView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -342,6 +343,7 @@ public class ImmutableStack<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableStack<T> clone() {
         try {
             return (ImmutableStack<T>) super.clone();

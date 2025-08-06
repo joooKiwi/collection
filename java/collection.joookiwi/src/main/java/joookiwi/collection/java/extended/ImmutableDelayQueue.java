@@ -151,6 +151,7 @@ public class ImmutableDelayQueue<T extends Delayed>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableDelayQueue<T> clone() {
         try {
             return (ImmutableDelayQueue<T>) super.clone();

@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A mutable behaviour of a [CopyOnWriteArrayList]
 ///
 /// @param <T> The type of the element
@@ -42,6 +44,7 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableCopyOnWriteArrayList<T> clone() {
         try {
             return (MutableCopyOnWriteArrayList<T>) super.clone();

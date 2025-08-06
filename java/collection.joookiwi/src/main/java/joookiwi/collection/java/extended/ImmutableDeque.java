@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 @NotNullByDefault
 public interface ImmutableDeque<T extends @Nullable Object>
@@ -51,6 +52,7 @@ public interface ImmutableDeque<T extends @Nullable Object>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     @Override ImmutableDeque<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

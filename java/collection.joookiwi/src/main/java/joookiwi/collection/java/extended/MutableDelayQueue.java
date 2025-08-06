@@ -9,6 +9,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A mutable behaviour of a [DelayQueue]
 ///
 /// @param <T> The type of the element
@@ -57,6 +59,7 @@ public class MutableDelayQueue<T extends Delayed>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableDelayQueue<T> clone() {
         try {
             return (MutableDelayQueue<T>) super.clone();

@@ -11,6 +11,16 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 
 /// A mutable behaviour of a [SynchronousQueue]
 ///
@@ -151,6 +161,7 @@ public class MutableSynchronousQueue<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public MutableSynchronousQueue<T> clone() {
         try {
             return (MutableSynchronousQueue<T>) super.clone();

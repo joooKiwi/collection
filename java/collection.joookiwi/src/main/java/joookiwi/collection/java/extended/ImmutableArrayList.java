@@ -59,7 +59,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = -3628686325895692821L;
+        @Serial private static final long serialVersionUID = -7070088712392655997L;
 
         private final List<T> __reference;
 
@@ -165,8 +165,9 @@ public class ImmutableArrayList<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableArrayListView<T> clone() { return new ImmutableArrayListView<>(__reference); }
+        @Override public ImmutableArrayListView<T> clone() { return (ImmutableArrayListView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -318,6 +319,7 @@ public class ImmutableArrayList<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableArrayList<T> clone() {
         try {
             return (ImmutableArrayList<T>) super.clone();

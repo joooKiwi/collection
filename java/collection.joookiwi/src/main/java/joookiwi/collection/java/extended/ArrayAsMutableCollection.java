@@ -5,6 +5,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A bare-bone implementation of a [java Collection][java.util.Collection]
 /// with the mutability in place.
 ///
@@ -52,6 +54,7 @@ public class ArrayAsMutableCollection<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsMutableCollection<T> clone() { return (ArrayAsMutableCollection<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

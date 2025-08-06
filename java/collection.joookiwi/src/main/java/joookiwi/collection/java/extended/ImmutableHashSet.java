@@ -13,6 +13,7 @@ import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
@@ -273,6 +274,8 @@ public class ImmutableHashSet<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableHashSet<T> clone() {
         try {
             return (ImmutableHashSet<T>) super.clone();

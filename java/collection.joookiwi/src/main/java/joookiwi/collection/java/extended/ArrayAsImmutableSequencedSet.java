@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java SequencedSet][java.util.SequencedSet]
@@ -64,6 +65,7 @@ public class ArrayAsImmutableSequencedSet<T extends @Nullable Object>
     //#region -------------------- Methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsImmutableSequencedSet<T> clone() { return (ArrayAsImmutableSequencedSet<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

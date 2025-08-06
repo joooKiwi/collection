@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[List] similar to the [ArrayAsImmutableList] in its behaviour.
@@ -96,6 +97,7 @@ public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
 
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public SubdividedArrayAsImmutableList<T, SOURCE, SUB_ARRAY> clone() { return (SubdividedArrayAsImmutableList<T, SOURCE, SUB_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

@@ -39,6 +39,7 @@ public abstract class AbstractArrayAsImmutableSequencedCollection<T extends @Nul
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableSequencedCollection<T> clone() { return (AbstractArrayAsImmutableSequencedCollection<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

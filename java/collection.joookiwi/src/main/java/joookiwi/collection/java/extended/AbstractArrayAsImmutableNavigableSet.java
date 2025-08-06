@@ -7,6 +7,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A definition of an [ImmutableNavigableSet] to have a common ancestor
 ///
 /// @param <T> The type
@@ -61,6 +63,7 @@ public abstract class AbstractArrayAsImmutableNavigableSet<T extends @Nullable O
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableNavigableSet<T> clone() { return (AbstractArrayAsImmutableNavigableSet<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

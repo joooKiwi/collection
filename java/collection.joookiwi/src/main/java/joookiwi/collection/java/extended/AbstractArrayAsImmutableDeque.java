@@ -9,6 +9,8 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 /// A definition of an [ImmutableDeque] to have a common ancestor
 ///
 /// @param <T> The type
@@ -54,6 +56,7 @@ public abstract class AbstractArrayAsImmutableDeque<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableDeque<T> clone() { return (AbstractArrayAsImmutableDeque<T>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

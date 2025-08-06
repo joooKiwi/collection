@@ -142,8 +142,9 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableLinkedHashSetView<T> clone() { return new ImmutableLinkedHashSetView<>(__reference); }
+        @Override public ImmutableLinkedHashSetView<T> clone() { return (ImmutableLinkedHashSetView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -373,6 +374,7 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableLinkedHashSet<T> clone() {
         try {
             return (ImmutableLinkedHashSet<T>) super.clone();

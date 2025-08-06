@@ -248,6 +248,7 @@ public class ImmutablePriorityBlockingQueue<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutablePriorityBlockingQueue<T> clone() {
         try {
             return (ImmutablePriorityBlockingQueue<T>) super.clone();

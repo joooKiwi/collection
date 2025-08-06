@@ -154,8 +154,9 @@ public class ImmutableArrayDeque<T>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableArrayDequeView<T> clone() { return new ImmutableArrayDequeView<>(__reference); }
+        @Override public ImmutableArrayDequeView<T> clone() { return (ImmutableArrayDequeView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -301,6 +302,7 @@ public class ImmutableArrayDeque<T>
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableArrayDeque<T> clone() {
         try {
             return (ImmutableArrayDeque<T>) super.clone();

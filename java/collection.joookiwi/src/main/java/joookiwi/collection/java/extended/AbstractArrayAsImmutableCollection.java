@@ -149,6 +149,7 @@ public abstract class AbstractArrayAsImmutableCollection<T extends @Nullable Obj
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public AbstractArrayAsImmutableCollection<T> clone() {
         try {
             return (AbstractArrayAsImmutableCollection<T>) super.clone();

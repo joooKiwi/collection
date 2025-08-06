@@ -149,8 +149,16 @@ public class ImmutableSynchronousQueue<T>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)
-    @Override public ImmutableSynchronousQueue<T> clone() { return new ImmutableSynchronousQueue<>(this); }
+    @SuppressWarnings("unchecked cast")
+    @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
+    @Override public ImmutableSynchronousQueue<T> clone() {
+        try {
+            return (ImmutableSynchronousQueue<T>) super.clone();
+        } catch (CloneNotSupportedException exception) {
+            throw new UnexpectedCloneableExceptionThrownError(getClass(), exception);
+        }
+    }
 
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------

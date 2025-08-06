@@ -70,6 +70,7 @@ public class ReversedArrayAsMutableSequencedCollection<T extends @Nullable Objec
     @Override public SOURCE reversed() { return _source(); }
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ReversedArrayAsMutableSequencedCollection<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsMutableSequencedCollection<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

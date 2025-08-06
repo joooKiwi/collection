@@ -249,6 +249,7 @@ public class ReversedArrayAsMutableList<T extends @Nullable Object,
     //#region -------------------- Clone methods --------------------
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ReversedArrayAsMutableList<T, SOURCE, REVERSED_ARRAY> clone() { return (ReversedArrayAsMutableList<T, SOURCE, REVERSED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------

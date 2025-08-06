@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[SortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
@@ -100,6 +101,7 @@ public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
     @Override public @Nullable Comparator<? super T> comparator() { return _source().comparator(); }
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUB_ARRAY> clone() { return (SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUB_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

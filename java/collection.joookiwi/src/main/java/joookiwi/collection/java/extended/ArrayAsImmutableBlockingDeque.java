@@ -5,6 +5,7 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// A bare-bone implementation of a [java BlockingDeque][java.util.concurrent.BlockingDeque]
@@ -63,6 +64,7 @@ public class ArrayAsImmutableBlockingDeque<T>
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ArrayAsImmutableBlockingDeque<T> clone() { return (ArrayAsImmutableBlockingDeque<T>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------

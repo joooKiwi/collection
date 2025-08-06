@@ -154,8 +154,9 @@ public class ImmutableConcurrentLinkedDeque<T>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableConcurrentLinkedDequeView<T> clone() { return new ImmutableConcurrentLinkedDequeView<>(__reference); }
+        @Override public ImmutableConcurrentLinkedDequeView<T> clone() { return (ImmutableConcurrentLinkedDequeView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -294,6 +295,7 @@ public class ImmutableConcurrentLinkedDeque<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableConcurrentLinkedDeque<T> clone() {
         try {
             return (ImmutableConcurrentLinkedDeque<T>) super.clone();

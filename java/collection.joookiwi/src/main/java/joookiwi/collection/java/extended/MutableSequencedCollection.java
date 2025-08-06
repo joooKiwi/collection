@@ -7,6 +7,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+
 @NotNullByDefault
 public interface MutableSequencedCollection<T extends @Nullable Object>
         extends MutableCollection<T>,
@@ -68,6 +70,7 @@ public interface MutableSequencedCollection<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     @Override MutableSequencedCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

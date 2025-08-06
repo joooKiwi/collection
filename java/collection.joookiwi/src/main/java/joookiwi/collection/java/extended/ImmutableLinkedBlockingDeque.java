@@ -157,8 +157,9 @@ public class ImmutableLinkedBlockingDeque<T>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableLinkedBlockingDequeView<T> clone() { return new ImmutableLinkedBlockingDequeView<>(__reference); }
+        @Override public ImmutableLinkedBlockingDequeView<T> clone() { return (ImmutableLinkedBlockingDequeView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -306,6 +307,7 @@ public class ImmutableLinkedBlockingDeque<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableLinkedBlockingDeque<T> clone() {
         try {
             return (ImmutableLinkedBlockingDeque<T>) super.clone();

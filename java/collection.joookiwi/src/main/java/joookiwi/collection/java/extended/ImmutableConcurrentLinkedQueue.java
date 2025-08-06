@@ -142,6 +142,7 @@ public class ImmutableConcurrentLinkedQueue<T>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableConcurrentLinkedQueue<T> clone() {
         try {
             return (ImmutableConcurrentLinkedQueue<T>) super.clone();

@@ -130,6 +130,7 @@ public interface ImmutableList<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     @Override ImmutableList<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

@@ -137,6 +137,7 @@ public interface ImmutableCollection<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     ImmutableCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------

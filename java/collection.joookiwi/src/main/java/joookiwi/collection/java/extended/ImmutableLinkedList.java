@@ -197,8 +197,9 @@ public class ImmutableLinkedList<T extends @Nullable Object>
         //#endregion -------------------- Stream methods --------------------
         //#region -------------------- Clone methods --------------------
 
+        @MustBeInvokedByOverriders
         @Contract(ALWAYS_NEW_0)
-        @Override public ImmutableLinkedListView<T> clone() { return new ImmutableLinkedListView<>(__reference); }
+        @Override public ImmutableLinkedListView<T> clone() { return (ImmutableLinkedListView<T>) super.clone(); }
 
         //#endregion -------------------- Clone methods --------------------
         //#region -------------------- To string methods --------------------
@@ -367,6 +368,7 @@ public class ImmutableLinkedList<T extends @Nullable Object>
 
     @SuppressWarnings("unchecked cast")
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public ImmutableLinkedList<T> clone() {
         try {
             return (ImmutableLinkedList<T>) super.clone();
