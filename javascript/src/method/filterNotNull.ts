@@ -135,7 +135,7 @@ function __filterNotNullByMinimalist<const T, >(collection: MinimalistCollection
     while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
         tempArray[index2] = temporaryArray[index2] as NonNullable<T>
 
-    let amountOfItemsAdded = index2
+    let amountOfItemsAdded = index2 - 1
     while (++index2 < size) { // We add the remaining items while validating the nullability
         const value = collection.get(index2,)
         if (value != null)
@@ -150,7 +150,7 @@ function __filterNotNullByArray<const T, >(collection: readonly T[], size: numbe
     while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
         tempArray[index2] = temporaryArray[index2] as NonNullable<T>
 
-    let amountOfItemsAdded = index2
+    let amountOfItemsAdded = index2 - 1
     while (++index2 < size) { // We add the remaining items while validating the nullability
         const value = collection[index2]
         if (value != null)
