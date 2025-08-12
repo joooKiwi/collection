@@ -102,8 +102,8 @@ export function joinToStringByMinimalistCollectionHolder<const T, >(collection: 
         else
             return __coreWithLimitByMinimalistCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
     if (limit == null)
-        return __coreWithTransformByMinimalistCollectionHolder(collection, separator ?? ", ", prefix ??'[', postfix ??']', transform,)
-    return __coreWithLimitAndTransformByMinimalistCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ??']', limit, truncated ?? '…', transform,)
+        return __coreWithTransformByMinimalistCollectionHolder(collection, separator ?? ", ", prefix ??'[', postfix ?? ']', transform,)
+    return __coreWithLimitAndTransformByMinimalistCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…', transform,)
 }
 
 /**
@@ -140,8 +140,8 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
         else
             return __coreWithLimitByCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
     if (limit == null)
-        return __coreWithTransformByCollectionHolder(collection, separator ?? ", ", prefix ??'[', postfix ??']', transform,)
-    return __coreWithLimitAndTransformByCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ??']', limit, truncated ?? '…', transform,)
+        return __coreWithTransformByCollectionHolder(collection, separator ?? ", ", prefix ??'[', postfix ?? ']', transform,)
+    return __coreWithLimitAndTransformByCollectionHolder(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…', transform,)
 }
 
 /**
@@ -178,8 +178,8 @@ export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]
         else
             return __coreWithLimitByArray(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…',)
     if (limit == null)
-        return __coreWithTransformByArray(collection, separator ?? ", ", prefix ??'[', postfix ??']', transform,)
-    return __coreWithLimitAndTransformByArray(collection, separator ?? ", ", prefix ?? '[', postfix ??']', limit, truncated ?? '…', transform,)
+        return __coreWithTransformByArray(collection, separator ?? ", ", prefix ??'[', postfix ?? ']', transform,)
+    return __coreWithLimitAndTransformByArray(collection, separator ?? ", ", prefix ?? '[', postfix ?? ']', limit, truncated ?? '…', transform,)
 }
 
 //#endregion -------------------- Facade method --------------------
