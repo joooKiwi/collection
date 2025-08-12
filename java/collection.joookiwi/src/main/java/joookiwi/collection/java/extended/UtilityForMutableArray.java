@@ -3,6 +3,7 @@ package joookiwi.collection.java.extended;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import joookiwi.collection.java.exception.EmptyCollectionException;
@@ -41,6 +42,40 @@ public final class UtilityForMutableArray
     @Contract(ALWAYS_FAIL_0)
     private UtilityForMutableArray() { throw new AssertionError("The utility class “UtilityForMutableArray” cannot be constructed."); }
 
+    //#region -------------------- Get and remove methods --------------------
+
+    public static <T extends @Nullable Object> T getFirstAndRemove(final T @Unmodifiable [] collection,
+                                                                   final Consumer<@Unmodifiable T[]> mutatingAction) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+
+        final var value = collection[0];
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - 1];
+        var index = 0;
+        while (++index < size)
+            newArray[index - 1] = collection[index];
+        mutatingAction.accept(newArray);
+        return value;
+    }
+
+    public static <T extends @Nullable Object> T getLastAndRemove(final T @Unmodifiable [] collection,
+                                                                  final Consumer<@Unmodifiable T[]> mutatingAction) {
+        final var size = collection.length;
+        if (size == 0)
+            return null;
+
+        final var value = collection[size - 1];
+        final var sizeMinus1 = size - 1;
+        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - 1];
+        var index = -1;
+        while (++index < sizeMinus1)
+            newArray[index] = collection[index];
+        mutatingAction.accept(newArray);
+        return value;
+    }
+
+    //#endregion -------------------- Get and remove methods --------------------
     //#region -------------------- Set methods --------------------
 
     /// Set the `value` at the specified `index` in the `collection`
