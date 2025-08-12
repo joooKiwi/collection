@@ -42,7 +42,7 @@ public class ImmutableTreeSet<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -9051412633025010323L;
+    @Serial private static final long serialVersionUID = 9069308514877672328L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -373,6 +373,11 @@ public class ImmutableTreeSet<T extends @Nullable Object>
 
     //#region -------------------- Supported methods --------------------
 
+    //#region -------------------- Comparator methods --------------------
+
+    @Override public @Nullable Comparator<? super T> comparator() { return super.comparator(); }
+
+    //#endregion -------------------- Comparator methods --------------------
     //#region -------------------- Size methods --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() {
