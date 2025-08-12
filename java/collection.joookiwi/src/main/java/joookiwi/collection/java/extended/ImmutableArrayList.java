@@ -259,9 +259,9 @@ public class ImmutableArrayList<T extends @Nullable Object>
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Index methods --------------------
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------

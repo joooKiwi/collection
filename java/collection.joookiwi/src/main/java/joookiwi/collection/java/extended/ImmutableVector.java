@@ -296,14 +296,14 @@ public class ImmutableVector<T extends @Nullable Object>
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Index methods --------------------
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value, 0); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value, 0); }
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.indexOf(value, index); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.indexOf(value, index); }
 
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value, 0); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value, 0); }
 
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.lastIndexOf(value, index); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.lastIndexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------
