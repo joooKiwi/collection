@@ -48,6 +48,7 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
     /// A generalized adaptor for to synchronize a reference with mutation behaviour
     ///
     /// @param <T> The type
+    @NotNullByDefault
     protected static interface ArrayMutator<T extends @Nullable Object> {
 
         /// Change the reference of the adaptor
@@ -62,6 +63,7 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
     ///
     /// @param <T>        The type
     /// @param <INSTANCE> The instance type
+    @NotNullByDefault
     protected static class ArrayAsMutableIteratorAdaptor<T extends @Nullable Object,
             INSTANCE extends AbstractArrayAsMutableCollection<T>>
             extends ArrayAsMutableIterator<T>
