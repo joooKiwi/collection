@@ -107,7 +107,7 @@ public final class FilterNotNull
         while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
             tempArray[index2] = temporaryArray[index2];
 
-        var amountOfItemsAdded = index2;
+        var amountOfItemsAdded = index2 - 1;
         while (++index2 < size) { // We add the remaining items while validating the nullability
             final var value = collection.get(index2);
             if (value != null)
@@ -125,7 +125,7 @@ public final class FilterNotNull
         while (++index2 < index) // We add the non-null items from 0 to the index (they cannot be null)
             tempArray[index2] = temporaryArray[index2];
 
-        var amountOfItemsAdded = index2;
+        var amountOfItemsAdded = index2 - 1;
         while (++index2 < size) { // We add the remaining items while validating the nullability
             final var value = collection[index2];
             if (value != null)
