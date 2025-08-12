@@ -14,7 +14,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[SortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
-/// During its creation, it <u>implies</u> that the [SUB_ARRAY] received has no duplicate.
+/// During its creation, it <u>implies</u> that the [SUBDIVIDED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -23,22 +23,22 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
-/// @param <T>         The type
-/// @param <SUB_ARRAY> The array that should contain the new reference
-/// @param <SOURCE>    The original source of the instance
-///                    (generally a [ArrayAsImmutableSortedSet], [SubdividedArrayAsImmutableSortedSet] or [ReversedArrayAsImmutableSortedSet])
+/// @param <T>                The type
+/// @param <SOURCE>           The original source of the instance
+///                           (generally a [ArrayAsImmutableSortedSet], [SubdividedArrayAsImmutableSortedSet] or [ReversedArrayAsImmutableSortedSet])
+/// @param <SUBDIVIDED_ARRAY> The array that should contain the new reference
 /// @see ArrayAsImmutableSortedSet
 /// @see ReversedArrayAsImmutableSortedSet
 @NotNullByDefault
 public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
         SOURCE extends SortedSet<? super T>,
-        SUB_ARRAY extends SubdividedArray<? extends T>>
+        SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableSortedSet<T> {
 
     //#region -------------------- Fields --------------------
 
     private final SOURCE __source;
-    private final SUB_ARRAY __subArray;
+    private final SUBDIVIDED_ARRAY __subdividedArray;
 
     private boolean __isInitialized = false;
     private T @Nullable [] __reference;
@@ -50,10 +50,10 @@ public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
     //#region -------------------- Constructor --------------------
 
     public SubdividedArrayAsImmutableSortedSet(final SOURCE source,
-                                               final SUB_ARRAY subArray) {
+                                               final SUBDIVIDED_ARRAY subdividedArray) {
         super();
         __source = source;
-        __subArray = subArray;
+        __subdividedArray = subdividedArray;
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -65,16 +65,16 @@ public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
 
     /// The [SubdividedArray] passed through the constructor
     @Contract(pure = true)
-    protected SUB_ARRAY _subArray() { return __subArray; }
+    protected SUBDIVIDED_ARRAY _subdividedArray() { return __subdividedArray; }
 
-    /// The internal referenced generated from the [subdivided-array][#_subArray] [source][SubdividedArray#subdividedSource]
+    /// The internal referenced generated from the [subdivided-array][#_subdividedArray] [source][SubdividedArray#subdividedSource]
     @InitializedOnFirstCall
     @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
 
-        final var reference = __reference = _subArray().subdividedSource();
+        final var reference = __reference = _subdividedArray().subdividedSource();
         __isInitialized = true;
         return reference;
     }
@@ -102,7 +102,7 @@ public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUB_ARRAY> clone() { return (SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUB_ARRAY>) super.clone(); }
+    @Override public SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUBDIVIDED_ARRAY> clone() { return (SubdividedArrayAsImmutableSortedSet<T, SOURCE, SUBDIVIDED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 

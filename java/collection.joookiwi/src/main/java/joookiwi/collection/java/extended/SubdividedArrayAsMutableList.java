@@ -3,9 +3,16 @@ package joookiwi.collection.java.extended;
 import java.util.List;
 
 import joookiwi.collection.java.helper.ComparatorHelper;
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
+import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
 /// An implementation of a subdivided-[List] similar to the [ArrayAsMutableList] in its behaviour.
 ///
@@ -16,35 +23,36 @@ import org.jetbrains.annotations.Nullable;
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
-/// @param <T>         The type
-/// @param <SUB_ARRAY> The array that should contain the new reference
-/// @param <SOURCE>    The original source of the instance
-///                    (generally a [ArrayAsImmutableList], [SubdividedArrayAsMutableList] or [ReversedArrayAsMutableList])
+/// @param <T>                The type
+/// @param <SOURCE>           The original source of the instance
+///                           (generally a [ArrayAsImmutableList], [SubdividedArrayAsMutableList] or [ReversedArrayAsMutableList])
+/// @param <SUBDIVIDED_ARRAY> The array that should contain the new reference
 /// @see ArrayAsMutableList
 /// @see ReversedArrayAsMutableList
+@Experimental
 @NotNullByDefault
 public class SubdividedArrayAsMutableList<T extends @Nullable Object,
         SOURCE extends List<? super T>,
-        SUB_ARRAY extends SubdividedMutableArray<T>>
+        SUBDIVIDED_ARRAY extends SubdividedMutableArray<T>>
         extends AbstractArrayAsMutableList<T> {
 
     //#region -------------------- Fields --------------------
 
     private final SOURCE __source;
-    private final SUB_ARRAY __subArray;
+    private final SUBDIVIDED_ARRAY __subdividedArray;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
     public SubdividedArrayAsMutableList(final SOURCE source,
-                                        final SUB_ARRAY subArray) {
+                                        final SUBDIVIDED_ARRAY subdividedArray) {
         super();
         __source = source;
-        __subArray = subArray;
+        __subdividedArray = subdividedArray;
     }
 
     //#endregion -------------------- Constructor --------------------
-    //#region -------------------- Getter methods --------------------
+    //#region -------------------- Getter / setter methods --------------------
 
     /// The source passed through the constructor
     @Contract(pure = true)
@@ -52,12 +60,29 @@ public class SubdividedArrayAsMutableList<T extends @Nullable Object,
 
     /// The [SubdividedArray] passed through the constructor
     @Contract(pure = true)
-    protected SUB_ARRAY _subArray() { return __subArray; }
+    protected SUBDIVIDED_ARRAY _subdividedArray() { return __subdividedArray; }
 
-    @Override protected T[] _reference() { return _subArray().subdividedSource(); }
+    @Override protected T[] _reference() { return _subdividedArray().subdividedSource(); }
 
-    @Override protected void _reference(final T[] value) { _subArray().subdividedSource(value); }
+    @Contract(mutates = "this")
+    @Override protected void _reference(final T @Unmodifiable [] value) { _subdividedArray().subdividedSource(value); }
 
-    //#endregion -------------------- Getter methods --------------------
+    //#endregion -------------------- Getter / setter methods --------------------
+    //#region -------------------- Methods --------------------
+
+    //#region -------------------- Size methods --------------------
+
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return _subdividedArray().source().length; }
+
+    //#endregion -------------------- Size methods --------------------
+    //#region -------------------- Clone methods --------------------
+
+    @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
+    @Override public AbstractArrayAsMutableList<T> clone() { return super.clone(); }
+
+    //#endregion -------------------- Clone methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }

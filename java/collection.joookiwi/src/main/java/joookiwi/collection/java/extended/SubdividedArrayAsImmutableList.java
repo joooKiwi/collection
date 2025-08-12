@@ -21,22 +21,22 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
 /// when possible.
 ///
-/// @param <T>         The type
-/// @param <SUB_ARRAY> The array that should contain the new reference
-/// @param <SOURCE>    The original source of the instance
-///                    (generally a [ArrayAsImmutableList], [SubdividedArrayAsImmutableList] or [ReversedArrayAsImmutableList])
+/// @param <T>                The type
+/// @param <SOURCE>           The original source of the instance
+///                           (generally a [ArrayAsImmutableList], [SubdividedArrayAsImmutableList] or [ReversedArrayAsImmutableList])
+/// @param <SUBDIVIDED_ARRAY> The array that should contain the new reference
 /// @see ArrayAsImmutableList
 /// @see ReversedArrayAsImmutableList
 @NotNullByDefault
 public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
         SOURCE extends List<? super T>,
-        SUB_ARRAY extends SubdividedArray<? extends T>>
+        SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableList<T> {
 
     //#region -------------------- Fields --------------------
 
     private final SOURCE __source;
-    private final SUB_ARRAY __subArray;
+    private final SUBDIVIDED_ARRAY __subdividedArray;
 
     private boolean __isInitialized = false;
     private T @Nullable [] __reference;
@@ -48,10 +48,10 @@ public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
     //#region -------------------- Constructor --------------------
 
     public SubdividedArrayAsImmutableList(final SOURCE source,
-                                          final SUB_ARRAY subArray) {
+                                          final SUBDIVIDED_ARRAY subdividedArray) {
         super();
         __source = source;
-        __subArray = subArray;
+        __subdividedArray = subdividedArray;
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -63,16 +63,16 @@ public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
 
     /// The [SubdividedArray] passed through the constructor
     @Contract(pure = true)
-    protected SUB_ARRAY _subArray() { return __subArray; }
+    protected SUBDIVIDED_ARRAY _subdividedArray() { return __subdividedArray; }
 
-    /// The internal referenced generated from the [subdivided-array][#_subArray] [source][SubdividedArray#subdividedSource]
+    /// The internal referenced generated from the [subdivided-array][#_subdividedArray] [source][SubdividedArray#subdividedSource]
     @InitializedOnFirstCall
     @Override protected T[] _reference() {
         final var value = __reference;
         if (value != null)
             return value;
 
-        final var reference = __reference = _subArray().subdividedSource();
+        final var reference = __reference = _subdividedArray().subdividedSource();
         __isInitialized = true;
         return reference;
     }
@@ -98,7 +98,7 @@ public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public SubdividedArrayAsImmutableList<T, SOURCE, SUB_ARRAY> clone() { return (SubdividedArrayAsImmutableList<T, SOURCE, SUB_ARRAY>) super.clone(); }
+    @Override public SubdividedArrayAsImmutableList<T, SOURCE, SUBDIVIDED_ARRAY> clone() { return (SubdividedArrayAsImmutableList<T, SOURCE, SUBDIVIDED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Methods --------------------
 
