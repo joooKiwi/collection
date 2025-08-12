@@ -232,6 +232,8 @@ function __coreWithLimitByCollectionHolder(collection: CollectionHolder, separat
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -243,6 +245,8 @@ function __coreWithLimitByMinimalistCollectionHolder(collection: MinimalistColle
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -254,6 +258,8 @@ function __coreWithLimitByArray(collection: readonly unknown[], separator: strin
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         return __withNothingByArray(collection, separator, prefix, postfix, size,)
     return __withTruncatedByArray(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -268,6 +274,8 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
 
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
@@ -288,6 +296,8 @@ function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(coll
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
@@ -308,6 +318,8 @@ function __coreWithLimitAndTransformByArray<const T, >(collection: readonly T[],
         return prefix + postfix
 
     const lastIndex = __lastIndex(limit, size,)
+    if (lastIndex == 0)
+        return prefix + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
