@@ -2,6 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.util.NoSuchElementException;
 import java.util.SequencedCollection;
+
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -107,6 +109,7 @@ public abstract class AbstractArrayAsMutableSequencedCollection<T extends @Nulla
     //#endregion -------------------- Remove methods --------------------
     //#region -------------------- As reverse methods --------------------
 
+    @Experimental
     @Override public MutableSequencedCollection<T> reversed() { return new ReversedArrayAsMutableSequencedCollection<>(this, _addMutator(new ReversedMutableArrayAdaptor<>(this, _reference()))); }
 
     //#endregion -------------------- As reverse methods --------------------

@@ -2,7 +2,7 @@ package joookiwi.collection.java.extended;
 
 import java.util.NoSuchElementException;
 import java.util.SequencedCollection;
-
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -65,6 +65,7 @@ public interface MutableSequencedCollection<T extends @Nullable Object>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
+    @Experimental
     @Override MutableSequencedCollection<T> reversed();
 
     //#endregion -------------------- As reverse methods --------------------

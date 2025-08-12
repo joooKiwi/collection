@@ -10,6 +10,7 @@ import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.helper.ComparatorHelper;
+import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.ApiStatus.Internal;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -655,6 +656,7 @@ public final class UtilityForMutableArray
     //#endregion -------------------- Retain methods --------------------
     //#region -------------------- As subdivided --------------------
 
+    @Experimental
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> MutableList<T> asSubdivided(final MutableList<? super T> source,
                                                                            final T @Unmodifiable [] reference,
@@ -675,6 +677,7 @@ public final class UtilityForMutableArray
     }
 
 
+    @Experimental
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> MutableSortedSet<T> asSubdivided(final MutableSortedSet<? super T> source,
                                                                                 final T @Unmodifiable [] reference,
@@ -696,6 +699,7 @@ public final class UtilityForMutableArray
         return new SubdividedArrayAsMutableSortedSet<>(source, new SubdividedMutableArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, comparator, comparatorHelper), _indexFromHashCodeHigher(to, reference, size, comparator, comparatorHelper)));
     }
 
+    @Experimental
     @Contract(ALWAYS_NEW_6)
     public static <T extends @Nullable Object> MutableNavigableSet<T> asSubdivided(final MutableNavigableSet<? super T> source,
                                                                                    final T @Unmodifiable [] reference,
@@ -728,6 +732,7 @@ public final class UtilityForMutableArray
     }
 
 
+    @Experimental
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object> MutableSortedSet<T> asHeadSubdivided(final MutableSortedSet<? super T> source,
                                                                                     final T @Unmodifiable [] reference,
@@ -740,6 +745,7 @@ public final class UtilityForMutableArray
         return new SubdividedArrayAsMutableSortedSet<>(source, new SubdividedMutableArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
+    @Experimental
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> MutableNavigableSet<T> asHeadSubdivided(final MutableNavigableSet<? super T> source,
                                                                                        final T @Unmodifiable [] reference,
@@ -755,6 +761,7 @@ public final class UtilityForMutableArray
         return new SubdividedArrayAsMutableNavigableSet<>(source, new SubdividedMutableArray<>(reference, 0, _indexFromHashCodeHigher(to, reference, size, source.comparator(), ComparatorHelper.getInstance())));
     }
 
+    @Experimental
     @Contract(ALWAYS_NEW_3)
     public static <T extends @Nullable Object> MutableSortedSet<T> asTailSubdivided(final MutableSortedSet<? super T> source,
                                                                                     final T @Unmodifiable [] reference,
@@ -767,6 +774,7 @@ public final class UtilityForMutableArray
         return new SubdividedArrayAsMutableSortedSet<>(source, new SubdividedMutableArray<>(reference, _indexFromHashCodeHigherOrEqual(from, reference, size, source.comparator(), ComparatorHelper.getInstance()), size - 1));
     }
 
+    @Experimental
     @Contract(ALWAYS_NEW_4)
     public static <T extends @Nullable Object> MutableNavigableSet<T> asTailSubdivided(final MutableNavigableSet<? super T> source,
                                                                                        final T @Unmodifiable [] reference,
