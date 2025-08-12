@@ -25,7 +25,7 @@ public class ArrayAsMutableIterator<T extends @Nullable Object>
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
-    public ArrayAsMutableIterator(final T[] reference, final int currentIndex) {
+    public ArrayAsMutableIterator(final T[] reference, final @Range(from = 0, to = MAX_INT_VALUE) int currentIndex) {
         super();
         __reference = reference;
         __currentIndex = currentIndex;
