@@ -132,8 +132,7 @@ public interface MutableCollection<T extends @Nullable Object>
     @Override MutableIterator<T> iterator();
 
     @Contract(ALWAYS_NEW_0)
-    @Override
-    Spliterator<T> spliterator();
+    @Override Spliterator<T> spliterator();
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
@@ -177,6 +176,7 @@ public interface MutableCollection<T extends @Nullable Object>
     //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
+    @Contract(ALWAYS_NEW_0)
     MutableCollection<T> clone();
 
     //#endregion -------------------- Clone methods --------------------
