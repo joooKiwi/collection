@@ -230,10 +230,10 @@ public class ImmutableStack<T extends @Nullable Object>
     //#region -------------------- Size methods --------------------
 
     @Contract(pure = true)
-    @Override public int size() { return __size; }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
 
     @Contract(pure = true)
-    @Override public int capacity() { return __size; }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int capacity() { return __size; }
 
     @Contract(pure = true)
     @Override public boolean isEmpty() { return __isEmpty; }
