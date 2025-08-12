@@ -3,6 +3,7 @@ package joookiwi.collection.java.extended;
 import java.util.Collection;
 import java.util.NavigableSet;
 import java.util.function.Predicate;
+import joookiwi.collection.java.annotation.Alias;
 import joookiwi.collection.java.exception.UnsupportedMethodException;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import org.jetbrains.annotations.Contract;
@@ -43,9 +44,33 @@ public interface ImmutableNavigableSet<T extends @Nullable Object>
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reversed methods --------------------
 
+    /// Give a reversed-view of the current [instance][ImmutableNavigableSet]
+    ///
+    /// @see java.util.SequencedCollection#reversed()
+    /// @see java.util.List#reversed()
+    /// @see java.util.SequencedSet#reversed()
+    /// @see java.util.SortedSet#reversed()
+    /// @see java.util.NavigableSet#reversed()
+    /// @see java.util.Deque#reversed()
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
     @Override ImmutableNavigableSet<T> reversed();
 
-    @Contract(pure = true)
+    /// Give a reversed-view of the current [instance][ImmutableNavigableSet]
+    ///
+    /// @see java.util.SequencedCollection#reversed()
+    /// @see java.util.List#reversed()
+    /// @see java.util.SequencedSet#reversed()
+    /// @see java.util.SortedSet#reversed()
+    /// @see java.util.NavigableSet#reversed()
+    /// @see java.util.Deque#reversed()
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
+    /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/reverse.html">Kotlin reverse()</a>
+    /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse">C# Reverse()</a>
+    @Alias("reversed")
     @Override ImmutableNavigableSet<T> descendingSet();
 
     //#endregion -------------------- As reversed methods --------------------

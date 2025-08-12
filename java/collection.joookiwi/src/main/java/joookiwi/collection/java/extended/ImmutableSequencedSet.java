@@ -26,18 +26,24 @@ public interface ImmutableSequencedSet<T extends @Nullable Object>
 
     /// Get the first element in the current [instance][ImmutableSequencedSet]
     ///
-    /// @throws NoElementFoundInCollectionException The current [instance][ImmutableSequencedSet] [is empty][#isEmpty]
+    /// @throws NoElementFoundInCollectionException The current instance is empty
     /// @see java.util.SequencedCollection#getFirst()
+    /// @see java.util.List#getFirst()
     /// @see java.util.SequencedSet#getFirst()
+    /// @see java.util.SortedSet#getFirst()
+    /// @see java.util.NavigableSet#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @Override T getFirst();
 
     /// Get the last element in the current [instance][ImmutableSequencedSet]
     ///
-    /// @throws NoElementFoundInCollectionException The current [instance][ImmutableSequencedSet] [is empty][#isEmpty]
-    /// @see java.util.SequencedCollection#getLast()
+    /// @throws NoElementFoundInCollectionException The current instance is empty
     /// @see java.util.SequencedSet#getLast()
+    /// @see java.util.List#getLast()
+    /// @see java.util.SequencedSet#getLast()
+    /// @see java.util.SortedSet#getLast()
+    /// @see java.util.NavigableSet#getLast()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @Override T getLast();
@@ -50,6 +56,8 @@ public interface ImmutableSequencedSet<T extends @Nullable Object>
     /// @see java.util.SequencedCollection#reversed()
     /// @see java.util.List#reversed()
     /// @see java.util.SequencedSet#reversed()
+    /// @see java.util.SortedSet#reversed()
+    /// @see java.util.NavigableSet#reversed()
     /// @see java.util.Deque#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>

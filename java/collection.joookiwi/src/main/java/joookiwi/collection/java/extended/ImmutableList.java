@@ -37,26 +37,33 @@ public interface ImmutableList<T extends @Nullable Object>
     /// Get the element at the specified `index` in the current [instance][ImmutableList]
     ///
     /// @param index The index to retrieve a value
-    /// @throws EmptyCollectionException  The current [instance][ImmutableList] [is empty][#isEmpty]
+    /// @throws EmptyCollectionException  The current instance is empty
     /// @throws IndexOutOfBoundsException The `index` is under zero or over the [size][#size]
-    /// @see List#get(int)
+    /// @see java.util.List#get(int)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/at">Javascript ReadonlyArray.at(index)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/get.html">Kotlin get(index)</a>
-    @Contract(pure = true)
     @Override T get(int index);
 
     /// Get the first element in the current [instance][ImmutableList]
     ///
-    /// @throws NoSuchElementException The current [instance][ImmutableList] [is empty][#isEmpty]
-    /// @see List#getFirst()
+    /// @throws NoSuchElementException The current instance is empty
+    /// @see java.util.SequencedCollection#getFirst()
+    /// @see java.util.List#getFirst()
+    /// @see java.util.SequencedSet#getFirst()
+    /// @see java.util.SortedSet#getFirst()
+    /// @see java.util.NavigableSet#getFirst()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first.html">Kotlin first()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @Override T getFirst();
 
     /// Get the last element in the current [instance][ImmutableList]
     ///
-    /// @throws NoSuchElementException The current [instance][ImmutableList] [is empty][#isEmpty]
-    /// @see List#getLast()
+    /// @throws NoSuchElementException The current instance is empty
+    /// @see java.util.SequencedSet#getLast()
+    /// @see java.util.List#getLast()
+    /// @see java.util.SequencedSet#getLast()
+    /// @see java.util.SortedSet#getLast()
+    /// @see java.util.NavigableSet#getLast()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html">Kotlin last()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @Override T getLast();
@@ -103,6 +110,8 @@ public interface ImmutableList<T extends @Nullable Object>
     /// @see java.util.SequencedCollection#reversed()
     /// @see java.util.List#reversed()
     /// @see java.util.SequencedSet#reversed()
+    /// @see java.util.SortedSet#reversed()
+    /// @see java.util.NavigableSet#reversed()
     /// @see java.util.Deque#reversed()
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse">Javascript MutableArray.reverse()</a>
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed">Javascript Array.toReversed()</a>
