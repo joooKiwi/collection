@@ -2,6 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Spliterator;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
@@ -9,23 +11,31 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-import joookiwi.collection.java.extended.iterator.ImmutableIterator;
-import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
+import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
-import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [SynchronousQueue]
 ///
@@ -35,14 +45,8 @@ public class ImmutableSynchronousQueue<T>
         extends SynchronousQueue<T>
         implements ImmutableBlockingQueue<T> {
 
-    //#region -------------------- Fields --------------------
+    @Serial private static final long serialVersionUID = 3483681936182593177L;
 
-    @Serial private static final long serialVersionUID = -5926336116900433551L;
-
-    private final int __size;
-    private final boolean __isEmpty;
-
-    //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
@@ -50,8 +54,6 @@ public class ImmutableSynchronousQueue<T>
     /// Create an empty [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [SynchronousQueue]
     public ImmutableSynchronousQueue() {
         super(DEFAULT_FAIRNESS);
-        __size = 0;
-        __isEmpty = true;
     }
 
     //#endregion -------------------- ∅ --------------------
@@ -61,8 +63,8 @@ public class ImmutableSynchronousQueue<T>
     /// with only the `values` stored inside
     public ImmutableSynchronousQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
         super(DEFAULT_FAIRNESS);
-        final var size = __size = values.length;
-        if (__isEmpty = size == 0)
+        final var size = values.length;
+        if (size == 0)
             return;
         var index = -1;
         while (++index < size)
@@ -73,8 +75,7 @@ public class ImmutableSynchronousQueue<T>
     /// with only the `values` stored inside
     public ImmutableSynchronousQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(DEFAULT_FAIRNESS);
-        __size = values.size();
-        if (__isEmpty = values.isEmpty())
+        if (values.isEmpty())
             return;
         for (final var value : values)
             super.offer(value);
@@ -90,10 +91,10 @@ public class ImmutableSynchronousQueue<T>
     //#region -------------------- Size methods --------------------
 
     @Contract(pure = true)
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
+    @Override public @Range(from = 0, to = 0) int size() { return 0; }
 
-    @Contract(pure = true)
-    @Override public boolean isEmpty() { return __isEmpty; }
+    @Contract(value = ALWAYS_TRUE_0, pure = true)
+    @Override public boolean isEmpty() { return true; }
 
     @Contract(pure = true)
     @Override public @Range(from = 0, to = 0) int remainingCapacity() { return 0; }
@@ -101,36 +102,39 @@ public class ImmutableSynchronousQueue<T>
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
 
-    @Override public T element() { return super.element(); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)
+    @Override public T element() { throw new NoSuchElementException("No element could be found in a SynchronousQueue."); }
 
-    @Override public @Nullable T peek() { return super.peek(); }
+    @Contract(value = ALWAYS_NULL_0, pure = true)
+    @Override public @Nullable T peek() { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
 
-    @Contract(pure = true)
-    @Override public boolean contains(final @Nullable Object value) { return super.contains(value); }
+    @Contract(value = ALWAYS_FALSE_1, pure = true)
+    @Override public boolean contains(final @Nullable Object value) { return false; }
 
     @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return super.containsAll(values); }
 
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- For each methods --------------------
 
-    @Override public void forEach(final Consumer<? super T> action) { super.forEach(action); }
+    @Override public void forEach(final Consumer<? super T> action) { Objects.requireNonNull(action); }
 
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableIterator<T> iterator() { return new IteratorAsImmutableIterator<>(super.iterator()); }
+    @Contract(pure = true)
+    @Override public EmptyIterator<T> iterator() { return emptyIterator(); }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public Spliterator<T> spliterator() { return super.spliterator(); }
+    @Contract(pure = true)
+    @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Override public Object[] toArray() { return super.toArray(); }
+    @Contract(value = ALWAYS_NEW_0, pure = true)
+    @Override public Object[] toArray() { return new Object[0]; }
 
     @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return super.toArray(newArray); }
 
@@ -140,11 +144,11 @@ public class ImmutableSynchronousQueue<T>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public Stream<T> stream() { return super.stream(); }
+    @Contract(pure = true)
+    @Override public Stream<T> stream() { return emptyStream(); }
 
-    @Contract(ALWAYS_NEW_0)
-    @Override public Stream<T> parallelStream() { return super.parallelStream(); }
+    @Contract(pure = true)
+    @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
@@ -163,7 +167,8 @@ public class ImmutableSynchronousQueue<T>
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- To string methods --------------------
 
-    @Override public String toString() { return super.toString(); }
+    @Contract(pure = true)
+    @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }
 
     //#endregion -------------------- To string methods --------------------
 

@@ -39,7 +39,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptySynchronousQueue<T>
         extends ImmutableSynchronousQueue<T> {
 
-    @Serial private static final long serialVersionUID = -6616272353797708753L;
+    @Serial private static final long serialVersionUID = -5731184837127295040L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -72,7 +72,7 @@ public class EmptySynchronousQueue<T>
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Get methods --------------------
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T element() { throw new NoSuchElementException("No element could be found in an empty SynchronousQueue."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T element() { throw new NoSuchElementException("No element could be found in a SynchronousQueue."); }
 
     @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable T peek() { return null; }
 
