@@ -10,41 +10,39 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullableNumber} from "@joookiwi/type"
+import type {NullOrNumber} from "@joookiwi/type"
 
-import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
+import {ForbiddenIndexException}    from "../exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../exception/InvalidIndexRangeException"
 
 /**
  * Get the starting index between 0 and the <code>{@link size} - 1</code>
  *
- * @param fromIndex The value to calculate
- * @param size      The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @param value The value to calculate
+ * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @throws IndexOutOfBoundsException The value is equal or over to the {@link size} (before or after calculation)
  * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @internal
  */
-export function __startingIndex(fromIndex: NullableNumber, size: number,) {
-    if (fromIndex == null)
-        return 0
+export function __startingIndex(value: number, size: number,): number {
+    if (Number.isNaN(value,))
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", value,)
+    if (value == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", value,)
+    if (value == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", value,)
 
-    if (Number.isNaN(fromIndex,))
-        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with NaN.", fromIndex,)
-    if (fromIndex == Number.NEGATIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with -∞.", fromIndex,)
-    if (fromIndex == Number.POSITIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", fromIndex,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
+    if (value > size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is over the collection size “${size}”.`, value,)
 
-    if (fromIndex == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is the collection size "${size}".`, fromIndex,)
-    if (fromIndex > size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" is over the collection size "${size}".`, fromIndex,)
-
-    let startingIndex = fromIndex
+    let startingIndex = value
     if (startingIndex < 0)
         startingIndex += size
     if (startingIndex < 0)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index "${fromIndex}" ("${startingIndex}" after calculation) is under 0.`, fromIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” (“${startingIndex}” after calculation) is under 0.`, value,)
     return startingIndex
 }
 
@@ -52,27 +50,24 @@ export function __startingIndex(fromIndex: NullableNumber, size: number,) {
  * Get the starting index between 0 and the <code>{@link size} - 1</code>
  * or <b>null</b> otherwise
  *
- * @param fromIndex The value to calculate
- * @param size      The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @param value The value to calculate
+ * @param size  The size (either in a {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __startingIndexOrNull(fromIndex: NullableNumber, size: number,) {
-    if (fromIndex == null)
-        return 0
-
-    if (Number.isNaN(fromIndex,))
+export function __startingIndexOrNull(value: number, size: number,): NullOrNumber {
+    if (Number.isNaN(value,))
         return null
-    if (fromIndex == Number.NEGATIVE_INFINITY)
+    if (value == Number.NEGATIVE_INFINITY)
         return null
-    if (fromIndex == Number.POSITIVE_INFINITY)
+    if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (fromIndex == size)
+    if (value == size)
         return null
-    if (fromIndex > size)
+    if (value > size)
         return null
 
-    let startingIndex = fromIndex
+    let startingIndex = value
     if (startingIndex < 0)
         startingIndex += size
     if (startingIndex < 0)
@@ -84,33 +79,30 @@ export function __startingIndexOrNull(fromIndex: NullableNumber, size: number,) 
 /**
  * Get the ending index between 0 and the <code>{@link size} - 1</code>
  *
- * @param toIndex The value to calculate
- * @param size    The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @param value The value to calculate
+ * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @throws IndexOutOfBoundsException The value is equal or over to the {@link size} (before or after calculation)
  * @throws ForbiddenIndexException   The value is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
  * @internal
  */
-export function __endingIndex(toIndex: NullableNumber, size: number,) {
-    if (toIndex == null)
-        return size - 1
+export function __endingIndex(value: number, size: number,) {
+    if (Number.isNaN(value,))
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be determined with NaN.", value,)
+    if (value == Number.NEGATIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", value,)
+    if (value == Number.POSITIVE_INFINITY)
+        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", value,)
 
-    if (Number.isNaN(toIndex,))
-        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be determined with NaN.", toIndex,)
-    if (toIndex == Number.NEGATIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with -∞.", toIndex,)
-    if (toIndex == Number.POSITIVE_INFINITY)
-        throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", toIndex,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
+    if (value > size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is over the collection size “${size}”.`, value,)
 
-    if (toIndex == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is the collection size "${size}".`, toIndex,)
-    if (toIndex > size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" is over the collection size "${size}".`, toIndex,)
-
-    let endingIndex = toIndex
+    let endingIndex = value
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index "${toIndex}" ("${endingIndex}" after calculation) is under 0.`, toIndex,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” (“${endingIndex}” after calculation) is under 0.`, value,)
     return endingIndex
 }
 
@@ -118,27 +110,24 @@ export function __endingIndex(toIndex: NullableNumber, size: number,) {
  * Get the ending index between 0 and the <code>{@link size} - 1</code>
  * or <b>null</b>
  *
- * @param toIndex The value to calculate
- * @param size    The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
+ * @param value The value to calculate
+ * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
  * @internal
  */
-export function __endingIndexOrNull(toIndex: NullableNumber, size: number,) {
-    if (toIndex == null)
-        return size - 1
-
-    if (Number.isNaN(toIndex,))
+export function __endingIndexOrNull(value: number, size: number,): NullOrNumber {
+    if (Number.isNaN(value,))
         return null
-    if (toIndex == Number.NEGATIVE_INFINITY)
+    if (value == Number.NEGATIVE_INFINITY)
         return null
-    if (toIndex == Number.POSITIVE_INFINITY)
+    if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (toIndex == size)
+    if (value == size)
         return null
-    if (toIndex > size)
+    if (value > size)
         return null
 
-    let endingIndex = toIndex
+    let endingIndex = value
     if (endingIndex < 0)
         endingIndex += size
     if (endingIndex < 0)
@@ -150,25 +139,50 @@ export function __endingIndexOrNull(toIndex: NullableNumber, size: number,) {
 /**
  * Get the last index possible between 0 and the {@link size}
  *
- * @param limit The value to calculate
- * @param size  The last value that should be equivalent to the {@link MinimalistCollectionHolder.size size}
- * @throws ForbiddenIndexException The {@link limit} is {@link Number.NaN NaN}
+ * @param value The value to calculate
+ * @param size  The size (either in an {@link ReadonlyArray Array} or a {@link MinimalistCollectionHolder})
+ * @throws ForbiddenIndexException The {@link value} is {@link Number.NaN NaN}
  * @internal
  */
-export function __lastIndex(limit: number, size: number,) {
-    if (Number.isNaN(limit,))
-        throw new ForbiddenIndexException("Forbidden index. The limit cannot be determined with NaN.", limit,)
-    if (limit == Number.NEGATIVE_INFINITY)
+export function __lastIndex(value: number, size: number,): number {
+    if (Number.isNaN(value,))
+        throw new ForbiddenIndexException("Forbidden index. The value cannot be determined with NaN.", value,)
+    if (value == Number.NEGATIVE_INFINITY)
         return 0
-    if (limit == Number.POSITIVE_INFINITY)
+    if (value == Number.POSITIVE_INFINITY)
         return size
-    if (limit >= size)
+    if (value >= size)
         return size
 
-    let maximumIndex = limit
+    let maximumIndex = value
     if (maximumIndex < 0)
         maximumIndex += size
     if (maximumIndex < 0)
         return 0
     return maximumIndex
+}
+
+
+/**
+ * Validate that the {@link endingIndex} is not under the {@link startingIndex}
+ *
+ * @param from          The initial starting index
+ * @param startingIndex The computed starting index
+ * @param to            The initial ending index
+ * @param endingIndex   The computed ending index
+ * @throws InvalidIndexRangeException The {@link endingIndex} is under the {@link startingIndex}
+ * @internal
+ */
+export function __validateInRange(from: number, startingIndex: number, to: number, endingIndex: number,): void {
+    if (endingIndex >= startingIndex)
+        return
+
+    if (to == endingIndex)
+        if (from == startingIndex)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}”.`, from, to,)
+        else
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+    if (from == startingIndex)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}”.`, from, to,)
+    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
 }

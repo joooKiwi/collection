@@ -10,15 +10,28 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {newArrayHandler, newArrayOf1Handler, newArrayOf2Handler}                                              from "./helper/newArrayHanders"
-import {newCollectionHandler, newCollectionOf1Handler, newCollectionOf2Handler}                               from "./helper/newCollectionHandlers"
-import {newCollectionIteratorHandler, newCollectionIteratorOf1Handler, newCollectionIteratorOf2Handler}       from "./helper/newCollectionIteratorHandlers"
-import {newEmptyHandler}                                                                                      from "./helper/newEmptyHandler"
-import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
-import {newIterableWithSizeHandler, newIterableWithSizeOf1Handler, newIterableWithSizeOf2Handler}             from "./helper/newIterableWithSizeHandlers"
-import {newMinimalistCollectionHandler, newMinimalistCollectionOf1Handler, newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionHandlers"
-import {newSetHandler, newSetOf1Handler, newSetOf2Handler}                                                    from "./helper/newSetHandlers"
-import {A, AB, ABC, ABCD, EMPTY}                                                                              from "./value/arrays"
+import {newArrayHandler}                   from "./helper/newArrayHandler"
+import {newArrayOf1Handler}                from "./helper/newArrayOf1Handler"
+import {newArrayOf2Handler}                from "./helper/newArrayOf2Handler"
+import {newCollectionHandler}              from "./helper/newCollectionHandler"
+import {newCollectionIteratorHandler}      from "./helper/newCollectionIteratorHandler"
+import {newCollectionIteratorOf1Handler}   from "./helper/newCollectionIteratorOf1Handler"
+import {newCollectionIteratorOf2Handler}   from "./helper/newCollectionIteratorOf2Handler"
+import {newCollectionOf1Handler}           from "./helper/newCollectionOf1Handler"
+import {newCollectionOf2Handler}           from "./helper/newCollectionOf2Handler"
+import {newEmptyHandler}                   from "./helper/newEmptyHandler"
+import {newIteratorHandler}                from "./helper/newIteratorHandler"
+import {newIterableWithSizeHandler}        from "./helper/newIterableWithSizeHandler"
+import {newIterableWithSizeOf1Handler}     from "./helper/newIterableWithSizeOf1Handler"
+import {newIterableWithSizeOf2Handler}     from "./helper/newIterableWithSizeOf2Handler"
+import {newIterableHandler}                from "./helper/newIterableHandler"
+import {newMinimalistCollectionHandler}    from "./helper/newMinimalistCollectionHandler"
+import {newMinimalistCollectionOf1Handler} from "./helper/newMinimalistCollectionOf1Handler"
+import {newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionOf2Handler"
+import {newSetHandler}                     from "./helper/newSetHandler"
+import {newSetOf1Handler}                  from "./helper/newSetOf1Handler"
+import {newSetOf2Handler}                  from "./helper/newSetOf2Handler"
+import {A, AB, ABC, ABCD, EMPTY}           from "./value/arrays"
 
 describe("CollectionHandlerTest (constructor)", () => {
 
@@ -106,6 +119,13 @@ describe("CollectionHandlerTest (constructor)", () => {
         test("2 fields", () => expect(() => newCollectionOf2Handler(AB,),).not.toThrow(),)
         test("3 fields", () => expect(() => newCollectionOf2Handler(ABC,),).toThrow(),)
         test("4 fields", () => expect(() => newCollectionOf2Handler(ABCD,),).toThrow(),)
+    },)
+    describe("iterator", () => {
+        test("empty",    () => expect(() => newIteratorHandler(EMPTY,),).not.toThrow(),)
+        test("1 field",  () => expect(() => newIteratorHandler(A,),).not.toThrow(),)
+        test("2 fields", () => expect(() => newIteratorHandler(AB,),).not.toThrow(),)
+        test("3 fields", () => expect(() => newIteratorHandler(ABC,),).not.toThrow(),)
+        test("4 fields", () => expect(() => newIteratorHandler(ABCD,),).not.toThrow(),)
     },)
     describe("collection iterator", () => {
         test("empty",    () => expect(() => newCollectionIteratorHandler(EMPTY,),).not.toThrow(),)

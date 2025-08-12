@@ -6,12 +6,14 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_PREFIX_STRING;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_SEPARATOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleString;
 
@@ -32,11 +34,11 @@ public final class ToLocaleString
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         return __withNoLocale(collection, size);
@@ -48,7 +50,7 @@ public final class ToLocaleString
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> String toLocaleString(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -62,11 +64,11 @@ public final class ToLocaleString
     /// @param collection The [nullable][Nullable] collection
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> String toLocaleString(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         return __withNoLocale(collection, size);
@@ -82,12 +84,12 @@ public final class ToLocaleString
     /// @param locale     The possible locale to apply on each value
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                     final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                              final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.size();
+        final var size = collection.size();
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         if (locale == null)
@@ -102,8 +104,8 @@ public final class ToLocaleString
     /// @param locale     The possible locale to apply on each value
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final @Nullable CollectionHolder<? extends T> collection,
-                                                     final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> String toLocaleString(final @Nullable CollectionHolder<? extends T> collection,
+                                                                              final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -120,12 +122,12 @@ public final class ToLocaleString
     /// @param locale     The possible locale to apply on each value
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
-    public static <T> @NotNull String toLocaleString(final T @Nullable @Unmodifiable [] collection,
-                                                     final @Nullable Locale locale) {
+    public static <T extends @Nullable Object> String toLocaleString(final T @Nullable @Unmodifiable [] collection,
+                                                                              final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
-        var size = collection.length;
+        final var size = collection.length;
         if (size == 0)
             return DEFAULT_EMPTY_COLLECTION;
         if (locale == null)
@@ -138,8 +140,8 @@ public final class ToLocaleString
     //#endregion -------------------- Facade method --------------------
     //#region -------------------- Locale method --------------------
 
-    private static <T> @NotNull String __withNoLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                      final int size) {
+    private static <T extends @Nullable Object> String __withNoLocale(final MinimalistCollectionHolder<? extends T> collection,
+                                                                               final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -148,8 +150,8 @@ public final class ToLocaleString
         return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static <T> @NotNull String __withNoLocale(final T @NotNull @Unmodifiable [] collection,
-                                                      final int size) {
+    private static <T extends @Nullable Object> String __withNoLocale(final T @Unmodifiable [] collection,
+                                                                               final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -159,9 +161,9 @@ public final class ToLocaleString
     }
 
 
-    private static <T> @NotNull String __withLocale(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                    final @NotNull Locale locale,
-                                                    final int size) {
+    private static <T extends @Nullable Object> String __withLocale(final MinimalistCollectionHolder<? extends T> collection,
+                                                                             final Locale locale,
+                                                                             final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;
@@ -170,9 +172,9 @@ public final class ToLocaleString
         return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
     }
 
-    private static <T> @NotNull String __withLocale(final T @NotNull @Unmodifiable [] collection,
-                                                    final @NotNull Locale locale,
-                                                    final int size) {
+    private static <T extends @Nullable Object> String __withLocale(final T @Unmodifiable [] collection,
+                                                                             final Locale locale,
+                                                                             final int size) {
         var string = new StringBuilder();
         var sizeMinus1 = size - 1;
         var index = -1;

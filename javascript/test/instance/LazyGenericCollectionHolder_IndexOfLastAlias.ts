@@ -1,4 +1,3 @@
-
 //··························································
 // Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
 //
@@ -20,7 +19,7 @@ import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder
 import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_IndexOfLastAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
+    extends LazyGenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -32,9 +31,9 @@ export class LazyGenericCollectionHolder_IndexOfLastAlias
         return this
     }
 
-    public override indexOfLast(predicate: BooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+    public override indexOfLast(predicate: BooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
         this.amountOfCall++
-        return super.indexOfLast(predicate, fromIndex, toIndex,)
+        return super.indexOfLast(predicate, from, to,)
     }
 
 }

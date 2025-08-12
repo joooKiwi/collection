@@ -1,18 +1,16 @@
 package joookiwi.collection.java.method;
 
+import java.util.function.BooleanSupplier;
+import java.util.function.IntPredicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
-
-import java.util.function.BooleanSupplier;
-import java.util.function.IntPredicate;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_NULL_2;
@@ -40,8 +38,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -63,15 +61,13 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             return null;
-        return __with2Argument(collection, predicate, size);
+        return __with2Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
@@ -86,8 +82,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                        final @NotNull IntObjPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                 final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -112,8 +108,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
 
@@ -135,15 +131,13 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             return null;
-        return __with1Argument(collection, predicate, size);
+        return __with1Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
@@ -158,8 +152,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                        final @NotNull IntPredicate predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                 final IntPredicate predicate) {
         if (collection == null)
             return null;
 
@@ -184,8 +178,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -207,15 +201,13 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
-
-        final var size = collection.size();
-        if (size == 0)
+        if (collection.isEmpty())
             return null;
-        return __with0Argument(collection, predicate, size);
+        return __with0Argument(collection, predicate, collection.size());
     }
 
     /// Find the last element from the `predicate` in the `collection`
@@ -230,8 +222,8 @@ public final class FindLastIndexedOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                        final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findLastIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                                 final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -246,9 +238,9 @@ public final class FindLastIndexedOrNull
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final BooleanSupplier predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -256,9 +248,9 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final T @Unmodifiable [] collection,
+                                                                            final BooleanSupplier predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.getAsBoolean())
@@ -267,9 +259,9 @@ public final class FindLastIndexedOrNull
     }
 
 
-    private static <T> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull IntPredicate predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final IntPredicate predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.test(index))
@@ -277,9 +269,9 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull IntPredicate predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final T @Unmodifiable [] collection,
+                                                                            final IntPredicate predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0)
             if (predicate.test(index))
@@ -288,9 +280,9 @@ public final class FindLastIndexedOrNull
     }
 
 
-    private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull IntObjPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final IntObjPredicate<? super T> predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection.get(index);
@@ -300,9 +292,9 @@ public final class FindLastIndexedOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull IntObjPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final T @Unmodifiable [] collection,
+                                                                            final IntObjPredicate<? super T> predicate,
+                                                                            final int size) {
         var index = size;
         while (index-- > 0) {
             final var value = collection[index];

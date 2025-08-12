@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -39,8 +38,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -62,8 +61,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -83,8 +82,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                  final @NotNull ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                           final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -109,8 +108,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -132,8 +131,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final Predicate<? super T> predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -153,8 +152,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                  final @NotNull Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                           final Predicate<? super T> predicate) {
         if (collection == null)
             return null;
 
@@ -179,8 +178,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<T> collection,
-                                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                           final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -202,8 +201,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<T> collection,
-                                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                           final BooleanSupplier predicate) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
@@ -223,8 +222,8 @@ public final class FindFirstOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault">C# FirstOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
-                                                  final @NotNull BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T findFirstOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                           final BooleanSupplier predicate) {
         if (collection == null)
             return null;
 
@@ -239,9 +238,9 @@ public final class FindFirstOrNull
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> @Nullable T __with0Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final BooleanSupplier predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.getAsBoolean())
@@ -249,9 +248,9 @@ public final class FindFirstOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with0Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull BooleanSupplier predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with0Argument(final T @Unmodifiable [] collection,
+                                                                            final BooleanSupplier predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.getAsBoolean())
@@ -260,9 +259,9 @@ public final class FindFirstOrNull
     }
 
 
-    private static <T> @Nullable T __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull Predicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final Predicate<? super T> predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection.get(index);
@@ -272,9 +271,9 @@ public final class FindFirstOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull Predicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with1Argument(final T @Unmodifiable [] collection,
+                                                                            final Predicate<? super T> predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection[index];
@@ -285,9 +284,9 @@ public final class FindFirstOrNull
     }
 
 
-    private static <T> @Nullable T __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                            final ObjIntPredicate<? super T> predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection.get(index);
@@ -297,9 +296,9 @@ public final class FindFirstOrNull
         return null;
     }
 
-    private static <T> @Nullable T __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                                   final @NotNull ObjIntPredicate<? super T> predicate,
-                                                   final int size) {
+    private static <T extends @Nullable Object> @Nullable T __with2Argument(final T @Unmodifiable [] collection,
+                                                                            final ObjIntPredicate<? super T> predicate,
+                                                                            final int size) {
         var index = -1;
         while (++index < size) {
             final var value = collection[index];

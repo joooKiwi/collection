@@ -10,13 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolder}                                                         from "./CollectionHolder"
-import type {IterableWithCount}                                                        from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                       from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                 from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                         from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                       from "./iterator/CollectionIterator"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
+import type {CollectionHolder}                                                                                                             from "./CollectionHolder"
+import type {IterableWithCount}                                                                                                            from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                                           from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                                     from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                                             from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                                           from "./iterator/CollectionIterator"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
 
 import {AbstractMinimalistCollectionHolder}      from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                     from "./CollectionConstants"
@@ -30,20 +30,37 @@ import {isCollectionHolder}                      from "./method/isCollectionHold
 import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
+import {isIterator}                              from "./method/isIterator"
+import {isIteratorByStructure}                   from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
 import {isSet}                                   from "./method/isSet"
 import {isSetByStructure}                        from "./method/isSetByStructure"
 
+/**
+ * A {@link MinimalistCollectionHolder} having the values eagerly retrieved.
+ *
+ * Meaning that every value is retrieved during the construction,
+ * and it will never change after the initialization.
+ *
+ * But it is not {@link Object.isFrozen frozen} to ensure
+ * the children can do their initialization.
+ *
+ * @typeParam T         The element type
+ * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
+ * @see GenericCollectionHolder
+ * @see LazyGenericCollectionHolder
+ * @see EmptyCollectionHolder
+ */
 export class GenericMinimalistCollectionHolder<const T = unknown,
-    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractMinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
     readonly #size: number
 
-    readonly #reference: REFERENCE
+    readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
     readonly #array: readonly T[]
 
     //#endregion -------------------- Fields --------------------
@@ -59,6 +76,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
     public constructor(collectionIterable: CollectionIterator<T>,)
     public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
+    public constructor(iterator: Iterator<T, unknown, unknown>,)
+    public constructor(lateIterator: () => Iterator<T, unknown, unknown>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
     public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
     public constructor(iterableWithLength: IterableWithLength<T>,)
@@ -67,12 +86,12 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
     public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
     public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(iterable: Iterable<T>,)
-    public constructor(lateIterable: () => Iterable<T>,)
-    public constructor(reference: REFERENCE,)
-    public constructor(lateReference: () => REFERENCE,)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+    public constructor(iterable: Iterable<T, unknown, unknown>,)
+    public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
+    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(lateReference: () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
         // README: The code is based on the GenericCollectionHolder constructor, but with less things handled
         //         Also, the eager instantiation has some weird shenanigan to keep its nature pure.
@@ -122,7 +141,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isSet<T>(reference,)) {
+        if (isSet(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
@@ -162,7 +181,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionHolder<T>(reference,)) {
+        if (isCollectionHolder(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
@@ -200,7 +219,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference,)) {
+        if (isMinimalistCollectionHolder(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
@@ -238,7 +257,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionIterator<T>(reference,)) {
+        if (isCollectionIterator(reference,)) {
             const size = this.#size = reference.size
             //#region -------------------- Initialization (empty) --------------------
 
@@ -274,6 +293,33 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             return
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isIterator(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (iteratorResult.done === true) {
+                this.#size = 0
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
         }
 
         //#endregion -------------------- initialization by a known instance --------------------
@@ -471,6 +517,33 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        if (isIteratorByStructure<T>(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (iteratorResult.done === true) {
+                this.#size = 0
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
+        }
+
         //#endregion -------------------- initialization by a structure --------------------
 
         sizeIf: if ("size" in reference) {
@@ -490,7 +563,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1)
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -532,7 +605,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1)
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -574,7 +647,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1)
-                this.#array = Object.freeze([reference[Symbol.iterator]().next().value,],)
+                this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -626,12 +699,12 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    /** The iterable received in the constructor */
-    protected get _reference(): REFERENCE {
+    /** The raw value received in the constructor */
+    protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> {
         return this.#reference
     }
 
-    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
+    /** The {@link Array} stored (from the construction) for the current {@link GenericMinimalistCollectionHolder instance} */
     protected get _array(): readonly T[] {
         return this.#array
     }
@@ -657,15 +730,15 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             return array[index] as T
 
         if (index > size)
-            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" is over the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is over the size of the collection (${size}).`, index,)
         if (index == size)
-            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" is the size of the collection (${size}).`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” is the size of the collection (${size}).`, index,)
         if (index >= 0)
             return array[index] as T
 
         const indexToRetrieve = size + index
         if (indexToRetrieve < 0)
-            throw new IndexOutOfBoundsException(`Index out of bound. The index "${index}" (${indexToRetrieve} after calculation) is under 0.`, index,)
+            throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
         return array[indexToRetrieve] as T
     }
 

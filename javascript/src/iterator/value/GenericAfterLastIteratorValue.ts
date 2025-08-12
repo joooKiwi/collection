@@ -11,24 +11,26 @@
 //··························································
 
 import type {AfterLastValueInCollectionIteratorSymbol} from "../../type/symbol"
+import type {OutsideIteratorValue}                     from "./OutsideIteratorValue"
 
-import {CollectionConstants} from "../../CollectionConstants"
+import {CollectionConstants}   from "../../CollectionConstants"
+import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
 /**
- * An implementation of a {@link IteratorReturnResult} for the last element
- * after the last element on a {@link CollectionIterator}
+ * An implementation of an {@link OutsideIteratorValue} when it is
+ * after the last element of a {@link CollectionIterator}
  *
  * @singleton
  */
 export class GenericAfterLastIteratorValue
-    implements IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol> {
+    extends AbstractIteratorValue<AfterLastValueInCollectionIteratorSymbol, true>
+    implements OutsideIteratorValue<AfterLastValueInCollectionIteratorSymbol> {
 
     //#region -------------------- Singleton usage --------------------
 
     static #instance?: GenericAfterLastIteratorValue
 
-    protected constructor() {
-    }
+    protected constructor() { super() }
 
     public static get get(): GenericAfterLastIteratorValue {
         return GenericAfterLastIteratorValue.#instance ??= new GenericAfterLastIteratorValue()
@@ -36,11 +38,10 @@ export class GenericAfterLastIteratorValue
 
     //#endregion -------------------- Singleton usage --------------------
 
-    public get done(): true {
-        return true
-    }
+    public override isDone(): true { return true }
+    public override isNotDone(): false { return false }
 
-    public get value(): AfterLastValueInCollectionIteratorSymbol {
+    public override get value(): AfterLastValueInCollectionIteratorSymbol {
         return CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL
     }
 

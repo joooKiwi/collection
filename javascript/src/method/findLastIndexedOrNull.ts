@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -36,7 +37,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastIndexedOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastIndexedOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -49,14 +50,17 @@ export function findLastIndexedOrNull<const T, const S extends T, >(collection: 
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLastIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
-export function findLastIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function findLastIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): NullOr<T>
+export function findLastIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return findLastIndexedOrNullByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return findLastIndexedOrNullByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return findLastIndexedOrNullByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return findLastIndexedOrNullByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
@@ -69,7 +73,7 @@ export function findLastIndexedOrNull<const T, >(collection: Nullable<| Minimali
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
@@ -83,7 +87,7 @@ export function findLastIndexedOrNullByMinimalistCollectionHolder<const T, const
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
@@ -110,7 +114,7 @@ export function findLastIndexedOrNullByMinimalistCollectionHolder<const T, >(col
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
@@ -124,7 +128,7 @@ export function findLastIndexedOrNullByCollectionHolder<const T, const S extends
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
@@ -149,7 +153,7 @@ export function findLastIndexedOrNullByCollectionHolder<const T, >(collection: N
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)
@@ -163,7 +167,7 @@ export function findLastIndexedOrNullByArray<const T, const S extends T, >(colle
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see ReadonlyArray.findLast
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find-last.html Kotlin findLast(predicate)

@@ -39,6 +39,13 @@
     "sourceMap": true,
     "declaration": false,
   },
+  "references": [
+    { "path": "./tsconfig.amd.json", },
+    { "path": "./tsconfig.cjs.json", },
+    { "path": "./tsconfig.esm.json", },
+    { "path": "./tsconfig.types.json", },
+    { "path": "./tsconfig.umd.json", },
+  ],
   "include": [
     "src",
     "test",

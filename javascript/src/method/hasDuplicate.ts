@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): boolean {
+export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasDuplicateByCollectionHolder(collection,)
     if (isArray(collection,))
         return hasDuplicateByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasDuplicateByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasDuplicateByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -47,7 +51,7 @@ export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollect
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
@@ -64,7 +68,7 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
@@ -79,7 +83,7 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
 /**
  * The {@link collection} has at least one duplicate value
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */

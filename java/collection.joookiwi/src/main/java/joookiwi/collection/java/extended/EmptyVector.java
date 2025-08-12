@@ -3,38 +3,48 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
-import java.util.Vector;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
+import static joookiwi.collection.java.CollectionConstants.emptyEnumeration;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
-/// A [Singleton] implementation of the [Vector],
+/// A [Singleton] implementation of the [java.util.Vector],
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see java.util.Collections#emptyList()
 /// @see joookiwi.collection.java.CollectionConstants#emptyVector
 @Singleton
 @NotNullByDefault
-public class EmptyVector<T>
+public class EmptyVector<T extends @Nullable Object>
         extends ImmutableVector<T> {
 
-    @Serial private static final long serialVersionUID = -1133158317449474042L;
+    @Serial private static final long serialVersionUID = -4181529313529446909L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -105,38 +115,38 @@ public class EmptyVector<T>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Iterator<T>     iterator(                   ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public @NotNull ListIterator<T> listIterator(               ) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public @NotNull ListIterator<T> listIterator(final int index) { return emptyListIterator(); }
-    @Contract(pure = true) @Override public @NotNull Spliterator<T>  spliterator(                ) { return emptySpliterator(); }
-    @Contract(pure = true) @Override public @NotNull Enumeration<T>  elements(                   ) { return emptyEnumeration(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>     iterator(               ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(               ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(final int index) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T  >  spliterator(               ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public Enumeration<T>       elements(               ) { return emptyEnumeration(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)           @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_PARAMETER_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
-    @Contract(pure = true)                                 @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final U[]               newArray) { return newArray; }
+    @Contract(pure = true)                       @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> parallelStream() { return emptyParellelStream(); }
+    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------
 
-    @Override public @NotNull List<T> subList(final int fromIndex, final int toIndex) { return emptyList(); }
+    @Contract(value = ALWAYS_THIS_2, pure = true) @Override public EmptyVector<T> subList(final int from, final int to) { return this; }
 
     //#endregion -------------------- Sublist methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @NotNull @Unmodifiable Vector<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyVector<T> reversed() { return this; }
 
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -150,12 +160,18 @@ public class EmptyVector<T>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyVector<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- Serializable methods --------------------
+
+    @Serial
+    private Object readResolve() { return getInstance(); }
+
+    //#endregion -------------------- Serializable methods --------------------
     //#region -------------------- Copy into methods --------------------
 
     @Override public void copyInto(final @Nullable Object @Nullable @Unmodifiable [] reference) {}

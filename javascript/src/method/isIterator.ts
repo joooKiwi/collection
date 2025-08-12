@@ -14,8 +14,9 @@
  * Tell that the value is a {@link Iterator}
  *
  * @param value The value to identify
+ * @see isIteratorByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isIterator<const T, const INSTANCE extends Iterator<T> = Iterator<T>, >(value: unknown,): value is INSTANCE {
+export function isIterator<const T, const INSTANCE extends Iterator<T, unknown, unknown> = Iterator<T, unknown, unknown>, >(value: unknown,): value is INSTANCE {
     return value instanceof Iterator
 }

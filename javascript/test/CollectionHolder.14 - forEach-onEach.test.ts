@@ -12,18 +12,50 @@
 
 import {expectToBeInstance}                                                         from "./expect/expectToBeInstance"
 import {EmptyCollectionHolderForTest}                                               from "./instance/EmptyCollectionHolderForTest"
-import {A, AB, ABCD, EMPTY}                                                         from "./value/arrays"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0} from "./value/callbacks (string)"
 import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}             from "./value/instances"
 
+import {forEach, forEachByArray, forEachByCollectionHolder, forEachByMinimalistCollectionHolder}                             from "../src/method/forEach"
+import {forEachIndexed, forEachIndexedByArray, forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder} from "../src/method/forEachIndexed"
+import {onEach, onEachByArray, onEachByCollectionHolder, onEachByMinimalistCollectionHolder}                                 from "../src/method/onEach"
+import {onEachIndexed, onEachIndexedByArray, onEachIndexedByCollectionHolder, onEachIndexedByMinimalistCollectionHolder}     from "../src/method/onEachIndexed"
+
 describe("CollectionHolderTest (forEach / onEach)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test.skip("forEach",        () => {},)
-        test.skip("forEachIndexed", () => {},)
-        test("onEach",              () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEach(),),)
-        test("onEachIndexed",       () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEachIndexed(),),)
+        test("forEach",        () => expect(() => new EmptyCollectionHolderForTest().forEach(callbackAsFail0,),).not.toThrow(),)
+        test("forEachIndexed", () => expect(() => new EmptyCollectionHolderForTest().forEachIndexed(callbackAsFail0,),).not.toThrow(),)
+        test("onEach",         () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEach(),),)
+        test("onEachIndexed",  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.onEachIndexed(),),)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("forEach", () => {
+            test("all",                          () => expect(() => forEach(it, callbackAsFail0,),).not.toThrow(),)
+            test("minimalist collection holder", () => expect(() => forEachByMinimalistCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
+            test("collection holder",            () => expect(() => forEachByCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
+            test("array",                        () => expect(() => forEachByArray(it, callbackAsFail0,),).not.toThrow(),)
+        },)
+        describe("forEachIndexed", () => {
+            test("all",                          () => expect(() => forEachIndexed(it, callbackAsFail0,),).not.toThrow(),)
+            test("minimalist collection holder", () => expect(() => forEachIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
+            test("collection holder",            () => expect(() => forEachIndexedByCollectionHolder(it, callbackAsFail0,),).not.toThrow(),)
+            test("array",                        () => expect(() => forEachIndexedByArray(it, callbackAsFail0,),).not.toThrow(),)
+        },)
+        describe("onEach", () => {
+            test("all",                          () => expect(onEach(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("minimalist collection holder", () => expect(onEachByMinimalistCollectionHolder(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("collection holder",            () => expect(onEachByCollectionHolder(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("array",                        () => expect(onEachByArray(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+        },)
+        describe("onEachIndexed", () => {
+            test("all",                          () => expect(onEachIndexed(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("minimalist collection holder", () => expect(onEachIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("collection holder",            () => expect(onEachIndexedByCollectionHolder(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+            test("array",                        () => expect(onEachIndexedByArray(it, callbackAsFail0,),)[it === null ? "toBeNull" : "toBeUndefined"](),)
+        },)
     },)
 
     describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {

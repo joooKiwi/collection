@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -27,22 +28,25 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasByCollectionHolder(collection, value,)
     if (isArray(collection,))
         return hasByArray(collection, value,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasByMinimalistCollectionHolder(collection, value,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasByCollectionHolder(collection, value,)
     if (isArrayByStructure<T>(collection,))
@@ -54,15 +58,15 @@ export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, value: T,): boolean {
@@ -78,15 +82,15 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, value: T,): boolean {
@@ -100,15 +104,15 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
 /**
  * Tell whenever the {@link value} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param value      The value to compare
- * @return {boolean} <b>true</b> if the {@link value} is equals to one value in the {@link collection}
+ * @return {boolean} <b>true</b> if the {@link value} is present in the {@link collection}
  * @see ReadonlyArray.includes
  * @see ReadonlySet.has
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html Kotlin contains(value)
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html Kotlin Map.containsValue(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#contains(java.lang.Object) Java Collection.contains(value)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
 export function hasByArray<const T, >(collection: Nullable<readonly T[]>, value: T,): boolean {

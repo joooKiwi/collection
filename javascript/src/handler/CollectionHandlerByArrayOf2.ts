@@ -28,7 +28,7 @@ export class CollectionHandlerByArrayOf2<const T = unknown,
     public constructor(collection: COLLECTION, reference: readonly T[], size: number = reference.length,) {
         super(collection, reference as REFERENCE,)
         if (size !== 2)
-            throw new TypeError(`The array received in the "${this.constructor.name}" cannot have a different size than 2.`,)
+            throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 2.`,)
     }
 
     protected override _retrieveFirst(): T { return this._reference[0] }

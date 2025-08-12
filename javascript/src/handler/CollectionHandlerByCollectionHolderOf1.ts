@@ -29,7 +29,7 @@ export class CollectionHandlerByCollectionHolderOf1<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number = reference.size,) {
         super(collection, reference,)
         if (size !== 1)
-            throw new TypeError(`The collection holder received in the "${this.constructor.name}" cannot have a different size than 1.`,)
+            throw new TypeError(`The collection holder received in the “${this.constructor.name}” cannot have a different size than 1.`,)
     }
 
     protected override _retrieveFirst(): T { return this._reference.getFirst() }

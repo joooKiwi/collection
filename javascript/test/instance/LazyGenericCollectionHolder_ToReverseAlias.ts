@@ -19,7 +19,7 @@ import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder
 import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_ToReverseAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
+    extends LazyGenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -31,9 +31,9 @@ export class LazyGenericCollectionHolder_ToReverseAlias
         return this
     }
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<string> {
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<string> {
         this.amountOfCall++
-        return super.toReverse(fromIndex, toIndex,)
+        return super.toReverse(from, to,)
     }
 
 }

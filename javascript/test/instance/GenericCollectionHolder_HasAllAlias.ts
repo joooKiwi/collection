@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
-import type {StraightCollectionHolderForTest}            from "./StraightCollectionHolderForTest"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
+import type {StraightCollectionHolderForTest}                    from "./StraightCollectionHolderForTest"
 
 import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_HasAllAlias
-    extends GenericCollectionHolder<string, readonly string[]>
+    extends GenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -29,7 +29,7 @@ export class GenericCollectionHolder_HasAllAlias
         return this
     }
 
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<string>,): boolean {
+    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<string>,): boolean {
         this.amountOfCall++
         return super.hasAll(values,)
     }

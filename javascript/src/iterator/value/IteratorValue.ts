@@ -10,26 +10,28 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
-
 /**
- * An {@link IteratorYieldResult iterator value} made to retrieve a {@link value}
- * from a {@link collection} using its {@link index}
+ * An {@link IteratorResult iterator value} declaration to have
+ * the core functionalities on a collection and an outside {@link IteratorValue}
  *
- * @see GenericIteratorValue
+ * @see CollectionIteratorValue
+ * @see OutsideIteratorValue
  */
-export interface IteratorValue<out T = unknown, >
-    extends IteratorYieldResult<T> {
+export interface IteratorValue<out T = unknown, > {
 
-    /** The {@link MinimalistCollectionHolder collection} to use in the {@link value get value} */
-    get collection(): MinimalistCollectionHolder<T>
+    /** Tell that the {@link IteratorValue iterator value} could be able to progress */
+    isDone(): boolean
 
-    /** The index to retrieve in the {@link collection} by the {@link value get value} */
-    get index(): number
+    /**
+     * Tell that the {@link IteratorValue iterator value} could be able to progress
+     *
+     * @alias IteratorValue.isDone
+     */
+    get done(): boolean
 
+    /** Tell that the {@link IteratorValue iterator value} could <b>not</b> be able to progress */
+    isNotDone(): boolean
 
-    /** Tell that the iterator container is not done yet */
-    get done(): false
 
     /** The value to retrieve by the iterator */
     get value(): T

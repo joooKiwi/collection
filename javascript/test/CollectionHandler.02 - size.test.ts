@@ -12,25 +12,41 @@
 
 import type {CollectionHandler} from "../src/handler/CollectionHandler"
 
-import {expectIndexesInCollectionOf1ToBePresent}                                                              from "./expect/expectIndexesInCollectionOf1ToBePresent"
-import {expectIndexesInCollectionOf1ToBeNotPresent}                                                           from "./expect/expectIndexesInCollectionOf1ToBeNotPresent"
-import {expectIndexesInCollectionOf2ToBePresent}                                                              from "./expect/expectIndexesInCollectionOf2ToBePresent"
-import {expectIndexesInCollectionOf2ToBeNotPresent}                                                           from "./expect/expectIndexesInCollectionOf2ToBeNotPresent"
-import {expectIndexesInCollectionOf2ToOnlyHave1stPresent}                                                     from "./expect/expectIndexesInCollectionOf2ToOnlyHave1stPresent"
-import {expectIndexesInCollectionOf4ToBePresent}                                                              from "./expect/expectIndexesInCollectionOf4ToBePresent"
-import {expectIndexesInCollectionOf4ToBeNotPresent}                                                           from "./expect/expectIndexesInCollectionOf4ToBeNotPresent"
-import {expectIndexesInCollectionOf4ToOnlyHave1stPresent}                                                     from "./expect/expectIndexesInCollectionOf4ToOnlyHave1stPresent"
-import {newArrayHandler, newArrayOf1Handler, newArrayOf2Handler}                                              from "./helper/newArrayHanders"
-import {newCollectionHandler, newCollectionOf1Handler, newCollectionOf2Handler}                               from "./helper/newCollectionHandlers"
-import {newCollectionIteratorHandler, newCollectionIteratorOf1Handler, newCollectionIteratorOf2Handler}       from "./helper/newCollectionIteratorHandlers"
-import {newEmptyHandler}                                                                                      from "./helper/newEmptyHandler"
-import {newIterableHandler}                                                                                   from "./helper/newIterableHandler"
-import {newIterableWithSizeHandler, newIterableWithSizeOf1Handler, newIterableWithSizeOf2Handler}             from "./helper/newIterableWithSizeHandlers"
-import {newMinimalistCollectionHandler, newMinimalistCollectionOf1Handler, newMinimalistCollectionOf2Handler} from "./helper/newMinimalistCollectionHandlers"
-import {newSetHandler, newSetOf1Handler, newSetOf2Handler}                                                    from "./helper/newSetHandlers"
-import {sizeValues}                                                                                           from "./value/sizes"
-import {CollectionHolderHoldingNothing}                                                                       from "./instance/CollectionHolderHoldingNothing"
-import {A, AB, ABCD}                                                                                          from "./value/arrays"
+import {expectIndexesInCollectionOf1ToBePresent}          from "./expect/expectIndexesInCollectionOf1ToBePresent"
+import {expectIndexesInCollectionOf1ToBeNotPresent}       from "./expect/expectIndexesInCollectionOf1ToBeNotPresent"
+import {expectIndexesInCollectionOf2ToBePresent}          from "./expect/expectIndexesInCollectionOf2ToBePresent"
+import {expectIndexesInCollectionOf2ToBeNotPresent}       from "./expect/expectIndexesInCollectionOf2ToBeNotPresent"
+import {expectIndexesInCollectionOf2ToOnlyHave1stPresent} from "./expect/expectIndexesInCollectionOf2ToOnlyHave1stPresent"
+import {expectIndexesInCollectionOf4ToBePresent}          from "./expect/expectIndexesInCollectionOf4ToBePresent"
+import {expectIndexesInCollectionOf4ToBeNotPresent}       from "./expect/expectIndexesInCollectionOf4ToBeNotPresent"
+import {expectIndexesInCollectionOf4ToOnlyHave1stPresent} from "./expect/expectIndexesInCollectionOf4ToOnlyHave1stPresent"
+import {newArrayHandler}                                  from "./helper/newArrayHandler"
+import {newArrayOf1Handler}                               from "./helper/newArrayOf1Handler"
+import {newArrayOf2Handler}                               from "./helper/newArrayOf2Handler"
+import {newCollectionHandler}                             from "./helper/newCollectionHandler"
+import {newCollectionIteratorHandler}                     from "./helper/newCollectionIteratorHandler"
+import {newCollectionIteratorOf1Handler}                  from "./helper/newCollectionIteratorOf1Handler"
+import {newCollectionIteratorOf2Handler}                  from "./helper/newCollectionIteratorOf2Handler"
+import {newCollectionOf1Handler}                          from "./helper/newCollectionOf1Handler"
+import {newCollectionOf2Handler}                          from "./helper/newCollectionOf2Handler"
+import {newEmptyHandler}                                  from "./helper/newEmptyHandler"
+import {newIterableHandler}                               from "./helper/newIterableHandler"
+import {newIterableWithSizeHandler}                       from "./helper/newIterableWithSizeHandler"
+import {newIterableWithSizeOf1Handler}                    from "./helper/newIterableWithSizeOf1Handler"
+import {newIterableWithSizeOf2Handler}                    from "./helper/newIterableWithSizeOf2Handler"
+import {newIteratorHandler}                               from "./helper/newIteratorHandler"
+import {newMinimalistCollectionHandler}                   from "./helper/newMinimalistCollectionHandler"
+import {newMinimalistCollectionOf1Handler}                from "./helper/newMinimalistCollectionOf1Handler"
+import {newMinimalistCollectionOf2Handler}                from "./helper/newMinimalistCollectionOf2Handler"
+import {newSetHandler}                                    from "./helper/newSetHandler"
+import {newSetOf1Handler}                                 from "./helper/newSetOf1Handler"
+import {newSetOf2Handler}                                 from "./helper/newSetOf2Handler"
+import {sizeValues}                                       from "./value/sizes"
+import {CollectionHolderHoldingNothing}                   from "./instance/CollectionHolderHoldingNothing"
+import {A, AB, ABCD, NULL_UNDEFINED}                      from "./value/arrays"
+
+import {isEmpty, isEmptyByArray, isEmptyByCollectionHolder, isEmptyByMinimalistCollectionHolder}             from "../src/method/isEmpty"
+import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder} from "../src/method/isNotEmpty"
 
 describe("CollectionHandlerTest (size)", () => {
 
@@ -64,6 +80,10 @@ describe("CollectionHandlerTest (size)", () => {
             test("collection holder: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionHandler(ABCD, it,), it => it.size,),),)
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.size,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.size,),),)
+
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.size,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToBePresent(execute(it => newIteratorHandler(AB, it,), it => it.size,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToBePresent(execute(it => newIteratorHandler(ABCD, it,), it => it.size,),),)
 
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.size,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.size,),),)
@@ -106,6 +126,10 @@ describe("CollectionHandlerTest (size)", () => {
             test("collection holder of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionOf1Handler(A, it,), it => it.isEmpty,),),)
             test("collection holder of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionOf2Handler(AB, it,), it => it.isEmpty,),),)
 
+            test("iterator: 1 field",  () => expectIndexesInCollectionOf1ToBePresent(execute(it => newIteratorHandler(A, it,), it => it.isEmpty,),),)
+            test("iterator: 2 fields", () => expectIndexesInCollectionOf2ToOnlyHave1stPresent(execute(it => newIteratorHandler(AB, it,), it => it.isEmpty,),),)
+            test("iterator: 4 fields", () => expectIndexesInCollectionOf4ToOnlyHave1stPresent(execute(it => newIteratorHandler(ABCD, it,), it => it.isEmpty,),),)
+
             test("collection iterator: 1 field",  () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newCollectionIteratorHandler(A, it,), it => it.isEmpty,),),)
             test("collection iterator: 2 fields", () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newCollectionIteratorHandler(AB, it,), it => it.isEmpty,),),)
             test("collection iterator: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newCollectionIteratorHandler(ABCD, it,), it => it.isEmpty,),),)
@@ -121,6 +145,21 @@ describe("CollectionHandlerTest (size)", () => {
             test("iterable with size: 4 fields", () => expectIndexesInCollectionOf4ToBeNotPresent(execute(it => newIterableWithSizeHandler(ABCD, it,), it => it.isEmpty,),),)
             test("iterable with size of 1",      () => expectIndexesInCollectionOf1ToBeNotPresent(execute(it => newIterableWithSizeOf1Handler(A, it,), it => it.isEmpty,),),)
             test("iterable with size of 2",      () => expectIndexesInCollectionOf2ToBeNotPresent(execute(it => newIterableWithSizeOf2Handler(AB, it,), it => it.isEmpty,),),)
+        },)
+    },)
+
+    describe.each(NULL_UNDEFINED,)("%s", it => {
+        describe("isEmpty", () => {
+            test("all",                          () => expect(isEmpty(it,),).toBeTrue(),)
+            test("minimalist collection holder", () => expect(isEmptyByMinimalistCollectionHolder(it,),).toBeTrue(),)
+            test("collection holder",            () => expect(isEmptyByCollectionHolder(it,),).toBeTrue(),)
+            test("array",                        () => expect(isEmptyByArray(it,),).toBeTrue(),)
+        },)
+        describe("isNotEmpty", () => {
+            test("all",                          () => expect(isNotEmpty(it,),).toBeFalse(),)
+            test("minimalist collection holder", () => expect(isNotEmptyByMinimalistCollectionHolder(it,),).toBeFalse(),)
+            test("collection holder",            () => expect(isNotEmptyByCollectionHolder(it,),).toBeFalse(),)
+            test("array",                        () => expect(isNotEmptyByArray(it,),).toBeFalse(),)
         },)
     },)
 
@@ -140,6 +179,10 @@ describe("CollectionHandlerTest (size)", () => {
         describe("collection holder", () => {
             test("size",    () => expect(newCollectionHandler(array,).size,).toBe(size,),)
             test("isEmpty", () => expect(newCollectionHandler(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
+        },)
+        describe("iterator", () => {
+            test("size",    () => expect(newIteratorHandler(array,).size,).toBe(size,),)
+            test("isEmpty", () => expect(newIteratorHandler(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
         },)
         describe("collection iterator", () => {
             test("size",    () => expect(newCollectionIteratorHandler(array,).size,).toBe(size,),)

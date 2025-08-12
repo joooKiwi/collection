@@ -19,7 +19,7 @@ import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder
 import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_IndexOfLastIndexedAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
+    extends LazyGenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -31,9 +31,9 @@ export class LazyGenericCollectionHolder_IndexOfLastIndexedAlias
         return this
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
         this.amountOfCall++
-        return super.indexOfLastIndexed(predicate, fromIndex, toIndex,)
+        return super.indexOfLastIndexed(predicate, from, to,)
     }
 
 }

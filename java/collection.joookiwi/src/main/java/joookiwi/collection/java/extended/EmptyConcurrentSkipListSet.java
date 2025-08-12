@@ -3,8 +3,6 @@ package joookiwi.collection.java.extended;
 import java.io.Serial;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NavigableSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Spliterator;
@@ -12,15 +10,29 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.*;
-import static joookiwi.collection.java.CommonContracts.*;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
+import static joookiwi.collection.java.CollectionConstants.emptyIterator;
+import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
+import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
+import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_1;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 
 /// A [Singleton] implementation of the [java.util.concurrent.ConcurrentSkipListSet],
 /// but in an empty form
@@ -33,7 +45,7 @@ import static joookiwi.collection.java.CommonContracts.*;
 public class EmptyConcurrentSkipListSet<T>
         extends ImmutableConcurrentSkipListSet<T> {
 
-    @Serial private static final long serialVersionUID = -2122153619148004018L;
+    @Serial private static final long serialVersionUID = 2912163353868699472L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -73,13 +85,13 @@ public class EmptyConcurrentSkipListSet<T>
     @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T getLast() { throw new NoSuchElementException("No element could be found in an empty ConcurrentSkipListSet."); }
 
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T lower(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T lower(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T floor(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T floor(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T ceiling(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T ceiling(final @Nullable T value) { return null; }
 
-    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public T higher(final T value) { return null; }
+    @Contract(value = ALWAYS_NULL_1, pure = true) @Override public @Nullable T higher(final @Nullable T value) { return null; }
 
     //#endregion -------------------- Get methods --------------------
     //#region -------------------- Has methods --------------------
@@ -100,45 +112,45 @@ public class EmptyConcurrentSkipListSet<T>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Iterator<T>    iterator(          ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public @NotNull Spliterator<T> spliterator(       ) { return emptySpliterator(); }
-    @Contract(pure = true) @Override public @NotNull Iterator<T>    descendingIterator() { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> iterator(          ) { return emptyIterator(); }
+    @Contract(pure = true) @Override public Spliterator<T>   spliterator(       ) { return emptySpliterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> descendingIterator() { return emptyIterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------
 
-    @Contract(value = ALWAYS_NEW_0, pure = true)           @Override public     Object @NotNull [] toArray(                                                   ) { return new Object[0]; }
-    @Contract(value = ALWAYS_1ST_PARAMETER_1, pure = true) @Override public <U> U @NotNull []      toArray(final U @NotNull []                           array) { return array; }
-    @Contract(pure = true)                                 @Override public <U> U @NotNull []      toArray(final @NotNull IntFunction<U @NotNull []> generator) { return generator.apply(0); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              Object[] toArray(                                ) { return new Object[0]; }
+    @Contract(value = ALWAYS_1ST_1, pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final U[]               newArray) { return newArray; }
+    @Contract(pure = true)                       @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public @NotNull Stream<T> parallelStream() { return emptyParellelStream(); }
+    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Subset methods --------------------
 
-    @Override public @NotNull @Unmodifiable NavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
-    @Override public @NotNull @Unmodifiable NavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
 
-    @Override public @NotNull @Unmodifiable NavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public @NotNull @Unmodifiable NavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
 
-    @Override public @NotNull @Unmodifiable NavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public @NotNull @Unmodifiable NavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
 
-    @Override public @NotNull @Unmodifiable NavigableSet<T> descendingSet() { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> descendingSet() { return emptyNavigableSet(); }
 
     //#endregion -------------------- Subset methods --------------------
-    //#region -------------------- To reverse methods --------------------
+    //#region -------------------- As reverse methods --------------------
 
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public @NotNull @Unmodifiable NavigableSet<T> reversed() { return this; }
+    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyConcurrentSkipListSet<T> reversed() { return this; }
 
-    //#endregion -------------------- To reverse methods --------------------
-    //#region -------------------- Equals methods --------------------
+    //#endregion -------------------- As reverse methods --------------------
+    //#region -------------------- Comparison methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int hashCode() { return DEFAULT_EMPTY_HASH_CODE; }
 
@@ -152,7 +164,7 @@ public class EmptyConcurrentSkipListSet<T>
         return ((Collection<?>) other).isEmpty();
     }
 
-    //#endregion -------------------- Equals methods --------------------
+    //#endregion -------------------- Comparison methods --------------------
     //#region -------------------- Comparator methods --------------------
 
     @Contract(value = ALWAYS_NULL_0, pure = true) @Override public @Nullable Comparator<? super T> comparator() { return null; }
@@ -163,6 +175,12 @@ public class EmptyConcurrentSkipListSet<T>
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyConcurrentSkipListSet<T> clone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
+    //#region -------------------- Serializable methods --------------------
+
+    @Serial
+    private Object readResolve() { return getInstance(); }
+
+    //#endregion -------------------- Serializable methods --------------------
     //#region -------------------- To string methods --------------------
 
     @Contract(pure = true) @Override public String toString() { return DEFAULT_EMPTY_COLLECTION; }

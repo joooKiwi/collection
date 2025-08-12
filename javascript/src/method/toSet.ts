@@ -21,6 +21,7 @@ import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                    from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -30,13 +31,16 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): ReadonlySet<T> {
+export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): ReadonlySet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_SET
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toSetByCollectionHolder(collection,)
     if (isArray(collection,))
         return toSetByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toSetByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toSetByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -48,7 +52,7 @@ export function toSet<const T, >(collection: Nullable<| MinimalistCollectionHold
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlySet<T> {
@@ -64,7 +68,7 @@ export function toSetByMinimalistCollectionHolder<const T, >(collection: Nullabl
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlySet<T> {
@@ -80,7 +84,7 @@ export function toSetByCollectionHolder<const T, >(collection: Nullable<Collecti
 /**
  * Convert the {@link collection} to an {@link ReadonlySet set}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toSetByArray<const T, >(collection: Nullable<readonly T[]>,): ReadonlySet<T> {

@@ -22,7 +22,7 @@ import {CollectionConstants} from "../CollectionConstants"
  * @see CollectionConstants.MAP_MEMBERS
  * @doesNotValidateTheTypes
  */
-export function isWeakSetByStructure(value: unknown,): value is (& object & Record<KeyOfMap, unknown>)
+export function isMapByStructure(value: unknown,): value is (& object & Record<KeyOfMap, unknown>)
 /**
  * Tell that the value has the structure of an {@link ReadonlyMap Map}
  *
@@ -32,7 +32,7 @@ export function isWeakSetByStructure(value: unknown,): value is (& object & Reco
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isWeakSetByStructure<K, const INSTANCE extends ReadonlyMap<K, unknown> = ReadonlyMap<K, unknown>, >(value: unknown,): value is INSTANCE
+export function isMapByStructure<K, const INSTANCE extends ReadonlyMap<K, unknown> = ReadonlyMap<K, unknown>, >(value: unknown,): value is INSTANCE
 /**
  * Tell that the value has the structure of an {@link ReadonlyMap Map}
  *
@@ -42,8 +42,8 @@ export function isWeakSetByStructure<K, const INSTANCE extends ReadonlyMap<K, un
  * @doesNotValidateTheTypes
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isWeakSetByStructure<const K, V, const INSTANCE extends ReadonlyMap<K, V> = ReadonlyMap<K, V>, >(value: unknown,): value is INSTANCE
-export function isWeakSetByStructure(value: unknown,) {
+export function isMapByStructure<const K, V, const INSTANCE extends ReadonlyMap<K, V> = ReadonlyMap<K, V>, >(value: unknown,): value is INSTANCE
+export function isMapByStructure(value: unknown,) {
     if (value == null)
         return false
     if (typeof value != "object")

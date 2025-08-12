@@ -31,7 +31,7 @@ import {findFirstOrNull, findFirstOrNullByArray, findFirstOrNullByCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): NullOr<T>
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -46,7 +46,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+export function firstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -60,8 +60,8 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<|
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstOrNull(collection,)
     return findFirstOrNull(collection, predicate,)
@@ -72,7 +72,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
  * Get the first element in the {@link collection}
  * or <b>null</b> if it <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -83,7 +83,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
@@ -98,7 +98,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, const S extends
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
@@ -118,7 +118,7 @@ export function firstOrNullByMinimalistCollectionHolder<const T, >(collection: N
  * Get the first element in the {@link collection}
  * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -129,7 +129,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
@@ -144,7 +144,7 @@ export function firstOrNullByCollectionHolder<const T, const S extends T, >(coll
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
@@ -164,7 +164,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
  * Get the first element in the {@link collection}
  * or <b>null</b> if it <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -175,7 +175,7 @@ export function firstOrNullByArray<const T, >(collection: Nullable<readonly T[]>
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)
@@ -190,7 +190,7 @@ export function firstOrNullByArray<const T, const S extends T, >(collection: Nul
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @see ReadonlyArray.find
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/find.html Kotlin find(predicate)

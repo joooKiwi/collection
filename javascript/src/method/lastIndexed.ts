@@ -28,12 +28,12 @@ import {findLastIndexed, findLastIndexedByArray, findLastIndexedByCollectionHold
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b</b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -48,7 +48,7 @@ export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollecti
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -62,8 +62,8 @@ export function lastIndexed<const T, const S extends T, >(collection: Nullable<|
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getLast(collection,)
     return findLastIndexed(collection, predicate,)
@@ -73,11 +73,11 @@ export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollecti
 /**
  * Get the last element in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  * @facadeFunction
@@ -86,7 +86,7 @@ export function lastIndexedByMinimalistCollectionHolder<const T, >(collection: N
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -101,7 +101,7 @@ export function lastIndexedByMinimalistCollectionHolder<const T, const S extends
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -121,11 +121,11 @@ export function lastIndexedByMinimalistCollectionHolder<const T, >(collection: N
 /**
  * Get the last element in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} {@link CollectionHolder.isEmpty is empty}
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  * @facadeFunction
@@ -134,7 +134,7 @@ export function lastIndexedByCollectionHolder<const T, >(collection: Nullable<Co
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -150,7 +150,7 @@ export function lastIndexedByCollectionHolder<const T, const S extends T, >(coll
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -170,11 +170,11 @@ export function lastIndexedByCollectionHolder<const T, >(collection: Nullable<Co
 /**
  * Get the last element in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @throws NullCollectionException  The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException The {@link collection} <b>is empty</b>
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last.html Kotlin last()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/SequencedCollection.html#getLast() Java getLast()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  * @facadeFunction
@@ -183,7 +183,7 @@ export function lastIndexedByArray<const T, >(collection: Nullable<readonly T[]>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
@@ -198,7 +198,7 @@ export function lastIndexedByArray<const T, const S extends T, >(collection: Nul
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @throws NullCollectionException   The {@link collection} is <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}

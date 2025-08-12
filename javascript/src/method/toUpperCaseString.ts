@@ -20,6 +20,7 @@ import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,13 +32,16 @@ import {isArrayByStructure}            from "./isArrayByStructure"
  * @see String.toUpperCase
  * @extensionFunction
  */
-export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
+export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toUpperCaseStringByCollectionHolder(collection,)
     if (isArray(collection,))
         return toUpperCaseStringByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toUpperCaseStringByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toUpperCaseStringByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -50,7 +54,7 @@ export function toUpperCaseString<const T, >(collection: Nullable<| MinimalistCo
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see String.toUpperCase
  * @extensionFunction
  */
@@ -68,7 +72,7 @@ export function toUpperCaseStringByMinimalistCollectionHolder<const T, >(collect
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see String.toUpperCase
  * @extensionFunction
  */
@@ -84,7 +88,7 @@ export function toUpperCaseStringByCollectionHolder<const T, >(collection: Nulla
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toUpperCase toUpperCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see String.toUpperCase
  * @extensionFunction
  */

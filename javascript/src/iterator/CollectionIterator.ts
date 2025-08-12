@@ -18,58 +18,100 @@ import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollect
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
 /**
- * An {@link Iterator} with a known {@link MinimalistCollectionHolder} {@link MinimalistCollectionHolder.size size}
+ * An {@link Iterator} that goes through a series of data in normal or reverse order
+ * depending on the first call.
+ *
+ * When the first call it {@link CollectionIterator.next next()} or {@link CollectionIterator.nextValue nextValue},
+ * it is in the order from start to end.
+ * <pre>
+ * function normalOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.next()     // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.previous() // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.next()     // 3rd element
+ * }
+ * </pre>
+ *
+ * When the first call it {@link CollectionIterator.previous previous()} or {@link CollectionIterator.previousValue previousValue},
+ * it is in the order from end to start.
+ * <pre>
+ * function reverseOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.previous() // last element
+ *     iterator.previous() // 2nd last element
+ *     iterator.next()     // last element
+ *     iterator.previous() // 2nd last element
+ *     iterator.previous() // 3rd last element
+ * }
+ * </pre>
+ *
+ * And when there is a {@link CollectionIterator.reset reset()} being called,
+ * everything (excluding {@link CollectionIterator.firstIndex firstIndex} and {@link CollectionIterator.lastIndex lastIndex})
+ * is being changed to its initial value
+ * <pre>
+ * function varyingOrderIteration<T>(iterator: CollectionIterator<T>) {
+ *     iterator.next()     // 1st element
+ *     iterator.next()     // 2nd element
+ *     iterator.reset()
+ *     iterator.previous() // last element
+ *     iterator.previous() // 2nd last element
+ * }
+ * </pre>
  *
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator Kotlin Iterator
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
 export interface CollectionIterator<out T = unknown, >
-    extends IterableIterator<T> {
+    extends IterableIterator<T, AfterLastValueInCollectionIteratorSymbol, unknown> {
 
     //#region -------------------- Reference methods --------------------
 
-    /** The {@link MinimalistCollectionHolder collection} to loop over */
+    /**
+     * The {@link MinimalistCollectionHolder collection} to loop over
+     *
+     * @deprecated This is not always applicable. It will be removed in version 1.14
+     */
     get collection(): MinimalistCollectionHolder<T>
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
-    /** The {@link collection} {@link CollectionHolder.size size} */
-    get size(): this["collection"]["size"]
+    /** The {@link CollectionIterator iterator} size */
+    get size(): number
 
     /**
-     * The {@link collection} {@link CollectionHolder.size size}
+     * The {@link CollectionIterator iterator} size
      *
      * @alias size
      */
     get length(): this["size"]
 
     /**
-     * The {@link collection} {@link CollectionHolder.size size}
+     * The {@link CollectionIterator iterator} size
      *
      * @alias size
      */
     get count(): this["size"]
 
 
-    /** The {@link collection} {@link CollectionHolder.isEmpty is empty} */
+    /** The {@link CollectionIterator iterator} is empty */
     get isEmpty(): boolean
 
-    /** The {@link collection} {@link CollectionHolder.isNotEmpty is not empty} */
+    /** The {@link CollectionIterator iterator} is not empty */
     get isNotEmpty(): boolean
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
 
     /**
-     * Get the first index of the {@link collection}.
+     * Get the first index of the {@link CollectionIterator iterator}.
      * If it is <b>null</b>, then it is empty, otherwise, it should be <b>0</b>.
      */
     get firstIndex(): NullOrZeroNumber
 
     /**
-     * Get the last index of the {@link collection}.
-     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>size - 1</code>.
+     * Get the last index of the {@link CollectionIterator iterator}.
+     * If it is <b>null</b>, then it is empty, otherwise, it should be <code>{@link CollectionIterator.size} - 1</code>.
      */
     get lastIndex(): NullOrNumber
 
@@ -81,7 +123,7 @@ export interface CollectionIterator<out T = unknown, >
     get currentIndex(): NullOrNumber
 
     /**
-     * Get the index that the {@link CollectionIterator} is at
+     * Get the index that the {@link CollectionIterator iterator} is at
      *
      * @alias currentIndex
      */
@@ -130,8 +172,8 @@ export interface CollectionIterator<out T = unknown, >
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    /** Reset the index to the initial state (current {@link currentIndex index} / {@link currentValue value} at <b>null</b>) */
-    reset(): this
+    /** Reset the index to its initial state (current, previous and next index unset) */
+    reset(): void
 
     //#endregion -------------------- Reset methods --------------------
 
@@ -162,7 +204,8 @@ export interface CollectionIterator<out T = unknown, >
     [Symbol.iterator](): CollectionIterator<T>
 
     /**
-     * Give an output for the call from {@link ObjectConstructor.toString.call} [object CollectionIterator] instead of [object Object]
+     * Give an output for the call from {@link ObjectConstructor.toString.call}
+     * <code>[object CollectionIterator]</code> instead of <code>[object Object]</code>
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/toStringTag
      * @readonly

@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,16 +32,23 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java Iterable.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#forEach(java.util.function.Consumer) Java Stream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#forEach(java.util.function.IntConsumer) Java IntStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#forEach(java.util.function.LongConsumer) Java LongStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
+export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
     if (collection == null)
         return
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         forEachIndexedByCollectionHolder(collection, action,)
     else if (isArray(collection,))
         forEachIndexedByArray(collection, action,)
+    else if (isMinimalistCollectionHolder(collection,))
+        forEachIndexedByMinimalistCollectionHolder(collection, action,)
+
     else if (isCollectionHolderByStructure<T>(collection,))
         return forEachIndexedByCollectionHolder(collection, action,)
     else if (isArrayByStructure<T>(collection,))
@@ -59,7 +67,11 @@ export function forEachIndexed<const T, >(collection: Nullable<| MinimalistColle
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java Iterable.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#forEach(java.util.function.Consumer) Java Stream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#forEach(java.util.function.IntConsumer) Java IntStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#forEach(java.util.function.LongConsumer) Java LongStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
 export function forEachIndexedByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, action: IndexValueCallback<T>,): void {
@@ -85,7 +97,11 @@ export function forEachIndexedByMinimalistCollectionHolder<const T, >(collection
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java Iterable.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#forEach(java.util.function.Consumer) Java Stream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#forEach(java.util.function.IntConsumer) Java IntStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#forEach(java.util.function.LongConsumer) Java LongStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
 export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, action: IndexValueCallback<T>,): void {
@@ -109,7 +125,11 @@ export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable
  * @see ReadonlyArray.forEach
  * @see ReadonlySet.forEach
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/for-each-indexed.html Kotlin forEachIndexed(action)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Iterable.html#forEach(java.util.function.Consumer) Java Iterable.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#forEach(java.util.function.Consumer) Java Stream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#forEach(java.util.function.IntConsumer) Java IntStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#forEach(java.util.function.LongConsumer) Java LongStream.forEach(action)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
 export function forEachIndexedByArray<const T, >(collection: Nullable<readonly T[]>, action: IndexValueCallback<T>,): void {

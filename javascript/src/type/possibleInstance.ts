@@ -18,7 +18,6 @@ import type {MinimalistCollectionHolder}        from "../MinimalistCollectionHol
 import type {IterableWithPossibleSize}          from "../iterable/IterableWithPossibleSize"
 import type {CollectionIterator}                from "../iterator/CollectionIterator"
 
-
 /**
  * The possible {@link Object.constructor constructor} types that are inherited
  * from a {@link MinimalistCollectionHolder} or a {@link CollectionHolder}
@@ -31,12 +30,7 @@ export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistColl
  * A type-alias for the possible type of {@link Iterable} with the size field
  * (size, length or count) or the {@link MinimalistCollectionHolder}.
  *
- * Compared to {@link PossibleIterableArraySetOrCollectionHolder}, only the most generic type is used
- *
- * @see PossibleIterableWithPossibleSize
- * @see CollectionHolder
- * @see MinimalistCollectionHolder
- * @see CollectionIterator
+ * @deprecated Replace to {@link PossibleIterableIteratorArraySetOrCollectionHolder}. It will be removed in version 1.14
  */
 export type PossibleIterableOrCollection<T, > = | MinimalistCollectionHolder<T> | IterableWithPossibleSize<T>
 
@@ -45,16 +39,29 @@ export type PossibleIterableOrCollection<T, > = | MinimalistCollectionHolder<T> 
  * {@link MinimalistCollectionHolder} (with inheritor)
  * and {@link Iterable} (with inheritor)
  *
- * Compared to {@link PossibleIterableOrCollection}, it have the most specific types applicable
+ * @deprecated Replace to {@link PossibleIterableIteratorArraySetOrCollectionHolder}. It will be removed in version 1.14
+ */
+export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
+                                                              | MinimalistCollectionHolder<T> | CollectionHolder<T>
+                                                              | CollectionIterator<T> | Iterable<T> | IterableWithPossibleSize<T>
+
+/**
+ * A type-alias for the possible {@link ReadonlyArray Array}, {@link ReadonlySet Set},
+ * {@link MinimalistCollectionHolder} (with inheritor),
+ * {@link Iterator}, {@link CollectionIterator},
+ * and {@link Iterable} (with inheritor)
+ *
  *
  * @see ReadonlyArray
  * @see ReadonlySet
  * @see CollectionHolder
  * @see MinimalistCollectionHolder
  * @see CollectionIterator
+ * @see Iterator
  * @see Iterable
  * @see IterableWithPossibleSize
  */
-export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
-                                                              | MinimalistCollectionHolder<T> | CollectionHolder<T>
-                                                              | CollectionIterator<T> | Iterable<T> | IterableWithPossibleSize<T>
+export type PossibleIterableIteratorArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
+                                                                      | MinimalistCollectionHolder<T> | CollectionHolder<T>
+                                                                      | CollectionIterator<T> | Iterator<T, unknown, unknown>
+                                                                      | Iterable<T, unknown, unknown> | IterableWithPossibleSize<T>

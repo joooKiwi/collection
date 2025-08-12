@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 
 import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
 
 export class LazyGenericCollectionHolder_ConstructorTest<T>
     extends LazyGenericCollectionHolder<T> {
 
-    public constructor(reference: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
         super(reference,)
         this.forEach(_ => {
         },)

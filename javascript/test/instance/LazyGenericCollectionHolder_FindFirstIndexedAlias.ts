@@ -17,7 +17,7 @@ import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder
 import {ABCD}                        from "../value/arrays"
 
 export class LazyGenericCollectionHolder_FindFirstIndexedAlias
-    extends LazyGenericCollectionHolder<string, readonly string[]>
+    extends LazyGenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0

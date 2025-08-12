@@ -30,7 +30,7 @@ public final class GetLastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Nullable T getLastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
 
@@ -49,12 +49,12 @@ public final class GetLastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getLastOrNull(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> @Nullable T getLastOrNull(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return null;
         if (collection.isEmpty())
             return null;
-        return collection.get(collection.size() - 1);
+        return collection.getLast();
     }
 
     /// Get the last element in the `collection`
@@ -66,7 +66,7 @@ public final class GetLastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T getLastOrNull(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> @Nullable T getLastOrNull(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return null;
 

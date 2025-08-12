@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
+export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
     if (collection == null)
         return false
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return hasOneWithIterableByCollectionHolder(collection, values,)
     if (isArray(collection,))
         return hasOneWithIterableByArray(collection, values,)
+    if (isMinimalistCollectionHolder(collection,))
+        return hasOneWithIterableByMinimalistCollectionHolder(collection, values,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return hasOneWithIterableByCollectionHolder(collection, values,)
     if (isArrayByStructure<T>(collection,))
@@ -47,7 +51,7 @@ export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistC
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */
@@ -70,7 +74,7 @@ export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collec
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */
@@ -91,7 +95,7 @@ export function hasOneWithIterableByCollectionHolder<const T, >(collection: Null
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param values     The values to compare
  * @extensionFunction
  */

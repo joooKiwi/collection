@@ -11,13 +11,14 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_2;
 
+@NotNullByDefault
 public final class Find
     extends AliasUtility {
 
@@ -40,8 +41,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                      final ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -55,8 +56,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
-                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable CollectionHolder<? extends T> collection,
+                                                      final ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -70,8 +71,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final T @Nullable @Unmodifiable [] collection,
-                             final @NotNull ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final T @Nullable @Unmodifiable [] collection,
+                                                      final ObjIntPredicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     //#endregion -------------------- predicate (T, int) → boolean --------------------
     //#region -------------------- predicate (T) → boolean --------------------
@@ -88,8 +89,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                             final @NotNull Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                      final Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -103,8 +104,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
-                             final @NotNull Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable CollectionHolder<? extends T> collection,
+                                                      final Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -118,8 +119,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final T @Nullable @Unmodifiable [] collection,
-                             final @NotNull Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final T @Nullable @Unmodifiable [] collection,
+                                                      final Predicate<? super T> predicate) { return FindFirst.findFirst(collection, predicate); }
 
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
@@ -136,8 +137,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                             final @NotNull BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                      final BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -151,8 +152,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final @Nullable CollectionHolder<? extends T> collection,
-                             final @NotNull BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final @Nullable CollectionHolder<? extends T> collection,
+                                                      final BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
 
     /// Find the first element from the `predicate` in the `collection`
     ///
@@ -166,8 +167,8 @@ public final class Find
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T find(final T @Nullable @Unmodifiable [] collection,
-                             final @NotNull BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
+    public static <T extends @Nullable Object> T find(final T @Nullable @Unmodifiable [] collection,
+                                                      final BooleanSupplier predicate) { return FindFirst.findFirst(collection, predicate); }
 
     //#endregion -------------------- predicate () → boolean --------------------
 

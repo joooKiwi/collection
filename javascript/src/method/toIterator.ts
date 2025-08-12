@@ -22,6 +22,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @extensionFunction
  */
-export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
+export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toIteratorByCollectionHolder(collection,)
     if (isArray(collection,))
         return toIteratorByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toIteratorByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toIteratorByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -47,7 +51,7 @@ export function toIterator<const T, >(collection: Nullable<| MinimalistCollectio
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @extensionFunction
  */
 export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionIterator<T> {
@@ -61,7 +65,7 @@ export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nu
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @extensionFunction
  */
 export function toIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionIterator<T> {
@@ -75,7 +79,7 @@ export function toIteratorByCollectionHolder<const T, >(collection: Nullable<Col
 /**
  * Convert the {@link collection} to a new {@link CollectionIterator}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @extensionFunction
  */
 export function toIteratorByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionIterator<T> {

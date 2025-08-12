@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolder}             from "../CollectionHolder"
-import type {ValueHolder}                  from "./value/ValueHolder"
-import type {PossibleIterableOrCollection} from "../type/possibleInstance"
+import type {CollectionHolder}                                   from "../CollectionHolder"
+import type {ValueHolder}                                        from "./value/ValueHolder"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../type/possibleInstance"
 
 import {AbstractCollectionHandler}               from "./AbstractCollectionHandler"
 import {NaNIndexValueHolder}                     from "./value/NaNIndexValueHolder"
@@ -23,7 +23,7 @@ import {PositiveInfinityIndexValueHolder}        from "./value/PositiveInfinityI
 import {ValidValueHolder}                        from "./value/ValidValueHolder"
 
 export abstract class AbstractCollectionHandlerBy2Values<const T = unknown,
-    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableOrCollection<T>,
+    const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 

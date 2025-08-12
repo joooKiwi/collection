@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,7 +33,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
  */
-export function dropLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function dropLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
@@ -40,14 +41,17 @@ export function dropLastWhileIndexed<const T, const S extends T, >(collection: N
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
-export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return dropLastWhileIndexedByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return dropLastWhileIndexedByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return dropLastWhileIndexedByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return dropLastWhileIndexedByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
@@ -59,7 +63,7 @@ export function dropLastWhileIndexed<const T, >(collection: Nullable<| Minimalis
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -68,7 +72,7 @@ export function dropLastWhileIndexedByMinimalistCollectionHolder<const T, const 
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
@@ -90,7 +94,7 @@ export function dropLastWhileIndexedByMinimalistCollectionHolder<const T, >(coll
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -99,7 +103,7 @@ export function dropLastWhileIndexedByCollectionHolder<const T, const S extends 
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
@@ -119,7 +123,7 @@ export function dropLastWhileIndexedByCollectionHolder<const T, >(collection: Nu
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
@@ -128,7 +132,7 @@ export function dropLastWhileIndexedByArray<const T, const S extends T, >(collec
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */

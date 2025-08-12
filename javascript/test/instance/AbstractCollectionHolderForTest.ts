@@ -12,13 +12,13 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {CollectionHolderForTest}                                                                                                                                                                                                                           from "./CollectionHolderForTest"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
-import type {CollectionHolderName}                                                                                                                                                                                                                              from "../../src/type/toStringTag"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
+import type {CollectionHolderForTest}                                                                                                                                                                                                                                           from "./CollectionHolderForTest"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
+import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
 import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}   from "../../src/exception/ForbiddenIndexException"
@@ -134,6 +134,12 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
 
     public abstract getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public abstract getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
+
+    public abstract getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public abstract getFirstOrElse(defaultValue: ReturnCallback<T>,): T
+
+    public abstract getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public abstract getLastOrElse(defaultValue: ReturnCallback<T>,): T
 
     public atOrElse(..._: readonly unknown[]): never
     public atOrElse() {
@@ -269,7 +275,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
 
     //#region -------------------- First index of --------------------
 
-    public abstract firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number
 
     public indexOf(..._: readonly unknown[]): never
     public indexOf() {
@@ -277,7 +283,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     public indexOfOrNull(..._: readonly unknown[]): never
     public indexOfOrNull(): never{
@@ -288,15 +294,15 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     //#endregion -------------------- First index of --------------------
     //#region -------------------- Last index of --------------------
 
-    public abstract lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number
 
 
-    public abstract lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- Index of first --------------------
 
-    public abstract indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
     public findFirstIndex(..._: readonly unknown[]): never
     public findFirstIndex() {
@@ -309,7 +315,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     public findFirstIndexOrNull(..._: readonly unknown[]): never
     public findFirstIndexOrNull() {
@@ -322,7 +328,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
     public findIndexIndexed(..._: readonly unknown[]): never
     public findIndexIndexed() {
@@ -335,7 +341,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     public findIndexIndexedOrNull(..._: readonly unknown[]): never
     public findIndexIndexedOrNull() {
@@ -350,7 +356,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of last --------------------
 
-    public abstract indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
     public findLastIndex(..._: readonly unknown[]): never
     public findLastIndex() {
@@ -358,7 +364,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     public findLastIndexOrNull(..._: readonly unknown[]): never
     public findLastIndexOrNull() {
@@ -366,7 +372,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number
+    public abstract indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
     public findLastIndexIndexed(..._: readonly unknown[]): never
     public findLastIndexIndexed() {
@@ -374,7 +380,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
 
-    public abstract indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber
+    public abstract indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
 
     public findLastIndexIndexedOrNull(..._: readonly unknown[]): never
     public findLastIndexIndexedOrNull() {
@@ -429,6 +435,19 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has null --------------------
+    //#region -------------------- Has no nulls --------------------
+
+    public abstract get hasNoNulls(): boolean
+
+    public get includesNoNulls(): never {
+        throw new Error("The getter method “includesNoNulls” was not expected to be called.",)
+    }
+
+    public get containsNoNulls(): never {
+        throw new Error("The getter method “containsNoNulls” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
     public abstract get hasDuplicate(): boolean
@@ -442,6 +461,19 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has duplicate --------------------
+    //#region -------------------- Has no duplicates --------------------
+
+    public abstract get hasNoDuplicates(): boolean
+
+    public get includesNoDuplicates(): never {
+        throw new Error("The getter method “includesNoDuplicates” was not expected to be called.",)
+    }
+
+    public get containsNoDuplicates(): never {
+        throw new Error("The getter method “containsNoDuplicates” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 
@@ -458,6 +490,21 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has --------------------
+    //#region -------------------- Has not --------------------
+
+    public abstract hasNot(value: T,): boolean
+
+    public includesNot(..._: readonly unknown[]): never
+    public includesNot() {
+        throw new Error("The method “includesNot” was not expected to be called.",)
+    }
+
+    public containsNot(..._: readonly unknown[]): never
+    public containsNot() {
+        throw new Error("The method “containsNot” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
     public abstract hasOne(values: readonly T[],): boolean
@@ -465,8 +512,9 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract hasOne(values: CollectionHolder<T>,): boolean
     public abstract hasOne(values: MinimalistCollectionHolder<T>,): boolean
     public abstract hasOne(values: CollectionIterator<T>,): boolean
-    public abstract hasOne(values: Iterable<T>,): boolean
-    public abstract hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     public includesOne(..._: readonly unknown[]): never
     public includesOne() {
@@ -479,6 +527,28 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    public abstract hasNotOne(values: readonly T[],): boolean
+    public abstract hasNotOne(values: ReadonlySet<T>,): boolean
+    public abstract hasNotOne(values: CollectionHolder<T>,): boolean
+    public abstract hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public abstract hasNotOne(values: CollectionIterator<T>,): boolean
+    public abstract hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+
+    public includesNotOne(..._: readonly unknown[]): never
+    public includesNotOne() {
+        throw new Error("The method “includesNotOne” was not expected to be called.",)
+    }
+
+    public containsNotOne(..._: readonly unknown[]): never
+    public containsNotOne() {
+        throw new Error("The method “containsNotOne” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     public abstract hasAll(values: readonly T[],): boolean
@@ -486,8 +556,9 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     public abstract hasAll(values: CollectionHolder<T>,): boolean
     public abstract hasAll(values: MinimalistCollectionHolder<T>,): boolean
     public abstract hasAll(values: CollectionIterator<T>,): boolean
-    public abstract hasAll(values: Iterable<T>,): boolean
-    public abstract hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
+    public abstract hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
 
     public includesAll(..._: readonly unknown[]): never
     public includesAll() {
@@ -500,6 +571,28 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    public abstract hasNotAll(values: readonly T[],): boolean
+    public abstract hasNotAll(values: ReadonlySet<T>,): boolean
+    public abstract hasNotAll(values: CollectionHolder<T>,): boolean
+    public abstract hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public abstract hasNotAll(values: CollectionIterator<T>,): boolean
+    public abstract hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public abstract hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public abstract hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+
+    public includesNotAll(..._: readonly unknown[]): never
+    public includesNotAll() {
+        throw new Error("The method “includesNotAll” was not expected to be called.",)
+    }
+
+    public containsNotAll(..._: readonly unknown[]): never
+    public containsNotAll() {
+        throw new Error("The “containsNotAll” was not expected to be called.",)
+    }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
@@ -529,15 +622,16 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public abstract slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     public abstract slice(indices: readonly number[],): CollectionHolder<T>
     public abstract slice(indices: ReadonlySet<number>,): CollectionHolder<T>
     public abstract slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public abstract slice(indices: Iterable<number>,): CollectionHolder<T>
-    public abstract slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public abstract slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    public abstract slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
+    public abstract slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public abstract slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
 
     //#endregion -------------------- Slice --------------------
 
@@ -690,7 +784,7 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
 
     //#region -------------------- To reverse --------------------
 
-    public abstract toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
+    public abstract toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
 
     public toReversed(..._: readonly unknown[]): never
     public toReversed() {
@@ -751,12 +845,12 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
+    public abstract joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
+
     public join(..._: readonly unknown[]): never
     public join() {
         throw new Error("The method “join” was not expected to be called.",)
     }
-
-    public abstract joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string
 
     //#endregion -------------------- Join to string --------------------
 

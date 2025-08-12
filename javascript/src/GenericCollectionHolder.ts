@@ -12,120 +12,145 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                  from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                                                                                                                                                                                                                                 from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                                                                                                                                                from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                                                                                                                                          from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                                                                          from "./type/possibleInstance"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                                                                                                                                                                                                                                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                                                                                                                                                                                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                                                                                                                                                                          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                                      from "./type/possibleInstance"
 
-import {AbstractCollectionHolder}                    from "./AbstractCollectionHolder"
-import {CollectionConstants}                         from "./CollectionConstants"
-import {EmptyCollectionException}                    from "./exception/EmptyCollectionException"
-import {ForbiddenIndexException}                     from "./exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException}                   from "./exception/IndexOutOfBoundsException"
-import {allByArray}                                  from "./method/all"
-import {anyByArray}                                  from "./method/any"
-import {dropByArray}                                 from "./method/drop"
-import {dropLastByArray}                             from "./method/dropLast"
-import {dropLastWhileByArray}                        from "./method/dropLastWhile"
-import {dropLastWhileIndexedByArray}                 from "./method/dropLastWhileIndexed"
-import {dropWhileByArray}                            from "./method/dropWhile"
-import {dropWhileIndexedByArray}                     from "./method/dropWhileIndexed"
-import {filterByArray}                               from "./method/filter"
-import {filterIndexedByArray}                        from "./method/filterIndexed"
-import {filterNotByArray}                            from "./method/filterNot"
-import {filterNotIndexedByArray}                     from "./method/filterNotIndexed"
-import {findFirstByArray}                            from "./method/findFirst"
-import {findFirstIndexedByArray}                     from "./method/findFirstIndexed"
-import {findFirstIndexedOrNullByArray}               from "./method/findFirstIndexedOrNull"
-import {findFirstOrNullByArray}                      from "./method/findFirstOrNull"
-import {findLastByArray}                             from "./method/findLast"
-import {findLastIndexedByArray}                      from "./method/findLastIndexed"
-import {findLastIndexedOrNullByArray}                from "./method/findLastIndexedOrNull"
-import {findLastOrNullByArray}                       from "./method/findLastOrNull"
-import {firstIndexOfByArray}                         from "./method/firstIndexOf"
-import {firstIndexOfOrNullByArray}                   from "./method/firstIndexOfOrNull"
-import {forEachByArray}                              from "./method/forEach"
-import {forEachIndexedByArray}                       from "./method/forEachIndexed"
-import {getFirstByArray}                             from "./method/getFirst"
-import {getFirstOrNullByArray}                       from "./method/getFirstOrNull"
-import {getLastByArray}                              from "./method/getLast"
-import {getLastOrNullByArray}                        from "./method/getLastOrNull"
-import {getOrElseByArray}                            from "./method/getOrElse"
-import {getOrNullByArray}                            from "./method/getOrNull"
-import {hasByArray}                                  from "./method/has"
-import {hasAllWithArrayByArray}                      from "./method/hasAll.withArray"
-import {hasAllWithCollectionHolderByArray}           from "./method/hasAll.withCollectionHolder"
-import {hasAllWithCollectionIteratorByArray}         from "./method/hasAll.withCollectionIterator"
-import {hasAllWithIterableByArray}                   from "./method/hasAll.withIterable"
-import {hasAllWithMinimalistCollectionHolderByArray} from "./method/hasAll.withMinimalistCollectionHolder"
-import {hasAllWithSetByArray}                        from "./method/hasAll.withSet"
-import {hasNullByArray}                              from "./method/hasNull"
-import {hasDuplicateByArray}                         from "./method/hasDuplicate"
-import {hasOneWithArrayByArray}                      from "./method/hasOne.withArray"
-import {hasOneWithCollectionHolderByArray}           from "./method/hasOne.withCollectionHolder"
-import {hasOneWithCollectionIteratorByArray}         from "./method/hasOne.withCollectionIterator"
-import {hasOneWithIterableByArray}                   from "./method/hasOne.withIterable"
-import {hasOneWithMinimalistCollectionHolderByArray} from "./method/hasOne.withMinimalistCollectionHolder"
-import {hasOneWithSetByArray}                        from "./method/hasOne.withSet"
-import {indexOfFirstByArray}                         from "./method/indexOfFirst"
-import {indexOfFirstIndexedByArray}                  from "./method/indexOfFirstIndexed"
-import {indexOfFirstIndexedOrNullByArray}            from "./method/indexOfFirstIndexedOrNull"
-import {indexOfFirstOrNullByArray}                   from "./method/indexOfFirstOrNull"
-import {indexOfLastByArray}                          from "./method/indexOfLast"
-import {indexOfLastIndexedByArray}                   from "./method/indexOfLastIndexed"
-import {indexOfLastIndexedOrNullByArray}             from "./method/indexOfLastIndexedOrNull"
-import {indexOfLastOrNullByArray}                    from "./method/indexOfLastOrNull"
-import {isArray}                                     from "./method/isArray"
-import {isArrayByStructure}                          from "./method/isArrayByStructure"
-import {isCollectionIterator}                        from "./method/isCollectionIterator"
-import {isCollectionIteratorByStructure}             from "./method/isCollectionIteratorByStructure"
-import {isCollectionHolder}                          from "./method/isCollectionHolder"
-import {isCollectionHolderByStructure}               from "./method/isCollectionHolderByStructure"
-import {isMinimalistCollectionHolder}                from "./method/isMinimalistCollectionHolder"
-import {isMinimalistCollectionHolderByStructure}     from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                       from "./method/isSet"
-import {isSetByStructure}                            from "./method/isSetByStructure"
-import {joinToStringByArray}                         from "./method/joinToString"
-import {lastIndexOfByArray}                          from "./method/lastIndexOf"
-import {lastIndexOfOrNullByArray}                    from "./method/lastIndexOfOrNull"
-import {noneByArray}                                 from "./method/none"
-import {mapByArray}                                  from "./method/map"
-import {mapIndexedByArray}                           from "./method/mapIndexed"
-import {mapNotNullByArray}                           from "./method/mapNotNull"
-import {mapNotNullIndexedByArray}                    from "./method/mapNotNullIndexed"
-import {onEachByArray}                               from "./method/onEach"
-import {onEachIndexedByArray}                        from "./method/onEachIndexed"
-import {sliceWithARangeByArray}                      from "./method/slice.withARange"
-import {sliceWithArrayByArray}                       from "./method/slice.withArray"
-import {sliceWithCollectionHolderByArray}            from "./method/slice.withCollectionHolder"
-import {sliceWithCollectionIteratorByArray}          from "./method/slice.withCollectionIterator"
-import {sliceWithIterableByArray}                    from "./method/slice.withIterable"
-import {sliceWithMinimalistCollectionHolderByArray}  from "./method/slice.withMinimalistCollectionHolder"
-import {sliceWithSetByArray}                         from "./method/slice.withSet"
-import {takeByArray}                                 from "./method/take"
-import {takeLastByArray}                             from "./method/takeLast"
-import {takeLastWhileByArray}                        from "./method/takeLastWhile"
-import {takeLastWhileIndexedByArray}                 from "./method/takeLastWhileIndexed"
-import {takeWhileByArray}                            from "./method/takeWhile"
-import {takeWhileIndexedByArray}                     from "./method/takeWhileIndexed"
-import {toIteratorByArray}                           from "./method/toIterator"
-import {toLocaleLowerCaseStringByArray}              from "./method/toLocaleLowerCaseString"
-import {toLocaleStringByArray}                       from "./method/toLocaleString"
-import {toLocaleUpperCaseStringByArray}              from "./method/toLocaleUpperCaseString"
-import {toLowerCaseStringByArray}                    from "./method/toLowerCaseString"
-import {toMapByArray}                                from "./method/toMap"
-import {toMutableArrayByArray}                       from "./method/toMutableArray"
-import {toMutableMapByArray}                         from "./method/toMutableMap"
-import {toMutableSetByArray}                         from "./method/toMutableSet"
-import {toReverseByArray}                            from "./method/toReverse"
-import {toSetByArray}                                from "./method/toSet"
-import {toStringByArray}                             from "./method/toString"
-import {toUpperCaseStringByArray}                    from "./method/toUpperCaseString"
+import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
+import {CollectionConstants}                            from "./CollectionConstants"
+import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
+import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
+import {__reduceTo}                                     from "./method/_array utility"
+import {allByArray}                                     from "./method/all"
+import {anyByArray}                                     from "./method/any"
+import {dropByArray}                                    from "./method/drop"
+import {dropLastByArray}                                from "./method/dropLast"
+import {dropLastWhileByArray}                           from "./method/dropLastWhile"
+import {dropLastWhileIndexedByArray}                    from "./method/dropLastWhileIndexed"
+import {dropWhileByArray}                               from "./method/dropWhile"
+import {dropWhileIndexedByArray}                        from "./method/dropWhileIndexed"
+import {filterByArray}                                  from "./method/filter"
+import {filterIndexedByArray}                           from "./method/filterIndexed"
+import {filterNotByArray}                               from "./method/filterNot"
+import {filterNotIndexedByArray}                        from "./method/filterNotIndexed"
+import {findFirstByArray}                               from "./method/findFirst"
+import {findFirstIndexedByArray}                        from "./method/findFirstIndexed"
+import {findFirstIndexedOrNullByArray}                  from "./method/findFirstIndexedOrNull"
+import {findFirstOrNullByArray}                         from "./method/findFirstOrNull"
+import {findLastByArray}                                from "./method/findLast"
+import {findLastIndexedByArray}                         from "./method/findLastIndexed"
+import {findLastIndexedOrNullByArray}                   from "./method/findLastIndexedOrNull"
+import {findLastOrNullByArray}                          from "./method/findLastOrNull"
+import {firstIndexOfByArray}                            from "./method/firstIndexOf"
+import {firstIndexOfOrNullByArray}                      from "./method/firstIndexOfOrNull"
+import {forEachByArray}                                 from "./method/forEach"
+import {forEachIndexedByArray}                          from "./method/forEachIndexed"
+import {getFirstByArray}                                from "./method/getFirst"
+import {getFirstOrElseByArray}                          from "./method/getFirstOrElse"
+import {getFirstOrNullByArray}                          from "./method/getFirstOrNull"
+import {getLastByArray}                                 from "./method/getLast"
+import {getLastOrElseByArray}                           from "./method/getLastOrElse"
+import {getLastOrNullByArray}                           from "./method/getLastOrNull"
+import {getOrElseByArray}                               from "./method/getOrElse"
+import {getOrNullByArray}                               from "./method/getOrNull"
+import {hasByArray}                                     from "./method/has"
+import {hasAllWithArrayByArray}                         from "./method/hasAll.withArray"
+import {hasAllWithCollectionHolderByArray}              from "./method/hasAll.withCollectionHolder"
+import {hasAllWithCollectionIteratorByArray}            from "./method/hasAll.withCollectionIterator"
+import {hasAllWithIterableByArray}                      from "./method/hasAll.withIterable"
+import {hasAllWithIteratorByArray}                      from "./method/hasAll.withIterator"
+import {hasAllWithMinimalistCollectionHolderByArray}    from "./method/hasAll.withMinimalistCollectionHolder"
+import {hasAllWithSetByArray}                           from "./method/hasAll.withSet"
+import {hasDuplicateByArray}                            from "./method/hasDuplicate"
+import {hasNoDuplicatesByArray}                         from "./method/hasNoDuplicates"
+import {hasNoNullsByArray}                              from "./method/hasNoNulls"
+import {hasNotByArray}                                  from "./method/hasNot"
+import {hasNotAllWithArrayByArray}                      from "./method/hasNotAll.withArray"
+import {hasNotAllWithCollectionHolderByArray}           from "./method/hasNotAll.withCollectionHolder"
+import {hasNotAllWithCollectionIteratorByArray}         from "./method/hasNotAll.withCollectionIterator"
+import {hasNotAllWithIterableByArray}                   from "./method/hasNotAll.withIterable"
+import {hasNotAllWithIteratorByArray}                   from "./method/hasNotAll.withIterator"
+import {hasNotAllWithMinimalistCollectionHolderByArray} from "./method/hasNotAll.withMinimalistCollectionHolder"
+import {hasNotAllWithSetByArray}                        from "./method/hasNotAll.withSet"
+import {hasNotOneWithArrayByArray}                      from "./method/hasNotOne.withArray"
+import {hasNotOneWithCollectionHolderByArray}           from "./method/hasNotOne.withCollectionHolder"
+import {hasNotOneWithCollectionIteratorByArray}         from "./method/hasNotOne.withCollectionIterator"
+import {hasNotOneWithIterableByArray}                   from "./method/hasNotOne.withIterable"
+import {hasNotOneWithIteratorByArray}                   from "./method/hasNotOne.withIterator"
+import {hasNotOneWithMinimalistCollectionHolderByArray} from "./method/hasNotOne.withMinimalistCollectionHolder"
+import {hasNotOneWithSetByArray}                        from "./method/hasNotOne.withSet"
+import {hasNullByArray}                                 from "./method/hasNull"
+import {hasOneWithArrayByArray}                         from "./method/hasOne.withArray"
+import {hasOneWithCollectionHolderByArray}              from "./method/hasOne.withCollectionHolder"
+import {hasOneWithCollectionIteratorByArray}            from "./method/hasOne.withCollectionIterator"
+import {hasOneWithIterableByArray}                      from "./method/hasOne.withIterable"
+import {hasOneWithIteratorByArray}                      from "./method/hasOne.withIterator"
+import {hasOneWithMinimalistCollectionHolderByArray}    from "./method/hasOne.withMinimalistCollectionHolder"
+import {hasOneWithSetByArray}                           from "./method/hasOne.withSet"
+import {indexOfFirstByArray}                            from "./method/indexOfFirst"
+import {indexOfFirstIndexedByArray}                     from "./method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByArray}               from "./method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByArray}                      from "./method/indexOfFirstOrNull"
+import {indexOfLastByArray}                             from "./method/indexOfLast"
+import {indexOfLastIndexedByArray}                      from "./method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByArray}                from "./method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByArray}                       from "./method/indexOfLastOrNull"
+import {isArray}                                        from "./method/isArray"
+import {isArrayByStructure}                             from "./method/isArrayByStructure"
+import {isCollectionIterator}                           from "./method/isCollectionIterator"
+import {isCollectionIteratorByStructure}                from "./method/isCollectionIteratorByStructure"
+import {isCollectionHolder}                             from "./method/isCollectionHolder"
+import {isCollectionHolderByStructure}                  from "./method/isCollectionHolderByStructure"
+import {isIterator}                                     from "./method/isIterator"
+import {isIteratorByStructure}                          from "./method/isIteratorByStructure"
+import {isMinimalistCollectionHolder}                   from "./method/isMinimalistCollectionHolder"
+import {isMinimalistCollectionHolderByStructure}        from "./method/isMinimalistCollectionHolderByStructure"
+import {isSet}                                          from "./method/isSet"
+import {isSetByStructure}                               from "./method/isSetByStructure"
+import {joinToStringByArray}                            from "./method/joinToString"
+import {lastIndexOfByArray}                             from "./method/lastIndexOf"
+import {lastIndexOfOrNullByArray}                       from "./method/lastIndexOfOrNull"
+import {noneByArray}                                    from "./method/none"
+import {mapByArray}                                     from "./method/map"
+import {mapIndexedByArray}                              from "./method/mapIndexed"
+import {mapNotNullByArray}                              from "./method/mapNotNull"
+import {mapNotNullIndexedByArray}                       from "./method/mapNotNullIndexed"
+import {onEachByArray}                                  from "./method/onEach"
+import {onEachIndexedByArray}                           from "./method/onEachIndexed"
+import {sliceWithARangeByArray}                         from "./method/slice.withARange"
+import {sliceWithArrayByArray}                          from "./method/slice.withArray"
+import {sliceWithCollectionHolderByArray}               from "./method/slice.withCollectionHolder"
+import {sliceWithCollectionIteratorByArray}             from "./method/slice.withCollectionIterator"
+import {sliceWithIterableByArray}                       from "./method/slice.withIterable"
+import {sliceWithIteratorByArray}                       from "./method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolderByArray}     from "./method/slice.withMinimalistCollectionHolder"
+import {sliceWithSetByArray}                            from "./method/slice.withSet"
+import {takeByArray}                                    from "./method/take"
+import {takeLastByArray}                                from "./method/takeLast"
+import {takeLastWhileByArray}                           from "./method/takeLastWhile"
+import {takeLastWhileIndexedByArray}                    from "./method/takeLastWhileIndexed"
+import {takeWhileByArray}                               from "./method/takeWhile"
+import {takeWhileIndexedByArray}                        from "./method/takeWhileIndexed"
+import {toIteratorByArray}                              from "./method/toIterator"
+import {toLocaleLowerCaseStringByArray}                 from "./method/toLocaleLowerCaseString"
+import {toLocaleStringByArray}                          from "./method/toLocaleString"
+import {toLocaleUpperCaseStringByArray}                 from "./method/toLocaleUpperCaseString"
+import {toLowerCaseStringByArray}                       from "./method/toLowerCaseString"
+import {toMapByArray}                                   from "./method/toMap"
+import {toMutableArrayByArray}                          from "./method/toMutableArray"
+import {toMutableMapByArray}                            from "./method/toMutableMap"
+import {toMutableSetByArray}                            from "./method/toMutableSet"
+import {toReverseByArray}                               from "./method/toReverse"
+import {toSetByArray}                                   from "./method/toSet"
+import {toStringByArray}                                from "./method/toString"
+import {toUpperCaseStringByArray}                       from "./method/toUpperCaseString"
 
 /**
  * A {@link CollectionHolder} having the values eagerly retrieved.
@@ -136,12 +161,14 @@ import {toUpperCaseStringByArray}                    from "./method/toUpperCaseS
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
+ * @typeParam T         The element type
+ * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
  * @see GenericMinimalistCollectionHolder
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown,
-    const REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -149,7 +176,7 @@ export class GenericCollectionHolder<const T = unknown,
     readonly #size: number
     readonly #isEmpty: boolean
 
-    readonly #reference: REFERENCE
+    readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
     readonly #array: readonly T[]
     #set?: ReadonlySet<T>
     #map?: ReadonlyMap<number, T>
@@ -168,8 +195,10 @@ export class GenericCollectionHolder<const T = unknown,
     public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
     public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
-    public constructor(collectionIterable: CollectionIterator<T>,)
-    public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
+    public constructor(collectionIterator: CollectionIterator<T>,)
+    public constructor(lateCollectionIterator: () => CollectionIterator<T>,)
+    public constructor(iterator: Iterator<T, unknown, unknown>,)
+    public constructor(lateIterator: () => Iterator<T, unknown, unknown>,)
     public constructor(iterableWithSize: IterableWithSize<T>,)
     public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
     public constructor(iterableWithLength: IterableWithLength<T>,)
@@ -178,12 +207,12 @@ export class GenericCollectionHolder<const T = unknown,
     public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
     public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
     public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(iterable: Iterable<T>,)
-    public constructor(lateIterable: () => Iterable<T>,)
-    public constructor(reference: REFERENCE,)
-    public constructor(lateReference: () => REFERENCE,)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),)
-    public constructor(reference: | REFERENCE | (() => REFERENCE),) {
+    public constructor(iterable: Iterable<T, unknown, unknown>,)
+    public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
+    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(lateReference: () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
+    public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
         // README: The eager instantiation has some weird shenanigan to keep its nature pure.
         //         Also, to be efficient, there is some duplicate code in the constructor.
@@ -242,7 +271,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isSet<T>(reference,)) {
+        if (isSet(reference,)) {
             this.#hasDuplicate = false
             const size = this.#size = reference.size
 
@@ -291,7 +320,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionHolder<T>(reference,)) {
+        if (isCollectionHolder(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = reference.isEmpty) {
@@ -339,7 +368,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isMinimalistCollectionHolder<T>(reference,)) {
+        if (isMinimalistCollectionHolder(reference,)) {
             const size = this.#size = reference.size
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -387,7 +416,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        if (isCollectionIterator<T>(reference,)) {
+        if (isCollectionIterator(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (this.#isEmpty = !reference.hasNext) {
@@ -433,6 +462,35 @@ export class GenericCollectionHolder<const T = unknown,
             return
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
+        }
+
+        if (isIterator(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = iteratorResult.done === true) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            this[0] = array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                this[size] = array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
         }
 
         //#endregion -------------------- initialization by a known instance --------------------
@@ -679,8 +737,37 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        if (isIteratorByStructure<T>(reference,)) {
+            let iteratorResult = reference.next()
+
+            //#region -------------------- Initialization (size = 0) --------------------
+
+            if (this.#isEmpty = iteratorResult.done === true) {
+                this.#size = 0
+                this.#hasNull = this.#hasDuplicate = false
+                this.#array = CollectionConstants.EMPTY_ARRAY
+                this.#set = CollectionConstants.EMPTY_SET
+                return
+            }
+
+            //#endregion -------------------- Initialization (size = 0) --------------------
+            //#region -------------------- Initialization (size = over 0) --------------------
+
+            const array: T[] = []
+            this[0] = array[0] = iteratorResult.value
+            let size = 0
+            while (++size, !(iteratorResult = reference.next()).done)
+                this[size] = array[size] = iteratorResult.value
+            this.#size = size
+            this.#array = Object.freeze(array,)
+
+            //#endregion -------------------- Initialization (size = over 0) --------------------
+
+            return
+        }
+
         //#endregion -------------------- initialization by a structure --------------------
-        //#region -------------------- initialization by an iterator --------------------
+        //#region -------------------- initialization by an iterable --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -841,7 +928,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator = reference[Symbol.iterator]() as Iterator<T, unknown, unknown>
+        const iterator = reference[Symbol.iterator]()
         let iteratorResult = iterator.next()
 
         //#region -------------------- Initialization (size = 0) --------------------
@@ -867,7 +954,7 @@ export class GenericCollectionHolder<const T = unknown,
 
         //#endregion -------------------- Initialization (size = over 0) --------------------
 
-        //#endregion -------------------- initialization by an iterator --------------------
+        //#endregion -------------------- initialization by an iterable --------------------
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -875,10 +962,10 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    /** The iterable received in the constructor */
-    protected get _reference(): REFERENCE { return this.#reference }
+    /** The raw value received in the constructor */
+    protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference }
 
-    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder collection} */
+    /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder instance} */
     protected get _array(): readonly T[] { return this.#array }
 
     //#endregion -------------------- Reference methods --------------------
@@ -936,6 +1023,20 @@ export class GenericCollectionHolder<const T = unknown,
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return getOrElseByArray(this._array, index, defaultValue,)
+    }
+
+
+    public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return getFirstOrElseByArray(this._array, defaultValue,)
+    }
+
+
+    public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return getLastOrElseByArray(this._array, defaultValue,)
     }
 
 
@@ -1010,55 +1111,55 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return firstIndexOfByArray(this._array, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return firstIndexOfByArray(this._array, element, from, to,)
     }
 
-    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return firstIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
-    }
-
-
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return lastIndexOfByArray(this._array, element, fromIndex, toIndex,)
-    }
-
-    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return lastIndexOfOrNullByArray(this._array, element, fromIndex, toIndex,)
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByArray(this._array, element, from, to,)
     }
 
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstByArray(this._array, predicate, fromIndex, toIndex,)
+    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return lastIndexOfByArray(this._array, element, from, to,)
     }
 
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstOrNullByArray(this._array, predicate, fromIndex, toIndex,)
-    }
-
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstIndexedByArray(this._array, predicate, fromIndex, toIndex,)
-    }
-
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByArray(this._array, element, from, to,)
     }
 
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfLastByArray(this._array, predicate, fromIndex, toIndex,)
+    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstByArray(this._array, predicate, from, to,)
     }
 
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByArray(this._array, predicate, from, to,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfLastIndexedByArray(this._array, predicate, fromIndex, toIndex,)
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstIndexedByArray(this._array, predicate, from, to,)
     }
 
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedOrNullByArray(this._array, predicate, fromIndex, toIndex,)
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByArray(this._array, predicate, from, to,)
+    }
+
+
+    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfLastByArray(this._array, predicate, from, to,)
+    }
+
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByArray(this._array, predicate, from, to,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfLastIndexedByArray(this._array, predicate, from, to,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByArray(this._array, predicate, from, to,)
     }
 
     //#endregion -------------------- Index methods --------------------
@@ -1092,10 +1193,14 @@ export class GenericCollectionHolder<const T = unknown,
 
     public override get hasNull(): boolean { return this.#hasNull ??= hasNullByArray(this._array,) }
 
+    public override get hasNoNulls(): boolean { return !(this.#hasNull ??= !hasNoNullsByArray(this._array,)) }
+
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= hasDuplicateByArray(this._array,) }
+
+    public override get hasNoDuplicates(): boolean { return !(this.#hasDuplicate ??= !hasNoDuplicatesByArray(this._array,)) }
 
     //#endregion -------------------- Has duplicate --------------------
 
@@ -1103,6 +1208,10 @@ export class GenericCollectionHolder<const T = unknown,
 
     public override has(value: T,): boolean {
         return hasByArray(this._array, value,)
+    }
+
+    public override hasNot(value: T,): boolean {
+        return hasNotByArray(this._array, value,)
     }
 
     //#endregion -------------------- Has --------------------
@@ -1128,11 +1237,46 @@ export class GenericCollectionHolder<const T = unknown,
         return hasOneWithCollectionIteratorByArray(this._array, values,)
     }
 
-    protected override _hasOneByIterable(values: Iterable<T>,): boolean {
+    protected override _hasOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasOneWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         return hasOneWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has one --------------------
+    //#region -------------------- Has not one --------------------
+
+    protected override _hasNotOneByArray(values: readonly T[],): boolean {
+        return hasNotOneWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotOneWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotOneWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotOneWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotOneWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotOneByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotOneWithIterableByArray(this._array, values,)
+    }
+
+    //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
     protected override _hasAllByArray(values: readonly T[],): boolean {
@@ -1155,11 +1299,46 @@ export class GenericCollectionHolder<const T = unknown,
         return hasAllWithCollectionIteratorByArray(this._array, values,)
     }
 
-    protected override _hasAllByIterable(values: Iterable<T>,): boolean {
+    protected override _hasAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasAllWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
         return hasAllWithIterableByArray(this._array, values,)
     }
 
     //#endregion -------------------- Has all --------------------
+    //#region -------------------- Has not all --------------------
+
+    protected override _hasNotAllByArray(values: readonly T[],): boolean {
+        return hasNotAllWithArrayByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+        return hasNotAllWithSetByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
+        return hasNotAllWithMinimalistCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByCollectionHolder(values: CollectionHolder<T>,): boolean {
+        return hasNotAllWithCollectionHolderByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByCollectionIterator(values: CollectionIterator<T>,): boolean {
+        return hasNotAllWithCollectionIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByIterator(values: Iterator<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIteratorByArray(this._array, values,)
+    }
+
+    protected override _hasNotAllByIterable(values: Iterable<T, unknown, unknown>,): boolean {
+        return hasNotAllWithIterableByArray(this._array, values,)
+    }
+
+    //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
@@ -1210,15 +1389,16 @@ export class GenericCollectionHolder<const T = unknown,
         if (this.hasNull)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const array = this._array
-                const newArray: NonNullable<T>[] = []
-                const size = this.size
+                const size = array.length
+                const tempArray = new Array<NonNullable<T>>(size,)
+                let amountOfItemsAdded = -1
                 let index = -1
                 while (++index < size) {
                     const value = array[index] as T
                     if (value != null)
-                        newArray.push(value,)
+                        tempArray[++amountOfItemsAdded] = value
                 }
-                return newArray
+                return __reduceTo(tempArray, amountOfItemsAdded + 1,)
             },)
         return this as CollectionHolder<NonNullable<T>>
     }
@@ -1230,16 +1410,16 @@ export class GenericCollectionHolder<const T = unknown,
         return sliceWithARangeByArray(this._array,)
     }
 
-    protected override _sliceWith1Argument(fromIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex,)
+    protected override _sliceWith1Argument(from: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from,)
     }
 
-    protected override _sliceWith2Argument(fromIndex: number, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    protected override _sliceWith2Argument(from: number, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from, to,)
     }
 
-    protected override _sliceWith2ArgumentWhere1stIsNull(fromIndex: NullOrUndefined, toIndex: number,): CollectionHolder<T> {
-        return sliceWithARangeByArray(this._array, fromIndex, toIndex,)
+    protected override _sliceWith2ArgumentWhere1stIsNull(from: NullOrUndefined, to: number,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this._array, from, to,)
     }
 
     protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
@@ -1262,7 +1442,11 @@ export class GenericCollectionHolder<const T = unknown,
         return sliceWithCollectionIteratorByArray(this._array, indices,)
     }
 
-    protected override _sliceByIterable(indices: Iterable<number>,): CollectionHolder<T> {
+    protected override _sliceByIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIteratorByArray(this._array, indices,)
+    }
+
+    protected override _sliceByIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
         return sliceWithIterableByArray(this._array, indices,)
     }
 
@@ -1289,7 +1473,6 @@ export class GenericCollectionHolder<const T = unknown,
     public override takeLast(n: number,): CollectionHolder<T> {
         return takeLastByArray(this._array, n,)
     }
-
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -1394,8 +1577,8 @@ export class GenericCollectionHolder<const T = unknown,
 
     //#region -------------------- To reverse --------------------
 
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByArray(this._array, fromIndex, toIndex,)
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByArray(this._array, from, to,)
     }
 
     //#endregion -------------------- To reverse --------------------

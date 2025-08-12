@@ -36,7 +36,7 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
 
     /// Get the last element in the `collection`
     /// or `null` if it [is empty][CollectionHolder#isEmpty]
@@ -47,7 +47,7 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection) { return GetLastOrNull.getLastOrNull(collection); }
 
     /// Get the last element in the `collection`
     /// or `null` if it **is empty**
@@ -58,7 +58,7 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_1)
-    public static <T> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection) { return GetLastOrNull.getLastOrNull(collection); }
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection) { return GetLastOrNull.getLastOrNull(collection); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → boolean --------------------
@@ -75,8 +75,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -94,8 +94,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -113,8 +113,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -135,8 +135,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -154,8 +154,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -173,8 +173,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -195,8 +195,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault">C# LastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                             final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                      final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -214,8 +214,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
-                                             final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final @Nullable CollectionHolder<? extends T> collection,
+                                                                      final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);
@@ -233,8 +233,8 @@ public final class LastOrNull
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.ENUMERABLE.Lastordefault">c# lastOrDefault(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_NULL_2)
-    public static <T> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
-                                             final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> @Nullable T lastOrNull(final T @Nullable @Unmodifiable [] collection,
+                                                                      final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetLastOrNull.getLastOrNull(collection);
         return FindLastOrNull.findLastOrNull(collection, predicate);

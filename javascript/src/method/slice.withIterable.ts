@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -35,13 +36,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return sliceWithIterableByCollectionHolder(collection, indices,)
     if (isArray(collection,))
         return sliceWithIterableByArray(collection, indices,)
+    if (isMinimalistCollectionHolder(collection,))
+        return sliceWithIterableByMinimalistCollectionHolder(collection, indices,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return sliceWithIterableByCollectionHolder(collection, indices,)
     if (isArrayByStructure<T>(collection,))
@@ -53,7 +57,7 @@ export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCo
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -77,7 +81,7 @@ export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collect
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
@@ -101,7 +105,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
 /**
  * Create a new {@link CollectionHolder} from the {@link indices} in the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param indices The given indices
  * @see ReadonlyArray.slice
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)

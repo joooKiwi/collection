@@ -5,7 +5,6 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -30,15 +29,15 @@ public final class Has
     /// @return `true` if the `value` is equals to one value in the `collection`
     /// @see java.util.Collection#contains(Object)
     /// @see java.util.Map#containsValue(Object)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">JavaScript Array.includes(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">JavaScript Set.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean has(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final T value) {
+    public static <T extends @Nullable Object> boolean has(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final T value) {
         if (collection == null)
             return false;
 
@@ -56,14 +55,14 @@ public final class Has
     /// @return `true` if the `value` is equals to one value in the `collection`
     /// @see java.util.Collection#contains(Object)
     /// @see java.util.Map#containsValue(Object)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">JavaScript Array.includes(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">JavaScript Set.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean has(final @Nullable CollectionHolder<? extends T> collection,
-                                  final T value) {
+    public static <T extends @Nullable Object> boolean has(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final T value) {
         if (collection == null)
             return false;
         if (collection.isEmpty())
@@ -79,15 +78,15 @@ public final class Has
     /// @return `true` if the `value` is equals to one value in the `collection`
     /// @see java.util.Collection#contains(Object)
     /// @see java.util.Map#containsValue(Object)
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">Javascript Array.includes(value)</a>
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">Javascript Set.has(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/includes">JavaScript Array.includes(value)</a>
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/has">JavaScript Set.has(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains.html">Kotlin contains(value)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/containsValue.html">Kotlin Map.containsValue(element)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains">C# contains(value)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean has(final T @Nullable @Unmodifiable [] collection,
-                                  final T value) {
+    public static <T extends @Nullable Object> boolean has(final T @Nullable @Unmodifiable [] collection,
+                                                           final T value) {
         if (collection == null)
             return false;
 
@@ -100,8 +99,9 @@ public final class Has
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T> boolean __has(final @NotNull MinimalistCollectionHolder<? extends T> collection, int size,
-                                     final T value) {
+    private static <T extends @Nullable Object> boolean __has(final MinimalistCollectionHolder<? extends T> collection,
+                                                              final int size,
+                                                              final T value) {
         var index = -1;
         if (value == null) {
             while (++index < size)
@@ -118,8 +118,9 @@ public final class Has
         return false;
     }
 
-    private static <T> boolean __has(final T @NotNull @Unmodifiable [] collection, int size,
-                                     final T value) {
+    private static <T extends @Nullable Object> boolean __has(final T @Unmodifiable [] collection,
+                                                              final int size,
+                                                              final T value) {
         var index = -1;
         if (value == null) {
             while (++index < size)

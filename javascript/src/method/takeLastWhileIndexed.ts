@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,10 +30,10 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  *
  * @param collection The {@link Nullable nullable} collection ({@link CollectionHolder}, {@link MinimalistCollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeWhile(predicate)
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
  */
-export function takeLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function takeLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
@@ -40,14 +41,17 @@ export function takeLastWhileIndexed<const T, const S extends T, >(collection: N
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
-export function takeLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-export function takeLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function takeLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function takeLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return takeLastWhileIndexedByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return takeLastWhileIndexedByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return takeLastWhileIndexedByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return takeLastWhileIndexedByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
@@ -59,7 +63,7 @@ export function takeLastWhileIndexed<const T, >(collection: Nullable<| Minimalis
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -68,7 +72,7 @@ export function takeLastWhileIndexedByMinimalistCollectionHolder<const T, const 
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
@@ -90,7 +94,7 @@ export function takeLastWhileIndexedByMinimalistCollectionHolder<const T, >(coll
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -99,7 +103,7 @@ export function takeLastWhileIndexedByCollectionHolder<const T, const S extends 
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
@@ -119,7 +123,7 @@ export function takeLastWhileIndexedByCollectionHolder<const T, >(collection: Nu
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  * @typescriptDefinition
@@ -128,7 +132,7 @@ export function takeLastWhileIndexedByArray<const T, const S extends T, >(collec
 /**
  * Get a new {@link CollectionHolder} having the last elements satisfying the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last-while.html Kotlin takeLastWhile(predicate)
  */
@@ -159,11 +163,12 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection.get(index,)
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection.get(index,)
+            return newArrayFromIndexToLast
         }
 
     const newArray = new Array<T>(size,)
@@ -181,11 +186,12 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection[index] as T
+            return newArrayFromIndexToLast
         }
     return collection
 }
@@ -200,11 +206,12 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection.get(index + 1,),]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection.get(index,)
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection.get(index,)
+            return newArrayFromIndexToLast
         }
 
     const newArray = new Array<T>(size,)
@@ -222,11 +229,12 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [collection[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = collection[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = collection[index] as T
+            return newArrayFromIndexToLast
         }
     return collection
 }
@@ -242,11 +250,12 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = newArray[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = newArray[index] as T
+            return newArrayFromIndexToLast
         }
     return newArray
 }
@@ -261,11 +270,12 @@ function __with2ArgumentByArray<const T, >(collection: readonly T[], size: numbe
                 return CollectionConstants.EMPTY_ARRAY
             if (newSize === 1)
                 return [newArray[index + 1] as T,]
-            const newArrayWithDrop = new Array<T>(newSize,)
+
+            const newArrayFromIndexToLast = new Array<T>(newSize,)
             let indexAdded = 0
             while (++index < size)
-                newArrayWithDrop[indexAdded++] = newArray[index] as T
-            return newArrayWithDrop
+                newArrayFromIndexToLast[indexAdded++] = newArray[index] as T
+            return newArrayFromIndexToLast
         }
     return newArray
 }

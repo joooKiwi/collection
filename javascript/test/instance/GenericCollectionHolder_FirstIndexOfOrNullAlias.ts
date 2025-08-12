@@ -18,7 +18,7 @@ import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_FirstIndexOfOrNullAlias
-    extends GenericCollectionHolder<string, readonly string[]>
+    extends GenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -30,9 +30,9 @@ export class GenericCollectionHolder_FirstIndexOfOrNullAlias
         return this
     }
 
-    public override firstIndexOfOrNull(element: string, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
+    public override firstIndexOfOrNull(element: string, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
         this.amountOfCall++
-        return super.firstIndexOfOrNull(element, fromIndex, toIndex,)
+        return super.firstIndexOfOrNull(element, from, to,)
     }
 
 }

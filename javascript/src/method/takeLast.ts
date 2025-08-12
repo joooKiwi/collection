@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -28,30 +29,33 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
  */
-export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
+export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
-        return takeLastByCollectionHolder(collection, n,)
+    if (isCollectionHolder(collection,))
+        return __coreByCollectionHolder(collection, n,)
     if (isArray(collection,))
-        return takeLastByArray(collection, n,)
+        return __coreByArray(collection, n,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreByMinimalistCollectionHolder(collection, n,)
+
     if (isCollectionHolderByStructure<T>(collection,))
-        return takeLastByCollectionHolder(collection, n,)
+        return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
-        return takeLastByArray(collection, n,)
-    return takeLastByMinimalistCollectionHolder(collection, n,)
+        return __coreByArray(collection, n,)
+    return __coreByMinimalistCollectionHolder(collection, n,)
 }
 
 /**
  * Get a new {@link CollectionHolder} from the last {@link n} elements
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
+ * @param collection The nullable collection
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
  * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
  * @canReceiveNegativeValue
@@ -59,7 +63,43 @@ export function takeLast<const T, >(collection: Nullable<| MinimalistCollectionH
 export function takeLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByMinimalistCollectionHolder(collection, n,)
+}
 
+/**
+ * Get a new {@link CollectionHolder} from the last {@link n} elements
+ *
+ * @param collection The nullable collection
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
+ * @canReceiveNegativeValue
+ */
+export function takeLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByCollectionHolder(collection, n,)
+}
+
+/**
+ * Get a new {@link CollectionHolder} from the last {@link n} elements
+ *
+ * @param collection The nullable collection
+ * @param n          The number of arguments (if negative, then it is plus {@link size})
+ * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
+ * @canReceiveNegativeValue
+ */
+export function takeLastByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
+    if (collection == null)
+        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+    return __coreByArray(collection, n,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
@@ -87,18 +127,7 @@ export function takeLastByMinimalistCollectionHolder<const T, >(collection: Null
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the last {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
- * @canReceiveNegativeValue
- */
-export function takeLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (Number.isNaN(n,))
@@ -127,20 +156,7 @@ export function takeLastByCollectionHolder<const T, >(collection: Nullable<Colle
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
-/**
- * Get a new {@link CollectionHolder} from the last {@link n} elements
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param n          The number of arguments (if negative then it is plus {@link size})
- * @throws ForbiddenIndexException {@link n} is an undetermined {@link Number} ({@link Number.NaN NaN})
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/take-last.html Kotlin takeLast(n)
- * @canReceiveNegativeValue
- */
-export function takeLastByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
-    if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
-
-    const size = collection.length
+function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {    const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
     if (Number.isNaN(n,))
@@ -167,7 +183,7 @@ export function takeLastByArray<const T, >(collection: Nullable<readonly T[]>, n
     return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, size, n2,),)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, size: number, amount: number,): readonly T[] {

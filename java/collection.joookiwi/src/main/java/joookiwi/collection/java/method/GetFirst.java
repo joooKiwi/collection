@@ -34,7 +34,7 @@ public final class GetFirst
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getFirst(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> T getFirst(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.size() == 0)
@@ -53,7 +53,7 @@ public final class GetFirst
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getFirst(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> T getFirst(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -72,7 +72,7 @@ public final class GetFirst
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getFirst(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> T getFirst(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.length == 0)

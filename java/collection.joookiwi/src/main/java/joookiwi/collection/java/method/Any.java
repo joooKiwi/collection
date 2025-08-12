@@ -8,7 +8,6 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -34,11 +33,14 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [size][#size] is not **0** otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         return collection.size() != 0;
@@ -50,11 +52,14 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [isNotEmpty][#isNotEmpty] otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return false;
         return collection.isNotEmpty();
@@ -66,11 +71,14 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `false` if null is received or [size][#size] is not **0** otherwise
     /// @see java.util.stream.Stream#findAny() Stream.findAny()
+    /// @see java.util.stream.IntStream#findAny() IntStream.findAny()
+    /// @see java.util.stream.LongStream#findAny() LongStream.findAny()
+    /// @see java.util.stream.DoubleStream#findAny() DoubleStream.findAny()
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any()</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_1)
-    public static <T> boolean any(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> boolean any(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return false;
         return collection.length != 0;
@@ -87,13 +95,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -113,13 +124,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -137,13 +151,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final T @Nullable @Unmodifiable [] collection,
-                                  final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final T @Nullable @Unmodifiable [] collection,
+                                                           final @Nullable ObjIntPredicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -166,13 +183,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -192,13 +212,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -216,13 +239,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final T @Nullable @Unmodifiable [] collection,
-                                  final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> boolean any(final T @Nullable @Unmodifiable [] collection,
+                                                           final @Nullable Predicate<? super T> predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -245,13 +271,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -271,13 +300,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final @Nullable CollectionHolder<? extends T> collection,
-                                  final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean any(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -295,13 +327,16 @@ public final class Any
     /// @param <T>        The `collection` type
     /// @return `true` if at least one `predicate` is true on a value of the `collection`
     /// @see java.util.stream.Stream#anyMatch(java.util.function.Predicate) Stream.anyMatch(predicate)
+    /// @see java.util.stream.IntStream#anyMatch(java.util.function.IntPredicate) IntStream.anyMatch(predicate)
+    /// @see java.util.stream.LongStream#anyMatch(java.util.function.LongPredicate) LongStream.anyMatch(predicate)
+    /// @see java.util.stream.DoubleStream#anyMatch(java.util.function.DoublePredicate) DoubleStream.anyMatch(predicate)
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/some">Javascript ReadonlyArray.some(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html">Kotlin any(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any">C# Any(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FALSE_2)
-    public static <T> boolean any(final T @Nullable @Unmodifiable [] collection,
-                                  final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> boolean any(final T @Nullable @Unmodifiable [] collection,
+                                                           final @Nullable BooleanSupplier predicate) {
         if (collection == null)
             return false;
         if (predicate == null)
@@ -318,7 +353,7 @@ public final class Any
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static boolean __with0Argument(final @NotNull BooleanSupplier predicate,
+    private static boolean __with0Argument(final BooleanSupplier predicate,
                                            final int size) {
         var index = size;
         while (index-- > 0)
@@ -328,9 +363,9 @@ public final class Any
     }
 
 
-    private static <T> boolean __with1Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                               final @NotNull Predicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with1Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                        final Predicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection.get(index)))
@@ -338,9 +373,9 @@ public final class Any
         return false;
     }
 
-    private static <T> boolean __with1Argument(final T @NotNull @Unmodifiable [] collection,
-                                               final @NotNull Predicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with1Argument(final T @Unmodifiable [] collection,
+                                                                        final Predicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection[index]))
@@ -349,9 +384,9 @@ public final class Any
     }
 
 
-    private static <T> boolean __with2Argument(final @NotNull MinimalistCollectionHolder<? extends T> collection,
-                                               final @NotNull ObjIntPredicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with2Argument(final MinimalistCollectionHolder<? extends T> collection,
+                                                                        final ObjIntPredicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection.get(index), index))
@@ -359,9 +394,9 @@ public final class Any
         return false;
     }
 
-    private static <T> boolean __with2Argument(final T @NotNull @Unmodifiable [] collection,
-                                               final @NotNull ObjIntPredicate<? super T> predicate,
-                                               final int size) {
+    private static <T extends @Nullable Object> boolean __with2Argument(final T @Unmodifiable [] collection,
+                                                                        final ObjIntPredicate<? super T> predicate,
+                                                                        final int size) {
         var index = -1;
         while (++index < size)
             if (predicate.test(collection[index], index))

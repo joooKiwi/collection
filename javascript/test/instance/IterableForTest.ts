@@ -18,6 +18,6 @@ export class IterableForTest<const T, >
 
     public constructor(array: readonly T[],) { this.array = array }
 
-    public [Symbol.iterator](): IterableIterator<T> { return this.array[Symbol.iterator]() }
+    public [Symbol.iterator](): ArrayIterator<T> { return this.array[Symbol.iterator]() }
 
 }

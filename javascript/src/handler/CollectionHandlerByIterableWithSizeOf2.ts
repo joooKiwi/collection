@@ -35,7 +35,7 @@ export class CollectionHandlerByIterableWithSizeOf2<const T = unknown,
     public constructor(collection: COLLECTION, reference: REFERENCE, size: number,) {
         super(collection, reference,)
         if (size !== 2)
-            throw new TypeError(`The iterable received in the "${this.constructor.name}" cannot have a different size than 2.`,)
+            throw new TypeError(`The iterable received in the “${this.constructor.name}” cannot have a different size than 2.`,)
     }
 
     get #__iterator(): Iterator<T, unknown, unknown> { return this.#iterator ??= this._reference[Symbol.iterator]() }

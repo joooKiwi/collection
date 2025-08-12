@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,13 +33,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see Object.toString
  * @extensionFunction
  */
-export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): string {
+export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toStringByCollectionHolder(collection,)
     if (isArray(collection,))
         return toStringByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toStringByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toStringByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -51,7 +55,7 @@ export function toString<const T, >(collection: Nullable<| MinimalistCollectionH
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
@@ -70,7 +74,7 @@ export function toStringByMinimalistCollectionHolder<const T, >(collection: Null
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction
@@ -87,7 +91,7 @@ export function toStringByCollectionHolder<const T, >(collection: Nullable<Colle
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link Object.toString toString()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see Array.toString
  * @see Object.toString
  * @extensionFunction

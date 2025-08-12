@@ -16,126 +16,433 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
-import {EmptyCollectionException}       from "../exception/EmptyCollectionException"
-import {IndexOutOfBoundsException}      from "../exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException}     from "../exception/InvalidIndexRangeException"
-import {NullCollectionException}        from "../exception/NullCollectionException"
-import {__endingIndex, __startingIndex} from "./_indexes utility"
-import {isArray}                        from "./isArray"
-import {isArrayByStructure}             from "./isArrayByStructure"
-import {isCollectionHolder}             from "./isCollectionHolder"
-import {isCollectionHolderByStructure}  from "./isCollectionHolderByStructure"
+import {EmptyCollectionException}                          from "../exception/EmptyCollectionException"
+import {IndexOutOfBoundsException}                         from "../exception/IndexOutOfBoundsException"
+import {NullCollectionException}                           from "../exception/NullCollectionException"
+import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
+import {isArray}                                           from "./isArray"
+import {isArrayByStructure}                                from "./isArrayByStructure"
+import {isCollectionHolder}                                from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                     from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                      from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @return {number} The last index found by the {@link predicate} after {@link from}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>size - 1</code> by default)
+ * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
-    if (isCollectionHolder<T>(collection,))
-        return indexOfLastByCollectionHolder(collection, predicate, fromIndex, toIndex,)
-    if (isArray(collection,))
-        return indexOfLastByArray(collection, predicate, fromIndex, toIndex,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return indexOfLastByCollectionHolder(collection, predicate, fromIndex, toIndex,)
-    if (isArrayByStructure<T>(collection,))
-        return indexOfLastByArray(collection, predicate, fromIndex, toIndex,)
-    return indexOfLastByMinimalistCollectionHolder(collection, predicate, fromIndex, toIndex,)
+    if (to == null)
+        if (from == null)
+            return __core0(collection, predicate,)
+        else
+            return __core1(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFrom(collection, predicate, to,)
+    return __core2(collection, predicate, from, to,)
 }
 
 
 /**
  * Get the last index matching the {@link predicate}
- * from a range (if provided)
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
+ * @return {number} The last index found by the {@link predicate}
  * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
  * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
  * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
  * @see ReadonlyArray.findLastIndex
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
  * @canReceiveNegativeValue
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
+export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @return {number} The last index found by the {@link predicate} after {@link from}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>{@link MinimalistCollectionHolder.size size} - 1</code> by default)
+ * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
+    if (to == null)
+        if (from == null)
+            return __core0ByMinimalistCollectionHolder(collection, predicate,)
+        else
+            return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+    return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
+}
 
+/**
+ * Get the last index matching the {@link predicate}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @return {number} The last index found by the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException No index could be found
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @return {number} The last index found by the {@link predicate} after {@link from}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+ * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} {@link CollectionHolder.isEmpty is empty}
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
+    if (collection == null)
+        throw new NullCollectionException()
+    if (to == null)
+        if (from == null)
+            return __core0ByCollectionHolder(collection, predicate,)
+        else
+            return __core1ByCollectionHolder(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    return __core2ByCollectionHolder(collection, predicate, from, to,)
+}
+
+/**
+ * Get the last index matching the {@link predicate}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @return {number} The last index found by the {@link predicate}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException No index could be found
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting index} and the end of the {@link collection}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @return {number} The last index found by the {@link predicate} after {@link from}
+ * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+ * @throws IndexOutOfBoundsException No index could be found
+ * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber,): number
+/**
+ * Get the last index matching the {@link predicate}
+ * between the {@link from starting} and the {@link to ending} index
+ *
+ * @param collection The nullable collection
+ * @param predicate  The given predicate
+ * @param from       The inclusive starting index (<code>0</code> by default)
+ * @param to         The inclusive ending index (<code>{@link ReadonlyArray.length size} - 1</code> by default)
+ * @return {number} The last index found by the {@link predicate} between {@link from} and {@link to}
+ * @throws NullCollectionException    The {@link collection} was <b>null</b> or <b>undefined</b>
+ * @throws EmptyCollectionException   The {@link collection} <b>is empty</b>
+ * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+ * @throws IndexOutOfBoundsException  No index could be found
+ * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+ * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+ * @see ReadonlyArray.findLastIndex
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
+ * @canReceiveNegativeValue
+ * @onlyGivePositiveValue
+ * @extensionFunction
+ */
+export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
+    if (collection == null)
+        throw new NullCollectionException()
+    if (to == null)
+        if (from == null)
+            return __core0ByArray(collection, predicate,)
+        else
+            return __core1ByArray(collection, predicate, from,)
+    if (from == null)
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    return __core2ByArray(collection, predicate, from, to,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core methods --------------------
+
+//#region -------------------- predicate --------------------
+
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: BooleanCallback<T>,) {
+    if (isCollectionHolder(collection,))
+        return __core0ByCollectionHolder(collection, predicate,)
+    if (isArray(collection,))
+        return __core0ByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core0ByMinimalistCollectionHolder(collection, predicate,)
+
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core0ByCollectionHolder(collection, predicate,)
+    if (isArrayByStructure<T>(collection,))
+        return __core0ByArray(collection, predicate,)
+    return __core0ByMinimalistCollectionHolder(collection, predicate,)
+}
+
+function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: BooleanCallback<T>,) {
     const size = collection.size
     if (size === 0)
         throw new EmptyCollectionException()
-
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
     if (predicate.length == 1)
-        return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, 0, size - 1,)
     if (predicate.length >= 2)
-        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
-    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+        return __with2Argument(collection, predicate, 0, size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, size - 1,)
 }
 
-/**
- * Get the last index matching the {@link predicate}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @see ReadonlyArray.findLastIndex
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
-    if (collection == null)
-        throw new NullCollectionException()
+function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>,) {
+    if (collection.isEmpty)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, 0, collection.size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, collection.size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, collection.size - 1,)
+}
+
+function __core0ByArray<const T, >(collection: readonly T[], predicate: BooleanCallback<T>,) {
+    const size = collection.length
+    if (size === 0)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, 0, size - 1,)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, 0, size - 1,)
+    return __with0Argument(predicate as () => boolean, 0, size - 1,)
+}
+
+//#endregion -------------------- predicate --------------------
+//#region -------------------- predicate, from --------------------
+
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: BooleanCallback<T>, from: number,) {
+    if (isCollectionHolder(collection,))
+        return __core1ByCollectionHolder(collection, predicate, from,)
+    if (isArray(collection,))
+        return __core1ByArray(collection, predicate, from,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core1ByCollectionHolder(collection, predicate, from,)
+    if (isArrayByStructure<T>(collection,))
+        return __core1ByArray(collection, predicate, from,)
+    return __core1ByMinimalistCollectionHolder(collection, predicate, from,)
+}
+
+function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: BooleanCallback<T>, from: number,) {
+    const size = collection.size
+    if (size === 0)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, __startingIndex(from, size,), size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, __startingIndex(from, size,), size - 1,)
+    return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
+}
+
+function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, from: number,) {
     if (collection.isEmpty)
         throw new EmptyCollectionException()
 
     const size = collection.size
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, __startingIndex(from, size,), size - 1,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, __startingIndex(from, size,), size - 1,)
+    return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
+}
+
+function __core1ByArray<const T, >(collection: readonly T[], predicate: BooleanCallback<T>, from: number,) {
+    const size = collection.length
+    if (size === 0)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, __startingIndex(from, size,), size - 1,)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, __startingIndex(from, size,), size - 1,)
+    return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
+}
+
+//#endregion -------------------- predicate, from --------------------
+//#region -------------------- predicate, from, to --------------------
+
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: BooleanCallback<T>, from: number, to: number,) {
+    if (isCollectionHolder(collection,))
+        return __core2ByCollectionHolder(collection, predicate, from, to,)
+    if (isArray(collection,))
+        return __core2ByArray(collection, predicate, from, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
+
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __core2ByCollectionHolder(collection, predicate, from, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __core2ByArray(collection, predicate, from, to,)
+    return __core2ByMinimalistCollectionHolder(collection, predicate, from, to,)
+}
+
+function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: BooleanCallback<T>, from: number, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        throw new EmptyCollectionException()
+
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
     if (predicate.length == 1)
         return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
@@ -143,39 +450,29 @@ export function indexOfLastByCollectionHolder<const T, >(collection: Nullable<Co
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-/**
- * Get the last index matching the {@link predicate}
- * from a range (if provided)
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param predicate  The given predicate
- * @param fromIndex  The inclusive starting index
- * @param toIndex    The inclusive ending index
- * @return {number} The index matching the {@link predicate} within the range
- * @throws NullCollectionException   The {@link collection} was <b>null</b> or <b>undefined</b>
- * @throws EmptyCollectionException  The {@link collection} <b>is empty</b>
- * @throws IndexOutOfBoundsException The {@link fromIndex} or {@link toIndex} are not within a valid range
- * @throws IndexOutOfBoundsException No index could be found
- * @throws ForbiddenIndexException                   The {@link fromIndex} or {@link toIndex} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
- * @throws InvalidIndexRangeException                The {@link toIndex} is before the {@link fromIndex} after the calculation
- * @see ReadonlyArray.findLastIndex
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-last.html Kotlin indexOfLast(predicate)
- * @canReceiveNegativeValue
- * @onlyGivePositiveValue
- * @extensionFunction
- */
-export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>, fromIndex: NullableNumber = null, toIndex: NullableNumber = null,): number {
-    if (collection == null)
-        throw new NullCollectionException()
+function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, from: number, to: number,) {
+    if (collection.isEmpty)
+        throw new EmptyCollectionException()
 
+    const size = collection.size
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, startingIndex, endingIndex,)
+    return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
+}
+
+function __core2ByArray<const T, >(collection: readonly T[], predicate: BooleanCallback<T>, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
 
-    const startingIndex = __startingIndex(fromIndex, size,)
-    const endingIndex = __endingIndex(toIndex, size,)
-    if (endingIndex < startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index "${toIndex}"${toIndex == endingIndex ? "" : ` ("${endingIndex}" after calculation)`} is over the starting index "${fromIndex}"${fromIndex == startingIndex ? "" : `("${startingIndex}" after calculation)`}.`, fromIndex, toIndex,)
+    const startingIndex = __startingIndex(from, size,)
+    const endingIndex = __endingIndex(to, size,)
+    __validateInRange(from, startingIndex, to, endingIndex,)
     if (predicate.length == 1)
         return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, startingIndex, endingIndex,)
     if (predicate.length >= 2)
@@ -183,7 +480,59 @@ export function indexOfLastByArray<const T, >(collection: Nullable<readonly T[]>
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- predicate, from, to --------------------
+//#region -------------------- predicate, to --------------------
+
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: BooleanCallback<T>, to: number,) {
+    if (isCollectionHolder(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    if (isArray(collection,))
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
+    if (isArrayByStructure<T>(collection,))
+        return __coreWithNoFromByArray(collection, predicate, to,)
+    return __coreWithNoFromByMinimalistCollectionHolder(collection, predicate, to,)
+}
+
+function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, predicate: BooleanCallback<T>, to: number,) {
+    const size = collection.size
+    if (size === 0)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, 0, __endingIndex(to, size,),)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, __endingIndex(to, size,),)
+    return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, size,),)
+}
+
+function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, predicate: BooleanCallback<T>, to: number,) {
+    if (collection.isEmpty)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1Argument(collection, predicate as (value: T,) => boolean, 0, __endingIndex(to, collection.size,),)
+    if (predicate.length >= 2)
+        return __with2Argument(collection, predicate, 0, __endingIndex(to, collection.size,),)
+    return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, collection.size,),)
+}
+
+function __coreWithNoFromByArray<const T, >(collection: readonly T[], predicate: BooleanCallback<T>, to: number,) {
+    const size = collection.length
+    if (size === 0)
+        throw new EmptyCollectionException()
+    if (predicate.length == 1)
+        return __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, 0, __endingIndex(to, size,),)
+    if (predicate.length >= 2)
+        return __with2ArgumentByArray(collection, predicate, 0, __endingIndex(to, size,),)
+    return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, size,),)
+}
+
+//#endregion -------------------- predicate, to --------------------
+
+//#endregion -------------------- Core methods --------------------
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument(predicate: () => boolean, startingIndex: number, endingIndex: number,) {

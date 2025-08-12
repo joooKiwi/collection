@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,13 +32,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
  */
-export function getFirstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): NullOr<T> {
+export function getFirstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T> {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getFirstOrNullByCollectionHolder(collection,)
     if (isArray(collection,))
         return getFirstOrNullByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getFirstOrNullByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getFirstOrNullByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -50,7 +54,7 @@ export function getFirstOrNull<const T, >(collection: Nullable<| MinimalistColle
  * Get the first element in the {@link collection}
  * or <b>null</b> if it <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -69,7 +73,7 @@ export function getFirstOrNullByMinimalistCollectionHolder<const T, >(collection
  * Get the first element in the {@link collection}
  * or <b>null</b> if it {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction
@@ -81,14 +85,14 @@ export function getFirstOrNullByCollectionHolder<const T, >(collection: Nullable
         return null
     if (0 in collection)
         return collection[0] as T
-    return collection.get(0,)
+    return collection.getFirst()
 }
 
 /**
  * Get the first element in the {@link collection}
  * or <b>null</b> if it <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/first-or-null.html Kotlin firstOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.firstordefault C# FirstOrDefault()
  * @extensionFunction

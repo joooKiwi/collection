@@ -12,11 +12,11 @@
 
 import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
 
-import type {CollectionHolder}                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
-import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder}                                                                                                                                                                                                        from "../../src/type/possibleInstance"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
+import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
+import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
 import {allByMinimalistCollectionHolder}                       from "../../src/method/all"
 import {anyByMinimalistCollectionHolder}                       from "../../src/method/any"
@@ -44,14 +44,21 @@ import {firstIndexOfOrNullByMinimalistCollectionHolder}        from "../../src/m
 import {forEachByMinimalistCollectionHolder}                   from "../../src/method/forEach"
 import {forEachIndexedByMinimalistCollectionHolder}            from "../../src/method/forEachIndexed"
 import {getFirstByMinimalistCollectionHolder}                  from "../../src/method/getFirst"
+import {getFirstOrElseByMinimalistCollectionHolder}            from "../../src/method/getFirstOrElse"
 import {getFirstOrNullByMinimalistCollectionHolder}            from "../../src/method/getFirstOrNull"
 import {getLastByMinimalistCollectionHolder}                   from "../../src/method/getLast"
+import {getLastOrElseByMinimalistCollectionHolder}             from "../../src/method/getLastOrElse"
 import {getLastOrNullByMinimalistCollectionHolder}             from "../../src/method/getLastOrNull"
 import {getOrElseByMinimalistCollectionHolder}                 from "../../src/method/getOrElse"
 import {getOrNullByMinimalistCollectionHolder}                 from "../../src/method/getOrNull"
 import {hasByMinimalistCollectionHolder}                       from "../../src/method/has"
 import {hasAllByMinimalistCollectionHolder}                    from "../../src/method/hasAll"
 import {hasDuplicateByMinimalistCollectionHolder}              from "../../src/method/hasDuplicate"
+import {hasNoDuplicatesByMinimalistCollectionHolder}           from "../../src/method/hasNoDuplicates"
+import {hasNoNullsByMinimalistCollectionHolder}                from "../../src/method/hasNoNulls"
+import {hasNotByMinimalistCollectionHolder}                    from "../../src/method/hasNot"
+import {hasNotAllByMinimalistCollectionHolder}                 from "../../src/method/hasNotAll"
+import {hasNotOneByMinimalistCollectionHolder}                 from "../../src/method/hasNotOne"
 import {hasNullByMinimalistCollectionHolder}                   from "../../src/method/hasNull"
 import {hasOneByMinimalistCollectionHolder}                    from "../../src/method/hasOne"
 import {indexOfFirstByMinimalistCollectionHolder}              from "../../src/method/indexOfFirst"
@@ -139,6 +146,18 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return getOrElseByMinimalistCollectionHolder(this, index, defaultValue,)
     }
 
+    public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T
+    public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return getFirstOrElseByMinimalistCollectionHolder(this, defaultValue,)
+    }
+
+    public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
+    public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
+    public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) {
+        return getLastOrElseByMinimalistCollectionHolder(this, defaultValue,)
+    }
+
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByMinimalistCollectionHolder(this, index,)
     }
@@ -200,61 +219,59 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
 
-    public override firstIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return firstIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
+    public override firstIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return firstIndexOfByMinimalistCollectionHolder(this, element, from, to,)
     }
 
-    public override firstIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return firstIndexOfOrNullByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
-    }
-
-
-    public override lastIndexOf(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return lastIndexOfByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
-    }
-
-    public override lastIndexOfOrNull(element: T, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return lastIndexOfOrNullByMinimalistCollectionHolder(this, element, fromIndex, toIndex,)
+    public override firstIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return firstIndexOfOrNullByMinimalistCollectionHolder(this, element, from, to,)
     }
 
 
-    public override indexOfFirst(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override lastIndexOf(element: T, from?: NullableNumber, to?: NullableNumber,): number {
+        return lastIndexOfByMinimalistCollectionHolder(this, element, from, to,)
     }
 
-    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
-    }
-
-    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
-    }
-
-    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfFirstIndexedOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override lastIndexOfOrNull(element: T, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return lastIndexOfOrNullByMinimalistCollectionHolder(this, element, from, to,)
     }
 
 
-    public override indexOfLast(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfLastByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override indexOfFirst(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstByMinimalistCollectionHolder(this, predicate, from, to,)
     }
 
-    public override indexOfLastOrNull(predicate: BooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override indexOfFirstOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfFirstOrNullByMinimalistCollectionHolder(this, predicate, from, to,)
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
-        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfFirstIndexedByMinimalistCollectionHolder(this, predicate, from, to,)
     }
 
-    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): NullOrNumber {
-        return indexOfLastIndexedOrNullByMinimalistCollectionHolder(this, predicate, fromIndex, toIndex,)
+    public override indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfFirstIndexedOrNullByMinimalistCollectionHolder(this, predicate, from, to,)
+    }
+
+
+    public override indexOfLast(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfLastByMinimalistCollectionHolder(this, predicate, from, to,)
+    }
+
+    public override indexOfLastOrNull(predicate: BooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfLastOrNullByMinimalistCollectionHolder(this, predicate, from, to,)
+    }
+
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number {
+        return indexOfLastIndexedByMinimalistCollectionHolder(this, predicate, from, to,)
+    }
+
+    public override indexOfLastIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber {
+        return indexOfLastIndexedOrNullByMinimalistCollectionHolder(this, predicate, from, to,)
     }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- Validation methods --------------------
-
-    //#region -------------------- All --------------------
 
     public override all<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): this is CollectionHolder<S>
     public override all(predicate: BooleanCallback<T>,): boolean
@@ -262,17 +279,11 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return allByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- All --------------------
-    //#region -------------------- Any --------------------
-
     public override any(): this["isNotEmpty"]
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<T>>,) {
         return anyByMinimalistCollectionHolder(this, predicate,)
     }
-
-    //#endregion -------------------- Any --------------------
-    //#region -------------------- None --------------------
 
     public override none(): this["isEmpty"]
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
@@ -280,66 +291,85 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return noneByMinimalistCollectionHolder(this, predicate,)
     }
 
-    //#endregion -------------------- None --------------------
-
-    //#region -------------------- Has null --------------------
 
     public override get hasNull(): boolean {
         return hasNullByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
+    public override get hasNoNulls(): boolean {
+        return hasNoNullsByMinimalistCollectionHolder(this,)
+    }
+
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- Has duplicate --------------------
+    public override get hasNoDuplicates(): boolean {
+        return hasNoDuplicatesByMinimalistCollectionHolder(this,)
+    }
 
-    //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
         return hasByMinimalistCollectionHolder(this, value,)
     }
 
-    //#endregion -------------------- Has --------------------
-    //#region -------------------- Has one --------------------
+    public override hasNot(value: T,): boolean {
+        return hasNotByMinimalistCollectionHolder(this, value,)
+    }
 
     public override hasOne(values: readonly T[],): boolean
     public override hasOne(values: ReadonlySet<T>,): boolean
     public override hasOne(values: CollectionHolder<T>,): boolean
     public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
     public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterable<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    public override hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
         return hasOneByMinimalistCollectionHolder(this, values,)
     }
 
-    //#endregion -------------------- Has one --------------------
-    //#region -------------------- Has all --------------------
+    public override hasNotOne(values: readonly T[],): boolean
+    public override hasNotOne(values: ReadonlySet<T>,): boolean
+    public override hasNotOne(values: CollectionHolder<T>,): boolean
+    public override hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotOne(values: CollectionIterator<T>,): boolean
+    public override hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return hasNotOneByMinimalistCollectionHolder(this, values,)
+    }
 
     public override hasAll(values: readonly T[],): boolean
     public override hasAll(values: ReadonlySet<T>,): boolean
     public override hasAll(values: CollectionHolder<T>,): boolean
     public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
     public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterable<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: PossibleIterableArraySetOrCollectionHolder<T>,) {
+    public override hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
         return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
-    //#endregion -------------------- Has all --------------------
+    public override hasNotAll(values: readonly T[],): boolean
+    public override hasNotAll(values: ReadonlySet<T>,): boolean
+    public override hasNotAll(values: CollectionHolder<T>,): boolean
+    public override hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    public override hasNotAll(values: CollectionIterator<T>,): boolean
+    public override hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+        return hasNotAllByMinimalistCollectionHolder(this, values,)
+    }
 
-    //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
         return requireNoNullsByMinimalistCollectionHolder<T>(this,)
     }
-
-    //#endregion -------------------- Require no nulls --------------------
 
     //#endregion -------------------- Validation methods --------------------
     //#region -------------------- Transformation methods --------------------
@@ -379,17 +409,18 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indices: readonly number[],): CollectionHolder<T>
     public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number>,): CollectionHolder<T>
-    public override slice(indices: PossibleIterableArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,): CollectionHolder<T>
-    public override slice(indicesOrFromIndex?: Nullable<| PossibleIterableArraySetOrCollectionHolder<number> | number>, toIndex?: NullableNumber,) {
-        return sliceByMinimalistCollectionHolder(this, indicesOrFromIndex, toIndex,)
+    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
+    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
+        return sliceByMinimalistCollectionHolder(this, indicesOrFrom, to,)
     }
 
     //#endregion -------------------- Slice --------------------
@@ -489,8 +520,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void {
         forEachByMinimalistCollectionHolder(this, action,)
     }
@@ -499,8 +528,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         forEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         return onEachByMinimalistCollectionHolder(this, action,)
@@ -510,18 +537,12 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return onEachIndexedByMinimalistCollectionHolder(this, action,)
     }
 
-    //#endregion -------------------- On each --------------------
-
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
 
-    //#region -------------------- To reverse --------------------
-
-    public override toReverse(fromIndex?: NullableNumber, toIndex?: NullableNumber,): CollectionHolder<T> {
-        return toReverseByMinimalistCollectionHolder(this, fromIndex, toIndex,)
+    public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return toReverseByMinimalistCollectionHolder(this, from, to,)
     }
-
-    //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
@@ -533,69 +554,49 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    //#region -------------------- To other structure --------------------
-
     public override toArray(): readonly T[] {
         return toArrayByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableArray(): T[] {
         return toMutableArrayByMinimalistCollectionHolder(this,)
     }
 
-
     public override toSet(): ReadonlySet<T> {
         return toSetByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableSet(): Set<T> {
         return toMutableSetByMinimalistCollectionHolder(this,)
     }
 
-
     public override toMap(): ReadonlyMap<number, T> {
         return toMapByMinimalistCollectionHolder(this,)
     }
-
     public override toMutableMap(): Map<number, T> {
         return toMutableMapByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- To other structure --------------------
-    //#region -------------------- To string --------------------
-
     public override toString(): string {
         return toStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByMinimalistCollectionHolder(this, locale,)
     }
-
     public override toLowerCaseString(): string {
         return toLowerCaseStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByMinimalistCollectionHolder(this, locale,)
     }
-
     public override toUpperCaseString(): string {
         return toUpperCaseStringByMinimalistCollectionHolder(this,)
     }
-
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
 
-    //#endregion -------------------- To string --------------------
-    //#region -------------------- Join to string --------------------
-
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)
     }
-
-    //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
 

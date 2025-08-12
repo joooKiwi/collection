@@ -11,9 +11,9 @@
 //··························································
 
 export {
-    joinToString as join,
+    joinToString                             as join,
     joinToStringByMinimalistCollectionHolder as joinByMinimalistCollectionHolder,
-    joinToStringByCollectionHolder as joinByCollectionHolder,
-    joinToStringByArray as joinByArray,
+    joinToStringByCollectionHolder           as joinByCollectionHolder,
+    joinToStringByArray                      as joinByArray,
     prefixAndPostfixOnly,
 } from "./joinToString"

@@ -34,7 +34,7 @@ public final class GetLast
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getLast(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> T getLast(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException();
 
@@ -55,7 +55,7 @@ public final class GetLast
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getLast(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> T getLast(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             throw new NullCollectionException();
         if (collection.isEmpty())
@@ -74,7 +74,7 @@ public final class GetLast
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last">C# Last()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T getLast(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> T getLast(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             throw new NullCollectionException();
 

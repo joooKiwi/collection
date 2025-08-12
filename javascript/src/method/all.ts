@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,7 +33,10 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
@@ -46,7 +50,10 @@ export function all<const T, const S extends T, >(collection: Nullable<Minimalis
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
@@ -60,7 +67,10 @@ export function all<const T, const S extends T, >(collection: Nullable<Collectio
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
@@ -74,18 +84,24 @@ export function all<const T, const S extends T, >(collection: Nullable<readonly 
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
  * @see ReadonlyArray.every
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean
-export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean
+export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return true
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return allByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
         return allByArray(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return allByMinimalistCollectionHolder(collection, predicate,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return allByCollectionHolder(collection, predicate,)
     if (isArrayByStructure<T>(collection,))
@@ -98,9 +114,16 @@ export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByMinimalistCollectionHolder<const T, const S extends T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is MinimalistCollectionHolder<S>
@@ -108,9 +131,16 @@ export function allByMinimalistCollectionHolder<const T, const S extends T, >(co
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean
@@ -132,9 +162,16 @@ export function allByMinimalistCollectionHolder<const T, >(collection: Nullable<
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByCollectionHolder<const T, const S extends T, >(collection: Nullable<CollectionHolder<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is CollectionHolder<S>
@@ -142,9 +179,16 @@ export function allByCollectionHolder<const T, const S extends T, >(collection: 
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean
@@ -164,9 +208,16 @@ export function allByCollectionHolder<const T, >(collection: Nullable<Collection
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): collection is readonly S[]
@@ -174,9 +225,16 @@ export function allByArray<const T, const S extends T, >(collection: Nullable<re
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> only if every value in the {@link collection} is applicable to the {@link predicate}
+ * @see ReadonlyArray.every
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html Kotlin all(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#allMatch(java.util.function.Predicate) Java Stream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch(java.util.function.IntPredicate) Java IntStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch(java.util.function.LongPredicate) Java LongStream.allMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch(java.util.function.DoublePredicate) Java DoubleStream.allMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
 export function allByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): boolean

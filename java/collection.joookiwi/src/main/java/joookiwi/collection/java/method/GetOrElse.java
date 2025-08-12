@@ -1,17 +1,16 @@
 package joookiwi.collection.java.method;
 
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
+import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
@@ -37,9 +36,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final int index,
-                                  final @NotNull IntFunction<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final int index,
+                                                           final IntFunction<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.apply(index);
 
@@ -68,9 +67,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final @Nullable CollectionHolder<? extends T> collection,
-                                  final int index,
-                                  final @NotNull IntFunction<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final int index,
+                                                           final IntFunction<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.apply(index);
         if (collection.isEmpty())
@@ -99,9 +98,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final T @Nullable [] collection,
-                                  final int index,
-                                  final @NotNull IntFunction<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final T @Nullable @Unmodifiable [] collection,
+                                                           final int index,
+                                                           final IntFunction<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.apply(index);
 
@@ -133,9 +132,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                  final int index,
-                                  final @NotNull Supplier<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                           final int index,
+                                                           final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
 
@@ -164,9 +163,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final @Nullable CollectionHolder<? extends T> collection,
-                                  final int index,
-                                  final @NotNull Supplier<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final @Nullable CollectionHolder<? extends T> collection,
+                                                           final int index,
+                                                           final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
         if (collection.isEmpty())
@@ -195,9 +194,9 @@ public final class GetOrElse
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/element-at-or-else.html">Kotlin elementAtOrElse(key, defaultValue)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
-    public static <T> T getOrElse(final T @Nullable [] collection,
-                                  final int index,
-                                  final @NotNull Supplier<? extends T> defaultValue) {
+    public static <T extends @Nullable Object> T getOrElse(final T @Nullable @Unmodifiable [] collection,
+                                                           final int index,
+                                                           final Supplier<? extends T> defaultValue) {
         if (collection == null)
             return defaultValue.get();
 

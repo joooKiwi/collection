@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,17 +33,23 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java Stream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#map(java.util.function.IntUnaryOperator) Java IntStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#map(java.util.function.LongUnaryOperator) Java LongStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#map(java.util.function.DoubleUnaryOperator) Java DoubleStream.map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapIndexed<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+export function mapIndexed<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return mapIndexedByCollectionHolder(collection, transform,)
     if (isArray(collection,))
         return mapIndexedByArray(collection, transform,)
+    if (isMinimalistCollectionHolder(collection,))
+        return mapIndexedByMinimalistCollectionHolder(collection, transform,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return mapIndexedByCollectionHolder(collection, transform,)
     if (isArrayByStructure<T>(collection,))
@@ -55,11 +62,14 @@ export function mapIndexed<const T, const U, >(collection: Nullable<| Minimalist
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java Stream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#map(java.util.function.IntUnaryOperator) Java IntStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#map(java.util.function.LongUnaryOperator) Java LongStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#map(java.util.function.DoubleUnaryOperator) Java DoubleStream.map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
@@ -81,11 +91,14 @@ export function mapIndexedByMinimalistCollectionHolder<const T, const U, >(colle
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java Stream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#map(java.util.function.IntUnaryOperator) Java IntStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#map(java.util.function.LongUnaryOperator) Java LongStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#map(java.util.function.DoubleUnaryOperator) Java DoubleStream.map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
@@ -105,11 +118,14 @@ export function mapIndexedByCollectionHolder<const T, const U, >(collection: Nul
  * Create a new {@link CollectionHolder} applying a {@link transform} function
  * on each element of the {@link collection}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param transform  The given transform
  * @see ReadonlyArray.map
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map-indexed.html Kotlin mapIndexed(transform)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function) Java Stream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#map(java.util.function.IntUnaryOperator) Java IntStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#map(java.util.function.LongUnaryOperator) Java LongStream.map(transform)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#map(java.util.function.DoubleUnaryOperator) Java DoubleStream.map(transform)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */

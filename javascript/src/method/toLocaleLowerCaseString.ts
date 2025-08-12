@@ -20,6 +20,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -32,13 +33,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+export function toLocaleLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
     if (isArray(collection,))
         return toLocaleLowerCaseStringByArray(collection, locale,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toLocaleLowerCaseStringByMinimalistCollectionHolder(collection, locale,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toLocaleLowerCaseStringByCollectionHolder(collection, locale,)
     if (isArrayByStructure<T>(collection,))
@@ -51,7 +55,7 @@ export function toLocaleLowerCaseString<const T, >(collection: Nullable<| Minima
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see String.toLocaleLowerCase
  * @extensionFunction
@@ -72,7 +76,7 @@ export function toLocaleLowerCaseStringByMinimalistCollectionHolder<const T, >(c
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see String.toLocaleLowerCase
  * @extensionFunction
@@ -91,7 +95,7 @@ export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection:
  * Convert the {@link collection} to a {@link String} on every value
  * by calling its "<i>{@link String.toLocaleLowerCase toLocaleLowerCase()}</i>" method
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @param locale     The possible locale to apply on each value
  * @see String.toLocaleLowerCase
  * @extensionFunction

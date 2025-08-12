@@ -11,27 +11,18 @@
 //··························································
 
 import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
-import type {IteratorValue}              from "./IteratorValue"
 
+import {GenericCollectionIteratorValue} from "./GenericCollectionIteratorValue"
+
+/** @deprecated Change with {@link GenericCollectionIteratorValue}. This will be removed in v1.14 */
 export class GenericIteratorValue<const T = unknown,
     const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
     const INDEX extends number = number, >
-    implements IteratorValue<T> {
+    extends GenericCollectionIteratorValue<T, never, COLLECTION, INDEX> {
 
-    readonly #collection
-    readonly #index
 
-    public constructor(collection: COLLECTION, index: INDEX,) {
-        this.#collection = collection
-        this.#index = index
+    public constructor(collection: COLLECTION, index: INDEX) {
+        super(null as unknown as never, collection, index)
     }
-
-    public get collection(): COLLECTION { return this.#collection }
-
-    public get index(): INDEX { return this.#index }
-
-    public get done(): false { return false }
-
-    public get value(): T { return this.collection.get(this.index,) }
 
 }

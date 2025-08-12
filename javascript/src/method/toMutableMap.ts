@@ -20,6 +20,7 @@ import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                    from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): Map<number, T> {
+export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): Map<number, T> {
     if (collection == null)
         return new Map()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toMutableMapByCollectionHolder(collection,)
     if (isArray(collection,))
         return toMutableMapByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toMutableMapByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableMapByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection))
@@ -47,7 +51,7 @@ export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollect
 /**
  * Convert the {@link collection} to a new {@link Map mutable map}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Map<number, T> {
@@ -63,7 +67,7 @@ export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: 
 /**
  * Convert the {@link collection} to a new {@link Map mutable map}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Map<number, T> {
@@ -77,7 +81,7 @@ export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<C
 /**
  * Convert the {@link collection} to a new {@link Map mutable map}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableMapByArray<const T, >(collection: Nullable<readonly T[]>,): Map<number, T> {

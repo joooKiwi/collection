@@ -19,6 +19,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -31,13 +32,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
-export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,) {
+export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T> {
     if (collection == null)
         return null
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return getLastOrNullByCollectionHolder(collection,)
     if (isArray(collection,))
         return getLastOrNullByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return getLastOrNullByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return getLastOrNullByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -50,7 +54,7 @@ export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollec
  * Get the last element in the {@link collection}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
@@ -69,7 +73,7 @@ export function getLastOrNullByMinimalistCollectionHolder<const T, >(collection:
  * Get the last element in the {@link collection}
  * or <b>null</b> if the {@link collection} {@link CollectionHolder.isEmpty is empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
@@ -79,18 +83,14 @@ export function getLastOrNullByCollectionHolder<const T, >(collection: Nullable<
         return null
     if (collection.isEmpty)
         return null
-
-    const lastIndex = collection.size - 1
-    if (lastIndex in collection)
-        return collection[lastIndex] as T
-    return collection.get(lastIndex,)
+    return collection.getLast()
 }
 
 /**
  * Get the last element in the {@link collection}
  * or <b>null</b> if the {@link collection} <b>is empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
+ * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/last-or-null.html Kotlin lastOrNull()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction

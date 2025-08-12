@@ -19,7 +19,7 @@ import {GenericCollectionHolder} from "../../src/GenericCollectionHolder"
 import {ABCD}                    from "../value/arrays"
 
 export class GenericCollectionHolder_IndexOfLastIndexedAlias
-    extends GenericCollectionHolder<string, readonly string[]>
+    extends GenericCollectionHolder<string>
     implements StraightCollectionHolderForTest<string> {
 
     public amountOfCall = 0
@@ -31,9 +31,9 @@ export class GenericCollectionHolder_IndexOfLastIndexedAlias
         return this
     }
 
-    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, fromIndex?: NullableNumber, toIndex?: NullableNumber,): number {
+    public override indexOfLastIndexed(predicate: ReverseBooleanCallback<string>, from?: NullableNumber, to?: NullableNumber,): number {
         this.amountOfCall++
-        return super.indexOfLastIndexed(predicate, fromIndex, toIndex,)
+        return super.indexOfLastIndexed(predicate, from, to,)
     }
 
 }

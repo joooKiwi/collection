@@ -21,6 +21,7 @@ import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
 import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -30,13 +31,16 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): readonly T[] {
+export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): readonly T[] {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toArrayByCollectionHolder(collection,)
     if (isArray(collection,))
         return toArrayByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toArrayByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toArrayByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -48,7 +52,7 @@ export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHo
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
@@ -64,7 +68,7 @@ export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nulla
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): readonly T[] {
@@ -78,7 +82,7 @@ export function toArrayByCollectionHolder<const T, >(collection: Nullable<Collec
 /**
  * Convert the {@link collection} to an {@link ReadonlyArray array}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toArrayByArray<const T, >(collection: Nullable<readonly T[]>,): readonly T[] {

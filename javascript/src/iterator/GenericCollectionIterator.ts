@@ -10,34 +10,36 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
-import type {CollectionIterator}         from "./CollectionIterator"
-import type {IteratorValue}              from "./value/IteratorValue"
+import type {MinimalistCollectionHolder}             from "../MinimalistCollectionHolder"
+import type {CollectionIterator}                     from "./CollectionIterator"
+import type {CollectionIteratorValue}                from "./value/CollectionIteratorValue"
+import type {IsEmptyOnMinimalistCollectionHolder}    from "../type/isEmpty"
+import type {IsNotEmptyOnMinimalistCollectionHolder} from "../type/isNotEmpty"
 
-import {GenericIteratorValue}       from "./value/GenericIteratorValue"
-import {AbstractCollectionIterator} from "./AbstractCollectionIterator"
+import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
+import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
 
 export class GenericCollectionIterator<const T = unknown,
-    const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
-    extends AbstractCollectionIterator<T, COLLECTION> {
+    const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    extends AbstractCollectionIterator<T, REFERENCE> {
 
     //#region -------------------- Fields --------------------
 
-    readonly #collection: COLLECTION
-    #size?: COLLECTION["size"]
+    readonly #reference: REFERENCE
+    #size?: REFERENCE["size"]
     #sizeMinus1?: number
     #sizeMinus2?: number
-    #isEmpty?: boolean
-    #isNotEmpty?: boolean
+    #isEmpty?: IsEmptyOnMinimalistCollectionHolder<REFERENCE>
+    #isNotEmpty?: IsNotEmptyOnMinimalistCollectionHolder<REFERENCE>
     #hasOnly1Element?: boolean
     #hasOnly2Elements?: boolean
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(collection: COLLECTION,) {
+    public constructor(reference: REFERENCE,) {
         super()
-        this.#collection = collection
+        this.#reference = reference
     }
 
     //#endregion -------------------- Constructor --------------------
@@ -45,26 +47,33 @@ export class GenericCollectionIterator<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    public override get collection(): COLLECTION { return this.#collection }
+    public override get collection(): REFERENCE { return this.#reference }
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public override get size(): COLLECTION["size"] { return this.#size ??= super.size }
+    /** @initializedOnFirstCall */
+    public override get size(): REFERENCE["size"] { return this.#size ??= this.collection.size }
+    /** @initializedOnFirstCall */
     protected override get _sizeMinus1(): number { return this.#sizeMinus1 ??= super._sizeMinus1 }
+    /** @initializedOnFirstCall */
     protected override get _sizeMinus2(): number { return this.#sizeMinus2 ??= super._sizeMinus2 }
 
-    public override get isEmpty(): boolean { return this.#isEmpty ??= super.isEmpty }
-    public override get isNotEmpty(): boolean { return this.#isNotEmpty ??= super.isNotEmpty }
+    /** @initializedOnFirstCall */
+    public override get isEmpty(): IsEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isEmpty ??= super.isEmpty as IsEmptyOnMinimalistCollectionHolder<REFERENCE> }
+    /** @initializedOnFirstCall */
+    public override get isNotEmpty(): IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isNotEmpty ??= super.isNotEmpty as IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> }
 
+    /** @initializedOnFirstCall */
     protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
+    /** @initializedOnFirstCall */
     protected override get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= super._hasOnly2Elements }
 
     //#endregion -------------------- Size methods --------------------
 
     //#region -------------------- Value methods --------------------
 
-    protected override _getIteratorValue(index: number,): IteratorValue<T> { return new GenericIteratorValue(this.collection, index,) }
+    protected override _getIteratorValue(index: number,): CollectionIteratorValue<T> { return new GenericCollectionIteratorValue(this, this.collection, index,) }
 
     protected override _getValue(index: number,): T { return this.collection.get(index,) }
 

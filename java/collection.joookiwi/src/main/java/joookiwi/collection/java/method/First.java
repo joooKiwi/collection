@@ -28,7 +28,7 @@ public final class First
 
     //#region -------------------- Facade methods --------------------
 
-    //#region -------------------- ∅ ---------------------
+    //#region -------------------- ∅ --------------------
 
     /// Get the first element in the `collection`
     ///
@@ -41,7 +41,7 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
+    public static <T extends @Nullable Object> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
 
     /// Get the first element in the `collection`
     ///
@@ -54,7 +54,7 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T first(final @Nullable CollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
+    public static <T extends @Nullable Object> T first(final @Nullable CollectionHolder<? extends T> collection) { return GetFirst.getFirst(collection); }
 
     /// Get the first element in the `collection`
     ///
@@ -67,7 +67,7 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First()</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_1)
-    public static <T> T first(final T @Nullable @Unmodifiable [] collection) { return GetFirst.getFirst(collection); }
+    public static <T extends @Nullable Object> T first(final T @Nullable @Unmodifiable [] collection) { return GetFirst.getFirst(collection); }
 
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- predicate (T, int) → boolean --------------------
@@ -85,8 +85,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                              final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -105,8 +105,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable CollectionHolder<? extends T> collection,
-                              final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable CollectionHolder<? extends T> collection,
+                                                       final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -125,8 +125,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final T @Nullable @Unmodifiable [] collection,
-                              final @Nullable ObjIntPredicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final T @Nullable @Unmodifiable [] collection,
+                                                       final @Nullable ObjIntPredicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -148,8 +148,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                              final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -168,8 +168,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable CollectionHolder<? extends T> collection,
-                              final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable CollectionHolder<? extends T> collection,
+                                                       final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -188,8 +188,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final T @Nullable @Unmodifiable [] collection,
-                              final @Nullable Predicate<? super T> predicate) {
+    public static <T extends @Nullable Object> T first(final T @Nullable @Unmodifiable [] collection,
+                                                       final @Nullable Predicate<? super T> predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -211,8 +211,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                              final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                       final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -231,8 +231,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final @Nullable CollectionHolder<? extends T> collection,
-                              final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T first(final @Nullable CollectionHolder<? extends T> collection,
+                                                       final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);
@@ -251,8 +251,8 @@ public final class First
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.first">C# First(predicate)</a>
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_2)
-    public static <T> T first(final T @Nullable @Unmodifiable [] collection,
-                              final @Nullable BooleanSupplier predicate) {
+    public static <T extends @Nullable Object> T first(final T @Nullable @Unmodifiable [] collection,
+                                                       final @Nullable BooleanSupplier predicate) {
         if (predicate == null)
             return GetFirst.getFirst(collection);
         return FindFirst.findFirst(collection, predicate);

@@ -20,6 +20,7 @@ import {isArray}                                         from "./isArray"
 import {isArrayByStructure}                              from "./isArrayByStructure"
 import {isCollectionHolder}                              from "./isCollectionHolder"
 import {isCollectionHolderByStructure}                   from "./isCollectionHolderByStructure"
+import {isMinimalistCollectionHolder}                    from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
@@ -29,13 +30,16 @@ import {isCollectionHolderByStructure}                   from "./isCollectionHol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>,): WeakSet<T> {
+export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): WeakSet<T> {
     if (collection == null)
         return new WeakSet()
-    if (isCollectionHolder<T>(collection,))
+    if (isCollectionHolder(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
     if (isArray(collection,))
         return toMutableWeakSetByArray(collection,)
+    if (isMinimalistCollectionHolder(collection,))
+        return toMutableWeakSetByMinimalistCollectionHolder(collection,)
+
     if (isCollectionHolderByStructure<T>(collection,))
         return toMutableWeakSetByCollectionHolder(collection,)
     if (isArrayByStructure<T>(collection,))
@@ -47,7 +51,7 @@ export function toMutableWeakSet<const T extends WeakKey, >(collection: Nullable
 /**
  * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): WeakSet<T> {
@@ -63,7 +67,7 @@ export function toMutableWeakSetByMinimalistCollectionHolder<const T extends Wea
 /**
  * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<T> {
@@ -79,7 +83,7 @@ export function toMutableWeakSetByCollectionHolder<const T extends WeakKey, >(co
 /**
  * Convert the {@link collection} to a new {@link WeakSet mutable weak set}
  *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection} to convert
+ * @param collection The nullable collection to convert
  * @extensionFunction
  */
 export function toMutableWeakSetByArray<const T extends WeakKey, >(collection: Nullable<readonly T[]>,): WeakSet<T> {

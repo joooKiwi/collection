@@ -16,20 +16,25 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {BooleanCallback}            from "../type/callback"
 
-import {isArray}                       from "./isArray"
-import {isArrayByStructure}            from "./isArrayByStructure"
-import {isCollectionHolder}            from "./isCollectionHolder"
-import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
+import {isArray}                                                                                             from "./isArray"
+import {isArrayByStructure}                                                                                  from "./isArrayByStructure"
+import {isCollectionHolder}                                                                                  from "./isCollectionHolder"
+import {isCollectionHolderByStructure}                                                                       from "./isCollectionHolderByStructure"
+import {isNotEmpty, isNotEmptyByArray, isNotEmptyByCollectionHolder, isNotEmptyByMinimalistCollectionHolder} from "./isNotEmpty"
+import {isMinimalistCollectionHolder}                                                                        from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
 
 /**
  * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -40,7 +45,10 @@ export function any<const T, const COLLECTION extends CollectionHolder<T> = Coll
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder})
  * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -51,7 +59,10 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  * @param collection The {@link Nullable nullable} collection ({@link ReadonlyArray Array})
  * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -65,33 +76,31 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#anyMatch(java.util.function.IntPredicate) Java IntStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#anyMatch(java.util.function.LongPredicate) Java LongStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#anyMatch(java.util.function.DoublePredicate) Java DoubleStream.anyMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
-    if (collection == null)
-        return false
-    if (isCollectionHolder<T>(collection,))
-        return anyByCollectionHolder(collection, predicate,)
-    if (isArray(collection,))
-        return anyByArray(collection, predicate,)
-    if (isCollectionHolderByStructure<T>(collection,))
-        return anyByCollectionHolder(collection, predicate,)
-    if (isArrayByStructure<T>(collection,))
-        return anyByArray(collection, predicate,)
-    return anyByMinimalistCollectionHolder(collection, predicate,)
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (predicate == null)
+        return isNotEmpty(collection,)
+    return __any(collection, predicate,)
 }
 
 
 /**
  * Tell if the {@link collection} <b>is not empty</b>
  *
- * @param collection The {@link Nullable nullable} {@link MinimalistCollectionHolder collection}
+ * @param collection The nullable collection
  * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
@@ -100,21 +109,121 @@ export function anyByMinimalistCollectionHolder<const T, const COLLECTION extend
  * Check if <b>one</b> of the elements in the {@link collection}
  * match the given {@link predicate}
  *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
+ * @param collection The nullable collection
  * @param predicate  The matching predicate
  * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
  * @see ReadonlyArray.some
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#anyMatch(java.util.function.IntPredicate) Java IntStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#anyMatch(java.util.function.LongPredicate) Java LongStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#anyMatch(java.util.function.DoublePredicate) Java DoubleStream.anyMatch(predicate)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
 export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
 export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (predicate == null)
+        return isNotEmptyByMinimalistCollectionHolder(collection,)
+    return __anyByMinimalistCollectionHolder(collection, predicate,)
+}
+
+/**
+ * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
+ *
+ * @param collection The nullable collection
+ * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
+ * @extensionFunction
+ */
+export function anyByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isNotEmpty"]
+/**
+ * Check if <b>one</b> of the elements in the {@link collection}
+ * match the given {@link predicate}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The matching predicate
+ * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
+ * @see ReadonlyArray.some
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#anyMatch(java.util.function.IntPredicate) Java IntStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#anyMatch(java.util.function.LongPredicate) Java LongStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#anyMatch(java.util.function.DoublePredicate) Java DoubleStream.anyMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
+ * @extensionFunction
+ */
+export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (predicate == null)
+        return isNotEmptyByCollectionHolder(collection,)
+    return __anyByCollectionHolder(collection, predicate,)
+}
+
+/**
+ * Tell if the {@link collection} <b>is not empty</b>
+ *
+ * @param collection The nullable collection
+ * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#findAny() Java Stream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#allMatch() Java IntStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#allMatch() Java LongStream.findAny()
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#allMatch() Java DoubleStream.findAny()
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
+ * @extensionFunction
+ */
+export function anyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: Nullable<COLLECTION>,): COLLECTION["length"] extends 0 ? false : COLLECTION["length"] extends number ? boolean : true
+/**
+ * Check if <b>one</b> of the elements in the {@link collection}
+ * match the given {@link predicate}
+ *
+ * @param collection The nullable collection
+ * @param predicate  The matching predicate
+ * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
+ * @see ReadonlyArray.some
+ * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java Stream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/IntStream.html#anyMatch(java.util.function.IntPredicate) Java IntStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#anyMatch(java.util.function.LongPredicate) Java LongStream.anyMatch(predicate)
+ * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#anyMatch(java.util.function.DoublePredicate) Java DoubleStream.anyMatch(predicate)
+ * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
+ * @extensionFunction
+ */
+export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+    if (predicate == null)
+        return isNotEmptyByArray(collection,)
+    return __anyByArray(collection, predicate,)
+}
+
+//#endregion -------------------- Facade method --------------------
+//#region -------------------- Core method --------------------
+
+function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-    if (predicate == null)
-        return collection.size != 0
+    if (isCollectionHolder(collection,))
+        return __anyByCollectionHolder(collection, predicate,)
+    if (isMinimalistCollectionHolder(collection,))
+        return __anyByMinimalistCollectionHolder(collection, predicate,)
+    if (isArray(collection,))
+        return __anyByArray(collection, predicate,)
+    if (isCollectionHolderByStructure<T>(collection,))
+        return __anyByCollectionHolder(collection, predicate,)
+    if (isArrayByStructure<T>(collection,))
+        return __anyByArray(collection, predicate,)
+    return __anyByMinimalistCollectionHolder(collection, predicate,)
+}
+
+function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+    if (collection == null)
+        return false
 
     const size = collection.size
     if (size == 0)
@@ -126,36 +235,9 @@ export function anyByMinimalistCollectionHolder<const T, >(collection: Nullable<
     return __with0Argument(predicate as () => boolean, size,)
 }
 
-/**
- * Tell if the {@link collection} {@link CollectionHolder.isNotEmpty is not empty}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @return {boolean} <b>false</b> if null is received or {@link CollectionHolder.isNotEmpty isNotEmpty} otherwise
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
- * @extensionFunction
- */
-export function anyByCollectionHolder<const T, const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["isNotEmpty"]
-/**
- * Check if <b>one</b> of the elements in the {@link collection}
- * match the given {@link predicate}
- *
- * @param collection The {@link Nullable nullable} {@link CollectionHolder collection}
- * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
- * @see ReadonlyArray.some
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
- * @extensionFunction
- */
-export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
+function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-    if (predicate == null)
-        return collection.size != 0
     if (collection.isEmpty)
         return false
     if (predicate.length == 1)
@@ -165,36 +247,9 @@ export function anyByCollectionHolder<const T, >(collection: Nullable<Collection
     return __with0Argument(predicate as () => boolean, collection.size,)
 }
 
-/**
- * Tell if the {@link collection} <b>is not empty</b>
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @return {boolean} <b>false</b> if null is received or <b>is not empty</b> otherwise
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any()
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#findAny() Java findAny()
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
- * @extensionFunction
- */
-export function anyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: Nullable<COLLECTION>,): COLLECTION["length"] extends 0 ? false : COLLECTION["length"] extends number ? boolean : true
-/**
- * Check if <b>one</b> of the elements in the {@link collection}
- * match the given {@link predicate}
- *
- * @param collection The {@link Nullable nullable} {@link ReadonlyArray collection}
- * @param predicate  The matching predicate
- * @return {boolean} <b>true</b> if at least one {@link predicate} is true on a value of the {@link collection}
- * @see ReadonlyArray.some
- * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/any.html Kotlin any(predicate)
- * @see https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/stream/Stream.html#anyMatch(java.util.function.Predicate) Java anyMatch(predicate)
- * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
- * @extensionFunction
- */
-export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+function __anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): boolean {
     if (collection == null)
         return false
-    if (predicate == null)
-        return collection.length != 0
 
     const size = collection.length
     if (size == 0)
@@ -206,7 +261,7 @@ export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predic
     return __with0Argument(predicate as () => boolean, size,)
 }
 
-//#endregion -------------------- Facade method --------------------
+//#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
 function __with0Argument(predicate: () => boolean, size: number,) {

@@ -10,16 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolder}                           from "../../src/CollectionHolder"
-import type {PossibleIterableArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
+import type {CollectionHolder} from "../../src/CollectionHolder"
 
-// import {ArrayAsCollectionHolder}           from "../../src/ArrayAsCollectionHolder"
 import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
 import {GenericCollectionHolder}           from "../../src/GenericCollectionHolder"
 import {LazyGenericCollectionHolder}       from "../../src/LazyGenericCollectionHolder"
 
 import {Holder}                                           from "../Holder"
-// import {CollectionHolder_ByArrayCollection}               from "../instance/CollectionHolder_ByArrayCollection"
 import {CollectionHolder_ByMinimalistCollection}          from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}             from "../instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByLazyCollection}                from "../instance/CollectionHolder_ByLazyCollection"
@@ -37,6 +34,7 @@ import {IterableWithLengthThatFailOnCount}                from "../instance/Iter
 import {IterableWithNullPossibleSize}                     from "../instance/IterableWithNullPossibleSize"
 import {IterableWithSizeForTest}                          from "../instance/IterableWithSizeForTest"
 import {IterableWithSizeThatFailOnLength}                 from "../instance/IterableWithSizeThatFailOnLength"
+import {IteratorForTest}                                  from "../instance/IteratorForTest"
 import {MinimalistCollectionHolder_ByStructure}           from "../instance/MinimalistCollectionHolder_ByStructure"
 import {MinimalistCollectionHolderFromArray}              from "../instance/MinimalistCollectionHolderFromArray"
 
@@ -85,7 +83,7 @@ export const everyCollectionInstancesAndExtensionFunctionAsCollectionHolder = [
 
 
 /**
- * The possible instances applicable to the type-alias {@link PossibleIterableArraySetOrCollectionHolder}
+ * The possible instances applicable to the type-alias {@link PossibleIterableIteratorArraySetOrCollectionHolder}
  * to apply on tests
  *
  * @todo Replace the callback nature with the constructor instance
@@ -102,7 +100,8 @@ export const everyIterableInstances = [
     new Holder(<const T, >(array: readonly T[],) => new IterableWithNullPossibleSize(array,),           "iterable with possible size (all null)",),
     new Holder(<const T, >(array: readonly T[],) => new IterableWithSizeThatFailOnLength(array,),       "iterable with possible size (with size & fail on length)",),
     new Holder(<const T, >(array: readonly T[],) => new IterableWithLengthThatFailOnCount(array,),      "iterable with possible size (with length & fail on count)",),
-    //TODO add iterator when it is handled
+    new Holder(<const T, >(array: readonly T[],) => new IteratorForTest(array,),                        "iterator",),
+    //TODO add iterator by structure
     new Holder(<const T, >(array: readonly T[],) => new CollectionIteratorFromArray(array,),            "collection iterator",),
     new Holder(<const T, >(array: readonly T[],) => new CollectionIterator_ByStructure(array,),         "collection iterator (by structure)",),
     new Holder(<const T, >(array: readonly T[],) => new CollectionHolderFromArray(array,),              "collection holder",),
