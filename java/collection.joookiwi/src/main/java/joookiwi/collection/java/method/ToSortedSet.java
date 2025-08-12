@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.SortedSet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -9,6 +8,7 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.ImmutableSortedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -28,12 +28,12 @@ public final class ToSortedSet
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SortedSet<T> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySortedSet();
 
@@ -43,12 +43,12 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SortedSet<T> toSortedSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySortedSet();
         if (collection.isEmpty())
@@ -58,12 +58,12 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SortedSet<T> toSortedSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptySortedSet();
 
@@ -76,7 +76,7 @@ public final class ToSortedSet
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -84,8 +84,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 
@@ -95,7 +95,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -103,8 +103,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
         if (collection.isEmpty())
@@ -112,7 +112,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -120,8 +120,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                  final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 
@@ -134,7 +134,7 @@ public final class ToSortedSet
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -142,8 +142,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                  final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 
@@ -153,7 +153,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -161,8 +161,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                  final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
         if (collection.isEmpty())
@@ -170,7 +170,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -178,8 +178,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                  final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 
@@ -192,7 +192,7 @@ public final class ToSortedSet
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -200,8 +200,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                  final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 
@@ -211,7 +211,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -219,8 +219,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                  final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
         if (collection.isEmpty())
@@ -228,7 +228,7 @@ public final class ToSortedSet
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SortedSet]
+    /// Convert the `collection` to an [ImmutableSortedSet]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -236,8 +236,8 @@ public final class ToSortedSet
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                  final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySortedSet();
 

@@ -1,7 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.Collection;
-import java.util.SequencedCollection;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -10,6 +8,7 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableSequencedCollection;
+import joookiwi.collection.java.extended.ImmutableSequencedCollection;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -29,12 +28,12 @@ public final class ToSequencedCollection
 
     //#region -------------------- ∅ --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SequencedCollection<T> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -44,12 +43,12 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, size));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SequencedCollection<T> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return emptySequencedCollection();
         if (collection.isEmpty())
@@ -57,12 +56,12 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, collection.size()));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [Collection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T extends @Nullable Object> @Unmodifiable SequencedCollection<T> toSequencedCollection(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> ImmutableSequencedCollection<T> toSequencedCollection(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -75,7 +74,7 @@ public final class ToSequencedCollection
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- (T, int) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -83,8 +82,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -94,7 +93,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -102,8 +101,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
         if (collection.isEmpty())
@@ -111,7 +110,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -119,8 +118,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -133,7 +132,7 @@ public final class ToSequencedCollection
     //#endregion -------------------- (T, int) → U --------------------
     //#region -------------------- (T) → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -141,8 +140,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -152,7 +151,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -160,8 +159,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
         if (collection.isEmpty())
@@ -169,7 +168,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection, collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -177,8 +176,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                      final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -191,7 +190,7 @@ public final class ToSequencedCollection
     //#endregion -------------------- (T) → U --------------------
     //#region -------------------- () → U --------------------
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -199,8 +198,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
@@ -210,7 +209,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(size, transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -218,8 +217,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
         if (collection.isEmpty())
@@ -227,7 +226,7 @@ public final class ToSequencedCollection
         return new ArrayAsImmutableSequencedCollection<>(_values(collection.size(), transform));
     }
 
-    /// Convert the `collection` to an [immutable][Unmodifiable] [SequencedCollection]
+    /// Convert the `collection` to an [ImmutableSequencedCollection]
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -235,8 +234,8 @@ public final class ToSequencedCollection
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U extends @Nullable Object> @Unmodifiable SequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
-                                                                                                                                      final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedCollection<U> toSequencedCollection(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return emptySequencedCollection();
 
