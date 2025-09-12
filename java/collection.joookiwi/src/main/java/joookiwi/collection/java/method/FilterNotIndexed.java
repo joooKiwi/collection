@@ -17,11 +17,11 @@ import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
-public final class FilterIndexedNot
+public final class FilterNotIndexed
         extends Utility {
 
     @Contract(ALWAYS_FAIL_0)
-    private FilterIndexedNot() { throw new ImpossibleConstructionException("The utility class “FilterIndexedNot” cannot be constructed.", FilterIndexedNot.class); }
+    private FilterNotIndexed() { throw new ImpossibleConstructionException("The utility class “FilterNotIndexed” cannot be constructed.", FilterNotIndexed.class); }
 
     //#region -------------------- Facade methods --------------------
 
@@ -41,7 +41,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -66,7 +66,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -89,7 +89,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final T @Nullable @Unmodifiable [] collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final T @Nullable @Unmodifiable [] collection,
                                                            final IntObjPredicate<? super T> predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -117,7 +117,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -142,7 +142,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -165,7 +165,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final T @Nullable @Unmodifiable [] collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final T @Nullable @Unmodifiable [] collection,
                                                            final IntPredicate predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -193,7 +193,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -218,7 +218,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final @Nullable CollectionHolder<? extends T> collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
@@ -241,7 +241,7 @@ public final class FilterIndexedNot
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not.html">Kotlin filterNot(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where">C# Where(predicate)</a>
     @ExtensionFunction
-    public static <T> CollectionHolder<T> filterIndexedNot(final T @Nullable @Unmodifiable [] collection,
+    public static <T> CollectionHolder<T> filterNotIndexed(final T @Nullable @Unmodifiable [] collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
             return emptyCollectionHolder();
