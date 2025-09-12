@@ -85,7 +85,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -105,7 +105,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final @Nullable CollectionHolder<? extends T> collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -123,7 +123,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final T @Nullable @Unmodifiable [] collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
