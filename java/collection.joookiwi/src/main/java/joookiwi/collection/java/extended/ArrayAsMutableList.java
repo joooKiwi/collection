@@ -17,19 +17,23 @@ public class ArrayAsMutableList<T extends @Nullable Object>
     private T[] __reference;
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
+    //#region -------------------- Constructors --------------------
 
+    /// Create an instance of a [MutableList] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
     public ArrayAsMutableList() {
         super();
         __reference = emptyArray();
     }
 
+    /// Create an instance of a [MutableList] from the `reference`
+    ///
+    /// @param reference The array to be the internal structure
     public ArrayAsMutableList(final T[] reference) {
         super();
         __reference = reference;
     }
 
-    //#endregion -------------------- Constructor --------------------
+    //#endregion -------------------- Constructors --------------------
     //#region -------------------- Getter / setter methods --------------------
 
     /// The changeable internal reference passed through the constructor or mutated from its setter
