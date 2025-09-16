@@ -33,7 +33,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -52,7 +52,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -69,7 +69,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -92,7 +92,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -115,7 +115,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -136,7 +136,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -162,7 +162,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -185,7 +185,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -206,7 +206,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -232,7 +232,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -255,7 +255,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -276,7 +276,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -1024,7 +1024,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
@@ -1045,7 +1045,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
@@ -1064,7 +1064,7 @@ public final class ToMutableArrayBlockingQueue
 
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] collection
@@ -1089,7 +1089,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1114,7 +1114,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1137,7 +1137,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1165,7 +1165,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1190,7 +1190,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1213,7 +1213,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1241,7 +1241,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][MinimalistCollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1266,7 +1266,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the <code>collection.[size][CollectionHolder#size]</code>
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
@@ -1289,7 +1289,7 @@ public final class ToMutableArrayBlockingQueue
     /// Convert the `collection` to a new [MutableArrayBlockingQueue]
     /// applying a transformation
     /// with a capacity as the `collection.length`
-    /// (or [32][joookiwi.collection.java.CollectionConstants#DEFAULT_QUEUE_CAPACITY] if it is empty)
+    /// (or [Integer#MAX_VALUE] if it is empty)
     /// and the `fairness` specified
     ///
     /// @param <T>        The `collection` type
