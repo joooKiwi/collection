@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -305,6 +304,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
@@ -329,6 +329,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
@@ -353,6 +354,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` specified and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     ///
     /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the collection size
@@ -383,7 +385,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
@@ -412,7 +414,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
@@ -441,7 +443,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the collection size
@@ -473,7 +475,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
@@ -502,7 +504,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
@@ -531,7 +533,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the collection size
@@ -563,7 +565,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][MinimalistCollectionHolder] [size][MinimalistCollectionHolder#size]
@@ -592,7 +594,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the [collection][CollectionHolder] [size][CollectionHolder#size]
@@ -621,7 +623,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
     /// @throws ImpossibleCapacityException The `capacity` was under the collection size
@@ -651,6 +653,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -677,6 +680,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -703,6 +707,7 @@ public final class ToMutableArrayBlockingQueue
     /// with the `capacity` and the `fairness` specified
     ///
     /// @param collection The [nullable][Nullable] collection
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param <T>        The `collection` type
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -735,7 +740,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -766,7 +771,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -797,7 +802,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -831,7 +836,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -862,7 +867,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -893,7 +898,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -927,7 +932,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -958,7 +963,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
@@ -989,7 +994,7 @@ public final class ToMutableArrayBlockingQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     /// @param collection The [nullable][Nullable] collection
-    /// @param capacity   The [queue][ArrayBlockingQueue] capacity
+    /// @param capacity   The [queue][java.util.concurrent.ArrayBlockingQueue] capacity
     /// @param isFair     The fairness to block threads on insert/remove (if `true`) or unspecified (if `false`)
     /// @param transform  The given transform
     /// @throws ImpossibleCapacityException The `capacity` was under `1`
