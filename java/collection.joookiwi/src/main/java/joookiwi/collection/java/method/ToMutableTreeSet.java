@@ -34,7 +34,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -50,7 +50,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -66,7 +66,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -88,8 +88,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -108,8 +108,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -126,8 +126,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -149,8 +149,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -169,8 +169,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -187,8 +187,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -210,8 +210,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -230,8 +230,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -248,8 +248,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
