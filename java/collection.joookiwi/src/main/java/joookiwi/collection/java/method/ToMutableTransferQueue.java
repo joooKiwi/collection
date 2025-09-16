@@ -35,7 +35,7 @@ public final class ToMutableTransferQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableTransferQueue<T> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T> MutableTransferQueue<T> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -51,7 +51,7 @@ public final class ToMutableTransferQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableTransferQueue<T> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T> MutableTransferQueue<T> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
         if (collection.isEmpty())
@@ -65,7 +65,7 @@ public final class ToMutableTransferQueue
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T extends @Nullable Object> MutableTransferQueue<T> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> MutableTransferQueue<T> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -87,8 +87,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -107,8 +107,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
         if (collection.isEmpty())
@@ -125,8 +125,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -148,8 +148,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                        final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -168,8 +168,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                        final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
         if (collection.isEmpty())
@@ -186,8 +186,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                        final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -209,8 +209,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                                        final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
@@ -229,8 +229,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                                        final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
         if (collection.isEmpty())
@@ -247,8 +247,8 @@ public final class ToMutableTransferQueue
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                                        final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U> MutableTransferQueue<U> toMutableTransferQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                 final Supplier<? extends U> transform) {
         if (collection == null)
             return new ArrayAsMutableTransferQueue<>();
 
