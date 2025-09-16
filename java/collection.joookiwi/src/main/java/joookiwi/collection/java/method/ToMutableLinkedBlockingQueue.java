@@ -275,7 +275,7 @@ public final class ToMutableLinkedBlockingQueue
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -297,7 +297,7 @@ public final class ToMutableLinkedBlockingQueue
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -317,7 +317,7 @@ public final class ToMutableLinkedBlockingQueue
     public static <T> MutableLinkedBlockingQueue<T> toMutableLinkedBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                  final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -346,7 +346,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -372,7 +372,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -396,7 +396,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -425,7 +425,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -451,7 +451,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -475,7 +475,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -504,7 +504,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 
@@ -530,7 +530,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -554,7 +554,7 @@ public final class ToMutableLinkedBlockingQueue
                                                                                                              final int capacity,
                                                                                                              final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “LinkedBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableLinkedBlockingQueue<>(capacity);
 

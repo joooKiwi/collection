@@ -313,7 +313,7 @@ public final class ToMutableArrayBlockingQueue
     public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -321,7 +321,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
@@ -338,7 +338,7 @@ public final class ToMutableArrayBlockingQueue
     public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -346,7 +346,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
@@ -363,7 +363,7 @@ public final class ToMutableArrayBlockingQueue
     public static <T> MutableArrayBlockingQueue<T> toMutableArrayBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                final int capacity) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -371,7 +371,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity);
     }
 
@@ -395,7 +395,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -403,7 +403,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -424,7 +424,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -432,7 +432,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -453,7 +453,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -461,7 +461,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -485,7 +485,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -493,7 +493,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -514,7 +514,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -522,7 +522,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -543,7 +543,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -551,7 +551,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity);
     }
 
@@ -575,7 +575,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -583,7 +583,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
     }
 
@@ -604,7 +604,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
         if (collection.isEmpty())
@@ -612,7 +612,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
     }
 
@@ -633,7 +633,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final int capacity,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity);
 
@@ -641,7 +641,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity);
     }
 
@@ -664,7 +664,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                final int capacity,
                                                                                final boolean isFair) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -672,7 +672,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
@@ -691,7 +691,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                final int capacity,
                                                                                final boolean isFair) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (collection.isEmpty())
@@ -699,7 +699,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
@@ -718,7 +718,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                final int capacity,
                                                                                final boolean isFair) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -726,7 +726,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size), capacity, isFair);
     }
 
@@ -752,7 +752,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -760,7 +760,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -783,7 +783,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (collection.isEmpty())
@@ -791,7 +791,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -814,7 +814,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -822,7 +822,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -848,7 +848,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -856,7 +856,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -879,7 +879,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (collection.isEmpty())
@@ -887,7 +887,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -910,7 +910,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Function<? super T, ? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -918,7 +918,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(collection, size, transform), capacity, isFair);
     }
 
@@ -944,7 +944,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -952,7 +952,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
@@ -975,7 +975,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (collection.isEmpty())
@@ -983,7 +983,7 @@ public final class ToMutableArrayBlockingQueue
 
         final var size = collection.size();
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
@@ -1006,7 +1006,7 @@ public final class ToMutableArrayBlockingQueue
                                                                                                            final boolean isFair,
                                                                                                            final Supplier<? extends U> transform) {
         if (capacity < 1)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” with a capacity under 1 (" + capacity + ")", capacity);
         if (collection == null)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
 
@@ -1014,7 +1014,7 @@ public final class ToMutableArrayBlockingQueue
         if (size == 0)
             return new MutableArrayBlockingQueue<>(capacity, isFair);
         if (capacity < size)
-            throw new ImpossibleCapacityException("The collection cannot be converted to an “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
+            throw new ImpossibleCapacityException("The collection cannot be converted to a mutable “ArrayBlockingQueue” since the capacity (" + capacity + ") was under the size (" + size + ")", capacity);
         return new MutableArrayBlockingQueue<>(_values(size, transform), capacity, isFair);
     }
 
