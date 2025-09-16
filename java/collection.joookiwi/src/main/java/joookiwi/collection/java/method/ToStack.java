@@ -197,8 +197,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
@@ -216,8 +216,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
         if (collection.isEmpty())
@@ -233,8 +233,8 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
             return emptyStack();
 
