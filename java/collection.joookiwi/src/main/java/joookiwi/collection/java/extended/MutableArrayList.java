@@ -272,7 +272,7 @@ public class MutableArrayList<T extends @Nullable Object>
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received
-    public MutableArrayList(final int initialCapacity) { super(initialCapacity); }
+    public MutableArrayList(final int initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 0)); }
 
     /// Create a mutable instance of [ArrayList]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
