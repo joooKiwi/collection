@@ -330,27 +330,27 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
 
     public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findIndexIndexed(..._: readonly unknown[]): never
-    public findIndexIndexed() {
-        throw new Error("The method “findIndexIndexed” was not expected to be called.",)
-    }
-
     public findFirstIndexIndexed(..._: readonly unknown[]): never
     public findFirstIndexIndexed() {
         throw new Error("The method “findFirstIndexIndexed” was not expected to be called.",)
     }
 
+    public findIndexIndexed(..._: readonly unknown[]): never
+    public findIndexIndexed() {
+        throw new Error("The method “findIndexIndexed” was not expected to be called.",)
+    }
+
 
     public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
-
-    public findIndexIndexedOrNull(..._: readonly unknown[]): never
-    public findIndexIndexedOrNull() {
-        throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
-    }
 
     public findFirstIndexIndexedOrNull(..._: readonly unknown[]): never
     public findFirstIndexIndexedOrNull() {
         throw new Error("The method “findFirstIndexIndexedOrNull” was not expected to be called.",)
+    }
+
+    public findIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findIndexIndexedOrNull() {
+        throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
     }
 
     //#endregion -------------------- Index of first --------------------

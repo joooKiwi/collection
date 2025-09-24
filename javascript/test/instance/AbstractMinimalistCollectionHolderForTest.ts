@@ -132,13 +132,6 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return getLastByMinimalistCollectionHolder(this,)
     }
 
-    public override getFirstOrNull(): NullOr<T> {
-        return getFirstOrNullByMinimalistCollectionHolder(this,)
-    }
-
-    public override getLastOrNull(): NullOr<T> {
-        return getLastOrNullByMinimalistCollectionHolder(this,)
-    }
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -158,8 +151,17 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return getLastOrElseByMinimalistCollectionHolder(this, defaultValue,)
     }
 
+
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByMinimalistCollectionHolder(this, index,)
+    }
+
+    public override getFirstOrNull(): NullOr<T> {
+        return getFirstOrNullByMinimalistCollectionHolder(this,)
+    }
+
+    public override getLastOrNull(): NullOr<T> {
+        return getLastOrNullByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Get --------------------
