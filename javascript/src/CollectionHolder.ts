@@ -1518,62 +1518,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>,): number
-
-    /**
-     * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
-     *
-     * @param predicate The given predicate
-     * @param from      The inclusive starting index (<code>0</code> by default)
-     * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
-
-    /**
-     * Get the first index matching the {@link predicate}
-     * between the {@link from starting} and the {@link to ending} index
-     *
-     * @param predicate The given predicate
-     * @param from      The inclusive starting index (<code>0</code> by default)
-     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
-     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
-
-
-    /**
-     * Get the first index matching the {@link predicate}
-     *
-     * @param predicate The given predicate
-     * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1619,6 +1563,62 @@ export interface CollectionHolder<out T = unknown, >
      * @onlyGivePositiveValue
      */
     findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+
+
+    /**
+     * Get the first index matching the {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @return {number} The first index found by the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No index could be found
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>,): number
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
+     *
+     * @param predicate The given predicate
+     * @param from      The inclusive starting index (<code>0</code> by default)
+     * @return {number} The first index found by the {@link predicate} after {@link from}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+     * @throws IndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * between the {@link from starting} and the {@link to ending} index
+     *
+     * @param predicate The given predicate
+     * @param from      The inclusive starting index (<code>0</code> by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
 
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
