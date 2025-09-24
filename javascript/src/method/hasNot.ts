@@ -24,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
@@ -49,7 +49,7 @@ export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHol
 
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
@@ -66,7 +66,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
 }
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
@@ -81,7 +81,7 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
 }
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
