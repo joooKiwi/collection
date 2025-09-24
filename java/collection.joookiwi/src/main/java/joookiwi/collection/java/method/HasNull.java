@@ -34,7 +34,7 @@ public final class HasNull
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __hasNull(collection, size);
+        return __validate(collection, size);
     }
 
     /// The `collection` has at least one `null`
@@ -48,7 +48,7 @@ public final class HasNull
             return false;
         if (collection.isEmpty())
             return false;
-        return __hasNull(collection, collection.size());
+        return __validate(collection, collection.size());
 
     }
 
@@ -65,14 +65,14 @@ public final class HasNull
         final var size = collection.length;
         if (size == 0)
             return false;
-        return __hasNull(collection, size);
+        return __validate(collection, size);
     }
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __hasNull(final MinimalistCollectionHolder<? extends T> collection,
-                                                                  final int size) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size) {
         var index = -1;
         while (++index < size)
             if (collection.get(index) == null)
@@ -80,8 +80,8 @@ public final class HasNull
         return false;
     }
 
-    private static <T extends @Nullable Object> boolean __hasNull(final T @Unmodifiable [] collection,
-                                                                  final int size) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size) {
         var index = -1;
         while (++index < size)
             if (collection[index] == null)
