@@ -68,7 +68,7 @@ export function hasNotOneWithIterableByMinimalistCollectionHolder<const T, >(col
     if (iteratorResult.done)
         return false
 
-    return __hasNotOne(collection, iterator, iteratorResult.value, size,)
+    return __validate(collection, iterator, iteratorResult.value, size,)
 }
 
 /**
@@ -89,7 +89,7 @@ export function hasNotOneWithIterableByCollectionHolder<const T, >(collection: N
     if (iteratorResult.done)
         return false
 
-    return __hasNotOne(collection, iterator, iteratorResult.value, collection.size,)
+    return __validate(collection, iterator, iteratorResult.value, collection.size,)
 }
 
 /**
@@ -112,13 +112,13 @@ export function hasNotOneWithIterableByArray<const T, >(collection: Nullable<rea
     if (iteratorResult.done)
         return false
 
-    return __hasNotOneByArray(collection, iterator, iteratorResult.value, size,)
+    return __validateByArray(collection, iterator, iteratorResult.value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection.get(index1,) === firstValue)
@@ -135,7 +135,7 @@ function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, itera
     return true
 }
 
-function __hasNotOneByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection[index1] === firstValue)

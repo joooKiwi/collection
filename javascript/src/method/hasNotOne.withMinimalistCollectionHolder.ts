@@ -66,7 +66,7 @@ export function hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHol
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOne(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, valuesSize,)
 }
 
 /**
@@ -85,7 +85,7 @@ export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const 
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOne(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, valuesSize,)
 }
 
 /**
@@ -106,13 +106,13 @@ export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collec
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOneByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
@@ -124,7 +124,7 @@ function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, value
     return true
 }
 
-function __hasNotOneByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

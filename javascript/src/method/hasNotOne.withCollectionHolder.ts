@@ -64,7 +64,7 @@ export function hasNotOneWithCollectionHolderByMinimalistCollectionHolder<const 
         return true
     if (values.isEmpty)
         return false
-    return __hasNotOne(collection, values, size, values.size,)
+    return __validate(collection, values, size, values.size,)
 }
 
 /**
@@ -81,7 +81,7 @@ export function hasNotOneWithCollectionHolderByCollectionHolder<const T, >(colle
         return true
     if (values.isEmpty)
         return false
-    return __hasNotOne(collection, values, collection.size, values.size,)
+    return __validate(collection, values, collection.size, values.size,)
 }
 
 /**
@@ -100,13 +100,13 @@ export function hasNotOneWithCollectionHolderByArray<const T, >(collection: Null
         return true
     if (values.isEmpty)
         return false
-    return __hasNotOneByArray(collection, values, size, values.size,)
+    return __validateByArray(collection, values, size, values.size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
@@ -118,7 +118,7 @@ function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, value
     return true
 }
 
-function __hasNotOneByArray<const T, >(collection: readonly T[], values: CollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: CollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
