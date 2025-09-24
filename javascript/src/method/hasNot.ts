@@ -62,7 +62,7 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
     const size = collection.size
     if (size == 0)
         return true
-    return __hasNot(collection, value, size,)
+    return __validate(collection, value, size,)
 }
 
 /**
@@ -77,7 +77,7 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
         return true
     if (collection.isEmpty)
         return true
-    return __hasNot(collection, value, collection.size,)
+    return __validate(collection, value, collection.size,)
 }
 
 /**
@@ -94,13 +94,13 @@ export function hasNotByArray<const T, >(collection: Nullable<readonly T[]>, val
     const size = collection.length
     if (size == 0)
         return true
-    return __hasNotByArray(collection, value, size,)
+    return __validateByArray(collection, value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNot<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection.get(index,) === value)
@@ -108,7 +108,7 @@ function __hasNot<const T, >(collection: MinimalistCollectionHolder<T>, value: T
     return true
 }
 
-function __hasNotByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)
