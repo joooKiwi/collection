@@ -67,7 +67,7 @@ export function hasAllWithArrayByMinimalistCollectionHolder<const T, >(collectio
     const size = collection.size
     if (size == 0)
         return false
-    return __hasAll(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, valuesSize,)
 }
 
 /**
@@ -87,7 +87,7 @@ export function hasAllWithArrayByCollectionHolder<const T, >(collection: Nullabl
         return false
     if (collection.isEmpty)
         return false
-    return __hasAll(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, valuesSize,)
 }
 
 /**
@@ -109,13 +109,13 @@ export function hasAllWithArrayByArray<const T, >(collection: Nullable<readonly 
     const size = collection.length
     if (size == 0)
         return false
-    return __hasAllByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: readonly T[], size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: readonly T[], size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
@@ -128,7 +128,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: 
     return true
 }
 
-function __hasAllByArray<const T, >(collection: readonly T[], values: readonly T[], size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: readonly T[], size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
