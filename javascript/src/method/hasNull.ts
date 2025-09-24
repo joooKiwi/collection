@@ -62,7 +62,7 @@ export function hasNullByMinimalistCollectionHolder<const T, >(collection: Nulla
     const size = collection.size
     if (size == 0)
         return false
-    return __hasNull(collection, size,)
+    return __validate(collection, size,)
 }
 
 /**
@@ -77,7 +77,7 @@ export function hasNullByCollectionHolder<const T, >(collection: Nullable<Collec
         return false
     if (collection.isEmpty)
         return false
-    return __hasNull(collection, collection.size,)
+    return __validate(collection, collection.size,)
 }
 
 /**
@@ -94,13 +94,13 @@ export function hasNullByArray<const T, >(collection: Nullable<readonly T[]>,): 
     const size = collection.length
     if (size == 0)
         return false
-    return __hasNullByArray(collection, size,)
+    return __validateByArray(collection, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNull(collection: MinimalistCollectionHolder, size: number,) {
+function __validate(collection: MinimalistCollectionHolder, size: number,) {
     let index = -1
     while (++index < size)
         if (collection.get(index,) == null)
@@ -108,7 +108,7 @@ function __hasNull(collection: MinimalistCollectionHolder, size: number,) {
     return false
 }
 
-function __hasNullByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: readonly unknown[], size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] == null)
