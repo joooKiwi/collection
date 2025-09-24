@@ -79,7 +79,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -95,7 +95,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -111,7 +111,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- iterator --------------------
@@ -130,7 +130,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -146,7 +146,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -162,7 +162,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- list iterator --------------------
@@ -181,7 +181,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -197,7 +197,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -213,7 +213,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- spliterator --------------------
@@ -232,7 +232,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -248,7 +248,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -264,7 +264,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- enumeration --------------------
@@ -285,12 +285,12 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
+            return __validate(collection, (List<? extends T>) values);
         if (values instanceof Collection<? extends T>)
-            return __hasOne(collection, (Collection<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (Collection<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -307,12 +307,12 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
+            return __validate(collection, (List<? extends T>) values);
         if (values instanceof Collection<? extends T>)
-            return __hasOne(collection, (Collection<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (Collection<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -329,12 +329,12 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
+            return __validate(collection, (List<? extends T>) values);
         if (values instanceof Collection<? extends T>)
-            return __hasOne(collection, (Collection<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (Collection<? extends T>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- iterable --------------------
@@ -355,8 +355,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -373,8 +373,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -391,8 +391,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof CollectionHolder<? extends T>)
-            return __hasOne(collection, (CollectionHolder<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (CollectionHolder<? extends T>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- minimalist collection holder --------------------
@@ -411,7 +411,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -427,7 +427,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -443,7 +443,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- collection holder --------------------
@@ -464,8 +464,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -482,8 +482,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -500,8 +500,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- collection --------------------
@@ -521,8 +521,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -539,8 +539,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -557,8 +557,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<? extends T>)
-            return __hasOne(collection, (List<? extends T>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<? extends T>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- sequenced collection --------------------
@@ -578,7 +578,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -594,7 +594,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -610,7 +610,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- list --------------------
@@ -629,7 +629,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -645,7 +645,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -661,7 +661,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- array list --------------------
@@ -680,7 +680,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -696,7 +696,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -712,7 +712,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- copy on write array list --------------------
@@ -731,7 +731,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -747,7 +747,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -763,7 +763,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- linked list --------------------
@@ -782,7 +782,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -798,7 +798,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -814,7 +814,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- vector --------------------
@@ -835,8 +835,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -853,8 +853,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -871,8 +871,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- set --------------------
@@ -892,8 +892,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -910,8 +910,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -928,8 +928,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- sequenced set --------------------
@@ -949,8 +949,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -967,8 +967,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -985,8 +985,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- sorted set --------------------
@@ -1006,8 +1006,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1024,8 +1024,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1042,8 +1042,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- navigable set --------------------
@@ -1063,8 +1063,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1081,8 +1081,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1099,8 +1099,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- concurrent skip list set --------------------
@@ -1120,8 +1120,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1138,8 +1138,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1156,8 +1156,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- copy on write array set --------------------
@@ -1176,7 +1176,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1192,7 +1192,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1208,7 +1208,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- enum set --------------------
@@ -1228,8 +1228,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1246,8 +1246,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1264,8 +1264,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- hash set --------------------
@@ -1285,8 +1285,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1303,8 +1303,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1321,8 +1321,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- linked hash set --------------------
@@ -1342,8 +1342,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1360,8 +1360,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1378,8 +1378,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- tree set --------------------
@@ -1400,8 +1400,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1418,8 +1418,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1436,8 +1436,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- queue --------------------
@@ -1457,8 +1457,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1475,8 +1475,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1493,8 +1493,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- blocking queue --------------------
@@ -1514,8 +1514,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1532,8 +1532,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1550,8 +1550,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- transfer queue --------------------
@@ -1571,8 +1571,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1589,8 +1589,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1607,8 +1607,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- array blocking queue --------------------
@@ -1628,8 +1628,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1646,8 +1646,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1664,8 +1664,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- concurrent linked queue --------------------
@@ -1685,8 +1685,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1703,8 +1703,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1721,8 +1721,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- delay queue --------------------
@@ -1742,8 +1742,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1760,8 +1760,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1778,8 +1778,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- linked blocking queue --------------------
@@ -1799,8 +1799,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1817,8 +1817,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1835,8 +1835,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- linked transfer queue --------------------
@@ -1856,8 +1856,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1874,8 +1874,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1892,8 +1892,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- priority blocking queue --------------------
@@ -1913,8 +1913,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1931,8 +1931,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1949,8 +1949,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- priority queue --------------------
@@ -1970,8 +1970,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -1988,8 +1988,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2006,8 +2006,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- synchronous queue --------------------
@@ -2028,8 +2028,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2046,8 +2046,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2064,8 +2064,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- deque --------------------
@@ -2085,8 +2085,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2103,8 +2103,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2121,8 +2121,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- blocking deque --------------------
@@ -2142,8 +2142,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2160,8 +2160,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2178,8 +2178,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- array deque --------------------
@@ -2199,8 +2199,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2217,8 +2217,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2235,8 +2235,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- concurrent linked deque --------------------
@@ -2256,8 +2256,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2274,8 +2274,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2292,8 +2292,8 @@ public final class HasOne
         if (values == null)
             return true;
         if (values instanceof List<?>)
-            return __hasOne(collection, (List<?>) values);
-        return __hasOne(collection, values);
+            return __validate(collection, (List<?>) values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- linked blocking deque --------------------
@@ -2312,7 +2312,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2328,7 +2328,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2344,7 +2344,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- stack --------------------
@@ -2364,7 +2364,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2380,7 +2380,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     /// Tell that one of the `values` exist in the `collection`
@@ -2396,7 +2396,7 @@ public final class HasOne
             return false;
         if (values == null)
             return true;
-        return __hasOne(collection, values);
+        return __validate(collection, values);
     }
 
     //#endregion -------------------- array --------------------
@@ -2406,8 +2406,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (iterator) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final Iterator<? extends T> values) {
         if (!values.hasNext())
             return true;
 
@@ -2417,8 +2417,8 @@ public final class HasOne
         return __fromIterator(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final Iterator<? extends T> values) {
         if (!values.hasNext())
             return true;
         if (collection.isEmpty())
@@ -2426,8 +2426,8 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final Iterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final Iterator<? extends T> values) {
         if (!values.hasNext())
             return true;
 
@@ -2440,8 +2440,8 @@ public final class HasOne
     //#endregion -------------------- Core methods (iterator) --------------------
     //#region -------------------- Core methods (spliterator) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2451,8 +2451,8 @@ public final class HasOne
         return __fromSpliterator(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
         if (collection.isEmpty())
@@ -2460,8 +2460,8 @@ public final class HasOne
         return __fromSpliterator(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final Spliterator<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final Spliterator<? extends T> values) {
         if (values.estimateSize() == 0L)
             return true;
 
@@ -2474,8 +2474,8 @@ public final class HasOne
     //#endregion -------------------- Core methods (spliterator) --------------------
     //#region -------------------- Core methods (enumeration) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2485,8 +2485,8 @@ public final class HasOne
         return __fromEnumeration(collection, size, values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
         if (collection.isEmpty())
@@ -2494,8 +2494,8 @@ public final class HasOne
         return __fromEnumeration(collection, collection.size(), values);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final Enumeration<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final Enumeration<? extends T> values) {
         if (!values.hasMoreElements())
             return true;
 
@@ -2509,8 +2509,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (iterable) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2521,8 +2521,8 @@ public final class HasOne
         return __fromIterator(collection, size, iterator);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2531,8 +2531,8 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), iterator);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final Iterable<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final Iterable<? extends T> values) {
         final var iterator = values.iterator();
         if (!iterator.hasNext())
             return true;
@@ -2547,8 +2547,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (minimalist collection holder) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final MinimalistCollectionHolder<? extends T> values) {
         final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
@@ -2559,8 +2559,8 @@ public final class HasOne
         return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final MinimalistCollectionHolder<? extends T> values) {
         final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
@@ -2569,8 +2569,8 @@ public final class HasOne
         return __fromMinimalistCollectionHolder(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final MinimalistCollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final MinimalistCollectionHolder<? extends T> values) {
         final var valuesSize = values.size();
         if (valuesSize == 0)
             return true;
@@ -2584,8 +2584,8 @@ public final class HasOne
     //#endregion -------------------- Core methods (minimalist collection holder) --------------------
     //#region -------------------- Core methods (collection holder) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final CollectionHolder<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2597,8 +2597,8 @@ public final class HasOne
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final CollectionHolder<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
@@ -2608,8 +2608,8 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final CollectionHolder<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final CollectionHolder<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2625,8 +2625,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (collection) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @Unmodifiable Collection<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2636,8 +2636,8 @@ public final class HasOne
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final @Unmodifiable Collection<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
@@ -2645,8 +2645,8 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final @Unmodifiable Collection<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final @Unmodifiable Collection<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2660,8 +2660,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (list) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @Unmodifiable List<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2673,8 +2673,8 @@ public final class HasOne
         return __fromIterator(collection, size, values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final @Unmodifiable List<? extends T> values) {
         if (values.isEmpty())
             return true;
         if (collection.isEmpty())
@@ -2684,8 +2684,8 @@ public final class HasOne
         return __fromIterator(collection, collection.size(), values.iterator());
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final @Unmodifiable List<? extends T> values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final @Unmodifiable List<? extends T> values) {
         if (values.isEmpty())
             return true;
 
@@ -2701,8 +2701,8 @@ public final class HasOne
 
     //#region -------------------- Core methods (array) --------------------
 
-    private static <T extends @Nullable Object> boolean __hasOne(final MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable Object @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final @Nullable Object @Unmodifiable [] values) {
         final var valuesSize = values.length;
         if (valuesSize == 0)
             return true;
@@ -2713,8 +2713,8 @@ public final class HasOne
         return __fromArray(collection, size, values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final CollectionHolder<? extends T> collection,
-                                                                 final @Nullable Object @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
+                                                                   final @Nullable Object @Unmodifiable [] values) {
         final var valuesSize = values.length;
         if (valuesSize == 0)
             return true;
@@ -2723,8 +2723,8 @@ public final class HasOne
         return __fromArray(collection, collection.size(), values, valuesSize);
     }
 
-    private static <T extends @Nullable Object> boolean __hasOne(final T @Unmodifiable [] collection,
-                                                                 final @Nullable Object @Unmodifiable [] values) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final @Nullable Object @Unmodifiable [] values) {
         final var valuesSize = values.length;
         if (valuesSize == 0)
             return true;
