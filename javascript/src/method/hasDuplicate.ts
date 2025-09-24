@@ -62,7 +62,7 @@ export function hasDuplicateByMinimalistCollectionHolder<const T, >(collection: 
     const size = collection.size
     if (size == 0)
         return false
-    return __hasDuplicate(collection, size,)
+    return __validate(collection, size,)
 }
 
 /**
@@ -77,7 +77,7 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
         return false
     if (collection.isEmpty)
         return false
-    return __hasDuplicate(collection, collection.size,)
+    return __validate(collection, collection.size,)
 }
 
 /**
@@ -94,14 +94,14 @@ export function hasDuplicateByArray<const T, >(collection: Nullable<readonly T[]
     const size = collection.length
     if (size == 0)
         return false
-    return __hasDuplicateByArray(collection, size,)
+    return __validateByArray(collection, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasDuplicate<T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
-    const temporaryArray = new Array<T>(size,)
+function __validate(collection: MinimalistCollectionHolder, size: number,) {
+    const temporaryArray = new Array(size,)
     temporaryArray[0] = collection.get(0,)
     let amountOfItemAdded = 1
     let index = 0
@@ -117,13 +117,13 @@ function __hasDuplicate<T, >(collection: MinimalistCollectionHolder<T>, size: nu
     return false
 }
 
-function __hasDuplicateByArray<T, >(collection: readonly T[], size: number,) {
-    const temporaryArray = new Array<T>(size,)
-    temporaryArray[0] = collection[0] as T
+function __validateByArray(collection: readonly unknown[], size: number,) {
+    const temporaryArray = new Array(size,)
+    temporaryArray[0] = collection[0]
     let amountOfItemAdded = 1
     let index = 0
     while (++index < size) {
-        const value = collection[index] as T
+        const value = collection[index]
         let index2 = -1
         while (++index2 < amountOfItemAdded)
             if (temporaryArray[index2] === value)
