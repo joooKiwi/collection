@@ -34,7 +34,7 @@ public final class HasDuplicate
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __hasDuplicate(collection, size);
+        return __validate(collection, size);
     }
 
     /// The `collection` has at least one duplicate value
@@ -48,7 +48,7 @@ public final class HasDuplicate
             return false;
         if (collection.isEmpty())
             return false;
-        return __hasDuplicate(collection, collection.size());
+        return __validate(collection, collection.size());
     }
 
     /// The `collection` has at least one duplicate value
@@ -64,14 +64,14 @@ public final class HasDuplicate
         final var size = collection.length;
         if (size == 0)
             return false;
-        return __hasDuplicate(collection, size);
+        return __validate(collection, size);
     }
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __hasDuplicate(final MinimalistCollectionHolder<? extends T> collection,
-                                                                       final int size) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection.get(0);
         var amountOfItemAdded = 1;
@@ -96,11 +96,11 @@ public final class HasDuplicate
             temporaryArray[amountOfItemAdded++] = value;
         }
 
-        return amountOfItemAdded != size;
+        return false;
     }
 
-    private static <T extends @Nullable Object> boolean __hasDuplicate(final T @Unmodifiable [] collection,
-                                                                       final int size) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size) {
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         temporaryArray[0] = collection[0];
         var amountOfItemAdded = 1;
@@ -125,7 +125,7 @@ public final class HasDuplicate
             temporaryArray[amountOfItemAdded++] = value;
         }
 
-        return amountOfItemAdded != size;
+        return false;
     }
 
     //#endregion -------------------- Loop methods --------------------
