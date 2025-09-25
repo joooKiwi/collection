@@ -20,6 +20,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsImmutableSequencedCollection
 @NotNullByDefault
 public class ArrayAsImmutableSequencedCollection<T extends @Nullable Object>
         extends AbstractArrayAsImmutableSequencedCollection<T> {

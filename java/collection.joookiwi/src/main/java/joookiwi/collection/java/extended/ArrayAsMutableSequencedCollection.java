@@ -19,6 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// when possible.
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsMutableSequencedCollection
 @NotNullByDefault
 public class ArrayAsMutableSequencedCollection<T extends @Nullable Object>
         extends AbstractArrayAsMutableSequencedCollection<T> {
