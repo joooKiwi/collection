@@ -8,6 +8,19 @@ import org.jetbrains.annotations.Nullable;
 import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
+/// A bare-bone implementation of a [java List][java.util.List]
+/// with the mutability in place.
+///
+/// Note that `null` is permitted in this instance.
+/// It is up to the implementor to specify it.
+///
+/// The instance uses the [methods][joookiwi.collection.java.method]
+/// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
+/// when possible.
+///
+/// @param <T> The type
+/// @see SubdividedArrayAsMutableList
+/// @see ReversedArrayAsMutableList
 @NotNullByDefault
 public class ArrayAsMutableList<T extends @Nullable Object>
         extends AbstractArrayAsMutableList<T> {
