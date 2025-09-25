@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.Deque;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a reversed-order [Deque] similar to the [ArrayAsImmutableDeque] in its behaviour.
+/// An implementation of a reversed-order [ImmutableDeque] similar to the [ArrayAsImmutableDeque] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.

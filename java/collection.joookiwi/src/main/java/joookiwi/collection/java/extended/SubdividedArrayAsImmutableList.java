@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[List] similar to the [ArrayAsImmutableList] in its behaviour.
+/// An implementation of a subdivided-[ImmutableList] similar to the [ArrayAsImmutableList] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.

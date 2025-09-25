@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.SequencedCollection;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +9,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
-/// An implementation of a reversed-order [SequencedCollection] similar to the [ArrayAsMutableSequencedCollection] in its behaviour.
+/// An implementation of a reversed-order [MutableSequencedCollection] similar to the [ArrayAsMutableSequencedCollection] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.

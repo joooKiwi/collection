@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[SortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
+/// An implementation of a subdivided-[ImmutableSortedSet] similar to the [ArrayAsImmutableSortedSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [SUBDIVIDED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.

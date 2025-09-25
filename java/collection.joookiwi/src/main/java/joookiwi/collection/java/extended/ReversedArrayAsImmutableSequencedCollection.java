@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.SequencedCollection;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a reversed-order [SequencedCollection] similar to the [ArrayAsImmutableSequencedCollection] in its behaviour.
+/// An implementation of a reversed-order [ImmutableSequencedCollection] similar to the [ArrayAsImmutableSequencedCollection] in its behaviour.
 /// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.

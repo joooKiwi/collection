@@ -2,10 +2,8 @@ package joookiwi.collection.java.extended;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.List;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
-
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +17,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a reversed-order [List] similar to the [ArrayAsMutableList] in its behaviour.
+/// An implementation of a reversed-order [MutableList] similar to the [ArrayAsMutableList] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.

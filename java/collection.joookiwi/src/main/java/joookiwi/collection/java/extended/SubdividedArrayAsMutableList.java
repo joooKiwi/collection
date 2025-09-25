@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[List] similar to the [ArrayAsMutableList] in its behaviour.
+/// An implementation of a subdivided-[MutableList] similar to the [ArrayAsMutableList] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
