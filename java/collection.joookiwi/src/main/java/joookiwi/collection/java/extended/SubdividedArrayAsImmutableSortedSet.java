@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
-import java.util.SortedSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
@@ -31,7 +30,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ReversedArrayAsImmutableSortedSet
 @NotNullByDefault
 public class SubdividedArrayAsImmutableSortedSet<T extends @Nullable Object,
-        SOURCE extends SortedSet<? super T>,
+        SOURCE extends ImmutableSortedSet<? super T>,
         SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableSortedSet<T> {
 

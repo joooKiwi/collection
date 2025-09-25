@@ -1,7 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.List;
-
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.Contract;
@@ -32,7 +30,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 @Experimental
 @NotNullByDefault
 public class SubdividedArrayAsMutableList<T extends @Nullable Object,
-        SOURCE extends List<? super T>,
+        SOURCE extends MutableList<? super T>,
         SUBDIVIDED_ARRAY extends SubdividedMutableArray<T>>
         extends AbstractArrayAsMutableList<T> {
 

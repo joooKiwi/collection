@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
-import java.util.NavigableSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
@@ -31,7 +30,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ReversedArrayAsImmutableNavigableSet
 @NotNullByDefault
 public class SubdividedArrayAsImmutableNavigableSet<T extends @Nullable Object,
-        SOURCE extends NavigableSet<? super T>,
+        SOURCE extends ImmutableNavigableSet<? super T>,
         SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableNavigableSet<T> {
 
