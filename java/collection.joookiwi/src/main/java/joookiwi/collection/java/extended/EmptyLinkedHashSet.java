@@ -34,7 +34,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see joookiwi.collection.java.CollectionConstants#emptyHashSet
+/// @see joookiwi.collection.java.CollectionConstants#emptyLinkedHashSet
 @Singleton
 @NotNullByDefault
 public class EmptyLinkedHashSet<T extends @Nullable Object>
