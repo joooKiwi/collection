@@ -697,13 +697,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -722,13 +722,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -747,13 +747,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -775,7 +775,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -783,7 +783,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -804,7 +804,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -812,7 +812,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -833,7 +833,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -841,7 +841,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -861,20 +861,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -893,20 +893,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -925,20 +925,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -960,7 +960,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -969,7 +969,7 @@ public final class ToMutableHashSet
                 return __core(collection);
             else if (loadFactor.isNaN())
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
@@ -977,7 +977,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -998,7 +998,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1007,7 +1007,7 @@ public final class ToMutableHashSet
                 return __core(collection);
             else if (loadFactor.isNaN())
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
@@ -1015,7 +1015,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -1036,7 +1036,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1045,7 +1045,7 @@ public final class ToMutableHashSet
                 return __core(collection);
             else if (loadFactor.isNaN())
                 return __core(collection);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor);
@@ -1053,7 +1053,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity);
         return __core(collection, initialCapacity, loadFactor);
     }
@@ -1079,13 +1079,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1108,13 +1108,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1137,13 +1137,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1169,7 +1169,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1177,7 +1177,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1202,7 +1202,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1210,7 +1210,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1235,7 +1235,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1243,7 +1243,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1267,20 +1267,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1303,20 +1303,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1339,20 +1339,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1377,7 +1377,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1386,7 +1386,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1394,7 +1394,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1419,7 +1419,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1428,7 +1428,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1436,7 +1436,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1461,7 +1461,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1470,7 +1470,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1478,7 +1478,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1504,13 +1504,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1533,13 +1533,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1562,13 +1562,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1594,7 +1594,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1602,7 +1602,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1627,7 +1627,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1635,7 +1635,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1660,7 +1660,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1668,7 +1668,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1692,20 +1692,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1728,20 +1728,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1764,20 +1764,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1803,7 +1803,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1812,7 +1812,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1820,7 +1820,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1845,7 +1845,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1854,7 +1854,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1862,7 +1862,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1887,7 +1887,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -1896,7 +1896,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -1904,7 +1904,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1930,13 +1930,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1959,13 +1959,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -1988,13 +1988,13 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2020,7 +2020,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2028,7 +2028,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2053,7 +2053,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2061,7 +2061,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2086,7 +2086,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2094,7 +2094,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2118,20 +2118,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2154,20 +2154,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2190,20 +2190,20 @@ public final class ToMutableHashSet
         if (collection == null)
             if (isNaN(loadFactor))
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor);
         if (initialCapacity == null)
             if (isNaN(loadFactor))
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
         if (isNaN(loadFactor))
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2229,7 +2229,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2238,7 +2238,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -2246,7 +2246,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2271,7 +2271,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2280,7 +2280,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -2288,7 +2288,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
@@ -2313,7 +2313,7 @@ public final class ToMutableHashSet
                 return __empty(initialCapacity);
             else if (loadFactor.isNaN())
                 return __empty(initialCapacity);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __empty(initialCapacity);
             else
                 return __empty(initialCapacity, loadFactor.floatValue());
@@ -2322,7 +2322,7 @@ public final class ToMutableHashSet
                 return __core(collection, transform);
             else if (loadFactor.isNaN())
                 return __core(collection, transform);
-            else if (loadFactor <= 0F)
+            else if (loadFactor <= 0.0F)
                 return __core(collection, transform);
             else
                 return __core(collection, DEFAULT_INITIAL_CAPACITY, loadFactor, transform);
@@ -2330,7 +2330,7 @@ public final class ToMutableHashSet
             return __core(collection, initialCapacity, transform);
         if (loadFactor.isNaN())
             return __core(collection, initialCapacity, transform);
-        if (loadFactor <= 0F)
+        if (loadFactor <= 0.0F)
             return __core(collection, initialCapacity, transform);
         return __core(collection, initialCapacity, loadFactor, transform);
     }
