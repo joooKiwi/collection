@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX_STRING;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_PREFIX_STRING;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_SEPARATOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleUpperCaseString;
@@ -147,7 +147,7 @@ public final class ToLocaleUpperCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleUpperCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleUpperCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
     private static <T extends @Nullable Object> String __withNoLocale(final T @Unmodifiable [] collection,
@@ -157,7 +157,7 @@ public final class ToLocaleUpperCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleUpperCaseString(collection[index])).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection[index]) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleUpperCaseString(collection[index]) + DEFAULT_JOIN_POSTFIX;
     }
 
 
@@ -169,7 +169,7 @@ public final class ToLocaleUpperCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleUpperCaseString(collection.get(index), locale)).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleUpperCaseString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
     }
 
     private static <T extends @Nullable Object> String __withLocale(final T @Unmodifiable [] collection,
@@ -180,7 +180,7 @@ public final class ToLocaleUpperCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleUpperCaseString(collection[index], locale)).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleUpperCaseString(collection[index], locale) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleUpperCaseString(collection[index], locale) + DEFAULT_JOIN_POSTFIX;
     }
 
     //#endregion -------------------- Locale method --------------------
