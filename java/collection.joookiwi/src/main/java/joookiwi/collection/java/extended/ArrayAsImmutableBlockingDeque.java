@@ -20,6 +20,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// when possible.
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsImmutableBlockingDeque
 @NotNullByDefault
 public class ArrayAsImmutableBlockingDeque<T>
         extends AbstractArrayAsImmutableBlockingDeque<T> {
