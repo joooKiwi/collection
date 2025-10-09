@@ -188,8 +188,9 @@ public class ImmutableArrayDeque<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
     public ImmutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(size);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 
@@ -201,8 +202,9 @@ public class ImmutableArrayDeque<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [ArrayDeque]
     /// with a capacity as the <code>values.[size][Collection#size()]</code> (or `1` if it is empty)
     public ImmutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values.size());
-        final var size = __size = values.size();
+        final var size = values.size();
+        super(size);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 
