@@ -52,17 +52,17 @@ public class MutableDelayQueue<T extends Delayed>
 
         var index = -1;
         while (++index < size)
-            super.offer(values[index]);
+            offer(values[index]);
     }
 
     /// Create a mutable instance of [DelayQueue]
     /// that starts with the `values` received
     public MutableDelayQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
+        super();
         if (values.isEmpty())
             return;
-
         for (final var value : values)
-            super.offer(value);
+            offer(value);
     }
 
     //#endregion -------------------- values --------------------

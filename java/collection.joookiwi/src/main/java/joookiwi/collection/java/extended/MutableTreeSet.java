@@ -289,9 +289,10 @@ public class MutableTreeSet<T extends @Nullable Object>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -302,7 +303,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super((Comparator<? super T>) null);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -313,7 +314,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -324,7 +325,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -335,7 +336,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -346,7 +347,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values --------------------
@@ -362,9 +363,10 @@ public class MutableTreeSet<T extends @Nullable Object>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [TreeSet]
@@ -376,7 +378,7 @@ public class MutableTreeSet<T extends @Nullable Object>
         super(comparator);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values, comparator --------------------

@@ -75,9 +75,10 @@ public class MutableSynchronousQueue<T>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.offer(values[index]);
+            offer(values[index]);
     }
 
     /// Create a mutable instance of [SynchronousQueue]
@@ -88,7 +89,7 @@ public class MutableSynchronousQueue<T>
         if (values.isEmpty())
             return;
         for (final var value : values)
-            super.offer(value);
+            offer(value);
     }
 
     //#endregion -------------------- values --------------------
@@ -103,9 +104,10 @@ public class MutableSynchronousQueue<T>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.offer(values[index]);
+            offer(values[index]);
     }
 
     /// Create a mutable instance of [SynchronousQueue]
@@ -117,9 +119,10 @@ public class MutableSynchronousQueue<T>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.offer(values[index]);
+            offer(values[index]);
     }
 
 
@@ -132,7 +135,7 @@ public class MutableSynchronousQueue<T>
         if (values.isEmpty())
             return;
         for (final var value : values)
-            super.offer(value);
+            offer(value);
     }
 
     /// Create a mutable instance of [SynchronousQueue]
@@ -144,7 +147,7 @@ public class MutableSynchronousQueue<T>
         if (values.isEmpty())
             return;
         for (final var value : values)
-            super.offer(value);
+            offer(value);
     }
 
     //#endregion -------------------- values, isFair --------------------
