@@ -20,7 +20,6 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CollectionConstants.emptyStream;
@@ -132,16 +131,16 @@ public class EmptyTreeSet<T extends @Nullable Object>
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Subset methods --------------------
 
-    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> descendingSet() { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> descendingSet() { return EmptyNavigableSet.getInstance(); }
 
     //#endregion -------------------- Subset methods --------------------
     //#region -------------------- As reverse methods --------------------
