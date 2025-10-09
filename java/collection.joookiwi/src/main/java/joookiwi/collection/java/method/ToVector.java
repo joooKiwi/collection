@@ -7,13 +7,13 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.EmptyVector;
 import joookiwi.collection.java.extended.ImmutableVector;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyVector;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -34,11 +34,11 @@ public final class ToVector
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableVector<T> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size));
     }
 
@@ -49,9 +49,9 @@ public final class ToVector
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableVector<T> toVector(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
         if (collection.isEmpty())
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, collection.size()));
     }
 
@@ -62,11 +62,11 @@ public final class ToVector
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableVector<T> toVector(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size));
     }
 
@@ -84,11 +84,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
@@ -103,9 +103,9 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
         if (collection.isEmpty())
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, collection.size(), transform));
     }
 
@@ -120,11 +120,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final T @Nullable @Unmodifiable [] collection,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
@@ -142,11 +142,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
@@ -161,9 +161,9 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
         if (collection.isEmpty())
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, collection.size(), transform));
     }
 
@@ -178,11 +178,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final T @Nullable @Unmodifiable [] collection,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection, size, transform));
     }
 
@@ -200,11 +200,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(size, transform));
     }
 
@@ -219,9 +219,9 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
         if (collection.isEmpty())
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(collection.size(), transform));
     }
 
@@ -236,11 +236,11 @@ public final class ToVector
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableVector<U> toVector(final T @Nullable @Unmodifiable [] collection,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyVector();
+            return EmptyVector.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyVector();
+            return EmptyVector.getInstance();
         return new ImmutableVector<>(_values(size, transform));
     }
 

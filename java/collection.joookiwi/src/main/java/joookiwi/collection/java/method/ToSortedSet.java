@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableSortedSet;
+import joookiwi.collection.java.extended.EmptySortedSet;
 import joookiwi.collection.java.extended.ImmutableSortedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToSortedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToSortedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         if (collection.isEmpty())
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         if (collection.hasDuplicate())
             return new ArrayAsImmutableSortedSet<>(_orderedValues(collection, collection.size()));
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size()));
@@ -65,11 +65,11 @@ public final class ToSortedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSortedSet<T> toSortedSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size));
     }
 
@@ -87,11 +87,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -106,9 +106,9 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         if (collection.isEmpty())
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
@@ -123,11 +123,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -145,11 +145,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -164,9 +164,9 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         if (collection.isEmpty())
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
@@ -181,11 +181,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -203,11 +203,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(size, transform));
     }
 
@@ -222,9 +222,9 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         if (collection.isEmpty())
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
@@ -239,11 +239,11 @@ public final class ToSortedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSortedSet<U> toSortedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                              final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ArrayAsImmutableSortedSet<>(_orderedUniqueValues(size, transform));
     }
 

@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableList;
+import joookiwi.collection.java.extended.EmptyList;
 import joookiwi.collection.java.extended.ImmutableList;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToList
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableList<T> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToList
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableList<T> toList(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
         if (collection.isEmpty())
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, collection.size()));
     }
 
@@ -63,11 +63,11 @@ public final class ToList
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableList<T> toList(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size));
     }
 
@@ -85,11 +85,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size, transform));
     }
 
@@ -104,9 +104,9 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
         if (collection.isEmpty())
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, collection.size(), transform));
     }
 
@@ -121,11 +121,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size, transform));
     }
 
@@ -143,11 +143,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size, transform));
     }
 
@@ -162,9 +162,9 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
         if (collection.isEmpty())
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, collection.size(), transform));
     }
 
@@ -179,11 +179,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection, size, transform));
     }
 
@@ -201,11 +201,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(size, transform));
     }
 
@@ -220,9 +220,9 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
         if (collection.isEmpty())
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(collection.size(), transform));
     }
 
@@ -237,11 +237,11 @@ public final class ToList
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableList<U> toList(final T @Nullable @Unmodifiable [] collection,
                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyList();
+            return EmptyList.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ArrayAsImmutableList<>(_values(size, transform));
     }
 

@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -10,7 +11,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -30,11 +30,11 @@ public final class FilterNotNull
     @ExtensionFunction
     public static <T> CollectionHolder<T> filterNotNull(final @Nullable MinimalistCollectionHolder<? extends @Nullable T> collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         var index = -1;
@@ -52,9 +52,9 @@ public final class FilterNotNull
     @ExtensionFunction
     public static <T> CollectionHolder<T> filterNotNull(final @Nullable CollectionHolder<? extends @Nullable T> collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.hasNull())
             return new GenericCollectionHolder<>(__filterNotNull(collection));
         return (CollectionHolder<T>) collection;
@@ -68,11 +68,11 @@ public final class FilterNotNull
     @ExtensionFunction
     public static <T> CollectionHolder<T> filterNotNull(final @Nullable T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         @SuppressWarnings("unchecked cast") final var temporaryArray = (T[]) new Object[size];
         var index = -1;

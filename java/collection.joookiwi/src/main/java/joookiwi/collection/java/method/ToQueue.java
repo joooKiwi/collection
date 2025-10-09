@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableQueue;
+import joookiwi.collection.java.extended.EmptyQueue;
 import joookiwi.collection.java.extended.ImmutableQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyQueue;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToQueue
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableQueue<T> toQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToQueue
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableQueue<T> toQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         if (collection.isEmpty())
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, collection.size()));
     }
 
@@ -63,11 +63,11 @@ public final class ToQueue
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableQueue<T> toQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size));
     }
 
@@ -85,11 +85,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
@@ -104,9 +104,9 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         if (collection.isEmpty())
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, collection.size(), transform));
     }
 
@@ -121,11 +121,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
@@ -143,11 +143,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
@@ -162,9 +162,9 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         if (collection.isEmpty())
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, collection.size(), transform));
     }
 
@@ -179,11 +179,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection, size, transform));
     }
 
@@ -201,11 +201,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(size, transform));
     }
 
@@ -220,9 +220,9 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         if (collection.isEmpty())
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(collection.size(), transform));
     }
 
@@ -237,11 +237,11 @@ public final class ToQueue
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableQueue<U> toQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                                      final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyQueue();
+            return EmptyQueue.getInstance();
         return new ArrayAsImmutableQueue<>(_values(size, transform));
     }
 

@@ -7,13 +7,13 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.EmptyCopyOnWriteArraySet;
 import joookiwi.collection.java.extended.ImmutableCopyOnWriteArraySet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCopyOnWriteArraySet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -34,11 +34,11 @@ public final class ToCopyOnWriteArraySet
     @ExtensionFunction
     public static <T> ImmutableCopyOnWriteArraySet<T> toCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
@@ -49,9 +49,9 @@ public final class ToCopyOnWriteArraySet
     @ExtensionFunction
     public static <T> ImmutableCopyOnWriteArraySet<T> toCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         if (collection.isEmpty())
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         if (collection.hasDuplicate())
             return new ImmutableCopyOnWriteArraySet<>(_values(collection, collection.size()));
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size()));
@@ -64,11 +64,11 @@ public final class ToCopyOnWriteArraySet
     @ExtensionFunction
     public static <T> ImmutableCopyOnWriteArraySet<T> toCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size));
     }
 
@@ -86,11 +86,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -105,9 +105,9 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         if (collection.isEmpty())
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         int size = collection.size();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
@@ -123,11 +123,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
                                                                                                         final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -145,11 +145,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                         final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -164,9 +164,9 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                         final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         if (collection.isEmpty())
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
@@ -181,11 +181,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
                                                                                                         final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -203,11 +203,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 
@@ -222,9 +222,9 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         if (collection.isEmpty())
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(collection.size(), transform));
     }
 
@@ -239,11 +239,11 @@ public final class ToCopyOnWriteArraySet
     public static <T extends @Nullable Object, U> ImmutableCopyOnWriteArraySet<U> toCopyOnWriteArraySet(final T @Nullable @Unmodifiable [] collection,
                                                                                                         final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCopyOnWriteArraySet();
+            return EmptyCopyOnWriteArraySet.getInstance();
         return new ImmutableCopyOnWriteArraySet<>(_uniqueValues(size, transform));
     }
 

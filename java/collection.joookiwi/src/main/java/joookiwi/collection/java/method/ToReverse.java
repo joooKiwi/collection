@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
@@ -13,7 +14,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -42,7 +42,7 @@ public final class ToReverse
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection);
     }
 
@@ -61,7 +61,7 @@ public final class ToReverse
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection);
     }
 
@@ -80,7 +80,7 @@ public final class ToReverse
     @ExtensionFunction
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection);
     }
 
@@ -108,7 +108,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                              final @Nullable Integer from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __core(collection);
         return __core(collection, from);
@@ -135,7 +135,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
                                                                              final @Nullable Integer from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __core(collection);
         return __core(collection, from);
@@ -162,7 +162,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
                                                                              final @Nullable Integer from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __core(collection);
         return __core(collection, from);
@@ -190,7 +190,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                              final int from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from);
     }
 
@@ -215,7 +215,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final @Nullable CollectionHolder<? extends T> collection,
                                                                              final int from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from);
     }
 
@@ -240,7 +240,7 @@ public final class ToReverse
     public static <T extends @Nullable Object> CollectionHolder<T> toReverse(final T @Nullable @Unmodifiable [] collection,
                                                                              final int from) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from);
     }
 
@@ -270,7 +270,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from, to);
     }
 
@@ -297,7 +297,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from, to);
     }
 
@@ -324,7 +324,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, from, to);
     }
 
@@ -352,7 +352,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             return __core(collection, from);
         return __core(collection, from, to);
@@ -381,7 +381,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             return __core(collection, from);
         return __core(collection, from, to);
@@ -410,7 +410,7 @@ public final class ToReverse
                                                                              final int from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             return __core(collection, from);
         return __core(collection, from, to);
@@ -440,7 +440,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __coreWithNoFrom(collection, to);
         return __core(collection, from, to);
@@ -469,7 +469,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __coreWithNoFrom(collection, to);
         return __core(collection, from, to);
@@ -498,7 +498,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final int to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (from == null)
             return __coreWithNoFrom(collection, to);
         return __core(collection, from, to);
@@ -528,7 +528,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             if (from == null)
                 return __core(collection);
@@ -562,7 +562,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             if (from == null)
                 return __core(collection);
@@ -596,7 +596,7 @@ public final class ToReverse
                                                                              final @Nullable Integer from,
                                                                              final @Nullable Integer to) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (to == null)
             if (from == null)
                 return __core(collection);
@@ -617,20 +617,20 @@ public final class ToReverse
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__all(collection, collection.size()));
     }
 
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final T @Unmodifiable [] collection) {
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__all(collection, size));
     }
 
@@ -641,7 +641,7 @@ public final class ToReverse
                                                                            final int from) {
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
         return new GenericCollectionHolder<>(__withAStartingIndex(collection, startingIndex, size));
@@ -650,7 +650,7 @@ public final class ToReverse
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
                                                                            final int from) {
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(from, size);
@@ -661,7 +661,7 @@ public final class ToReverse
                                                                            final int from) {
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
         return new GenericCollectionHolder<>(__withAStartingIndex(collection, startingIndex, size));
@@ -675,7 +675,7 @@ public final class ToReverse
                                                                            final int to) {
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
         final var endingIndex = _endingIndex(to, size);
@@ -688,7 +688,7 @@ public final class ToReverse
                                                                            final int from,
                                                                            final int to) {
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         final var startingIndex = _startingIndex(from, size);
@@ -703,7 +703,7 @@ public final class ToReverse
                                                                            final int to) {
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var startingIndex = _startingIndex(from, size);
         final var endingIndex = _endingIndex(to, size);
@@ -719,7 +719,7 @@ public final class ToReverse
                                                                                      final int to) {
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         final var endingIndex = _endingIndex(to, size);
         return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
@@ -727,7 +727,7 @@ public final class ToReverse
     private static <T extends @Nullable Object> CollectionHolder<T> __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                                      final int to) {
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         final var endingIndex = _endingIndex(to, collection.size());
         return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }
@@ -736,7 +736,7 @@ public final class ToReverse
                                                                                      final int to) {
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         final var endingIndex = _endingIndex(to, size);
         return new GenericCollectionHolder<>(__withAStartingAndEndingIndex(collection, 0, endingIndex));
     }

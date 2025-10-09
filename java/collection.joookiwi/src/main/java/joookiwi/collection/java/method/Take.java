@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.CanReceiveNegativeValue;
@@ -11,7 +12,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -38,7 +38,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                         final int n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -57,7 +57,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable CollectionHolder<? extends T> collection,
                                                                         final int n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -76,7 +76,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
                                                                         final int n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -96,7 +96,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                         final Integer n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -115,7 +115,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final @Nullable CollectionHolder<? extends T> collection,
                                                                         final Integer n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -134,7 +134,7 @@ public final class Take
     public static <T extends @Nullable Object> CollectionHolder<T> take(final T @Nullable @Unmodifiable [] collection,
                                                                         final Integer n) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return __core(collection, n);
     }
 
@@ -145,9 +145,9 @@ public final class Take
                                                                            final int n) {
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
         if (n > 0)
@@ -156,7 +156,7 @@ public final class Take
             else
                 return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var n2 = n + size;
         if (n2 == 1)
@@ -167,9 +167,9 @@ public final class Take
     private static <T extends @Nullable Object> CollectionHolder<T> __core(final CollectionHolder<? extends T> collection,
                                                                            final int n) {
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
 
@@ -180,7 +180,7 @@ public final class Take
             else
                 return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var n2 = n + size;
         if (n2 == 1)
@@ -192,9 +192,9 @@ public final class Take
                                                                            final int n) {
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (n == 1)
             return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
         if (n > 0)
@@ -203,7 +203,7 @@ public final class Take
             else
                 return new GenericCollectionHolder<>(__getAll(collection, size - n));
         if (n <= -size)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var n2 = n + size;
         if (n2 == 1)
