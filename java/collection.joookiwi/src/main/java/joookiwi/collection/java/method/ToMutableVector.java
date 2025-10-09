@@ -7,6 +7,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.MutableArrayList;
 import joookiwi.collection.java.extended.MutableVector;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 
 @NotNullByDefault
 public final class ToMutableVector
@@ -258,6 +260,275 @@ public final class ToMutableVector
     }
 
     //#endregion -------------------- () → U --------------------
+
+    //#region -------------------- initialCapacity --------------------
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableVector<T> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                final int initialCapacity) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableVector<T> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                final int initialCapacity) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, collection.size()), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the `collection.length` if under the size)
+    /// @param <T>             The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableVector<T> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                final int initialCapacity) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity --------------------
+    //#region -------------------- initialCapacity, (T, int) → U --------------------
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the `collection.length` if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity, (T, int) → U --------------------
+    //#region -------------------- initialCapacity, (T) → U --------------------
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the `collection.length` if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection, size, transform), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity, (T) → U --------------------
+    //#region -------------------- initialCapacity, () → U --------------------
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(size, transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+        if (collection.isEmpty())
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(collection.size(), transform), initialCapacity);
+    }
+
+    /// Convert the `collection` to a new [MutableVector]
+    /// with an initial capacity
+    /// and applying a transformation
+    ///
+    /// @param collection      The [nullable][Nullable] collection
+    /// @param initialCapacity The [list][java.util.Vector] initial capacity (or the `collection.length` if under the size)
+    /// @param transform       The given transform
+    /// @param <T>             The `collection` type
+    /// @param <U>             The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableVector<U> toMutableVector(final T @Nullable @Unmodifiable [] collection,
+                                                                                                            final int initialCapacity,
+                                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableVector<>(initialCapacity);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableVector<>(initialCapacity);
+        return new MutableVector<>(_values(size, transform), initialCapacity);
+    }
+
+    //#endregion -------------------- initialCapacity, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
 
