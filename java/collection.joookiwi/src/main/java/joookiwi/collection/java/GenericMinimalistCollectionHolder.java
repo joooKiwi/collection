@@ -99,8 +99,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.method.ArrayCreator.Array;
 
 /// A [MinimalistCollectionHolder] having the values eagerly retrieved.
 ///
@@ -133,17 +133,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection holder) --------------------
@@ -158,13 +158,13 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         final var size = this.__size = reference.size();
         if (size == 0)
-            __array = emptyArray();
+            __array = Array();
         else if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.get(0));
+            __array = Array(reference.get(0));
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.get(0), reference.get(1));
+            __array = Array(reference.get(0), reference.get(1));
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (minimalist collection holder) --------------------
@@ -178,17 +178,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) CollectionIterator<? extends T> reference) {
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = __size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.nextValue());
+            __array = Array(reference.nextValue());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.nextValue(), reference.nextValue());
+            __array = Array(reference.nextValue(), reference.nextValue());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (collection iterator) --------------------
@@ -199,21 +199,21 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Iterator<? extends T> reference) {
         if (!reference.hasNext()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var value1 = reference.next();
         if (!reference.hasNext()) {
             __size = 1;
-            __array = ArrayCreator.getInstance().newArray(value1);
+            __array = Array(value1);
             return;
         }
 
         final var value2 = reference.next();
         if (!reference.hasNext()) {
             __size = 2;
-            __array = ArrayCreator.getInstance().newArray(value1, value2);
+            __array = Array(value1, value2);
             return;
         }
 
@@ -261,21 +261,21 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     public GenericMinimalistCollectionHolder(final @Flow(sourceIsContainer = true, targetIsContainer = true) Enumeration<? extends T> reference) {
         if (!(reference.hasMoreElements())) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var value1 = reference.nextElement();
         if (!reference.hasMoreElements()) {
             __size = 1;
-            __array = ArrayCreator.getInstance().newArray(value1);
+            __array = Array(value1);
             return;
         }
 
         final var value2 = reference.nextElement();
         if (!reference.hasMoreElements()) {
             __size = 2;
-            __array = ArrayCreator.getInstance().newArray(value1, value2);
+            __array = Array(value1, value2);
             return;
         }
 
@@ -290,21 +290,21 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         final AtomicReference<@Nullable T> tempValue = new AtomicReference<>();
         if (!(reference.tryAdvance(tempValue::set))) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var value1 = tempValue.get();
         if (!reference.tryAdvance(tempValue::set)) {
             __size = 1;
-            __array = ArrayCreator.getInstance().newArray(value1);
+            __array = Array(value1);
             return;
         }
 
         final var value2 = tempValue.get();
         if (!reference.tryAdvance(tempValue::set)) {
             __size = 2;
-            __array = ArrayCreator.getInstance().newArray(value1, value2);
+            __array = Array(value1, value2);
             return;
         }
 
@@ -326,21 +326,21 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
 
         if (!(iterator.hasNext())) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var value1 = iterator.next();
         if (!iterator.hasNext()) {
             __size = 1;
-            __array = ArrayCreator.getInstance().newArray(value1);
+            __array = Array(value1);
             return;
         }
 
         final var value2 = iterator.next();
         if (!iterator.hasNext()) {
             __size = 2;
-            __array = ArrayCreator.getInstance().newArray(value1, value2);
+            __array = Array(value1, value2);
             return;
         }
 
@@ -360,19 +360,19 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.iterator().next());
+            __array = Array(reference.iterator().next());
         else if (size == 2) {
             final var iterator = reference.iterator();
-            __array = ArrayCreator.getInstance().newArray(iterator.next(), iterator.next());
+            __array = Array(iterator.next(), iterator.next());
         }
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -397,17 +397,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -434,17 +434,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -526,18 +526,18 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.iterator().next());
+            __array = Array(reference.iterator().next());
         else if (size == 2) {
             final var iterator = reference.iterator();
-            __array = ArrayCreator.getInstance().newArray(iterator.next(), iterator.next());
+            __array = Array(iterator.next(), iterator.next());
         } else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -556,17 +556,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -672,15 +672,15 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.element());
+            __array = Array(reference.element());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -704,17 +704,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -736,17 +736,17 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         if (reference.isEmpty()) {
             __size = 0;
-            __array = emptyArray();
+            __array = Array();
             return;
         }
 
         final var size = this.__size = reference.size();
         if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst());
+            __array = Array(reference.getFirst());
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference.getFirst(), reference.getLast());
+            __array = Array(reference.getFirst(), reference.getLast());
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
     //#endregion -------------------- Constructor (basic stack) --------------------
@@ -775,13 +775,13 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
         super();
         final var size = this.__size = reference.length;
         if (size == 0)
-            __array = emptyArray();
+            __array = Array();
         else if (size == 1)
-            __array = ArrayCreator.getInstance().newArray(reference[0]);
+            __array = Array(reference[0]);
         else if (size == 2)
-            __array = ArrayCreator.getInstance().newArray(reference[0], reference[1]);
+            __array = Array(reference[0], reference[1]);
         else
-            __array = ArrayCreator.getInstance().newArray(reference, size);
+            __array = Array(reference, size);
     }
 
 
@@ -803,7 +803,6 @@ public class GenericMinimalistCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Getter methods --------------------
     //#region -------------------- Methods --------------------
 
-    @OnlyGivePositiveValue
     @Contract(pure = true)
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __size; }
 
