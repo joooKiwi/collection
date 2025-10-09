@@ -12,7 +12,6 @@ import java.util.stream.StreamSupport;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ArrayAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.method.ForEach;
 import joookiwi.collection.java.method.ToArray;
@@ -31,6 +30,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_TRUE_1;
 import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.method.ArrayCreator.Array;
 import static joookiwi.collection.java.method.Has.has;
 import static joookiwi.collection.java.method.HasAll.hasAll;
 
@@ -316,7 +316,7 @@ public abstract class AbstractArrayAsMutableCollection<T extends @Nullable Objec
         }
 
         final var reference = instance._reference();
-        instance._reference(ArrayCreator.getInstance().newArray(reference, reference.length));
+        instance._reference(Array(reference, reference.length));
         return instance;
     }
 
