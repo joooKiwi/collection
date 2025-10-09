@@ -77,7 +77,7 @@ public class SubdividedArrayAsMutableList<T extends @Nullable Object,
 
     @MustBeInvokedByOverriders
     @Contract(ALWAYS_NEW_0)
-    @Override public AbstractArrayAsMutableList<T> clone() { return super.clone(); }
+    @Override public SubdividedArrayAsMutableList<T, SOURCE, SUBDIVIDED_ARRAY> clone() { return (SubdividedArrayAsMutableList<T, SOURCE, SUBDIVIDED_ARRAY>) super.clone(); }
 
     //#endregion -------------------- Clone methods --------------------
 
