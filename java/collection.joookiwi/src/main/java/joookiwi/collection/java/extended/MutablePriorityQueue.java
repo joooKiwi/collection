@@ -14,7 +14,6 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -27,6 +26,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [PriorityQueue]
@@ -59,42 +59,42 @@ public class MutablePriorityQueue<T>
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final byte initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 1), null); }
+    public MutablePriorityQueue(final byte initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.byteValue(), 1), null); }
+    public MutablePriorityQueue(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 1), null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final short initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 1), null); }
+    public MutablePriorityQueue(final short initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.shortValue(), 1), null); }
+    public MutablePriorityQueue(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 1), null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final int initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 1), null); }
+    public MutablePriorityQueue(final int initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityQueue(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.intValue(), 1), null); }
+    public MutablePriorityQueue(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 1), null); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- comparator --------------------
@@ -115,7 +115,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final byte initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(NumberComparator.getInstance().max(initialCapacity, 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -123,7 +123,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Nullable Byte initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.byteValue(), 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 1), comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received
@@ -131,7 +131,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final short initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(NumberComparator.getInstance().max(initialCapacity, 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -139,7 +139,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Nullable Short initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.shortValue(), 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 1), comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received
@@ -147,7 +147,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final int initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(NumberComparator.getInstance().max(initialCapacity, 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -155,7 +155,7 @@ public class MutablePriorityQueue<T>
     ///
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Nullable Integer initialCapacity,
-                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.intValue(), 1), comparator); }
+                                final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 1), comparator); }
 
     //#endregion -------------------- initialCapacity, comparator --------------------
     //#region -------------------- values --------------------
@@ -218,8 +218,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), null);
         final var size = values.length;
+        super(max(initialCapacity, size), null);
         if (size == 0)
             return;
 
@@ -235,8 +235,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Byte initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.byteValue(), values.length), null);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), null);
         if (size == 0)
             return;
 
@@ -252,8 +252,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), null);
         final var size = values.length;
+        super(max(initialCapacity, size), null);
         if (size == 0)
             return;
 
@@ -269,8 +269,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Short initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.shortValue(), values.length), null);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), null);
         if (size == 0)
             return;
 
@@ -286,8 +286,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), null);
         final var size = values.length;
+        super(max(initialCapacity, size), null);
         if (size == 0)
             return;
 
@@ -303,8 +303,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Integer initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.intValue(), values.length), null);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), null);
         if (size == 0)
             return;
 
@@ -321,7 +321,7 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), null);
+        super(max(initialCapacity, values.size()), null);
         if (values.isEmpty())
             return;
 
@@ -336,7 +336,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Byte initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.byteValue(), values.size()), null);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), null);
         if (values.isEmpty())
             return;
 
@@ -351,7 +352,7 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), null);
+        super(max(initialCapacity, values.size()), null);
         if (values.isEmpty())
             return;
 
@@ -366,7 +367,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Short initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.shortValue(), values.size()), null);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), null);
         if (values.isEmpty())
             return;
 
@@ -381,7 +383,7 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), null);
+        super(max(initialCapacity, values.size()), null);
         if (values.isEmpty())
             return;
 
@@ -396,7 +398,8 @@ public class MutablePriorityQueue<T>
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Integer initialCapacity) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.intValue(), values.size()), null);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), null);
         if (values.isEmpty())
             return;
 
@@ -415,8 +418,8 @@ public class MutablePriorityQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY), comparator);
         final var size = values.length;
+        super(max(size, DEFAULT_INITIAL_CAPACITY), comparator);
         if (size == 0)
             return;
 
@@ -433,7 +436,7 @@ public class MutablePriorityQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY), comparator);
+        super(max(values.size(), DEFAULT_INITIAL_CAPACITY), comparator);
         if (values.isEmpty())
             return;
 
@@ -452,8 +455,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final byte initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), comparator);
         final var size = values.length;
+        super(max(initialCapacity, size), comparator);
         if (size == 0)
             return;
 
@@ -470,8 +473,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Byte initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.byteValue(), values.length), comparator);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), comparator);
         if (size == 0)
             return;
 
@@ -488,8 +491,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final short initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), comparator);
         final var size = values.length;
+        super(max(initialCapacity, size), comparator);
         if (size == 0)
             return;
 
@@ -506,8 +509,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Short initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.shortValue(), values.length), comparator);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), comparator);
         if (size == 0)
             return;
 
@@ -524,8 +527,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final int initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), comparator);
         final var size = values.length;
+        super(max(initialCapacity, size), comparator);
         if (size == 0)
             return;
 
@@ -542,8 +545,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                 final @Nullable Integer initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.intValue(), values.length), comparator);
         final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), comparator);
         if (size == 0)
             return;
 
@@ -561,7 +564,7 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final byte initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), comparator);
+        super(max(initialCapacity, values.size()), comparator);
         if (values.isEmpty())
             return;
 
@@ -577,7 +580,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Byte initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.byteValue(), values.size()), comparator);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), comparator);
         if (values.isEmpty())
             return;
 
@@ -593,7 +597,7 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final short initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), comparator);
+        super(max(initialCapacity, values.size()), comparator);
         if (values.isEmpty())
             return;
 
@@ -609,7 +613,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Short initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.shortValue(), values.size()), comparator);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), comparator);
         if (values.isEmpty())
             return;
 
@@ -625,7 +630,7 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final int initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), comparator);
+        super(max(initialCapacity, values.size()), comparator);
         if (values.isEmpty())
             return;
 
@@ -641,7 +646,8 @@ public class MutablePriorityQueue<T>
     public MutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                 final @Nullable Integer initialCapacity,
                                 final @Nullable Comparator<? super T> comparator) {
-        super(initialCapacity == null ? NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY) : NumberComparator.getInstance().max(initialCapacity.intValue(), values.size()), comparator);
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), comparator);
         if (values.isEmpty())
             return;
 

@@ -12,7 +12,6 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -25,6 +24,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// A mutable behaviour of a [ArrayDeque]
 ///
@@ -77,9 +77,8 @@ public class MutableArrayDeque<T>
     /// Create a mutable instance of [ArrayDeque]
     /// with an initial capacity as the `values.length`
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length);
-
         final var size = values.length;
+        super(size);
         if (size == 0)
             return;
 
@@ -101,9 +100,8 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the `values.length`
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -117,9 +115,8 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the `values.length`)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -132,9 +129,8 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the `values.length`
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -148,9 +144,8 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the `values.length`)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -163,9 +158,8 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the `values.length`
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -179,9 +173,8 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the `values.length`)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                              final @Nullable Integer initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length));
-
         final var size = values.length;
+        super(max(initialCapacity, size));
         if (size == 0)
             return;
 
@@ -195,7 +188,7 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
@@ -207,7 +200,7 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final @Nullable Byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
@@ -218,7 +211,7 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
@@ -230,7 +223,7 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final @Nullable Short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
@@ -241,7 +234,7 @@ public class MutableArrayDeque<T>
     /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
@@ -253,7 +246,7 @@ public class MutableArrayDeque<T>
     /// (if null provided, then it is the <code>values.[size][Collection#size()]</code>)
     public MutableArrayDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                              final @Nullable Integer initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()));
+        super(max(initialCapacity, values.size()));
         if (values.isEmpty())
             return;
         for (final var value : values)
