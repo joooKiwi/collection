@@ -36,6 +36,207 @@ public class MutableArrayDeque<T>
 
     @Serial private static final long serialVersionUID = 1836876147989609272L;
 
+    //#region -------------------- Sub class --------------------
+
+    /// A view of a subdivided or reversed [MutableArrayDeque]
+    ///
+    /// @param <T> The type
+    @NotNullByDefault
+    private static final class MutableArrayDequeView<T>
+            extends MutableArrayDeque<T> {
+
+        //#region -------------------- Fields --------------------
+
+        @Serial private static final long serialVersionUID = 8727636321217218096L;
+
+        private final Deque<T> __reference;
+
+        //#endregion -------------------- Fields --------------------
+        //#region -------------------- Constructor --------------------
+
+        public MutableArrayDequeView(final Deque<T> reference) {
+            super();
+            __reference = reference;
+        }
+
+        //#endregion -------------------- Constructor --------------------
+        //#region -------------------- Methods --------------------
+
+        //#region -------------------- Size methods --------------------
+
+        @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __reference.size(); }
+
+        @Override public boolean isEmpty() { return __reference.isEmpty(); }
+
+        //#endregion -------------------- Size methods --------------------
+        //#region -------------------- Get methods --------------------
+
+        @Override public T getFirst() { return __reference.getFirst(); }
+
+        @Override public T getLast() { return __reference.getLast(); }
+
+
+        @Override public T element() { return __reference.element(); }
+
+
+        @Override public @Nullable T peek() { return __reference.peek(); }
+
+        @Override public @Nullable T peekFirst() { return __reference.peekFirst(); }
+
+        @Override public @Nullable T peekLast() { return __reference.peekLast(); }
+
+        //#endregion -------------------- Get methods --------------------
+        //#region -------------------- Add methods --------------------
+
+        @Contract(mutates = "this")
+        @Override public boolean add(final T value) { return __reference.add(value); }
+
+        @Contract(mutates = "this")
+        @Override public void addFirst(final T value) { __reference.addFirst(value); }
+
+        @Contract(mutates = "this")
+        @Override public void addLast(final T value) { __reference.addLast(value); }
+
+        @Contract(mutates = "this")
+        @Override public boolean addAll(final @Unmodifiable Collection<? extends T> values) { return __reference.addAll(values); }
+
+
+        @Override public void push(final T value) { __reference.push(value); }
+
+
+        @Contract(mutates = "this")
+        @Override public boolean offer(final T value) { return __reference.offer(value); }
+
+        @Contract(mutates = "this")
+        @Override public boolean offerFirst(final T value) { return __reference.offerFirst(value); }
+
+        @Contract(mutates = "this")
+        @Override public boolean offerLast(final T value) { return __reference.offerLast(value); }
+
+        //#endregion -------------------- Add methods --------------------
+        //#region -------------------- Remove methods --------------------
+
+        @Contract(mutates = "this")
+        @Override public T remove() { return __reference.remove(); }
+
+        @Contract(mutates = "this")
+        @Override public T removeFirst() { return __reference.removeFirst(); }
+
+        @Contract(mutates = "this")
+        @Override public T removeLast() { return __reference.removeLast(); }
+
+
+        @Contract(mutates = "this")
+        @Override public boolean remove(final @Nullable Object value) { return __reference.remove(value); }
+
+        @Contract(mutates = "this")
+        @Override public boolean removeFirstOccurrence(final @Nullable Object value) { return __reference.removeFirstOccurrence(value); }
+
+        @Contract(mutates = "this")
+        @Override public boolean removeLastOccurrence(final @Nullable Object value) { return __reference.removeLastOccurrence(value); }
+
+
+        @Contract(mutates = "this")
+        @Override public boolean removeAll(final Collection<? extends @Nullable Object> values) { return __reference.removeAll(values); }
+
+
+        @Contract(mutates = "this")
+        @Override public boolean removeIf(final Predicate<? super T> filter) { return __reference.removeIf(filter); }
+
+
+        @Contract(mutates = "this")
+        @Override public @Nullable T poll() { return __reference.poll(); }
+
+        @Contract(mutates = "this")
+        @Override public @Nullable T pollFirst() { return __reference.pollFirst(); }
+
+        @Contract(mutates = "this")
+        @Override public @Nullable T pollLast() { return __reference.pollLast(); }
+
+
+        @Contract(mutates = "this")
+        @Override public T pop() { return __reference.pop(); }
+
+        //#endregion -------------------- Remove methods --------------------
+        //#region -------------------- Retain methods --------------------
+
+        @Contract(mutates = "this")
+        @Override public boolean retainAll(final Collection<?> values) { return __reference.retainAll(values); }
+
+        //#endregion -------------------- Retain methods --------------------
+        //#region -------------------- Clear methods --------------------
+
+        @Contract(mutates = "this")
+        @Override public void clear() { __reference.clear(); }
+
+        //#endregion -------------------- Clear methods --------------------
+        //#region -------------------- Has methods --------------------
+
+        @Override public boolean contains(final @Nullable Object value) { return __reference.contains(value); }
+
+        @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return __reference.containsAll(values); }
+
+        //#endregion -------------------- Has methods --------------------
+        //#region -------------------- For each methods --------------------
+
+        @Override public void forEach(final Consumer<? super T> action) { __reference.forEach(action); }
+
+        //#endregion -------------------- For each methods --------------------
+        //#region -------------------- As reverse methods --------------------
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public MutableArrayDequeView<T> reversed() { return new MutableArrayDequeView<>(__reference.reversed()); }
+
+        //#endregion -------------------- As reverse methods --------------------
+        //#region -------------------- Iterator methods --------------------
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public MutableIterator<T> iterator() { return new IteratorAsMutableIterator<>(__reference.iterator()); }
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public MutableIterator<T> descendingIterator() { return new IteratorAsMutableIterator<>(__reference.descendingIterator()); }
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public Spliterator<T> spliterator() { return __reference.spliterator(); }
+
+        //#endregion -------------------- Iterator methods --------------------
+        //#region -------------------- To array methods --------------------
+
+        @Override public @Nullable Object[] toArray() { return __reference.toArray(); }
+
+        @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return __reference.toArray(newArray); }
+
+        @Contract(ALWAYS_NEW_1)
+        @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return __reference.toArray(generator); }
+
+        //#endregion -------------------- To array methods --------------------
+        //#region -------------------- Stream methods --------------------
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public Stream<T> stream() { return __reference.stream(); }
+
+        @Contract(ALWAYS_NEW_0)
+        @Override public Stream<T> parallelStream() { return __reference.parallelStream(); }
+
+        //#endregion -------------------- Stream methods --------------------
+        //#region -------------------- Clone methods --------------------
+
+        @MustBeInvokedByOverriders
+        @Contract(ALWAYS_NEW_0)
+        @Override public MutableArrayDequeView<T> clone() { return (MutableArrayDequeView<T>) super.clone(); }
+
+        //#endregion -------------------- Clone methods --------------------
+        //#region -------------------- To string methods --------------------
+
+        @Override public String toString() { return __reference.toString(); }
+
+        //#endregion -------------------- To string methods --------------------
+
+        //#endregion -------------------- Methods --------------------
+
+    }
+
+    //#endregion -------------------- Sub class --------------------
     //#region -------------------- Constructors --------------------
 
     //#region -------------------- ∅ --------------------
@@ -256,207 +457,6 @@ public class MutableArrayDeque<T>
     //#endregion -------------------- values, initialCapacity --------------------
 
     //#endregion -------------------- Constructors --------------------
-    //#region -------------------- Sub class --------------------
-
-    /// A view of a subdivided or reversed [MutableArrayDeque]
-    ///
-    /// @param <T> The type
-    @NotNullByDefault
-    private static final class MutableArrayDequeView<T>
-            extends MutableArrayDeque<T> {
-
-        //#region -------------------- Fields --------------------
-
-        @Serial private static final long serialVersionUID = 8727636321217218096L;
-
-        private final Deque<T> __reference;
-
-        //#endregion -------------------- Fields --------------------
-        //#region -------------------- Constructor --------------------
-
-        public MutableArrayDequeView(final Deque<T> reference) {
-            super();
-            __reference = reference;
-        }
-
-        //#endregion -------------------- Constructor --------------------
-        //#region -------------------- Methods --------------------
-
-        //#region -------------------- Size methods --------------------
-
-        @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return __reference.size(); }
-
-        @Override public boolean isEmpty() { return __reference.isEmpty(); }
-
-        //#endregion -------------------- Size methods --------------------
-        //#region -------------------- Get methods --------------------
-
-        @Override public T getFirst() { return __reference.getFirst(); }
-
-        @Override public T getLast() { return __reference.getLast(); }
-
-
-        @Override public T element() { return __reference.element(); }
-
-
-        @Override public @Nullable T peek() { return __reference.peek(); }
-
-        @Override public @Nullable T peekFirst() { return __reference.peekFirst(); }
-
-        @Override public @Nullable T peekLast() { return __reference.peekLast(); }
-
-        //#endregion -------------------- Get methods --------------------
-        //#region -------------------- Add methods --------------------
-
-        @Contract(mutates = "this")
-        @Override public boolean add(final T value) { return __reference.add(value); }
-
-        @Contract(mutates = "this")
-        @Override public void addFirst(final T value) { __reference.addFirst(value); }
-
-        @Contract(mutates = "this")
-        @Override public void addLast(final T value) { __reference.addLast(value); }
-
-        @Contract(mutates = "this")
-        @Override public boolean addAll(final @Unmodifiable Collection<? extends T> values) { return __reference.addAll(values); }
-
-
-        @Override public void push(final T value) { __reference.push(value); }
-
-
-        @Contract(mutates = "this")
-        @Override public boolean offer(final T value) { return __reference.offer(value); }
-
-        @Contract(mutates = "this")
-        @Override public boolean offerFirst(final T value) { return __reference.offerFirst(value); }
-
-        @Contract(mutates = "this")
-        @Override public boolean offerLast(final T value) { return __reference.offerLast(value); }
-
-        //#endregion -------------------- Add methods --------------------
-        //#region -------------------- Remove methods --------------------
-
-        @Contract(mutates = "this")
-        @Override public T remove() { return __reference.remove(); }
-
-        @Contract(mutates = "this")
-        @Override public T removeFirst() { return __reference.removeFirst(); }
-
-        @Contract(mutates = "this")
-        @Override public T removeLast() { return __reference.removeLast(); }
-
-
-        @Contract(mutates = "this")
-        @Override public boolean remove(final @Nullable Object value) { return __reference.remove(value); }
-
-        @Contract(mutates = "this")
-        @Override public boolean removeFirstOccurrence(final @Nullable Object value) { return __reference.removeFirstOccurrence(value); }
-
-        @Contract(mutates = "this")
-        @Override public boolean removeLastOccurrence(final @Nullable Object value) { return __reference.removeLastOccurrence(value); }
-
-
-        @Contract(mutates = "this")
-        @Override public boolean removeAll(final Collection<? extends @Nullable Object> values) { return __reference.removeAll(values); }
-
-
-        @Contract(mutates = "this")
-        @Override public boolean removeIf(final Predicate<? super T> filter) { return __reference.removeIf(filter); }
-
-
-        @Contract(mutates = "this")
-        @Override public @Nullable T poll() { return __reference.poll(); }
-
-        @Contract(mutates = "this")
-        @Override public @Nullable T pollFirst() { return __reference.pollFirst(); }
-
-        @Contract(mutates = "this")
-        @Override public @Nullable T pollLast() { return __reference.pollLast(); }
-
-
-        @Contract(mutates = "this")
-        @Override public T pop() { return __reference.pop(); }
-
-        //#endregion -------------------- Remove methods --------------------
-        //#region -------------------- Retain methods --------------------
-
-        @Contract(mutates = "this")
-        @Override public boolean retainAll(final Collection<?> values) { return __reference.retainAll(values); }
-
-        //#endregion -------------------- Retain methods --------------------
-        //#region -------------------- Clear methods --------------------
-
-        @Contract(mutates = "this")
-        @Override public void clear() { __reference.clear(); }
-
-        //#endregion -------------------- Clear methods --------------------
-        //#region -------------------- Has methods --------------------
-
-        @Override public boolean contains(final @Nullable Object value) { return __reference.contains(value); }
-
-        @Override public boolean containsAll(final @Unmodifiable Collection<?> values) { return __reference.containsAll(values); }
-
-        //#endregion -------------------- Has methods --------------------
-        //#region -------------------- For each methods --------------------
-
-        @Override public void forEach(final Consumer<? super T> action) { __reference.forEach(action); }
-
-        //#endregion -------------------- For each methods --------------------
-        //#region -------------------- As reverse methods --------------------
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public MutableArrayDequeView<T> reversed() { return new MutableArrayDequeView<>(__reference.reversed()); }
-
-        //#endregion -------------------- As reverse methods --------------------
-        //#region -------------------- Iterator methods --------------------
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public MutableIterator<T> iterator() { return new IteratorAsMutableIterator<>(__reference.iterator()); }
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public MutableIterator<T> descendingIterator() { return new IteratorAsMutableIterator<>(__reference.descendingIterator()); }
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public Spliterator<T> spliterator() { return __reference.spliterator(); }
-
-        //#endregion -------------------- Iterator methods --------------------
-        //#region -------------------- To array methods --------------------
-
-        @Override public @Nullable Object[] toArray() { return __reference.toArray(); }
-
-        @Override public <U extends @Nullable Object> U[] toArray(final U[] newArray) { return __reference.toArray(newArray); }
-
-        @Contract(ALWAYS_NEW_1)
-        @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return __reference.toArray(generator); }
-
-        //#endregion -------------------- To array methods --------------------
-        //#region -------------------- Stream methods --------------------
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public Stream<T> stream() { return __reference.stream(); }
-
-        @Contract(ALWAYS_NEW_0)
-        @Override public Stream<T> parallelStream() { return __reference.parallelStream(); }
-
-        //#endregion -------------------- Stream methods --------------------
-        //#region -------------------- Clone methods --------------------
-
-        @MustBeInvokedByOverriders
-        @Contract(ALWAYS_NEW_0)
-        @Override public MutableArrayDequeView<T> clone() { return (MutableArrayDequeView<T>) super.clone(); }
-
-        //#endregion -------------------- Clone methods --------------------
-        //#region -------------------- To string methods --------------------
-
-        @Override public String toString() { return __reference.toString(); }
-
-        //#endregion -------------------- To string methods --------------------
-
-        //#endregion -------------------- Methods --------------------
-
-    }
-
-    //#endregion -------------------- Sub class --------------------
     //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
