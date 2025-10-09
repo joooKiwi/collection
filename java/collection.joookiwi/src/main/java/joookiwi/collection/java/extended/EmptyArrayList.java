@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.io.Serial;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,7 +19,6 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyList;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CollectionConstants.emptyStream;
