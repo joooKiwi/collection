@@ -316,88 +316,88 @@ describe("CollectionHolderTest (value)", () => {
         describe("atOrElse", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElse",)
-                atOrElse(A, NaN, callback,)
+                atOrElse(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByMinimalistCollectionHolder",)
-                atOrElseByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), NaN, callback,)
+                atOrElseByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByCollectionHolder",)
-                atOrElseByCollectionHolder(new CollectionHolderFromArray(A,), NaN, callback,)
+                atOrElseByCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByArray",)
-                atOrElseByArray(A, NaN, callback,)
+                atOrElseByArray(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("atOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNull",)
-                atOrNull(A, NaN,)
+                atOrNull(A, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByMinimalistCollectionHolder",)
-                atOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), NaN,)
+                atOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByCollectionHolder",)
-                atOrNullByCollectionHolder(new CollectionHolderFromArray(A,), NaN,)
+                atOrNullByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByArray",)
-                atOrNullByArray(A, NaN,)
+                atOrNullByArray(A, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("elementAtOrElse", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElse",)
-                elementAtOrElse(A, NaN, callback,)
+                elementAtOrElse(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByMinimalistCollectionHolder",)
-                elementAtOrElseByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), NaN, callback,)
+                elementAtOrElseByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByCollectionHolder",)
-                elementAtOrElseByCollectionHolder(new CollectionHolderFromArray(A,), NaN, callback,)
+                elementAtOrElseByCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByArray",)
-                elementAtOrElseByArray(A, NaN, callback,)
+                elementAtOrElseByArray(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("elementAtOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNull",)
-                elementAtOrNull(A, NaN,)
+                elementAtOrNull(A, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByMinimalistCollectionHolder",)
-                elementAtOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), NaN,)
+                elementAtOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByCollectionHolder",)
-                elementAtOrNullByCollectionHolder(new CollectionHolderFromArray(A,), NaN,)
+                elementAtOrNullByCollectionHolder(new CollectionHolderFromArray(A,), 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrNullModule, "getOrNullByArray",)
-                elementAtOrNullByArray(A, NaN,)
+                elementAtOrNullByArray(A, 0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -405,16 +405,16 @@ describe("CollectionHolderTest (value)", () => {
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
         describe("getOrElse", () => {
-            test("all",                          () => expect(getOrElse(it, NaN, callback,) === value,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(getOrElseByMinimalistCollectionHolder(it, NaN, callback,) === value,).toBeTrue(),)
-            test("collection holder",            () => expect(getOrElseByCollectionHolder(it, NaN, callback,) === value,).toBeTrue(),)
-            test("array",                        () => expect(getOrElseByArray(it, NaN, callback,) === value,).toBeTrue(),)
+            test("all",                          () => expect(getOrElse(it, 0, callback,) === value,).toBeTrue(),)
+            test("minimalist collection holder", () => expect(getOrElseByMinimalistCollectionHolder(it, 0, callback,) === value,).toBeTrue(),)
+            test("collection holder",            () => expect(getOrElseByCollectionHolder(it, 0, callback,) === value,).toBeTrue(),)
+            test("array",                        () => expect(getOrElseByArray(it, 0, callback,) === value,).toBeTrue(),)
         },)
         describe("getOrNull", () => {
-            test("all",                          () => expect(getOrNull(it, NaN,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(getOrNullByMinimalistCollectionHolder(it, NaN,),).toBeNull(),)
-            test("collection holder",            () => expect(getOrNullByCollectionHolder(it, NaN,),).toBeNull(),)
-            test("array",                        () => expect(getOrNullByArray(it, NaN,),).toBeNull(),)
+            test("all",                          () => expect(getOrNull(it, 0,),).toBeNull(),)
+            test("minimalist collection holder", () => expect(getOrNullByMinimalistCollectionHolder(it, 0,),).toBeNull(),)
+            test("collection holder",            () => expect(getOrNullByCollectionHolder(it, 0,),).toBeNull(),)
+            test("array",                        () => expect(getOrNullByArray(it, 0,),).toBeNull(),)
         },)
 
         describe("getFirst", () => {
