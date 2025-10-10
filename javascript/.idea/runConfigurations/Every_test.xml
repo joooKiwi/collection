@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Every test" type="CompoundRunConfigurationType">
-    <toRun name="Every test on CollectionHandler" type="CompoundRunConfigurationType" />
-    <toRun name="Every test on CollectionHolder" type="CompoundRunConfigurationType" />
-    <toRun name="Every test on CollectionIterator" type="CompoundRunConfigurationType" />
-    <toRun name="Every test on LazyCollectionHolder" type="CompoundRunConfigurationType" />
+    <toRun name="CollectionHandler (every tests)" type="CompoundRunConfigurationType" />
+    <toRun name="CollectionHolder (every tests)" type="CompoundRunConfigurationType" />
+    <toRun name="CollectionIterator (every tests)" type="CompoundRunConfigurationType" />
+    <toRun name="LazyCollectionHolder (every tests)" type="CompoundRunConfigurationType" />
     <method v="2" />
   </configuration>
 </component>
