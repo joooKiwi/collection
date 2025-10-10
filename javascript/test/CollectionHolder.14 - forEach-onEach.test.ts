@@ -15,7 +15,7 @@ import {EmptyCollectionHolderForTest}                                           
 import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0} from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}             from "./value/instances"
+import {everyCollectionInstances}                                                   from "./value/instances"
 
 import {forEach, forEachByArray, forEachByCollectionHolder, forEachByMinimalistCollectionHolder}                             from "../src/method/forEach"
 import {forEachIndexed, forEachIndexedByArray, forEachIndexedByCollectionHolder, forEachIndexedByMinimalistCollectionHolder} from "../src/method/forEachIndexed"
@@ -58,7 +58,7 @@ describe("CollectionHolderTest (forEach / onEach)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("forEach", () => {

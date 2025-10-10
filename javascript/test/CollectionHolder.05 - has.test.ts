@@ -39,7 +39,7 @@ import {LazyGenericCollectionHolder_HasNullAlias}                               
 import {LazyGenericCollectionHolder_HasOneAlias}                                                                                                                                                                                                                                                     from "./instance/LazyGenericCollectionHolder_HasOneAlias"
 import {MinimalistCollectionHolderFromArray}                                                                                                                                                                                                                                                         from "./instance/MinimalistCollectionHolderFromArray"
 import {A, A_NULL, A_NULL_B, A_NULL_NULL_UNDEFINED_B, A_NULL_UNDEFINED_B, A_NULL_UNDEFINED_UNDEFINED_B, A_UNDEFINED, A_UNDEFINED_B, AA, AABC, AB, AB_NULL, AB_UNDEFINED, ABAB, ABBC, ABCD, B, C, D, E, EF, EFGH, EMPTY, NULL, NULL_A, NULL_AB, NULL_UNDEFINED, UNDEFINED, UNDEFINED_A, UNDEFINED_AB} from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder, everyIterableInstances}                                                                                                                                                                                                      from "./value/instances"
+import {everyCollectionInstances, everyIterableInstances}                                                                                                                                                                                                                                            from "./value/instances"
 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
@@ -2498,7 +2498,7 @@ describe("CollectionHolderTest (has)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
         /** The instance is a {@link CollectionHolder} for the {@link ReadonlyArray} extension methods */

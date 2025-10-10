@@ -15,7 +15,7 @@ import {CollectionHolderFromArray}                                              
 import {CollectionIteratorFromArray}                                                                               from "./instance/CollectionIteratorFromArray"
 import {EmptyCollectionHolderForTest}                                                                              from "./instance/EmptyCollectionHolderForTest"
 import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY, NULL_UNDEFINED} from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder, everyIterableInstances}                    from "./value/instances"
+import {everyCollectionInstances, everyIterableInstances}                                                          from "./value/instances"
 
 import {CollectionConstants}                                                                                                                                                                                     from "../src/CollectionConstants"
 import {ForbiddenIndexException}                                                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
@@ -92,7 +92,7 @@ describe("CollectionHolderTest (slice)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension, type,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
         if (!isExtension)

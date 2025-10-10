@@ -10,11 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_SizeAlias}                              from "./instance/GenericCollectionHolder_SizeAlias"
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {LazyGenericCollectionHolder_SizeAlias}                          from "./instance/LazyGenericCollectionHolder_SizeAlias"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
-import {sizeValues}                                                     from "./value/sizes"
+import {GenericCollectionHolder_SizeAlias}     from "./instance/GenericCollectionHolder_SizeAlias"
+import {EmptyCollectionHolderForTest}          from "./instance/EmptyCollectionHolderForTest"
+import {LazyGenericCollectionHolder_SizeAlias} from "./instance/LazyGenericCollectionHolder_SizeAlias"
+import {everyCollectionInstances}              from "./value/instances"
+import {sizeValues}                            from "./value/sizes"
 
 describe("CollectionHolderTest (size)", () => {
 
@@ -37,7 +37,7 @@ describe("CollectionHolderTest (size)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
     describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
         if (!isExtension)
             test("size", () => expect(new instance(array,).size,).toBe(size,),)

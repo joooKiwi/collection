@@ -17,7 +17,7 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                             from "./value/callbacks (fail)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt}           from "./value/callbacks (number)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                               from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                                from "./value/instances"
+import {everyCollectionInstances}                                                                                                                                                                                                      from "./value/instances"
 
 import {CollectionConstants}                                                                                                         from "../src/CollectionConstants"
 import {filter, filterByArray, filterByCollectionHolder, filterByMinimalistCollectionHolder}                                         from "../src/method/filter"
@@ -69,7 +69,7 @@ describe("CollectionHolderTest (filter)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
 

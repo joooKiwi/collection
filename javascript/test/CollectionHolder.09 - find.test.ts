@@ -33,7 +33,7 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                     from "./value/callbacks (string)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt} from "./value/callbacks (number)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                                                      from "./value/instances"
+import {everyCollectionInstances}                                                                                                                                                                                            from "./value/instances"
 
 import {EmptyCollectionException}                                                                                                                            from "../src/exception/EmptyCollectionException"
 import {IndexOutOfBoundsException}                                                                                                                           from "../src/exception/IndexOutOfBoundsException"
@@ -434,7 +434,7 @@ describe("CollectionHolderTest (find)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("findFirst", () => {

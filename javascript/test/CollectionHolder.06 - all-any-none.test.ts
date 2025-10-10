@@ -21,7 +21,7 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                      from "./value/callbacks (fail)"
 import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt}                    from "./value/callbacks (number)"
 import {callbackIsA, callbackIsB, callbackIsC, callbackIsD, callbackIsE}                                                                        from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                         from "./value/instances"
+import {everyCollectionInstances}                                                                                                               from "./value/instances"
 
 import * as allModule                                                                    from "../src/method/all"
 import {all, allByArray, allByCollectionHolder, allByMinimalistCollectionHolder}         from "../src/method/all"
@@ -118,7 +118,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("all", () => {

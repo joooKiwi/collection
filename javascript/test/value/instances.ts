@@ -12,10 +12,6 @@
 
 import type {CollectionHolder} from "../../src/CollectionHolder"
 
-import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
-import {GenericCollectionHolder}           from "../../src/GenericCollectionHolder"
-import {LazyGenericCollectionHolder}       from "../../src/LazyGenericCollectionHolder"
-
 import {Holder}                                           from "../Holder"
 import {CollectionHolder_ByMinimalistCollection}          from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}             from "../instance/CollectionHolder_ByGenericCollection"
@@ -38,40 +34,11 @@ import {IteratorForTest}                                  from "../instance/Iter
 import {MinimalistCollectionHolder_ByStructure}           from "../instance/MinimalistCollectionHolder_ByStructure"
 import {MinimalistCollectionHolderFromArray}              from "../instance/MinimalistCollectionHolderFromArray"
 
-/** The possible instances currently exported to the public */
-export const everyCollectionInstances = [
-    new Holder({ isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: GenericMinimalistCollectionHolder,}, "minimalist",),
-    new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: GenericCollectionHolder,},           "normal",),
-    // new Holder({ isMinimalist: false, isLazy: false, isExtension: false, type: "array",      instance: ArrayAsCollectionHolder,},           "array",),
-    new Holder({ isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: LazyGenericCollectionHolder,},       "lazy",),
-] as const
-
-/**
- * The possible extension function currently exported to the public grouped together as a {@link CollectionHolder}
- * to apply on tests
- */
-export const everyExtensionFunctionAsCollectionHolder = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  type: "minimalist extension", instance: CollectionHolder_FromMinimalistExtensionFunction,}, "collection (on minimalist extension)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "normal extension",     instance: CollectionHolder_FromExtensionFunction,},           "collection (on extension)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  type: "array extension",      instance: CollectionHolder_FromArrayFunction,},               "collection (on array extension)",),
-] as const
-
-/**
- * The possible instances currently exported to the public mocked as an {@link CollectionHolder}
- * to apply on tests
- */
-export const everyCollectionInstancesAsCollectionHolder = [
-    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
-    new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
-    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "array",      instance: CollectionHolder_ByArrayCollection, },      "collection (by array)",),
-    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, type: "lazy",       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
-] as const
-
 /**
  * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
  */
-export const everyCollectionInstancesAndExtensionFunctionAsCollectionHolder = [
+export const everyCollectionInstances = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, type: "minimalist",           instance: CollectionHolder_ByMinimalistCollection, },         "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "normal",               instance: CollectionHolder_ByGenericCollection, },            "collection (by normal)",),
     // new Holder({isMinimalist: false, isLazy: false, isExtension: false, type: "array",                instance: CollectionHolder_ByArrayCollection, },              "collection (by array)",),

@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
-import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY, NULL_UNDEFINED}       from "./value/arrays"
+import {EmptyCollectionHolderForTest}                             from "./instance/EmptyCollectionHolderForTest"
+import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY, NULL_UNDEFINED} from "./value/arrays"
+import {everyCollectionInstances}                                 from "./value/instances"
 
 import {CollectionConstants}                                                                                                                                     from "../src/CollectionConstants"
 import {GenericCollectionIterator}                                                                                                                               from "../src/iterator/GenericCollectionIterator"
@@ -157,7 +157,7 @@ describe("CollectionHolderTest (conversion)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance,},},) => {
         test("toIterator: empty",                    () => expect(new instance(EMPTY,).toIterator(),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
         test("toIterator: 1 field",                  () => expect(new instance(A,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)
         test("toIterator: 2 fields",                 () => expect(new instance(AB,).toIterator(),).toBeInstanceOf(GenericCollectionIterator,),)

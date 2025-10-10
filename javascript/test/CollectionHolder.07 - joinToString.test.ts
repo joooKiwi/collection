@@ -17,7 +17,7 @@ import {LazyGenericCollectionHolder_JoinToStringAlias}                          
 import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                             from "./value/instances"
+import {everyCollectionInstances}                                                                                                   from "./value/instances"
 
 import {CollectionConstants}                                                                                         from "../src/CollectionConstants"
 import {ForbiddenIndexException}                                                                                     from "../src/exception/ForbiddenIndexException"
@@ -69,7 +69,7 @@ describe("CollectionHolderTest (joinToString)", () => {
         test("array",                        () => expect(joinToStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("empty", () => {

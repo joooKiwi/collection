@@ -16,7 +16,7 @@ import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                                 from "./value/callbacks (null)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                                from "./value/callbacks (string)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}                                                                                                                            from "./value/instances"
+import {everyCollectionInstances}                                                                                                                                                                  from "./value/instances"
 
 import {CollectionConstants}                                                                                                             from "../src/CollectionConstants"
 import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}                                                         from "../src/method/map"
@@ -61,7 +61,7 @@ describe("CollectionHolderTest (map)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("map", () => {

@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {AB, EMPTY}                                                      from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
+import {EmptyCollectionHolderForTest} from "./instance/EmptyCollectionHolderForTest"
+import {AB, EMPTY}                    from "./value/arrays"
+import {everyCollectionInstances}     from "./value/instances"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
@@ -24,7 +24,7 @@ describe("CollectionHolderTest (javascript exclusive)", () => {
         test("Symbol.iterator",    () => expect(new EmptyCollectionHolderForTest()[Symbol.iterator](),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance,},},) => {
         describe("Symbol.toStringTag", () => expect(new instance(EMPTY,)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
         describe("Symbol.iterator", () => {
             test("empty",     () => expect(new instance(EMPTY,)[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)

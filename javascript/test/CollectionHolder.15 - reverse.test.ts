@@ -16,7 +16,7 @@ import {EmptyCollectionHolderForTest}                                           
 import {GenericCollectionHolder_ToReverseAlias}                                  from "./instance/GenericCollectionHolder_ToReverseAlias"
 import {LazyGenericCollectionHolder_ToReverseAlias}                              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY, NULL_UNDEFINED} from "./value/arrays"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder}          from "./value/instances"
+import {everyCollectionInstances}                                                from "./value/instances"
 
 import {CollectionConstants}                                                                                 from "../src/CollectionConstants"
 import {ForbiddenIndexException}                                                                             from "../src/exception/ForbiddenIndexException"
@@ -98,7 +98,7 @@ describe("CollectionHolderTest (reverse)", () => {
         test("array",                        () => expect(toReverseByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(0,),)

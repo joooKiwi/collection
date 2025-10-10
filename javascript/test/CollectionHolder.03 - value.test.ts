@@ -10,26 +10,26 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolderFromArray}                                      from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {GenericCollectionHolder_GetAlias}                               from "./instance/GenericCollectionHolder_GetAlias"
-import {GenericCollectionHolder_GetFirstAlias}                          from "./instance/GenericCollectionHolder_GetFirstAlias"
-import {GenericCollectionHolder_GetFirstOrNullAlias}                    from "./instance/GenericCollectionHolder_GetFirstOrNullAlias"
-import {GenericCollectionHolder_GetLastAlias}                           from "./instance/GenericCollectionHolder_GetLastAlias"
-import {GenericCollectionHolder_GetLastOrNullAlias}                     from "./instance/GenericCollectionHolder_GetLastOrNullAlias"
-import {GenericCollectionHolder_GetOrElseAlias}                         from "./instance/GenericCollectionHolder_GetOrElseAlias"
-import {GenericCollectionHolder_GetOrNullAlias}                         from "./instance/GenericCollectionHolder_GetOrNullAlias"
-import {LazyGenericCollectionHolder_GetAlias}                           from "./instance/LazyGenericCollectionHolder_GetAlias"
-import {LazyGenericCollectionHolder_GetFirstAlias}                      from "./instance/LazyGenericCollectionHolder_GetFirstAlias"
-import {LazyGenericCollectionHolder_GetFirstOrNullAlias}                from "./instance/LazyGenericCollectionHolder_GetFirstOrNullAlias"
-import {LazyGenericCollectionHolder_GetLastAlias}                       from "./instance/LazyGenericCollectionHolder_GetLastAlias"
-import {LazyGenericCollectionHolder_GetLastOrNullAlias}                 from "./instance/LazyGenericCollectionHolder_GetLastOrNullAlias"
-import {LazyGenericCollectionHolder_GetOrElseAlias}                     from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
-import {LazyGenericCollectionHolder_GetOrNullAlias}                     from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
-import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                             from "./value/arrays"
-import {callbackAsFail0}                                                from "./value/callbacks (fail)"
-import {callbackAsNull0}                                                from "./value/callbacks (null)"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
+import {CollectionHolderFromArray}                       from "./instance/CollectionHolderFromArray"
+import {EmptyCollectionHolderForTest}                    from "./instance/EmptyCollectionHolderForTest"
+import {GenericCollectionHolder_GetAlias}                from "./instance/GenericCollectionHolder_GetAlias"
+import {GenericCollectionHolder_GetFirstAlias}           from "./instance/GenericCollectionHolder_GetFirstAlias"
+import {GenericCollectionHolder_GetFirstOrNullAlias}     from "./instance/GenericCollectionHolder_GetFirstOrNullAlias"
+import {GenericCollectionHolder_GetLastAlias}            from "./instance/GenericCollectionHolder_GetLastAlias"
+import {GenericCollectionHolder_GetLastOrNullAlias}      from "./instance/GenericCollectionHolder_GetLastOrNullAlias"
+import {GenericCollectionHolder_GetOrElseAlias}          from "./instance/GenericCollectionHolder_GetOrElseAlias"
+import {GenericCollectionHolder_GetOrNullAlias}          from "./instance/GenericCollectionHolder_GetOrNullAlias"
+import {LazyGenericCollectionHolder_GetAlias}            from "./instance/LazyGenericCollectionHolder_GetAlias"
+import {LazyGenericCollectionHolder_GetFirstAlias}       from "./instance/LazyGenericCollectionHolder_GetFirstAlias"
+import {LazyGenericCollectionHolder_GetFirstOrNullAlias} from "./instance/LazyGenericCollectionHolder_GetFirstOrNullAlias"
+import {LazyGenericCollectionHolder_GetLastAlias}        from "./instance/LazyGenericCollectionHolder_GetLastAlias"
+import {LazyGenericCollectionHolder_GetLastOrNullAlias}  from "./instance/LazyGenericCollectionHolder_GetLastOrNullAlias"
+import {LazyGenericCollectionHolder_GetOrElseAlias}      from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
+import {LazyGenericCollectionHolder_GetOrNullAlias}      from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}              from "./value/arrays"
+import {callbackAsFail0}                                 from "./value/callbacks (fail)"
+import {callbackAsNull0}                                 from "./value/callbacks (null)"
+import {everyCollectionInstances}                        from "./value/instances"
 
 import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}                                                                                                             from "../src/exception/ForbiddenIndexException"
@@ -451,7 +451,7 @@ describe("CollectionHolderTest (value)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
         if (!isExtension)
