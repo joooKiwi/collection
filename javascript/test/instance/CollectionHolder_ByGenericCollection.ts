@@ -72,10 +72,6 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override getLast(): T { return this.instance.getLast() }
 
-    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
-
-    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
-
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -89,7 +85,12 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
 
+
     public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
+
+    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
+
+    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find --------------------
