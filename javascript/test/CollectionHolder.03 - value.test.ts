@@ -63,12 +63,17 @@ import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollecti
 import {lastOrNull, lastOrNullByArray, lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                                 from "../src/method/lastOrNull"
 
 describe("CollectionHolderTest (value)", () => {
-    //#region -------------------- Callbacks --------------------
+    //#region -------------------- Reusable values --------------------
+
+    /** An index that exist in the alias tests */
+    const existantIndex = 2
+    /** An impossible index in the alias tests */
+    const invalidIndex = NaN
 
     const value = Symbol()
     const callback = () => value
 
-    //#endregion -------------------- Callbacks --------------------
+    //#endregion -------------------- Reusable values --------------------
 
     describe("EmptyCollectionHolder", () => {
         test("get",                 () => expect(() => new EmptyCollectionHolderForTest().get(),).toThrow(EmptyCollectionException,),)
@@ -80,9 +85,9 @@ describe("CollectionHolderTest (value)", () => {
         test("lastIndexed",         () => expect(() => new EmptyCollectionHolderForTest().lastIndexed(),).toThrow(EmptyCollectionException,),)
         test("at",                  () => expect(() => new EmptyCollectionHolderForTest().at(),).toThrow(EmptyCollectionException,),)
         test("elementAt",           () => expect(() => new EmptyCollectionHolderForTest().elementAt(),).toThrow(EmptyCollectionException,),)
-        test("getOrElse",           () => expect(new EmptyCollectionHolderForTest().getOrElse(NaN, it => it,),).toBeNaN(),)
-        test("atOrElse",            () => expect(new EmptyCollectionHolderForTest().atOrElse(NaN, it => it,),).toBeNaN(),)
-        test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(NaN, it => it,),).toBeNaN(),)
+        test("getOrElse",           () => expect(new EmptyCollectionHolderForTest().getOrElse(invalidIndex, it => it,),).toBeNaN(),)
+        test("atOrElse",            () => expect(new EmptyCollectionHolderForTest().atOrElse(invalidIndex, it => it,),).toBeNaN(),)
+        test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(invalidIndex, it => it,),).toBeNaN(),)
         test("getOrNull",           () => expect(new EmptyCollectionHolderForTest().getOrNull(),).toBeNull(),)
         test("getFirstOrNull",      () => expect(new EmptyCollectionHolderForTest().getFirstOrNull(),).toBeNull(),)
         test("getFirstOrElse",      () => expect(new EmptyCollectionHolderForTest().getFirstOrElse(callback,),).toBe(value,),)
@@ -106,12 +111,12 @@ describe("CollectionHolderTest (value)", () => {
             test("lastOrNull",         () => expect(new GenericCollectionHolder_GetLastOrNullAlias().execute(it => it.lastOrNull(),).amountOfCall,).toBe(1,),)
             test("lastIndexed",        () => expect(new GenericCollectionHolder_GetLastAlias().execute(it => it.lastIndexed(),).amountOfCall,).toBe(1,),)
             test("lastOrNull",         () => expect(new GenericCollectionHolder_GetLastOrNullAlias().execute(it => it.lastIndexedOrNull(),).amountOfCall,).toBe(1,),)
-            test("at",                 () => expect(new GenericCollectionHolder_GetAlias().execute(it => it.at(2,),).amountOfCall,).toBe(1,),)
-            test("atOrElse",           () => expect(new GenericCollectionHolder_GetOrElseAlias().execute(it => it.atOrElse(NaN, callbackAsNull0,),).amountOfCall,).toBe(1,),)
-            test("atOrNull",           () => expect(new GenericCollectionHolder_GetOrNullAlias().execute(it => it.atOrNull(NaN,),).amountOfCall,).toBe(1,),)
-            test("elementAt",          () => expect(new GenericCollectionHolder_GetAlias().execute(it => it.elementAt(2,),).amountOfCall,).toBe(1,),)
-            test("elementAtOrElse",    () => expect(new GenericCollectionHolder_GetOrElseAlias().execute(it => it.elementAtOrElse(NaN, callbackAsNull0,),).amountOfCall,).toBe(1,),)
-            test("elementAtOrNull",    () => expect(new GenericCollectionHolder_GetOrNullAlias().execute(it => it.elementAtOrNull(NaN,),).amountOfCall,).toBe(1,),)
+            test("at",                 () => expect(new GenericCollectionHolder_GetAlias().execute(it => it.at(existantIndex,),).amountOfCall,).toBe(1,),)
+            test("atOrElse",           () => expect(new GenericCollectionHolder_GetOrElseAlias().execute(it => it.atOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
+            test("atOrNull",           () => expect(new GenericCollectionHolder_GetOrNullAlias().execute(it => it.atOrNull(invalidIndex,),).amountOfCall,).toBe(1,),)
+            test("elementAt",          () => expect(new GenericCollectionHolder_GetAlias().execute(it => it.elementAt(existantIndex,),).amountOfCall,).toBe(1,),)
+            test("elementAtOrElse",    () => expect(new GenericCollectionHolder_GetOrElseAlias().execute(it => it.elementAtOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
+            test("elementAtOrNull",    () => expect(new GenericCollectionHolder_GetOrNullAlias().execute(it => it.elementAtOrNull(invalidIndex,),).amountOfCall,).toBe(1,),)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("first",              () => expect(new LazyGenericCollectionHolder_GetFirstAlias().execute(it => it.first(),).amountOfCall,).toBe(1,),)
@@ -122,12 +127,12 @@ describe("CollectionHolderTest (value)", () => {
             test("lastOrNull",         () => expect(new LazyGenericCollectionHolder_GetLastOrNullAlias().execute(it => it.lastOrNull(),).amountOfCall,).toBe(1,),)
             test("lastIndexed",        () => expect(new LazyGenericCollectionHolder_GetLastAlias().execute(it => it.lastIndexed(),).amountOfCall,).toBe(1,),)
             test("lastOrNull",         () => expect(new LazyGenericCollectionHolder_GetLastOrNullAlias().execute(it => it.lastIndexedOrNull(),).amountOfCall,).toBe(1,),)
-            test("at",                 () => expect(new LazyGenericCollectionHolder_GetAlias().execute(it => it.at(2,),).amountOfCall,).toBe(1,),)
-            test("atOrElse",           () => expect(new LazyGenericCollectionHolder_GetOrElseAlias().execute(it => it.atOrElse(NaN, callbackAsNull0,),).amountOfCall,).toBe(1,),)
-            test("atOrNull",           () => expect(new LazyGenericCollectionHolder_GetOrNullAlias().execute(it => it.atOrNull(NaN,),).amountOfCall,).toBe(1,),)
-            test("elementAt",          () => expect(new LazyGenericCollectionHolder_GetAlias().execute(it => it.elementAt(2,),).amountOfCall,).toBe(1,),)
-            test("elementAtOrElse",    () => expect(new LazyGenericCollectionHolder_GetOrElseAlias().execute(it => it.elementAtOrElse(NaN, callbackAsNull0,),).amountOfCall,).toBe(1,),)
-            test("elementAtOrNull",    () => expect(new LazyGenericCollectionHolder_GetOrNullAlias().execute(it => it.elementAtOrNull(NaN,),).amountOfCall,).toBe(1,),)
+            test("at",                 () => expect(new LazyGenericCollectionHolder_GetAlias().execute(it => it.at(existantIndex,),).amountOfCall,).toBe(1,),)
+            test("atOrElse",           () => expect(new LazyGenericCollectionHolder_GetOrElseAlias().execute(it => it.atOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
+            test("atOrNull",           () => expect(new LazyGenericCollectionHolder_GetOrNullAlias().execute(it => it.atOrNull(invalidIndex,),).amountOfCall,).toBe(1,),)
+            test("elementAt",          () => expect(new LazyGenericCollectionHolder_GetAlias().execute(it => it.elementAt(existantIndex,),).amountOfCall,).toBe(1,),)
+            test("elementAtOrElse",    () => expect(new LazyGenericCollectionHolder_GetOrElseAlias().execute(it => it.elementAtOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
+            test("elementAtOrNull",    () => expect(new LazyGenericCollectionHolder_GetOrNullAlias().execute(it => it.elementAtOrNull(invalidIndex,),).amountOfCall,).toBe(1,),)
         },)
 
         describe("first", () => {
