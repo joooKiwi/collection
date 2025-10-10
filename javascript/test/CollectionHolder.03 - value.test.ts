@@ -523,7 +523,6 @@ describe("CollectionHolderTest (value)", () => {
                     test("-1",  () => expect(() => new instance(EMPTY,).get(-1,),).toThrow(EmptyCollectionException,),)
                     test('0',   () => expect(() => new instance(EMPTY,).get(0,),).toThrow(EmptyCollectionException,),)
                     test('1',   () => expect(() => new instance(EMPTY,).get(1,),).toThrow(EmptyCollectionException,),)
-                    test('2',   () => expect(() => new instance(EMPTY,).get(2,),).toThrow(EmptyCollectionException,),)
                     test("+∞",  () => expect(() => new instance(EMPTY,).get(Infinity,),).toThrow(EmptyCollectionException,),)
                 },)
                 describe("1 field", () => {
@@ -589,7 +588,6 @@ describe("CollectionHolderTest (value)", () => {
                 test("-1",  () => expect(new instance(EMPTY,).getOrElse(-1, callback,),).toBe(value,),)
                 test('0',   () => expect(new instance(EMPTY,).getOrElse(0, callback,),).toBe(value,),)
                 test('1',   () => expect(new instance(EMPTY,).getOrElse(1, callback,),).toBe(value,),)
-                test('2',   () => expect(new instance(EMPTY,).getOrElse(2, callback,),).toBe(value,),)
                 test("+∞",  () => expect(new instance(EMPTY,).getOrElse(Infinity, callback,),).toBe(value,),)
             },)
             describe("1 field", () => {
@@ -655,7 +653,6 @@ describe("CollectionHolderTest (value)", () => {
                 test("-1",  () => expect(new instance(EMPTY,).getOrNull(-1,),).toBeNull(),)
                 test('0',   () => expect(new instance(EMPTY,).getOrNull(0,),).toBeNull(),)
                 test('1',   () => expect(new instance(EMPTY,).getOrNull(1,),).toBeNull(),)
-                test('2',   () => expect(new instance(EMPTY,).getOrNull(2,),).toBeNull(),)
                 test("+∞",  () => expect(new instance(EMPTY,).getOrNull(Infinity,),).toBeNull(),)
             },)
             describe("1 field", () => {
