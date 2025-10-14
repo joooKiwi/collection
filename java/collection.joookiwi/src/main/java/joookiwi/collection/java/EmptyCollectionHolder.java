@@ -322,8 +322,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Size methods --------------------
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int size() { return 0; }
-    @Contract(pure = true) @Override public @Range(from = 0, to = 0) int length() { return size(); }
-    @Contract(pure = true) @Override public @Range(from = 0, to = 0) int count() { return size(); }
+    @Contract(pure = true) @Override public @Range(from = 0, to = 0) final int length() { return size(); }
+    @Contract(pure = true) @Override public @Range(from = 0, to = 0) final int count() { return size(); }
 
     @Contract(value = ALWAYS_TRUE_0, pure = true) @Override public boolean isEmpty() { return true; }
     @Contract(value = ALWAYS_FALSE_0, pure = true) @Override public boolean isNotEmpty() { return false; }
@@ -349,37 +349,37 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicReference<? extends Number>           index) { throw new EmptyCollectionException(null, index); }
     @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable Object @Nullable ...                      ignored) { throw new EmptyCollectionException(); }
 
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final byte                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final short                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1)                                            @Override public T at(final int                                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final long                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final float                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final double                                                index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable AtomicInteger                               index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable AtomicLong                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable LongAdder                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable LongAccumulator                             index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable DoubleAdder                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable DoubleAccumulator                           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable Number                                      index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T at(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public T at(final @Nullable Object @Nullable ...                      ignored) { return get(); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final byte                                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final short                                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1)                                            @Override public final T at(final int                                                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final long                                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final float                                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final double                                                index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicInteger                               index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicLong                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAdder                                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAccumulator                             index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAdder                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAccumulator                           index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable Number                                      index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T at(final @Nullable Object @Nullable ...                      ignored) { return get(); }
 
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final byte                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final short                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1)                                            @Override public T elementAt(final int                                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final long                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final float                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final double                                                index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable AtomicInteger                               index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable AtomicLong                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable LongAdder                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable LongAccumulator                             index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable DoubleAdder                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable DoubleAccumulator                           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable Number                                      index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public T elementAt(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public T elementAt(final @Nullable Object @Nullable ...                      ignored) { return get(); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final byte                                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final short                                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1)                                            @Override public final T elementAt(final int                                                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final long                                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final float                                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final double                                                index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicInteger                               index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicLong                                  index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAdder                                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAccumulator                             index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAdder                                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAccumulator                           index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable Number                                      index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T elementAt(final @Nullable Object @Nullable ...                      ignored) { return get(); }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Get first --------------------
@@ -416,42 +416,42 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
               public T getOrElse(final @Nullable Number                                      index, final Supplier<? extends T> defaultValue) { return defaultValue.get(); }
 
 
-    @Alias("getOrElse")           public                                                                   T atOrElse(final byte   index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T atOrElse(final short  index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-                        @Override public                                                                   T atOrElse(final int    index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T atOrElse(final long   index, final LongFunction<? extends T>   defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T atOrElse(final float  index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T atOrElse(final double index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public <U extends @Nullable AtomicReference<? extends @Nullable Number>> T atOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public <U extends @Nullable Number>                                      T atOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T atOrElse(final byte   index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T atOrElse(final short  index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+                        @Override public final                                                                   T atOrElse(final int    index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T atOrElse(final long   index, final LongFunction<? extends T>   defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T atOrElse(final float  index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T atOrElse(final double index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final <U extends @Nullable AtomicReference<? extends @Nullable Number>> T atOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final <U extends @Nullable Number>                                      T atOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
 
-    @Alias("getOrElse")           public T atOrElse(final byte                                                  index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final short                                                 index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-                        @Override public T atOrElse(final int                                                   index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final long                                                  index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final float                                                 index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final double                                                index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final @Nullable AtomicReference<? extends @Nullable Number> index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T atOrElse(final @Nullable Number                                      index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final byte                                                  index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final short                                                 index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+                        @Override public final T atOrElse(final int                                                   index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final long                                                  index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final float                                                 index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final double                                                index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final @Nullable AtomicReference<? extends @Nullable Number> index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T atOrElse(final @Nullable Number                                      index, final Supplier<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
 
 
-    @Alias("getOrElse")           public                                                                   T elementAtOrElse(final byte   index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T elementAtOrElse(final short  index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-                        @Override public                                                                   T elementAtOrElse(final int    index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T elementAtOrElse(final long   index, final LongFunction<? extends T>   defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T elementAtOrElse(final float  index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public                                                                   T elementAtOrElse(final double index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public <U extends @Nullable AtomicReference<? extends @Nullable Number>> T elementAtOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public <U extends @Nullable Number>                                      T elementAtOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T elementAtOrElse(final byte   index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T elementAtOrElse(final short  index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+                        @Override public final                                                                   T elementAtOrElse(final int    index, final IntFunction<? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T elementAtOrElse(final long   index, final LongFunction<? extends T>   defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T elementAtOrElse(final float  index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final                                                                   T elementAtOrElse(final double index, final DoubleFunction<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final <U extends @Nullable AtomicReference<? extends @Nullable Number>> T elementAtOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final <U extends @Nullable Number>                                      T elementAtOrElse(final U      index, final Function<U, ? extends T>    defaultValue) { return getOrElse(index, defaultValue); }
 
-    @Alias("getOrElse")           public T elementAtOrElse(final byte                                                  index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final short                                                 index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-                        @Override public T elementAtOrElse(final int                                                   index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final long                                                  index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final float                                                 index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final double                                                index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final @Nullable AtomicReference<? extends @Nullable Number> index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
-    @Alias("getOrElse")           public T elementAtOrElse(final @Nullable Number                                      index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final byte                                                  index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final short                                                 index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+                        @Override public final T elementAtOrElse(final int                                                   index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final long                                                  index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final float                                                 index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final double                                                index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final @Nullable AtomicReference<? extends @Nullable Number> index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
+    @Alias("getOrElse")           public final T elementAtOrElse(final @Nullable Number                                      index, final Supplier<? extends T> defaultValue) { return getOrElse(index, defaultValue); }
 
     //#endregion -------------------- Get or else --------------------
     //#region -------------------- Get first or else --------------------
@@ -472,14 +472,14 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final @Nullable Object @Nullable ... ignored) { return null; }
 
 
-    @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public @Nullable T atOrNull(                                            ) { return getOrNull(); }
-    @Contract(ALWAYS_NULL_1)                                                  @Override public @Nullable T atOrNull(final int                              index) { return getOrNull(index); }
-    @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public @Nullable T atOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public final @Nullable T atOrNull(                                            ) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_1)                                                  @Override public final @Nullable T atOrNull(final int                              index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public final @Nullable T atOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
 
 
-    @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public @Nullable T elementAtOrNull(                                            ) { return getOrNull(); }
-    @Contract(ALWAYS_NULL_1)                                                  @Override public @Nullable T elementAtOrNull(final int                              index) { return getOrNull(index); }
-    @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public @Nullable T elementAtOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(                                            ) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_1)                                                  @Override public final @Nullable T elementAtOrNull(final int                              index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public final @Nullable T elementAtOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
 
     //#endregion -------------------- Get or null --------------------
     //#region -------------------- Get first or null --------------------
