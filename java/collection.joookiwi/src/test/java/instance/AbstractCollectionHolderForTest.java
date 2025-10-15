@@ -54,6 +54,7 @@ import joookiwi.collection.java.iterator.CollectionIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 import org.junit.jupiter.api.Assertions;
 
@@ -62,6 +63,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
+import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
 @NotNullByDefault
@@ -71,7 +73,9 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
 
     /// The array received in the constructor
     public final T @Unmodifiable [] array;
-    public int amountOfCall = 0;
+
+    /// The field that tell the amount of time a specific method (as non-aliased method) has been called
+    public @Range(from = 0, to = MAX_INT_VALUE) int amountOfCall = 0;
 
     protected AbstractCollectionHolderForTest(final T @Unmodifiable [] array) {
         super();
@@ -80,7 +84,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
 
     //#region -------------------- Test utility methods --------------------
 
-    @Override public int getAmountOfCall() { return amountOfCall; }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int getAmountOfCall() { return amountOfCall; }
 
 
     @Contract(ALWAYS_THIS_1)
