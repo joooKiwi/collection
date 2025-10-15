@@ -193,7 +193,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -201,10 +201,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -213,7 +213,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -221,10 +221,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -233,7 +233,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -241,10 +241,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -254,7 +254,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -262,12 +262,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -276,7 +276,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -284,12 +284,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -298,7 +298,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -306,12 +306,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from --------------------
@@ -323,7 +323,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -331,10 +331,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -343,7 +343,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -351,10 +351,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -363,7 +363,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -371,10 +371,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -384,7 +384,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -392,12 +392,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -406,7 +406,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -414,12 +414,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -428,7 +428,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -436,12 +436,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate (int) → boolean, from --------------------
@@ -453,7 +453,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -461,10 +461,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -473,7 +473,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -481,10 +481,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -493,7 +493,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -501,10 +501,10 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex) {
+                                                                                                                                final int from) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -514,7 +514,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -522,12 +522,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -536,7 +536,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -544,12 +544,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -558,7 +558,7 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -566,12 +566,12 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex) {
+                                                                                                                                final @Nullable Integer from) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate () → boolean, from --------------------
@@ -584,8 +584,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -593,11 +593,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -606,8 +606,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -615,11 +615,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -628,8 +628,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -637,11 +637,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -651,8 +651,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -660,13 +660,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -675,8 +675,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -684,13 +684,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -699,8 +699,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -708,13 +708,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -724,8 +724,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -733,13 +733,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -748,8 +748,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -757,13 +757,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -772,8 +772,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -781,13 +781,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -797,8 +797,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -806,18 +806,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -826,8 +826,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -835,18 +835,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -855,8 +855,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -864,18 +864,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntObjPredicate<? super T> predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from, to --------------------
@@ -887,8 +887,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -896,11 +896,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -909,8 +909,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -918,11 +918,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -931,8 +931,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -940,11 +940,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -954,8 +954,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -963,13 +963,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -978,8 +978,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -987,13 +987,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1002,8 +1002,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1011,13 +1011,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1027,8 +1027,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1036,13 +1036,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1051,8 +1051,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1060,13 +1060,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1075,8 +1075,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1084,13 +1084,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1100,8 +1100,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1109,18 +1109,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1129,8 +1129,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1138,18 +1138,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1158,8 +1158,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1167,18 +1167,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final IntPredicate predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate (int) → boolean, from, to --------------------
@@ -1190,8 +1190,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1199,11 +1199,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1212,8 +1212,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1221,11 +1221,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1234,8 +1234,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1243,11 +1243,11 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1257,8 +1257,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1266,13 +1266,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1281,8 +1281,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1290,13 +1290,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1305,8 +1305,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1314,13 +1314,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final int fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final int from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1330,8 +1330,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1339,13 +1339,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1354,8 +1354,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1363,13 +1363,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1378,8 +1378,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1387,13 +1387,13 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final int toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final int to) {
         if (collection == null)
             return null;
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1403,8 +1403,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1412,18 +1412,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1432,8 +1432,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1441,18 +1441,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1461,8 +1461,8 @@ public final class IndexOfFirstIndexedOrNull
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1470,18 +1470,18 @@ public final class IndexOfFirstIndexedOrNull
     @Contract(IF_1ST_NULL_THEN_NULL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final T @Nullable @Unmodifiable [] collection,
                                                                                                                                 final BooleanSupplier predicate,
-                                                                                                                                final @Nullable Integer fromIndex,
-                                                                                                                                final @Nullable Integer toIndex) {
+                                                                                                                                final @Nullable Integer from,
+                                                                                                                                final @Nullable Integer to) {
         if (collection == null)
             return null;
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate () → boolean, from, to --------------------
@@ -1572,30 +1572,41 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, startingIndex, size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate (int, T) → boolean, from) --------------------
@@ -1603,30 +1614,41 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with1Argument(predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with1Argument(predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with1Argument(predicate, startingIndex, size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate (int) → boolean, from) --------------------
@@ -1634,30 +1656,41 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with0Argument(predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with0Argument(predicate, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex) {
+                                                                         final int from) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __with0Argument(predicate, startingIndex, size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate () → boolean, from) --------------------
@@ -1666,14 +1699,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
@@ -1681,14 +1719,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
@@ -1696,14 +1739,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final IntObjPredicate<? super T> predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
@@ -1714,14 +1762,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with1Argument(predicate, startingIndex, endingIndex);
@@ -1729,14 +1782,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with1Argument(predicate, startingIndex, endingIndex);
@@ -1744,14 +1802,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final IntPredicate predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with1Argument(predicate, startingIndex, endingIndex);
@@ -1762,14 +1825,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final MinimalistCollectionHolder<? extends T> collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with0Argument(predicate, startingIndex, endingIndex);
@@ -1777,14 +1845,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         if (collection.isEmpty())
             return null;
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with0Argument(predicate, startingIndex, endingIndex);
@@ -1792,14 +1865,19 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
                                                                          final BooleanSupplier predicate,
-                                                                         final int fromIndex,
-                                                                         final int toIndex) {
+                                                                         final int from,
+                                                                         final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __with0Argument(predicate, startingIndex, endingIndex);
@@ -1811,28 +1889,40 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                                    final IntObjPredicate<? super T> predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                                    final IntObjPredicate<? super T> predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, collection.size()));
+
+        final var endingIndex = _endingIndexOrNull(to, collection.size());
+        if (endingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                                    final IntObjPredicate<? super T> predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with2Argument(collection, predicate, 0, endingIndex);
     }
 
     //#endregion -------------------- Core methods (predicate (int, T) → boolean, to) --------------------
@@ -1840,28 +1930,40 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                                    final IntPredicate predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with1Argument(predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                                    final IntPredicate predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, collection.size()));
+
+        final var endingIndex = _endingIndexOrNull(to, collection.size());
+        if (endingIndex == null)
+            return null;
+        return __with1Argument(predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                                    final IntPredicate predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with1Argument(predicate, 0, endingIndex);
     }
 
     //#endregion -------------------- Core methods (predicate (int) → boolean, to) --------------------
@@ -1869,28 +1971,40 @@ public final class IndexOfFirstIndexedOrNull
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                                    final BooleanSupplier predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with0Argument(predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                                    final BooleanSupplier predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         if (collection.isEmpty())
             return null;
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, collection.size()));
+
+        final var endingIndex = _endingIndexOrNull(to, collection.size());
+        if (endingIndex == null)
+            return null;
+        return __with0Argument(predicate, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                                    final BooleanSupplier predicate,
-                                                                                   final int toIndex) {
+                                                                                   final int to) {
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __with0Argument(predicate, 0, endingIndex);
     }
 
     //#endregion -------------------- Core methods (predicate () → boolean, to) --------------------
