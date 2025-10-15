@@ -1632,6 +1632,29 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfLastIndexed(predicate, from.intValue(), to.intValue());
     }
 
+
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfLastIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfLastIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfLastIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLastIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findLastIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLastIndexed(predicate, from, to); }
+
     //#endregion -------------------- Index of last indexed --------------------
     //#region -------------------- Index of last indexed or null --------------------
 
