@@ -11,6 +11,7 @@ import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -40,6 +41,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -57,6 +61,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -74,6 +81,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -94,6 +104,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -111,6 +124,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -128,6 +144,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -148,6 +167,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -165,6 +187,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -182,6 +207,9 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -205,7 +233,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -227,7 +258,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -249,7 +283,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -272,7 +309,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -296,7 +336,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -320,7 +363,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -347,7 +393,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -369,7 +418,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -391,7 +443,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -414,7 +469,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -438,7 +496,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -462,7 +523,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -489,7 +553,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -511,7 +578,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -533,7 +603,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -556,7 +629,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -580,7 +656,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -604,7 +683,10 @@ public final class IndexOfFirstIndexed
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -633,7 +715,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -657,7 +743,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -681,7 +771,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -706,7 +800,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -732,7 +830,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -758,7 +860,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -785,7 +891,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -811,7 +921,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -837,7 +951,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -864,7 +982,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -895,7 +1017,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -926,7 +1052,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -960,7 +1090,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -984,7 +1118,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1008,7 +1146,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1033,7 +1175,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1059,7 +1205,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1085,7 +1235,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1112,7 +1266,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1138,7 +1296,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1164,7 +1326,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1191,7 +1357,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1222,7 +1392,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1253,7 +1427,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1287,7 +1465,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1311,7 +1493,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1335,7 +1521,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1360,7 +1550,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1386,7 +1580,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1412,7 +1610,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1439,7 +1641,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1465,7 +1671,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1491,7 +1701,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1518,7 +1732,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1549,7 +1767,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
@@ -1580,7 +1802,11 @@ public final class IndexOfFirstIndexed
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
