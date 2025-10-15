@@ -758,14 +758,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirst(final @Nullable ObjIntPredicate<? super T> predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirst(final @Nullable Predicate<? super T>       predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirst(final @Nullable BooleanSupplier            predicate                                                          ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable ObjIntPredicate<? super T> predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable Predicate<? super T>       predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable BooleanSupplier            predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirst(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable Predicate<? super T>       predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
@@ -778,8 +776,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirst(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
-
-    @Contract(ALWAYS_FAIL_1)           public int indexOfFirst(final @Nullable Object @Nullable ... ignored) { throw new EmptyCollectionException(); }
+    @Contract(ALWAYS_FAIL_1)           public int indexOfFirst(final @Nullable Object @Nullable ... ignored                                                                  ) { throw new EmptyCollectionException(); }
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of first or null --------------------
@@ -787,14 +784,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable ObjIntPredicate<? super T> predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable Predicate<? super T>       predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable BooleanSupplier            predicate                                                          ) { return null; }
-
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable Predicate<? super T>       predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable BooleanSupplier            predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { return null; }
-
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable Predicate<? super T>       predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { return null; }
@@ -807,7 +802,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
-
     @Contract(ALWAYS_NULL_1)           public @Nullable Integer indexOfFirstOrNull(final @Nullable Object @Nullable ... ignored                                                                  ) { return null; }
 
     //#endregion -------------------- Index of first or null --------------------
@@ -816,14 +810,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirstIndexed(final @Nullable IntObjPredicate<? super T> predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirstIndexed(final @Nullable IntPredicate               predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfFirstIndexed(final @Nullable BooleanSupplier            predicate                                                          ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable IntObjPredicate<? super T> predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable IntPredicate               predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable BooleanSupplier            predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable IntPredicate               predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfFirstIndexed(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable IntObjPredicate<? super T> predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable IntPredicate               predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
@@ -836,7 +828,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfFirstIndexed(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_1)           public int indexOfFirstIndexed(final @Nullable Object @Nullable ... ignored                                                                  ) { throw new EmptyCollectionException(); }
 
     //#endregion -------------------- Index of first indexed --------------------
@@ -845,14 +836,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntPredicate               predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable BooleanSupplier            predicate                                                          ) { return null; }
-
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntPredicate               predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable BooleanSupplier            predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntPredicate               predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { return null; }
-
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntPredicate               predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { return null; }
@@ -865,7 +854,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
-
     @Contract(ALWAYS_NULL_1)           public @Nullable Integer indexOfFirstIndexedOrNull(final @Nullable Object @Nullable ... ignored                                                                  ) { return null; }
 
     //#endregion -------------------- Index of first indexed or null --------------------
@@ -875,14 +863,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLast(final @Nullable ObjIntPredicate<? super T> predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLast(final @Nullable Predicate<? super T>       predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate                                                          ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable ObjIntPredicate<? super T> predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable Predicate<? super T>       predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable Predicate<? super T>       predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
@@ -895,7 +881,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_1)           public int indexOfLast(final @Nullable Object @Nullable ... ignored                                                                  ) { throw new EmptyCollectionException(); }
 
     //#endregion -------------------- Index of last --------------------
@@ -904,14 +889,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable ObjIntPredicate<? super T> predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable Predicate<? super T>       predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable BooleanSupplier            predicate                                                          ) { return null; }
-
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable Predicate<? super T>       predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable BooleanSupplier            predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { return null; }
-
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable Predicate<? super T>       predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { return null; }
@@ -924,7 +907,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
-
     @Contract(ALWAYS_NULL_1)           public @Nullable Integer indexOfLastOrNull(final @Nullable Object @Nullable ... ignored                                                                  ) { return null; }
 
     //#endregion -------------------- Index of last or null --------------------
@@ -933,14 +915,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLastIndexed(final @Nullable IntObjPredicate<? super T> predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLastIndexed(final @Nullable IntPredicate               predicate                                                          ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1) @Override public int indexOfLastIndexed(final @Nullable BooleanSupplier            predicate                                                          ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable IntObjPredicate<? super T> predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable IntPredicate               predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable BooleanSupplier            predicate, final int               from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable IntPredicate               predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_2) @Override public int indexOfLastIndexed(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable IntObjPredicate<? super T> predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable IntPredicate               predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { throw new EmptyCollectionException(); }
@@ -953,7 +933,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLastIndexed(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
-
     @Contract(ALWAYS_FAIL_1)           public int indexOfLastIndexed(final @Nullable Object @Nullable ... ignored                                                                  ) { throw new EmptyCollectionException(); }
 
     //#endregion -------------------- Index of last indexed --------------------
@@ -962,14 +941,12 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntPredicate               predicate                                                          ) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable BooleanSupplier            predicate                                                          ) { return null; }
-
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntPredicate               predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable BooleanSupplier            predicate, final int               from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntPredicate               predicate, final @Nullable Integer from                            ) { return null; }
     @Contract(ALWAYS_NULL_2) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { return null; }
-
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntPredicate               predicate, final int               from, final int               to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { return null; }
@@ -982,7 +959,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
     @Contract(ALWAYS_NULL_3) @Override public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return null; }
-
     @Contract(ALWAYS_NULL_1)           public @Nullable Integer indexOfLastIndexedOrNull(final @Nullable Object @Nullable ... ignored                                                                  ) { return null; }
 
     //#endregion -------------------- Index of last indexed or null --------------------

@@ -812,18 +812,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of first --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate                                            ) { return IndexOfFirst.indexOfFirst(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfFirst.indexOfFirst(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate                                            ) { return IndexOfFirst.indexOfFirst(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfFirst.indexOfFirst(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final BooleanSupplier            predicate                                            ) { return IndexOfFirst.indexOfFirst(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfFirst.indexOfFirst(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfFirst.indexOfFirst(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final BooleanSupplier            predicate, final int               from              ) { return IndexOfFirst.indexOfFirst(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirst(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfFirst.indexOfFirst(this, predicate, from, to); }
 
 
@@ -902,18 +900,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of first or null --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate                                            ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate                                            ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final BooleanSupplier            predicate                                            ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final BooleanSupplier            predicate, final int               from              ) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfFirstOrNull.indexOfFirstOrNull(this, predicate, from, to); }
 
 
@@ -992,18 +988,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of first indexed --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate                                            ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate                                            ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final int               from              ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final int               from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final BooleanSupplier            predicate                                            ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final int               from              ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final BooleanSupplier            predicate, final int               from              ) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final int               from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexed.indexOfFirstIndexed(this, predicate, from, to); }
 
 
@@ -1082,18 +1076,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of first indexed or null --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate                                            ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate                                            ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final int               from              ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final int               from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final BooleanSupplier            predicate                                            ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final int               from              ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final BooleanSupplier            predicate, final int               from              ) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final int               from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfFirstIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfFirstIndexedOrNull.indexOfFirstIndexedOrNull(this, predicate, from, to); }
 
 
@@ -1173,18 +1165,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of last --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate                                            ) { return IndexOfLast.indexOfLast(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfLast.indexOfLast(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate                                            ) { return IndexOfLast.indexOfLast(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfLast.indexOfLast(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final BooleanSupplier            predicate                                            ) { return IndexOfLast.indexOfLast(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfLast.indexOfLast(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfLast.indexOfLast(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final BooleanSupplier            predicate, final int               from              ) { return IndexOfLast.indexOfLast(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLast(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfLast.indexOfLast(this, predicate, from, to); }
 
 
@@ -1263,18 +1253,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of last or null --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate                                            ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate                                            ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final BooleanSupplier            predicate                                            ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final int               from              ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final int               from              ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final BooleanSupplier            predicate, final int               from              ) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final int               from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final Predicate<? super T>       predicate, final @Nullable Integer from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfLastOrNull.indexOfLastOrNull(this, predicate, from, to); }
 
 
@@ -1353,18 +1341,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of last indexed --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate                                            ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate                                            ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final int               from              ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final int               from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final BooleanSupplier            predicate                                            ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final int               from              ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final BooleanSupplier            predicate, final int               from              ) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final int               from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int indexOfLastIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexed.indexOfLastIndexed(this, predicate, from, to); }
 
 
@@ -1443,18 +1429,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Index of last indexed or null --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate                                            ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate                                            ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final int               from              ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final int               from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
-    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
-
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final BooleanSupplier            predicate                                            ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from              ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final int               from              ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final BooleanSupplier            predicate, final int               from              ) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final int               from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final int               from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final BooleanSupplier            predicate, final int               from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
+    @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final IntPredicate               predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
     @Override public @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer indexOfLastIndexedOrNull(final BooleanSupplier            predicate, final @Nullable Integer from, final int to) { return IndexOfLastIndexedOrNull.indexOfLastIndexedOrNull(this, predicate, from, to); }
 
 
