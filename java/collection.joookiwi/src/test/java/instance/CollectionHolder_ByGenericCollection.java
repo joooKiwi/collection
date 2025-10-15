@@ -121,6 +121,7 @@ import joookiwi.collection.java.extended.MutableTransferQueue;
 import joookiwi.collection.java.extended.MutableTreeSet;
 import joookiwi.collection.java.extended.MutableVector;
 import joookiwi.collection.java.iterator.CollectionIterator;
+import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -154,16 +155,29 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     /// The internal instance that is tested
     public final GenericCollectionHolder<T> instance;
 
+    @NotNullByDefault
+    static final class CollectionHolder_CountingGetByGenericCollection<T extends @Nullable Object>
+            extends GenericCollectionHolder<T> {
+
+        /// The external instance of the [GenericCollectionHolder] for the test
+        final CollectionHolder_ByGenericCollection<T> thiz;
+
+        CollectionHolder_CountingGetByGenericCollection(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] reference,
+                                                        final CollectionHolder_ByGenericCollection<T> thiz) {
+            super(reference);
+            this.thiz = thiz;
+        }
+
+        @Override public T get(final int index) {
+            thiz.amountOfCall++;
+            return super.get(index);
+        }
+
+    }
+
     public CollectionHolder_ByGenericCollection(final T @Unmodifiable [] array) {
         super(array);
-        instance = new GenericCollectionHolder<>(array) {
-
-            @Override public T get(final int index) {
-                amountOfCall++;
-                return super.get(index);
-            }
-
-        };
+        instance = new CollectionHolder_CountingGetByGenericCollection<>(array, this);
     }
 
     //#region -------------------- Size methods --------------------
