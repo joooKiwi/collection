@@ -1118,6 +1118,52 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
         return indexOfFirstIndexed(predicate, from.intValue(), to.intValue());
     }
 
+
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findFirstIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+
+
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate                                                          ) { return indexOfFirstIndexed(predicate); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfFirstIndexed(predicate, from); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntObjPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final IntPredicate               predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+    @Override public final @Range(from = 0, to = MAX_INT_VALUE) int findIndexIndexed(final BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfFirstIndexed(predicate, from, to); }
+
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
 
