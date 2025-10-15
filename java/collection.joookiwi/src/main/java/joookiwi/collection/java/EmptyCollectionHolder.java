@@ -1541,7 +1541,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Collection<? extends T>            values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SequencedCollection<? extends T>   values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable List<? extends T>                  values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable ArrayList<? extends T>             values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ArrayList<? extends T>             values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T>  values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable LinkedList<? extends T>            values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable Vector<? extends T>                values) { return hasNotAll(values); }
