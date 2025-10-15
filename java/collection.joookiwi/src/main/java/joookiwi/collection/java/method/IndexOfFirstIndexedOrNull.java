@@ -195,7 +195,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -216,7 +215,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -237,7 +235,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -259,7 +256,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -282,7 +278,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -305,7 +300,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -331,7 +325,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -352,7 +345,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -373,7 +365,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -395,7 +386,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -418,7 +408,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -441,7 +430,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -467,7 +455,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -488,7 +475,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -509,7 +495,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -531,7 +516,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -554,7 +538,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -577,7 +560,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param predicate  The given predicate
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -605,7 +587,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -628,7 +609,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -651,7 +631,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -675,7 +654,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -700,7 +678,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -725,7 +702,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -751,7 +727,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -776,7 +751,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -801,7 +775,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -827,7 +800,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -857,7 +829,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -887,7 +858,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -920,7 +890,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -943,7 +912,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -966,7 +934,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -990,7 +957,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1015,7 +981,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1040,7 +1005,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1066,7 +1030,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1091,7 +1054,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1116,7 +1078,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1142,7 +1103,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1172,7 +1132,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1202,7 +1161,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1235,7 +1193,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1258,7 +1215,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1281,7 +1237,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1305,7 +1260,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1330,7 +1284,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1355,7 +1308,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1381,7 +1333,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1406,7 +1357,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1431,7 +1381,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1457,7 +1406,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1487,7 +1435,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
@@ -1517,7 +1464,6 @@ public final class IndexOfFirstIndexedOrNull
     /// @param fromIndex  The inclusive starting index (`0` by default)
     /// @param toIndex    The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
     @ExtensionFunction
     @CanReceiveNegativeValue
     @OnlyGivePositiveValue
