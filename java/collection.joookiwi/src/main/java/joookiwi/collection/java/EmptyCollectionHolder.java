@@ -1067,6 +1067,29 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FAIL_3) @Override public int indexOfLast(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { throw new EmptyCollectionException(); }
     @Contract(ALWAYS_FAIL_1)           public int indexOfLast(final @Nullable Object @Nullable ... ignored                                                                  ) { throw new EmptyCollectionException(); }
 
+    @Contract(ALWAYS_FAIL_1) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate                                                          ) { return indexOfLast(predicate); }
+    @Contract(ALWAYS_FAIL_1) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate                                                          ) { return indexOfLast(predicate); }
+    @Contract(ALWAYS_FAIL_1) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate                                                          ) { return indexOfLast(predicate); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final int               from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final int               from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final int               from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_2) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from                            ) { return indexOfLast(predicate, from); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final int               from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final int               from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final int               to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable ObjIntPredicate<? super T> predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable Predicate<? super T>       predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_3) @Override public final int findLastIndex(final @Nullable BooleanSupplier            predicate, final @Nullable Integer from, final @Nullable Integer to) { return indexOfLast(predicate, from, to); }
+    @Contract(ALWAYS_FAIL_1)           public final int findLastIndex(final @Nullable Object @Nullable ... ignored                                                                  ) { return indexOfLast(); }
+
     //#endregion -------------------- Index of last --------------------
     //#region -------------------- Index of last or null --------------------
 
