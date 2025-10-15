@@ -31,18 +31,14 @@ public final class CollectionHolder_ByMinimalistCollection<T extends @Nullable O
 
     public CollectionHolder_ByMinimalistCollection(final T @Unmodifiable [] array) {
         super(array);
-        instance = new GenericMinimalistCollectionHolder<>(array) {
-
-            @Override public T get(final int index) {
-                amountOfCall++;
-                return super.get(index);
-            }
-
-        };
+        instance = new GenericMinimalistCollectionHolder<>(array);
     }
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return instance.size(); }
 
-    @Override public T get(final int index) { return instance.get(index); }
+    @Override public T get(final int index) {
+        amountOfCall++;
+        return instance.get(index);
+    }
 
 }
