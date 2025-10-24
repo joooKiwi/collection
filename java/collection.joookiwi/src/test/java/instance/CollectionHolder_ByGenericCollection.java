@@ -742,12 +742,12 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
         return this;
     }
 
-
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final Runnable action) {
         if (instance.onEach(action) != instance)
             fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
+
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final IntObjConsumer<? super T> action) {
         if (instance.onEachIndexed(action) != instance)
