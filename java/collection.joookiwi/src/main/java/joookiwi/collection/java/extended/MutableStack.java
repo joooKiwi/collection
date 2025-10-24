@@ -529,7 +529,6 @@ public class MutableStack<T extends @Nullable Object>
 
     //#endregion -------------------- To string methods --------------------
 
-
     //#endregion -------------------- Methods --------------------
 
 }

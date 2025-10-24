@@ -71,7 +71,7 @@ public final class RequireNoNulls
     /// @throws NullPointerException There is a `null` or the `collection` is null
     @ExtensionFunction
     @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_1ST_1)
-    public static <T> T [] requireNoNulls(final T @Nullable @Unmodifiable [] collection) {
+    public static <T> T[] requireNoNulls(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
 
