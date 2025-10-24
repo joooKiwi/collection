@@ -29,11 +29,15 @@ public final class ArrayAsCollection<T extends @Nullable Object>
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return size; }
 
     @Override public T get(final int index) {
-        final var array = this.array;
-        if (index < size)
-            return array[index];
-        fail("The method get was attempting to retrieve an invalid index (“" + index + "”)");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call if the index was not present in the array.");
+        if (index < 0) {
+            fail("The method “get” was attempting to retrieve with a negative index (“" + index + "”)");
+            throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call if the index was not present in the array.");
+        }
+        if (index >= size) {
+            fail("The method “get” was attempting to retrieve with an invalid index (“" + index + "”)");
+            throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call if the index was not present in the array.");
+        }
+        return array[index];
     }
 
     @Contract(ALWAYS_FAIL_0) @Override public final ArrayAsCollection<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
