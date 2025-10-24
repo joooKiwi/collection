@@ -2237,7 +2237,7 @@ public final class IndexOfFirstIndexed
     private static int __with0Argument(final BooleanSupplier predicate,
                                        final int startingIndex,
                                        final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.getAsBoolean())
                 return index;
@@ -2248,7 +2248,7 @@ public final class IndexOfFirstIndexed
     private static int __with1Argument(final IntPredicate predicate,
                                        final int startingIndex,
                                        final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index))
                 return index;
@@ -2260,7 +2260,7 @@ public final class IndexOfFirstIndexed
                                                                     final IntObjPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index, collection.get(index)))
                 return index;
@@ -2271,7 +2271,7 @@ public final class IndexOfFirstIndexed
                                                                     final IntObjPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index, collection[index]))
                 return index;

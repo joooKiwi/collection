@@ -2237,7 +2237,7 @@ public final class IndexOfFirst
     private static int __with0Argument(final BooleanSupplier predicate,
                                        final int startingIndex,
                                        final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.getAsBoolean())
                 return index;
@@ -2249,7 +2249,7 @@ public final class IndexOfFirst
                                                                     final Predicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(collection.get(index)))
                 return index;
@@ -2260,7 +2260,7 @@ public final class IndexOfFirst
                                                                     final Predicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(collection[index]))
                 return index;
@@ -2272,7 +2272,7 @@ public final class IndexOfFirst
                                                                     final ObjIntPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(collection.get(index), index))
                 return index;
@@ -2283,7 +2283,7 @@ public final class IndexOfFirst
                                                                     final ObjIntPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(collection[index], index))
                 return index;
