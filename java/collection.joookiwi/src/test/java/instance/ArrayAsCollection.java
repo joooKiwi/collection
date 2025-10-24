@@ -1,5 +1,6 @@
 package instance;
 
+import java.util.Arrays;
 import joookiwi.collection.java.AbstractCollectionHolder;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -7,10 +8,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/// A [joookiwi.collection.java.CollectionHolder] having the functionality of an array
+/// A [CollectionHolder][joookiwi.collection.java.CollectionHolder]
+/// having the functionality of an array
 /// without handling negative indexes in the [#get] method
 ///
 /// @param <T> The type
@@ -40,7 +43,13 @@ public final class ArrayAsCollection<T extends @Nullable Object>
         return array[index];
     }
 
-    @Contract(ALWAYS_FAIL_0) @Override public final ArrayAsCollection<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_0) @Override public final ArrayAsCollection<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
+    @Override public String toString() { return "ArrayAsCollection " + Arrays.toString(array); }
+
+    @Contract(ALWAYS_FAIL_0) @Override public int hashCode() { throw new RuntimeException("The method “hashCode” was not expected to be called in a test."); }
+    @Contract(ALWAYS_FAIL_1) @Override public boolean equals(final @Nullable Object other) { throw new RuntimeException("The method “equals” was not expected to be called in a test."); }
+
+    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> clone() { throw new RuntimeException("The method “clone” was not expected to be called in a test."); }
+    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
+    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsCollection<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
 
 }

@@ -1,14 +1,19 @@
 package instance;
 
+import java.util.Arrays;
 import joookiwi.collection.java.AbstractMinimalistCollectionHolder;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/// A [joookiwi.collection.java.MinimalistCollectionHolder] having the functionality of an array
+/// A [MinimalistCollectionHolder][joookiwi.collection.java.MinimalistCollectionHolder]
+/// having the functionality of an array
 /// without handling negative indexes in the [#get] method
 ///
 /// @param <T> The type
@@ -37,5 +42,12 @@ public final class ArrayAsMinimalistCollection<T extends @Nullable Object>
         }
         return array[index];
     }
+
+    @Override public String toString() { return "ArrayAsMinimalistCollection " + Arrays.toString(array); }
+
+    @Contract(ALWAYS_FAIL_0) @Override public int hashCode() { throw new RuntimeException("The method “hashCode” was not expected to be called in a test."); }
+    @Contract(ALWAYS_FAIL_1) @Override public boolean equals(final @Nullable Object other) { throw new RuntimeException("The method “equals” was not expected to be called in a test."); }
+
+    @Contract(ALWAYS_FAIL_0) @Override public ArrayAsMinimalistCollection<T> clone() { throw new RuntimeException("The method “clone” was not expected to be called in a test."); }
 
 }
