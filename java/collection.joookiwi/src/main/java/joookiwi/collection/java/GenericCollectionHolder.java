@@ -2353,17 +2353,17 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- On each --------------------
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(ObjIntConsumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(final ObjIntConsumer<? super T> action) {
         ForEach.forEach(_array(), action);
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(Consumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(final Consumer<? super T> action) {
         ForEach.forEach(_array(), action);
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(Runnable action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEach(final Runnable action) {
         ForEach.forEach(_array(), action);
         return this;
     }
@@ -2371,17 +2371,17 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- On each --------------------
     //#region -------------------- On each indexed --------------------
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(IntObjConsumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(final IntObjConsumer<? super T> action) {
         ForEachIndexed.forEachIndexed(_array(), action);
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(IntConsumer action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(final IntConsumer action) {
         ForEachIndexed.forEachIndexed(_array(), action);
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(Runnable action) {
+    @Contract(ALWAYS_THIS_1) @Override public GenericCollectionHolder<T> onEachIndexed(final Runnable action) {
         ForEachIndexed.forEachIndexed(_array(), action);
         return this;
     }
