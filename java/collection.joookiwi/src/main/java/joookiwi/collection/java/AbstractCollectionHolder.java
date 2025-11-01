@@ -1903,10 +1903,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasOne.hasOne(this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasOne.hasOne(this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasOne.hasOne(this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasOne.hasOne(this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasOne.hasOne(this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasOne.hasOne(this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasOne.hasOne(this, values); }
     @Override public boolean hasOne(final T @Nullable @Unmodifiable []                               values) { return HasOne.hasOne(this, values); }
 
     @Override public final boolean includesOne(final @Nullable Iterator<? extends T>                            values) { return hasOne(values); }
@@ -1924,10 +1921,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean includesOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasOne(values); }
     @Override public final boolean includesOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasOne(values); }
     @Override public final boolean includesOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasOne(values); }
     @Override public final boolean includesOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasOne(values); }
     @Override public final boolean includesOne(final T @Nullable @Unmodifiable []                               values) { return hasOne(values); }
 
     @Override public final boolean containsOne(final @Nullable Iterator<? extends T>                            values) { return hasOne(values); }
@@ -1945,10 +1939,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean containsOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasOne(values); }
     @Override public final boolean containsOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasOne(values); }
     @Override public final boolean containsOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasOne(values); }
     @Override public final boolean containsOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasOne(values); }
-    @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasOne(values); }
     @Override public final boolean containsOne(final T @Nullable @Unmodifiable []                               values) { return hasOne(values); }
 
     //#endregion -------------------- Has one --------------------
@@ -1969,10 +1960,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasNotOne.hasNotOne(this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasNotOne.hasNotOne(this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasNotOne.hasNotOne(this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasNotOne.hasNotOne(this, values); }
     @Override public boolean hasNotOne(final T @Nullable @Unmodifiable []                               values) { return HasNotOne.hasNotOne(this, values); }
 
     @Override public final boolean includesNotOne(final @Nullable Iterator<? extends T>                            values) { return hasNotOne(values); }
@@ -1990,10 +1978,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotOne(values); }
     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotOne(values); }
     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotOne(values); }
     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotOne(values); }
     @Override public final boolean includesNotOne(final T @Nullable @Unmodifiable []                               values) { return hasNotOne(values); }
 
     @Override public final boolean containsNotOne(final @Nullable Iterator<? extends T>                            values) { return hasNotOne(values); }
@@ -2011,10 +1996,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotOne(values); }
     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotOne(values); }
     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotOne(values); }
     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotOne(values); }
-    @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotOne(values); }
     @Override public final boolean containsNotOne(final T @Nullable @Unmodifiable []                               values) { return hasNotOne(values); }
 
     //#endregion -------------------- Has not one --------------------
@@ -2035,10 +2017,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasAll(final @Nullable @Unmodifiable SortedSet<? extends T>                  values) { return HasAll.hasAll(this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable NavigableSet<? extends T>               values) { return HasAll.hasAll(this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Queue<? extends T>                      values) { return HasAll.hasAll(this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>              values) { return HasAll.hasAll(this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>              values) { return HasAll.hasAll(this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                      values) { return HasAll.hasAll(this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>              values) { return HasAll.hasAll(this, values); }
     @Override public boolean hasAll(final T @Nullable @Unmodifiable []                                    values) { return HasAll.hasAll(this, values); }
 
     @Override public final boolean includesAll(final @Nullable Iterator<? extends T>                            values) { return hasAll(values); }
@@ -2056,10 +2035,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean includesAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasAll(values); }
     @Override public final boolean includesAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasAll(values); }
     @Override public final boolean includesAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
     @Override public final boolean includesAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Override public final boolean includesAll(final T @Nullable @Unmodifiable []                               values) { return hasAll(values); }
 
     @Override public final boolean containsAll(final @Nullable Iterator<? extends T>                            values) { return hasAll(values); }
@@ -2077,10 +2053,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean containsAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasAll(values); }
     @Override public final boolean containsAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasAll(values); }
     @Override public final boolean containsAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
     @Override public final boolean containsAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Override public final boolean containsAll(final T @Nullable @Unmodifiable []                               values) { return hasAll(values); }
 
     //#endregion -------------------- Has all --------------------
@@ -2101,10 +2074,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>                  values) { return HasNotAll.hasNotAll(this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>               values) { return HasNotAll.hasNotAll(this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Queue<? extends T>                      values) { return HasNotAll.hasNotAll(this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>              values) { return HasNotAll.hasNotAll(this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>              values) { return HasNotAll.hasNotAll(this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                      values) { return HasNotAll.hasNotAll(this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>              values) { return HasNotAll.hasNotAll(this, values); }
     @Override public boolean hasNotAll(final T @Nullable @Unmodifiable []                                    values) { return HasNotAll.hasNotAll(this, values); }
 
     @Override public final boolean includesNotAll(final @Nullable Iterator<? extends T>                            values) { return hasNotAll(values); }
@@ -2122,10 +2092,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotAll(values); }
     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotAll(values); }
     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Override public final boolean includesNotAll(final T @Nullable @Unmodifiable []                               values) { return hasNotAll(values); }
 
     @Override public final boolean containsNotAll(final @Nullable Iterator<? extends T>                            values) { return hasNotAll(values); }
@@ -2143,10 +2110,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return hasNotAll(values); }
     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return hasNotAll(values); }
     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Override public final boolean containsNotAll(final T @Nullable @Unmodifiable []                               values) { return hasNotAll(values); }
 
     //#endregion -------------------- Has not all --------------------

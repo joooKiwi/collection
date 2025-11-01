@@ -1359,9 +1359,9 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable HashSet<? extends @Nullable T>               values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return false; }
-    @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return false; }
-    @Contract(ALWAYS_FALSE_1) @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return false; }
-    @Contract(ALWAYS_FALSE_1) @Override public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return false; }
+    @Contract(ALWAYS_FALSE_1) @Override public boolean hasOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return false; }
@@ -1370,7 +1370,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return false; }
     @Contract(ALWAYS_FALSE_1) @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return false; }
-    @Contract(ALWAYS_FALSE_1) @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean hasOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return false; }
@@ -1402,8 +1402,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1)                  @Override public final boolean includesOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean includesOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return hasOne(values); }
@@ -1412,7 +1412,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1)                  @Override public final boolean includesOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean includesOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return hasOne(values); }
@@ -1444,8 +1444,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1)                  @Override public final boolean containsOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean containsOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return hasOne(values); }
@@ -1454,7 +1454,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1)                  @Override public final boolean containsOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return hasOne(values); }
-    @Contract(ALWAYS_FALSE_1)                  @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasOne(values); }
+    @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return hasOne(values); }
     @Contract(ALWAYS_FALSE_1) @Alias("hasOne")           public final boolean containsOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return hasOne(values); }
@@ -1489,8 +1489,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return true; }
     @Contract(ALWAYS_TRUE_1) @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return true; }
-    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return true; }
-    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return true; }
@@ -1499,7 +1499,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return true; }
     @Contract(ALWAYS_TRUE_1) @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return true; }
-    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNotOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return true; }
@@ -1531,8 +1531,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1)                     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return hasNotOne(values); }
@@ -1541,7 +1541,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1)                     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean includesNotOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return hasNotOne(values); }
@@ -1573,8 +1573,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable LinkedHashSet<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable TreeSet<? extends @Nullable T>               values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1)                     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends @Nullable T>    values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends @Nullable T> values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends @Nullable T>   values) { return hasNotOne(values); }
@@ -1583,7 +1583,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable PriorityQueue<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable SynchronousQueue<? extends @Nullable T>      values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1)                     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { return hasNotOne(values); }
-    @Contract(ALWAYS_TRUE_1)                     @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasNotOne(values); }
+    @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable ArrayDeque<? extends @Nullable T>            values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends @Nullable T> values) { return hasNotOne(values); }
     @Contract(ALWAYS_TRUE_1) @Alias("hasNotOne")           public final boolean containsNotOne(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends @Nullable T>   values) { return hasNotOne(values); }
@@ -1618,8 +1618,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return values == null || values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return values == null || values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return values == null || values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return values == null || values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return values == null || values.isEmpty(); }
@@ -1628,7 +1628,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return values == null || values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values == null || values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return values == null || values.isEmpty(); }
@@ -1660,8 +1660,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return hasAll(values); }
@@ -1670,7 +1670,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return hasAll(values); }
@@ -1702,8 +1702,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return hasAll(values); }
@@ -1712,7 +1712,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
+    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return hasAll(values); }
@@ -1725,7 +1725,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_FALSE_0)                     public boolean hasNotAll(                                                                       ) { return false; }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable Iterator<? extends T>                            values) { return values != null && values.hasNext(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable ListIterator<? extends T>                        values) { return values != null && values.hasNext(); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable Spliterator<? extends T>                         values) { return values != null && !(values.getExactSizeIfKnown() > 0); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable Spliterator<? extends T>                         values) { return values != null && values.getExactSizeIfKnown() > 0; }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable Enumeration<? extends T>                         values) { return values != null && values.hasMoreElements(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable Iterable<? extends T>                            values) { return values != null && values.iterator().hasNext(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T>          values) { return values != null && values.size() != 0; }
@@ -1747,8 +1747,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return values != null && !values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return values != null && !values.isEmpty(); }
@@ -1757,7 +1757,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return values != null && !values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values != null && !values.isEmpty(); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return values != null && !values.isEmpty(); }
@@ -1789,8 +1789,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return hasNotAll(values); }
@@ -1799,7 +1799,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return hasNotAll(values); }
@@ -1831,8 +1831,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable LinkedHashSet<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable TreeSet<? extends T>               values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T>    values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T>   values) { return hasNotAll(values); }
@@ -1841,7 +1841,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
+    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T>   values) { return hasNotAll(values); }

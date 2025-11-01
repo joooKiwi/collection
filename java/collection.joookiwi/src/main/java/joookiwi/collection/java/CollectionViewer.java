@@ -470,10 +470,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Override public boolean hasOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return getReference().hasOne(values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return getReference().hasOne(values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return getReference().hasOne(values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return getReference().hasOne(values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return getReference().hasOne(values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return getReference().hasOne(values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return getReference().hasOne(values); }
     @Override public boolean hasOne(final T @Nullable @Unmodifiable []                               values) { return getReference().hasOne(values); }
 
     //#endregion -------------------- Has one --------------------
@@ -494,10 +491,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return getReference().hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return getReference().hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return getReference().hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return getReference().hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return getReference().hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return getReference().hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return getReference().hasNotOne(values); }
     @Override public boolean hasNotOne(final T @Nullable @Unmodifiable []                               values) { return getReference().hasNotOne(values); }
 
     //#endregion -------------------- Has not one --------------------
@@ -518,10 +512,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Override public boolean hasAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return getReference().hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return getReference().hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return getReference().hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return getReference().hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return getReference().hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return getReference().hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return getReference().hasAll(values); }
     @Override public boolean hasAll(final T @Nullable @Unmodifiable []                               values) { return getReference().hasAll(values); }
 
     //#endregion -------------------- Has all --------------------
@@ -542,10 +533,7 @@ public class CollectionViewer<T extends @Nullable Object,
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return getReference().hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return getReference().hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return getReference().hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return getReference().hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return getReference().hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return getReference().hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return getReference().hasNotAll(values); }
     @Override public boolean hasNotAll(final T @Nullable @Unmodifiable []                               values) { return getReference().hasNotAll(values); }
 
     //#endregion -------------------- Has not all --------------------
