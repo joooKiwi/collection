@@ -1,10 +1,3 @@
-import java.util.function.BooleanSupplier;
-import java.util.function.DoubleFunction;
-import java.util.function.IntFunction;
-import java.util.function.IntPredicate;
-import java.util.function.LongFunction;
-import java.util.function.Predicate;
-import condition.DisableIfExtensionCondition;
 import condition.DisableIfNormalCondition;
 import instance.CollectionHolderForTest;
 import instance.ArrayAsCollection;
@@ -17,12 +10,17 @@ import instance.GenericCollectionHolder_GetLastOrNullAlias;
 import instance.GenericCollectionHolder_GetOrElseAlias;
 import instance.GenericCollectionHolder_GetOrNullAlias;
 import instance.ArrayAsMinimalistCollection;
+import java.util.function.BooleanSupplier;
+import java.util.function.DoubleFunction;
+import java.util.function.IntFunction;
+import java.util.function.IntPredicate;
+import java.util.function.LongFunction;
+import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
-import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -34,6 +32,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
+import test.AbstractInstancesTests;
+import test.AbstractMethodsTests;
 
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static joookiwi.collection.java.NumericConstants.MIN_INT_VALUE;
@@ -84,7 +84,8 @@ import static value.Arrays.ABCD;
 import static value.Arrays.EMPTY;
 import static value.Callbacks.callback0AsFail;
 import static value.Callbacks.callback1AltAsFail;
-import static value.Instances.everyCollectionInstancesAsArguments;
+import static value.Instances.everyExtensionMethodInstancesAsArguments;
+import static value.Instances.everyInstancesAsArguments;
 import static value.ReusableFields.callback0;
 import static value.ReusableFields.callback1Alt;
 import static value.ReusableFields.EMPTY_ARRAY;
@@ -98,15 +99,12 @@ import static value.ReusableFields.EXISTANT_INDEX;
 import static value.ReusableFields.INVALID_INDEX;
 import static value.ReusableFields.VALUE;
 import static value.ReusableFields.ZERO_NUMBER;
-import static value.ReusableFields_Null.NULL_ARRAY;
 import static value.ReusableFields_Null.NULL_ATOMIC_INTEGER;
 import static value.ReusableFields_Null.NULL_ATOMIC_LONG;
-import static value.ReusableFields_Null.NULL_COLLECTION_HOLDER;
 import static value.ReusableFields_Null.NULL_DOUBLE_ACCUMULATOR;
 import static value.ReusableFields_Null.NULL_DOUBLE_ADDER;
 import static value.ReusableFields_Null.NULL_LONG_ACCUMULATOR;
 import static value.ReusableFields_Null.NULL_LONG_ADDER;
-import static value.ReusableFields_Null.NULL_MINIMALIST_COLLECTION_HOLDER;
 import static value.ReusableFields_Null.NULL_NUMBER;
 import static value.ReusableFields_Null.NULL_OBJECT;
 import static value.ReusableFields_Null.NULL_STRING;
@@ -114,10 +112,9 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
 @NotNullByDefault
 @DisplayNameGeneration(Simple.class)
-@DisplayName("CollectionHolder tests (value)")
-class CollectionHolder03_ValueTests {
+@DisplayName("CollectionHolder tests (value)") @TestInstance(PER_CLASS) class CollectionHolder03_ValueTests {
 
-    @Nested class EmptyCollectionHolder {
+    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder {
 
         @Nested class get {
             @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get()); }
@@ -550,7 +547,7 @@ class CollectionHolder03_ValueTests {
         }
     }
 
-    @Nested class aliases {
+    @TestInstance(PER_CLASS) @Nested class aliases {
         @Nested class GenericCollectionHolder {
                                          @Test void first()              { assertEquals(1, new GenericCollectionHolder_GetFirstAlias().execute(CollectionHolder::first).amountOfCall); }
                                          @Test void firstOrNull()        { assertEquals(1, new GenericCollectionHolder_GetFirstOrNullAlias().execute(CollectionHolder::firstOrNull).amountOfCall); }
@@ -647,52 +644,30 @@ class CollectionHolder03_ValueTests {
         //TODO add utility static method (value) call to have been called
     }
 
-    @DisplayName("null") @Nested class Null {
+    @FieldSource("values")
+    @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
+
+        //#region -------------------- Required test configuration --------------------
+
+        static final Arguments[] values = everyExtensionMethodInstancesAsArguments;
+
+        public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
+
+        //#endregion -------------------- Required test configuration --------------------
+
+        @Test void getFirst() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().getFirst()); }
+        @Test void getLast()  { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().getLast()); }
+
         @Nested class getOrElse {
-            @DisplayName("MinimalistCollectionHolder<T>, int → T") @Test void minimalist1Arg() { assertSame(VALUE, getOrElse(NULL_MINIMALIST_COLLECTION_HOLDER, INVALID_INDEX, callback1Alt)); }
-            @DisplayName("CollectionHolder<T>, int → T")           @Test void normal1Arg()     { assertSame(VALUE, getOrElse(NULL_COLLECTION_HOLDER,            INVALID_INDEX, callback1Alt)); }
-            @DisplayName("T[], int → T")                           @Test void array1Arg()      { assertSame(VALUE, getOrElse(NULL_ARRAY,                        INVALID_INDEX, callback1Alt)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → T")  @Test void minimalist0Arg() { assertSame(VALUE, getOrElse(NULL_MINIMALIST_COLLECTION_HOLDER, INVALID_INDEX, callback0)); }
-            @DisplayName("CollectionHolder<T>, () → T")            @Test void normal0Arg()     { assertSame(VALUE, getOrElse(NULL_COLLECTION_HOLDER,            INVALID_INDEX, callback0)); }
-            @DisplayName("T[], () → T")                            @Test void array0Arg()      { assertSame(VALUE, getOrElse(NULL_ARRAY,                        INVALID_INDEX, callback0)); }
+            @DisplayName("int → T") @Test void test1Arg() { assertSame(VALUE, getInstance().getOrElse(INVALID_INDEX, callback1Alt)); }
+            @DisplayName("() → T")  @Test void test0Arg() { assertSame(VALUE, getInstance().getOrElse(INVALID_INDEX, callback0)); }
         }
-        @Nested class getOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalist() { assertNull(getOrNull(NULL_MINIMALIST_COLLECTION_HOLDER, INVALID_INDEX)); }
-            @DisplayName("CollectionHolder<T>")           @Test void normal()     { assertNull(getOrNull(NULL_COLLECTION_HOLDER,            INVALID_INDEX)); }
-            @DisplayName("T[]")                           @Test void array()      { assertNull(getOrNull(NULL_ARRAY,                        INVALID_INDEX)); }
-        }
+        @Test void getFirstOrElse() { assertSame(VALUE, getInstance().getFirstOrElse(callback0)); }
+        @Test void getLastOrElse()  { assertSame(VALUE, getInstance().getLastOrElse(callback0)); }
 
-        @Nested class getFirst {
-            @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalist() { assertThrowsExactly(NullCollectionException.class, () -> getFirst(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-            @DisplayName("CollectionHolder<T>")           @Test void normal()     { assertThrowsExactly(NullCollectionException.class, () -> getFirst(NULL_COLLECTION_HOLDER)); }
-            @DisplayName("T[]")                           @Test void array()      { assertThrowsExactly(NullCollectionException.class, () -> getFirst(NULL_ARRAY)); }
-        }
-        @Nested class getFirstOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalist() { assertNull(getFirstOrNull(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-            @DisplayName("CollectionHolder<T>")           @Test void normal()     { assertNull(getFirstOrNull(NULL_COLLECTION_HOLDER)); }
-            @DisplayName("T[]")                           @Test void array()      { assertNull(getFirstOrNull(NULL_ARRAY)); }
-        }
-        @Nested class getFirstOrElse {
-            @DisplayName("MinimalistCollectionHolder<T>")  @Test void minimalist() { assertSame(VALUE, getFirstOrElse(NULL_MINIMALIST_COLLECTION_HOLDER, callback0)); }
-            @DisplayName("CollectionHolder<T>")            @Test void normal()     { assertSame(VALUE, getFirstOrElse(NULL_COLLECTION_HOLDER,            callback0)); }
-            @DisplayName("T[]")                            @Test void array()      { assertSame(VALUE, getFirstOrElse(NULL_ARRAY,                        callback0)); }
-        }
-
-        @Nested class getLast {
-            @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalist() { assertThrowsExactly(NullCollectionException.class, () -> getLast(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-            @DisplayName("CollectionHolder<T>")           @Test void normal()     { assertThrowsExactly(NullCollectionException.class, () -> getLast(NULL_COLLECTION_HOLDER)); }
-            @DisplayName("T[]")                           @Test void array()      { assertThrowsExactly(NullCollectionException.class, () -> getLast(NULL_ARRAY)); }
-        }
-        @Nested class getLastOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>") @Test void minimalist() { assertNull(getLastOrNull(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-            @DisplayName("CollectionHolder<T>")           @Test void normal()     { assertNull(getLastOrNull(NULL_COLLECTION_HOLDER)); }
-            @DisplayName("T[]")                           @Test void array()      { assertNull(getLastOrNull(NULL_ARRAY)); }
-        }
-        @Nested class getLastOrElse {
-            @DisplayName("MinimalistCollectionHolder<T>")  @Test void minimalist() { assertSame(VALUE, getLastOrElse(NULL_MINIMALIST_COLLECTION_HOLDER, callback0)); }
-            @DisplayName("CollectionHolder<T>")            @Test void normal()     { assertSame(VALUE, getLastOrElse(NULL_COLLECTION_HOLDER,            callback0)); }
-            @DisplayName("T[]")                            @Test void array()      { assertSame(VALUE, getLastOrElse(NULL_ARRAY,                        callback0)); }
-        }
+        @Test void getOrNull()      { assertNull(getInstance().getOrNull(INVALID_INDEX)); }
+        @Test void getFirstOrNull() { assertNull(getInstance().getFirstOrNull()); }
+        @Test void getLastOrNull()  { assertNull(getInstance().getLastOrNull()); }
     }
 
     @FieldSource("values")
@@ -701,23 +676,21 @@ class CollectionHolder03_ValueTests {
 
         //#region -------------------- Required test configuration --------------------
 
-        static final Arguments[] values = everyCollectionInstancesAsArguments;
+        static final Arguments[] values = everyInstancesAsArguments;
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @TestInstance(PER_CLASS)
-        @ExtendWith({DisableIfNormalCondition.class, DisableIfExtensionCondition.class,})
-        @DisplayName("get() being called") @Nested class GetBeingCalled {
+        @ExtendWith(DisableIfNormalCondition.class)
+        @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             boolean disableIfNormal() { return isNormal(); }
-            boolean disableIfExtension() { return isExtension(); }
 
             @Nested class get {
                                          @Test void empty()  { assertEquals(1, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.get(0)).getAmountOfCall()); }
-                @DisplayName("1 field")  @Test void test1()  { assertEquals(1, newInstance(A).execute(                                it -> it.get(0)).getAmountOfCall()); }
-                @DisplayName("2 fields") @Test void test2()  { assertEquals(1, newInstance(AB).execute(                               it -> it.get(0)).getAmountOfCall()); }
-                @DisplayName("4 fields") @Test void test4 () { assertEquals(1, newInstance(ABCD).execute(                             it -> it.get(0)).getAmountOfCall()); }
+                @DisplayName("1 field")  @Test void test1()  { assertEquals(1, newInstance(A).execute(it -> it.get(0)).getAmountOfCall()); }
+                @DisplayName("2 fields") @Test void test2()  { assertEquals(1, newInstance(AB).execute(it -> it.get(0)).getAmountOfCall()); }
+                @DisplayName("4 fields") @Test void test4 () { assertEquals(1, newInstance(ABCD).execute(it -> it.get(0)).getAmountOfCall()); }
             }
             @Nested class getFirst {
                                          @Test void empty() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(CollectionHolder::getFirst).getAmountOfCall()); }
@@ -735,31 +708,31 @@ class CollectionHolder03_ValueTests {
             @Nested class getOrElse {
                 @DisplayName("empty, int → T")       @Test void empty_1Arg() { assertEquals(0, newInstance(EMPTY).execute(it -> it.getOrElse(0, callback0)).getAmountOfCall()); }
                 @DisplayName("empty, () → T")        @Test void empty_0Arg() { assertEquals(0, newInstance(EMPTY).execute(it -> it.getOrElse(0, callback1Alt)).getAmountOfCall()); }
-                @DisplayName("1 field, int → fail")  @Test void test1_1Arg() { assertEquals(1, newInstance(A).execute(    it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
-                @DisplayName("1 field, () → fail")   @Test void test1_0Arg() { assertEquals(1, newInstance(A).execute(    it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("2 fields, int → fail") @Test void test2_1Arg() { assertEquals(1, newInstance(AB).execute(   it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
-                @DisplayName("2 fields, () → fail")  @Test void test2_0Arg() { assertEquals(1, newInstance(AB).execute(   it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("4 fields, int → fail") @Test void test4_1Arg() { assertEquals(1, newInstance(ABCD).execute( it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
-                @DisplayName("4 fields, () → fail")  @Test void test4_0Arg() { assertEquals(1, newInstance(ABCD).execute( it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field, int → fail")  @Test void test1_1Arg() { assertEquals(1, newInstance(A).execute(it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("1 field, () → fail")   @Test void test1_0Arg() { assertEquals(1, newInstance(A).execute(it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("2 fields, int → fail") @Test void test2_1Arg() { assertEquals(1, newInstance(AB).execute(it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("2 fields, () → fail")  @Test void test2_0Arg() { assertEquals(1, newInstance(AB).execute(it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("4 fields, int → fail") @Test void test4_1Arg() { assertEquals(1, newInstance(ABCD).execute(it -> it.getOrElse(0, callback1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("4 fields, () → fail")  @Test void test4_0Arg() { assertEquals(1, newInstance(ABCD).execute(it -> it.getOrElse(0, callback0AsFail)).getAmountOfCall()); }
             }
             @Nested class getFirstOrElse {
                                          @Test void empty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.getFirstOrElse(callback0)).getAmountOfCall()); }
-                @DisplayName("1 field")  @Test void test1() { assertEquals(1, newInstance(A).execute(    it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).execute(   it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("4 fields") @Test void test4() { assertEquals(1, newInstance(ABCD).execute( it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field")  @Test void test1() { assertEquals(1, newInstance(A).execute(it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).execute(it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("4 fields") @Test void test4() { assertEquals(1, newInstance(ABCD).execute(it -> it.getFirstOrElse(callback0AsFail)).getAmountOfCall()); }
             }
             @Nested class getLastOrElse {
                                          @Test void empty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.getLastOrElse(callback0)).getAmountOfCall()); }
-                @DisplayName("1 field")  @Test void test1() { assertEquals(1, newInstance(A).execute(    it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).execute(   it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
-                @DisplayName("4 fields") @Test void test4() { assertEquals(1, newInstance(ABCD).execute( it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field")  @Test void test1() { assertEquals(1, newInstance(A).execute(it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).execute(it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
+                @DisplayName("4 fields") @Test void test4() { assertEquals(1, newInstance(ABCD).execute(it -> it.getLastOrElse(callback0AsFail)).getAmountOfCall()); }
             }
 
             @Nested class getOrNull {
-                                         @Test void empty()       { assertEquals(0, newInstance(EMPTY).execute(it -> it.getOrNull(0)).getAmountOfCall()); }
-                @DisplayName("1 field")  @Test void test1Field()  { assertEquals(1, newInstance(A).execute(    it -> it.getOrNull(0)).getAmountOfCall()); }
-                @DisplayName("2 fields") @Test void test2Fields() { assertEquals(1, newInstance(AB).execute(   it -> it.getOrNull(0)).getAmountOfCall()); }
-                @DisplayName("4 fields") @Test void test4Fields() { assertEquals(1, newInstance(ABCD).execute( it -> it.getOrNull(0)).getAmountOfCall()); }
+                                         @Test void empty() { assertEquals(0, newInstance(EMPTY).execute(it -> it.getOrNull(0)).getAmountOfCall()); }
+                @DisplayName("1 field")  @Test void test1() { assertEquals(1, newInstance(A).execute(it -> it.getOrNull(0)).getAmountOfCall()); }
+                @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).execute(it -> it.getOrNull(0)).getAmountOfCall()); }
+                @DisplayName("4 fields") @Test void test4() { assertEquals(1, newInstance(ABCD).execute(it -> it.getOrNull(0)).getAmountOfCall()); }
             }
             @Nested class getFirstOrNull {
                                          @Test void empty() { assertEquals(0, newInstance(EMPTY).execute(CollectionHolder::getFirstOrNull).getAmountOfCall()); }
@@ -775,11 +748,7 @@ class CollectionHolder03_ValueTests {
             }
         }
 
-        @TestInstance(PER_CLASS)
-        @ExtendWith(DisableIfExtensionCondition.class)
-        @Nested class get {
-            boolean disableIfExtension() { return isExtension(); }
-
+        @TestInstance(PER_CLASS) @Nested class get {
             @Nested class empty {
                                    @Test void min()    { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(MIN_INT_VALUE)); }
                 @DisplayName("-2") @Test void minus2() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(-2)); }
@@ -840,7 +809,7 @@ class CollectionHolder03_ValueTests {
            @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[3], newInstance(ABCD).getLast()); }
         }
 
-        @Nested class getOrElse {
+        @TestInstance(PER_CLASS) @Nested class getOrElse {
             @Nested class empty {
                 @DisplayName("min, int → T") @Test void min_1Arg()    { assertSame(VALUE, newInstance(EMPTY).getOrElse(MIN_INT_VALUE, callback1Alt)); }
                 @DisplayName("min, () → T")  @Test void min_0Arg()    { assertSame(VALUE, newInstance(EMPTY).getOrElse(MIN_INT_VALUE, callback0)); }
@@ -939,7 +908,7 @@ class CollectionHolder03_ValueTests {
             @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[3], newInstance(ABCD).getLastOrElse(callback0AsFail)); }
         }
 
-        @Nested class getOrNull {
+        @TestInstance(PER_CLASS) @Nested class getOrNull {
             @Nested class empty {
                                    @Test void min()    { assertNull(newInstance(EMPTY).getOrNull(MIN_INT_VALUE)); }
                 @DisplayName("-2") @Test void minus2() { assertNull(newInstance(EMPTY).getOrNull(-2)); }
