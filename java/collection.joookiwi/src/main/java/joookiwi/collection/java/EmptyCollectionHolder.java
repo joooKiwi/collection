@@ -1626,7 +1626,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return values == null || values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return values == null || values.isEmpty(); }
+    @Contract(ALWAYS_TRUE_1)                     public boolean hasAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return true; }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values == null || values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)           public boolean hasAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return values == null || values.isEmpty(); }
@@ -1668,7 +1668,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
+    @Contract(ALWAYS_TRUE_1)           @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean includesAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean includesAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasAll(values); }
@@ -1710,7 +1710,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasAll(values); }
-    @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
+    @Contract(ALWAYS_TRUE_1)           @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1)                  @Override public final boolean containsAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasAll(values); }
     @Contract(IF_1ST_NULL_THEN_TRUE_1) @Alias("hasAll")           public final boolean containsAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasAll(values); }
@@ -1755,7 +1755,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return values != null && !values.isEmpty(); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return values != null && !values.isEmpty(); }
+    @Contract(ALWAYS_FALSE_1)                     public boolean hasNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return values != null && !values.isEmpty(); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)           public boolean hasNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return values != null && !values.isEmpty(); }
@@ -1797,7 +1797,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
+    @Contract(ALWAYS_FALSE_1)           @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean includesNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasNotAll(values); }
@@ -1839,7 +1839,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable LinkedTransferQueue<? extends T>   values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable PriorityQueue<? extends T>         values) { return hasNotAll(values); }
-    @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
+    @Contract(ALWAYS_FALSE_1)           @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable SynchronousQueue<? extends T>      values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1)                     @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return hasNotAll(values); }
     @Contract(IF_1ST_NULL_THEN_FALSE_1) @Alias("hasNotAll")           public final boolean containsNotAll(final @Nullable @Unmodifiable ArrayDeque<? extends T>            values) { return hasNotAll(values); }
