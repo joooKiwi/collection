@@ -13,9 +13,6 @@ import java.util.SequencedSet;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.Spliterator;
-import java.util.concurrent.BlockingDeque;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TransferQueue;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -585,10 +582,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesOne(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “includesOne” was not expected to be called in a test."); }
 
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable Iterator<? extends @Nullable T>                            values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
@@ -606,10 +600,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsOne(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “containsOne” was not expected to be called in a test."); }
 
     //#endregion -------------------- Has one --------------------
@@ -630,10 +621,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotOne(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “includesNotOne” was not expected to be called in a test."); }
 
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable Iterator<? extends @Nullable T>                            values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
@@ -651,10 +639,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotOne(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “containsNotOne” was not expected to be called in a test."); }
 
     //#endregion -------------------- Has not one --------------------
@@ -675,10 +660,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesAll(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “includesAll” was not expected to be called in a test."); }
 
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable Iterator<? extends @Nullable T>                            values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
@@ -696,10 +678,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsAll(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “containsAll” was not expected to be called in a test."); }
 
     //#endregion -------------------- Has all --------------------
@@ -720,10 +699,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean includesNotAll(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “includesNotAll” was not expected to be called in a test."); }
 
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable Iterator<? extends @Nullable T>                            values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
@@ -741,10 +717,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable SortedSet<? extends @Nullable T>             values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable NavigableSet<? extends @Nullable T>          values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Queue<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable TransferQueue<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable Deque<? extends @Nullable T>                 values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends @Nullable T>         values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
     @Contract(ALWAYS_FAIL_1) @Override public final boolean containsNotAll(final @Nullable T @Nullable @Unmodifiable []                               values) { throw new RuntimeException("The method “containsNotAll” was not expected to be called in a test."); }
 
     //#endregion -------------------- Has not all --------------------

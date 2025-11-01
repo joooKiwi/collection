@@ -619,10 +619,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Override public boolean hasOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasOne(final T @Nullable @Unmodifiable []                               values) { return HasOne.hasOne((MinimalistCollectionHolder<T>) this, values); }
 
     @Override public boolean hasNotOne(final @Nullable Iterator<? extends T>                            values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
@@ -640,10 +637,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotOne(final T @Nullable @Unmodifiable []                               values) { return HasNotOne.hasNotOne((MinimalistCollectionHolder<T>) this, values); }
 
 
@@ -662,10 +656,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Override public boolean hasAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasAll(final T @Nullable @Unmodifiable []                               values) { return HasAll.hasAll((MinimalistCollectionHolder<T>) this, values); }
 
     @Override public boolean hasNotAll(final @Nullable Iterator<? extends T>                            values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
@@ -683,10 +674,7 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
     @Override public boolean hasNotAll(final T @Nullable @Unmodifiable []                               values) { return HasNotAll.hasNotAll((MinimalistCollectionHolder<T>) this, values); }
 
 

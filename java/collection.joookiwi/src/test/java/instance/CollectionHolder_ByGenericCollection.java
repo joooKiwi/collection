@@ -507,7 +507,6 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return instance.hasOne(values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return instance.hasOne(values); }
     @Override public boolean hasOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return instance.hasOne(values); }
-    @Override public boolean hasOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return instance.hasOne(values); }
     @Override public boolean hasOne(final T @Nullable @Unmodifiable []                               values) { return instance.hasOne(values); }
 
     @Override public boolean hasNotOne(final @Nullable Iterator<? extends T>                            values) { return instance.hasNotOne(values); }
@@ -525,10 +524,7 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return instance.hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return instance.hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return instance.hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return instance.hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return instance.hasNotOne(values); }
     @Override public boolean hasNotOne(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return instance.hasNotOne(values); }
-    @Override public boolean hasNotOne(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return instance.hasNotOne(values); }
     @Override public boolean hasNotOne(final T @Nullable @Unmodifiable []                               values) { return instance.hasNotOne(values); }
 
 
@@ -547,10 +543,7 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public boolean hasAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return instance.hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return instance.hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return instance.hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return instance.hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return instance.hasAll(values); }
     @Override public boolean hasAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return instance.hasAll(values); }
-    @Override public boolean hasAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return instance.hasAll(values); }
     @Override public boolean hasAll(final T @Nullable @Unmodifiable []                               values) { return instance.hasAll(values); }
 
     @Override public boolean hasNotAll(final @Nullable Iterator<? extends T>                            values) { return instance.hasNotAll(values); }
@@ -568,10 +561,7 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable SortedSet<? extends T>             values) { return instance.hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable NavigableSet<? extends T>          values) { return instance.hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Queue<? extends T>                 values) { return instance.hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingQueue<? extends T>         values) { return instance.hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable TransferQueue<? extends T>         values) { return instance.hasNotAll(values); }
     @Override public boolean hasNotAll(final @Nullable @Unmodifiable Deque<? extends T>                 values) { return instance.hasNotAll(values); }
-    @Override public boolean hasNotAll(final @Nullable @Unmodifiable BlockingDeque<? extends T>         values) { return instance.hasNotAll(values); }
     @Override public boolean hasNotAll(final T @Nullable @Unmodifiable []                               values) { return instance.hasNotAll(values); }
 
 
