@@ -287,7 +287,13 @@ public abstract class AbstractMinimalistCollectionHolderForTest<T extends @Nulla
         INSTANCE extends AbstractMinimalistCollectionHolderForTest<T, INSTANCE>>
         extends AbstractCollectionHolderForTest<T, INSTANCE> {
 
-    protected AbstractMinimalistCollectionHolderForTest(final T @Unmodifiable [] array) { super(array); }
+    /// The array received in the constructor
+    public final T @Unmodifiable [] array;
+
+    protected AbstractMinimalistCollectionHolderForTest(final T @Unmodifiable [] array) {
+        super();
+        this.array = array;
+    }
 
     //#region -------------------- Size methods --------------------
 

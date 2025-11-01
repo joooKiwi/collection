@@ -44,19 +44,13 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 @NotNullByDefault
 public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object,
-        INSTANCE extends AbstractCollectionHolderForTest<T, INSTANCE>>
-        implements CollectionHolderForTest<T, INSTANCE> {
-
-    /// The array received in the constructor
-    public final T @Unmodifiable [] array;
+        CURRENT_INSTANCE extends AbstractCollectionHolderForTest<T, CURRENT_INSTANCE>>
+        implements CollectionHolderForTest<T, CURRENT_INSTANCE> {
 
     /// The field that tell the amount of time a specific method (as non-aliased method) has been called
     public @Range(from = 0, to = MAX_INT_VALUE) int amountOfCall = 0;
 
-    protected AbstractCollectionHolderForTest(final T @Unmodifiable [] array) {
-        super();
-        this.array = array;
-    }
+    protected AbstractCollectionHolderForTest() { super(); }
 
     //#region -------------------- Test utility methods --------------------
 
@@ -65,18 +59,18 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
 
     @Contract(ALWAYS_THIS_1)
     @SuppressWarnings("Unchecked cast")
-    @Override public final INSTANCE execute(final Consumer<INSTANCE> action) {
-        action.accept((INSTANCE) this);
-        return (INSTANCE) this;
+    @Override public final CURRENT_INSTANCE execute(final Consumer<CURRENT_INSTANCE> action) {
+        action.accept((CURRENT_INSTANCE) this);
+        return (CURRENT_INSTANCE) this;
     }
 
     @Contract(ALWAYS_THIS_1)
     @SuppressWarnings("Unchecked cast")
-    @Override public final INSTANCE executeWhileExpectingIndexOutOfBound(final Consumer<INSTANCE> action) {
+    @Override public final CURRENT_INSTANCE executeWhileExpectingIndexOutOfBound(final Consumer<CURRENT_INSTANCE> action) {
         try {
-            action.accept((INSTANCE) this);
+            action.accept((CURRENT_INSTANCE) this);
         } catch (IndexOutOfBoundsException exception) {
-            return (INSTANCE) this;
+            return (CURRENT_INSTANCE) this;
         }
         fail("The exception “IndexOutOfBoundsException” was expected to be thrown.");
         throw new RuntimeException("Assertions.fail was expected to throw an exception on “executeWhileExpectingIndexOutOfBound” call if no IndexOutOfBoundsException occurred.");
@@ -84,11 +78,11 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
 
     @Contract(ALWAYS_THIS_1)
     @SuppressWarnings("Unchecked cast")
-    @Override public final INSTANCE executeWhileExpectingEmptyException(final Consumer<INSTANCE> action) {
+    @Override public final CURRENT_INSTANCE executeWhileExpectingEmptyException(final Consumer<CURRENT_INSTANCE> action) {
         try {
-            action.accept((INSTANCE) this);
+            action.accept((CURRENT_INSTANCE) this);
         } catch (EmptyCollectionException exception) {
-            return (INSTANCE) this;
+            return (CURRENT_INSTANCE) this;
         }
         fail("The exception “EmptyCollectionException” was expected to be thrown.");
         throw new RuntimeException("Assertions.fail was expected to throw an exception on “executeWhileExpectingEmptyException” call if no EmptyCollectionException occurred.");
@@ -96,14 +90,14 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
 
     @Contract(ALWAYS_THIS_1)
     @SuppressWarnings("Unchecked cast")
-    @Override public final <U extends @Nullable Object> INSTANCE executeWhileHavingIndexesOnField(final Function<INSTANCE, ? extends CollectionHolder<? extends U>> action) {
-        action.apply((INSTANCE) this).forEach(_ -> {});
-        return (INSTANCE) this;
+    @Override public final <U extends @Nullable Object> CURRENT_INSTANCE executeWhileHavingIndexesOnField(final Function<CURRENT_INSTANCE, ? extends CollectionHolder<? extends U>> action) {
+        action.apply((CURRENT_INSTANCE) this).forEach(_ -> {});
+        return (CURRENT_INSTANCE) this;
     }
 
     @SuppressWarnings("Unchecked cast")
-    @Override public final <U extends @Nullable Object> CollectionHolder<U> executeToHaveIndexesOnField(final Function<INSTANCE, ? extends CollectionHolder<U>> action) {
-        return action.apply((INSTANCE) this).onEach(_ -> {});
+    @Override public final <U extends @Nullable Object> CollectionHolder<U> executeToHaveIndexesOnField(final Function<CURRENT_INSTANCE, ? extends CollectionHolder<U>> action) {
+        return action.apply((CURRENT_INSTANCE) this).onEach(_ -> {});
     }
 
     //#endregion -------------------- Test utility methods --------------------
