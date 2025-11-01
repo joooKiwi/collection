@@ -34,6 +34,8 @@ public final class HasNoDuplicates
         final var size = collection.size();
         if (size == 0)
             return true;
+        if (size == 1)
+            return true;
         return __validate(collection, size);
     }
 
@@ -48,7 +50,11 @@ public final class HasNoDuplicates
             return true;
         if (collection.isEmpty())
             return true;
-        return __validate(collection, collection.size());
+
+        final var size = collection.size();
+        if (size == 1)
+            return true;
+        return __validate(collection, size);
     }
 
     /// The `collection` has no duplicate value
@@ -63,6 +69,8 @@ public final class HasNoDuplicates
 
         final var size = collection.length;
         if (size == 0)
+            return true;
+        if (size == 1)
             return true;
         return __validate(collection, size);
     }
