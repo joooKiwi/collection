@@ -1,20 +1,13 @@
 package joookiwi.collection.java.method;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Deque;
-import java.util.EnumSet;
 import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NavigableSet;
 import java.util.Objects;
-import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.RandomAccess;
 import java.util.SequencedCollection;
@@ -22,24 +15,8 @@ import java.util.SequencedSet;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.Spliterator;
-import java.util.Stack;
-import java.util.TreeSet;
-import java.util.Vector;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.ConcurrentSkipListSet;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.DelayQueue;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.LinkedTransferQueue;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -53,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2;
+import static joookiwi.collection.java.CommonContracts.IF_ONLY_2ND_NULL_THEN_FALSE_2;
 
 @NotNullByDefault
 public final class HasNotAll
@@ -72,13 +49,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable Iterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -88,13 +67,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable Iterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -104,13 +85,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable Iterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -123,13 +106,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable ListIterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -139,13 +124,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable ListIterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -155,13 +142,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable ListIterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasNext())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -174,13 +163,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable Spliterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.estimateSize() == 0L)
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -190,13 +181,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable Spliterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.estimateSize() == 0L)
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -206,13 +199,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable Spliterator<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.estimateSize() == 0L)
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -225,13 +220,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable Enumeration<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasMoreElements())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -241,13 +238,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable Enumeration<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasMoreElements())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -257,13 +256,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable Enumeration<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (!values.hasMoreElements())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -277,20 +278,39 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable Iterable<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        if (values instanceof List<? extends T>)
-            return __validate(collection, (List<? extends T>) values);
-        if (values instanceof Collection<? extends T>)
-            return __validate(collection, (Collection<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+        if (values instanceof List<? extends T> valuesAsList)
+            if (valuesAsList.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsList);
+        if (values instanceof Collection<? extends T> valuesAsCollection)
+            if (valuesAsCollection.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, values.iterator());
+
+        final var iterator = values.iterator();
+        if (!iterator.hasNext())
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, iterator);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -299,20 +319,39 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable Iterable<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        if (values instanceof List<? extends T>)
-            return __validate(collection, (List<? extends T>) values);
-        if (values instanceof Collection<? extends T>)
-            return __validate(collection, (Collection<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+        if (values instanceof List<? extends T> valuesAsList)
+            if (valuesAsList.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsList);
+        if (values instanceof Collection<? extends T> valuesAsCollection)
+            if (valuesAsCollection.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, values.iterator());
+
+        final var iterator = values.iterator();
+        if (!iterator.hasNext())
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, iterator);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -321,20 +360,39 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable Iterable<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        if (values instanceof List<? extends T>)
-            return __validate(collection, (List<? extends T>) values);
-        if (values instanceof Collection<? extends T>)
-            return __validate(collection, (Collection<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+        if (values instanceof List<? extends T> valuesAsList)
+            if (valuesAsList.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsList);
+        if (values instanceof Collection<? extends T> valuesAsCollection)
+            if (valuesAsCollection.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, values.iterator());
+
+        final var iterator = values.iterator();
+        if (!iterator.hasNext())
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, iterator);
     }
 
     //#endregion -------------------- iterable --------------------
@@ -347,16 +405,25 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable MinimalistCollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -365,16 +432,25 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable MinimalistCollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -383,16 +459,25 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable MinimalistCollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        if (values instanceof CollectionHolder<? extends T>)
-            return __validate(collection, (CollectionHolder<? extends T>) values);
-        return __validate(collection, values);
+        if (values instanceof CollectionHolder<? extends T> valuesAsCollectionHolder)
+            if (valuesAsCollectionHolder.isEmpty())
+                return false;
+            else if (collection == null)
+                return true;
+            else
+                return __validate(collection, valuesAsCollectionHolder);
+
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     //#endregion -------------------- minimalist collection holder --------------------
@@ -404,13 +489,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable CollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -420,13 +507,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable CollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -436,13 +525,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable CollectionHolder<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -456,16 +547,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Collection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -474,16 +567,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Collection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -492,16 +587,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable Collection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- collection --------------------
@@ -513,16 +610,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -531,16 +630,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -549,16 +650,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<? extends T>)
             return __validate(collection, (List<? extends T>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- sequenced collection --------------------
@@ -571,13 +674,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable List<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -587,13 +692,15 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable List<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
@@ -603,221 +710,19 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable List<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         return __validate(collection, values);
     }
 
     //#endregion -------------------- list --------------------
-    //#region -------------------- array list --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- array list --------------------
-    //#region -------------------- copy on write array list --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArrayList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- copy on write array list --------------------
-    //#region -------------------- linked list --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable LinkedList<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- linked list --------------------
-    //#region -------------------- vector --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable Vector<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable Vector<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable Vector<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- vector --------------------
 
     //#region -------------------- set --------------------
 
@@ -827,16 +732,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Set<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -845,16 +752,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Set<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -863,16 +772,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable Set<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- set --------------------
@@ -884,16 +795,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -902,16 +815,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -920,16 +835,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- sequenced set --------------------
@@ -941,16 +858,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SortedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -959,16 +878,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable SortedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -977,16 +898,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable SortedSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- sorted set --------------------
@@ -998,16 +921,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1016,16 +941,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1034,355 +961,21 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- navigable set --------------------
-    //#region -------------------- concurrent skip list set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentSkipListSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- concurrent skip list set --------------------
-    //#region -------------------- copy on write array set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable CopyOnWriteArraySet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- copy on write array set --------------------
-    //#region -------------------- enum set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Enum<T>> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final @Nullable @Unmodifiable EnumSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Enum<T>> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final @Nullable @Unmodifiable EnumSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Enum<T>> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                        final @Nullable @Unmodifiable EnumSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- enum set --------------------
-    //#region -------------------- hash set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable HashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable HashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable HashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- hash set --------------------
-    //#region -------------------- linked hash set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable LinkedHashSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- linked hash set --------------------
-    //#region -------------------- tree set --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable TreeSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable TreeSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable TreeSet<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- tree set --------------------
 
     //#region -------------------- queue --------------------
 
@@ -1392,16 +985,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Queue<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1410,16 +1005,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Queue<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1428,16 +1025,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable Queue<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- queue --------------------
@@ -1449,16 +1048,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1467,16 +1068,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1485,16 +1088,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- blocking queue --------------------
@@ -1506,16 +1111,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1524,16 +1131,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -1542,475 +1151,21 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- transfer queue --------------------
-    //#region -------------------- array blocking queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ArrayBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- array blocking queue --------------------
-    //#region -------------------- concurrent linked queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- concurrent linked queue --------------------
-    //#region -------------------- delay queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Delayed> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                        final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Delayed> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                        final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends Delayed> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                        final @Nullable @Unmodifiable DelayQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- delay queue --------------------
-    //#region -------------------- linked blocking queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- linked blocking queue --------------------
-    //#region -------------------- linked transfer queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable LinkedTransferQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- linked transfer queue --------------------
-    //#region -------------------- priority blocking queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable PriorityBlockingQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- priority blocking queue --------------------
-    //#region -------------------- priority queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable PriorityQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- priority queue --------------------
-    //#region -------------------- synchronous queue --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable SynchronousQueue<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- synchronous queue --------------------
 
     //#region -------------------- deque --------------------
 
@@ -2020,16 +1175,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Deque<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2038,16 +1195,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final @Nullable @Unmodifiable Deque<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2056,16 +1215,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final @Nullable @Unmodifiable Deque<? extends T> values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- deque --------------------
@@ -2077,16 +1238,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2095,16 +1258,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2113,241 +1278,21 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
+    public static <T> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
         if (values == null)
             return false;
+        if (values.isEmpty())
+            return false;
+        if (collection == null)
+            return true;
         if (values instanceof List<?>)
             return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
+        return __validate(collection, values.iterator());
     }
 
     //#endregion -------------------- blocking deque --------------------
-    //#region -------------------- array deque --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ArrayDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- array deque --------------------
-    //#region -------------------- concurrent linked deque --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable ConcurrentLinkedDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- concurrent linked deque --------------------
-    //#region -------------------- linked blocking deque --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable LinkedBlockingDeque<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        if (values instanceof List<?>)
-            return __validate(collection, (List<?>) values);
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- linked blocking deque --------------------
-    //#region -------------------- stack --------------------
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable Stack<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
-                                                                 final @Nullable @Unmodifiable Stack<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    /// Tell that not a single item in the `values` the `collection`
-    ///
-    /// @param collection The [nullable][Nullable] collection
-    /// @param values     The values to compare
-    /// @param <T>        The `collection` type
-    @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
-    public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
-                                                                 final @Nullable @Unmodifiable Stack<? extends T> values) {
-        if (collection == null)
-            return true;
-        if (values == null)
-            return false;
-        return __validate(collection, values);
-    }
-
-    //#endregion -------------------- stack --------------------
 
     //#region -------------------- array --------------------
 
@@ -2357,14 +1302,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                  final T @Nullable @Unmodifiable [] values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        return __validate(collection, values);
+
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2373,14 +1322,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final @Nullable CollectionHolder<? extends T> collection,
                                                                  final T @Nullable @Unmodifiable [] values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        return __validate(collection, values);
+
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     /// Tell that not a single item in the `values` the `collection`
@@ -2389,14 +1342,18 @@ public final class HasNotAll
     /// @param values     The values to compare
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_TRUE_OR_2ND_NULL_THEN_FALSE_2)
+    @Contract(IF_ONLY_2ND_NULL_THEN_FALSE_2)
     public static <T extends @Nullable Object> boolean hasNotAll(final T @Nullable @Unmodifiable [] collection,
                                                                  final T @Nullable @Unmodifiable [] values) {
-        if (collection == null)
-            return true;
         if (values == null)
             return false;
-        return __validate(collection, values);
+
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return false;
+        if (collection == null)
+            return true;
+        return __validate(collection, values, valuesSize);
     }
 
     //#endregion -------------------- array --------------------
@@ -2408,10 +1365,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final Iterator<? extends T> values) {
-
-        if (!values.hasNext())
-            return false;
-
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2420,9 +1373,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
                                                                    final Iterator<? extends T> values) {
-
-        if (!values.hasNext())
-            return false;
         if (collection.isEmpty())
             return true;
         return __fromIterator(collection, collection.size(), values);
@@ -2430,10 +1380,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
                                                                    final Iterator<? extends T> values) {
-
-        if (!values.hasNext())
-            return false;
-
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2445,9 +1391,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final Spliterator<? extends T> values) {
-        if (values.estimateSize() == 0L)
-            return false;
-
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2456,8 +1399,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
                                                                    final Spliterator<? extends T> values) {
-        if (values.estimateSize() == 0L)
-            return false;
         if (collection.isEmpty())
             return true;
         return __fromSpliterator(collection, collection.size(), values);
@@ -2465,9 +1406,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
                                                                    final Spliterator<? extends T> values) {
-        if (values.estimateSize() == 0L)
-            return false;
-
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2479,9 +1417,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final Enumeration<? extends T> values) {
-        if (!values.hasMoreElements())
-            return false;
-
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2490,8 +1425,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
                                                                    final Enumeration<? extends T> values) {
-        if (!values.hasMoreElements())
-            return false;
         if (collection.isEmpty())
             return true;
         return __fromEnumeration(collection, collection.size(), values);
@@ -2499,9 +1432,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
                                                                    final Enumeration<? extends T> values) {
-        if (!values.hasMoreElements())
-            return false;
-
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2510,53 +1440,11 @@ public final class HasNotAll
 
     //#endregion -------------------- Core methods (enumeration) --------------------
 
-    //#region -------------------- Core methods (iterable) --------------------
-
-    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
-                                                                   final Iterable<? extends T> values) {
-        final var iterator = values.iterator();
-        if (!iterator.hasNext())
-            return false;
-
-        final var size = collection.size();
-        if (size == 0)
-            return true;
-        return __fromIterator(collection, size, iterator);
-    }
-
-    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
-                                                                   final Iterable<? extends T> values) {
-        final var iterator = values.iterator();
-        if (!iterator.hasNext())
-            return false;
-        if (collection.isEmpty())
-            return true;
-        return __fromIterator(collection, collection.size(), iterator);
-    }
-
-    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
-                                                                   final Iterable<? extends T> values) {
-        final var iterator = values.iterator();
-        if (!iterator.hasNext())
-            return false;
-
-        final var size = collection.length;
-        if (size == 0)
-            return true;
-        return __fromIterator(collection, size, iterator);
-    }
-
-    //#endregion -------------------- Core methods (iterable) --------------------
-
     //#region -------------------- Core methods (minimalist collection holder) --------------------
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
-                                                                   final MinimalistCollectionHolder<? extends T> values) {
-
-        final var valuesSize = values.size();
-        if (valuesSize == 0)
-            return false;
-
+                                                                   final MinimalistCollectionHolder<? extends T> values,
+                                                                   final int valuesSize) {
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2564,23 +1452,16 @@ public final class HasNotAll
     }
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
-                                                                   final MinimalistCollectionHolder<? extends T> values) {
-
-        final var valuesSize = values.size();
-        if (valuesSize == 0)
-            return false;
+                                                                   final MinimalistCollectionHolder<? extends T> values,
+                                                                   final int valuesSize) {
         if (collection.isEmpty())
             return true;
         return __fromMinimalistCollectionHolder(collection, collection.size(), values, valuesSize);
     }
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
-                                                                   final MinimalistCollectionHolder<? extends T> values) {
-
-        final var valuesSize = values.size();
-        if (valuesSize == 0)
-            return false;
-
+                                                                   final MinimalistCollectionHolder<? extends T> values,
+                                                                   final int valuesSize) {
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2592,93 +1473,39 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final CollectionHolder<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
         final var size = collection.size();
         if (size == 0)
             return true;
         if (values instanceof RandomAccess)
             return __fromMinimalistCollectionHolder(collection, size, values, values.size());
-        return __fromIterator(collection, size, values.iterator());
+        return __fromIterator(collection, size, values.toIterator());
     }
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
                                                                    final CollectionHolder<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
         if (collection.isEmpty())
             return true;
-
         if (values instanceof RandomAccess)
             return __fromMinimalistCollectionHolder(collection, collection.size(), values, values.size());
-        return __fromIterator(collection, collection.size(), values.iterator());
+        return __fromIterator(collection, collection.size(), values.toIterator());
     }
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
                                                                    final CollectionHolder<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
         final var size = collection.length;
         if (size == 0)
             return true;
         if (values instanceof RandomAccess)
             return __fromMinimalistCollectionHolder(collection, size, values, values.size());
-        return __fromIterator(collection, size, values.iterator());
+        return __fromIterator(collection, size, values.toIterator());
     }
 
     //#endregion -------------------- Core methods (collection holder) --------------------
-
-    //#region -------------------- Core methods (collection) --------------------
-
-    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
-                                                                   final @Unmodifiable Collection<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
-        final var size = collection.size();
-        if (size == 0)
-            return true;
-        return __fromIterator(collection, size, values.iterator());
-    }
-
-    private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
-                                                                   final @Unmodifiable Collection<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-        if (collection.isEmpty())
-            return true;
-        return __fromIterator(collection, collection.size(), values.iterator());
-    }
-
-    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
-                                                                   final @Unmodifiable Collection<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
-        final var size = collection.length;
-        if (size == 0)
-            return true;
-        return __fromIterator(collection, size, values.iterator());
-    }
-
-    //#endregion -------------------- Core methods (collection) --------------------
 
     //#region -------------------- Core methods (list) --------------------
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
                                                                    final @Unmodifiable List<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2689,9 +1516,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
                                                                    final @Unmodifiable List<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
         if (collection.isEmpty())
             return true;
         if (values instanceof RandomAccess)
@@ -2701,10 +1525,6 @@ public final class HasNotAll
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
                                                                    final @Unmodifiable List<? extends T> values) {
-
-        if (values.isEmpty())
-            return false;
-
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2718,12 +1538,8 @@ public final class HasNotAll
     //#region -------------------- Core methods (array) --------------------
 
     private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
-                                                                   final T @Unmodifiable [] values) {
-
-        final var valuesSize = values.length;
-        if (valuesSize == 0)
-            return false;
-
+                                                                   final T @Unmodifiable [] values,
+                                                                   final int valuesSize) {
         final var size = collection.size();
         if (size == 0)
             return true;
@@ -2731,23 +1547,16 @@ public final class HasNotAll
     }
 
     private static <T extends @Nullable Object> boolean __validate(final CollectionHolder<? extends T> collection,
-                                                                   final T @Unmodifiable [] values) {
-
-        final var valuesSize = values.length;
-        if (valuesSize == 0)
-            return false;
+                                                                   final T @Unmodifiable [] values,
+                                                                   final int valuesSize) {
         if (collection.isEmpty())
             return true;
         return __fromArray(collection, collection.size(), values, valuesSize);
     }
 
     private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
-                                                                   final T @Unmodifiable [] values) {
-
-        final var valuesSize = values.length;
-        if (valuesSize == 0)
-            return false;
-
+                                                                   final T @Unmodifiable [] values,
+                                                                   final int valuesSize) {
         final var size = collection.length;
         if (size == 0)
             return true;
@@ -2803,9 +1612,9 @@ public final class HasNotAll
                     return;
             valueReturned.set(true);
         };
-        while (valueReturned.get())
+        while (!valueReturned.get())
             if (!values.tryAdvance(action))
-                return valueReturned.get();
+                return false;
         return true;
     }
 
@@ -2820,9 +1629,9 @@ public final class HasNotAll
                     return;
             valueReturned.set(true);
         };
-        while (valueReturned.get())
+        while (!valueReturned.get())
             if (!values.tryAdvance(action))
-                return valueReturned.get();
+                return false;
         return true;
     }
 
