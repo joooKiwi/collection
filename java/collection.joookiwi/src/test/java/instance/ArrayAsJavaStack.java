@@ -26,7 +26,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 ///
 /// @param <T> The type
 @NotNullByDefault
-public final class ArrayAsJavaStack<T>
+public final class ArrayAsJavaStack<T extends @Nullable Object>
         extends Stack<T> {
 
     @Serial private static final long serialVersionUID = -1830991672840926060L;
