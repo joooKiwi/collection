@@ -19,6 +19,8 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 public final class CollectionHolder_ByMinimalistCollection<T extends @Nullable Object>
         extends AbstractMinimalistCollectionHolderForTest<T, CollectionHolder_ByMinimalistCollection<T>> {
 
+    /// Tell that the instance is **not** of the type `null`
+    public static final boolean IS_NULL = false;
     /// Tell that the instance is of the type [MinimalistCollectionHolder][joookiwi.collection.java.MinimalistCollectionHolder] directly
     public static final boolean IS_MINIMALIST = true;
     /// Tell that the instance is **not** based on the extension methods directly

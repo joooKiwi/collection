@@ -47,7 +47,6 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;
@@ -217,7 +216,6 @@ import joookiwi.collection.java.method.ToLocaleLowerCaseString;
 import joookiwi.collection.java.method.ToLocaleString;
 import joookiwi.collection.java.method.ToLocaleUpperCaseString;
 import joookiwi.collection.java.method.ToLowerCaseString;
-import joookiwi.collection.java.method.ToMap;
 import joookiwi.collection.java.method.ToMutableArrayBlockingQueue;
 import joookiwi.collection.java.method.ToMutableArrayDeque;
 import joookiwi.collection.java.method.ToMutableArrayList;
@@ -269,8 +267,6 @@ import joookiwi.collection.java.method.ToTransferQueue;
 import joookiwi.collection.java.method.ToTreeSet;
 import joookiwi.collection.java.method.ToUpperCaseString;
 import joookiwi.collection.java.method.ToVector;
-import joookiwi.collection.java.method.Utility;
-import joookiwi.collection.java.method.VectorCreator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -295,6 +291,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public final class CollectionHolder_FromExtensionFunction<T extends @Nullable Object>
         extends AbstractCollectionHolderForTest<T, CollectionHolder_FromExtensionFunction<T>> {
 
+    /// Tell that the instance is **not** of the type `null`
+    public static final boolean IS_NULL = false;
     /// Tell that the instance is **not** of the type [MinimalistCollectionHolder] directly
     public static final boolean IS_MINIMALIST = false;
     /// Tell that the instance is based on the extension methods directly
@@ -302,7 +300,13 @@ public final class CollectionHolder_FromExtensionFunction<T extends @Nullable Ob
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
     public static final String SIMPLIFIED_NAME = "normal extension";
 
-    public CollectionHolder_FromExtensionFunction(final T @Unmodifiable [] array) { super(array); }
+    /// The array received in the constructor
+    public final T @Unmodifiable [] array;
+
+    public CollectionHolder_FromExtensionFunction(final T @Unmodifiable [] array) {
+        super();
+        this.array = array;
+    }
 
 
     //#region -------------------- Test utility methods --------------------

@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public final class CollectionHolder_FromMinimalistExtensionFunction<T extends @Nullable Object>
         extends AbstractMinimalistCollectionHolderForTest<T, CollectionHolder_FromMinimalistExtensionFunction<T>> {
 
+    /// Tell that the instance is **not** of the type `null`
+    public static final boolean IS_NULL = false;
     /// Tell that the instance is **not** of the type [MinimalistCollectionHolder] directly
     public static final boolean IS_MINIMALIST = true;
     /// Tell that the instance is based on the extension methods directly
