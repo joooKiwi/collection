@@ -1282,55 +1282,75 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Has null --------------------
 
-    @Contract(ALWAYS_FALSE_0) @Override public boolean hasNull() { return false; }
-    @Contract(ALWAYS_FALSE_0) @Override public final boolean includesNull() { return hasNull(); }
-    @Contract(ALWAYS_FALSE_0) @Override public final boolean containsNull() { return hasNull(); }
+    @Contract(ALWAYS_FALSE_0) @Override public boolean hasNull(                                            ) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean hasNull(final @Nullable Object @Nullable ... ignored) { return false; }
+
+    @Contract(ALWAYS_FALSE_0)                                                @Override public final boolean includesNull(                                            ) { return hasNull(); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "hasNull", arguments = IGNORED)           public final boolean includesNull(final @Nullable Object @Nullable ... ignored) { return hasNull(); }
+
+    @Contract(ALWAYS_FALSE_0)                                                @Override public final boolean containsNull(                                            ) { return hasNull(); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "hasNull", arguments = IGNORED)           public final boolean containsNull(final @Nullable Object @Nullable ... ignored) { return hasNull(); }
 
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has no nulls --------------------
 
-    @Contract(ALWAYS_TRUE_0) @Override public boolean hasNoNulls() { return true; }
-    @Contract(ALWAYS_TRUE_0) @Override public final boolean includesNoNulls() { return hasNoNulls(); }
-    @Contract(ALWAYS_TRUE_0) @Override public final boolean containsNoNulls() { return hasNoNulls(); }
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasNoNulls(                                            ) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNoNulls(final @Nullable Object @Nullable ... ignored) { return true; }
+
+    @Contract(ALWAYS_TRUE_0)                                                   @Override public final boolean includesNoNulls(                                            ) { return hasNoNulls(); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNoNulls", arguments = IGNORED)           public final boolean includesNoNulls(final @Nullable Object @Nullable ... ignored) { return hasNoNulls(); }
+
+    @Contract(ALWAYS_TRUE_0)                                                   @Override public final boolean containsNoNulls(                                            ) { return hasNoNulls(); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNoNulls", arguments = IGNORED)           public final boolean containsNoNulls(final @Nullable Object @Nullable ... ignored) { return hasNoNulls(); }
 
     //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
-    @Contract(ALWAYS_FALSE_0) @Override public boolean hasDuplicate() { return false; }
-    @Contract(ALWAYS_FALSE_0) @Override public final boolean includesDuplicate() { return hasDuplicate(); }
-    @Contract(ALWAYS_FALSE_0) @Override public final boolean containsDuplicate() { return hasDuplicate(); }
+    @Contract(ALWAYS_FALSE_0) @Override public boolean hasDuplicate(                                            ) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean hasDuplicate(final @Nullable Object @Nullable ... ignored) { return false; }
+
+    @Contract(ALWAYS_FALSE_0)                                                     @Override public final boolean includesDuplicate(                                            ) { return hasDuplicate(); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "hasDuplicate", arguments = IGNORED)           public final boolean includesDuplicate(final @Nullable Object @Nullable ... ignored) { return hasDuplicate(); }
+
+    @Contract(ALWAYS_FALSE_0)                                                     @Override public final boolean containsDuplicate(                                            ) { return hasDuplicate(); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "hasDuplicate", arguments = IGNORED)           public final boolean containsDuplicate(final @Nullable Object @Nullable ... ignored) { return hasDuplicate(); }
 
     //#endregion -------------------- Has duplicate --------------------
     //#region -------------------- Has no duplicates --------------------
 
-    @Contract(ALWAYS_TRUE_0) @Override public boolean hasNoDuplicates() { return true; }
-    @Contract(ALWAYS_TRUE_0) @Override public final boolean includesNoDuplicates() { return hasNoDuplicates(); }
-    @Contract(ALWAYS_TRUE_0) @Override public final boolean containsNoDuplicates() { return hasNoDuplicates(); }
+    @Contract(ALWAYS_TRUE_0) @Override public boolean hasNoDuplicates(                                            ) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNoDuplicates(final @Nullable Object @Nullable ... ignored) { return true; }
+
+    @Contract(ALWAYS_TRUE_0)                                                        @Override public final boolean includesNoDuplicates(                                            ) { return hasNoDuplicates(); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNoDuplicates", arguments = IGNORED)           public final boolean includesNoDuplicates(final @Nullable Object @Nullable ... ignored) { return hasNoDuplicates(); }
+
+    @Contract(ALWAYS_TRUE_0)                                                        @Override public final boolean containsNoDuplicates(                                            ) { return hasNoDuplicates(); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNoDuplicates", arguments = IGNORED)           public final boolean containsNoDuplicates(final @Nullable Object @Nullable ... ignored) { return hasNoDuplicates(); }
 
     //#endregion -------------------- Has no duplicates --------------------
 
     //#region -------------------- Has --------------------
 
-    @Contract(ALWAYS_FALSE_1) @Override public boolean has(final T                     value) { return false; }
-    @Contract(ALWAYS_FALSE_1)           public boolean has(final @Nullable Object... ignored) { return false; }
+    @Contract(ALWAYS_FALSE_1) @Override public boolean has(final T                                value) { return false; }
+    @Contract(ALWAYS_FALSE_1)           public boolean has(final @Nullable Object @Nullable ... ignored) { return false; }
 
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean includes(final T                     value) { return has(value); }
-    @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean includes(final @Nullable Object... ignored) { return has(); }
+    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean includes(final T                                value) { return has(value); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean includes(final @Nullable Object @Nullable ... ignored) { return has(); }
 
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean contains(final T                     value) { return has(value); }
-    @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean contains(final @Nullable Object... ignored) { return has(); }
+    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean contains(final T                                value) { return has(value); }
+    @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean contains(final @Nullable Object @Nullable ... ignored) { return has(); }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has not --------------------
 
-    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNot(final T                     value) { return true; }
-    @Contract(ALWAYS_TRUE_1)           public boolean hasNot(final @Nullable Object... ignored) { return true; }
+    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNot(final T                                value) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean hasNot(final @Nullable Object @Nullable ... ignored) { return true; }
 
-    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean includesNot(final T                     value) { return hasNot(value); }
-    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean includesNot(final @Nullable Object... ignored) { return hasNot(); }
+    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean includesNot(final T                                value) { return hasNot(value); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean includesNot(final @Nullable Object @Nullable ... ignored) { return hasNot(); }
 
-    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean containsNot(final T                     value) { return hasNot(value); }
-    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean containsNot(final @Nullable Object... ignored) { return hasNot(); }
+    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean containsNot(final T                                value) { return hasNot(value); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean containsNot(final @Nullable Object @Nullable ... ignored) { return hasNot(); }
 
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
