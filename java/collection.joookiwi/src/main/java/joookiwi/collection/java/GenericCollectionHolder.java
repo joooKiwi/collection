@@ -2063,9 +2063,9 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Require no nulls --------------------
 
     @Contract(ALWAYS_THIS_0) @Override public CollectionHolder<@NotNull T> requireNoNulls() {
-        if (this.isEmpty())
+        if (isEmpty())
             return this;
-        if (this.hasNull())
+        if (hasNull())
             throw new NullPointerException("Forbidden null value. The current collection cannot contains a null value.");
         return this;
     }
