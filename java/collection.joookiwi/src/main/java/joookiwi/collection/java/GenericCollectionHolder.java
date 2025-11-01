@@ -548,7 +548,7 @@ public class GenericCollectionHolder<T extends @Nullable Object>
             return Array(value1, value2);
         }
 
-        __hasNull = TRUE;
+        __hasNull = FALSE;
 //        __hasDuplicate = _EqualsComparator().compare(value1, value2);
         __hashCode = HashCodeCreator.getInstance().newHashCode(value1, value2);
         return Array(value1, value2);
