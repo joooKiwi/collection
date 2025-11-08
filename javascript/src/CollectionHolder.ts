@@ -2314,49 +2314,49 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasOne(values: readonly T[],): boolean
+    hasOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: ReadonlySet<T>,): boolean
+    hasOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: CollectionHolder<T>,): boolean
+    hasOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: MinimalistCollectionHolder<T>,): boolean
+    hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: CollectionIterator<T>,): boolean
+    hasOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2364,7 +2364,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has one methods (aliases) --------------------
 
@@ -2374,7 +2374,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: readonly T[],): boolean
+    includesOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2382,7 +2382,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: ReadonlySet<T>,): boolean
+    includesOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2390,7 +2390,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: CollectionHolder<T>,): boolean
+    includesOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2398,7 +2398,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: MinimalistCollectionHolder<T>,): boolean
+    includesOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2406,7 +2406,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: CollectionIterator<T>,): boolean
+    includesOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2414,7 +2414,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Iterator<T, unknown, unknown>,): boolean
+    includesOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2422,73 +2422,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     * @typescriptDefinition
-     */
-    includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: readonly T[],): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: Iterable<T, unknown, unknown>,): boolean
+    includesOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2497,7 +2431,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasOne
      * @typescriptDefinition
      */
-    containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     * @typescriptDefinition
+     */
+    containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 

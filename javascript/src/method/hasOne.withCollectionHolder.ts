@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionHolder<T>,): boolean {
+export function hasOneWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,13 +55,15 @@ export function hasOneWithCollectionHolder<const T, >(collection: Nullable<| Min
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
+export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.size
     if (size == 0)
         return false
+    if (values == null)
+        return true
     if (values.isEmpty)
         return true
     return __validate(collection, values, size, values.size,)
@@ -74,11 +76,13 @@ export function hasOneWithCollectionHolderByMinimalistCollectionHolder<const T, 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
+export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
+    if (values == null)
+        return true
     if (values.isEmpty)
         return true
     return __validate(collection, values, collection.size, values.size,)
@@ -91,13 +95,15 @@ export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collecti
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionHolder<T>,): boolean {
+export function hasOneWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
     if (size == 0)
         return false
+    if (values == null)
+        return true
     if (values.isEmpty)
         return true
     return __validateByArray(collection, values, size, values.size,)

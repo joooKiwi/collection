@@ -745,15 +745,18 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public hasOne(values: readonly T[],): boolean
-    public hasOne(values: ReadonlySet<T>,): boolean
-    public hasOne(values: CollectionHolder<T>,): boolean
-    public hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public hasOne(values: CollectionIterator<T>,): boolean
-    public hasOne(values: Iterator<T, unknown, unknown>,): boolean
-    public hasOne(values: Iterable<T, unknown, unknown>,): boolean
-    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public hasOne(values: Nullable<readonly T[]>,): boolean
+    public hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public hasOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        if (values == null)
+            return this._hasOneByNull(values,)
+
         if (isArray(values))
             return this._hasOneByArray(values,)
         if (isSet(values))
@@ -782,30 +785,35 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this._hasOneByIterable(values,)
     }
 
-    public includesOne(values: readonly T[],): boolean
-    public includesOne(values: ReadonlySet<T>,): boolean
-    public includesOne(values: CollectionHolder<T>,): boolean
-    public includesOne(values: MinimalistCollectionHolder<T>,): boolean
-    public includesOne(values: CollectionIterator<T>,): boolean
-    public includesOne(values: Iterator<T, unknown, unknown>,): boolean
-    public includesOne(values: Iterable<T, unknown, unknown>,): boolean
-    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public includesOne(values: Nullable<readonly T[]>,): boolean
+    public includesOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return this.hasOne(values,)
     }
 
-    public containsOne(values: readonly T[],): boolean
-    public containsOne(values: ReadonlySet<T>,): boolean
-    public containsOne(values: CollectionHolder<T>,): boolean
-    public containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public containsOne(values: CollectionIterator<T>,): boolean
-    public containsOne(values: Iterator<T, unknown, unknown>,): boolean
-    public containsOne(values: Iterable<T, unknown, unknown>,): boolean
-    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public containsOne(values: Nullable<readonly T[]>,): boolean
+    public containsOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return this.hasOne(values,)
     }
 
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: NullOrUndefined)} */
+    protected _hasOneByNull(_values: NullOrUndefined,): boolean {
+        return this.isNotEmpty
+    }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T>)} */
     protected _hasOneByArray(values: readonly T[],): boolean {

@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
+export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,13 +55,15 @@ export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.size
     if (size == 0)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
@@ -77,11 +79,13 @@ export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
@@ -97,13 +101,15 @@ export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
     if (size == 0)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
