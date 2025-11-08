@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionHolder<T>,): boolean {
+export function hasNotAllWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,9 @@ export function hasNotAllWithCollectionHolder<const T, >(collection: Nullable<| 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
+export function hasNotAllWithCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
     if (values.isEmpty)
         return false
     if (collection == null)
@@ -72,7 +74,9 @@ export function hasNotAllWithCollectionHolderByMinimalistCollectionHolder<const 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean {
+export function hasNotAllWithCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
     if (values.isEmpty)
         return false
     if (collection == null)
@@ -90,7 +94,9 @@ export function hasNotAllWithCollectionHolderByCollectionHolder<const T, >(colle
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionHolder<T>,): boolean {
+export function hasNotAllWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
     if (values.isEmpty)
         return false
     if (collection == null)

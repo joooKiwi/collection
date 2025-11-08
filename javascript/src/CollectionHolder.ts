@@ -2915,49 +2915,49 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasNotAll(values: readonly T[],): boolean
+    hasNotAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: ReadonlySet<T>,): boolean
+    hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: CollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: CollectionIterator<T>,): boolean
+    hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2965,7 +2965,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has not all methods (aliases) --------------------
 
@@ -2975,7 +2975,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: readonly T[],): boolean
+    includesNotAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2983,7 +2983,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: ReadonlySet<T>,): boolean
+    includesNotAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2991,7 +2991,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: CollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2999,7 +2999,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3007,7 +3007,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: CollectionIterator<T>,): boolean
+    includesNotAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3015,7 +3015,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    includesNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3023,73 +3023,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     * @typescriptDefinition
-     */
-    includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: readonly T[],): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    includesNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3098,7 +3032,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNotAll
      * @typescriptDefinition
      */
-    containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     * @typescriptDefinition
+     */
+    containsNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has not all methods (aliases) --------------------
 

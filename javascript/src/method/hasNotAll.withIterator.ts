@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
+export function hasNotAllWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithIteratorByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,10 @@ export function hasNotAllWithIterator<const T, >(collection: Nullable<| Minimali
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasNotAllWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return false
+
     const iteratorResult: IteratorResult<unknown, unknown> = values.next()
     if (iteratorResult.done)
         return false
@@ -73,7 +76,10 @@ export function hasNotAllWithIteratorByMinimalistCollectionHolder<const T, >(col
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasNotAllWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return false
+
     const iteratorResult: IteratorResult<T, unknown> = values.next()
     if (iteratorResult.done)
         return false
@@ -91,7 +97,10 @@ export function hasNotAllWithIteratorByCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterator<T>,): boolean {
+export function hasNotAllWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return false
+
     const iteratorResult: IteratorResult<T, unknown> = values.next()
     if (iteratorResult.done)
         return false

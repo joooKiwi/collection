@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: readonly T[],): boolean {
+export function hasNotAllWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithArrayByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,10 @@ export function hasNotAllWithArray<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean {
+export function hasNotAllWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.length
     if (valuesSize == 0)
         return false
@@ -73,7 +76,10 @@ export function hasNotAllWithArrayByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean {
+export function hasNotAllWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.length
     if (valuesSize == 0)
         return false
@@ -91,7 +97,10 @@ export function hasNotAllWithArrayByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, values: readonly T[],): boolean {
+export function hasNotAllWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.length
     if (valuesSize == 0)
         return false

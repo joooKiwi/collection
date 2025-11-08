@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,10 @@ export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
@@ -73,7 +76,10 @@ export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHol
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
@@ -91,7 +97,10 @@ export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
