@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean {
+export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithCollectionIteratorByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -58,9 +58,10 @@ export function hasAllWithCollectionIterator<const T, >(collection: Nullable<| M
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
-    const valuesSize = values.size
-    if (valuesSize == 0)
+export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
+    if (values == null)
+        return true
+    if (values.isEmpty)
         return true
     if (collection == null)
         return false
@@ -68,7 +69,7 @@ export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T
     const size = collection.size
     if (size == 0)
         return false
-    return __validate(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, values.size,)
 }
 
 /**
@@ -80,15 +81,16 @@ export function hasAllWithCollectionIteratorByMinimalistCollectionHolder<const T
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
-    const valuesSize = values.size
-    if (valuesSize == 0)
+export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
+    if (values == null)
+        return true
+    if (values.isEmpty)
         return true
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
-    return __validate(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, values.size,)
 }
 
 /**
@@ -100,9 +102,10 @@ export function hasAllWithCollectionIteratorByCollectionHolder<const T, >(collec
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionIterator<T>,): boolean {
-    const valuesSize = values.size
-    if (valuesSize == 0)
+export function hasAllWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
+    if (values == null)
+        return true
+    if (values.isEmpty)
         return true
     if (collection == null)
         return false
@@ -110,7 +113,7 @@ export function hasAllWithCollectionIteratorByArray<const T, >(collection: Nulla
     const size = collection.length
     if (size == 0)
         return false
-    return __validateByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, values.size,)
 }
 
 //#endregion -------------------- Facade method --------------------

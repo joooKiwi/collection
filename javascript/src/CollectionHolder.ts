@@ -2706,7 +2706,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: readonly T[],): boolean
+    hasAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2715,7 +2715,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: ReadonlySet<T>,): boolean
+    hasAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2724,7 +2724,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: CollectionHolder<T>,): boolean
+    hasAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2733,7 +2733,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: MinimalistCollectionHolder<T>,): boolean
+    hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2742,7 +2742,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: CollectionIterator<T>,): boolean
+    hasAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2751,7 +2751,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2760,7 +2760,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2770,7 +2770,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      * @typescriptDefinition
      */
-    hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has all methods (aliases) --------------------
 
@@ -2780,7 +2780,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: readonly T[],): boolean
+    includesAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2788,7 +2788,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: ReadonlySet<T>,): boolean
+    includesAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2796,7 +2796,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: CollectionHolder<T>,): boolean
+    includesAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2804,7 +2804,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: MinimalistCollectionHolder<T>,): boolean
+    includesAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2812,7 +2812,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: CollectionIterator<T>,): boolean
+    includesAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2820,7 +2820,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Iterator<T, unknown, unknown>,): boolean
+    includesAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2828,73 +2828,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     * @typescriptDefinition
-     */
-    includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: readonly T[],): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: Iterable<T, unknown, unknown>,): boolean
+    includesAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2903,7 +2837,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasAll
      * @typescriptDefinition
      */
-    containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has all methods (aliases) --------------------
 

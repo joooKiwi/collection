@@ -945,15 +945,18 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public hasAll(values: readonly T[],): boolean
-    public hasAll(values: ReadonlySet<T>,): boolean
-    public hasAll(values: CollectionHolder<T>,): boolean
-    public hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public hasAll(values: CollectionIterator<T>,): boolean
-    public hasAll(values: Iterator<T, unknown, unknown>,): boolean
-    public hasAll(values: Iterable<T, unknown, unknown>,): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public hasAll(values: Nullable<readonly T[]>,): boolean
+    public hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public hasAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        if (values == null)
+            return this._hasAllByNull(values,)
+
         if (isArray(values))
             return this._hasAllByArray(values,)
         if (isSet(values))
@@ -982,29 +985,35 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this._hasAllByIterable(values,)
     }
 
-    public includesAll(values: readonly T[],): boolean
-    public includesAll(values: ReadonlySet<T>,): boolean
-    public includesAll(values: CollectionHolder<T>,): boolean
-    public includesAll(values: MinimalistCollectionHolder<T>,): boolean
-    public includesAll(values: CollectionIterator<T>,): boolean
-    public includesAll(values: Iterator<T, unknown, unknown>,): boolean
-    public includesAll(values: Iterable<T, unknown, unknown>,): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public includesAll(values: Nullable<readonly T[]>,): boolean
+    public includesAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return this.hasAll(values,)
     }
 
-    public containsAll(values: readonly T[],): boolean
-    public containsAll(values: ReadonlySet<T>,): boolean
-    public containsAll(values: CollectionHolder<T>,): boolean
-    public containsAll(values: CollectionHolder<T>,): boolean
-    public containsAll(values: MinimalistCollectionHolder<T>,): boolean
-    public containsAll(values: CollectionIterator<T>,): boolean
-    public containsAll(values: Iterator<T, unknown, unknown>,): boolean
-    public containsAll(values: Iterable<T, unknown, unknown>,): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+    public containsAll(values: Nullable<readonly T[]>,): boolean
+    public containsAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return this.hasAll(values,)
+    }
+
+
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: NullOrUndefined)} */
+    protected _hasAllByNull(_values: NullOrUndefined,): true {
+        return true
     }
 
 
