@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean {
+export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -56,18 +56,18 @@ export function hasNotOneWithCollectionIterator<const T, >(collection: Nullable<
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
+export function hasNotOneWithCollectionIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.size
     if (size == 0)
         return true
-
-    const valuesSize = values.size
-    if (valuesSize == 0)
+    if (values == null)
         return false
-    return __validate(collection, values, size, valuesSize,)
+    if (values.isEmpty)
+        return false
+    return __validate(collection, values, size, values.size,)
 }
 
 /**
@@ -77,16 +77,16 @@ export function hasNotOneWithCollectionIteratorByMinimalistCollectionHolder<cons
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean {
+export function hasNotOneWithCollectionIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
     if (collection.isEmpty)
         return true
-
-    const valuesSize = values.size
-    if (valuesSize == 0)
+    if (values == null)
         return false
-    return __validate(collection, values, collection.size, valuesSize,)
+    if (values.isEmpty)
+        return false
+    return __validate(collection, values, collection.size, values.size,)
 }
 
 /**
@@ -96,18 +96,18 @@ export function hasNotOneWithCollectionIteratorByCollectionHolder<const T, >(col
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionIterator<T>,): boolean {
+export function hasNotOneWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
     if (size == 0)
         return true
-
-    const valuesSize = values.size
-    if (valuesSize == 0)
+    if (values == null)
         return false
-    return __validateByArray(collection, values, size, valuesSize,)
+    if (values.isEmpty)
+        return false
+    return __validateByArray(collection, values, size, values.size,)
 }
 
 //#endregion -------------------- Facade method --------------------

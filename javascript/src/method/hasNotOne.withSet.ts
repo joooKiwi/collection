@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: ReadonlySet<T>,): boolean {
+export function hasNotOneWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -55,13 +55,15 @@ export function hasNotOneWithSet<const T, >(collection: Nullable<| MinimalistCol
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean {
+export function hasNotOneWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.size
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
@@ -76,11 +78,13 @@ export function hasNotOneWithSetByMinimalistCollectionHolder<const T, >(collecti
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean {
+export function hasNotOneWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
     if (collection == null)
         return true
     if (collection.isEmpty)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
@@ -95,13 +99,15 @@ export function hasNotOneWithSetByCollectionHolder<const T, >(collection: Nullab
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithSetByArray<const T, >(collection: Nullable<readonly T[]>, values: ReadonlySet<T>,): boolean {
+export function hasNotOneWithSetByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
