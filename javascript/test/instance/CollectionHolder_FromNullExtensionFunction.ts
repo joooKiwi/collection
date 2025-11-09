@@ -139,11 +139,11 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
 
     //#region -------------------- Size methods --------------------
 
-    public get isEmpty(): boolean {
+    public get isEmpty(): true {
         return isEmptyByCollectionHolder(null,)
     }
 
-    public get isNotEmpty(): boolean {
+    public get isNotEmpty(): false {
         return isNotEmptyByCollectionHolder(null,)
     }
 

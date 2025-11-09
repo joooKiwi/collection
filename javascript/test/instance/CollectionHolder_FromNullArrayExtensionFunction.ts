@@ -139,11 +139,11 @@ export class CollectionHolder_FromNullArrayExtensionFunction<const T, >
 
     //#region -------------------- Size methods --------------------
 
-    public override get isEmpty(): boolean {
+    public override get isEmpty(): true {
         return isEmptyByArray(null,)
     }
 
-    public override get isNotEmpty(): boolean {
+    public override get isNotEmpty(): false {
         return isNotEmptyByArray(null,)
     }
 

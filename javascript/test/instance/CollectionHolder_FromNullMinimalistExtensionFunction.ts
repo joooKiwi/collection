@@ -139,11 +139,11 @@ export class CollectionHolder_FromNullMinimalistExtensionFunction<const T, >
 
     //#region -------------------- Size methods --------------------
 
-    public override get isEmpty(): boolean {
+    public override get isEmpty(): true {
         return isEmptyByMinimalistCollectionHolder(null,)
     }
 
-    public override get isNotEmpty(): boolean {
+    public override get isNotEmpty(): false {
         return isNotEmptyByMinimalistCollectionHolder(null,)
     }
 

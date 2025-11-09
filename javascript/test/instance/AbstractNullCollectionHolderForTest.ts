@@ -43,6 +43,9 @@ export abstract class AbstractNullCollectionHolderForTest<const T, >
         throw new Error("The method “size” was not expected to be called directly.")
     }
 
+    public abstract override get isEmpty(): true
+    public abstract override get isNotEmpty(): false
+
     public override get(..._: readonly unknown[]): never {
         throw new Error("The method “get” was not expected to be called directly.")
     }
