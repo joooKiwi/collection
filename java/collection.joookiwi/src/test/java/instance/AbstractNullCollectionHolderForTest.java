@@ -29,8 +29,8 @@ public abstract class AbstractNullCollectionHolderForTest<T extends @Nullable Ob
 
     @Contract(ALWAYS_FAIL_0)
     @Override public final int size() {
-        fail("The method “get” was not expected to be called directly.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call.");
+        fail("The method “size” was not expected to be called directly.");
+        throw new RuntimeException("Assertions.fail was expected to throw an exception on “size” call.");
     }
 
 }
