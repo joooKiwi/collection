@@ -62,6 +62,8 @@ export function hasNoDuplicatesByMinimalistCollectionHolder<const T, >(collectio
     const size = collection.size
     if (size == 0)
         return true
+    if (size == 1)
+        return true
     return __validate(collection, size,)
 }
 
@@ -77,7 +79,11 @@ export function hasNoDuplicatesByCollectionHolder<const T, >(collection: Nullabl
         return true
     if (collection.isEmpty)
         return true
-    return __validate(collection, collection.size,)
+
+    const size = collection.size
+    if (size == 1)
+        return true
+    return __validate(collection, size,)
 }
 
 /**
@@ -93,6 +99,8 @@ export function hasNoDuplicatesByArray<const T, >(collection: Nullable<readonly 
 
     const size = collection.length
     if (size == 0)
+        return true
+    if (size == 1)
         return true
     return __validateByArray(collection, size,)
 }
