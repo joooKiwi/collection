@@ -7,6 +7,11 @@ import org.jetbrains.annotations.Nullable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/// A bare-bone implementation of a [CollectionHolderForTest] with `null` being the value
+///
+/// @param <T>                The type
+/// @param <INSTANCE>         The instance type (_can be anything since always `null`_)
+/// @param <CURRENT_INSTANCE> The current instance type
 @NotNullByDefault
 public abstract class AbstractNullCollectionHolderForTest<T extends @Nullable Object,
         INSTANCE,

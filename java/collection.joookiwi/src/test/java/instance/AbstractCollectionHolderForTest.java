@@ -42,6 +42,10 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/// A bare-bone implementation of a [CollectionHolderForTest] with nothing implemented
+///
+/// @param <T>                The type
+/// @param <CURRENT_INSTANCE> The current instance type
 @NotNullByDefault
 public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object,
         CURRENT_INSTANCE extends AbstractCollectionHolderForTest<T, CURRENT_INSTANCE>>
