@@ -704,10 +704,11 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
 
 
     @Override public CollectionHolder<@NotNull T> requireNoNulls() {
-        final var array = RequireNoNulls.requireNoNulls(this.array);
-        if (array.length == 0)
-            return EmptyCollectionHolder.getInstance();
-        return new CollectionHolder_FromArrayExtensionFunction<>(array);
+        final var array = this.array;
+        if (RequireNoNulls.requireNoNulls(array) == array)
+            return this;
+        fail("The method “requireNoNulls” was not expected to be non-empty.");
+        throw new RuntimeException("Assertions.fail was expected to throw an exception on “requireNoNulls” failing call.");
     }
 
     //#endregion -------------------- Validation methods --------------------
