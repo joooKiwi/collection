@@ -8,7 +8,6 @@ import instance.ArrayAsJavaListIterator;
 import instance.ArrayAsMinimalistCollection;
 import instance.ArrayAsJavaSpliterator;
 import instance.CollectionHolderForTest;
-import instance.EmptyCollectionHolderForTest;
 import instance.GenericCollectionHolder_HasAlias;
 import instance.GenericCollectionHolder_HasAllAlias;
 import instance.GenericCollectionHolder_HasDuplicateAlias;
@@ -47,6 +46,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
+import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
 import test.AbstractJavaBlockingDequeTests;
 import test.AbstractJavaBlockingQueueTests;
@@ -189,106 +189,106 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 @DisplayNameGeneration(Simple.class)
 @DisplayName("CollectionHolder tests (has)") @TestInstance(PER_CLASS) class CollectionHolder05_HasTests {
 
-    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder {
+    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
         @Nested class has {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().has()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().has(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().has(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().has(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().has(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.has()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.has(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.has(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.has(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.has(EMPTY_ARRAY)); }
         }
         @Nested class includes {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().includes()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().includes(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().includes(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().includes(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().includes(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.includes()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.includes(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.includes(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.includes(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.includes(EMPTY_ARRAY)); }
         }
         @Nested class contains {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().contains()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().contains(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().contains(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().contains(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().contains(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.contains()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.contains(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.contains(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.contains(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.contains(EMPTY_ARRAY)); }
         }
 
         @Nested class hasNot {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().hasNot()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().hasNot(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().hasNot(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().hasNot(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().hasNot(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.hasNot()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.hasNot(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.hasNot(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.hasNot(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.hasNot(EMPTY_ARRAY)); }
         }
         @Nested class includesNot {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().includesNot()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().includesNot(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().includesNot(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().includesNot(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().includesNot(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.includesNot()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.includesNot(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.includesNot(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.includesNot(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.includesNot(EMPTY_ARRAY)); }
         }
         @Nested class containsNot {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().containsNot()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().containsNot(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().containsNot(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().containsNot(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().containsNot(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.containsNot()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.containsNot(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.containsNot(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.containsNot(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.containsNot(EMPTY_ARRAY)); }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().hasOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.hasOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.hasOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.hasOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -302,11 +302,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -319,11 +319,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -336,11 +336,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -353,11 +353,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -370,11 +370,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -387,11 +387,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -404,11 +404,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -421,11 +421,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -438,11 +438,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -455,11 +455,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -472,11 +472,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -489,11 +489,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -506,75 +506,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().hasOne(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.hasOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.hasOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.hasOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.hasOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().includesOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.includesOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.includesOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.includesOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -588,11 +588,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -605,11 +605,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -622,11 +622,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -639,11 +639,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -656,11 +656,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -673,11 +673,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -690,11 +690,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -707,11 +707,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -724,11 +724,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -741,11 +741,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -758,11 +758,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -775,11 +775,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -792,75 +792,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().includesOne(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.includesOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.includesOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.includesOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.includesOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().containsOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.containsOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.containsOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.containsOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -874,11 +874,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -891,11 +891,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -908,11 +908,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -925,11 +925,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -942,11 +942,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -959,11 +959,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -976,11 +976,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -993,11 +993,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -1010,11 +1010,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -1027,11 +1027,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -1044,11 +1044,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -1061,11 +1061,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -1078,76 +1078,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
                 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().containsOne(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.containsOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.containsOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.containsOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.containsOne(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.hasNotOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.hasNotOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.hasNotOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -1161,11 +1161,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -1178,11 +1178,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -1195,11 +1195,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -1212,11 +1212,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -1229,11 +1229,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -1246,11 +1246,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -1263,11 +1263,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -1280,11 +1280,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -1297,11 +1297,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -1314,11 +1314,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -1331,11 +1331,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -1348,11 +1348,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -1365,75 +1365,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(new EmptyCollectionHolderForTest<>().hasNotOne(ABCD)); }
+                                         @Test void empty() { assertTrue(instance.hasNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.hasNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.hasNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.hasNotOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.includesNotOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.includesNotOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.includesNotOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -1447,11 +1447,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -1464,11 +1464,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -1481,11 +1481,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -1498,11 +1498,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -1515,11 +1515,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -1532,11 +1532,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -1549,11 +1549,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -1566,11 +1566,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -1583,11 +1583,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -1600,11 +1600,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -1617,11 +1617,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -1634,11 +1634,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -1651,75 +1651,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(new EmptyCollectionHolderForTest<>().includesNotOne(ABCD)); }
+                                         @Test void empty() { assertTrue(instance.includesNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.includesNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.includesNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.includesNotOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.containsNotOne()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.containsNotOne(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.containsNotOne(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -1733,11 +1733,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -1750,11 +1750,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -1767,11 +1767,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -1784,11 +1784,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -1801,11 +1801,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -1818,11 +1818,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -1835,11 +1835,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -1852,11 +1852,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -1869,11 +1869,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -1886,11 +1886,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -1903,11 +1903,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -1920,11 +1920,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -1937,76 +1937,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(new EmptyCollectionHolderForTest<>().containsNotOne(ABCD)); }
+                                         @Test void empty() { assertTrue(instance.containsNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.containsNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.containsNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.containsNotOne(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().hasAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.hasAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.hasAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.hasAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -2020,11 +2020,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -2037,11 +2037,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -2054,11 +2054,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -2071,11 +2071,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -2088,11 +2088,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -2105,11 +2105,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -2122,11 +2122,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -2139,11 +2139,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -2156,11 +2156,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -2173,11 +2173,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -2190,11 +2190,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -2207,11 +2207,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -2224,75 +2224,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( new EmptyCollectionHolderForTest<>().hasAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().hasAll(ABCD)); }
+                                         @Test void empty() { assertTrue( instance.hasAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.hasAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.hasAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.hasAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().includesAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.includesAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.includesAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.includesAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -2306,11 +2306,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -2323,11 +2323,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -2340,11 +2340,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -2357,11 +2357,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -2374,11 +2374,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -2391,11 +2391,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -2408,11 +2408,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -2425,11 +2425,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -2442,11 +2442,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -2459,11 +2459,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -2476,11 +2476,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -2493,11 +2493,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -2510,75 +2510,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( new EmptyCollectionHolderForTest<>().includesAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().includesAll(ABCD)); }
+                                         @Test void empty() { assertTrue( instance.includesAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.includesAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.includesAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.includesAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().containsAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.containsAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.containsAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.containsAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -2592,11 +2592,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -2609,11 +2609,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -2626,11 +2626,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -2643,11 +2643,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -2660,11 +2660,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -2677,11 +2677,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -2694,11 +2694,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -2711,11 +2711,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -2728,11 +2728,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -2745,11 +2745,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue(instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -2762,11 +2762,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -2779,11 +2779,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -2796,76 +2796,76 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( new EmptyCollectionHolderForTest<>().containsAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(new EmptyCollectionHolderForTest<>().containsAll(ABCD)); }
+                                         @Test void empty() { assertTrue( instance.containsAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.containsAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.containsAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.containsAll(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.hasNotAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.hasNotAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.hasNotAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -2879,11 +2879,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -2896,11 +2896,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -2913,11 +2913,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -2930,11 +2930,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -2947,11 +2947,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -2964,11 +2964,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -2981,11 +2981,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -2998,11 +2998,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -3015,11 +3015,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -3032,11 +3032,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -3049,11 +3049,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -3066,11 +3066,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -3083,75 +3083,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().hasNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( new EmptyCollectionHolderForTest<>().hasNotAll(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.hasNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.hasNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.hasNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.hasNotAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.includesNotAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.includesNotAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.includesNotAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -3165,11 +3165,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -3182,11 +3182,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -3199,11 +3199,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -3216,11 +3216,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -3233,11 +3233,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -3250,11 +3250,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -3267,11 +3267,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -3284,11 +3284,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -3301,11 +3301,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -3318,11 +3318,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -3335,11 +3335,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -3352,11 +3352,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -3369,75 +3369,75 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().includesNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( new EmptyCollectionHolderForTest<>().includesNotAll(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.includesNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.includesNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.includesNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.includesNotAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.containsNotAll()); }
+            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.containsNotAll(NULL_VARARGS)); }
+            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.containsNotAll(EMPTY_ARRAY)); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_JAVA_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterator<>(ABCD))); }
             }
             @DisplayName("Java ListIterator<T>") @Nested class JavaListIterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_JAVA_LIST_ITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaListIterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaListIterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LIST_ITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaListIterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaListIterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaListIterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaListIterator<>(ABCD))); }
             }
             @DisplayName("Java Spliterator<T>") @Nested class JavaSpliterator {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_JAVA_SPLITERATOR)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaSpliterator<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaSpliterator<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SPLITERATOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSpliterator<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSpliterator<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSpliterator<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSpliterator<>(ABCD))); }
             }
             @DisplayName("Java Enumeration<T>") @Nested class JavaEnumeration {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_JAVA_ENUMERATION)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaEnumeration<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaEnumeration<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ENUMERATION)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaEnumeration<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaEnumeration<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaEnumeration<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaEnumeration<>(ABCD))); }
             }
 
             @DisplayName("Java Iterable<T>") @Nested class JavaIterable {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_JAVA_ITERABLE)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterable<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterable<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsJavaIterable<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ITERABLE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaIterable<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterable<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterable<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaIterable<>(ABCD))); }
             }
 
             @DisplayName("MinimalistCollectionHolder<T>") @Nested class MinimalistCollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsMinimalistCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsMinimalistCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_MINIMALIST_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsMinimalistCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsMinimalistCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsMinimalistCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsMinimalistCollection<>(ABCD))); }
             }
             @DisplayName("CollectionHolder<T>") @Nested class CollectionHolder {
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(NULL_COLLECTION_HOLDER)); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsCollection<>(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsCollection<>(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsCollection<>(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(new ArrayAsCollection<>(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_COLLECTION_HOLDER)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
             @FieldSource("values")
@@ -3451,11 +3451,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
@@ -3468,11 +3468,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
@@ -3485,11 +3485,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
@@ -3502,11 +3502,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
@@ -3519,11 +3519,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
@@ -3536,11 +3536,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
@@ -3553,11 +3553,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
@@ -3570,11 +3570,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
@@ -3587,11 +3587,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
@@ -3604,11 +3604,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
@@ -3621,11 +3621,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
@@ -3638,11 +3638,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
             @FieldSource("values")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
@@ -3655,115 +3655,115 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(new EmptyCollectionHolderForTest<>().containsNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( new EmptyCollectionHolderForTest<>().containsNotAll(ABCD)); }
+                                         @Test void empty() { assertFalse(instance.containsNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.containsNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.containsNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.containsNotAll(ABCD)); }
             }
         }
 
         @Nested class hasNull {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().hasNull()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().hasNull(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().hasNull(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().hasNull(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().hasNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.hasNull()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.hasNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.hasNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.hasNull(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.hasNull(EMPTY_ARRAY)); }
         }
         @Nested class includesNull {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().includesNull()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().includesNull(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().includesNull(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().includesNull(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().includesNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.includesNull()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.includesNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.includesNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.includesNull(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.includesNull(EMPTY_ARRAY)); }
         }
         @Nested class containsNull {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().containsNull()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().containsNull(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().containsNull(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().containsNull(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().containsNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.containsNull()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.containsNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.containsNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.containsNull(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.containsNull(EMPTY_ARRAY)); }
         }
 
         @Nested class hasNoNulls {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().hasNoNulls()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoNulls(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoNulls(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().hasNoNulls(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoNulls(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.hasNoNulls()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.hasNoNulls(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.hasNoNulls(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.hasNoNulls(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.hasNoNulls(EMPTY_ARRAY)); }
         }
         @Nested class includesNoNulls {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().includesNoNulls()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoNulls(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoNulls(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().includesNoNulls(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoNulls(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.includesNoNulls()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.includesNoNulls(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.includesNoNulls(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.includesNoNulls(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.includesNoNulls(EMPTY_ARRAY)); }
         }
         @Nested class containsNoNulls {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().containsNoNulls()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoNulls(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoNulls(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().containsNoNulls(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoNulls(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.containsNoNulls()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.containsNoNulls(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.containsNoNulls(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.containsNoNulls(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.containsNoNulls(EMPTY_ARRAY)); }
         }
 
         @Nested class hasDuplicate {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().hasDuplicate()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().hasDuplicate(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().hasDuplicate(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().hasDuplicate(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().hasDuplicate(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.hasDuplicate()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.hasDuplicate(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.hasDuplicate(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.hasDuplicate(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.hasDuplicate(EMPTY_ARRAY)); }
         }
         @Nested class includesDuplicate {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().includesDuplicate()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().includesDuplicate(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().includesDuplicate(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().includesDuplicate(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().includesDuplicate(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.includesDuplicate()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.includesDuplicate(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.includesDuplicate(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.includesDuplicate(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.includesDuplicate(EMPTY_ARRAY)); }
         }
         @Nested class containsDuplicate {
-            @DisplayName("∅")           @Test void empty()      { assertFalse(new EmptyCollectionHolderForTest<>().containsDuplicate()); }
-            @DisplayName("null object") @Test void nullObject() { assertFalse(new EmptyCollectionHolderForTest<>().containsDuplicate(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertFalse(new EmptyCollectionHolderForTest<>().containsDuplicate(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertFalse(new EmptyCollectionHolderForTest<>().containsDuplicate(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertFalse(new EmptyCollectionHolderForTest<>().containsDuplicate(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertFalse(instance.containsDuplicate()); }
+            @DisplayName("null object") @Test void nullObject() { assertFalse(instance.containsDuplicate(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertFalse(instance.containsDuplicate(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertFalse(instance.containsDuplicate(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertFalse(instance.containsDuplicate(EMPTY_ARRAY)); }
         }
 
         @Nested class hasNoDuplicates {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().hasNoDuplicates()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoDuplicates(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoDuplicates(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().hasNoDuplicates(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().hasNoDuplicates(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.hasNoDuplicates()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.hasNoDuplicates(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.hasNoDuplicates(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.hasNoDuplicates(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.hasNoDuplicates(EMPTY_ARRAY)); }
         }
         @Nested class includesNoDuplicates {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().includesNoDuplicates()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoDuplicates(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoDuplicates(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().includesNoDuplicates(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().includesNoDuplicates(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.includesNoDuplicates()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.includesNoDuplicates(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.includesNoDuplicates(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.includesNoDuplicates(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.includesNoDuplicates(EMPTY_ARRAY)); }
         }
         @Nested class containsNoDuplicates {
-            @DisplayName("∅")           @Test void empty()      { assertTrue(new EmptyCollectionHolderForTest<>().containsNoDuplicates()); }
-            @DisplayName("null object") @Test void nullObject() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoDuplicates(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoDuplicates(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertTrue(new EmptyCollectionHolderForTest<>().containsNoDuplicates(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertTrue(new EmptyCollectionHolderForTest<>().containsNoDuplicates(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertTrue(instance.containsNoDuplicates()); }
+            @DisplayName("null object") @Test void nullObject() { assertTrue(instance.containsNoDuplicates(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertTrue(instance.containsNoDuplicates(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertTrue(instance.containsNoDuplicates(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertTrue(instance.containsNoDuplicates(EMPTY_ARRAY)); }
         }
 
         @Nested class requireNoNulls {
-            @DisplayName("∅")           @Test void empty()      { assertToBeInstance(new EmptyCollectionHolderForTest<>(), CollectionHolder::requireNoNulls); }
-            @DisplayName("null object") @Test void nullObject() { assertToBeInstance(new EmptyCollectionHolderForTest<>(), it -> it.requireNoNulls(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void nullString() { assertToBeInstance(new EmptyCollectionHolderForTest<>(), it -> it.requireNoNulls(NULL_STRING)); }
-            @DisplayName("null []")     @Test void nullArray()  { assertToBeInstance(new EmptyCollectionHolderForTest<>(), it -> it.requireNoNulls(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void emptyArray() { assertToBeInstance(new EmptyCollectionHolderForTest<>(), it -> it.requireNoNulls(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void empty()      { assertToBeInstance(instance, CollectionHolder::requireNoNulls); }
+            @DisplayName("null object") @Test void nullObject() { assertToBeInstance(instance, it -> it.requireNoNulls(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void nullString() { assertToBeInstance(instance, it -> it.requireNoNulls(NULL_STRING)); }
+            @DisplayName("null []")     @Test void nullArray()  { assertToBeInstance(instance, it -> it.requireNoNulls(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void emptyArray() { assertToBeInstance(instance, it -> it.requireNoNulls(EMPTY_ARRAY)); }
         }
 
     }

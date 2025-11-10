@@ -1,6 +1,5 @@
 import java.util.List;
 import instance.CollectionHolderForTest;
-import instance.EmptyCollectionHolderForTest;
 import instance.GenericCollectionHolder_SizeAlias;
 import joookiwi.collection.java.CollectionHolder;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
+import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
 import test.AbstractMethodsTests;
 import value.SizeValueInstance;
@@ -31,12 +31,12 @@ import static value.Sizes.SIZE_VALUES;
 @DisplayNameGeneration(Simple.class)
 @DisplayName("CollectionHolder tests (size)") @TestInstance(PER_CLASS) class CollectionHolder02_SizeTests {
 
-    @Nested class EmptyCollectionHolder {
-        @Test void size()       { assertEquals(0, new EmptyCollectionHolderForTest<>().size()); }
-        @Test void length()     { assertEquals(0, new EmptyCollectionHolderForTest<>().length()); }
-        @Test void count()      { assertEquals(0, new EmptyCollectionHolderForTest<>().count()); }
-        @Test void isEmpty()    { assertTrue(     new EmptyCollectionHolderForTest<>().isEmpty()); }
-        @Test void isNotEmpty() { assertFalse(    new EmptyCollectionHolderForTest<>().isNotEmpty()); }
+    @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
+        @Test void size()       { assertEquals(0, instance.size()); }
+        @Test void length()     { assertEquals(0, instance.length()); }
+        @Test void count()      { assertEquals(0, instance.count()); }
+        @Test void isEmpty()    { assertTrue(     instance.isEmpty()); }
+        @Test void isNotEmpty() { assertFalse(    instance.isNotEmpty()); }
     }
 
     @Nested class aliases {

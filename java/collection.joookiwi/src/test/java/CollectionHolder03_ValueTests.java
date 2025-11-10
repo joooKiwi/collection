@@ -2,7 +2,6 @@ import condition.DisableIfNormalCondition;
 import condition.DisableIfViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.ArrayAsCollection;
-import instance.EmptyCollectionHolderForTest;
 import instance.GenericCollectionHolder_GetAlias;
 import instance.GenericCollectionHolder_GetFirstAlias;
 import instance.GenericCollectionHolder_GetFirstOrNullAlias;
@@ -28,6 +27,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
+import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
 import test.AbstractMethodsTests;
 
@@ -115,436 +115,436 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 @DisplayNameGeneration(Simple.class)
 @DisplayName("CollectionHolder tests (value)") @TestInstance(PER_CLASS) class CollectionHolder03_ValueTests {
 
-    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder {
+    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
 
         @Nested class get {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get()); }
-            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_STRING)); }
-            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_VARARGS)); }
-            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get((byte) 0)); }
-            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get((short) 0)); }
-            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(0)); }
-            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(0L)); }
-            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(0.0F)); }
-            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(0.0D)); }
-                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_BYTE)); }
-                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_SHORT)); }
-                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_INT)); }
-                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_LONG)); }
-                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_FLOAT)); }
-                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_DOUBLE)); }
-                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(NULL_NUMBER)); }
-            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().get(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(0.0D)); }
+                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_BYTE)); }
+                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_SHORT)); }
+                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_INT)); }
+                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_LONG)); }
+                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_FLOAT)); }
+                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_DOUBLE)); }
+                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(EMPTY_ARRAY)); }
         }
         @Nested class getFirst {
-            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getFirst()); }
-            @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getFirst(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getFirst(NULL_STRING)); }
-            @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getFirst(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void testArray()      { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getFirst(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst()); }
+            @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_STRING)); }
+            @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void testArray()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(EMPTY_ARRAY)); }
         }
         @Nested class getLast {
-            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getLast()); }
-            @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getLast(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getLast(NULL_STRING)); }
-            @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getLast(NULL_VARARGS)); }
-            @DisplayName("[]")          @Test void testArray()      { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().getLast(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast()); }
+            @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_STRING)); }
+            @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void testArray()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(EMPTY_ARRAY)); }
         }
 
         @Nested class getOrElse {
-            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().getOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   new EmptyCollectionHolderForTest<>().getOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   new EmptyCollectionHolderForTest<>().getOrElse(0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().getOrElse(0L, (LongFunction<?>) String::valueOf)); }
-            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().getOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().getOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().getOrElse(ZERO_BYTE, it -> it)); }
-            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().getOrElse(ZERO_SHORT, it -> it)); }
-            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().getOrElse(ZERO_INT, it -> it)); }
-            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().getOrElse(ZERO_LONG, it -> it)); }
-            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().getOrElse(ZERO_FLOAT, it -> it)); }
-            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().getOrElse(ZERO_DOUBLE, it -> it)); }
-            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().getOrElse(ZERO_BIG_INTEGER, it -> it)); }
-            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().getOrElse(ZERO_BIG_DECIMAL, it -> it)); }
-            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().getOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().getOrElse(ZERO_ATOMIC_LONG, it -> it)); }
-            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().getOrElse(ZERO_LONG_ADDER, it -> it)); }
-            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().getOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().getOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().getOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().getOrElse(ZERO_NUMBER, it -> it)); }
-            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_BYTE, it -> it)); }
-            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_SHORT, it -> it)); }
-            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_INT, it -> it)); }
-            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG, it -> it)); }
-            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_FLOAT, it -> it)); }
-            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE, it -> it)); }
-            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_BIG_INTEGER, it -> it)); }
-            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_BIG_DECIMAL, it -> it)); }
-            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_ATOMIC_LONG, it -> it)); }
-            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG_ADDER, it -> it)); }
-            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(NULL_NUMBER, it -> it)); }
+            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   getInstance().getOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   getInstance().getOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   getInstance().getOrElse(0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   getInstance().getOrElse(0L, (LongFunction<?>) String::valueOf)); }
+            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 getInstance().getOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 getInstance().getOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().getOrElse(ZERO_BYTE, it -> it)); }
+            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().getOrElse(ZERO_SHORT, it -> it)); }
+            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                getInstance().getOrElse(ZERO_INT, it -> it)); }
+            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().getOrElse(ZERO_LONG, it -> it)); }
+            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().getOrElse(ZERO_FLOAT, it -> it)); }
+            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().getOrElse(ZERO_DOUBLE, it -> it)); }
+            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().getOrElse(ZERO_BIG_INTEGER, it -> it)); }
+            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().getOrElse(ZERO_BIG_DECIMAL, it -> it)); }
+            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().getOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().getOrElse(ZERO_ATOMIC_LONG, it -> it)); }
+            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().getOrElse(ZERO_LONG_ADDER, it -> it)); }
+            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().getOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().getOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().getOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().getOrElse(ZERO_NUMBER, it -> it)); }
+            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         getInstance().getOrElse(NULL_BYTE, it -> it)); }
+            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         getInstance().getOrElse(NULL_SHORT, it -> it)); }
+            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         getInstance().getOrElse(NULL_INT, it -> it)); }
+            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         getInstance().getOrElse(NULL_LONG, it -> it)); }
+            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         getInstance().getOrElse(NULL_FLOAT, it -> it)); }
+            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         getInstance().getOrElse(NULL_DOUBLE, it -> it)); }
+            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         getInstance().getOrElse(NULL_BIG_INTEGER, it -> it)); }
+            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         getInstance().getOrElse(NULL_BIG_DECIMAL, it -> it)); }
+            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         getInstance().getOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         getInstance().getOrElse(NULL_ATOMIC_LONG, it -> it)); }
+            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         getInstance().getOrElse(NULL_LONG_ADDER, it -> it)); }
+            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         getInstance().getOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         getInstance().getOrElse(NULL_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         getInstance().getOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         getInstance().getOrElse(NULL_NUMBER, it -> it)); }
 
-            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse((byte) 0, () -> null)); }
-            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse((short) 0, () -> null)); }
-            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(0, () -> null)); }
-            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(0L, () -> null)); }
-            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(0.0F, () -> null)); }
-            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().getOrElse(0.0D, () -> null)); }
-            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().getOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
-            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().getOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
-            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().getOrElse(NULL_INT, () -> ZERO_INT)); }
-            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG, () -> ZERO_LONG)); }
-            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().getOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
-            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
-            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().getOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
-            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().getOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
-            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().getOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
-            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().getOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
-            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
-            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().getOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
-            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
-            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().getOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
-            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().getOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
+            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         instance     .getOrElse((byte) 0, () -> null)); }
+            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         instance     .getOrElse((short) 0, () -> null)); }
+            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         instance     .getOrElse(0, () -> null)); }
+            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         instance     .getOrElse(0L, () -> null)); }
+            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         instance     .getOrElse(0.0F, () -> null)); }
+            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         instance     .getOrElse(0.0D, () -> null)); }
+            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().getOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
+            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().getOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
+            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                getInstance().getOrElse(NULL_INT, () -> ZERO_INT)); }
+            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().getOrElse(NULL_LONG, () -> ZERO_LONG)); }
+            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().getOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
+            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().getOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
+            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().getOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
+            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().getOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
+            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().getOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
+            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().getOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
+            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().getOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
+            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().getOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
+            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().getOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
+            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().getOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
+            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().getOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
         }
         @Nested class getFirstOrElse {
-            @DisplayName("null")  @Test void testNull() { assertNull(new EmptyCollectionHolderForTest<>().getFirstOrElse(() -> null));}
-            @DisplayName("0")     @Test void test0()    { assertSame(ZERO_INT, new EmptyCollectionHolderForTest<>().getFirstOrElse(() -> ZERO_INT));}
+            @DisplayName("null")  @Test void testNull() { assertNull(instance.getFirstOrElse(() -> null));}
+            @DisplayName("0")     @Test void test0()    { assertSame(ZERO_INT, getInstance().getFirstOrElse(() -> ZERO_INT));}
         }
         @Nested class getLastOrElse {
-            @DisplayName("null")  @Test void testNull() { assertNull(new EmptyCollectionHolderForTest<>().getLastOrElse(() -> null));}
-            @DisplayName("0")     @Test void test0()    { assertSame(ZERO_INT, new EmptyCollectionHolderForTest<>().getLastOrElse(() -> ZERO_INT));}
+            @DisplayName("null")  @Test void testNull() { assertNull(instance.getLastOrElse(() -> null));}
+            @DisplayName("0")     @Test void test0()    { assertSame(ZERO_INT, getInstance().getLastOrElse(() -> ZERO_INT));}
         }
 
         @Nested class first {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().first(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().first(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(EMPTY_ARRAY)); }
         }
         @Nested class firstOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstOrNull(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstOrNull(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(instance.firstOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(instance.firstOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(instance.firstOrNull(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(instance.firstOrNull(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(instance.firstOrNull(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(instance.firstOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(instance.firstOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.firstOrNull(EMPTY_ARRAY)); }
         }
         @Nested class firstIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().firstIndexed(NULL_PREDICATE2_ALT)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_PREDICATE1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(EMPTY_ARRAY)); }
         }
         @Nested class firstIndexedOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstIndexedOrNull(NULL_PREDICATE2_ALT)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_PREDICATE1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(instance.firstIndexedOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(instance.firstIndexedOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(instance.firstIndexedOrNull(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(instance.firstIndexedOrNull(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(instance.firstIndexedOrNull(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(instance.firstIndexedOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(instance.firstIndexedOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.firstIndexedOrNull(EMPTY_ARRAY)); }
         }
 
         @Nested class last {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().last(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().last(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(EMPTY_ARRAY)); }
         }
         @Nested class lastOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastOrNull(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastOrNull(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(instance.lastOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(instance.lastOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(instance.lastOrNull(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(instance.lastOrNull(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(instance.lastOrNull(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(instance.lastOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(instance.lastOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.lastOrNull(EMPTY_ARRAY)); }
         }
         @Nested class lastIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().lastIndexed(NULL_PREDICATE2_ALT)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_PREDICATE1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(EMPTY_ARRAY)); }
         }
         @Nested class lastIndexedOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastIndexedOrNull(NULL_PREDICATE2_ALT)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_PREDICATE1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(instance.lastIndexedOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(instance.lastIndexedOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(instance.lastIndexedOrNull(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(instance.lastIndexedOrNull(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(instance.lastIndexedOrNull(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(instance.lastIndexedOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(instance.lastIndexedOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.lastIndexedOrNull(EMPTY_ARRAY)); }
         }
 
 
         @Nested class at {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at()); }
-            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(NULL_STRING)); }
-            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(NULL_VARARGS)); }
-            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at((byte) 0)); }
-            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at((short) 0)); }
-            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(0)); }
-            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(0L)); }
-            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(0.0F)); }
-            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(0.0D)); }
-                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_BYTE)); }
-                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_INT)); }
-                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_LONG)); }
-                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(ZERO_NUMBER)); }
-            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().at(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(0.0D)); }
+                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_BYTE)); }
+                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_SHORT)); }
+                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_INT)); }
+                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_LONG)); }
+                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_FLOAT)); }
+                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_DOUBLE)); }
+                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(ZERO_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(EMPTY_ARRAY)); }
         }
         @Nested class elementAt {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt()); }
-            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(NULL_STRING)); }
-            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(NULL_VARARGS)); }
-            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt((byte) 0)); }
-            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt((short) 0)); }
-            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(0)); }
-            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(0L)); }
-            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(0.0F)); }
-            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(0.0D)); }
-                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_BYTE)); }
-                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_INT)); }
-                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_LONG)); }
-                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(ZERO_NUMBER)); }
-            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().elementAt(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(0.0D)); }
+                                        @Test void Byte()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_BYTE)); }
+                                        @Test void Short()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_SHORT)); }
+                                        @Test void Integer()           { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_INT)); }
+                                        @Test void Long()              { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_LONG)); }
+                                        @Test void Float()             { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_FLOAT)); }
+                                        @Test void Double()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_DOUBLE)); }
+                                        @Test void BigInteger()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(ZERO_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(EMPTY_ARRAY)); }
         }
 
         @Nested class atOrElse {
-            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().atOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   new EmptyCollectionHolderForTest<>().atOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   new EmptyCollectionHolderForTest<>().atOrElse(0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().atOrElse(0L, (LongFunction<?>) String::valueOf)); }
-            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().atOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().atOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().atOrElse(ZERO_BYTE, it -> it)); }
-            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().atOrElse(ZERO_SHORT, it -> it)); }
-            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().atOrElse(ZERO_INT, it -> it)); }
-            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().atOrElse(ZERO_LONG, it -> it)); }
-            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().atOrElse(ZERO_FLOAT, it -> it)); }
-            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().atOrElse(ZERO_DOUBLE, it -> it)); }
-            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().atOrElse(ZERO_BIG_INTEGER, it -> it)); }
-            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().atOrElse(ZERO_BIG_DECIMAL, it -> it)); }
-            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().atOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().atOrElse(ZERO_ATOMIC_LONG, it -> it)); }
-            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().atOrElse(ZERO_LONG_ADDER, it -> it)); }
-            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().atOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().atOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().atOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().atOrElse(ZERO_NUMBER, it -> it)); }
-            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_BYTE, it -> it)); }
-            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_SHORT, it -> it)); }
-            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_INT, it -> it)); }
-            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG, it -> it)); }
-            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_FLOAT, it -> it)); }
-            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE, it -> it)); }
-            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_BIG_INTEGER, it -> it)); }
-            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_BIG_DECIMAL, it -> it)); }
-            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_ATOMIC_LONG, it -> it)); }
-            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG_ADDER, it -> it)); }
-            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(NULL_NUMBER, it -> it)); }
+            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   getInstance().atOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   getInstance().atOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   getInstance().atOrElse(0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   getInstance().atOrElse(0L, (LongFunction<?>) String::valueOf)); }
+            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 getInstance().atOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 getInstance().atOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().atOrElse(ZERO_BYTE, it -> it)); }
+            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().atOrElse(ZERO_SHORT, it -> it)); }
+            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                getInstance().atOrElse(ZERO_INT, it -> it)); }
+            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().atOrElse(ZERO_LONG, it -> it)); }
+            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().atOrElse(ZERO_FLOAT, it -> it)); }
+            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().atOrElse(ZERO_DOUBLE, it -> it)); }
+            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().atOrElse(ZERO_BIG_INTEGER, it -> it)); }
+            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().atOrElse(ZERO_BIG_DECIMAL, it -> it)); }
+            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().atOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().atOrElse(ZERO_ATOMIC_LONG, it -> it)); }
+            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().atOrElse(ZERO_LONG_ADDER, it -> it)); }
+            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().atOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().atOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().atOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().atOrElse(ZERO_NUMBER, it -> it)); }
+            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         getInstance().atOrElse(NULL_BYTE, it -> it)); }
+            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         getInstance().atOrElse(NULL_SHORT, it -> it)); }
+            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         getInstance().atOrElse(NULL_INT, it -> it)); }
+            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         getInstance().atOrElse(NULL_LONG, it -> it)); }
+            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         getInstance().atOrElse(NULL_FLOAT, it -> it)); }
+            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         getInstance().atOrElse(NULL_DOUBLE, it -> it)); }
+            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         getInstance().atOrElse(NULL_BIG_INTEGER, it -> it)); }
+            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         getInstance().atOrElse(NULL_BIG_DECIMAL, it -> it)); }
+            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         getInstance().atOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         getInstance().atOrElse(NULL_ATOMIC_LONG, it -> it)); }
+            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         getInstance().atOrElse(NULL_LONG_ADDER, it -> it)); }
+            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         getInstance().atOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         getInstance().atOrElse(NULL_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         getInstance().atOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         getInstance().atOrElse(NULL_NUMBER, it -> it)); }
 
-            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse((byte) 0, () -> null)); }
-            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse((short) 0, () -> null)); }
-            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(0, () -> null)); }
-            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(0L, () -> null)); }
-            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(0.0F, () -> null)); }
-            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().atOrElse(0.0D, () -> null)); }
-            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().atOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
-            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().atOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
-            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().atOrElse(NULL_INT, () -> ZERO_INT)); }
-            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG, () -> ZERO_LONG)); }
-            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().atOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
-            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
-            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().atOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
-            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().atOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
-            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().atOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
-            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().atOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
-            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
-            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().atOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
-            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
-            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().atOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
-            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().atOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
+            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         instance     .atOrElse((byte) 0, () -> null)); }
+            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         instance     .atOrElse((short) 0, () -> null)); }
+            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         instance     .atOrElse(0, () -> null)); }
+            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         instance     .atOrElse(0L, () -> null)); }
+            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         instance     .atOrElse(0.0F, () -> null)); }
+            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         instance     .atOrElse(0.0D, () -> null)); }
+            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().atOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
+            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().atOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
+            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                getInstance().atOrElse(NULL_INT, () -> ZERO_INT)); }
+            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().atOrElse(NULL_LONG, () -> ZERO_LONG)); }
+            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().atOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
+            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().atOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
+            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().atOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
+            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().atOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
+            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().atOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
+            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().atOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
+            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().atOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
+            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().atOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
+            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().atOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
+            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().atOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
+            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().atOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
         }
         @Nested class elementAtOrElse {
-            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().elementAtOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   new EmptyCollectionHolderForTest<>().elementAtOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   new EmptyCollectionHolderForTest<>().elementAtOrElse(0, (IntFunction<?>) String::valueOf)); }
-            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   new EmptyCollectionHolderForTest<>().elementAtOrElse(0L, (LongFunction<?>) String::valueOf)); }
-            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().elementAtOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 new EmptyCollectionHolderForTest<>().elementAtOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
-            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_BYTE, it -> it)); }
-            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_SHORT, it -> it)); }
-            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_INT, it -> it)); }
-            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_LONG, it -> it)); }
-            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_FLOAT, it -> it)); }
-            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_DOUBLE, it -> it)); }
-            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_BIG_INTEGER, it -> it)); }
-            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_BIG_DECIMAL, it -> it)); }
-            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_ATOMIC_LONG, it -> it)); }
-            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_LONG_ADDER, it -> it)); }
-            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().elementAtOrElse(ZERO_NUMBER, it -> it)); }
-            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BYTE, it -> it)); }
-            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_SHORT, it -> it)); }
-            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_INT, it -> it)); }
-            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG, it -> it)); }
-            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_FLOAT, it -> it)); }
-            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE, it -> it)); }
-            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BIG_INTEGER, it -> it)); }
-            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BIG_DECIMAL, it -> it)); }
-            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
-            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_ATOMIC_LONG, it -> it)); }
-            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG_ADDER, it -> it)); }
-            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
-            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE_ADDER, it -> it)); }
-            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
-            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_NUMBER, it -> it)); }
+            @DisplayName("0 byte, it → it")                    @Test void testByteWith1ArgCallback()              { assertEquals("0",                   getInstance().elementAtOrElse((byte) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 short, it → it")                   @Test void testShortWith1ArgCallback()             { assertEquals("0",                   getInstance().elementAtOrElse((short) 0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 int, it → it")                     @Test void testIntWith1ArgCallback()               { assertEquals("0",                   getInstance().elementAtOrElse(0, (IntFunction<?>) String::valueOf)); }
+            @DisplayName("0 long, it → it")                    @Test void testLongWith1ArgCallback()              { assertEquals("0",                   getInstance().elementAtOrElse(0L, (LongFunction<?>) String::valueOf)); }
+            @DisplayName("0 float, it → it")                   @Test void testFloatWith1ArgCallback()             { assertEquals("0.0",                 getInstance().elementAtOrElse(0.0F, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 double, it → it")                  @Test void testDoubleWith1ArgCallback()            { assertEquals("0.0",                 getInstance().elementAtOrElse(0.0D, (DoubleFunction<?>) String::valueOf)); }
+            @DisplayName("0 Byte, it → it")                    @Test void ByteWith1ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().elementAtOrElse(ZERO_BYTE, it -> it)); }
+            @DisplayName("0 Short, it → it")                   @Test void ShortWith1ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().elementAtOrElse(ZERO_SHORT, it -> it)); }
+            @DisplayName("0 Integer, it → it")                 @Test void IntegerWith1ArgCallback()               { assertSame(ZERO_INT,                getInstance().elementAtOrElse(ZERO_INT, it -> it)); }
+            @DisplayName("0 Long, it → it")                    @Test void LongWith1ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().elementAtOrElse(ZERO_LONG, it -> it)); }
+            @DisplayName("0 Float, it → it")                   @Test void FloatWith1ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().elementAtOrElse(ZERO_FLOAT, it -> it)); }
+            @DisplayName("0 Double, it → it")                  @Test void DoubleWith1ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().elementAtOrElse(ZERO_DOUBLE, it -> it)); }
+            @DisplayName("0 BigInteger, it → it")              @Test void BigIntegerWith1ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().elementAtOrElse(ZERO_BIG_INTEGER, it -> it)); }
+            @DisplayName("0 BigDecimal, it → it")              @Test void BigDecimalWith1ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().elementAtOrElse(ZERO_BIG_DECIMAL, it -> it)); }
+            @DisplayName("0 AtomicInteger, it → it")           @Test void AtomicIntegerWith1ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().elementAtOrElse(ZERO_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("0 AtomicLong, it → it")              @Test void AtomicLongWith1ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().elementAtOrElse(ZERO_ATOMIC_LONG, it -> it)); }
+            @DisplayName("0 LongAdder, it → it")               @Test void LongAdderWith1ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().elementAtOrElse(ZERO_LONG_ADDER, it -> it)); }
+            @DisplayName("0 LongAccumulator, it → it")         @Test void LongAccumulatorWith1ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().elementAtOrElse(ZERO_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 DoubleAdder, it → it")             @Test void DoubleAdderWith1ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().elementAtOrElse(ZERO_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("0 DoubleAccumulator, it → it")       @Test void DoubleAccumulatorWith1ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().elementAtOrElse(ZERO_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("0 Number, it → it")                  @Test void NumberWith1ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().elementAtOrElse(ZERO_NUMBER, it -> it)); }
+            @DisplayName("null Byte, it → it")                 @Test void nullByteWith1ArgCallback()              { assertNull(                         getInstance().elementAtOrElse(NULL_BYTE, it -> it)); }
+            @DisplayName("null Short, it → it")                @Test void nullShortWith1ArgCallback()             { assertNull(                         getInstance().elementAtOrElse(NULL_SHORT, it -> it)); }
+            @DisplayName("null Integer, it → it")              @Test void nullIntegerWith1ArgCallback()           { assertNull(                         getInstance().elementAtOrElse(NULL_INT, it -> it)); }
+            @DisplayName("null Long, it → it")                 @Test void nullLongWith1ArgCallback()              { assertNull(                         getInstance().elementAtOrElse(NULL_LONG, it -> it)); }
+            @DisplayName("null Float, it → it")                @Test void nullFloatWith1ArgCallback()             { assertNull(                         getInstance().elementAtOrElse(NULL_FLOAT, it -> it)); }
+            @DisplayName("null Double, it → it")               @Test void nullDoubleWith1ArgCallback()            { assertNull(                         getInstance().elementAtOrElse(NULL_DOUBLE, it -> it)); }
+            @DisplayName("null BigInteger, it → it")           @Test void nullBigIntegerWith1ArgCallback()        { assertNull(                         getInstance().elementAtOrElse(NULL_BIG_INTEGER, it -> it)); }
+            @DisplayName("null BigDecimal, it → it")           @Test void nullBigDecimalWith1ArgCallback()        { assertNull(                         getInstance().elementAtOrElse(NULL_BIG_DECIMAL, it -> it)); }
+            @DisplayName("null AtomicInteger, it → it")        @Test void nullAtomicIntegerWith1ArgCallback()     { assertNull(                         getInstance().elementAtOrElse(NULL_ATOMIC_INTEGER, it -> it)); }
+            @DisplayName("null AtomicLong, it → it")           @Test void nullAtomicLongWith1ArgCallback()        { assertNull(                         getInstance().elementAtOrElse(NULL_ATOMIC_LONG, it -> it)); }
+            @DisplayName("null LongAdder, it → it")            @Test void nullLongAdderWith1ArgCallback()         { assertNull(                         getInstance().elementAtOrElse(NULL_LONG_ADDER, it -> it)); }
+            @DisplayName("null LongAccumulator, it → it")      @Test void nullLongAccumulatorWith1ArgCallback()   { assertNull(                         getInstance().elementAtOrElse(NULL_LONG_ACCUMULATOR, it -> it)); }
+            @DisplayName("null DoubleAdder, it → it")          @Test void nullDoubleAdderWith1ArgCallback()       { assertNull(                         getInstance().elementAtOrElse(NULL_DOUBLE_ADDER, it -> it)); }
+            @DisplayName("null DoubleAccumulator, it → it")    @Test void nullDoubleAccumulatorWith1ArgCallback() { assertNull(                         getInstance().elementAtOrElse(NULL_DOUBLE_ACCUMULATOR, it -> it)); }
+            @DisplayName("null Number, it → it")               @Test void nullNumberWith1ArgCallback()            { assertNull(                         getInstance().elementAtOrElse(NULL_NUMBER, it -> it)); }
 
-            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse((byte) 0, () -> null)); }
-            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse((short) 0, () -> null)); }
-            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(0, () -> null)); }
-            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(0L, () -> null)); }
-            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(0.0F, () -> null)); }
-            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         new EmptyCollectionHolderForTest<>().elementAtOrElse(0.0D, () -> null)); }
-            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
-            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
-            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_INT, () -> ZERO_INT)); }
-            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG, () -> ZERO_LONG)); }
-            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
-            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
-            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
-            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
-            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
-            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
-            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
-            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
-            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
-            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
-            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             new EmptyCollectionHolderForTest<>().elementAtOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
+            @DisplayName("0 byte, () → null")                  @Test void testByteWith0ArgCallback()              { assertNull(                         instance     .elementAtOrElse((byte) 0, () -> null)); }
+            @DisplayName("0 short, () → null")                 @Test void testShortWith0ArgCallback()             { assertNull(                         instance     .elementAtOrElse((short) 0, () -> null)); }
+            @DisplayName("0 int, () → null")                   @Test void testIntWith0ArgCallback()               { assertNull(                         instance     .elementAtOrElse(0, () -> null)); }
+            @DisplayName("0 long, () → null")                  @Test void testLongWith0ArgCallback()              { assertNull(                         instance     .elementAtOrElse(0L, () -> null)); }
+            @DisplayName("0 float, () → null")                 @Test void testFloatWith0ArgCallback()             { assertNull(                         instance     .elementAtOrElse(0.0F, () -> null)); }
+            @DisplayName("0 double, () → null")                @Test void testDoubleWith0ArgCallback()            { assertNull(                         instance     .elementAtOrElse(0.0D, () -> null)); }
+            @DisplayName("null Byte, () → 0")                  @Test void ByteWith0ArgCallback()                  { assertSame(ZERO_BYTE,               getInstance().elementAtOrElse(NULL_BYTE, () -> ZERO_BYTE)); }
+            @DisplayName("null Short, () → 0")                 @Test void ShortWith0ArgCallback()                 { assertSame(ZERO_SHORT,              getInstance().elementAtOrElse(NULL_SHORT, () -> ZERO_SHORT)); }
+            @DisplayName("null Integer, () → 0")               @Test void IntegerWith0ArgCallback()               { assertSame(ZERO_INT,                getInstance().elementAtOrElse(NULL_INT, () -> ZERO_INT)); }
+            @DisplayName("null Long, () → 0")                  @Test void LongWith0ArgCallback()                  { assertSame(ZERO_LONG,               getInstance().elementAtOrElse(NULL_LONG, () -> ZERO_LONG)); }
+            @DisplayName("null Float, () → 0")                 @Test void FloatWith0ArgCallback()                 { assertSame(ZERO_FLOAT,              getInstance().elementAtOrElse(NULL_FLOAT, () -> ZERO_FLOAT)); }
+            @DisplayName("null Double, () → 0")                @Test void DoubleWith0ArgCallback()                { assertSame(ZERO_DOUBLE,             getInstance().elementAtOrElse(NULL_DOUBLE, () -> ZERO_DOUBLE)); }
+            @DisplayName("null BigInteger, () → 0")            @Test void BigIntegerWith0ArgCallback()            { assertSame(ZERO_BIG_INTEGER,        getInstance().elementAtOrElse(NULL_BIG_INTEGER, () -> ZERO_BIG_INTEGER)); }
+            @DisplayName("null BigDecimal, () → 0")            @Test void BigDecimalWith0ArgCallback()            { assertSame(ZERO_BIG_DECIMAL,        getInstance().elementAtOrElse(NULL_BIG_DECIMAL, () -> ZERO_BIG_DECIMAL)); }
+            @DisplayName("null AtomicInteger, () → empty")     @Test void AtomicIntegerWith0ArgCallback()         { assertSame(ZERO_ATOMIC_INTEGER,     getInstance().elementAtOrElse(NULL_ATOMIC_INTEGER, () -> ZERO_ATOMIC_INTEGER)); }
+            @DisplayName("null AtomicLong, () → empty")        @Test void AtomicLongWith0ArgCallback()            { assertSame(ZERO_ATOMIC_LONG,        getInstance().elementAtOrElse(NULL_ATOMIC_LONG, () -> ZERO_ATOMIC_LONG)); }
+            @DisplayName("null LongAdder, () → empty")         @Test void LongAdderWith0ArgCallback()             { assertSame(ZERO_LONG_ADDER,         getInstance().elementAtOrElse(NULL_LONG_ADDER, () -> ZERO_LONG_ADDER)); }
+            @DisplayName("null LongAccumulator, () → empty")   @Test void LongAccumulatorWith0ArgCallback()       { assertSame(ZERO_LONG_ACCUMULATOR,   getInstance().elementAtOrElse(NULL_LONG_ACCUMULATOR, () -> ZERO_LONG_ACCUMULATOR)); }
+            @DisplayName("null DoubleAdder, () → empty")       @Test void DoubleAdderWith0ArgCallback()           { assertSame(ZERO_DOUBLE_ADDER,       getInstance().elementAtOrElse(NULL_DOUBLE_ADDER, () -> ZERO_DOUBLE_ADDER)); }
+            @DisplayName("null DoubleAccumulator, () → empty") @Test void DoubleAccumulatorWith0ArgCallback()     { assertSame(ZERO_DOUBLE_ACCUMULATOR, getInstance().elementAtOrElse(NULL_DOUBLE_ACCUMULATOR, () -> ZERO_DOUBLE_ACCUMULATOR)); }
+            @DisplayName("null Number, () → 0")                @Test void NumberWith0ArgCallback()                { assertSame(ZERO_NUMBER,             getInstance().elementAtOrElse(NULL_NUMBER, () -> ZERO_NUMBER)); }
         }
 
         @Nested class atOrNull {
-            @DisplayName("∅")           @Test void testEmpty()         { assertNull(new EmptyCollectionHolderForTest<>().atOrNull()); }
-            @DisplayName("null object") @Test void testNullObject()    { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString()    { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(NULL_STRING)); }
-            @DisplayName("null []")     @Test void testNullArray()     { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(NULL_VARARGS)); }
-            @DisplayName("byte")        @Test void testByte()          { assertNull(new EmptyCollectionHolderForTest<>().atOrNull((byte) 0)); }
-            @DisplayName("short")       @Test void testShort()         { assertNull(new EmptyCollectionHolderForTest<>().atOrNull((short) 0)); }
-            @DisplayName("int")         @Test void testInt()           { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(0)); }
-            @DisplayName("long")        @Test void testLong()          { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(0L)); }
-            @DisplayName("float")       @Test void testFloat()         { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(0.0F)); }
-            @DisplayName("double")      @Test void testDouble()        { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(0.0D)); }
-                                        @Test void Byte()              { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_BYTE)); }
-                                        @Test void Short()             { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_INT)); }
-                                        @Test void Long()              { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_LONG)); }
-                                        @Test void Float()             { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(ZERO_NUMBER)); }
-            @DisplayName("[]")          @Test void testArray()         { assertNull(new EmptyCollectionHolderForTest<>().atOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertNull(instance.atOrNull()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertNull(instance.atOrNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertNull(instance.atOrNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertNull(instance.atOrNull(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertNull(instance.atOrNull((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertNull(instance.atOrNull((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertNull(instance.atOrNull(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertNull(instance.atOrNull(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertNull(instance.atOrNull(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertNull(instance.atOrNull(0.0D)); }
+                                        @Test void Byte()              { assertNull(instance.atOrNull(ZERO_BYTE)); }
+                                        @Test void Short()             { assertNull(instance.atOrNull(ZERO_SHORT)); }
+                                        @Test void Integer()           { assertNull(instance.atOrNull(ZERO_INT)); }
+                                        @Test void Long()              { assertNull(instance.atOrNull(ZERO_LONG)); }
+                                        @Test void Float()             { assertNull(instance.atOrNull(ZERO_FLOAT)); }
+                                        @Test void Double()            { assertNull(instance.atOrNull(ZERO_DOUBLE)); }
+                                        @Test void BigInteger()        { assertNull(instance.atOrNull(ZERO_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertNull(instance.atOrNull(ZERO_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertNull(instance.atOrNull(ZERO_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertNull(instance.atOrNull(ZERO_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertNull(instance.atOrNull(ZERO_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertNull(instance.atOrNull(ZERO_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertNull(instance.atOrNull(ZERO_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertNull(instance.atOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertNull(instance.atOrNull(ZERO_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertNull(instance.atOrNull(EMPTY_ARRAY)); }
         }
         @Nested class elementAtOrNull {
-            @DisplayName("∅")           @Test void testEmpty()         { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull()); }
-            @DisplayName("null object") @Test void testNullObject()    { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(NULL_OBJECT)); }
-            @DisplayName("null string") @Test void testNullString()    { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(NULL_STRING)); }
-            @DisplayName("null []")     @Test void testNullArray()     { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(NULL_VARARGS)); }
-            @DisplayName("byte")        @Test void testByte()          { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull((byte) 0)); }
-            @DisplayName("short")       @Test void testShort()         { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull((short) 0)); }
-            @DisplayName("int")         @Test void testInt()           { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(0)); }
-            @DisplayName("long")        @Test void testLong()          { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(0L)); }
-            @DisplayName("float")       @Test void testFloat()         { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(0.0F)); }
-            @DisplayName("double")      @Test void testDouble()        { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(0.0D)); }
-                                        @Test void Byte()              { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_BYTE)); }
-                                        @Test void Short()             { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_INT)); }
-                                        @Test void Long()              { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_LONG)); }
-                                        @Test void Float()             { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(ZERO_NUMBER)); }
-            @DisplayName("[]")          @Test void testArray()         { assertNull(new EmptyCollectionHolderForTest<>().elementAtOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertNull(instance.elementAtOrNull()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertNull(instance.elementAtOrNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertNull(instance.elementAtOrNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertNull(instance.elementAtOrNull(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertNull(instance.elementAtOrNull((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertNull(instance.elementAtOrNull((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertNull(instance.elementAtOrNull(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertNull(instance.elementAtOrNull(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertNull(instance.elementAtOrNull(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertNull(instance.elementAtOrNull(0.0D)); }
+                                        @Test void Byte()              { assertNull(instance.elementAtOrNull(ZERO_BYTE)); }
+                                        @Test void Short()             { assertNull(instance.elementAtOrNull(ZERO_SHORT)); }
+                                        @Test void Integer()           { assertNull(instance.elementAtOrNull(ZERO_INT)); }
+                                        @Test void Long()              { assertNull(instance.elementAtOrNull(ZERO_LONG)); }
+                                        @Test void Float()             { assertNull(instance.elementAtOrNull(ZERO_FLOAT)); }
+                                        @Test void Double()            { assertNull(instance.elementAtOrNull(ZERO_DOUBLE)); }
+                                        @Test void BigInteger()        { assertNull(instance.elementAtOrNull(ZERO_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertNull(instance.elementAtOrNull(ZERO_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertNull(instance.elementAtOrNull(ZERO_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertNull(instance.elementAtOrNull(ZERO_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertNull(instance.elementAtOrNull(ZERO_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertNull(instance.elementAtOrNull(ZERO_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertNull(instance.elementAtOrNull(ZERO_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertNull(instance.elementAtOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertNull(instance.elementAtOrNull(ZERO_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertNull(instance.elementAtOrNull(EMPTY_ARRAY)); }
         }
     }
 

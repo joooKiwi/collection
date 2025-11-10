@@ -1,7 +1,6 @@
 import condition.DisableIfNormalCondition;
 import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
-import instance.EmptyCollectionHolderForTest;
 import instance.GenericCollectionHolder_AllAlias;
 import instance.GenericCollectionHolder_AnyAlias;
 import joookiwi.collection.java.CollectionHolder;
@@ -17,6 +16,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
+import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
 import test.AbstractMethodsTests;
 
@@ -61,48 +61,48 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 @DisplayNameGeneration(Simple.class)
 @DisplayName("CollectionHolder tests (all|any|none)") @TestInstance(PER_CLASS) class CollectionHolder06_AllAnyNoneTests {
 
-    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder {
+    @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
         @Nested class all {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(new EmptyCollectionHolderForTest<>()      .all()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().all(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().all(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(new EmptyCollectionHolderForTest<>()      .all(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertTrue(new EmptyCollectionHolderForTest<>()      .all(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertTrue(new EmptyCollectionHolderForTest<>()      .all(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(instance.all()); }
+            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(instance.all(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(instance.all(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(instance.all(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray() { assertTrue(instance.all(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()     { assertTrue(instance.all(EMPTY_ARRAY)); }
         }
         @Nested class every {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(new EmptyCollectionHolderForTest<>()      .every()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().every(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().every(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(new EmptyCollectionHolderForTest<>()      .every(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertTrue(new EmptyCollectionHolderForTest<>()      .every(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertTrue(new EmptyCollectionHolderForTest<>()      .every(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(instance.every()); }
+            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(instance.every(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(instance.every(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(instance.every(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray() { assertTrue(instance.every(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()     { assertTrue(instance.every(EMPTY_ARRAY)); }
         }
 
         @Nested class any {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertFalse(new EmptyCollectionHolderForTest<>()      .any()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertFalse(new EmptyCollectionHolderForTest<String>().any(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertFalse(new EmptyCollectionHolderForTest<String>().any(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertFalse(new EmptyCollectionHolderForTest<>()      .any(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertFalse(new EmptyCollectionHolderForTest<>()      .any(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertFalse(new EmptyCollectionHolderForTest<>()      .any(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()     { assertFalse(instance.any()); }
+            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertFalse(instance.any(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertFalse(instance.any(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertFalse(instance.any(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray() { assertFalse(instance.any(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()     { assertFalse(instance.any(EMPTY_ARRAY)); }
         }
         @Nested class some {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertFalse(new EmptyCollectionHolderForTest<>()      .some()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertFalse(new EmptyCollectionHolderForTest<String>().some(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertFalse(new EmptyCollectionHolderForTest<String>().some(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertFalse(new EmptyCollectionHolderForTest<>()      .some(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertFalse(new EmptyCollectionHolderForTest<>()      .some(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertFalse(new EmptyCollectionHolderForTest<>()      .some(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()     { assertFalse(instance.some()); }
+            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertFalse(instance.some(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertFalse(instance.some(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertFalse(instance.some(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray() { assertFalse(instance.some(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()     { assertFalse(instance.some(EMPTY_ARRAY)); }
         }
 
         @Nested class none {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(new EmptyCollectionHolderForTest<>()      .none()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().none(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(new EmptyCollectionHolderForTest<String>().none(NULL_PREDICATE1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(new EmptyCollectionHolderForTest<>()      .none(NULL_PREDICATE0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertTrue(new EmptyCollectionHolderForTest<>()      .none(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertTrue(new EmptyCollectionHolderForTest<>()      .none(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()     { assertTrue(instance.none()); }
+            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertTrue(instance.none(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertTrue(instance.none(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertTrue(instance.none(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray() { assertTrue(instance.none(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()     { assertTrue(instance.none(EMPTY_ARRAY)); }
         }
     }
 
