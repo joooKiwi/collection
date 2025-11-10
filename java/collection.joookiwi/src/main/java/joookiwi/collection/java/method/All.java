@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_2;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_2;
 
 @NotNullByDefault
 public final class All
@@ -41,15 +41,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with2Argument(collection, predicate, size);
     }
 
@@ -68,13 +68,13 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
                                                            final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with2Argument(collection, predicate, collection.size());
     }
 
@@ -93,15 +93,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
                                                            final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with2Argument(collection, predicate, size);
     }
 
@@ -123,15 +123,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final Predicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with1Argument(collection, predicate, size);
     }
 
@@ -150,14 +150,14 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
                                                            final Predicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with1Argument(collection, predicate, collection.size());
     }
 
@@ -176,15 +176,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
                                                            final Predicate<? super T> predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with1Argument(collection, predicate, size);
     }
 
@@ -206,15 +206,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with0Argument(predicate, size);
     }
 
@@ -233,13 +233,13 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final @Nullable CollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
-            return false;
+            return true;
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with0Argument(predicate, collection.size());
     }
 
@@ -258,15 +258,15 @@ public final class All
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/all.html">Kotlin all(predicate)</a>
     /// @see <a href="https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all">C# All(predicate)</a>
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FALSE_2)
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
     public static <T extends @Nullable Object> boolean all(final T @Nullable @Unmodifiable [] collection,
                                                            final BooleanSupplier predicate) {
         if (collection == null)
-            return false;
+            return true;
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with0Argument(predicate, size);
     }
 
