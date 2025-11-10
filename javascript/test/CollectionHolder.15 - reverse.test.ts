@@ -11,14 +11,14 @@
 //··························································
 
 import {expectToBeInstance}                                                      from "./expect/expectToBeInstance"
-import {CollectionHolderFromArray}                                               from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                            from "./instance/EmptyCollectionHolderForTest"
-import {GenericCollectionHolder_ToReverseAlias}                                  from "./instance/GenericCollectionHolder_ToReverseAlias"
 import {LazyGenericCollectionHolder_ToReverseAlias}                              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY, NULL_UNDEFINED} from "./value/arrays"
 import {everyCollectionInstances}                                                from "./value/instances"
+import {CollectionHolderFromArray}                               from "./instance/CollectionHolderFromArray"
+import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
 
 import {CollectionConstants}                                                                                 from "../src/CollectionConstants"
+import {EmptyCollectionHolder}                                                                               from "../src/EmptyCollectionHolder"
 import {ForbiddenIndexException}                                                                             from "../src/exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                           from "../src/exception/IndexOutOfBoundsException"
 import {InvalidIndexRangeException}                                                                          from "../src/exception/InvalidIndexRangeException"
@@ -30,9 +30,11 @@ import {toReversed, toReversedByArray, toReversedByCollectionHolder, toReversedB
 describe("CollectionHolderTest (reverse)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("toReverse",  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.toReverse(),),)
-        test("toReversed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.toReversed(),),)
-        test("reversed",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.reversed(),),)
+        const instance = EmptyCollectionHolder.get
+
+        test("toReverse",  () => expectToBeInstance(instance, it => it.toReverse(),),)
+        test("toReversed", () => expectToBeInstance(instance, it => it.toReversed(),),)
+        test("reversed",   () => expectToBeInstance(instance, it => it.reversed(),),)
     },)
 
     describe("aliases", () => {

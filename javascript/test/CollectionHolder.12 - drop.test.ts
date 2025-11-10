@@ -24,7 +24,6 @@ import {LazyGenericCollectionHolder_DropLastWhileAlias}                         
 import {LazyGenericCollectionHolder_DropLastWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                      from "./instance/LazyGenericCollectionHolder_DropLastWhileIndexedAlias"
 import {LazyGenericCollectionHolder_DropWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/LazyGenericCollectionHolder_DropWhileAlias"
 import {LazyGenericCollectionHolder_DropWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/LazyGenericCollectionHolder_DropWhileIndexedAlias"
-import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                                                                                                                               from "./instance/EmptyCollectionHolderForTest"
 import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY, NULL_UNDEFINED}                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                                                                                                                                                                                                     from "./value/callbacks (boolean)"
@@ -33,6 +32,7 @@ import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt
 import {everyCollectionInstances}                                                                                                                                                                                                                                                                                                                                                                   from "./value/instances"
 
 import {CollectionConstants}                                                                                                                         from "../src/CollectionConstants"
+import {EmptyCollectionHolder}                                                                                                                       from "../src/EmptyCollectionHolder"
 import {ForbiddenIndexException}                                                                                                                     from "../src/exception/ForbiddenIndexException"
 import * as dropModule                                                                                                                               from "../src/method/drop"
 import {drop, dropByArray, dropByCollectionHolder, dropByMinimalistCollectionHolder}                                                                 from "../src/method/drop"
@@ -56,18 +56,20 @@ import {skipWhileIndexed, skipWhileIndexedByArray, skipWhileIndexedByCollectionH
 describe("CollectionHolderTest (drop)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("drop",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.drop(),),)
-        test("skip",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skip(),),)
-        test("dropWhile",            () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.dropWhile(),),)
-        test("skipWhile",            () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skipWhile(),),)
-        test("dropWhileIndexed",     () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.dropWhileIndexed(),),)
-        test("skipWhileIndexed",     () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skipWhileIndexed(),),)
-        test("dropLast",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.dropLast(),),)
-        test("skipLast",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skipLast(),),)
-        test("dropLastWhile",        () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.dropLastWhile(),),)
-        test("skipLastWhile",        () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skipLastWhile(),),)
-        test("dropLastWhileIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.dropLastWhileIndexed(),),)
-        test("skipLastWhileIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.skipLastWhileIndexed(),),)
+        const instance = EmptyCollectionHolder.get
+
+        test("drop",                 () => expectToBeInstance(instance, it => it.drop(),),)
+        test("skip",                 () => expectToBeInstance(instance, it => it.skip(),),)
+        test("dropWhile",            () => expectToBeInstance(instance, it => it.dropWhile(),),)
+        test("skipWhile",            () => expectToBeInstance(instance, it => it.skipWhile(),),)
+        test("dropWhileIndexed",     () => expectToBeInstance(instance, it => it.dropWhileIndexed(),),)
+        test("skipWhileIndexed",     () => expectToBeInstance(instance, it => it.skipWhileIndexed(),),)
+        test("dropLast",             () => expectToBeInstance(instance, it => it.dropLast(),),)
+        test("skipLast",             () => expectToBeInstance(instance, it => it.skipLast(),),)
+        test("dropLastWhile",        () => expectToBeInstance(instance, it => it.dropLastWhile(),),)
+        test("skipLastWhile",        () => expectToBeInstance(instance, it => it.skipLastWhile(),),)
+        test("dropLastWhileIndexed", () => expectToBeInstance(instance, it => it.dropLastWhileIndexed(),),)
+        test("skipLastWhileIndexed", () => expectToBeInstance(instance, it => it.skipLastWhileIndexed(),),)
     },)
 
     describe("aliases", () => {

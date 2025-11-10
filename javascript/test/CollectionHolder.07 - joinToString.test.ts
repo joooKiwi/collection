@@ -11,7 +11,6 @@
 //··························································
 
 import {CollectionHolderFromArray}                                                                                                  from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                                                                               from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_JoinToStringAlias}                                                                                  from "./instance/GenericCollectionHolder_JoinToStringAlias"
 import {LazyGenericCollectionHolder_JoinToStringAlias}                                                                              from "./instance/LazyGenericCollectionHolder_JoinToStringAlias"
 import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                         from "./value/arrays"
@@ -19,21 +18,25 @@ import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                      
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
 import {everyCollectionInstances}                                                                                                   from "./value/instances"
 
-import {CollectionConstants}                                                                                         from "../src/CollectionConstants"
-import {ForbiddenIndexException}                                                                                     from "../src/exception/ForbiddenIndexException"
 import {join, joinByArray, joinByCollectionHolder, joinByMinimalistCollectionHolder}                                 from "../src/method/join"
 import * as joinToStringModule                                                                                       from "../src/method/joinToString"
 import {joinToString, joinToStringByArray, joinToStringByCollectionHolder, joinToStringByMinimalistCollectionHolder} from "../src/method/joinToString"
+import {CollectionConstants}                                                         from "../src/CollectionConstants"
+import {EmptyCollectionHolder}                                                       from "../src/EmptyCollectionHolder"
+import {ForbiddenIndexException}                                                     from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (joinToString)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("joinToString", () => expect(new EmptyCollectionHolderForTest().joinToString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("joinToString: prefix", () => expect(new EmptyCollectionHolderForTest().joinToString(null, '<',),).toBe("<]",),)
-        test("joinToString: postfix", () => expect(new EmptyCollectionHolderForTest().joinToString(null, null, '>',),).toBe("[>",),)
-        test("join", () => expect(new EmptyCollectionHolderForTest().join(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("join: prefix", () => expect(new EmptyCollectionHolderForTest().join(null, '<',),).toBe("<]",),)
-        test("join: postfix", () => expect(new EmptyCollectionHolderForTest().join(null, null, '>',),).toBe("[>",),)
+        const instance = EmptyCollectionHolder.get
+
+        test("joinToString",          () => expect(instance.joinToString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("joinToString: prefix",  () => expect(instance.joinToString(null, '<',),).toBe("<]",),)
+        test("joinToString: postfix", () => expect(instance.joinToString(null, null, '>',),).toBe("[>",),)
+
+        test("join",                  () => expect(instance.join(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("join: prefix",          () => expect(instance.join(null, '<',),).toBe("<]",),)
+        test("join: postfix",         () => expect(instance.join(null, null, '>',),).toBe("[>",),)
     },)
 
     describe("alias (join)", () => {

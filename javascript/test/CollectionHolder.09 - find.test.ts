@@ -11,7 +11,6 @@
 //··························································
 
 import {CollectionHolderFromArray}                                                                                                                                                                                           from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                                                                                                                                                                        from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_FindFirstAlias}                                                                                                                                                                              from "./instance/GenericCollectionHolder_FindFirstAlias"
 import {GenericCollectionHolder_FindFirstIndexedAlias}                                                                                                                                                                       from "./instance/GenericCollectionHolder_FindFirstIndexedAlias"
 import {GenericCollectionHolder_FindFirstIndexedOrNullAlias}                                                                                                                                                                 from "./instance/GenericCollectionHolder_FindFirstIndexedOrNullAlias"
@@ -37,8 +36,6 @@ import {everyCollectionInstances}                                               
 
 import {EmptyCollectionException}                                                                                                                            from "../src/exception/EmptyCollectionException"
 import {IndexOutOfBoundsException}                                                                                                                           from "../src/exception/IndexOutOfBoundsException"
-import {NullCollectionException}                                                                                                                             from "../src/exception/NullCollectionException"
-import {find, findByArray, findByCollectionHolder, findByMinimalistCollectionHolder}                                                                         from "../src/method/find"
 import * as findFirstModule                                                                                                                                  from "../src/method/findFirst"
 import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMinimalistCollectionHolder}                                                     from "../src/method/findFirst"
 import * as findFirstIndexedModule                                                                                                                           from "../src/method/findFirstIndexed"
@@ -66,22 +63,27 @@ import {last, lastByArray, lastByCollectionHolder, lastByMinimalistCollectionHol
 import {lastIndexed, lastIndexedByArray, lastIndexedByCollectionHolder, lastIndexedByMinimalistCollectionHolder}                                             from "../src/method/lastIndexed"
 import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollectionHolder, lastIndexedOrNullByMinimalistCollectionHolder}                     from "../src/method/lastIndexedOrNull"
 import {lastOrNull, lastOrNullByArray, lastOrNullByCollectionHolder, lastOrNullByMinimalistCollectionHolder}                                                 from "../src/method/lastOrNull"
+import {NullCollectionException}                                                                                                             from "../src/exception/NullCollectionException"
+import {EmptyCollectionHolder}                                                                                                               from "../src/EmptyCollectionHolder"
+import {find, findByArray, findByCollectionHolder, findByMinimalistCollectionHolder}                                                         from "../src/method/find"
 
 describe("CollectionHolderTest (find)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("find",                   () => expect(() => new EmptyCollectionHolderForTest().find(),).toThrow(EmptyCollectionException,),)
-        test("findOrNull",             () => expect(new EmptyCollectionHolderForTest().findOrNull(),).toBeNull(),)
-        test("findIndexed",            () => expect(() => new EmptyCollectionHolderForTest().findIndexed(),).toThrow(EmptyCollectionException,),)
-        test("findIndexedOrNull",      () => expect(new EmptyCollectionHolderForTest().findIndexedOrNull(),).toBeNull(),)
-        test("findFirst",              () => expect(() => new EmptyCollectionHolderForTest().findFirst(),).toThrow(EmptyCollectionException,),)
-        test("findFirstOrNull",        () => expect(new EmptyCollectionHolderForTest().findFirstOrNull(),).toBeNull(),)
-        test("findFirstIndexed",       () => expect(() => new EmptyCollectionHolderForTest().findFirstIndexed(),).toThrow(EmptyCollectionException,),)
-        test("findFirstIndexedOrNull", () => expect(new EmptyCollectionHolderForTest().findFirstIndexedOrNull(),).toBeNull(),)
-        test("findLast",               () => expect(() => new EmptyCollectionHolderForTest().findLast(),).toThrow(EmptyCollectionException,),)
-        test("findLastOrNull",         () => expect(new EmptyCollectionHolderForTest().findLastOrNull(),).toBeNull(),)
-        test("findLastIndexed",        () => expect(() => new EmptyCollectionHolderForTest().findLastIndexed(),).toThrow(EmptyCollectionException,),)
-        test("findLastIndexedOrNull",  () => expect(new EmptyCollectionHolderForTest().findLastIndexedOrNull(),).toBeNull(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("find",                   () => expect(() => instance.find(),).toThrow(EmptyCollectionException,),)
+        test("findOrNull",             () => expect(instance.findOrNull(),).toBeNull(),)
+        test("findIndexed",            () => expect(() => instance.findIndexed(),).toThrow(EmptyCollectionException,),)
+        test("findIndexedOrNull",      () => expect(instance.findIndexedOrNull(),).toBeNull(),)
+        test("findFirst",              () => expect(() => instance.findFirst(),).toThrow(EmptyCollectionException,),)
+        test("findFirstOrNull",        () => expect(instance.findFirstOrNull(),).toBeNull(),)
+        test("findFirstIndexed",       () => expect(() => instance.findFirstIndexed(),).toThrow(EmptyCollectionException,),)
+        test("findFirstIndexedOrNull", () => expect(instance.findFirstIndexedOrNull(),).toBeNull(),)
+        test("findLast",               () => expect(() => instance.findLast(),).toThrow(EmptyCollectionException,),)
+        test("findLastOrNull",         () => expect(instance.findLastOrNull(),).toBeNull(),)
+        test("findLastIndexed",        () => expect(() => instance.findLastIndexed(),).toThrow(EmptyCollectionException,),)
+        test("findLastIndexedOrNull",  () => expect(instance.findLastIndexedOrNull(),).toBeNull(),)
     },)
 
     describe("aliases", () => {

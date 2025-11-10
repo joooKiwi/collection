@@ -10,18 +10,20 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {EmptyCollectionHolderForTest} from "./instance/EmptyCollectionHolderForTest"
 import {AB, EMPTY}                    from "./value/arrays"
 import {everyCollectionInstances}     from "./value/instances"
 
 import {CollectionConstants}       from "../src/CollectionConstants"
+import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
 import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (javascript exclusive)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("Symbol.toStringTag", () => expect(new EmptyCollectionHolderForTest()[Symbol.toStringTag],).toEqual(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-        test("Symbol.iterator",    () => expect(new EmptyCollectionHolderForTest()[Symbol.iterator](),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        const instance = EmptyCollectionHolder.get
+
+        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toEqual(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+        test("Symbol.iterator",    () => expect(instance[Symbol.iterator](),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
     },)
 
     describe.each(everyCollectionInstances,)("%s", ({value: {instance,},},) => {

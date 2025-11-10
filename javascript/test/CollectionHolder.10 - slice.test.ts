@@ -12,13 +12,10 @@
 
 import {expectToBeInstance}                                                                                        from "./expect/expectToBeInstance"
 import {CollectionHolderFromArray}                                                                                 from "./instance/CollectionHolderFromArray"
-import {CollectionIteratorFromArray}                                                                               from "./instance/CollectionIteratorFromArray"
-import {EmptyCollectionHolderForTest}                                                                              from "./instance/EmptyCollectionHolderForTest"
 import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY, NULL_UNDEFINED} from "./value/arrays"
 import {everyCollectionInstances, everyIterableInstances}                                                          from "./value/instances"
+import {CollectionIteratorFromArray}                                                               from "./instance/CollectionIteratorFromArray"
 
-import {CollectionConstants}                                                                                                                                                                                     from "../src/CollectionConstants"
-import {ForbiddenIndexException}                                                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
 import {InvalidIndexRangeException}                                                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
 import {slice, sliceByArray, sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                                                                                                                         from "../src/method/slice"
@@ -30,10 +27,13 @@ import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollecti
 import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/slice.withIterator"
 import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/slice.withMinimalistCollectionHolder"
 import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/slice.withSet"
+import {CollectionConstants}        from "../src/CollectionConstants"
+import {EmptyCollectionHolder}      from "../src/EmptyCollectionHolder"
+import {ForbiddenIndexException}    from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (slice)", () => {
 
-    test("EmptyCollectionHolder", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.slice(),),)
+    test("EmptyCollectionHolder", () => expectToBeInstance(EmptyCollectionHolder.get, it => it.slice(),),)
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
         describe("slice", () => {

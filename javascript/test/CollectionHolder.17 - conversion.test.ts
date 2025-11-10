@@ -12,10 +12,7 @@
 
 import {EmptyCollectionHolderForTest}                             from "./instance/EmptyCollectionHolderForTest"
 import {A, A_A, AA, AB, AB_AB, ABAB, ABCD, EMPTY, NULL_UNDEFINED} from "./value/arrays"
-import {everyCollectionInstances}                                 from "./value/instances"
 
-import {CollectionConstants}                                                                                                                                     from "../src/CollectionConstants"
-import {GenericCollectionIterator}                                                                                                                               from "../src/iterator/GenericCollectionIterator"
 import {toArray, toArrayByArray, toArrayByCollectionHolder, toArrayByMinimalistCollectionHolder}                                                                 from "../src/method/toArray"
 import {toIterator, toIteratorByArray, toIteratorByCollectionHolder, toIteratorByMinimalistCollectionHolder}                                                     from "../src/method/toIterator"
 import {toLocaleLowerCaseString, toLocaleLowerCaseStringByArray, toLocaleLowerCaseStringByCollectionHolder, toLocaleLowerCaseStringByMinimalistCollectionHolder} from "../src/method/toLocaleLowerCaseString"
@@ -31,38 +28,14 @@ import {toSet, toSetByArray, toSetByCollectionHolder, toSetByMinimalistCollectio
 import {toString, toStringByArray, toStringByCollectionHolder, toStringByMinimalistCollectionHolder}                                                             from "../src/method/toString"
 import {toUpperCaseString, toUpperCaseStringByArray, toUpperCaseStringByCollectionHolder, toUpperCaseStringByMinimalistCollectionHolder}                         from "../src/method/toUpperCaseString"
 import {toWeakSet, toWeakSetByArray, toWeakSetByCollectionHolder, toWeakSetByMinimalistCollectionHolder}                                                         from "../src/method/toWeakSet"
+import {CollectionConstants}       from "../src/CollectionConstants"
+import {EmptyCollectionHolder}     from "../src/EmptyCollectionHolder"
+import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
 
 describe("CollectionHolderTest (conversion)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("toIterator",               () => expect(new EmptyCollectionHolderForTest().toIterator(),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-        test("toArray",                  () => expect(new EmptyCollectionHolderForTest().toArray(),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
-        test("toArray: frozen",          () => expect(new EmptyCollectionHolderForTest().toArray(),).toBeFrozen(),)
-        test("toMutableArray",           () => expect(new EmptyCollectionHolderForTest().toMutableArray(),).toEqual([],),)
-        test("toMutableArray: frozen",   () => expect(new EmptyCollectionHolderForTest().toMutableArray(),).not.toBeFrozen(),)
-        test("toSet",                    () => expect(new EmptyCollectionHolderForTest().toSet(),).toEqual(CollectionConstants.EMPTY_SET,),)
-        test("toSet: frozen",            () => expect(new EmptyCollectionHolderForTest().toSet(),).toBeFrozen(),)
-        test("toMutableSet",             () => expect(new EmptyCollectionHolderForTest().toMutableSet(),).toEqual(new Set(),),)
-        test("toMutableSet: frozen",     () => expect(new EmptyCollectionHolderForTest().toMutableSet(),).not.toBeFrozen(),)
-        test("toWeakSet",                () => expect(new EmptyCollectionHolderForTest().toWeakSet(),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
-        test("toWeakSet: frozen",        () => expect(new EmptyCollectionHolderForTest().toWeakSet(),).toBeFrozen(),)
-        test("toMutableWeakWet",         () => expect(new EmptyCollectionHolderForTest().toMutableWeakSet(),).toEqual(new WeakSet(),),)
-        test("toMutableWeakWet: frozen", () => expect(new EmptyCollectionHolderForTest().toMutableWeakSet(),).not.toBeFrozen(),)
-        test("toMap",                    () => expect(new EmptyCollectionHolderForTest().toMap(),).toEqual(CollectionConstants.EMPTY_MAP,),)
-        test("toMap: frozen",            () => expect(new EmptyCollectionHolderForTest().toMap(),).toBeFrozen(),)
-        test("toMutableMap",             () => expect(new EmptyCollectionHolderForTest().toMutableMap(),).toEqual(new Map(),),)
-        test("toMutableMap: frozen",     () => expect(new EmptyCollectionHolderForTest().toMutableMap(),).not.toBeFrozen(),)
-        test("toWeakMap",                () => expect(new EmptyCollectionHolderForTest().toWeakMap(),).toEqual(CollectionConstants.EMPTY_WEAK_MAP,),)
-        test("toWeakMap: frozen",        () => expect(new EmptyCollectionHolderForTest().toWeakMap(),).toBeFrozen(),)
-        test("toMutableWeakMap",         () => expect(new EmptyCollectionHolderForTest().toMutableWeakMap(),).toEqual(new WeakMap(),),)
-        test("toMutableWeakMap: frozen", () => expect(new EmptyCollectionHolderForTest().toMutableWeakMap(),).not.toBeFrozen(),)
-        test("toString",                 () => expect(new EmptyCollectionHolderForTest().toString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleString",           () => expect(new EmptyCollectionHolderForTest().toLocaleString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLowerCaseString",        () => expect(new EmptyCollectionHolderForTest().toLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleLowerCaseString",  () => expect(new EmptyCollectionHolderForTest().toLocaleLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toUpperCaseString",        () => expect(new EmptyCollectionHolderForTest().toUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-        test("toLocaleUpperCaseString",  () => expect(new EmptyCollectionHolderForTest().toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-    },)
+        const instance = EmptyCollectionHolder.get
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
         describe("toIterator", () => {
@@ -155,6 +128,34 @@ describe("CollectionHolderTest (conversion)", () => {
             test("collection holder",            () => expect(toLocaleUpperCaseStringByCollectionHolder(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
             test("array",                        () => expect(toLocaleUpperCaseStringByArray(it,),).toEqual(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
         },)
+    },)
+        test("toIterator",               () => expect(instance.toIterator(),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        test("toArray",                  () => expect(instance.toArray(),).toEqual(CollectionConstants.EMPTY_ARRAY,),)
+        test("toArray: frozen",          () => expect(instance.toArray(),).toBeFrozen(),)
+        test("toMutableArray",           () => expect(instance.toMutableArray(),).toEqual([],),)
+        test("toMutableArray: frozen",   () => expect(instance.toMutableArray(),).not.toBeFrozen(),)
+        test("toSet",                    () => expect(instance.toSet(),).toEqual(CollectionConstants.EMPTY_SET,),)
+        test("toSet: frozen",            () => expect(instance.toSet(),).toBeFrozen(),)
+        test("toMutableSet",             () => expect(instance.toMutableSet(),).toEqual(new Set(),),)
+        test("toMutableSet: frozen",     () => expect(instance.toMutableSet(),).not.toBeFrozen(),)
+        test("toWeakSet",                () => expect(instance.toWeakSet(),).toEqual(CollectionConstants.EMPTY_WEAK_SET,),)
+        test("toWeakSet: frozen",        () => expect(instance.toWeakSet(),).toBeFrozen(),)
+        test("toMutableWeakWet",         () => expect(instance.toMutableWeakSet(),).toEqual(new WeakSet(),),)
+        test("toMutableWeakWet: frozen", () => expect(instance.toMutableWeakSet(),).not.toBeFrozen(),)
+        test("toMap",                    () => expect(instance.toMap(),).toEqual(CollectionConstants.EMPTY_MAP,),)
+        test("toMap: frozen",            () => expect(instance.toMap(),).toBeFrozen(),)
+        test("toMutableMap",             () => expect(instance.toMutableMap(),).toEqual(new Map(),),)
+        test("toMutableMap: frozen",     () => expect(instance.toMutableMap(),).not.toBeFrozen(),)
+        test("toWeakMap",                () => expect(instance.toWeakMap(),).toEqual(CollectionConstants.EMPTY_WEAK_MAP,),)
+        test("toWeakMap: frozen",        () => expect(instance.toWeakMap(),).toBeFrozen(),)
+        test("toMutableWeakMap",         () => expect(instance.toMutableWeakMap(),).toEqual(new WeakMap(),),)
+        test("toMutableWeakMap: frozen", () => expect(instance.toMutableWeakMap(),).not.toBeFrozen(),)
+        test("toString",                 () => expect(instance.toString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("toLocaleString",           () => expect(instance.toLocaleString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("toLowerCaseString",        () => expect(instance.toLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("toLocaleLowerCaseString",  () => expect(instance.toLocaleLowerCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("toUpperCaseString",        () => expect(instance.toUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+        test("toLocaleUpperCaseString",  () => expect(instance.toLocaleUpperCaseString(),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
     },)
 
     describe.each(everyCollectionInstances,)("%s", ({value: {instance,},},) => {

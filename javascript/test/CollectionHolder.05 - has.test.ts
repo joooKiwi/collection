@@ -11,9 +11,6 @@
 //··························································
 
 import {expectToBeInstance}                                                                                                                                                                                                                                                                          from "./expect/expectToBeInstance"
-import {CollectionHolderFromArray}                                                                                                                                                                                                                                                                   from "./instance/CollectionHolderFromArray"
-import {CollectionIteratorFromArray}                                                                                                                                                                                                                                                                 from "./instance/CollectionIteratorFromArray"
-import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                                from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_HasAlias}                                                                                                                                                                                                                                                            from "./instance/GenericCollectionHolder_HasAlias"
 import {GenericCollectionHolder_HasAllAlias}                                                                                                                                                                                                                                                         from "./instance/GenericCollectionHolder_HasAllAlias"
 import {GenericCollectionHolder_HasDuplicateAlias}                                                                                                                                                                                                                                                   from "./instance/GenericCollectionHolder_HasDuplicateAlias"
@@ -40,9 +37,12 @@ import {LazyGenericCollectionHolder_HasOneAlias}                                
 import {MinimalistCollectionHolderFromArray}                                                                                                                                                                                                                                                         from "./instance/MinimalistCollectionHolderFromArray"
 import {A, A_NULL, A_NULL_B, A_NULL_NULL_UNDEFINED_B, A_NULL_UNDEFINED_B, A_NULL_UNDEFINED_UNDEFINED_B, A_UNDEFINED, A_UNDEFINED_B, AA, AABC, AB, AB_NULL, AB_UNDEFINED, ABAB, ABBC, ABCD, B, C, D, E, EF, EFGH, EMPTY, NULL, NULL_A, NULL_AB, NULL_UNDEFINED, UNDEFINED, UNDEFINED_A, UNDEFINED_AB} from "./value/arrays"
 import {everyCollectionInstances, everyIterableInstances}                                                                                                                                                                                                                                            from "./value/instances"
+import {CollectionIteratorFromArray}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   from "./instance/CollectionIteratorFromArray"
+import {GenericCollectionHolder_HasAlias}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              from "./instance/GenericCollectionHolder_HasAlias"
 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../src/type/possibleInstance"
 
+import {EmptyCollectionHolder}                                                                                                                                                                                                                       from "../src/EmptyCollectionHolder"
 import {contains, containsByArray, containsByCollectionHolder, containsByMinimalistCollectionHolder}                                                                                                                                                 from "../src/method/contains"
 import {containsAll, containsAllByArray, containsAllByCollectionHolder, containsAllByMinimalistCollectionHolder}                                                                                                                                     from "../src/method/containsAll"
 import {containsAllWithArray, containsAllWithArrayByArray, containsAllWithArrayByCollectionHolder, containsAllWithArrayByMinimalistCollectionHolder}                                                                                                 from "../src/method/containsAll.withArray"
@@ -220,18 +220,20 @@ describe("CollectionHolderTest (has)", () => {
     ] as const satisfies readonly Holder<() => PossibleIterableIteratorArraySetOrCollectionHolder<'a'>, string>[]
 
     describe("EmptyCollectionHolder", () => {
-        test("has",            () => expect(new EmptyCollectionHolderForTest().has(),).toBeFalse(),)
-        test("includes",       () => expect(new EmptyCollectionHolderForTest().includes(),).toBeFalse(),)
-        test("contains",       () => expect(new EmptyCollectionHolderForTest().contains(),).toBeFalse(),)
-        test("hasNot",         () => expect(new EmptyCollectionHolderForTest().hasNot(),).toBeTrue(),)
-        test("includesNot",    () => expect(new EmptyCollectionHolderForTest().includesNot(),).toBeTrue(),)
-        test("containsNot",    () => expect(new EmptyCollectionHolderForTest().containsNot(),).toBeTrue(),)
-        test("hasOne",         () => expect(new EmptyCollectionHolderForTest().hasOne(),).toBeFalse(),)
-        test("includesOne",    () => expect(new EmptyCollectionHolderForTest().includesOne(),).toBeFalse(),)
-        test("containsOne",    () => expect(new EmptyCollectionHolderForTest().containsOne(),).toBeFalse(),)
-        test("hasNotOne",      () => expect(new EmptyCollectionHolderForTest().hasNotOne(),).toBeTrue(),)
-        test("includesNotOne", () => expect(new EmptyCollectionHolderForTest().includesNotOne(),).toBeTrue(),)
-        test("containsNotOne", () => expect(new EmptyCollectionHolderForTest().containsNotOne(),).toBeTrue(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("has",            () => expect(instance.has(),).toBeFalse(),)
+        test("includes",       () => expect(instance.includes(),).toBeFalse(),)
+        test("contains",       () => expect(instance.contains(),).toBeFalse(),)
+        test("hasNot",         () => expect(instance.hasNot(),).toBeTrue(),)
+        test("includesNot",    () => expect(instance.includesNot(),).toBeTrue(),)
+        test("containsNot",    () => expect(instance.containsNot(),).toBeTrue(),)
+        test("hasOne",         () => expect(instance.hasOne(),).toBeFalse(),)
+        test("includesOne",    () => expect(instance.includesOne(),).toBeFalse(),)
+        test("containsOne",    () => expect(instance.containsOne(),).toBeFalse(),)
+        test("hasNotOne",      () => expect(instance.hasNotOne(),).toBeTrue(),)
+        test("includesNotOne", () => expect(instance.includesNotOne(),).toBeTrue(),)
+        test("containsNotOne", () => expect(instance.containsNotOne(),).toBeTrue(),)
 
         describe.each(everyIterableInstances,)("hasAll: %s", ({value: it,},) => {
             test("empty",    () => expect(new EmptyCollectionHolderForTest().hasAll(it(EMPTY,),),).toBeTrue(),)

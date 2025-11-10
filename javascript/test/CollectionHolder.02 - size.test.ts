@@ -10,20 +10,23 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_SizeAlias}     from "./instance/GenericCollectionHolder_SizeAlias"
-import {EmptyCollectionHolderForTest}          from "./instance/EmptyCollectionHolderForTest"
-import {LazyGenericCollectionHolder_SizeAlias} from "./instance/LazyGenericCollectionHolder_SizeAlias"
 import {everyCollectionInstances}              from "./value/instances"
 import {sizeValues}                            from "./value/sizes"
+import {GenericCollectionHolder_SizeAlias}             from "./instance/GenericCollectionHolder_SizeAlias"
+import {LazyGenericCollectionHolder_SizeAlias}         from "./instance/LazyGenericCollectionHolder_SizeAlias"
+
+import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
 describe("CollectionHolderTest (size)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("size",       () => expect(new EmptyCollectionHolderForTest().size,).toBe(0,),)
-        test("length",     () => expect(new EmptyCollectionHolderForTest().length,).toBe(0,),)
-        test("count",      () => expect(new EmptyCollectionHolderForTest().count,).toBe(0,),)
-        test("isEmpty",    () => expect(new EmptyCollectionHolderForTest().isEmpty,).toBeTrue(),)
-        test("isNotEmpty", () => expect(new EmptyCollectionHolderForTest().isNotEmpty,).toBeFalse(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("size",       () => expect(instance.size,).toBe(0,),)
+        test("length",     () => expect(instance.length,).toBe(0,),)
+        test("count",      () => expect(instance.count,).toBe(0,),)
+        test("isEmpty",    () => expect(instance.isEmpty,).toBeTrue(),)
+        test("isNotEmpty", () => expect(instance.isNotEmpty,).toBeFalse(),)
     },)
 
     describe("aliases", () => {

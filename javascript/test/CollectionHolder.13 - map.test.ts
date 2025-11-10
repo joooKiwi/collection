@@ -10,28 +10,24 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                                                                                                                        from "./expect/expectToBeInstance"
-import {EmptyCollectionHolderForTest}                                                                                                                                                              from "./instance/EmptyCollectionHolderForTest"
 import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_UNDEFINED, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                                 from "./value/callbacks (null)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                                from "./value/callbacks (string)"
 import {everyCollectionInstances}                                                                                                                                                                  from "./value/instances"
+import {expectToBeInstance}                                                                                                                                                        from "./expect/expectToBeInstance"
 
-import {CollectionConstants}                                                                                                             from "../src/CollectionConstants"
 import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}                                                         from "../src/method/map"
 import {mapIndexed, mapIndexedByArray, mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                             from "../src/method/mapIndexed"
 import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                             from "../src/method/mapNotNull"
 import {mapNotNullIndexed, mapNotNullIndexedByArray, mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder} from "../src/method/mapNotNullIndexed"
+import {CollectionConstants}   from "../src/CollectionConstants"
+import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
 describe("CollectionHolderTest (map)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("map",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.map(),),)
-        test("mapIndexed",          () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapIndexed(),),)
-        test("mapNotNull",          () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapNotNull(),),)
-        test("mapNotNullIndexed",   () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.mapNotNullIndexed(),),)
-    },)
+        const instance = EmptyCollectionHolder.get
 
     describe.each(NULL_UNDEFINED,)("%s", it => {
         describe("map", () => {
@@ -46,6 +42,11 @@ describe("CollectionHolderTest (map)", () => {
             test("collection holder",            () => expect(mapIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             test("array",                        () => expect(mapIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
         },)
+        test("map",                 () => expectToBeInstance(instance, it => it.map(),),)
+        test("mapIndexed",          () => expectToBeInstance(instance, it => it.mapIndexed(),),)
+        test("mapNotNull",          () => expectToBeInstance(instance, it => it.mapNotNull(),),)
+        test("mapNotNullIndexed",   () => expectToBeInstance(instance, it => it.mapNotNullIndexed(),),)
+    },)
 
         describe("mapNotNull", () => {
             test("all",                          () => expect(mapNotNull(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)

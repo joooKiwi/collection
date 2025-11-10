@@ -11,7 +11,6 @@
 //··························································
 
 import {CollectionHolderFromArray}                                                                                                                                                                                                                                                                                                                                                                  from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                                                                                                                                                                                                                                                                                                                                               from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_TakeAlias}                                                                                                                                                                                                                                                                                                                                                          from "./instance/GenericCollectionHolder_TakeAlias"
 import {GenericCollectionHolder_TakeLastAlias}                                                                                                                                                                                                                                                                                                                                                      from "./instance/GenericCollectionHolder_TakeLastAlias"
 import {GenericCollectionHolder_TakeLastWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/GenericCollectionHolder_TakeLastWhileAlias"
@@ -33,6 +32,7 @@ import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt
 import {everyCollectionInstances}                                                                                                                                                                                                                                                                                                                                                                   from "./value/instances"
 
 import {CollectionConstants}                                                                                                                             from "../src/CollectionConstants"
+import {EmptyCollectionHolder}                                                                                                                           from "../src/EmptyCollectionHolder"
 import {ForbiddenIndexException}                                                                                                                         from "../src/exception/ForbiddenIndexException"
 import {limit, limitByArray, limitByCollectionHolder, limitByMinimalistCollectionHolder}                                                                 from "../src/method/limit"
 import {limitLast, limitLastByArray, limitLastByCollectionHolder, limitLastByMinimalistCollectionHolder}                                                 from "../src/method/limitLast"
@@ -56,18 +56,20 @@ import {takeWhileIndexed, takeWhileIndexedByArray, takeWhileIndexedByCollectionH
 describe("CollectionHolderTest (take)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("take",                  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.take(),),)
-        test("limit",                 () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limit(),),)
-        test("takeWhile",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhile(),),)
-        test("limitWhile",            () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitWhile(),),)
-        test("takeWhileIndexed",      () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeWhileIndexed(),),)
-        test("limitWhileIndexed",     () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitWhileIndexed(),),)
-        test("takeLast",              () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLast(),),)
-        test("limitLast",             () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLast(),),)
-        test("takeLastWhile",         () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhile(),),)
-        test("limitLastWhile",        () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLastWhile(),),)
-        test("takeLastWhileIndexed",  () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.takeLastWhileIndexed(),),)
-        test("limitLastWhileIndexed", () => expectToBeInstance(new EmptyCollectionHolderForTest(), it => it.limitLastWhileIndexed(),),)
+        const instance = EmptyCollectionHolder.get
+
+        test("take",                  () => expectToBeInstance(instance, it => it.take(),),)
+        test("limit",                 () => expectToBeInstance(instance, it => it.limit(),),)
+        test("takeWhile",             () => expectToBeInstance(instance, it => it.takeWhile(),),)
+        test("limitWhile",            () => expectToBeInstance(instance, it => it.limitWhile(),),)
+        test("takeWhileIndexed",      () => expectToBeInstance(instance, it => it.takeWhileIndexed(),),)
+        test("limitWhileIndexed",     () => expectToBeInstance(instance, it => it.limitWhileIndexed(),),)
+        test("takeLast",              () => expectToBeInstance(instance, it => it.takeLast(),),)
+        test("limitLast",             () => expectToBeInstance(instance, it => it.limitLast(),),)
+        test("takeLastWhile",         () => expectToBeInstance(instance, it => it.takeLastWhile(),),)
+        test("limitLastWhile",        () => expectToBeInstance(instance, it => it.limitLastWhile(),),)
+        test("takeLastWhileIndexed",  () => expectToBeInstance(instance, it => it.takeLastWhileIndexed(),),)
+        test("limitLastWhileIndexed", () => expectToBeInstance(instance, it => it.limitLastWhileIndexed(),),)
     },)
 
     describe("aliases", () => {

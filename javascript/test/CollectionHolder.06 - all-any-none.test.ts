@@ -11,7 +11,6 @@
 //··························································
 
 import {CollectionHolderFromArray}                                                                                                              from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                                                                                                           from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_AllAlias}                                                                                                       from "./instance/GenericCollectionHolder_AllAlias"
 import {GenericCollectionHolder_AnyAlias}                                                                                                       from "./instance/GenericCollectionHolder_AnyAlias"
 import {LazyGenericCollectionHolder_AnyAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_AnyAlias"
@@ -23,6 +22,7 @@ import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callback
 import {callbackIsA, callbackIsB, callbackIsC, callbackIsD, callbackIsE}                                                                        from "./value/callbacks (string)"
 import {everyCollectionInstances}                                                                                                               from "./value/instances"
 
+import {EmptyCollectionHolder}                                                           from "../src/EmptyCollectionHolder"
 import * as allModule                                                                    from "../src/method/all"
 import {all, allByArray, allByCollectionHolder, allByMinimalistCollectionHolder}         from "../src/method/all"
 import * as anyModule                                                                    from "../src/method/any"
@@ -34,11 +34,13 @@ import {some, someByArray, someByCollectionHolder, someByMinimalistCollectionHol
 describe("CollectionHolderTest (all / any / none)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("all",   () => expect(new EmptyCollectionHolderForTest().all(),).toBeTrue(),)
-        test("every", () => expect(new EmptyCollectionHolderForTest().every(),).toBeTrue(),)
-        test("any",   () => expect(new EmptyCollectionHolderForTest().any(),).toBeFalse(),)
-        test("some",  () => expect(new EmptyCollectionHolderForTest().some(),).toBeFalse(),)
-        test("every", () => expect(new EmptyCollectionHolderForTest().none(),).toBeTrue(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("all",   () => expect(instance.all(),).toBeTrue(),)
+        test("every", () => expect(instance.every(),).toBeTrue(),)
+        test("any",   () => expect(instance.any(),).toBeFalse(),)
+        test("some",  () => expect(instance.some(),).toBeFalse(),)
+        test("every", () => expect(instance.none(),).toBeTrue(),)
     },)
 
     describe("aliases", () => {

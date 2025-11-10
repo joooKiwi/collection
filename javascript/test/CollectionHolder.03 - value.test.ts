@@ -11,7 +11,6 @@
 //··························································
 
 import {CollectionHolderFromArray}                       from "./instance/CollectionHolderFromArray"
-import {EmptyCollectionHolderForTest}                    from "./instance/EmptyCollectionHolderForTest"
 import {GenericCollectionHolder_GetAlias}                from "./instance/GenericCollectionHolder_GetAlias"
 import {GenericCollectionHolder_GetFirstAlias}           from "./instance/GenericCollectionHolder_GetFirstAlias"
 import {GenericCollectionHolder_GetFirstOrNullAlias}     from "./instance/GenericCollectionHolder_GetFirstOrNullAlias"
@@ -31,6 +30,7 @@ import {callbackAsFail0}                                 from "./value/callbacks
 import {callbackAsNull0}                                 from "./value/callbacks (null)"
 import {everyCollectionInstances}                        from "./value/instances"
 
+import {EmptyCollectionHolder}                                                                                                               from "../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}                                                                                                             from "../src/exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                                           from "../src/exception/IndexOutOfBoundsException"
@@ -76,29 +76,31 @@ describe("CollectionHolderTest (value)", () => {
     //#endregion -------------------- Reusable values --------------------
 
     describe("EmptyCollectionHolder", () => {
-        test("get",                 () => expect(() => new EmptyCollectionHolderForTest().get(),).toThrow(EmptyCollectionException,),)
-        test("getFirst",            () => expect(() => new EmptyCollectionHolderForTest().getFirst(),).toThrow(EmptyCollectionException,),)
-        test("first",               () => expect(() => new EmptyCollectionHolderForTest().first(),).toThrow(EmptyCollectionException,),)
-        test("firstIndexed",        () => expect(() => new EmptyCollectionHolderForTest().firstIndexed(),).toThrow(EmptyCollectionException,),)
-        test("getLast",             () => expect(() => new EmptyCollectionHolderForTest().getLast(),).toThrow(EmptyCollectionException,),)
-        test("last",                () => expect(() => new EmptyCollectionHolderForTest().last(),).toThrow(EmptyCollectionException,),)
-        test("lastIndexed",         () => expect(() => new EmptyCollectionHolderForTest().lastIndexed(),).toThrow(EmptyCollectionException,),)
-        test("at",                  () => expect(() => new EmptyCollectionHolderForTest().at(),).toThrow(EmptyCollectionException,),)
-        test("elementAt",           () => expect(() => new EmptyCollectionHolderForTest().elementAt(),).toThrow(EmptyCollectionException,),)
-        test("getOrElse",           () => expect(new EmptyCollectionHolderForTest().getOrElse(invalidIndex, it => it,),).toBeNaN(),)
-        test("atOrElse",            () => expect(new EmptyCollectionHolderForTest().atOrElse(invalidIndex, it => it,),).toBeNaN(),)
-        test("elementAtOrElse",     () => expect(new EmptyCollectionHolderForTest().elementAtOrElse(invalidIndex, it => it,),).toBeNaN(),)
-        test("getOrNull",           () => expect(new EmptyCollectionHolderForTest().getOrNull(),).toBeNull(),)
-        test("getFirstOrNull",      () => expect(new EmptyCollectionHolderForTest().getFirstOrNull(),).toBeNull(),)
-        test("getFirstOrElse",      () => expect(new EmptyCollectionHolderForTest().getFirstOrElse(callback,),).toBe(value,),)
-        test("firstOrNull",         () => expect(new EmptyCollectionHolderForTest().firstOrNull(),).toBeNull(),)
-        test("firstIndexedOrNull",  () => expect(new EmptyCollectionHolderForTest().firstIndexedOrNull(),).toBeNull(),)
-        test("getLastOrNull",       () => expect(new EmptyCollectionHolderForTest().getLastOrNull(),).toBeNull(),)
-        test("getLastOrElse",       () => expect(new EmptyCollectionHolderForTest().getLastOrElse(callback,),).toBe(value,),)
-        test("lastOrNull",          () => expect(new EmptyCollectionHolderForTest().lastOrNull(),).toBeNull(),)
-        test("lastIndexedOrNull",   () => expect(new EmptyCollectionHolderForTest().lastIndexedOrNull(),).toBeNull(),)
-        test("atOrNull",            () => expect(new EmptyCollectionHolderForTest().atOrNull(),).toBeNull(),)
-        test("elementAtOrNull",     () => expect(new EmptyCollectionHolderForTest().elementAtOrNull(),).toBeNull(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("get",                 () => expect(() => instance.get(),).toThrow(EmptyCollectionException,),)
+        test("getFirst",            () => expect(() => instance.getFirst(),).toThrow(EmptyCollectionException,),)
+        test("first",               () => expect(() => instance.first(),).toThrow(EmptyCollectionException,),)
+        test("firstIndexed",        () => expect(() => instance.firstIndexed(),).toThrow(EmptyCollectionException,),)
+        test("getLast",             () => expect(() => instance.getLast(),).toThrow(EmptyCollectionException,),)
+        test("last",                () => expect(() => instance.last(),).toThrow(EmptyCollectionException,),)
+        test("lastIndexed",         () => expect(() => instance.lastIndexed(),).toThrow(EmptyCollectionException,),)
+        test("at",                  () => expect(() => instance.at(),).toThrow(EmptyCollectionException,),)
+        test("elementAt",           () => expect(() => instance.elementAt(),).toThrow(EmptyCollectionException,),)
+        test("getOrElse",           () => expect(instance.getOrElse(invalidIndex, it => it,),).toBeNaN(),)
+        test("atOrElse",            () => expect(instance.atOrElse(invalidIndex, it => it,),).toBeNaN(),)
+        test("elementAtOrElse",     () => expect(instance.elementAtOrElse(invalidIndex, it => it,),).toBeNaN(),)
+        test("getOrNull",           () => expect(instance.getOrNull(),).toBeNull(),)
+        test("getFirstOrNull",      () => expect(instance.getFirstOrNull(),).toBeNull(),)
+        test("getFirstOrElse",      () => expect(instance.getFirstOrElse(callback,),).toBe(value,),)
+        test("firstOrNull",         () => expect(instance.firstOrNull(),).toBeNull(),)
+        test("firstIndexedOrNull",  () => expect(instance.firstIndexedOrNull(),).toBeNull(),)
+        test("getLastOrNull",       () => expect(instance.getLastOrNull(),).toBeNull(),)
+        test("getLastOrElse",       () => expect(instance.getLastOrElse(callback,),).toBe(value,),)
+        test("lastOrNull",          () => expect(instance.lastOrNull(),).toBeNull(),)
+        test("lastIndexedOrNull",   () => expect(instance.lastIndexedOrNull(),).toBeNull(),)
+        test("atOrNull",            () => expect(instance.atOrNull(),).toBeNull(),)
+        test("elementAtOrNull",     () => expect(instance.elementAtOrNull(),).toBeNull(),)
     },)
 
     describe("aliases", () => {
