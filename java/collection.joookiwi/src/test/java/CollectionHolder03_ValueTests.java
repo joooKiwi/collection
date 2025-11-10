@@ -107,6 +107,11 @@ import static value.ReusableFields_Null.NULL_LONG_ACCUMULATOR;
 import static value.ReusableFields_Null.NULL_LONG_ADDER;
 import static value.ReusableFields_Null.NULL_NUMBER;
 import static value.ReusableFields_Null.NULL_OBJECT;
+import static value.ReusableFields_Null.NULL_PREDICATE0;
+import static value.ReusableFields_Null.NULL_PREDICATE1;
+import static value.ReusableFields_Null.NULL_PREDICATE1_ALT;
+import static value.ReusableFields_Null.NULL_PREDICATE2;
+import static value.ReusableFields_Null.NULL_PREDICATE2_ALT;
 import static value.ReusableFields_Null.NULL_STRING;
 import static value.ReusableFields_Null.NULL_VARARGS;
 
@@ -229,85 +234,85 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class first {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first((ObjIntPredicate<? super Object>) null)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first((Predicate<? super Object>) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().first(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().first(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().first(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .first(EMPTY_ARRAY)); }
         }
         @Nested class firstOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull((ObjIntPredicate<? super Object>) null)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull((Predicate<? super Object>) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>().firstOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstOrNull(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstOrNull(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstOrNull(EMPTY_ARRAY)); }
         }
         @Nested class firstIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed((IntObjPredicate<? super Object>) null)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed((IntPredicate) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().firstIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().firstIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .firstIndexed(EMPTY_ARRAY)); }
         }
         @Nested class firstIndexedOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull((IntObjPredicate<? super Object>) null)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull((IntPredicate) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>().firstIndexedOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().firstIndexedOrNull(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .firstIndexedOrNull(EMPTY_ARRAY)); }
         }
 
         @Nested class last {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last((ObjIntPredicate<? super Object>) null)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last((Predicate<? super Object>) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().last(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().last(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().last(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .last(EMPTY_ARRAY)); }
         }
         @Nested class lastOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull(NULL_STRING)); }
-            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull((ObjIntPredicate<? super Object>) null)); }
-            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull((Predicate<? super Object>) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>().lastOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_STRING)); }
+            @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastOrNull(NULL_PREDICATE2)); }
+            @DisplayName("null (T) → boolean")      @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastOrNull(NULL_PREDICATE1)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastOrNull(EMPTY_ARRAY)); }
         }
         @Nested class lastIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed((IntObjPredicate<? super Object>) null)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed((IntPredicate) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>().lastIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<String>().lastIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> new EmptyCollectionHolderForTest<>()      .lastIndexed(EMPTY_ARRAY)); }
         }
         @Nested class lastIndexedOrNull {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull()); }
-            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull(NULL_OBJECT)); }
-            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull(NULL_STRING)); }
-            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull((IntObjPredicate<? super Object>) null)); }
-            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull((IntPredicate) null)); }
-            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull((BooleanSupplier) null)); }
-            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>().lastIndexedOrNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull()); }
+            @DisplayName("null object")             @Test void testNullObject()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_OBJECT)); }
+            @DisplayName("null string")             @Test void testNullString()   { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_STRING)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertNull(new EmptyCollectionHolderForTest<String>().lastIndexedOrNull(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_PREDICATE1_ALT)); }
+            @DisplayName("null () → boolean")       @Test void test0ArgCallback() { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_PREDICATE0)); }
+            @DisplayName("null array")              @Test void testNullArray()    { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")                      @Test void testArray()        { assertNull(new EmptyCollectionHolderForTest<>()      .lastIndexedOrNull(EMPTY_ARRAY)); }
         }
 
 
