@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                         from "../../src/MinimalistCollectionHolder"
@@ -66,5 +66,16 @@ export interface CollectionHolder_FromExtension<out T,>
     hasNotAllWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+    slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    sliceWithArray(indices: readonly number[],): CollectionHolder<T>
+    sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T>
+    sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T>
+    sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
+    sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T>
+    sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
 }

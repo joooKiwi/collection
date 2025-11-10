@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}               from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}     from "../../src/MinimalistCollectionHolder"
@@ -45,6 +45,14 @@ import {hasOneWithMinimalistCollectionHolderByMinimalistCollectionHolder}    fro
 import {hasOneWithCollectionIteratorByMinimalistCollectionHolder}            from "../../src/method/hasOne.withCollectionIterator"
 import {hasOneWithIteratorByMinimalistCollectionHolder}                      from "../../src/method/hasOne.withIterator"
 import {hasOneWithIterableByMinimalistCollectionHolder}                      from "../../src/method/hasOne.withIterable"
+import {sliceWithARangeByMinimalistCollectionHolder}                         from "../../src/method/slice.withARange"
+import {sliceWithArrayByMinimalistCollectionHolder}                          from "../../src/method/slice.withArray"
+import {sliceWithCollectionHolderByMinimalistCollectionHolder}               from "../../src/method/slice.withCollectionHolder"
+import {sliceWithCollectionIteratorByMinimalistCollectionHolder}             from "../../src/method/slice.withCollectionIterator"
+import {sliceWithIterableByMinimalistCollectionHolder}                       from "../../src/method/slice.withIterable"
+import {sliceWithIteratorByMinimalistCollectionHolder}                       from "../../src/method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}     from "../../src/method/slice.withMinimalistCollectionHolder"
+import {sliceWithSetByMinimalistCollectionHolder}                            from "../../src/method/slice.withSet"
 import {AbstractMinimalistCollectionHolderForTest}                           from "./AbstractMinimalistCollectionHolderForTest"
 
 /** A test instance to exclusively test the extension methods for a {@link MinimalistCollectionHolder} */
@@ -160,6 +168,31 @@ export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
     }
     public hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasNotAllWithIterableByMinimalistCollectionHolder(this, values,)
+    }
+
+    public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return sliceWithARangeByMinimalistCollectionHolder(this, from, to,)
+    }
+    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIteratorByMinimalistCollectionHolder(this, indices,)
+    }
+    public sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIterableByMinimalistCollectionHolder(this, indices,)
     }
 
 }

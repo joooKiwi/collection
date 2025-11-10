@@ -111,6 +111,14 @@ import {onEach}                                  from "../../src/method/onEach"
 import {onEachIndexed}                           from "../../src/method/onEachIndexed"
 import {requireNoNulls}                          from "../../src/method/requireNoNulls"
 import {slice}                                   from "../../src/method/slice"
+import {sliceWithARange}                         from "../../src/method/slice.withARange"
+import {sliceWithArray}                          from "../../src/method/slice.withArray"
+import {sliceWithCollectionHolder}               from "../../src/method/slice.withCollectionHolder"
+import {sliceWithCollectionIterator}             from "../../src/method/slice.withCollectionIterator"
+import {sliceWithIterable}                       from "../../src/method/slice.withIterable"
+import {sliceWithIterator}                       from "../../src/method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolder}     from "../../src/method/slice.withMinimalistCollectionHolder"
+import {sliceWithSet}                            from "../../src/method/slice.withSet"
 import {take}                                    from "../../src/method/take"
 import {takeLast}                                from "../../src/method/takeLast"
 import {takeLastWhile}                           from "../../src/method/takeLastWhile"
@@ -520,16 +528,32 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public override sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return sliceWithARange(null, from, to,)
+    }
+    public override sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArray(null, indices,)
+    }
+    public override sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSet(null, indices,)
+    }
+    public override sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolder(null, indices,)
+    }
+    public override sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolder(null, indices,)
+    }
+    public override sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIterator(null, indices,)
+    }
+    public override sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIterator(null, indices,)
+    }
+    public override sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIterable(null, indices,)
+    }
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         return slice(null, indicesOrFrom, to,)
     }

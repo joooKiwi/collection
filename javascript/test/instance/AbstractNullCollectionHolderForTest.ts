@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                         from "../../src/MinimalistCollectionHolder"
@@ -85,5 +85,16 @@ export abstract class AbstractNullCollectionHolderForTest<const T, >
     public abstract hasNotAllWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public abstract hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public abstract override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+    public abstract sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    public abstract sliceWithArray(indices: readonly number[],): CollectionHolder<T>
+    public abstract sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public abstract sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T>
+    public abstract sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
+    public abstract sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T>
+    public abstract sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
+    public abstract override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
+    public abstract override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
 
 }

@@ -112,6 +112,14 @@ import {onEachByArray}                                  from "../../src/method/o
 import {onEachIndexedByArray}                           from "../../src/method/onEachIndexed"
 import {requireNoNullsByArray}                          from "../../src/method/requireNoNulls"
 import {sliceByArray}                                   from "../../src/method/slice"
+import {sliceWithARangeByArray}                         from "../../src/method/slice.withARange"
+import {sliceWithArrayByArray}                          from "../../src/method/slice.withArray"
+import {sliceWithCollectionHolderByArray}               from "../../src/method/slice.withCollectionHolder"
+import {sliceWithCollectionIteratorByArray}             from "../../src/method/slice.withCollectionIterator"
+import {sliceWithIterableByArray}                       from "../../src/method/slice.withIterable"
+import {sliceWithIteratorByArray}                       from "../../src/method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolderByArray}     from "../../src/method/slice.withMinimalistCollectionHolder"
+import {sliceWithSetByArray}                            from "../../src/method/slice.withSet"
 import {takeByArray}                                    from "../../src/method/take"
 import {takeLastByArray}                                from "../../src/method/takeLast"
 import {takeLastWhileByArray}                           from "../../src/method/takeLastWhile"
@@ -514,16 +522,32 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return sliceWithARangeByArray(this.array, from, to,)
+    }
+    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByArray(this.array, indices,)
+    }
+    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByArray(this.array, indices,)
+    }
+    public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByArray(this.array, indices,)
+    }
+    public sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByArray(this.array, indices,)
+    }
+    public sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByArray(this.array, indices,)
+    }
+    public sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIteratorByArray(this.array, indices,)
+    }
+    public sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIterableByArray(this.array, indices,)
+    }
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         return sliceByArray(this.array, indicesOrFrom, to,)
     }
