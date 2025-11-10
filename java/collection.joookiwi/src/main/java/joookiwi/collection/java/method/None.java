@@ -92,7 +92,7 @@ public final class None
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with2Argument(collection, predicate, size);
     }
 
@@ -114,7 +114,7 @@ public final class None
         if (predicate == null)
             return collection.isEmpty();
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with2Argument(collection, predicate, collection.size());
     }
 
@@ -138,7 +138,7 @@ public final class None
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with2Argument(collection, predicate, size);
     }
 
@@ -165,7 +165,7 @@ public final class None
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with1Argument(collection, predicate, size);
     }
 
@@ -187,7 +187,7 @@ public final class None
         if (predicate == null)
             return collection.isEmpty();
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with1Argument(collection, predicate, collection.size());
     }
 
@@ -211,7 +211,7 @@ public final class None
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with1Argument(collection, predicate, size);
     }
 
@@ -238,7 +238,7 @@ public final class None
 
         final var size = collection.size();
         if (size == 0)
-            return false;
+            return true;
         return __with0Argument(predicate, size);
     }
 
@@ -260,7 +260,7 @@ public final class None
         if (predicate == null)
             return collection.isEmpty();
         if (collection.isEmpty())
-            return false;
+            return true;
         return __with0Argument(predicate, collection.size());
     }
 
@@ -284,7 +284,7 @@ public final class None
 
         final var size = collection.length;
         if (size == 0)
-            return false;
+            return true;
         return __with0Argument(predicate, size);
     }
 
