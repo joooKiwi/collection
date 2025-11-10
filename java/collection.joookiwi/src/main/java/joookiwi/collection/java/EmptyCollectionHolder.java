@@ -1244,15 +1244,15 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- All --------------------
 
-    @Contract(ALWAYS_FALSE_1) @Override public boolean all(final ObjIntPredicate<? super T>          predicate) { return false; }
-    @Contract(ALWAYS_FALSE_1) @Override public boolean all(final Predicate<? super T>                predicate) { return false; }
-    @Contract(ALWAYS_FALSE_1) @Override public boolean all(final BooleanSupplier                     predicate) { return false; }
-    @Contract(ALWAYS_FALSE_1)           public boolean all(final @Nullable Object @Nullable ...        ignored) { return false; }
+    @Contract(ALWAYS_TRUE_1) @Override public boolean all(final @Nullable ObjIntPredicate<? super T> predicate) { return true; }
+    @Contract(ALWAYS_TRUE_1) @Override public boolean all(final @Nullable Predicate<? super T>       predicate) { return true; }
+    @Contract(ALWAYS_TRUE_1) @Override public boolean all(final @Nullable BooleanSupplier            predicate) { return true; }
+    @Contract(ALWAYS_TRUE_1)           public boolean all(final @Nullable Object @Nullable ...         ignored) { return true; }
 
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean every(final ObjIntPredicate<? super T>          predicate) { return all(predicate); }
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean every(final Predicate<? super T>                predicate) { return all(predicate); }
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean every(final BooleanSupplier                     predicate) { return all(predicate); }
-    @Contract(ALWAYS_FALSE_1) @Alias(value = "all", arguments = IGNORED)           public final boolean every(final @Nullable Object @Nullable ...        ignored) { return all(); }
+    @Contract(ALWAYS_TRUE_1)                                            @Override public final boolean every(final @Nullable ObjIntPredicate<? super T> predicate) { return all(predicate); }
+    @Contract(ALWAYS_TRUE_1)                                            @Override public final boolean every(final @Nullable Predicate<? super T>       predicate) { return all(predicate); }
+    @Contract(ALWAYS_TRUE_1)                                            @Override public final boolean every(final @Nullable BooleanSupplier            predicate) { return all(predicate); }
+    @Contract(ALWAYS_TRUE_1) @Alias(value = "all", arguments = IGNORED)           public final boolean every(final @Nullable Object @Nullable ...         ignored) { return all(); }
 
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
