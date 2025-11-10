@@ -16,7 +16,6 @@ import instance.GenericCollectionHolder_IndexOfLastOrNullAlias;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
-import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -2583,33 +2582,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirst(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirst(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirst(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirst(callback1AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback1AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback1AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback1AsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirst(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirst(callback2AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback2AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback2AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback2AsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirst(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirst(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirst(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirst(callback1AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback1AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback1AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback1AsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirst(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirst(callback2AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback2AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback2AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback2AsFalse)); }
                 }
             }
@@ -2738,33 +2737,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstOrNull(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstOrNull(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstOrNull(callback1AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback1AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback1AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback1AsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstOrNull(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstOrNull(callback2AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback2AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback2AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback2AsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstOrNull(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstOrNull(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstOrNull(callback1AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback1AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback1AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback1AsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstOrNull(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstOrNull(callback2AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback2AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback2AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback2AsFalse)); }
                 }
             }
@@ -2893,33 +2892,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexed(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexed(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexed(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexed(callback1AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback1AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback1AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback1AltAsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexed(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexed(callback2AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback2AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback2AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback2AltAsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirstIndexed(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirstIndexed(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirstIndexed(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirstIndexed(callback1AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback1AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback1AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback1AltAsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfFirstIndexed(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfFirstIndexed(callback2AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback2AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback2AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback2AltAsFalse)); }
                 }
             }
@@ -3048,33 +3047,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexedOrNull(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB).indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstIndexedOrNull(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
                 }
             }
@@ -3204,33 +3203,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLast(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLast(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLast(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLast(callback1AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback1AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback1AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback1AsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLast(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLast(callback2AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback2AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback2AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback2AsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLast(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLast(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLast(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLast(callback1AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback1AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback1AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback1AsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLast(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLast(callback2AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback2AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback2AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback2AsFalse)); }
                 }
             }
@@ -3359,33 +3358,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastOrNull(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastOrNull(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastOrNull(callback1AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback1AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback1AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback1AsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastOrNull(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastOrNull(callback2AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback2AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback2AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback2AsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastOrNull(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastOrNull(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastOrNull(callback1AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback1AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback1AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback1AsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastOrNull(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastOrNull(callback2AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback2AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback2AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback2AsFalse)); }
                 }
             }
@@ -3514,33 +3513,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexed(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexed(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexed(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexed(callback1AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback1AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback1AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback1AltAsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexed(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexed(callback2AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback2AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback2AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback2AltAsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLastIndexed(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLastIndexed(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLastIndexed(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLastIndexed(callback1AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback1AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback1AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback1AltAsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).indexOfLastIndexed(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB).indexOfLastIndexed(callback2AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback2AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback2AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback2AltAsFalse)); }
                 }
             }
@@ -3669,33 +3668,33 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
                 @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexedOrNull(callback0AsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback0AsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsTrue)); }
                 }
                 @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexedOrNull(callback1AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsTrue)); }
                 }
                 @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A).indexOfLastIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB).indexOfLastIndexedOrNull(callback2AltAsTrue)); }
+                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
+                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
                     @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsTrue)); }
                 }
                 @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastIndexedOrNull(callback0AsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback0AsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsFalse)); }
                 }
                 @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastIndexedOrNull(callback1AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsFalse)); }
                 }
                 @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A).indexOfLastIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB).indexOfLastIndexedOrNull(callback2AltAsFalse)); }
+                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
+                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
                     @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsFalse)); }
                 }
             }
