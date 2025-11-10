@@ -9,8 +9,7 @@ import java.util.concurrent.atomic.LongAdder;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.MinimalistCollectionHolder;
+
 import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import org.jetbrains.annotations.Contract;
@@ -22,15 +21,15 @@ public final class ReusableFields {
 
     @Contract(ALWAYS_FAIL_0) private ReusableFields() { throw new Error("The utility class “ReusableFields” cannot be constructed."); }
 
-    public static final Number ZERO_NUMBER = 0;
+    public static final Number            ZERO_NUMBER = 0;
+    public static final AtomicInteger     ZERO_ATOMIC_INTEGER = new AtomicInteger();
+    public static final AtomicLong        ZERO_ATOMIC_LONG = new AtomicLong();
+    public static final LongAdder         ZERO_LONG_ADDER = new LongAdder();
+    public static final LongAccumulator   ZERO_LONG_ACCUMULATOR = new LongAccumulator(null, 0L);
+    public static final DoubleAdder       ZERO_DOUBLE_ADDER = new DoubleAdder();
+    public static final DoubleAccumulator ZERO_DOUBLE_ACCUMULATOR = new DoubleAccumulator(null, 0L);
 
-    public static final Object[]          EMPTY_ARRAY = emptyArray();
-    public static final AtomicInteger     EMPTY_ATOMIC_INTEGER = new AtomicInteger();
-    public static final AtomicLong        EMPTY_ATOMIC_LONG = new AtomicLong();
-    public static final LongAdder         EMPTY_LONG_ADDER = new LongAdder();
-    public static final LongAccumulator   EMPTY_LONG_ACCUMULATOR = new LongAccumulator(null, 0L);
-    public static final DoubleAdder       EMPTY_DOUBLE_ADDER = new DoubleAdder();
-    public static final DoubleAccumulator EMPTY_DOUBLE_ACCUMULATOR = new DoubleAccumulator(null, 0L);
+    public static final Object[] EMPTY_ARRAY = emptyArray();
 
     public static final int EXISTANT_INDEX = 2;
     public static final int INVALID_INDEX = 2000;
