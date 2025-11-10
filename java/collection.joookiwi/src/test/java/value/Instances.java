@@ -33,8 +33,10 @@ import instance.ArrayAsJavaTransferQueue;
 import instance.ArrayAsJavaTreeSet;
 import instance.ArrayAsJavaVector;
 import instance.CollectionHolderForTest;
+import instance.CollectionHolder_ByMinimalistViewer;
 import instance.CollectionHolder_ByGenericCollection;
 import instance.CollectionHolder_ByMinimalistCollection;
+import instance.CollectionHolder_ByViewer;
 import instance.CollectionHolder_FromArrayExtensionFunction;
 import instance.CollectionHolder_FromExtensionFunction;
 import instance.CollectionHolder_FromMinimalistExtensionFunction;
@@ -51,7 +53,6 @@ import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TransferQueue;
-
 import instance.CollectionHolder_FromNullArrayExtensionFunction;
 import instance.CollectionHolder_FromNullExtensionFunction;
 import instance.CollectionHolder_FromNullMinimalistExtensionFunction;
@@ -75,6 +76,8 @@ public final class Instances {
             CollectionHolder_ByMinimalistCollection.class,
             CollectionHolder_ByGenericCollection.class,
 //            CollectionHolder_ByArrayCollection.class,
+            CollectionHolder_ByMinimalistViewer.class,
+            CollectionHolder_ByViewer.class,
             CollectionHolder_FromMinimalistExtensionFunction.class,
             CollectionHolder_FromExtensionFunction.class,
             CollectionHolder_FromArrayExtensionFunction.class,
@@ -87,12 +90,16 @@ public final class Instances {
             CollectionHolder_ByMinimalistCollection.class,
             CollectionHolder_ByGenericCollection.class,
 //            CollectionHolder_ByArrayCollection.class,
+            CollectionHolder_ByMinimalistViewer.class,
+            CollectionHolder_ByViewer.class,
     };
 
     public static final Arguments[] everyInstancesAsArguments = {
-            Arguments.of(Named.of("collection (by minimalist)", CollectionHolder_ByMinimalistCollection.class)),
-            Arguments.of(Named.of("collection (by normal)",     CollectionHolder_ByGenericCollection.class)),
-//            Arguments.of(Named.of("collection (by array)",      CollectionHolder_ByArrayCollection.class)),
+            Arguments.of(Named.of("collection (by minimalist)",        CollectionHolder_ByMinimalistCollection.class)),
+            Arguments.of(Named.of("collection (by normal)",            CollectionHolder_ByGenericCollection.class)),
+//            Arguments.of(Named.of("collection (by array)",             CollectionHolder_ByArrayCollection.class)),
+            Arguments.of(Named.of("collection (by minimalist viewer)", CollectionHolder_ByMinimalistViewer.class)),
+            Arguments.of(Named.of("collection (by normal viewer)",     CollectionHolder_ByViewer.class)),
     };
 
     public static final Arguments[] everyExtensionMethodInstancesAsArguments = {

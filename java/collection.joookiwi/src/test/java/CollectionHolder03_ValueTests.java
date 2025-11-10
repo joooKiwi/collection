@@ -1,4 +1,5 @@
 import condition.DisableIfNormalCondition;
+import condition.DisableIfViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.ArrayAsCollection;
 import instance.EmptyCollectionHolderForTest;
@@ -687,9 +688,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @ExtendWith(DisableIfNormalCondition.class)
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             boolean disableIfNormal() { return isNormal(); }
+            boolean disableIfViewer() { return isViewer(); }
 
             @Nested class get {
                                          @Test void empty()  { assertEquals(1, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.get(0)).getAmountOfCall()); }
@@ -753,7 +755,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
         }
 
+        @ExtendWith(DisableIfViewerCondition.class)
         @TestInstance(PER_CLASS) @Nested class get {
+            boolean disableIfViewer() { return isViewer(); }
+
             @Nested class empty {
                                    @Test void min()    { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(MIN_INT_VALUE)); }
                 @DisplayName("-2") @Test void minus2() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(-2)); }

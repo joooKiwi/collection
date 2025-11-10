@@ -35,11 +35,17 @@ public final class InstanceClassUtil {
     private boolean __isNormal;
     private boolean __isNormalInitialized = false;
 
+    private boolean __isNormalViewer;
+    private boolean __isNormalViewerInitialized = false;
+
     private boolean __isMinimalist;
     private boolean __isMinimalistInitialized = false;
 
     private boolean __isExtension;
     private boolean __isExtensionInitialized = false;
+
+    private boolean __isViewer;
+    private boolean __isViewerInitialized = false;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -60,7 +66,7 @@ public final class InstanceClassUtil {
     }
 
 
-    @MagicConstant(stringValues = {"normal", "minimalist", "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() {
+    @MagicConstant(stringValues = {"normal", "minimalist", "normal viewer", "minimalist viewer" , "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() {
         final var value = __type;
         if (value != null)
             return value;
@@ -85,6 +91,15 @@ public final class InstanceClassUtil {
         return value;
     }
 
+    public boolean isNormalViewer() {
+        if (__isNormalViewerInitialized)
+            return __isNormalViewer;
+
+        final var value = __isNormalViewer = type().equals("normal viewer");
+        __isNormalViewerInitialized = true;
+        return value;
+    }
+
     public boolean isMinimalist() {
         if (__isMinimalistInitialized)
             return __isMinimalist;
@@ -100,6 +115,15 @@ public final class InstanceClassUtil {
 
         final var value = __isExtension = getStaticBooleanField(instanceClass, "IS_EXTENSION");
         __isExtensionInitialized = true;
+        return value;
+    }
+
+    public boolean isViewer() {
+        if (__isViewerInitialized)
+            return __isViewer;
+
+        final var value = __isViewer = getStaticBooleanField(instanceClass, "IS_VIEWER");
+        __isViewerInitialized = true;
         return value;
     }
 

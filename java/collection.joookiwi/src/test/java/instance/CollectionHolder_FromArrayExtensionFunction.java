@@ -297,6 +297,8 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
     public static final boolean IS_MINIMALIST = false;
     /// Tell that the instance is based on the extension methods directly
     public static final boolean IS_EXTENSION = true;
+    /// Tell that the instance is a **not** viewer instance
+    public static final boolean IS_VIEWER = false;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
     public static final String SIMPLIFIED_NAME = "array extension";
 

@@ -5,10 +5,12 @@ import instance.CollectionHolderForTest;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.intellij.lang.annotations.MagicConstant;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /// An instance that describe the instance classes with meaningful information
@@ -38,19 +40,27 @@ public abstract class AbstractInstancesTests {
     ///
     /// If it has "extension" in it, then it directly uses the extension methods.
     /// Otherwise, it is on an already defined instance.
-    @MagicConstant(stringValues = {"normal", "minimalist", "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() { return util.type(); }
+    @MagicConstant(stringValues = {"normal", "minimalist", "normal viewer", "minimalist viewer", "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() { return util.type(); }
 
     /// Tell if the [#instanceClass] is of the type `null`
+    @Contract(ALWAYS_FALSE_0)
     public boolean isNull() { return util.isNull(); }
 
     /// Tell if the [#instanceClass] is of the type [GenericCollectionHolder][joookiwi.collection.java.GenericCollectionHolder]
     public boolean isNormal() { return util.isNormal(); }
 
+    /// Tell if the [#instanceClass] is of the type [CollectionViewer][joookiwi.collection.java.CollectionViewer]
+    public boolean isNormalViewer() { return util.isNormalViewer(); }
+
     /// Tell if the [#instanceClass] is of the type [MinimalistCollectionHolder][joookiwi.collection.java.MinimalistCollectionHolder] directly
     public boolean isMinimalist() { return util.isMinimalist(); }
 
     /// Tell if the [#instanceClass] is based on the extension methods directly
+    @Contract(ALWAYS_FALSE_0)
     public boolean isExtension() { return util.isExtension(); }
+
+    /// Tell if the [#instanceClass] is a viewer instance
+    public boolean isViewer() { return util.isViewer(); }
 
     //#endregion -------------------- Getter method --------------------
     //#region -------------------- Method --------------------

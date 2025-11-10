@@ -1,4 +1,5 @@
 import condition.DisableIfNormalCondition;
+import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.EmptyCollectionHolderForTest;
 import instance.GenericCollectionHolder_AllAlias;
@@ -190,9 +191,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @ExtendWith(DisableIfNormalCondition.class)
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             boolean disableIfNormal() { return isNormal(); }
+            boolean disableIfNormalViewer() { return isNormalViewer(); }
 
             @Nested class all {
                 @DisplayName("true: () → boolean")        @Test void true0Arg()  { assertEquals(0, newInstance(AB).execute(it -> it.all(callback0AsTrue)).getAmountOfCall()); }

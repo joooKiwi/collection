@@ -47,7 +47,7 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
-import joookiwi.collection.java.GenericCollectionHolder;
+import joookiwi.collection.java.CollectionViewer;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;
@@ -138,12 +138,12 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 import static org.junit.jupiter.api.Assertions.fail;
 
-/// A class to test the functionality of a [GenericCollectionHolder]
+/// A class to test the functionality of a [CollectionViewer]
 ///
 /// @param <T> The type
 @NotNullByDefault
-public final class CollectionHolder_ByGenericCollection<T extends @Nullable Object>
-        extends AbstractCollectionHolderForTest<T, CollectionHolder_ByGenericCollection<T>> {
+public final class CollectionHolder_ByViewer<T extends @Nullable Object>
+        extends AbstractCollectionHolderForTest<T, CollectionHolder_ByViewer<T>> {
 
     /// Tell that the instance is **not** of the type `null`
     public static final boolean IS_NULL = false;
@@ -151,26 +151,26 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     public static final boolean IS_MINIMALIST = false;
     /// Tell that the instance is **not** based on the extension methods directly
     public static final boolean IS_EXTENSION = false;
-    /// Tell that the instance is a **not** viewer instance
-    public static final boolean IS_VIEWER = false;
+    /// Tell that the instance is a viewer instance
+    public static final boolean IS_VIEWER = true;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
-    public static final String SIMPLIFIED_NAME = "normal";
+    public static final String SIMPLIFIED_NAME = "normal viewer";
 
     /// The array received in the constructor
     public final T @Unmodifiable [] array;
     /// The internal instance that is tested
-    public final GenericCollectionHolder<T> instance;
+    public final CollectionViewer<T, ArrayAsCollection<T>> instance;
 
     @NotNullByDefault
-    static final class CollectionHolder_CountingGetByGenericCollection<T extends @Nullable Object>
-            extends GenericCollectionHolder<T> {
+    static final class CollectionHolder_CountingGetByCollectionViewer<T extends @Nullable Object>
+            extends CollectionViewer<T, ArrayAsCollection<T>> {
 
-        /// The external instance of the [GenericCollectionHolder] for the test
-        final CollectionHolder_ByGenericCollection<T> thiz;
+        /// The external instance of the [CollectionViewer] for the test
+        final CollectionHolder_ByViewer<T> thiz;
 
-        CollectionHolder_CountingGetByGenericCollection(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] reference,
-                                                        final CollectionHolder_ByGenericCollection<T> thiz) {
-            super(reference);
+        CollectionHolder_CountingGetByCollectionViewer(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] reference,
+                                                       final CollectionHolder_ByViewer<T> thiz) {
+            super(new ArrayAsCollection<>(reference));
             this.thiz = thiz;
         }
 
@@ -181,9 +181,9 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
 
     }
 
-    public CollectionHolder_ByGenericCollection(final T @Unmodifiable [] array) {
+    public CollectionHolder_ByViewer(final T @Unmodifiable [] array) {
         super();
-        instance = new CollectionHolder_CountingGetByGenericCollection<>(this.array = array, this);
+        instance = new CollectionHolder_CountingGetByCollectionViewer<>(this.array = array, this);
     }
 
     //#region -------------------- Size methods --------------------
@@ -724,38 +724,38 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public void forEachIndexed(final Runnable                  action) { instance.forEachIndexed(action); }
 
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final ObjIntConsumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEach(final ObjIntConsumer<? super T> action) {
         if (instance.onEach(action) != instance)
             fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final Consumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEach(final Consumer<? super T> action) {
         if (instance.onEach(action) != instance)
             fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final Runnable action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEach(final Runnable action) {
         if (instance.onEach(action) != instance)
             fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final IntObjConsumer<? super T> action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEachIndexed(final IntObjConsumer<? super T> action) {
         if (instance.onEachIndexed(action) != instance)
             fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final IntConsumer action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEachIndexed(final IntConsumer action) {
         if (instance.onEachIndexed(action) != instance)
             fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
     }
 
-    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final Runnable action) {
+    @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByViewer<T> onEachIndexed(final Runnable action) {
         if (instance.onEachIndexed(action) != instance)
             fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
