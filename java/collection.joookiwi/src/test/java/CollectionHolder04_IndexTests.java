@@ -602,6 +602,32 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(instance.indexOfLastOrNull(NULL_PREDICATE0, null, null)); }
             @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.indexOfLastOrNull(EMPTY_ARRAY)); }
         }
+        @Nested class findLastIndexOrNull {
+            @DisplayName("∅")                              @Test void testEmpty()        { assertNull(instance.findLastIndexOrNull()); }
+            @DisplayName("null []")                        @Test void testNullArray()    { assertNull(instance.findLastIndexOrNull(NULL_VARARGS)); }
+            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0)); }
+            @DisplayName("(T, int) → boolean, int")        @Test void test2Arg0()        { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, 0)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1Arg0()        { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0Arg0()        { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, 0)); }
+            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2Arg00()       { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, 0, 0)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1Arg00()       { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, 0, 0)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0Arg00()       { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, 0, 0)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2Arg0Null()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, 0, null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1Arg0Null()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, 0, null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0Arg0Null()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, 0, null)); }
+            @DisplayName("(T, int) → boolean, int?, int")  @Test void test2ArgNull0()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, null, 0)); }
+            @DisplayName("(T) → boolean, int?, int")       @Test void test1ArgNull0()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, null, 0)); }
+            @DisplayName("() → boolean, int?, int")        @Test void test0ArgNull0()    { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, null, 0)); }
+            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE2, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE1, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(instance.findLastIndexOrNull(NULL_PREDICATE0, null, null)); }
+            @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.findLastIndexOrNull(EMPTY_ARRAY)); }
+        }
         @Nested class indexOfLastIndexed {
             @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed()); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(NULL_VARARGS)); }
@@ -628,6 +654,32 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(NULL_PREDICATE0, null, null)); }
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(EMPTY_ARRAY)); }
         }
+        @Nested class findLastIndexIndexed {
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed()); }
+            @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_VARARGS)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2Arg0()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1Arg0()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0Arg0()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, 0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2Arg00()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, 0, 0)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1Arg00()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, 0, 0)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0Arg00()       { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, 0, 0)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2Arg0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, 0, null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1Arg0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, 0, null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0Arg0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, 0, null)); }
+            @DisplayName("(int, T) → boolean, int?, int")  @Test void test2ArgNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, null, 0)); }
+            @DisplayName("(int) → boolean, int?, int")     @Test void test1ArgNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, null, 0)); }
+            @DisplayName("() → boolean, int?, int")        @Test void test0ArgNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, null, 0)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE0, null, null)); }
+            @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(EMPTY_ARRAY)); }
+        }
         @Nested class indexOfLastIndexedOrNull {
             @DisplayName("∅")                              @Test void testEmpty()        { assertNull(instance.indexOfLastIndexedOrNull()); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertNull(instance.indexOfLastIndexedOrNull(NULL_VARARGS)); }
@@ -653,6 +705,32 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(instance.indexOfLastIndexedOrNull(NULL_PREDICATE1_ALT, null, null)); }
             @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(instance.indexOfLastIndexedOrNull(NULL_PREDICATE0, null, null)); }
             @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.indexOfLastIndexedOrNull(EMPTY_ARRAY)); }
+        }
+        @Nested class findLastIndexIndexedOrNull {
+            @DisplayName("∅")                              @Test void testEmpty()        { assertNull(instance.findLastIndexIndexedOrNull()); }
+            @DisplayName("null []")                        @Test void testNullArray()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_VARARGS)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2Arg0()        { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1Arg0()        { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0Arg0()        { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, 0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2Arg00()       { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, 0, 0)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1Arg00()       { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, 0, 0)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0Arg00()       { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, 0, 0)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2Arg0Null()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, 0, null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1Arg0Null()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, 0, null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0Arg0Null()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, 0, null)); }
+            @DisplayName("(int, T) → boolean, int?, int")  @Test void test2ArgNull0()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, null, 0)); }
+            @DisplayName("(int) → boolean, int?, int")     @Test void test1ArgNull0()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, null, 0)); }
+            @DisplayName("() → boolean, int?, int")        @Test void test0ArgNull0()    { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, null, 0)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE2_ALT, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE1_ALT, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(instance.findLastIndexIndexedOrNull(NULL_PREDICATE0, null, null)); }
+            @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.findLastIndexIndexedOrNull(EMPTY_ARRAY)); }
         }
     }
 
