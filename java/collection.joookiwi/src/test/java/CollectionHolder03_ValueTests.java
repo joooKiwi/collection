@@ -229,6 +229,49 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("0")     @Test void test0()    { assertSame(ZERO_INT, getInstance().getLastOrElse(() -> ZERO_INT));}
         }
 
+        @Nested class getOrNull {
+            @DisplayName("∅")           @Test void testEmpty()         { assertNull(instance.getOrNull()); }
+            @DisplayName("null object") @Test void testNullObject()    { assertNull(instance.getOrNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString()    { assertNull(instance.getOrNull(NULL_STRING)); }
+            @DisplayName("null []")     @Test void testNullArray()     { assertNull(instance.getOrNull(NULL_VARARGS)); }
+            @DisplayName("byte")        @Test void testByte()          { assertNull(instance.getOrNull((byte) 0)); }
+            @DisplayName("short")       @Test void testShort()         { assertNull(instance.getOrNull((short) 0)); }
+            @DisplayName("int")         @Test void testInt()           { assertNull(instance.getOrNull(0)); }
+            @DisplayName("long")        @Test void testLong()          { assertNull(instance.getOrNull(0L)); }
+            @DisplayName("float")       @Test void testFloat()         { assertNull(instance.getOrNull(0.0F)); }
+            @DisplayName("double")      @Test void testDouble()        { assertNull(instance.getOrNull(0.0D)); }
+                                        @Test void Byte()              { assertNull(instance.getOrNull(NULL_BYTE)); }
+                                        @Test void Short()             { assertNull(instance.getOrNull(NULL_SHORT)); }
+                                        @Test void Integer()           { assertNull(instance.getOrNull(NULL_INT)); }
+                                        @Test void Long()              { assertNull(instance.getOrNull(NULL_LONG)); }
+                                        @Test void Float()             { assertNull(instance.getOrNull(NULL_FLOAT)); }
+                                        @Test void Double()            { assertNull(instance.getOrNull(NULL_DOUBLE)); }
+                                        @Test void BigInteger()        { assertNull(instance.getOrNull(NULL_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertNull(instance.getOrNull(NULL_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertNull(instance.getOrNull(NULL_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertNull(instance.getOrNull(NULL_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertNull(instance.getOrNull(NULL_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertNull(instance.getOrNull(NULL_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertNull(instance.getOrNull(NULL_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertNull(instance.getOrNull(NULL_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertNull(instance.getOrNull(NULL_NUMBER)); }
+            @DisplayName("[]")          @Test void testArray()         { assertNull(instance.getOrNull(EMPTY_ARRAY)); }
+        }
+        @Nested class getFirstOrNull {
+            @DisplayName("∅")           @Test void testEmpty()      { assertNull(instance.getFirstOrNull()); }
+            @DisplayName("null object") @Test void testNullObject() { assertNull(instance.getFirstOrNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString() { assertNull(instance.getFirstOrNull(NULL_STRING)); }
+            @DisplayName("null array")  @Test void testNullArray()  { assertNull(instance.getFirstOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void testArray()      { assertNull(instance.getFirstOrNull(EMPTY_ARRAY)); }
+        }
+        @Nested class getLastOrNull {
+            @DisplayName("∅")           @Test void testEmpty()      { assertNull(instance.getLastOrNull()); }
+            @DisplayName("null object") @Test void testNullObject() { assertNull(instance.getLastOrNull(NULL_OBJECT)); }
+            @DisplayName("null string") @Test void testNullString() { assertNull(instance.getLastOrNull(NULL_STRING)); }
+            @DisplayName("null array")  @Test void testNullArray()  { assertNull(instance.getLastOrNull(NULL_VARARGS)); }
+            @DisplayName("[]")          @Test void testArray()      { assertNull(instance.getLastOrNull(EMPTY_ARRAY)); }
+        }
+
         @Nested class first {
             @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first()); }
             @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_OBJECT)); }
@@ -501,21 +544,21 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("long")        @Test void testLong()          { assertNull(instance.atOrNull(0L)); }
             @DisplayName("float")       @Test void testFloat()         { assertNull(instance.atOrNull(0.0F)); }
             @DisplayName("double")      @Test void testDouble()        { assertNull(instance.atOrNull(0.0D)); }
-                                        @Test void Byte()              { assertNull(instance.atOrNull(ZERO_BYTE)); }
-                                        @Test void Short()             { assertNull(instance.atOrNull(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertNull(instance.atOrNull(ZERO_INT)); }
-                                        @Test void Long()              { assertNull(instance.atOrNull(ZERO_LONG)); }
-                                        @Test void Float()             { assertNull(instance.atOrNull(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertNull(instance.atOrNull(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertNull(instance.atOrNull(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertNull(instance.atOrNull(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertNull(instance.atOrNull(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertNull(instance.atOrNull(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertNull(instance.atOrNull(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertNull(instance.atOrNull(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertNull(instance.atOrNull(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertNull(instance.atOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertNull(instance.atOrNull(ZERO_NUMBER)); }
+                                        @Test void Byte()              { assertNull(instance.atOrNull(NULL_BYTE)); }
+                                        @Test void Short()             { assertNull(instance.atOrNull(NULL_SHORT)); }
+                                        @Test void Integer()           { assertNull(instance.atOrNull(NULL_INT)); }
+                                        @Test void Long()              { assertNull(instance.atOrNull(NULL_LONG)); }
+                                        @Test void Float()             { assertNull(instance.atOrNull(NULL_FLOAT)); }
+                                        @Test void Double()            { assertNull(instance.atOrNull(NULL_DOUBLE)); }
+                                        @Test void BigInteger()        { assertNull(instance.atOrNull(NULL_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertNull(instance.atOrNull(NULL_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertNull(instance.atOrNull(NULL_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertNull(instance.atOrNull(NULL_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertNull(instance.atOrNull(NULL_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertNull(instance.atOrNull(NULL_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertNull(instance.atOrNull(NULL_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertNull(instance.atOrNull(NULL_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertNull(instance.atOrNull(NULL_NUMBER)); }
             @DisplayName("[]")          @Test void testArray()         { assertNull(instance.atOrNull(EMPTY_ARRAY)); }
         }
         @Nested class elementAtOrNull {
@@ -529,21 +572,21 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("long")        @Test void testLong()          { assertNull(instance.elementAtOrNull(0L)); }
             @DisplayName("float")       @Test void testFloat()         { assertNull(instance.elementAtOrNull(0.0F)); }
             @DisplayName("double")      @Test void testDouble()        { assertNull(instance.elementAtOrNull(0.0D)); }
-                                        @Test void Byte()              { assertNull(instance.elementAtOrNull(ZERO_BYTE)); }
-                                        @Test void Short()             { assertNull(instance.elementAtOrNull(ZERO_SHORT)); }
-                                        @Test void Integer()           { assertNull(instance.elementAtOrNull(ZERO_INT)); }
-                                        @Test void Long()              { assertNull(instance.elementAtOrNull(ZERO_LONG)); }
-                                        @Test void Float()             { assertNull(instance.elementAtOrNull(ZERO_FLOAT)); }
-                                        @Test void Double()            { assertNull(instance.elementAtOrNull(ZERO_DOUBLE)); }
-                                        @Test void BigInteger()        { assertNull(instance.elementAtOrNull(ZERO_BIG_INTEGER)); }
-                                        @Test void BigDecimal()        { assertNull(instance.elementAtOrNull(ZERO_BIG_DECIMAL)); }
-                                        @Test void AtomicInteger()     { assertNull(instance.elementAtOrNull(ZERO_ATOMIC_INTEGER)); }
-                                        @Test void AtomicLong()        { assertNull(instance.elementAtOrNull(ZERO_ATOMIC_LONG)); }
-                                        @Test void LongAdder()         { assertNull(instance.elementAtOrNull(ZERO_LONG_ADDER)); }
-                                        @Test void LongAccumulator()   { assertNull(instance.elementAtOrNull(ZERO_LONG_ACCUMULATOR)); }
-                                        @Test void DoubleAdder()       { assertNull(instance.elementAtOrNull(ZERO_DOUBLE_ADDER)); }
-                                        @Test void DoubleAccumulator() { assertNull(instance.elementAtOrNull(ZERO_DOUBLE_ACCUMULATOR)); }
-                                        @Test void Number()            { assertNull(instance.elementAtOrNull(ZERO_NUMBER)); }
+                                        @Test void Byte()              { assertNull(instance.elementAtOrNull(NULL_BYTE)); }
+                                        @Test void Short()             { assertNull(instance.elementAtOrNull(NULL_SHORT)); }
+                                        @Test void Integer()           { assertNull(instance.elementAtOrNull(NULL_INT)); }
+                                        @Test void Long()              { assertNull(instance.elementAtOrNull(NULL_LONG)); }
+                                        @Test void Float()             { assertNull(instance.elementAtOrNull(NULL_FLOAT)); }
+                                        @Test void Double()            { assertNull(instance.elementAtOrNull(NULL_DOUBLE)); }
+                                        @Test void BigInteger()        { assertNull(instance.elementAtOrNull(NULL_BIG_INTEGER)); }
+                                        @Test void BigDecimal()        { assertNull(instance.elementAtOrNull(NULL_BIG_DECIMAL)); }
+                                        @Test void AtomicInteger()     { assertNull(instance.elementAtOrNull(NULL_ATOMIC_INTEGER)); }
+                                        @Test void AtomicLong()        { assertNull(instance.elementAtOrNull(NULL_ATOMIC_LONG)); }
+                                        @Test void LongAdder()         { assertNull(instance.elementAtOrNull(NULL_LONG_ADDER)); }
+                                        @Test void LongAccumulator()   { assertNull(instance.elementAtOrNull(NULL_LONG_ACCUMULATOR)); }
+                                        @Test void DoubleAdder()       { assertNull(instance.elementAtOrNull(NULL_DOUBLE_ADDER)); }
+                                        @Test void DoubleAccumulator() { assertNull(instance.elementAtOrNull(NULL_DOUBLE_ACCUMULATOR)); }
+                                        @Test void Number()            { assertNull(instance.elementAtOrNull(NULL_NUMBER)); }
             @DisplayName("[]")          @Test void testArray()         { assertNull(instance.elementAtOrNull(EMPTY_ARRAY)); }
         }
     }

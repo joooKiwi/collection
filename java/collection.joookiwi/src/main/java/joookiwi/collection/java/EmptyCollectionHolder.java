@@ -468,17 +468,35 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Get or null --------------------
 
     @Contract(ALWAYS_NULL_0)           public @Nullable T getOrNull(                                            ) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final byte                             index) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final short                            index) { return null; }
     @Contract(ALWAYS_NULL_1) @Override public @Nullable T getOrNull(final int                              index) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final long                             index) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final float                            index) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final double                           index) { return null; }
+    @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final @Nullable Number                 index) { return null; }
     @Contract(ALWAYS_NULL_1)           public @Nullable T getOrNull(final @Nullable Object @Nullable ... ignored) { return null; }
 
 
     @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public final @Nullable T atOrNull(                                            ) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final byte                             index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final short                            index) { return getOrNull(index); }
     @Contract(ALWAYS_NULL_1)                                                  @Override public final @Nullable T atOrNull(final int                              index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final long                             index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final float                            index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final double                           index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T atOrNull(final @Nullable Number                 index) { return getOrNull(index); }
     @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public final @Nullable T atOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
 
 
     @Contract(ALWAYS_NULL_0) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(                                            ) { return getOrNull(); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final byte                             index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final short                            index) { return getOrNull(index); }
     @Contract(ALWAYS_NULL_1)                                                  @Override public final @Nullable T elementAtOrNull(final int                              index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final long                             index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final float                            index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final double                           index) { return getOrNull(index); }
+    @Contract(ALWAYS_NULL_1) @Alias("getOrNull")                                        public final @Nullable T elementAtOrNull(final @Nullable Number                 index) { return getOrNull(index); }
     @Contract(ALWAYS_NULL_1) @Alias(value = "getOrNull", arguments = IGNORED)           public final @Nullable T elementAtOrNull(final @Nullable Object @Nullable ... ignored) { return getOrNull(); }
 
     //#endregion -------------------- Get or null --------------------
