@@ -1,10 +1,42 @@
 import condition.DisableIfNormalCondition;
 import condition.DisableIfNormalViewerCondition;
 import instance.ArrayAsCollection;
+import instance.ArrayAsJavaArrayBlockingQueue;
+import instance.ArrayAsJavaArrayDeque;
+import instance.ArrayAsJavaArrayList;
+import instance.ArrayAsJavaBlockingDeque;
+import instance.ArrayAsJavaBlockingQueue;
+import instance.ArrayAsJavaCollection;
+import instance.ArrayAsJavaConcurrentLinkedDeque;
+import instance.ArrayAsJavaConcurrentLinkedQueue;
+import instance.ArrayAsJavaConcurrentSkipListSet;
+import instance.ArrayAsJavaCopyOnWriteArrayList;
+import instance.ArrayAsJavaCopyOnWriteArraySet;
+import instance.ArrayAsJavaDeque;
 import instance.ArrayAsJavaEnumeration;
+import instance.ArrayAsJavaHashSet;
 import instance.ArrayAsJavaIterable;
 import instance.ArrayAsJavaIterator;
+import instance.ArrayAsJavaLinkedBlockingDeque;
+import instance.ArrayAsJavaLinkedBlockingQueue;
+import instance.ArrayAsJavaLinkedHashSet;
+import instance.ArrayAsJavaLinkedList;
+import instance.ArrayAsJavaLinkedTransferQueue;
+import instance.ArrayAsJavaList;
 import instance.ArrayAsJavaListIterator;
+import instance.ArrayAsJavaNavigableSet;
+import instance.ArrayAsJavaPriorityBlockingQueue;
+import instance.ArrayAsJavaPriorityQueue;
+import instance.ArrayAsJavaQueue;
+import instance.ArrayAsJavaSequencedCollection;
+import instance.ArrayAsJavaSequencedSet;
+import instance.ArrayAsJavaSet;
+import instance.ArrayAsJavaSortedSet;
+import instance.ArrayAsJavaStack;
+import instance.ArrayAsJavaSynchronousQueue;
+import instance.ArrayAsJavaTransferQueue;
+import instance.ArrayAsJavaTreeSet;
+import instance.ArrayAsJavaVector;
 import instance.ArrayAsMinimalistCollection;
 import instance.ArrayAsJavaSpliterator;
 import instance.CollectionHolderForTest;
@@ -64,36 +96,6 @@ import test.AbstractJavaTransferQueueTests;
 import test.AbstractMethodsTests;
 
 import static assertion.AssertToBeInstance.assertToBeInstance;
-//import static joookiwi.collection.java.method.Contains.contains;
-//import static joookiwi.collection.java.method.ContainsAll.containsAll;
-//import static joookiwi.collection.java.method.ContainsDuplicate.containsDuplicate;
-//import static joookiwi.collection.java.method.ContainsNoDuplicates.containsNoDuplicates;
-//import static joookiwi.collection.java.method.ContainsNoNulls.containsNoNulls;
-//import static joookiwi.collection.java.method.ContainsNull.containsNull;
-//import static joookiwi.collection.java.method.ContainsNot.containsNot;
-//import static joookiwi.collection.java.method.ContainsNotAll.containsNotAll;
-//import static joookiwi.collection.java.method.ContainsNotOne.containsNotOne;
-//import static joookiwi.collection.java.method.ContainsOne.containsOne;
-import static joookiwi.collection.java.method.Has.has;
-import static joookiwi.collection.java.method.HasAll.hasAll;
-import static joookiwi.collection.java.method.HasDuplicate.hasDuplicate;
-import static joookiwi.collection.java.method.HasNoDuplicates.hasNoDuplicates;
-import static joookiwi.collection.java.method.HasNoNulls.hasNoNulls;
-import static joookiwi.collection.java.method.HasNull.hasNull;
-import static joookiwi.collection.java.method.HasNot.hasNot;
-import static joookiwi.collection.java.method.HasNotAll.hasNotAll;
-import static joookiwi.collection.java.method.HasNotOne.hasNotOne;
-import static joookiwi.collection.java.method.HasOne.hasOne;
-//import static joookiwi.collection.java.method.Includes.includes;
-//import static joookiwi.collection.java.method.IncludesAll.includesAll;
-//import static joookiwi.collection.java.method.IncludesDuplicate.includesDuplicate;
-//import static joookiwi.collection.java.method.IncludesNoDuplicates.includesNoDuplicates;
-//import static joookiwi.collection.java.method.IncludesNoNulls.includesNoNulls;
-//import static joookiwi.collection.java.method.IncludesNull.includesNull;
-//import static joookiwi.collection.java.method.IncludesNot.includesNot;
-//import static joookiwi.collection.java.method.IncludesNotOne.includesNotOne;
-//import static joookiwi.collection.java.method.IncludesNotOne.includesNotOne;
-//import static joookiwi.collection.java.method.IncludesOne.includesOne;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -235,9 +237,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @TestInstance(PER_CLASS) @Nested class hasOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.hasOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.hasOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.hasOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.hasOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ITERATOR)); }
@@ -291,239 +291,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.hasOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.hasOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.hasOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.hasOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertFalse(instance.hasOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.includesOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.includesOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.includesOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.includesOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ITERATOR)); }
@@ -577,239 +583,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.includesOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.includesOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.includesOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.includesOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertFalse(instance.includesOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsOne {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.containsOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.containsOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.containsOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.containsOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ITERATOR)); }
@@ -863,240 +875,246 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-                
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.containsOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.containsOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.containsOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.containsOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertFalse(instance.containsOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsOne(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.hasNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.hasNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.hasNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.hasNotOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ITERATOR)); }
@@ -1150,239 +1168,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(instance.hasNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.hasNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.hasNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.hasNotOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasNotOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue(instance.hasNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasNotOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.includesNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.includesNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.includesNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.includesNotOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ITERATOR)); }
@@ -1436,239 +1460,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(instance.includesNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.includesNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.includesNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.includesNotOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesNotOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue(instance.includesNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesNotOne(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsNotOne {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.containsNotOne()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.containsNotOne(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.containsNotOne(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.containsNotOne()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ITERATOR)); }
@@ -1722,240 +1752,246 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue(instance.containsNotOne(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue(instance.containsNotOne(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue(instance.containsNotOne(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue(instance.containsNotOne(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsNotOne(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue(instance.containsNotOne(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsNotOne(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsNotOne(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsNotOne(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.hasAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.hasAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.hasAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.hasAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ITERATOR)); }
@@ -2009,239 +2045,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.hasAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.hasAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.hasAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.hasAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.hasAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.hasAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( instance.hasAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.hasAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.hasAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.hasAll(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.hasAll(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue( instance.hasAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasAll(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.includesAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.includesAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.includesAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.includesAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ITERATOR)); }
@@ -2295,239 +2337,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.includesAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.includesAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.includesAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.includesAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.includesAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.includesAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( instance.includesAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.includesAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.includesAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.includesAll(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.includesAll(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue( instance.includesAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesAll(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsAll {
-            @DisplayName("∅")       @Test void empty()      { assertTrue(instance.containsAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertTrue(instance.containsAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertTrue(instance.containsAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertTrue(instance.containsAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ITERATOR)); }
@@ -2581,240 +2629,246 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue(instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertTrue(instance.containsAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(instance.containsAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(instance.containsAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(instance.containsAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(nullInstance())); }
-                                         @Test void empty()    { assertTrue( instance.containsAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertTrue( instance.containsAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertTrue( instance.containsAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertFalse(instance.containsAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertFalse(instance.containsAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertFalse(instance.containsAll(ABCD)); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(instance.containsAll(NULL_ARRAY)); }
+                                         @Test void empty()    { assertTrue( instance.containsAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsAll(A)); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsAll(ABCD)); }
             }
         }
 
         @TestInstance(PER_CLASS) @Nested class hasNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.hasNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.hasNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.hasNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.hasNotAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ITERATOR)); }
@@ -2868,239 +2922,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.hasNotAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.hasNotAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.hasNotAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.hasNotAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.hasNotAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.hasNotAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.hasNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.hasNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.hasNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.hasNotAll(ABCD)); }
+                @DisplayName("null")     @Test void nullArray() { assertFalse(instance.hasNotAll(NULL_ARRAY)); }
+                                         @Test void empty()     { assertFalse(instance.hasNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()     { assertTrue( instance.hasNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2()     { assertTrue( instance.hasNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()     { assertTrue( instance.hasNotAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class includesNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.includesNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.includesNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.includesNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.includesNotAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ITERATOR)); }
@@ -3154,239 +3214,245 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.includesNotAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.includesNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.includesNotAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.includesNotAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.includesNotAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.includesNotAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.includesNotAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.includesNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.includesNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.includesNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.includesNotAll(ABCD)); }
+                @DisplayName("null")     @Test void nullArray() { assertFalse(instance.includesNotAll(NULL_ARRAY)); }
+                                         @Test void empty()     { assertFalse(instance.includesNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()     { assertTrue( instance.includesNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2()     { assertTrue( instance.includesNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()     { assertTrue( instance.includesNotAll(ABCD)); }
             }
         }
         @TestInstance(PER_CLASS) @Nested class containsNotAll {
-            @DisplayName("∅")       @Test void empty()      { assertFalse(instance.containsNotAll()); }
-            @DisplayName("null []") @Test void nullArray()  { assertFalse(instance.containsNotAll(NULL_VARARGS)); }
-            @DisplayName("[]")      @Test void emptyArray() { assertFalse(instance.containsNotAll(EMPTY_ARRAY)); }
+            @DisplayName("∅") @Test void noArg() { assertFalse(instance.containsNotAll()); }
 
             @DisplayName("Java Iterator<T>") @Nested class JavaIterator {
                 @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ITERATOR)); }
@@ -3440,233 +3506,241 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Collection<T>") @Nested class JavaCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedCollection<T>") @Nested class JavaSequencedCollection {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SEQUENCED_COLLECTION)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSequencedCollection<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedCollection<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedCollection<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedCollection<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java List<T>") @Nested class JavaList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ArrayList<T>") @Nested class JavaArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java CopyOnWriteArrayList<T>") @Nested class JavaCopyOnWriteArrayList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArrayList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java LinkedList<T>") @Nested class JavaLinkedList {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LINKED_LIST)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaLinkedList<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedList<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedList<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedList<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Vector<T>") @Nested class JavaVector {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_VECTOR)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaVector<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaVector<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaVector<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaVector<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Set<T>") @Nested class JavaSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SequencedSet<T>") @Nested class JavaSequencedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SEQUENCED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSequencedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSequencedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java SortedSet<T>") @Nested class JavaSortedSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SORTED_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSortedSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSortedSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSortedSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaSortedSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java NavigableSet<T>") @Nested class JavaNavigableSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_NAVIGABLE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaNavigableSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaNavigableSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaNavigableSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaNavigableSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
-                //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java ConcurrentSkipListSet<T>") @Nested class JavaConcurrentSkipListSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_CONCURRENT_SKIP_LIST_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaConcurrentSkipListSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentSkipListSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentSkipListSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentSkipListSet<>(ABCD))); }
             }
-            @FieldSource("values")
-            @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
+            @DisplayName("Java CopyOnWriteArraySet<T>") @Nested class JavaCopyOnWriteArraySet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_COPY_ON_WRITE_ARRAY_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaCopyOnWriteArraySet<>(ABCD))); }
+            }
+            @DisplayName("Java HashSet<T>") @Nested class JavaHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedHashSet<T>") @Nested class JavaLinkedHashSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LINKED_HASH_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaLinkedHashSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedHashSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedHashSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedHashSet<>(ABCD))); }
+            }
+            @DisplayName("Java TreeSet<T>") @Nested class JavaTreeSet {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_TREE_SET)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaTreeSet<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTreeSet<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTreeSet<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTreeSet<>(ABCD))); }
+            }
 
-                //#region -------------------- Required test configuration --------------------
+            @DisplayName("Java Queue<T>") @Nested class JavaQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaQueue<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingQueue<T>") @Nested class JavaBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java TransferQueue<T>") @Nested class JavaTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayBlockingQueue<T>") @Nested class JavaArrayBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ARRAY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaArrayBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedQueue<T>") @Nested class JavaConcurrentLinkedQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_CONCURRENT_LINKED_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingQueue<T>") @Nested class JavaLinkedBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LINKED_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaLinkedBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedTransferQueue<T>") @Nested class JavaLinkedTransferQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LINKED_TRANSFER_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaLinkedTransferQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedTransferQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedTransferQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedTransferQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityBlockingQueue<T>") @Nested class JavaPriorityBlockingQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_PRIORITY_BLOCKING_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaPriorityBlockingQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityBlockingQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityBlockingQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityBlockingQueue<>(ABCD))); }
+            }
+            @DisplayName("Java PriorityQueue<T>") @Nested class JavaPriorityQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_PRIORITY_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaPriorityQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaPriorityQueue<>(ABCD))); }
+            }
+            @DisplayName("Java SynchronousQueue<T>") @Nested class JavaSynchronousQueue {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_SYNCHRONOUS_QUEUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSynchronousQueue<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSynchronousQueue<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSynchronousQueue<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(instance.containsNotAll(new ArrayAsJavaSynchronousQueue<>(ABCD))); }
+            }
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
-
-                //#endregion -------------------- Required test configuration --------------------
-
-                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(instance.containsNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(newInstance(ABCD))); }
+            @DisplayName("Java Deque<T>") @Nested class JavaDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaDeque<>(ABCD))); }
+            }
+            @DisplayName("Java BlockingDeque<T>") @Nested class JavaBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ArrayDeque<T>") @Nested class JavaArrayDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_ARRAY_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaArrayDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaArrayDeque<>(ABCD))); }
+            }
+            @DisplayName("Java ConcurrentLinkedDeque<T>") @Nested class JavaConcurrentLinkedDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_CONCURRENT_LINKED_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaConcurrentLinkedDeque<>(ABCD))); }
+            }
+            @DisplayName("Java LinkedBlockingDeque<T>") @Nested class JavaLinkedBlockingDeque {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_LINKED_BLOCKING_DEQUE)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaLinkedBlockingDeque<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingDeque<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingDeque<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaLinkedBlockingDeque<>(ABCD))); }
+            }
+            @DisplayName("Java Stack<T>") @Nested class JavaStack {
+                @DisplayName("null")     @Test void testNull() { assertFalse(instance.containsNotAll(NULL_JAVA_STACK)); }
+                                         @Test void empty()    { assertFalse(instance.containsNotAll(new ArrayAsJavaStack<>(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( instance.containsNotAll(new ArrayAsJavaStack<>(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( instance.containsNotAll(new ArrayAsJavaStack<>(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( instance.containsNotAll(new ArrayAsJavaStack<>(ABCD))); }
             }
 
             @DisplayName("T[]") @Nested class Array {
-                                         @Test void empty() { assertFalse(instance.containsNotAll(EMPTY)); }
-                @DisplayName("1 field")  @Test void test1() { assertTrue( instance.containsNotAll(A)); }
-                @DisplayName("2 fields") @Test void test2() { assertTrue( instance.containsNotAll(AB)); }
-                @DisplayName("4 fields") @Test void test4() { assertTrue( instance.containsNotAll(ABCD)); }
+                @DisplayName("null")     @Test void nullArray() { assertFalse(instance.containsNotAll(NULL_ARRAY)); }
+                                         @Test void empty()     { assertFalse(instance.containsNotAll(EMPTY)); }
+                @DisplayName("1 field")  @Test void test1()     { assertTrue( instance.containsNotAll(A)); }
+                @DisplayName("2 fields") @Test void test2()     { assertTrue( instance.containsNotAll(AB)); }
+                @DisplayName("4 fields") @Test void test4()     { assertTrue( instance.containsNotAll(ABCD)); }
             }
         }
 
