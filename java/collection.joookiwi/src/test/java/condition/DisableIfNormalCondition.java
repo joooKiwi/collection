@@ -19,8 +19,9 @@ import static org.junit.platform.commons.util.ReflectionUtils.invokeMethod;
 public final class DisableIfNormalCondition
         extends AbstractCondition {
 
+    @Override Class<DisableIfNormalCondition> conditionType() { return DisableIfNormalCondition.class; }
     @Override String methodName() { return "disableIfNormal"; }
-    @Override String isATypeName() { return "The instance is of type “normal”."; }
-    @Override String isNotATypeName() { return "The instance is not of type “normal”."; }
+    @Override String disabledMessage(final String name) { return "“" + name + "” is disabled because it is of type “normal”."; }
+    @Override String enabledMessage(final String name) { return "“" + name + "” is enabled because it is is not of type “normal”."; }
 
 }

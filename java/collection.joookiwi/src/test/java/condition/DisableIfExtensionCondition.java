@@ -9,8 +9,9 @@ import org.jetbrains.annotations.NotNullByDefault;
 public final class DisableIfExtensionCondition
         extends AbstractCondition {
 
+    @Override Class<DisableIfExtensionCondition> conditionType() { return DisableIfExtensionCondition.class; }
     @Override String methodName() { return "disableIfExtension"; }
-    @Override String isATypeName() { return "The instance is an extension type."; }
-    @Override String isNotATypeName() { return "The instance is not an extension type."; }
+    @Override String disabledMessage(final String name) { return "“" + name + "” is disabled because it is an extension type."; }
+    @Override String enabledMessage(final String name) { return "“" + name + "” is enabled because it is not an extension type."; }
 
 }

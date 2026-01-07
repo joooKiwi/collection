@@ -16,14 +16,17 @@ import static org.junit.platform.commons.util.ReflectionUtils.invokeMethod;
 abstract class AbstractCondition
         implements ExecutionCondition {
 
+    /// The condition type (note this should be the current instance type)
+    abstract Class<? extends AbstractCondition> conditionType();
+
     /// The method to invoke on the instance having the condition
     abstract String methodName();
 
-    /// The message to tell it is the type
-    abstract String isATypeName();
+    /// The message to tell it is **disabled** based on the name of the instance
+    abstract String disabledMessage(String name);
 
-    /// The message to tell it is **not** the type
-    abstract String isNotATypeName();
+    /// The message to tell it is **enabled** based on the name of the instance
+    abstract String enabledMessage(String name);
 
 
     @Override public ConditionEvaluationResult evaluateExecutionCondition(final ExtensionContext context) {
@@ -38,12 +41,14 @@ abstract class AbstractCondition
         final var extendWithAnnotation = parentContext.getTestClass().get().getAnnotation(ExtendWith.class);
         if (extendWithAnnotation == null)
             return ConditionEvaluationResult.enabled("The child test instance is not desire target because it does not have “@ExtendWith” present.");
-        if (hasNot(extendWithAnnotation.value(), DisableIfExtensionCondition.class))
+        if (hasNot(extendWithAnnotation.value(), conditionType()))
             return ConditionEvaluationResult.enabled("The child test instance is not desire target because it does not have “@ExtendWith(" + getClass().getSimpleName() + ".class)” present.");
         final var testInstance = parentContext.getTestInstance().get();
-        if ((boolean) invokeMethod(findMethod(testInstance.getClass(), methodName()).get(), testInstance))
-            return ConditionEvaluationResult.disabled(isATypeName());
-        return ConditionEvaluationResult.enabled(isNotATypeName());
+        final var testInstanceClass = testInstance.getClass();
+        final var instanceName = testInstanceClass + "$" + context.getDisplayName();
+        if ((boolean) invokeMethod(findMethod(testInstanceClass, methodName()).get(), testInstance))
+            return ConditionEvaluationResult.disabled(disabledMessage(instanceName));
+        return ConditionEvaluationResult.enabled(enabledMessage(instanceName));
     }
 
     /// Test the parent instance if it has [ExtendWith] present (otherwise, it is ignored).
@@ -56,7 +61,7 @@ abstract class AbstractCondition
         if (extendWithClass == null)
             return false;
 
-        if (hasNot(extendWithClass.value(), DisableIfExtensionCondition.class))
+        if (hasNot(extendWithClass.value(), conditionType()))
             return false;
 
         final var testInstanceClass = testClass.getAnnotation(TestInstance.class);

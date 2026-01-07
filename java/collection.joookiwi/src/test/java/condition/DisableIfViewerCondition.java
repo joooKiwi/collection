@@ -10,8 +10,9 @@ import org.jetbrains.annotations.NotNullByDefault;
 public final class DisableIfViewerCondition
         extends AbstractCondition {
 
+    @Override Class<DisableIfViewerCondition> conditionType() { return DisableIfViewerCondition.class; }
     @Override String methodName() { return "disableIfViewer"; }
-    @Override String isATypeName() { return "The instance is of type “viewer”."; }
-    @Override String isNotATypeName() { return "The instance is not of type “viewer”."; }
+    @Override String disabledMessage(final String name) { return "“" + name + "” is disabled because it is of type “viewer”."; }
+    @Override String enabledMessage(final String name) { return "“" + name + "” is enabled because it is not of type “viewer”."; }
 
 }

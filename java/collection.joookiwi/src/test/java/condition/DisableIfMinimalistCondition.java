@@ -7,8 +7,9 @@ import org.jetbrains.annotations.NotNullByDefault;
 public final class DisableIfMinimalistCondition
         extends AbstractCondition {
 
+    @Override Class<DisableIfMinimalistCondition> conditionType() { return DisableIfMinimalistCondition.class; }
     @Override String methodName() { return "disableIfMinimalist"; }
-    @Override String isATypeName() { return "The instance is of type “minimalist”."; }
-    @Override String isNotATypeName() { return "The instance is not of type “minimalist”."; }
+    @Override String disabledMessage(final String name) { return "“" + name + "” is disabled because it is of type “minimalist”."; }
+    @Override String enabledMessage(final String name) { return "“" + name + "” is enabled because it is not of type “minimalist”."; }
 
 }
