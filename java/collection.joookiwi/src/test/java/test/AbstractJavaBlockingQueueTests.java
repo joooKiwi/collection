@@ -17,13 +17,8 @@ public abstract class AbstractJavaBlockingQueueTests {
 
     /// The [Class] of [BlockingQueue] that should be used for the tests
     public final Class<BlockingQueue<?>> instanceClass;
-    public final @Nullable @Unmodifiable BlockingQueue<?> nullValue;
 
-    protected AbstractJavaBlockingQueueTests(final Class<BlockingQueue<?>> instanceClass,
-                                             final @Nullable @Unmodifiable BlockingQueue<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaBlockingQueueTests(final Class<BlockingQueue<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaBlockingQueueTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [BlockingQueue]
+    /// Give `null` to a typed [BlockingQueue]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingQueue<T> nullInstance() { return (BlockingQueue<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingQueue<T> nullInstance() { return null; }
 
 }

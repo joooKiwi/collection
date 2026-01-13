@@ -17,13 +17,8 @@ public abstract class AbstractJavaNavigableSetTests {
 
     /// The [Class] of [NavigableSet] that should be used for the tests
     public final Class<NavigableSet<?>> instanceClass;
-    public final @Nullable @Unmodifiable NavigableSet<?> nullValue;
 
-    protected AbstractJavaNavigableSetTests(final Class<NavigableSet<?>> instanceClass,
-                                            final @Nullable @Unmodifiable NavigableSet<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaNavigableSetTests(final Class<NavigableSet<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaNavigableSetTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [NavigableSet]
+    /// Give `null` to a typed [NavigableSet]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable NavigableSet<T> nullInstance() { return (NavigableSet<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable NavigableSet<T> nullInstance() { return null; }
 
 }

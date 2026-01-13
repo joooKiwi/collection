@@ -17,13 +17,8 @@ public abstract class AbstractJavaListTests {
 
     /// The [Class] of [List] that should be used for the tests
     public final Class<List<?>> instanceClass;
-    public final @Nullable @Unmodifiable List<?> nullValue;
 
-    protected AbstractJavaListTests(final Class<List<?>> instanceClass,
-                                    final @Nullable @Unmodifiable List<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaListTests(final Class<List<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaListTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [List]
+    /// Give `null` to a typed [List]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable List<T> nullInstance() { return (List<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable List<T> nullInstance() { return null; }
 
 }

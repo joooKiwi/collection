@@ -63,7 +63,6 @@ import org.junit.jupiter.params.provider.Arguments;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static value.Arrays.EMPTY;
-import static value.ReusableFields_Null.*;
 
 @NotNullByDefault
 public final class Instances {
@@ -123,7 +122,7 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaCollectionInstancesAsArguments = {
-            Arguments.of(Named.of("Java Collection<T>", ArrayAsJavaCollection.class), NULL_JAVA_COLLECTION),
+            Arguments.of(Named.of("Java Collection<T>", ArrayAsJavaCollection.class)),
     };
 
     //#endregion -------------------- Java Collection instances --------------------
@@ -137,7 +136,7 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaSequencedCollectionInstancesAsArguments = {
-            Arguments.of(Named.of("Java SequencedCollection<T>", ArrayAsJavaSequencedCollection.class), NULL_JAVA_SEQUENCED_COLLECTION),
+            Arguments.of(Named.of("Java SequencedCollection<T>", ArrayAsJavaSequencedCollection.class)),
     };
 
     //#endregion -------------------- Java SequencedCollection instances --------------------
@@ -154,12 +153,12 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaListInstancesAsArguments = {
-            Arguments.of(Named.of("Java List<T>",                 ArrayAsJavaList.class),                 NULL_JAVA_LIST),
-            Arguments.of(Named.of("Java ArrayList<T>",            ArrayAsJavaArrayList.class),            NULL_JAVA_ARRAY_LIST),
-            Arguments.of(Named.of("Java CopyOnWriteArrayList<T>", ArrayAsJavaCopyOnWriteArrayList.class), NULL_JAVA_COPY_ON_WRITE_ARRAY_LIST),
-            Arguments.of(Named.of("Java LinkedList<T>",           ArrayAsJavaLinkedList.class),           NULL_JAVA_LINKED_LIST),
-            Arguments.of(Named.of("Java Vector<T>",               ArrayAsJavaVector.class),               NULL_JAVA_VECTOR),
-            Arguments.of(Named.of("Java Stack<T>",                ArrayAsJavaStack.class),                NULL_JAVA_STACK),
+            Arguments.of(Named.of("Java List<T>",                 ArrayAsJavaList.class)),
+            Arguments.of(Named.of("Java ArrayList<T>",            ArrayAsJavaArrayList.class)),
+            Arguments.of(Named.of("Java CopyOnWriteArrayList<T>", ArrayAsJavaCopyOnWriteArrayList.class)),
+            Arguments.of(Named.of("Java LinkedList<T>",           ArrayAsJavaLinkedList.class)),
+            Arguments.of(Named.of("Java Vector<T>",               ArrayAsJavaVector.class)),
+            Arguments.of(Named.of("Java Stack<T>",                ArrayAsJavaStack.class)),
     };
 
     //#endregion -------------------- Java List instances --------------------
@@ -175,9 +174,9 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaSetInstancesAsArguments = {
-            Arguments.of(Named.of("Java Set<T>",                 ArrayAsJavaSet.class),                 NULL_JAVA_SET),
-            Arguments.of(Named.of("Java CopyOnWriteArraySet<T>", ArrayAsJavaCopyOnWriteArraySet.class), NULL_JAVA_COPY_ON_WRITE_ARRAY_SET),
-            Arguments.of(Named.of("Java HashSet<T>",             ArrayAsJavaHashSet.class),             NULL_JAVA_HASH_SET),
+            Arguments.of(Named.of("Java Set<T>",                 ArrayAsJavaSet.class)),
+            Arguments.of(Named.of("Java CopyOnWriteArraySet<T>", ArrayAsJavaCopyOnWriteArraySet.class)),
+            Arguments.of(Named.of("Java HashSet<T>",             ArrayAsJavaHashSet.class)),
     };
 
     //#endregion -------------------- Java Set instances --------------------
@@ -192,8 +191,8 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaSequencedSetInstancesAsArguments = {
-            Arguments.of(Named.of("Java SequencedSet<T>",  ArrayAsJavaSequencedSet.class),  NULL_JAVA_SEQUENCED_SET),
-            Arguments.of(Named.of("Java LinkedHashSet<T>", ArrayAsJavaLinkedHashSet.class), NULL_JAVA_LINKED_HASH_SET),
+            Arguments.of(Named.of("Java SequencedSet<T>",  ArrayAsJavaSequencedSet.class)),
+            Arguments.of(Named.of("Java LinkedHashSet<T>", ArrayAsJavaLinkedHashSet.class)),
     };
 
     //#endregion -------------------- Java SequencedSet instances --------------------
@@ -207,7 +206,7 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaSortedSetInstancesAsArguments = {
-            Arguments.of(Named.of("Java SortedSet<T>", ArrayAsJavaSortedSet.class), NULL_JAVA_SORTED_SET),
+            Arguments.of(Named.of("Java SortedSet<T>", ArrayAsJavaSortedSet.class)),
     };
 
     //#endregion -------------------- Java SortedSet instances --------------------
@@ -221,9 +220,9 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaNavigableSetInstancesAsArguments = {
-            Arguments.of(Named.of("Java NavigableSet<T>",          ArrayAsJavaNavigableSet.class),          NULL_JAVA_NAVIGABLE_SET),
-            Arguments.of(Named.of("Java ConcurrentSkipListSet<T>", ArrayAsJavaConcurrentSkipListSet.class), NULL_JAVA_CONCURRENT_SKIP_LIST_SET),
-            Arguments.of(Named.of("Java TreeSet<T>",               ArrayAsJavaTreeSet.class),               NULL_JAVA_TREE_SET),
+            Arguments.of(Named.of("Java NavigableSet<T>",          ArrayAsJavaNavigableSet.class)),
+            Arguments.of(Named.of("Java ConcurrentSkipListSet<T>", ArrayAsJavaConcurrentSkipListSet.class)),
+            Arguments.of(Named.of("Java TreeSet<T>",               ArrayAsJavaTreeSet.class)),
     };
 
     //#endregion -------------------- Java NavigableSet instances --------------------
@@ -239,9 +238,9 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaQueueInstancesAsArguments = {
-            Arguments.of(Named.of("Java Queue<T>",                 ArrayAsJavaQueue.class),                 NULL_JAVA_QUEUE),
-            Arguments.of(Named.of("Java ConcurrentLinkedQueue<T>", ArrayAsJavaConcurrentLinkedQueue.class), NULL_JAVA_CONCURRENT_LINKED_QUEUE),
-            Arguments.of(Named.of("Java PriorityQueue<T>",         ArrayAsJavaPriorityQueue.class),         NULL_JAVA_PRIORITY_QUEUE),
+            Arguments.of(Named.of("Java Queue<T>",                 ArrayAsJavaQueue.class)),
+            Arguments.of(Named.of("Java ConcurrentLinkedQueue<T>", ArrayAsJavaConcurrentLinkedQueue.class)),
+            Arguments.of(Named.of("Java PriorityQueue<T>",         ArrayAsJavaPriorityQueue.class)),
     };
 
     //#endregion -------------------- Java Queue instances --------------------
@@ -258,10 +257,10 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaBlockingQueueInstancesAsArguments = {
-            Arguments.of(Named.of("Java BlockingQueue<T>",         ArrayAsJavaBlockingQueue.class),         NULL_JAVA_QUEUE),
-            Arguments.of(Named.of("Java ArrayBlockingQueue<T>",    ArrayAsJavaArrayBlockingQueue.class),    NULL_JAVA_CONCURRENT_LINKED_QUEUE),
-            Arguments.of(Named.of("Java LinkedBlockingQueue<T>",   ArrayAsJavaLinkedBlockingQueue.class),   NULL_JAVA_CONCURRENT_LINKED_QUEUE),
-            Arguments.of(Named.of("Java PriorityBlockingQueue<T>", ArrayAsJavaPriorityBlockingQueue.class), NULL_JAVA_CONCURRENT_LINKED_QUEUE),
+            Arguments.of(Named.of("Java BlockingQueue<T>",         ArrayAsJavaBlockingQueue.class)),
+            Arguments.of(Named.of("Java ArrayBlockingQueue<T>",    ArrayAsJavaArrayBlockingQueue.class)),
+            Arguments.of(Named.of("Java LinkedBlockingQueue<T>",   ArrayAsJavaLinkedBlockingQueue.class)),
+            Arguments.of(Named.of("Java PriorityBlockingQueue<T>", ArrayAsJavaPriorityBlockingQueue.class)),
     };
 
     //#endregion -------------------- Java BlockingQueue instances --------------------
@@ -273,7 +272,7 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaSynchronousQueueInstancesAsArguments = {
-            Arguments.of(Named.of("Java SynchronousQueue<T>", ArrayAsJavaSynchronousQueue.class), NULL_JAVA_SYNCHRONOUS_QUEUE),
+            Arguments.of(Named.of("Java SynchronousQueue<T>", ArrayAsJavaSynchronousQueue.class)),
     };
 
     //#endregion -------------------- Java SynchronousQueue instances --------------------
@@ -286,8 +285,8 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaTransferQueueInstancesAsArguments = {
-            Arguments.of(Named.of("Java TransferQueue<T>",       ArrayAsJavaTransferQueue.class),       NULL_JAVA_TRANSFER_QUEUE),
-            Arguments.of(Named.of("Java LinkedTransferQueue<T>", ArrayAsJavaLinkedTransferQueue.class), NULL_JAVA_LINKED_TRANSFER_QUEUE),
+            Arguments.of(Named.of("Java TransferQueue<T>",       ArrayAsJavaTransferQueue.class)),
+            Arguments.of(Named.of("Java LinkedTransferQueue<T>", ArrayAsJavaLinkedTransferQueue.class)),
     };
 
     //#endregion -------------------- Java TransferQueue instances --------------------
@@ -303,9 +302,9 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaDequeInstancesAsArguments = {
-            Arguments.of(Named.of("Java Deque<T>",                 ArrayAsJavaDeque.class),                 NULL_JAVA_DEQUE),
-            Arguments.of(Named.of("Java ArrayDeque<T>",            ArrayAsJavaArrayDeque.class),            NULL_JAVA_ARRAY_DEQUE),
-            Arguments.of(Named.of("Java ConcurrentLinkedDeque<T>", ArrayAsJavaConcurrentLinkedDeque.class), NULL_JAVA_CONCURRENT_LINKED_DEQUE),
+            Arguments.of(Named.of("Java Deque<T>",                 ArrayAsJavaDeque.class)),
+            Arguments.of(Named.of("Java ArrayDeque<T>",            ArrayAsJavaArrayDeque.class)),
+            Arguments.of(Named.of("Java ConcurrentLinkedDeque<T>", ArrayAsJavaConcurrentLinkedDeque.class)),
     };
 
     //#endregion -------------------- Java Deque instances --------------------
@@ -318,8 +317,8 @@ public final class Instances {
     };
 
     public static final Arguments[] everyJavaBlockingDequeInstancesAsArguments = {
-            Arguments.of(Named.of("Java BlockingDeque<T>",       ArrayAsJavaBlockingDeque.class),       NULL_JAVA_BLOCKING_DEQUE),
-            Arguments.of(Named.of("Java LinkedBlockingDeque<T>", ArrayAsJavaLinkedBlockingDeque.class), NULL_JAVA_LINKED_BLOCKING_DEQUE),
+            Arguments.of(Named.of("Java BlockingDeque<T>",       ArrayAsJavaBlockingDeque.class)),
+            Arguments.of(Named.of("Java LinkedBlockingDeque<T>", ArrayAsJavaLinkedBlockingDeque.class)),
     };
 
     //#endregion -------------------- Java BlockingDeque instances --------------------

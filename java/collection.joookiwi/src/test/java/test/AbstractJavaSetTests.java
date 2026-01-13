@@ -17,13 +17,8 @@ public abstract class AbstractJavaSetTests {
 
     /// The [Class] of [Set] that should be used for the tests
     public final Class<Set<?>> instanceClass;
-    public final @Nullable @Unmodifiable Set<?> nullValue;
 
-    protected AbstractJavaSetTests(final Class<Set<?>> instanceClass,
-                                   final @Nullable @Unmodifiable Set<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaSetTests(final Class<Set<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaSetTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [Set]
+    /// Give `null` to a typed [Set]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Set<T> nullInstance() { return (Set<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable Set<T> nullInstance() { return null; }
 
 }

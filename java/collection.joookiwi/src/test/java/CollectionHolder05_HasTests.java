@@ -65,8 +65,6 @@ import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TransferQueue;
 import joookiwi.collection.java.CollectionHolder;
 import org.jetbrains.annotations.NotNullByDefault;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Unmodifiable;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -4800,7 +4798,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4818,7 +4816,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4836,7 +4834,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaListInstancesAsArguments;
 
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4854,7 +4852,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4872,7 +4870,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4890,7 +4888,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4908,7 +4906,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4926,7 +4924,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4944,7 +4942,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4962,7 +4960,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4980,7 +4978,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -4998,7 +4996,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5080,7 +5078,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5098,7 +5096,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5116,7 +5114,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaListInstancesAsArguments;
 
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5134,7 +5132,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5152,7 +5150,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5170,7 +5168,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5188,7 +5186,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5206,7 +5204,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5224,7 +5222,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5242,7 +5240,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5260,7 +5258,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5278,7 +5276,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5361,7 +5359,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5379,7 +5377,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5397,7 +5395,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaListInstancesAsArguments;
 
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5415,7 +5413,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5433,7 +5431,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5451,7 +5449,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5469,7 +5467,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5487,7 +5485,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5505,7 +5503,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5523,7 +5521,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5541,7 +5539,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5559,7 +5557,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5641,7 +5639,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5659,7 +5657,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5677,7 +5675,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaListInstancesAsArguments;
 
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5695,7 +5693,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5713,7 +5711,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5731,7 +5729,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5749,7 +5747,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5767,7 +5765,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5785,7 +5783,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5803,7 +5801,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5821,7 +5819,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5839,7 +5837,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -5989,9 +5987,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                    public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6009,9 +6005,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6029,9 +6023,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                    public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6049,9 +6041,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                    public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6069,9 +6059,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6089,9 +6077,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6109,9 +6095,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6129,9 +6113,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                    public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6149,9 +6131,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6169,9 +6149,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6189,9 +6167,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6209,9 +6185,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                    public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6229,9 +6203,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6335,9 +6307,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                    public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6355,9 +6325,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6375,9 +6343,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                    public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6395,9 +6361,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                    public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6415,9 +6379,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6435,9 +6397,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6455,9 +6415,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6475,9 +6433,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                    public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6495,9 +6451,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6515,9 +6469,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6535,9 +6487,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6555,9 +6505,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                    public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6575,9 +6523,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6682,9 +6628,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                    public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6702,9 +6646,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6722,9 +6664,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                    public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6742,9 +6682,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                    public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6762,9 +6700,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6782,9 +6718,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6802,9 +6736,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6822,9 +6754,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                    public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6842,9 +6772,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6862,9 +6790,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6882,9 +6808,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6902,9 +6826,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                    public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -6922,9 +6844,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7028,9 +6948,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                    public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7048,9 +6966,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7068,9 +6984,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                    public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7088,9 +7002,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                    public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7108,9 +7020,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7128,9 +7038,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7148,9 +7056,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7168,9 +7074,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                    public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7188,9 +7092,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7208,9 +7110,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7228,9 +7128,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7248,9 +7146,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                    public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7268,9 +7164,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                     //#region -------------------- Required test configuration --------------------
 
-                    static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                    public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                     //#endregion -------------------- Required test configuration --------------------
 
@@ -7642,9 +7536,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7687,9 +7579,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7732,9 +7622,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7777,9 +7665,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7822,9 +7708,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7867,9 +7751,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7912,9 +7794,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -7957,9 +7837,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8002,9 +7880,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8047,9 +7923,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8092,9 +7966,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8137,9 +8009,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8182,9 +8052,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8513,9 +8381,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8558,9 +8424,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8603,9 +8467,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8648,9 +8510,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8693,9 +8553,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8738,9 +8596,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8783,9 +8639,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8828,9 +8682,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8873,9 +8725,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8918,9 +8768,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -8963,9 +8811,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9008,9 +8854,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9053,9 +8897,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9385,9 +9227,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9430,9 +9270,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9475,9 +9313,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9520,9 +9356,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9565,9 +9399,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9610,9 +9442,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9655,9 +9485,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9700,9 +9528,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9745,9 +9571,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9790,9 +9614,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9835,9 +9657,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9880,9 +9700,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -9925,9 +9743,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10256,9 +10072,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
-
-                public JavaCollections(final Class<Collection<?>> instanceClass, final @Nullable @Unmodifiable Collection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10301,9 +10115,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
-
-                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass, final @Nullable @Unmodifiable SequencedCollection<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10346,9 +10158,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
-
-                public JavaLists(final Class<List<?>> instanceClass, final @Nullable @Unmodifiable List<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10391,9 +10201,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
-
-                public JavaSets(final Class<Set<?>> instanceClass, final @Nullable @Unmodifiable Set<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10436,9 +10244,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
-
-                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass, final @Nullable @Unmodifiable SequencedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10481,9 +10287,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSortedSetInstancesAsArguments;
-
-                public JavaSortedSets(final Class<SortedSet<?>> instanceClass, final @Nullable @Unmodifiable SortedSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10526,9 +10330,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
-
-                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass, final @Nullable @Unmodifiable NavigableSet<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10571,9 +10373,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
-
-                public JavaQueues(final Class<Queue<?>> instanceClass, final @Nullable @Unmodifiable Queue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10616,9 +10416,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
-
-                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass, final @Nullable @Unmodifiable BlockingQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10661,9 +10459,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
-
-                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass, final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10706,9 +10502,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
-
-                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass, final @Nullable @Unmodifiable TransferQueue<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10751,9 +10545,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
-
-                public JavaDeques(final Class<Deque<?>> instanceClass, final @Nullable @Unmodifiable Deque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 
@@ -10796,9 +10588,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#region -------------------- Required test configuration --------------------
 
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
-
-                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass, final @Nullable @Unmodifiable BlockingDeque<?> nullValue) { super(instanceClass, nullValue); }
+                public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
                 //#endregion -------------------- Required test configuration --------------------
 

@@ -17,13 +17,8 @@ public abstract class AbstractJavaSequencedCollectionTests {
 
     /// The [Class] of [SequencedCollection] that should be used for the tests
     public final Class<SequencedCollection<?>> instanceClass;
-    public final @Nullable @Unmodifiable SequencedCollection<?> nullValue;
 
-    protected AbstractJavaSequencedCollectionTests(final Class<SequencedCollection<?>> instanceClass,
-                                                   final @Nullable @Unmodifiable SequencedCollection<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaSequencedCollectionTests(final Class<SequencedCollection<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaSequencedCollectionTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [SequencedCollection]
+    /// Give `null` to a typed [SequencedCollection]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedCollection<T> nullInstance() { return (SequencedCollection<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedCollection<T> nullInstance() { return null; }
 
 }

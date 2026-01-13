@@ -17,13 +17,8 @@ public abstract class AbstractJavaCollectionTests {
 
     /// The [Class] of [Collection] that should be used for the tests
     public final Class<Collection<?>> instanceClass;
-    public final @Nullable @Unmodifiable Collection<?> nullValue;
 
-    protected AbstractJavaCollectionTests(final Class<Collection<?>> instanceClass,
-                                          final @Nullable @Unmodifiable Collection<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaCollectionTests(final Class<Collection<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaCollectionTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [Collection]
+    /// Give `null` to a typed [Collection]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Collection<T> nullInstance() { return (Collection<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable Collection<T> nullInstance() { return null; }
 
 }

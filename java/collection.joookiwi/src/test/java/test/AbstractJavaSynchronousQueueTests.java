@@ -17,13 +17,8 @@ public abstract class AbstractJavaSynchronousQueueTests {
 
     /// The [Class] of [SynchronousQueue] that should be used for the tests
     public final Class<SynchronousQueue<?>> instanceClass;
-    public final @Nullable @Unmodifiable SynchronousQueue<?> nullValue;
 
-    protected AbstractJavaSynchronousQueueTests(final Class<SynchronousQueue<?>> instanceClass,
-                                                final @Nullable @Unmodifiable SynchronousQueue<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaSynchronousQueueTests(final Class<SynchronousQueue<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaSynchronousQueueTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [SynchronousQueue]
+    /// Give `null` to a typed [SynchronousQueue]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SynchronousQueue<T> nullInstance() { return (SynchronousQueue<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable SynchronousQueue<T> nullInstance() { return null; }
 
 }

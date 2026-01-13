@@ -17,13 +17,8 @@ public abstract class AbstractJavaQueueTests {
 
     /// The [Class] of [Queue] that should be used for the tests
     public final Class<Queue<?>> instanceClass;
-    public final @Nullable @Unmodifiable Queue<?> nullValue;
 
-    protected AbstractJavaQueueTests(final Class<Queue<?>> instanceClass,
-                                     final @Nullable @Unmodifiable Queue<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaQueueTests(final Class<Queue<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaQueueTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [Queue]
+    /// Give `null to a typed [Queue]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable Queue<T> nullInstance() { return (Queue<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable Queue<T> nullInstance() { return null; }
 
 }

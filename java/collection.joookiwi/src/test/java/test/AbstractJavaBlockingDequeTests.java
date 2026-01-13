@@ -17,13 +17,8 @@ public abstract class AbstractJavaBlockingDequeTests {
 
     /// The [Class] of [BlockingDeque] that should be used for the tests
     public final Class<BlockingDeque<?>> instanceClass;
-    public final @Nullable @Unmodifiable BlockingDeque<?> nullValue;
 
-    protected AbstractJavaBlockingDequeTests(final Class<BlockingDeque<?>> instanceClass,
-                                             final @Nullable @Unmodifiable BlockingDeque<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaBlockingDequeTests(final Class<BlockingDeque<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaBlockingDequeTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [BlockingDeque]
+    /// Give `null` to a typed [BlockingDeque]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingDeque<T> nullInstance() { return (BlockingDeque<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable BlockingDeque<T> nullInstance() { return null; }
 
 }

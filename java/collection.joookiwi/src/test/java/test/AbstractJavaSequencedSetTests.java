@@ -17,13 +17,8 @@ public abstract class AbstractJavaSequencedSetTests {
 
     /// The [Class] of [SequencedSet] that should be used for the tests
     public final Class<SequencedSet<?>> instanceClass;
-    public final @Nullable @Unmodifiable SequencedSet<?> nullValue;
 
-    protected AbstractJavaSequencedSetTests(final Class<SequencedSet<?>> instanceClass,
-                                            final @Nullable @Unmodifiable SequencedSet<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaSequencedSetTests(final Class<SequencedSet<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaSequencedSetTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [SequencedSet]
+    /// Give `null` to a typed [SequencedSet]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedSet<T> nullInstance() { return (SequencedSet<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable SequencedSet<T> nullInstance() { return null; }
 
 }

@@ -17,13 +17,8 @@ public abstract class AbstractJavaSortedSetTests {
 
     /// The [Class] of [SortedSet] that should be used for the tests
     public final Class<SortedSet<?>> instanceClass;
-    public final @Nullable @Unmodifiable SortedSet<?> nullValue;
 
-    protected AbstractJavaSortedSetTests(final Class<SortedSet<?>> instanceClass,
-                                         final @Nullable @Unmodifiable SortedSet<?> nullValue) {
-        this.instanceClass = instanceClass;
-        this.nullValue = nullValue;
-    }
+    protected AbstractJavaSortedSetTests(final Class<SortedSet<?>> instanceClass) { this.instanceClass = instanceClass; }
 
     /// Create a new instance from the field [#instanceClass] with the array received onto the constructor `Object[]`
     ///
@@ -39,9 +34,8 @@ public abstract class AbstractJavaSortedSetTests {
         }
     }
 
-    /// Give the [#nullValue] casted to a typed [SortedSet]
+    /// Give `null` to a typed [SortedSet]
     @Contract(ALWAYS_NULL_0)
-    @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> @Nullable @Unmodifiable SortedSet<T> nullInstance() { return (SortedSet<T>) nullValue; }
+    public <T extends @Nullable Object> @Nullable @Unmodifiable SortedSet<T> nullInstance() { return null; }
 
 }
