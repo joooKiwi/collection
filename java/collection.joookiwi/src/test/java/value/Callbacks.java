@@ -27,6 +27,12 @@ public final class Callbacks {
     public static final IntFunction<? extends String>       callback1AltAsFail = _ -> fail("The test was not expected to have the callback being called");
     public static final Supplier<? extends String>          callback0AsFail = () -> fail("The test was not expected to have the callback being called");
 
+    public static final ObjIntFunction<? super String, String> stringTransform2AsFail = (_, _) -> fail("The test was not expected to have the callback being called");
+    public static final IntObjFunction<? super String, String> stringTransform2AltAsFail = (_, _) -> fail("The test was not expected to have the callback being called");
+    public static final Function<? super String, String>       stringTransform1AsFail = _ -> fail("The test was not expected to have the callback being called");
+    public static final IntFunction<String>                    stringTransform1AltAsFail = _ -> fail("The test was not expected to have the callback being called");
+    public static final Supplier<String>                       stringTransform0AsFail = () -> fail("The test was not expected to have the callback being called");
+
     public static final ObjIntPredicate<? super String> predicate2AsFail = (_, _) -> fail("The test was not expected to have the callback being called");
     public static final IntObjPredicate<? super String> predicate2AltAsFail = (_, _) -> fail("The test was not expected to have the callback being called");
     public static final Predicate<? super String>       predicate1AsFail = _ -> fail("The test was not expected to have the callback being called");
