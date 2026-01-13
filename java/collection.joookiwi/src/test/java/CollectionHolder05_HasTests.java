@@ -4782,11 +4782,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -4798,11 +4798,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -4814,11 +4814,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -4830,11 +4830,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -4846,11 +4846,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -4862,11 +4862,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -4878,11 +4878,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -4894,11 +4894,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -4910,11 +4910,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -4926,11 +4926,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -4942,11 +4942,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -4958,11 +4958,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasOne(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasOne(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(newInstance(ABCD))); }
 
             }
 
@@ -5038,11 +5038,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -5054,11 +5054,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -5070,11 +5070,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -5086,11 +5086,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -5102,11 +5102,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -5118,11 +5118,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -5134,11 +5134,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -5150,11 +5150,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -5166,11 +5166,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -5182,11 +5182,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -5198,11 +5198,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -5214,11 +5214,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertTrue(methods.this.getInstance().hasNotOne(nullInstance())); }
-                                         @Test void empty()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertTrue(getInstance().hasNotOne(nullInstance())); }
+                                         @Test void empty()    { assertTrue(getInstance().hasNotOne(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue(getInstance().hasNotOne(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue(getInstance().hasNotOne(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
 
@@ -5551,11 +5551,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
@@ -5567,11 +5567,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
@@ -5583,11 +5583,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
@@ -5599,11 +5599,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
@@ -5615,11 +5615,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
@@ -5631,11 +5631,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
@@ -5647,11 +5647,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
@@ -5663,11 +5663,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
@@ -5679,11 +5679,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertFalse(getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertFalse(getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
@@ -5695,11 +5695,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
@@ -5711,11 +5711,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
@@ -5727,11 +5727,11 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 //#endregion -------------------- Required test configuration --------------------
 
-                @DisplayName("null")     @Test void testNull() { assertFalse(methods.this.getInstance().hasNotAll(nullInstance())); }
-                                         @Test void empty()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(EMPTY))); }
-                @DisplayName("1 field")  @Test void test1()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(A))); }
-                @DisplayName("2 fields") @Test void test2()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(AB))); }
-                @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
+                @DisplayName("null")     @Test void testNull() { assertFalse(getInstance().hasNotAll(nullInstance())); }
+                                         @Test void empty()    { assertFalse(getInstance().hasNotAll(newInstance(EMPTY))); }
+                @DisplayName("1 field")  @Test void test1()    { assertTrue( getInstance().hasNotAll(newInstance(A))); }
+                @DisplayName("2 fields") @Test void test2()    { assertTrue( getInstance().hasNotAll(newInstance(AB))); }
+                @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
 
