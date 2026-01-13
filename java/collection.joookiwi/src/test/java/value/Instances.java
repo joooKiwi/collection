@@ -85,6 +85,7 @@ public final class Instances {
             CollectionHolder_FromNullArrayExtensionFunction.class,
     };
 
+
     @SuppressWarnings("unchecked cast") public static final Class<CollectionHolderForTest<?, ?>>[] everyInstances = (Class<CollectionHolderForTest<?, ?>>[]) new Class[]{
             CollectionHolder_ByMinimalistCollection.class,
             CollectionHolder_ByGenericCollection.class,
@@ -99,6 +100,16 @@ public final class Instances {
 //            Arguments.of(Named.of("collection (by array)",             CollectionHolder_ByArrayCollection.class)),
             Arguments.of(Named.of("collection (by minimalist viewer)", CollectionHolder_ByMinimalistViewer.class)),
             Arguments.of(Named.of("collection (by normal viewer)",     CollectionHolder_ByViewer.class)),
+    };
+
+
+    @SuppressWarnings("unchecked cast") public static final Class<CollectionHolderForTest<?, ?>>[] everyExtensionMethodInstances = (Class<CollectionHolderForTest<?, ?>>[]) new Class[]{
+            CollectionHolder_FromMinimalistExtensionFunction.class,
+            CollectionHolder_FromNullMinimalistExtensionFunction.class,
+            CollectionHolder_FromExtensionFunction.class,
+            CollectionHolder_FromNullExtensionFunction.class,
+            CollectionHolder_FromArrayExtensionFunction.class,
+            CollectionHolder_FromNullArrayExtensionFunction.class,
     };
 
     public static final Arguments[] everyExtensionMethodInstancesAsArguments = {
