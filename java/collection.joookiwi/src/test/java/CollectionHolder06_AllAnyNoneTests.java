@@ -3,6 +3,7 @@ import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.GenericCollectionHolder_AllAlias;
 import instance.GenericCollectionHolder_AnyAlias;
+import joookiwi.collection.java.AbstractCollectionHolder;
 import joookiwi.collection.java.CollectionHolder;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.junit.jupiter.api.Disabled;
@@ -111,10 +112,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")       @Test void test0Arg() { assertEquals(1, new GenericCollectionHolder_AllAlias().execute(it -> it.every(callback0AsTrue)).amountOfCall); }
             }
             @Nested class some {
-                @Disabled @DisplayName("∅")                  @Test void testEmpty() { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some()).amountOfCall); }
-                @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback2AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback1AsTrue)).amountOfCall); }
-                @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback0AsTrue)).amountOfCall); }
+                @Disabled @DisplayName("∅")                  @Test void testEmpty() { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(CollectionHolder::some).amountOfCall); }
+                @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback2AsTrue)).amountOfCall); }
+                @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback1AsTrue)).amountOfCall); }
+                @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback0AsTrue)).amountOfCall); }
             }
         }
 
