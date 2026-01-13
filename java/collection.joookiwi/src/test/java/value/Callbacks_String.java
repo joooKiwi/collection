@@ -1,6 +1,7 @@
 package value;
 
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.callback.IntObjFunction;
@@ -17,9 +18,10 @@ public final class Callbacks_String {
 
     @Contract(ALWAYS_FAIL_0) private Callbacks_String() { throw new Error("The utility class “Callbacks_String” cannot be constructed."); }
 
-    public static final Supplier<? super String>                         callbackToString0 = () -> "E";
-    public static final Function<? extends String, ? super String>       callbackToUpperString1 = String::toUpperCase;
-    public static final ObjIntFunction<? extends String, ? super String> callbackToUpperString2 = (it, _) -> it.toUpperCase();
+    public static final Supplier<? super String>                         callbackToString0 =         () -> "E";
+    public static final Function<? extends String, ? super String>       callbackToUpperString1 =    String::toUpperCase;
+    public static final IntFunction<? super String>                      callbackToUpperString1Alt = _ -> "E";
+    public static final ObjIntFunction<? extends String, ? super String> callbackToUpperString2 =    (it, _) -> it.toUpperCase();
     public static final IntObjFunction<? extends String, ? super String> callbackToUpperString2Alt = (_, it) -> it.toUpperCase();
 
     public static final Predicate<? super String> callbackIsA = it -> it.equals("a");
