@@ -66,7 +66,9 @@ public final class ReusableFields_Null {
     @Contract(ALWAYS_FAIL_0) private ReusableFields_Null() { throw new Error("The utility class “ReusableFields_Null” cannot be constructed."); }
 
     public static final @Nullable Object                                           NULL_OBJECT = null;
+    public static final @Nullable CharSequence                                     NULL_CHAR_SEQUENCE = null;
     public static final @Nullable String                                           NULL_STRING = null;
+    public static final @Nullable Character                                        NULL_CHARACTER = null;
 
     public static final @Nullable ObjIntFunction<?, ? super String>                NULL_SUPPLIER2 = null;
     public static final @Nullable IntObjFunction<?, ? super String>                NULL_SUPPLIER2_ALT = null;
