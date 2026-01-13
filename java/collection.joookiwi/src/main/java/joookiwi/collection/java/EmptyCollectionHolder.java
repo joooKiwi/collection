@@ -302,21 +302,6 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#endregion -------------------- Singleton usage --------------------
 
-    //#region -------------------- Fields --------------------
-
-    private @Nullable CollectionCreator __collectionCreator;
-
-    //#endregion -------------------- Fields --------------------
-    //#region -------------------- Getter methods (helper) --------------------
-
-    protected CollectionCreator _CollectionCreator() {
-        var value = __collectionCreator;
-        if (value != null)
-            return value;
-        return __collectionCreator = CollectionCreator.getInstance();
-    }
-
-    //#endregion -------------------- Getter methods (helper) --------------------
     //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
@@ -2487,7 +2472,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     @Override public EmptyCollectionIterator<T> toIterator() { return emptyCollectionIterator(); }
 
-    @Override public Spliterator<T> toSpliterator() { return _CollectionCreator().Spliterator(); }
+    @Override public Spliterator<T> toSpliterator() { return CollectionCreator.getInstance().Spliterator(); }
 
     //#endregion -------------------- To iterator --------------------
 
@@ -3345,117 +3330,117 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- To map --------------------
 
-    @Override public @Unmodifiable Map<Integer, T> toMap(       ) { return _CollectionCreator().Map(); }
+    @Override public @Unmodifiable Map<Integer, T> toMap(       ) { return CollectionCreator.getInstance().Map(); }
     @Override public Map<Integer, T>               toMutableMap() { throw new RuntimeException("Unhandled toMutableMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To sequenced map --------------------
 
-    @Override public @Unmodifiable SequencedMap<Integer, T> toSequencedMap(       ) { return _CollectionCreator().SequencedMap(); }
+    @Override public @Unmodifiable SequencedMap<Integer, T> toSequencedMap(       ) { return CollectionCreator.getInstance().SequencedMap(); }
     @Override public SequencedMap<Integer, T>               toMutableSequencedMap() { throw new RuntimeException("Unhandled toMutableSequencedMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To sequenced map --------------------
     //#region -------------------- To sorted map --------------------
 
-    @Override public @Unmodifiable SortedMap<Integer, T> toSortedMap(       ) { return _CollectionCreator().SortedMap(); }
+    @Override public @Unmodifiable SortedMap<Integer, T> toSortedMap(       ) { return CollectionCreator.getInstance().SortedMap(); }
     @Override public SortedMap<Integer, T>               toMutableSortedMap() { throw new RuntimeException("Unhandled toMutableSortedMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To sorted map --------------------
     //#region -------------------- To navigable map --------------------
 
-    @Override public @Unmodifiable NavigableMap<Integer, T> toNavigableMap(       ) { return _CollectionCreator().NavigableMap(); }
+    @Override public @Unmodifiable NavigableMap<Integer, T> toNavigableMap(       ) { return CollectionCreator.getInstance().NavigableMap(); }
     @Override public NavigableMap<Integer, T>               toMutableNavigableMap() { throw new RuntimeException("Unhandled toMutableNavigableMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To navigable map --------------------
     //#region -------------------- To concurrent map --------------------
 
-    @Override public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap(       ) { return _CollectionCreator().ConcurrentMap(); }
+    @Override public @Unmodifiable ConcurrentMap<Integer, T> toConcurrentMap(       ) { return CollectionCreator.getInstance().ConcurrentMap(); }
     @Override public ConcurrentMap<Integer, T>               toMutableConcurrentMap() { throw new RuntimeException("Unhandled toMutableConcurrentMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To concurrent map --------------------
     //#region -------------------- To concurrent navigable map --------------------
 
-    @Override public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap(       ) { return _CollectionCreator().ConcurrentNavigableMap(); }
+    @Override public @Unmodifiable ConcurrentNavigableMap<Integer, T> toConcurrentNavigableMap(       ) { return CollectionCreator.getInstance().ConcurrentNavigableMap(); }
     @Override public ConcurrentNavigableMap<Integer, T>               toMutableConcurrentNavigableMap() { throw new RuntimeException("Unhandled toMutableConcurrentNavigableMap()");/* TODO handle this method*/ }
 
     //#endregion -------------------- To concurrent navigable map --------------------
     //#region -------------------- To concurrent hash map --------------------
 
-    @Override public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap(       ) { return _CollectionCreator().ConcurrentHashMap(); }
-    @Override public ConcurrentHashMap<Integer, T>               toMutableConcurrentHashMap() { return _CollectionCreator().MutableConcurrentHashMap(); }
+    @Override public @Unmodifiable ConcurrentHashMap<Integer, T> toConcurrentHashMap(       ) { return CollectionCreator.getInstance().ConcurrentHashMap(); }
+    @Override public ConcurrentHashMap<Integer, T>               toMutableConcurrentHashMap() { return CollectionCreator.getInstance().MutableConcurrentHashMap(); }
 
     //#endregion -------------------- To concurrent hash map --------------------
     //#region -------------------- To concurrent skip list map --------------------
 
-    @Override public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap(       ) { return _CollectionCreator().ConcurrentSkipListMap(); }
-    @Override public ConcurrentSkipListMap<Integer, T>               toMutableConcurrentSkipListMap() { return _CollectionCreator().MutableConcurrentSkipListMap(); }
+    @Override public @Unmodifiable ConcurrentSkipListMap<Integer, T> toConcurrentSkipListMap(       ) { return CollectionCreator.getInstance().ConcurrentSkipListMap(); }
+    @Override public ConcurrentSkipListMap<Integer, T>               toMutableConcurrentSkipListMap() { return CollectionCreator.getInstance().MutableConcurrentSkipListMap(); }
 
     //#endregion -------------------- To concurrent skip list map --------------------
     //#region -------------------- To enum map --------------------
 
-              public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(                                                                                                                      ) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, @Nullable Entry<K, V>>                                             transform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V> valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Function<? super T, V>       valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Supplier<V>                  valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, @Nullable Entry<K, V>>                                                   transform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V>       valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Function<? super T, V>             valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Supplier<V>                        valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<@Nullable Entry<K, V>>                                                              transform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable ObjIntFunction<? super T, V>                  valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Function<? super T, V>                        valueTransform) { return _CollectionCreator().EnumMap(); }
-    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Supplier<V>                                   valueTransform) { return _CollectionCreator().EnumMap(); }
+              public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(                                                                                                                      ) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, @Nullable Entry<K, V>>                                             transform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V> valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Function<? super T, V>       valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Supplier<V>                  valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, @Nullable Entry<K, V>>                                                   transform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V>       valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Function<? super T, V>             valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Supplier<V>                        valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<@Nullable Entry<K, V>>                                                              transform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable ObjIntFunction<? super T, V>                  valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Function<? super T, V>                        valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
+    @Override public <K extends Enum<K>, V> @Unmodifiable EnumMap<K, V> toEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Supplier<V>                                   valueTransform) { return CollectionCreator.getInstance().EnumMap(); }
 
-              public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(                                                                                                                      ) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, @Nullable Entry<K, V>>                                             transform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V> valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Function<? super T, V>       valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Supplier<V>                  valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, @Nullable Entry<K, V>>                                                   transform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V>       valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Function<? super T, V>             valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Supplier<V>                        valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<@Nullable Entry<K, V>>                                                              transform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable ObjIntFunction<? super T, V>                  valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Function<? super T, V>                        valueTransform) { return _CollectionCreator().MutableEnumMap(); }
-    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Supplier<V>                                   valueTransform) { return _CollectionCreator().MutableEnumMap(); }
+              public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(                                                                                                                      ) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, @Nullable Entry<K, V>>                                             transform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V> valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Function<? super T, V>       valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable ObjIntFunction<? super T, K> keyTransform, final @Nullable Supplier<V>                  valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, @Nullable Entry<K, V>>                                                   transform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable ObjIntFunction<? super T, V>       valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Function<? super T, V>             valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Function<? super T, K> keyTransform, final @Nullable Supplier<V>                        valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<@Nullable Entry<K, V>>                                                              transform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable ObjIntFunction<? super T, V>                  valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Function<? super T, V>                        valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
+    @Override public <K extends Enum<K>, V> EnumMap<K, V>               toMutableEnumMap(final @Nullable Supplier<K> keyTransform, final @Nullable Supplier<V>                                   valueTransform) { return CollectionCreator.getInstance().MutableEnumMap(); }
 
     //#endregion -------------------- To enum map --------------------
     //#region -------------------- To hash map --------------------
 
-    @Override public @Unmodifiable HashMap<Integer, T> toHashMap(       ) { return _CollectionCreator().HashMap(); }
-    @Override public HashMap<Integer, T>               toMutableHashMap() { return _CollectionCreator().MutableHashMap(); }
+    @Override public @Unmodifiable HashMap<Integer, T> toHashMap(       ) { return CollectionCreator.getInstance().HashMap(); }
+    @Override public HashMap<Integer, T>               toMutableHashMap() { return CollectionCreator.getInstance().MutableHashMap(); }
 
     //#endregion -------------------- To hash map --------------------
     //#region -------------------- To hashtable --------------------
 
-    @Override public @Unmodifiable Hashtable<Integer, T> toHashtable(       ) { return _CollectionCreator().Hashtable(); }
-    @Override public Hashtable<Integer, T>               toMutableHashtable() { return _CollectionCreator().MutableHashtable(); }
+    @Override public @Unmodifiable Hashtable<Integer, T> toHashtable(       ) { return CollectionCreator.getInstance().Hashtable(); }
+    @Override public Hashtable<Integer, T>               toMutableHashtable() { return CollectionCreator.getInstance().MutableHashtable(); }
 
     //#endregion -------------------- To hashtable --------------------
     //#region -------------------- To linked hash map --------------------
 
-    @Override public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap(       ) { return _CollectionCreator().LinkedHashMap(); }
-    @Override public LinkedHashMap<Integer, T>               toMutableLinkedHashMap() { return _CollectionCreator().MutableLinkedHashMap(); }
+    @Override public @Unmodifiable LinkedHashMap<Integer, T> toLinkedHashMap(       ) { return CollectionCreator.getInstance().LinkedHashMap(); }
+    @Override public LinkedHashMap<Integer, T>               toMutableLinkedHashMap() { return CollectionCreator.getInstance().MutableLinkedHashMap(); }
 
     //#endregion -------------------- To linked hash map --------------------
     //#region -------------------- To identity hash map --------------------
 
-    @Override public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap(       ) { return _CollectionCreator().IdentityHashMap(); }
-    @Override public IdentityHashMap<Integer, T>               toMutableIdentityHashMap() { return _CollectionCreator().MutableIdentityHashMap(); }
+    @Override public @Unmodifiable IdentityHashMap<Integer, T> toIdentityHashMap(       ) { return CollectionCreator.getInstance().IdentityHashMap(); }
+    @Override public IdentityHashMap<Integer, T>               toMutableIdentityHashMap() { return CollectionCreator.getInstance().MutableIdentityHashMap(); }
 
     //#endregion -------------------- To identity hash map --------------------
     //#region -------------------- To tree map --------------------
 
-    @Override public @Unmodifiable TreeMap<Integer, T> toTreeMap(       ) { return _CollectionCreator().TreeMap(); }
-    @Override public TreeMap<Integer, T>               toMutableTreeMap() { return _CollectionCreator().MutableTreeMap(); }
+    @Override public @Unmodifiable TreeMap<Integer, T> toTreeMap(       ) { return CollectionCreator.getInstance().TreeMap(); }
+    @Override public TreeMap<Integer, T>               toMutableTreeMap() { return CollectionCreator.getInstance().MutableTreeMap(); }
 
     //#endregion -------------------- To tree map --------------------
     //#region -------------------- To weak hash map --------------------
 
-    @Override public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap(       ) { return _CollectionCreator().WeakHashMap(); }
-    @Override public WeakHashMap<Integer, T>               toMutableWeakHashMap() { return _CollectionCreator().MutableWeakHashMap(); }
+    @Override public @Unmodifiable WeakHashMap<Integer, T> toWeakHashMap(       ) { return CollectionCreator.getInstance().WeakHashMap(); }
+    @Override public WeakHashMap<Integer, T>               toMutableWeakHashMap() { return CollectionCreator.getInstance().MutableWeakHashMap(); }
 
     //#endregion -------------------- To weak hash map --------------------
 
