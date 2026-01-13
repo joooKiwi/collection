@@ -118,7 +118,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
     @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
 
         @Nested class get {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get()); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class,      instance::get); }
             @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_OBJECT)); }
             @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_STRING)); }
             @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(NULL_VARARGS)); }
@@ -146,14 +146,14 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.get(EMPTY_ARRAY)); }
         }
         @Nested class getFirst {
-            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst()); }
+            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class,      instance::getFirst); }
             @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_OBJECT)); }
             @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_STRING)); }
             @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(NULL_VARARGS)); }
             @DisplayName("[]")          @Test void testArray()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getFirst(EMPTY_ARRAY)); }
         }
         @Nested class getLast {
-            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast()); }
+            @DisplayName("∅")           @Test void testEmpty()      { assertThrowsExactly(EmptyCollectionException.class,      instance::getLast); }
             @DisplayName("null object") @Test void testNullObject() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_OBJECT)); }
             @DisplayName("null string") @Test void testNullString() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_STRING)); }
             @DisplayName("null array")  @Test void testNullArray()  { assertThrowsExactly(EmptyCollectionException.class, () -> instance.getLast(NULL_VARARGS)); }
@@ -273,7 +273,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class first {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first()); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::first); }
             @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_OBJECT)); }
             @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_STRING)); }
             @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.first(NULL_PREDICATE2)); }
@@ -293,7 +293,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.firstOrNull(EMPTY_ARRAY)); }
         }
         @Nested class firstIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed()); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,       instance::firstIndexed); }
             @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_OBJECT)); }
             @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_STRING)); }
             @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexed(NULL_PREDICATE2_ALT)); }
@@ -314,7 +314,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class last {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last()); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::last); }
             @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_OBJECT)); }
             @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_STRING)); }
             @DisplayName("null (T, int) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.last(NULL_PREDICATE2)); }
@@ -334,7 +334,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                      @Test void testArray()        { assertNull(instance.lastOrNull(EMPTY_ARRAY)); }
         }
         @Nested class lastIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed()); }
+            @DisplayName("∅")                       @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::lastIndexed); }
             @DisplayName("null object")             @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_OBJECT)); }
             @DisplayName("null string")             @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_STRING)); }
             @DisplayName("null (int, T) → boolean") @Test void test2ArgCallback() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexed(NULL_PREDICATE2_ALT)); }
@@ -356,7 +356,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
 
         @Nested class at {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at()); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class,      instance::at); }
             @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_OBJECT)); }
             @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_STRING)); }
             @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(NULL_VARARGS)); }
@@ -384,7 +384,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")          @Test void testArray()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.at(EMPTY_ARRAY)); }
         }
         @Nested class elementAt {
-            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt()); }
+            @DisplayName("∅")           @Test void testEmpty()         { assertThrowsExactly(EmptyCollectionException.class,      instance::elementAt); }
             @DisplayName("null object") @Test void testNullObject()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_OBJECT)); }
             @DisplayName("null string") @Test void testNullString()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_STRING)); }
             @DisplayName("null []")     @Test void testNullArray()     { assertThrowsExactly(EmptyCollectionException.class, () -> instance.elementAt(NULL_VARARGS)); }

@@ -127,7 +127,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @TestInstance(PER_CLASS) @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
         @Nested class firstIndexOf {
-            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf()); }
+            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::firstIndexOf); }
             @DisplayName("null object")      @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(NULL_OBJECT)); }
             @DisplayName("null string")      @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(NULL_STRING)); }
             @DisplayName("null []")          @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(NULL_VARARGS)); }
@@ -141,7 +141,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         }
         @Nested class indexOf {
-            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf()); }
+            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOf); }
             @DisplayName("null object")      @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(NULL_OBJECT)); }
             @DisplayName("null string")      @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(NULL_STRING)); }
             @DisplayName("null []")          @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(NULL_VARARGS)); }
@@ -183,7 +183,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         }
         @Nested class lastIndexOf {
-            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf()); }
+            @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::lastIndexOf); }
             @DisplayName("null object")      @Test void testNullObject()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(NULL_OBJECT)); }
             @DisplayName("null string")      @Test void testNullString()   { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(NULL_STRING)); }
             @DisplayName("null []")          @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(NULL_VARARGS)); }
@@ -212,7 +212,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class indexOfFirst {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirst()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOfFirst); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirst(NULL_VARARGS)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirst(NULL_PREDICATE2)); }
             @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirst(NULL_PREDICATE1)); }
@@ -238,7 +238,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirst(EMPTY_ARRAY)); }
         }
         @Nested class findFirstIndex {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndex()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::findFirstIndex); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndex(NULL_VARARGS)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndex(NULL_PREDICATE2)); }
             @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndex(NULL_PREDICATE1)); }
@@ -264,7 +264,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndex(EMPTY_ARRAY)); }
         }
         @Nested class findIndex {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndex()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::findIndex); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndex(NULL_VARARGS)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndex(NULL_PREDICATE2)); }
             @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndex(NULL_PREDICATE1)); }
@@ -368,7 +368,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.findIndexOrNull(EMPTY_ARRAY)); }
         }
         @Nested class indexOfFirstIndexed {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirstIndexed()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOfFirstIndexed); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirstIndexed(NULL_VARARGS)); }
             @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirstIndexed(NULL_PREDICATE2_ALT)); }
             @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirstIndexed(NULL_PREDICATE1_ALT)); }
@@ -394,7 +394,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfFirstIndexed(EMPTY_ARRAY)); }
         }
         @Nested class findFirstIndexIndexed {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndexIndexed()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::findFirstIndexIndexed); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndexIndexed(NULL_VARARGS)); }
             @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndexIndexed(NULL_PREDICATE2_ALT)); }
             @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndexIndexed(NULL_PREDICATE1_ALT)); }
@@ -420,7 +420,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findFirstIndexIndexed(EMPTY_ARRAY)); }
         }
         @Nested class findIndexIndexed {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndexIndexed()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::findIndexIndexed); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndexIndexed(NULL_VARARGS)); }
             @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndexIndexed(NULL_PREDICATE2_ALT)); }
             @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findIndexIndexed(NULL_PREDICATE1_ALT)); }
@@ -525,7 +525,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class indexOfLast {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLast()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOfLast); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLast(NULL_VARARGS)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLast(NULL_PREDICATE2)); }
             @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLast(NULL_PREDICATE1)); }
@@ -551,7 +551,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLast(EMPTY_ARRAY)); }
         }
         @Nested class findLastIndex {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndex()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::findLastIndex); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndex(NULL_VARARGS)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndex(NULL_PREDICATE2)); }
             @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndex(NULL_PREDICATE1)); }
@@ -629,7 +629,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertNull(instance.findLastIndexOrNull(EMPTY_ARRAY)); }
         }
         @Nested class indexOfLastIndexed {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOfLastIndexed); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(NULL_VARARGS)); }
             @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(NULL_PREDICATE2_ALT)); }
             @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(NULL_PREDICATE1_ALT)); }
@@ -655,7 +655,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("[]")                             @Test void testArray()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOfLastIndexed(EMPTY_ARRAY)); }
         }
         @Nested class findLastIndexIndexed {
-            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed()); }
+            @DisplayName("∅")                              @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,     instance::findLastIndexIndexed); }
             @DisplayName("null []")                        @Test void testNullArray()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_VARARGS)); }
             @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE2_ALT)); }
             @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(EmptyCollectionException.class, () -> instance.findLastIndexIndexed(NULL_PREDICATE1_ALT)); }
