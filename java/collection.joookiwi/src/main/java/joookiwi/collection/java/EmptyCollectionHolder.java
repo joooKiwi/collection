@@ -1349,25 +1349,25 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Has --------------------
 
-    @Contract(ALWAYS_FALSE_1) @Override public boolean has(final T                                value) { return false; }
+    @Contract(ALWAYS_FALSE_1) @Override public boolean has(final @Nullable T                      value) { return false; }
     @Contract(ALWAYS_FALSE_1)           public boolean has(final @Nullable Object @Nullable ... ignored) { return false; }
 
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean includes(final T                                value) { return has(value); }
+    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean includes(final @Nullable T                      value) { return has(value); }
     @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean includes(final @Nullable Object @Nullable ... ignored) { return has(); }
 
-    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean contains(final T                                value) { return has(value); }
+    @Contract(ALWAYS_FALSE_1)                                            @Override public final boolean contains(final @Nullable T                      value) { return has(value); }
     @Contract(ALWAYS_FALSE_1) @Alias(value = "has", arguments = IGNORED)           public final boolean contains(final @Nullable Object @Nullable ... ignored) { return has(); }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has not --------------------
 
-    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNot(final T                                value) { return true; }
+    @Contract(ALWAYS_TRUE_1) @Override public boolean hasNot(final @Nullable T                      value) { return true; }
     @Contract(ALWAYS_TRUE_1)           public boolean hasNot(final @Nullable Object @Nullable ... ignored) { return true; }
 
-    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean includesNot(final T                                value) { return hasNot(value); }
+    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean includesNot(final @Nullable T                      value) { return hasNot(value); }
     @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean includesNot(final @Nullable Object @Nullable ... ignored) { return hasNot(); }
 
-    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean containsNot(final T                                value) { return hasNot(value); }
+    @Contract(ALWAYS_TRUE_1)                                               @Override public final boolean containsNot(final @Nullable T                      value) { return hasNot(value); }
     @Contract(ALWAYS_TRUE_1) @Alias(value = "hasNot", arguments = IGNORED)           public final boolean containsNot(final @Nullable Object @Nullable ... ignored) { return hasNot(); }
 
     //#endregion -------------------- Has not --------------------
