@@ -138,7 +138,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.firstIndexOf(null, null, null)); }
-
         }
         @Nested class indexOf {
             @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::indexOf); }
@@ -152,7 +151,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.indexOf(null, null, null)); }
-
         }
         @Nested class firstIndexOfOrNull {
             @DisplayName("∅")                @Test void testEmpty()        { assertNull(instance.firstIndexOfOrNull()); }
@@ -166,7 +164,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertNull(instance.firstIndexOfOrNull(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertNull(instance.firstIndexOfOrNull(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertNull(instance.firstIndexOfOrNull(null, null, null)); }
-
         }
         @Nested class indexOfOrNull {
             @DisplayName("∅")                @Test void testEmpty()        { assertNull(instance.indexOfOrNull()); }
@@ -180,7 +177,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertNull(instance.indexOfOrNull(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertNull(instance.indexOfOrNull(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertNull(instance.indexOfOrNull(null, null, null)); }
-
         }
         @Nested class lastIndexOf {
             @DisplayName("∅")                @Test void testEmpty()        { assertThrowsExactly(EmptyCollectionException.class,      instance::lastIndexOf); }
@@ -194,7 +190,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertThrowsExactly(EmptyCollectionException.class, () -> instance.lastIndexOf(null, null, null)); }
-
         }
         @Nested class lastIndexOfOrNull {
             @DisplayName("∅")                @Test void testEmpty()        { assertNull(instance.lastIndexOfOrNull()); }
@@ -208,7 +203,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("null, int, int?")  @Test void testNull0Null()    { assertNull(instance.lastIndexOfOrNull(null, 0, null)); }
             @DisplayName("null, int?, int")  @Test void testNullNull0()    { assertNull(instance.lastIndexOfOrNull(null, null, 0)); }
             @DisplayName("null, int?, int?") @Test void testNullNullNull() { assertNull(instance.lastIndexOfOrNull(null, null, null)); }
-
         }
 
         @Nested class indexOfFirst {
