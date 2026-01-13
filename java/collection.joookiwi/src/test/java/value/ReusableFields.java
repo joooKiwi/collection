@@ -14,7 +14,6 @@ import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import org.jetbrains.annotations.Contract;
 
-import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 public final class ReusableFields {
@@ -29,7 +28,8 @@ public final class ReusableFields {
     public static final DoubleAdder       ZERO_DOUBLE_ADDER = new DoubleAdder();
     public static final DoubleAccumulator ZERO_DOUBLE_ACCUMULATOR = new DoubleAccumulator(null, 0L);
 
-    public static final Object[] EMPTY_ARRAY = emptyArray();
+    public static final Object[] EMPTY_ARRAY = new Object[]{};
+    public static final char MIN_CHAR = '\0';
 
     public static final int EXISTANT_INDEX = 2;
     public static final int INVALID_INDEX = 2000;
