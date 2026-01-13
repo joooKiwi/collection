@@ -74,7 +74,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
 import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
@@ -125,21 +124,6 @@ import static value.Arrays.NULL;
 import static value.Arrays.NULL_A;
 import static value.Arrays.NULL_AB;
 import static value.Arrays.NULL_NULL_AB;
-import static value.Instances.everyExtensionMethodInstancesAsArguments;
-import static value.Instances.everyInstancesAsArguments;
-import static value.Instances.everyJavaBlockingDequeInstancesAsArguments;
-import static value.Instances.everyJavaBlockingQueueInstancesAsArguments;
-import static value.Instances.everyJavaCollectionInstancesAsArguments;
-import static value.Instances.everyJavaDequeInstancesAsArguments;
-import static value.Instances.everyJavaListInstancesAsArguments;
-import static value.Instances.everyJavaNavigableSetInstancesAsArguments;
-import static value.Instances.everyJavaQueueInstancesAsArguments;
-import static value.Instances.everyJavaSequencedCollectionInstancesAsArguments;
-import static value.Instances.everyJavaSequencedSetInstancesAsArguments;
-import static value.Instances.everyJavaSetInstancesAsArguments;
-import static value.Instances.everyJavaSortedSetInstancesAsArguments;
-import static value.Instances.everyJavaSynchronousQueueInstancesAsArguments;
-import static value.Instances.everyJavaTransferQueueInstancesAsArguments;
 import static value.ReusableFields.EMPTY_ARRAY;
 import static value.ReusableFields_Null.NULL_ARRAY;
 import static value.ReusableFields_Null.NULL_COLLECTION_HOLDER;
@@ -4723,12 +4707,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     }
 
-    @FieldSource("values")
+    @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
 
         //#region -------------------- Required test configuration --------------------
-
-        static final Arguments[] values = everyExtensionMethodInstancesAsArguments;
 
         public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
 
@@ -4791,12 +4773,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
@@ -4809,12 +4789,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
@@ -4827,12 +4805,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
@@ -4845,12 +4821,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
@@ -4863,12 +4837,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
@@ -4881,12 +4853,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
@@ -4899,12 +4869,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
@@ -4917,12 +4885,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -4935,12 +4901,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -4953,12 +4917,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -4971,12 +4933,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
@@ -4989,12 +4949,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
@@ -5071,12 +5029,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasNotOne(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
@@ -5089,12 +5045,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
@@ -5107,12 +5061,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
@@ -5125,12 +5077,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
@@ -5143,12 +5093,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5161,12 +5109,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5179,12 +5125,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
@@ -5197,12 +5141,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5215,12 +5157,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5233,12 +5173,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5251,12 +5189,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
@@ -5269,12 +5205,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(methods.this.getInstance().hasNotOne(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
@@ -5352,12 +5286,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
@@ -5370,12 +5302,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
@@ -5388,12 +5318,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
@@ -5406,12 +5334,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
@@ -5424,12 +5350,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5442,12 +5366,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5460,12 +5382,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
@@ -5478,12 +5398,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5496,12 +5414,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5514,12 +5430,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5532,12 +5446,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
@@ -5550,12 +5462,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(getInstance().hasAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
@@ -5632,12 +5542,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( getInstance().hasNotAll(new ArrayAsCollection<>(ABCD))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaCollectionInstancesAsArguments;
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
 
@@ -5650,12 +5558,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedCollectionInstancesAsArguments;
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
 
@@ -5668,12 +5574,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaListInstancesAsArguments;
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
 
@@ -5686,12 +5590,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSetInstancesAsArguments;
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
 
@@ -5704,12 +5606,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSequencedSetInstancesAsArguments;
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5722,12 +5622,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaNavigableSetInstancesAsArguments;
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
 
@@ -5740,12 +5638,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaQueueInstancesAsArguments;
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
 
@@ -5758,12 +5654,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingQueueInstancesAsArguments;
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5776,12 +5670,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaSynchronousQueueInstancesAsArguments;
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5794,12 +5686,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertFalse(methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaTransferQueueInstancesAsArguments;
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
 
@@ -5812,12 +5702,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaDequeInstancesAsArguments;
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
 
@@ -5830,12 +5718,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields") @Test void test4()    { assertTrue( methods.this.getInstance().hasNotAll(newInstance(ABCD))); }
 
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
-
-                static final Arguments[] values = everyJavaBlockingDequeInstancesAsArguments;
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
 
@@ -5869,12 +5755,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     }
 
-    @FieldSource("values")
+    @FieldSource("value.Instances#everyInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class instances extends AbstractInstancesTests {
 
         //#region -------------------- Required test configuration --------------------
-
-        static final Arguments[] values = everyInstancesAsArguments;
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
 
@@ -5982,7 +5866,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (non-empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6000,7 +5884,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6018,7 +5902,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6036,7 +5920,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6054,7 +5938,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6072,7 +5956,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6090,7 +5974,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6108,7 +5992,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6126,7 +6010,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6144,7 +6028,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6162,7 +6046,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6180,7 +6064,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6198,7 +6082,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6302,7 +6186,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, newInstance(ABCD).execute(it ->  it.hasNotOne(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6320,7 +6204,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6338,7 +6222,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6356,7 +6240,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6374,7 +6258,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6392,7 +6276,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6410,7 +6294,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6428,7 +6312,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6446,7 +6330,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6464,7 +6348,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6482,7 +6366,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6500,7 +6384,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6518,7 +6402,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(1, instances.this.newInstance(ABCD).execute(it ->  it.hasNotOne(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6623,7 +6507,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6641,7 +6525,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6659,7 +6543,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6677,7 +6561,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6695,7 +6579,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6713,7 +6597,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6731,7 +6615,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6749,7 +6633,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6767,7 +6651,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6785,7 +6669,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6803,7 +6687,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6821,7 +6705,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6839,7 +6723,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6943,7 +6827,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, newInstance(ABCD).execute(it ->  it.hasNotAll(new ArrayAsCollection<>(AB))).getAmountOfCall()); }
                 }
 
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6961,7 +6845,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6979,7 +6863,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -6997,7 +6881,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7015,7 +6899,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7033,7 +6917,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7051,7 +6935,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7069,7 +6953,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7087,7 +6971,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7105,7 +6989,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7123,7 +7007,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7141,7 +7025,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7159,7 +7043,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("4 fields (empty)") @Test void test4_empty()    { assertEquals(0, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(EMPTY))).getAmountOfCall()); }
                     @DisplayName("4 fields (empty)") @Test void test4_nonEmpty() { assertEquals(3, instances.this.newInstance(ABCD).execute(it ->  it.hasNotAll(newInstance(AB))).getAmountOfCall()); }
                 }
-                @FieldSource("values")
+                @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                     //#region -------------------- Required test configuration --------------------
@@ -7531,7 +7415,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasOne(new ArrayAsCollection<>(EFGH))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7574,7 +7458,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7617,7 +7501,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7660,7 +7544,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7703,7 +7587,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7746,7 +7630,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7789,7 +7673,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7832,7 +7716,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7875,7 +7759,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7918,7 +7802,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -7961,7 +7845,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8004,7 +7888,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8047,7 +7931,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8376,7 +8260,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotOne(new ArrayAsCollection<>(EFGH))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8419,7 +8303,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8462,7 +8346,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8505,7 +8389,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8548,7 +8432,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8591,7 +8475,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8634,7 +8518,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8677,7 +8561,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8720,7 +8604,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8763,7 +8647,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8806,7 +8690,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8849,7 +8733,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -8892,7 +8776,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotOne(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotOne(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9222,7 +9106,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(newInstance(ABCD) .hasAll(new ArrayAsCollection<>(EFGH))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9265,7 +9149,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9308,7 +9192,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9351,7 +9235,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9394,7 +9278,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9437,7 +9321,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9480,7 +9364,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9523,7 +9407,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9566,7 +9450,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9609,7 +9493,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9652,7 +9536,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue(instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9695,7 +9579,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -9738,7 +9622,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertTrue( instances.this.newInstance(ABCD) .hasAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10067,7 +9951,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( newInstance(ABCD) .hasNotAll(new ArrayAsCollection<>(EFGH))); }
             }
 
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10110,7 +9994,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10153,7 +10037,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10196,7 +10080,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10239,7 +10123,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10282,7 +10166,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10325,7 +10209,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10368,7 +10252,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10411,7 +10295,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10454,7 +10338,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10497,7 +10381,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10540,7 +10424,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
@@ -10583,7 +10467,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("4 fields (abcd)") @Test void test4_abcd() { assertFalse(instances.this.newInstance(ABCD) .hasNotAll(newInstance(ABCD))); }
                 @DisplayName("4 fields (efgh)") @Test void test4_efgh() { assertTrue( instances.this.newInstance(ABCD) .hasNotAll(newInstance(EFGH))); }
             }
-            @FieldSource("values")
+            @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
 
                 //#region -------------------- Required test configuration --------------------
