@@ -1,8 +1,10 @@
 package joookiwi.collection.java.method;
 
+import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Enumeration;
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
@@ -29,15 +31,16 @@ public final class ArrayCreator
 
     //#region -------------------- Fields --------------------
 
-    private static @Nullable Object @Nullable @Unmodifiable [] __emptyArray;
-    private static boolean @Nullable @Unmodifiable [] __emptyBooleanArray;
-    private static char @Nullable @Unmodifiable [] __emptyCharArray;
-    private static byte @Nullable @Unmodifiable [] __emptyByteArray;
-    private static short @Nullable @Unmodifiable [] __emptyShortArray;
-    private static int @Nullable @Unmodifiable [] __emptyIntArray;
-    private static long @Nullable @Unmodifiable [] __emptyLongArray;
-    private static float @Nullable @Unmodifiable [] __emptyFloatArray;
-    private static double @Nullable @Unmodifiable [] __emptyDoubleArray;
+    private static @Nullable WeakReference<Object @Nullable @Unmodifiable []> __emptyArray;
+    private static final java.util.Map<Class<?>, WeakReference<Object @Unmodifiable []>> __otherEmptyArrays = new IdentityHashMap<>();
+    private static @Nullable WeakReference<boolean @Unmodifiable []> __emptyBooleanArray;
+    private static @Nullable WeakReference<char @Unmodifiable []> __emptyCharArray;
+    private static @Nullable WeakReference<byte @Unmodifiable []> __emptyByteArray;
+    private static @Nullable WeakReference<short @Unmodifiable []> __emptyShortArray;
+    private static @Nullable WeakReference<int @Unmodifiable []> __emptyIntArray;
+    private static @Nullable WeakReference<long @Unmodifiable []> __emptyLongArray;
+    private static @Nullable WeakReference<float @Unmodifiable []> __emptyFloatArray;
+    private static @Nullable WeakReference<double @Unmodifiable []> __emptyDoubleArray;
 
     //#endregion -------------------- Fields --------------------
 
@@ -48,77 +51,195 @@ public final class ArrayCreator
 
     //#region -------------------- ∅ --------------------
 
-    /// An [empty Array][java.lang.reflect.Array]
-    @SuppressWarnings("unchecked cast")
+    /// An [Object] (casted to [T]) [empty Array][java.lang.reflect.Array]
     public static <T extends @Nullable Object> T @Unmodifiable [] Array() {
-        final var value = __emptyArray;
+        final var valueHolder = __emptyArray;
+        if (valueHolder == null) {
+            @SuppressWarnings("unchecked cast") final var value = (T[]) new Object[0];
+            __emptyArray = new WeakReference<>(value);
+            return value;
+        }
+
+        @SuppressWarnings("unchecked cast") final var value = (T[]) valueHolder.get();
         if (value != null)
-            return (T[]) value;
-        return (T[]) (__emptyArray = new Object[0]);
+            return value;
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        @SuppressWarnings("unchecked cast") final var newValue = (T[]) new Object[0];
+        __emptyArray = new WeakReference<>(newValue);
+        return newValue;
+    }
+
+    /// Give an [empty Array][java.lang.reflect.Array] of the specified type.
+    ///
+    /// Note that it reuses the [empty Array][java.lang.reflect.Array] depending on the type received.
+    /// But, it does not hold any strong reference to the value returned
+    @SuppressWarnings("unchecked cast")
+    public static <T> T @Unmodifiable [] Array(final Class<? super T> clazz) {
+        if (clazz == Object.class)
+            return Array();
+
+        final var map = __otherEmptyArrays;
+        if (map.containsKey(clazz)) {
+            final var valueFound = map.get(clazz).get();
+            if (valueFound != null)
+                return (T[]) valueFound;
+        }
+        final var newValue = (T[]) java.lang.reflect.Array.newInstance(clazz, 0);
+        map.put(clazz, new WeakReference<>(newValue));
+        return newValue;
     }
 
     /// A `boolean` [empty Array][java.lang.reflect.Array]
     public static boolean @Unmodifiable [] BooleanArray() {
-        final var value = __emptyBooleanArray;
+        final var valueHolder = __emptyBooleanArray;
+        if (valueHolder == null) {
+            final var value = new boolean[0];
+            __emptyBooleanArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyBooleanArray = new boolean[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new boolean[0];
+        __emptyBooleanArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `char` [empty Array][java.lang.reflect.Array]
     public static char @Unmodifiable [] CharArray() {
-        final var value = __emptyCharArray;
+        final var valueHolder = __emptyCharArray;
+        if (valueHolder == null) {
+            final var value = new char[0];
+            __emptyCharArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyCharArray = new char[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new char[0];
+        __emptyCharArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `byte` [empty Array][java.lang.reflect.Array]
     public static byte @Unmodifiable [] ByteArray() {
-        final var value = __emptyByteArray;
+        final var valueHolder = __emptyByteArray;
+        if (valueHolder == null) {
+            final var value = new byte[0];
+            __emptyByteArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyByteArray = new byte[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new byte[0];
+        __emptyByteArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `short` [empty Array][java.lang.reflect.Array]
     public static short @Unmodifiable [] ShortArray() {
-        final var value = __emptyShortArray;
+        final var valueHolder = __emptyShortArray;
+        if (valueHolder == null) {
+            final var value = new short[0];
+            __emptyShortArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyShortArray = new short[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new short[0];
+        __emptyShortArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// An `int` [empty Array][java.lang.reflect.Array]
     public static int @Unmodifiable [] IntArray() {
-        final var value = __emptyIntArray;
+        final var valueHolder = __emptyIntArray;
+        if (valueHolder == null) {
+            final var value = new int[0];
+            __emptyIntArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyIntArray = new int[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new int[0];
+        __emptyIntArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `long` [empty Array][java.lang.reflect.Array]
     public static long @Unmodifiable [] LongArray() {
-        final var value = __emptyLongArray;
+        final var valueHolder = __emptyLongArray;
+        if (valueHolder == null) {
+            final var value = new long[0];
+            __emptyLongArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyLongArray = new long[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new long[0];
+        __emptyLongArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `float` [empty Array][java.lang.reflect.Array]
     public static float @Unmodifiable [] FloatArray() {
-        final var value = __emptyFloatArray;
+        final var valueHolder = __emptyFloatArray;
+        if (valueHolder == null) {
+            final var value = new float[0];
+            __emptyFloatArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyFloatArray = new float[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new float[0];
+        __emptyFloatArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     /// A `double` [empty Array][java.lang.reflect.Array]
     public static double @Unmodifiable [] DoubleArray() {
-        final var value = __emptyDoubleArray;
+        final var valueHolder = __emptyDoubleArray;
+        if (valueHolder == null) {
+            final var value = new double[0];
+            __emptyDoubleArray = new WeakReference<>(value);
+            return value;
+        }
+
+        final var value = valueHolder.get();
         if (value != null)
             return value;
-        return __emptyDoubleArray = new double[0];
+
+        // We re-assign a new value since the old value is no longer referenced anywhere
+        final var newValue = new double[0];
+        __emptyDoubleArray = new WeakReference<>(newValue);
+        return newValue;
     }
 
     //#endregion -------------------- ∅ --------------------
