@@ -21,7 +21,7 @@ public final class Callbacks_String {
     public static final Supplier<? super String>                         callbackToString0 =         () -> "E";
     public static final Function<? extends String, ? super String>       callbackToUpperString1 =    String::toUpperCase;
     public static final IntFunction<? super String>                      callbackToUpperString1Alt = _ -> "E";
-    public static final ObjIntFunction<? extends String, ? super String> callbackToUpperString2 =    (it, _) -> it.toUpperCase();
+    public static final ObjIntFunction<? extends String, ? super String> callbackToUpperString2 =    (it, i) -> i + ":" + it.toUpperCase();
     public static final IntObjFunction<? extends String, ? super String> callbackToUpperString2Alt = (_, it) -> it.toUpperCase();
 
     public static final Predicate<? super String> callbackIsA = it -> it.equals("a");

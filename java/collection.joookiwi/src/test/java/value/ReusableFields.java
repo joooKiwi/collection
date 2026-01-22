@@ -32,7 +32,7 @@ public final class ReusableFields {
     public static final char MIN_CHAR = '\0';
 
     public static final int EXISTANT_INDEX = 2;
-    public static final int INVALID_INDEX = 2000;
+    public static final int INVALID_INDEX = 500;
 
 
     public static final String VALUE = "";
