@@ -23,7 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
-import static value.Instances.everyExtensionMethodInstancesAsArguments;
 import static value.Instances.everyInstances;
 import static value.Sizes.SIZE_VALUES;
 
@@ -44,14 +43,11 @@ import static value.Sizes.SIZE_VALUES;
         @Test void count() { assertEquals(1, new GenericCollectionHolder_SizeAlias().execute(CollectionHolder::count).getAmountOfCall()); }
     }
 
-    @FieldSource("values")
+    @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
-
         //#region -------------------- Required test configuration --------------------
 
-        static final Arguments[] values = everyExtensionMethodInstancesAsArguments;
-
-        public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
+        public methods(CollectionHolderForTest<?, ?> instance) { super(instance); }
 
         //#endregion -------------------- Required test configuration --------------------
 

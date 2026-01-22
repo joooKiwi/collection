@@ -25,7 +25,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedClass;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
 import test.AbstractEmptyCollectionHolderTests;
 import test.AbstractInstancesTests;
@@ -80,8 +79,6 @@ import static value.Arrays.ABCD;
 import static value.Arrays.EMPTY;
 import static value.Callbacks.callback0AsFail;
 import static value.Callbacks.callback1AltAsFail;
-import static value.Instances.everyExtensionMethodInstancesAsArguments;
-import static value.Instances.everyInstancesAsArguments;
 import static value.ReusableFields.callback0;
 import static value.ReusableFields.callback1Alt;
 import static value.ReusableFields.EMPTY_ARRAY;
@@ -688,12 +685,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         //TODO add utility static method (value) call to have been called
     }
 
-    @FieldSource("values")
+    @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
 
         //#region -------------------- Required test configuration --------------------
-
-        static final Arguments[] values = everyExtensionMethodInstancesAsArguments;
 
         public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
 
@@ -714,13 +709,10 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         @Test void getLastOrNull()  { assertNull(getInstance().getLastOrNull()); }
     }
 
-    @FieldSource("values")
-//    @TestInstance(PER_CLASS)
-    @ParameterizedClass(name = "{0}") @Nested class instances extends AbstractInstancesTests {
+    @FieldSource("value.Instances#everyInstancesAsArguments")
+    @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class instances extends AbstractInstancesTests {
 
         //#region -------------------- Required test configuration --------------------
-
-        static final Arguments[] values = everyInstancesAsArguments;
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
 
