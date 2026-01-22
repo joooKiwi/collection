@@ -4739,7 +4739,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
-
         //#region -------------------- Required test configuration --------------------
 
         public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
@@ -4805,7 +4804,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -4821,7 +4819,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -4837,7 +4834,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -4853,7 +4849,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -4869,7 +4864,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -4885,7 +4879,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -4901,7 +4894,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -4917,7 +4909,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -4933,7 +4924,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -4949,7 +4939,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -4965,7 +4954,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -4981,7 +4969,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -5061,7 +5048,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -5077,7 +5063,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -5093,7 +5078,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -5109,7 +5093,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -5125,7 +5108,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -5141,7 +5123,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -5157,7 +5138,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -5173,7 +5153,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -5189,7 +5168,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -5205,7 +5183,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -5221,7 +5198,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -5237,7 +5213,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -5318,7 +5293,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -5334,7 +5308,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -5350,7 +5323,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -5366,7 +5338,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -5382,7 +5353,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -5398,7 +5368,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -5414,7 +5383,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -5430,7 +5398,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -5446,7 +5413,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -5462,7 +5428,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -5478,7 +5443,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -5494,7 +5458,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -5574,7 +5537,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -5590,7 +5552,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -5606,7 +5567,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -5622,7 +5582,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -5638,7 +5597,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -5654,7 +5612,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -5670,7 +5627,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -5686,7 +5642,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -5702,7 +5657,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -5718,7 +5672,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -5734,7 +5687,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -5750,7 +5702,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -5787,7 +5738,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @FieldSource("value.Instances#everyInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class instances extends AbstractInstancesTests {
-
         //#region -------------------- Required test configuration --------------------
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
@@ -5898,7 +5848,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -5916,7 +5865,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -5934,7 +5882,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -5952,7 +5899,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -5970,7 +5916,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -5988,7 +5933,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -6006,7 +5950,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -6024,7 +5967,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -6042,7 +5984,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -6060,7 +6001,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -6078,7 +6018,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -6096,7 +6035,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -6114,7 +6052,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -6218,7 +6155,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -6236,7 +6172,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -6254,7 +6189,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -6272,7 +6206,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -6290,7 +6223,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -6308,7 +6240,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -6326,7 +6257,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -6344,7 +6274,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -6362,7 +6291,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -6380,7 +6308,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -6398,7 +6325,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -6416,7 +6342,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -6434,7 +6359,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -6539,7 +6463,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -6557,7 +6480,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -6575,7 +6497,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -6593,7 +6514,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -6611,7 +6531,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -6629,7 +6548,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -6647,7 +6565,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -6665,7 +6582,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -6683,7 +6599,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -6701,7 +6616,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -6719,7 +6633,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -6737,7 +6650,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -6755,7 +6667,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -6859,7 +6770,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
                 @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -6877,7 +6787,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -6895,7 +6804,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -6913,7 +6821,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -6931,7 +6838,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -6949,7 +6855,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -6967,7 +6872,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -6985,7 +6889,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -7003,7 +6906,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -7021,7 +6923,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -7039,7 +6940,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -7057,7 +6957,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -7075,7 +6974,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 }
                 @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
                 @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                     //#region -------------------- Required test configuration --------------------
 
                     public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -7447,7 +7345,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -7490,7 +7387,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -7533,7 +7429,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -7576,7 +7471,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -7619,7 +7513,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -7662,7 +7555,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -7705,7 +7597,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -7748,7 +7639,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -7791,7 +7681,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -7834,7 +7723,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -7877,7 +7765,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -7920,7 +7807,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -7963,7 +7849,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -8292,7 +8177,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -8335,7 +8219,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -8378,7 +8261,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -8421,7 +8303,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -8464,7 +8345,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -8507,7 +8387,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -8550,7 +8429,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -8593,7 +8471,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -8636,7 +8513,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -8679,7 +8555,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -8722,7 +8597,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -8765,7 +8639,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -8808,7 +8681,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -9138,7 +9010,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -9181,7 +9052,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -9224,7 +9094,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -9267,7 +9136,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -9310,7 +9178,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -9353,7 +9220,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -9396,7 +9262,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -9439,7 +9304,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -9482,7 +9346,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -9525,7 +9388,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -9568,7 +9430,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -9611,7 +9472,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -9654,7 +9514,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }
@@ -9983,7 +9842,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
             @FieldSource("value.Instances#everyJavaCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java collections") @Nested class JavaCollections extends AbstractJavaCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaCollections(final Class<Collection<?>> instanceClass) { super(instanceClass); }
@@ -10026,7 +9884,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedCollectionInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedCollections") @Nested class JavaSequencedCollections extends AbstractJavaSequencedCollectionTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedCollections(final Class<SequencedCollection<?>> instanceClass) { super(instanceClass); }
@@ -10069,7 +9926,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaListInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java lists") @Nested class JavaLists extends AbstractJavaListTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaLists(final Class<List<?>> instanceClass) { super(instanceClass); }
@@ -10112,7 +9968,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sets") @Nested class JavaSets extends AbstractJavaSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSets(final Class<Set<?>> instanceClass) { super(instanceClass); }
@@ -10155,7 +10010,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSequencedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sequencedSets") @Nested class JavaSequencedSets extends AbstractJavaSequencedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSequencedSets(final Class<SequencedSet<?>> instanceClass) { super(instanceClass); }
@@ -10198,7 +10052,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSortedSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java sortedSets") @Nested class JavaSortedSets extends AbstractJavaSortedSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSortedSets(final Class<SortedSet<?>> instanceClass) { super(instanceClass); }
@@ -10241,7 +10094,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaNavigableSetInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java navigableSets") @Nested class JavaNavigableSets extends AbstractJavaNavigableSetTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaNavigableSets(final Class<NavigableSet<?>> instanceClass) { super(instanceClass); }
@@ -10284,7 +10136,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java queues") @Nested class JavaQueues extends AbstractJavaQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaQueues(final Class<Queue<?>> instanceClass) { super(instanceClass); }
@@ -10327,7 +10178,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingQueues") @Nested class JavaBlockingQueues extends AbstractJavaBlockingQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingQueues(final Class<BlockingQueue<?>> instanceClass) { super(instanceClass); }
@@ -10370,7 +10220,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaSynchronousQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java synchronousQueues") @Nested class JavaSynchronousQueues extends AbstractJavaSynchronousQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaSynchronousQueues(final Class<SynchronousQueue<?>> instanceClass) { super(instanceClass); }
@@ -10413,7 +10262,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaTransferQueueInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java transferQueues") @Nested class JavaTransferQueues extends AbstractJavaTransferQueueTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaTransferQueues(final Class<TransferQueue<?>> instanceClass) { super(instanceClass); }
@@ -10456,7 +10304,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java deques") @Nested class JavaDeques extends AbstractJavaDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaDeques(final Class<Deque<?>> instanceClass) { super(instanceClass); }
@@ -10499,7 +10346,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @FieldSource("value.Instances#everyJavaBlockingDequeInstancesAsArguments")
             @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @DisplayName("Java blockingDeques") @Nested class JavaBlockingDeques extends AbstractJavaBlockingDequeTests {
-
                 //#region -------------------- Required test configuration --------------------
 
                 public JavaBlockingDeques(final Class<BlockingDeque<?>> instanceClass) { super(instanceClass); }

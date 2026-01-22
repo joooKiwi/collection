@@ -1909,6 +1909,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null, null)); }
             @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null, null)); }
         }
+
     }
 
     @FieldSource("value.Instances#everyInstancesAsArguments")
@@ -2211,6 +2212,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
                 }
             }
+
         }
 
         @TestInstance(PER_CLASS) @Nested class firstIndexOf {

@@ -3,7 +3,6 @@ import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.GenericCollectionHolder_AllAlias;
 import instance.GenericCollectionHolder_AnyAlias;
-import joookiwi.collection.java.AbstractCollectionHolder;
 import joookiwi.collection.java.CollectionHolder;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.junit.jupiter.api.Disabled;
@@ -149,7 +148,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
-
         //#region -------------------- Required test configuration --------------------
 
         public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
@@ -178,7 +176,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
     @FieldSource("value.Instances#everyInstancesAsArguments")
 //    @TestInstance(PER_CLASS)
     @ParameterizedClass(name = "{0}") @Nested class instances extends AbstractInstancesTests {
-
         //#region -------------------- Required test configuration --------------------
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
