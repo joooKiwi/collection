@@ -51,9 +51,8 @@ import static value.Sizes.SIZE_VALUES;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @Test void isEmpty() { assertTrue(getInstance().isEmpty()); }
-        @Test void isNotEmpty() { assertFalse(getInstance().isNotEmpty()); }
-
+        @Test void isEmpty() { assertTrue(instance.isEmpty()); }
+        @Test void isNotEmpty() { assertFalse(instance.isNotEmpty()); }
     }
 
     @FieldSource("values")

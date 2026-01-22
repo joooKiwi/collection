@@ -694,8 +694,8 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @Test void getFirst() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().getFirst()); }
-        @Test void getLast()  { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().getLast()); }
+        @Test void getFirst() { assertThrowsExactly(emptyExceptionClass(), instance::getFirst); }
+        @Test void getLast()  { assertThrowsExactly(emptyExceptionClass(), instance::getLast); }
 
         @Nested class getOrElse {
             @DisplayName("int → T") @Test void test1Arg() { assertSame(VALUE, getInstance().getOrElse(INVALID_INDEX, callback1Alt)); }

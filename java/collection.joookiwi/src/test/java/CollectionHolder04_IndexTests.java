@@ -1715,37 +1715,37 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         //#endregion -------------------- Required test configuration --------------------
 
         @Nested class firstIndexOf {
-                                              @Test void element()         { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null)); }
-            @DisplayName("element, int")      @Test void elementFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null, 0)); }
-            @DisplayName("element, int?")     @Test void elementNull()     { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null, null)); }
-            @DisplayName("element, int, int") @Test void elementFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null, 0, 1)); }
-            @DisplayName("element, int, int") @Test void elementFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null, 0, null)); }
-            @DisplayName("element, int, int") @Test void elementNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().firstIndexOf(null, null, null)); }
+                                              @Test void element()         { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null)); }
+            @DisplayName("element, int")      @Test void elementFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null, 0)); }
+            @DisplayName("element, int?")     @Test void elementNull()     { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null, null)); }
+            @DisplayName("element, int, int") @Test void elementFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null, 0, 1)); }
+            @DisplayName("element, int, int") @Test void elementFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null, 0, null)); }
+            @DisplayName("element, int, int") @Test void elementNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> instance.firstIndexOf(null, null, null)); }
         }
         @Nested class firstIndexOfOrNull {
-                                              @Test void element()         { assertNull(getInstance().firstIndexOfOrNull(null)); }
-            @DisplayName("element, int")      @Test void elementFrom()     { assertNull(getInstance().firstIndexOfOrNull(null, 0)); }
-            @DisplayName("element, int?")     @Test void elementNull()     { assertNull(getInstance().firstIndexOfOrNull(null, null)); }
-            @DisplayName("element, int, int") @Test void elementFromTo()   { assertNull(getInstance().firstIndexOfOrNull(null, 0, 1)); }
-            @DisplayName("element, int, int") @Test void elementFromNull() { assertNull(getInstance().firstIndexOfOrNull(null, 0, null)); }
-            @DisplayName("element, int, int") @Test void elementNullNull() { assertNull(getInstance().firstIndexOfOrNull(null, null, null)); }
+                                              @Test void element()         { assertNull(instance.firstIndexOfOrNull(null)); }
+            @DisplayName("element, int")      @Test void elementFrom()     { assertNull(instance.firstIndexOfOrNull(null, 0)); }
+            @DisplayName("element, int?")     @Test void elementNull()     { assertNull(instance.firstIndexOfOrNull(null, null)); }
+            @DisplayName("element, int, int") @Test void elementFromTo()   { assertNull(instance.firstIndexOfOrNull(null, 0, 1)); }
+            @DisplayName("element, int, int") @Test void elementFromNull() { assertNull(instance.firstIndexOfOrNull(null, 0, null)); }
+            @DisplayName("element, int, int") @Test void elementNullNull() { assertNull(instance.firstIndexOfOrNull(null, null, null)); }
         }
 
         @Nested class lastIndexOf {
-                                              @Test void element()         { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null)); }
-            @DisplayName("element, int")      @Test void elementFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null, 0)); }
-            @DisplayName("element, int?")     @Test void elementNull()     { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null, null)); }
-            @DisplayName("element, int, int") @Test void elementFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null, 0, 1)); }
-            @DisplayName("element, int, int") @Test void elementFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null, 0, null)); }
-            @DisplayName("element, int, int") @Test void elementNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> getInstance().lastIndexOf(null, null, null)); }
+                                              @Test void element()         { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null)); }
+            @DisplayName("element, int")      @Test void elementFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null, 0)); }
+            @DisplayName("element, int?")     @Test void elementNull()     { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null, null)); }
+            @DisplayName("element, int, int") @Test void elementFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null, 0, 1)); }
+            @DisplayName("element, int, int") @Test void elementFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null, 0, null)); }
+            @DisplayName("element, int, int") @Test void elementNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> instance.lastIndexOf(null, null, null)); }
         }
         @Nested class lastIndexOfOrNull {
-                                              @Test void element()         { assertNull(getInstance().lastIndexOfOrNull(null)); }
-            @DisplayName("element, int")      @Test void elementFrom()     { assertNull(getInstance().lastIndexOfOrNull(null, 0)); }
-            @DisplayName("element, int?")     @Test void elementNull()     { assertNull(getInstance().lastIndexOfOrNull(null, null)); }
-            @DisplayName("element, int, int") @Test void elementFromTo()   { assertNull(getInstance().lastIndexOfOrNull(null, 0, 1)); }
-            @DisplayName("element, int, int") @Test void elementFromNull() { assertNull(getInstance().lastIndexOfOrNull(null, 0, null)); }
-            @DisplayName("element, int, int") @Test void elementNullNull() { assertNull(getInstance().lastIndexOfOrNull(null, null, null)); }
+                                              @Test void element()         { assertNull(instance.lastIndexOfOrNull(null)); }
+            @DisplayName("element, int")      @Test void elementFrom()     { assertNull(instance.lastIndexOfOrNull(null, 0)); }
+            @DisplayName("element, int?")     @Test void elementNull()     { assertNull(instance.lastIndexOfOrNull(null, null)); }
+            @DisplayName("element, int, int") @Test void elementFromTo()   { assertNull(instance.lastIndexOfOrNull(null, 0, 1)); }
+            @DisplayName("element, int, int") @Test void elementFromNull() { assertNull(instance.lastIndexOfOrNull(null, 0, null)); }
+            @DisplayName("element, int, int") @Test void elementNullNull() { assertNull(instance.lastIndexOfOrNull(null, null, null)); }
         }
 
         @Nested class indexOfFirst {
@@ -1925,41 +1925,41 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             boolean disableIfNormalViewer() { return isNormalViewer(); }
 
             @Nested class firstIndexOf {
-                                             @Test void empty()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.firstIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("1 field (a)")  @Test void test1_a() { assertEquals(1, newInstance(A).execute(it -> it.firstIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("1 field (k)")  @Test void test1_k() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
-                @DisplayName("2 fields (a)") @Test void test2_a() { assertEquals(1, newInstance(AB).execute(it -> it.firstIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("2 fields (k)") @Test void test2_k() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
-                @DisplayName("4 fields (a)") @Test void test4_a() { assertEquals(1, newInstance(ABCD).execute(it -> it.firstIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("4 fields (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
+                                             @Test void empty()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException( it -> it.firstIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("1 field (a)")  @Test void test1_a() { assertEquals(1, newInstance(A)    .execute(                             it -> it.firstIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("1 field (k)")  @Test void test1_k() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
+                @DisplayName("2 fields (a)") @Test void test2_a() { assertEquals(1, newInstance(AB)   .execute(                             it -> it.firstIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("2 fields (k)") @Test void test2_k() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
+                @DisplayName("4 fields (a)") @Test void test4_a() { assertEquals(1, newInstance(ABCD) .execute(                             it -> it.firstIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("4 fields (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.firstIndexOf("k")).getAmountOfCall()); }
             }
             @Nested class firstIndexOfOrNull {
                                              @Test void empty()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("1 field (a)")  @Test void test1_a() { assertEquals(1, newInstance(A).execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("1 field (k)")  @Test void test1_k() { assertEquals(1, newInstance(A).execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
-                @DisplayName("2 fields (a)") @Test void test2_a() { assertEquals(1, newInstance(AB).execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("2 fields (k)") @Test void test2_k() { assertEquals(2, newInstance(AB).execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
-                @DisplayName("4 fields (a)") @Test void test4_a() { assertEquals(1, newInstance(ABCD).execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("4 fields (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD).execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("1 field (a)")  @Test void test1_a() { assertEquals(1, newInstance(A)    .execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
+                @DisplayName("1 field (k)")  @Test void test1_k() { assertEquals(1, newInstance(A)    .execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("2 fields (a)") @Test void test2_a() { assertEquals(1, newInstance(AB)   .execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
+                @DisplayName("2 fields (k)") @Test void test2_k() { assertEquals(2, newInstance(AB)   .execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("4 fields (a)") @Test void test4_a() { assertEquals(1, newInstance(ABCD) .execute(it -> it.firstIndexOfOrNull("a")).getAmountOfCall()); }
+                @DisplayName("4 fields (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD) .execute(it -> it.firstIndexOfOrNull("k")).getAmountOfCall()); }
             }
 
             @Nested class lastIndexOf {
-                                            @Test void empty()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.lastIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("1 field (a)") @Test void test1_a() { assertEquals(1, newInstance(A).execute(it -> it.lastIndexOf("a")).getAmountOfCall()); }
-                @DisplayName("1 field (k)") @Test void test1_k() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
-                @DisplayName("2 field (b)") @Test void test2_a() { assertEquals(1, newInstance(AB).execute(it -> it.lastIndexOf("b")).getAmountOfCall()); }
-                @DisplayName("2 field (k)") @Test void test2_k() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
-                @DisplayName("4 field (d)") @Test void test4_a() { assertEquals(1, newInstance(ABCD).execute(it -> it.lastIndexOf("d")).getAmountOfCall()); }
-                @DisplayName("4 field (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
+                                            @Test void empty()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException( it -> it.lastIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("1 field (a)") @Test void test1_a() { assertEquals(1, newInstance(A)    .execute(                             it -> it.lastIndexOf("a")).getAmountOfCall()); }
+                @DisplayName("1 field (k)") @Test void test1_k() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
+                @DisplayName("2 field (b)") @Test void test2_a() { assertEquals(1, newInstance(AB)   .execute(                             it -> it.lastIndexOf("b")).getAmountOfCall()); }
+                @DisplayName("2 field (k)") @Test void test2_k() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
+                @DisplayName("4 field (d)") @Test void test4_a() { assertEquals(1, newInstance(ABCD) .execute(                             it -> it.lastIndexOf("d")).getAmountOfCall()); }
+                @DisplayName("4 field (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.lastIndexOf("k")).getAmountOfCall()); }
             }
             @Nested class lastIndexOfOrNull {
                                             @Test void empty()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.lastIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("1 field (a)") @Test void test1_a() { assertEquals(1, newInstance(A).execute(it -> it.lastIndexOfOrNull("a")).getAmountOfCall()); }
-                @DisplayName("1 field (k)") @Test void test1_k() { assertEquals(1, newInstance(A).execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
-                @DisplayName("2 field (b)") @Test void test2_a() { assertEquals(1, newInstance(AB).execute(it -> it.lastIndexOfOrNull("b")).getAmountOfCall()); }
-                @DisplayName("2 field (k)") @Test void test2_k() { assertEquals(2, newInstance(AB).execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
-                @DisplayName("4 field (d)") @Test void test4_a() { assertEquals(1, newInstance(ABCD).execute(it -> it.lastIndexOfOrNull("d")).getAmountOfCall()); }
-                @DisplayName("4 field (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD).execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("1 field (a)") @Test void test1_a() { assertEquals(1, newInstance(A)    .execute(it -> it.lastIndexOfOrNull("a")).getAmountOfCall()); }
+                @DisplayName("1 field (k)") @Test void test1_k() { assertEquals(1, newInstance(A)    .execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("2 field (b)") @Test void test2_a() { assertEquals(1, newInstance(AB)   .execute(it -> it.lastIndexOfOrNull("b")).getAmountOfCall()); }
+                @DisplayName("2 field (k)") @Test void test2_k() { assertEquals(2, newInstance(AB)   .execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
+                @DisplayName("4 field (d)") @Test void test4_a() { assertEquals(1, newInstance(ABCD) .execute(it -> it.lastIndexOfOrNull("d")).getAmountOfCall()); }
+                @DisplayName("4 field (k)") @Test void test4_k() { assertEquals(4, newInstance(ABCD) .execute(it -> it.lastIndexOfOrNull("k")).getAmountOfCall()); }
             }
 
             @TestInstance(PER_CLASS) @Nested class indexOfFirst {
