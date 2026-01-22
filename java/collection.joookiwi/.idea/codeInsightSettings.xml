@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaProjectCodeInsightSettings">
+    <included-static-names>
+      <name>value.Arrays</name>
+      <name>value.Callbacks</name>
+      <name>value.Callbacks_Boolean</name>
+      <name>value.Callbacks_Numeric</name>
+      <name>value.Callbacks_String</name>
+      <name>value.ReusableFields</name>
+      <name>value.ReusableFields_Null</name>
+    </included-static-names>
+  </component>
+</project>
