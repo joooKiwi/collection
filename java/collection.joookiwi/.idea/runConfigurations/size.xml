@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CollectionHolder tests (index)" type="JUnit" factoryName="JUnit" folderName="CollectionHolder tests">
+  <configuration default="false" name="size" type="JUnit" factoryName="JUnit" folderName="CollectionHolder tests">
     <module name="Collection_(Java).test" />
     <option name="PACKAGE_NAME" value="" />
-    <option name="MAIN_CLASS_NAME" value="CollectionHolder04_IndexTests" />
+    <option name="MAIN_CLASS_NAME" value="CollectionHolder02_SizeTests" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
     <method v="2">

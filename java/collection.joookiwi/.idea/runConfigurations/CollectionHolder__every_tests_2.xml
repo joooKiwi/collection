@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="CollectionHolder (every tests)" type="CompoundRunConfigurationType">
+    <toRun name="all / any / none" type="JUnit" />
+    <toRun name="has" type="JUnit" />
+    <toRun name="index" type="JUnit" />
+    <toRun name="joinToString" type="JUnit" />
+    <toRun name="size" type="JUnit" />
+    <toRun name="value" type="JUnit" />
+    <method v="2" />
+  </configuration>
+</component>
