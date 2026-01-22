@@ -66,10 +66,9 @@ public class AbstractMethodsTests {
     /// Get the [#instance] cast to the type specified
     ///
     /// @param <T> The instance type
+    /// @implNote Use this when a type is required, otherwise, use [#instance] directly
     @SuppressWarnings("unchecked cast")
-    public <T extends @Nullable Object> CollectionHolder<T> getInstance() {
-        return (CollectionHolder<T>) instance;
-    }
+    public <T extends @Nullable Object> CollectionHolder<T> getInstance() { return (CollectionHolder<T>) instance; }
 
     //#endregion -------------------- Method --------------------
 
