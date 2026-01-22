@@ -1,14 +1,13 @@
 package test;
 
+import java.util.HashMap;
+import java.util.Map;
 import instance.CollectionHolderForTest;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.params.ParameterizedClass;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static helper.GetField.getStaticBooleanField;
 import static helper.GetField.getStaticStringField;
