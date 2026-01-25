@@ -7,9 +7,10 @@ import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -41,7 +42,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyPriorityBlockingQueue<T>
         extends ImmutablePriorityBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = 5124204991704798940L;
+    @Serial private static final long serialVersionUID = 8550873300907270774L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -103,9 +104,9 @@ public class EmptyPriorityBlockingQueue<T>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- To array methods --------------------

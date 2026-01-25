@@ -10,10 +10,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -43,7 +44,7 @@ public class MutableSynchronousQueue<T>
         extends SynchronousQueue<T>
         implements MutableBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = 8430677287392716591L;
+    @Serial private static final long serialVersionUID = 2244275700661801560L;
 
     //#region -------------------- Constructors --------------------
 
@@ -279,10 +280,10 @@ public class MutableSynchronousQueue<T>
     //#region -------------------- Stream methods --------------------
 
     @Contract(pure = true)
-    @Override public Stream<T> stream() { return emptyStream(); }
+    @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
     @Contract(pure = true)
-    @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------
