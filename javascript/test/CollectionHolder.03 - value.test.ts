@@ -25,16 +25,15 @@ import {LazyGenericCollectionHolder_GetLastAlias}        from "./instance/LazyGe
 import {LazyGenericCollectionHolder_GetLastOrNullAlias}  from "./instance/LazyGenericCollectionHolder_GetLastOrNullAlias"
 import {LazyGenericCollectionHolder_GetOrElseAlias}      from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
 import {LazyGenericCollectionHolder_GetOrNullAlias}      from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
-import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}              from "./value/arrays"
+import {A, AB, ABCD, EMPTY}                              from "./value/arrays"
 import {callbackAsFail0}                                 from "./value/callbacks (fail)"
 import {callbackAsNull0}                                 from "./value/callbacks (null)"
-import {everyCollectionInstances}                        from "./value/instances"
+import {everyExtensionMethodInstances, everyInstances}   from "./value/instances"
 
 import {EmptyCollectionHolder}                                                                                                               from "../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}                                                                                                             from "../src/exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                                           from "../src/exception/IndexOutOfBoundsException"
-import {NullCollectionException}                                                                                                             from "../src/exception/NullCollectionException"
 import {atOrElse, atOrElseByArray, atOrElseByCollectionHolder, atOrElseByMinimalistCollectionHolder}                                         from "../src/method/atOrElse"
 import {atOrNull, atOrNullByArray, atOrNullByCollectionHolder, atOrNullByMinimalistCollectionHolder}                                         from "../src/method/atOrNull"
 import {elementAtOrElse, elementAtOrElseByArray, elementAtOrElseByCollectionHolder, elementAtOrElseByMinimalistCollectionHolder}             from "../src/method/elementAtOrElse"
@@ -44,19 +43,11 @@ import {firstIndexed, firstIndexedByArray, firstIndexedByCollectionHolder, first
 import {firstIndexedOrNull, firstIndexedOrNullByArray, firstIndexedOrNullByCollectionHolder, firstIndexedOrNullByMinimalistCollectionHolder} from "../src/method/firstIndexedOrNull"
 import {firstOrNull, firstOrNullByArray, firstOrNullByCollectionHolder, firstOrNullByMinimalistCollectionHolder}                             from "../src/method/firstOrNull"
 import * as getFirstModule                                                                                                                   from "../src/method/getFirst"
-import {getFirst, getFirstByArray, getFirstByCollectionHolder, getFirstByMinimalistCollectionHolder}                                         from "../src/method/getFirst"
 import * as getFirstOrNullModule                                                                                                             from "../src/method/getFirstOrNull"
-import {getFirstOrElse, getFirstOrElseByArray, getFirstOrElseByCollectionHolder, getFirstOrElseByMinimalistCollectionHolder}                 from "../src/method/getFirstOrElse"
-import {getFirstOrNull, getFirstOrNullByArray, getFirstOrNullByCollectionHolder, getFirstOrNullByMinimalistCollectionHolder}                 from "../src/method/getFirstOrNull"
 import * as getLastModule                                                                                                                    from "../src/method/getLast"
-import {getLast, getLastByArray, getLastByCollectionHolder, getLastByMinimalistCollectionHolder}                                             from "../src/method/getLast"
 import * as getLastOrNullModule                                                                                                              from "../src/method/getLastOrNull"
-import {getLastOrElse, getLastOrElseByArray, getLastOrElseByCollectionHolder, getLastOrElseByMinimalistCollectionHolder}                     from "../src/method/getLastOrElse"
-import {getLastOrNull, getLastOrNullByArray, getLastOrNullByCollectionHolder, getLastOrNullByMinimalistCollectionHolder}                     from "../src/method/getLastOrNull"
 import * as getOrElseModule                                                                                                                  from "../src/method/getOrElse"
-import {getOrElse, getOrElseByArray, getOrElseByCollectionHolder, getOrElseByMinimalistCollectionHolder}                                     from "../src/method/getOrElse"
 import * as getOrNullModule                                                                                                                  from "../src/method/getOrNull"
-import {getOrNull, getOrNullByArray, getOrNullByCollectionHolder, getOrNullByMinimalistCollectionHolder}                                     from "../src/method/getOrNull"
 import {last, lastByArray, lastByCollectionHolder, lastByMinimalistCollectionHolder}                                                         from "../src/method/last"
 import {lastIndexed, lastIndexedByArray, lastIndexedByCollectionHolder, lastIndexedByMinimalistCollectionHolder}                             from "../src/method/lastIndexed"
 import {lastIndexedOrNull, lastIndexedOrNullByArray, lastIndexedOrNullByCollectionHolder, lastIndexedOrNullByMinimalistCollectionHolder}     from "../src/method/lastIndexedOrNull"
@@ -405,175 +396,137 @@ describe("CollectionHolderTest (value)", () => {
         },)
     },)
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("getOrElse", () => {
-            test("all",                          () => expect(getOrElse(it, 0, callback,) === value,).toBeTrue(),)
-            test("minimalist collection holder", () => expect(getOrElseByMinimalistCollectionHolder(it, 0, callback,) === value,).toBeTrue(),)
-            test("collection holder",            () => expect(getOrElseByCollectionHolder(it, 0, callback,) === value,).toBeTrue(),)
-            test("array",                        () => expect(getOrElseByArray(it, 0, callback,) === value,).toBeTrue(),)
-        },)
-        describe("getOrNull", () => {
-            test("all",                          () => expect(getOrNull(it, 0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(getOrNullByMinimalistCollectionHolder(it, 0,),).toBeNull(),)
-            test("collection holder",            () => expect(getOrNullByCollectionHolder(it, 0,),).toBeNull(),)
-            test("array",                        () => expect(getOrNullByArray(it, 0,),).toBeNull(),)
-        },)
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance, emptyException,},},) => {
+        describe("getOrElse", () => expect(instance.getOrElse(0, callback,) === value,).toBeTrue(),)
+        describe("getOrNull", () => expect(instance.getOrNull(0,),).toBeNull(),)
 
-        describe("getFirst", () => {
-            test("all",                          () => expect(() => getFirst(it,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => getFirstByMinimalistCollectionHolder(it,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => getFirstByCollectionHolder(it,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => getFirstByArray(it,),).toThrow(NullCollectionException,),)
-        },)
-        describe("getFirstOrNull", () => {
-            test("all",                          () => expect(getFirstOrNull(it,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(getFirstOrNullByMinimalistCollectionHolder(it,),).toBeNull(),)
-            test("collection holder",            () => expect(getFirstOrNullByCollectionHolder(it,),).toBeNull(),)
-            test("array",                        () => expect(getFirstOrNullByArray(it,),).toBeNull(),)
-        },)
-        describe("getFirstOrElse", () => {
-            test("all",                          () => expect(getFirstOrElse(it, callback,),).toBe(value,),)
-            test("minimalist collection holder", () => expect(getFirstOrElseByMinimalistCollectionHolder(it, callback,),).toBe(value,),)
-            test("collection holder",            () => expect(getFirstOrElseByCollectionHolder(it, callback,),).toBe(value,),)
-            test("array",                        () => expect(getFirstOrElseByArray(it, callback,),).toBe(value,),)
-        },)
+        describe("getFirst", () => expect(() => instance.getFirst(),).toThrow(emptyException,),)
+        describe("getFirstOrNull", () => expect(instance.getFirstOrNull(),).toBeNull(),)
+        describe("getFirstOrElse", () => expect(instance.getFirstOrElse(callback,),).toBe(value,),)
 
-        describe("getLast", () => {
-            test("all",                          () => expect(() => getLast(it,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => getLastByMinimalistCollectionHolder(it,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => getLastByCollectionHolder(it,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => getLastByArray(it,),).toThrow(NullCollectionException,),)
-        },)
-        describe("getLastOrNull", () => {
-            test("all",                          () => expect(getLastOrNull(it,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(getLastOrNullByMinimalistCollectionHolder(it,),).toBeNull(),)
-            test("collection holder",            () => expect(getLastOrNullByCollectionHolder(it,),).toBeNull(),)
-            test("array",                        () => expect(getLastOrNullByArray(it,),).toBeNull(),)
-        },)
-        describe("getLastOrElse", () => {
-            test("all",                          () => expect(getLastOrElse(it, callback,),).toBe(value,),)
-            test("minimalist collection holder", () => expect(getLastOrElseByMinimalistCollectionHolder(it, callback,),).toBe(value,),)
-            test("collection holder",            () => expect(getLastOrElseByCollectionHolder(it, callback,),).toBe(value,),)
-            test("array",                        () => expect(getLastOrElseByArray(it, callback,),).toBe(value,),)
-        },)
-    },)
+        describe("getLast", () => expect(() => instance.getLast(),).toThrow(emptyException,),)
+        describe("getLastOrNull", () => expect(instance.getLastOrNull(),).toBeNull(),)
+        describe("getLastOrElse", () => expect(instance.getLastOrElse(callback,),).toBe(value,),)
+    },)},)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isMinimalist, isExtension, type,},},) => {
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance, isMinimalist, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
-        if (!isExtension)
-            describe("get() being called", () => {
-                describe("get", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(isNormal ? 0 : 1,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("getFirst", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
-                },)
-                describe("getLast", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
-                },)
 
-                describe("getOrElse", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getOrElse(0, callback,),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                },)
-                describe("getFirstOrElse", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("getLastOrElse", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
-                },)
-
-                describe("getOrNull", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
-                },)
-                describe("getFirstOrNull", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
-                },)
-                describe("getLastOrNull", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
-                    test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
-                },)
-            },)
-
-        if (!isExtension)
+        describe("get() being called", () => {
             describe("get", () => {
-                describe("empty", () => {
-                    test("NaN", () => expect(() => new instance(EMPTY,).get(NaN,),).toThrow(EmptyCollectionException,),)
-                    test("-∞",  () => expect(() => new instance(EMPTY,).get(-Infinity,),).toThrow(EmptyCollectionException,),)
-                    test("-2",  () => expect(() => new instance(EMPTY,).get(-2,),).toThrow(EmptyCollectionException,),)
-                    test("-1",  () => expect(() => new instance(EMPTY,).get(-1,),).toThrow(EmptyCollectionException,),)
-                    test('0',   () => expect(() => new instance(EMPTY,).get(0,),).toThrow(EmptyCollectionException,),)
-                    test('1',   () => expect(() => new instance(EMPTY,).get(1,),).toThrow(EmptyCollectionException,),)
-                    test("+∞",  () => expect(() => new instance(EMPTY,).get(Infinity,),).toThrow(EmptyCollectionException,),)
-                },)
-                describe("1 field", () => {
-                    test("NaN", () => expect(() => new instance(A,).get(NaN,),).toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => new instance(A,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-3",  () => expect(() => new instance(A,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-2",  () => expect(() => new instance(A,).get(-2,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-1",  () => expect(new instance(A,).get(-1,),).toBe('a',),)
-                    test('0',   () => expect(new instance(A,).get(0,),).toBe('a',),)
-                    test('1',   () => expect(() => new instance(A,).get(1,),).toThrow(IndexOutOfBoundsException,),)
-                    test('2',   () => expect(() => new instance(A,).get(2,),).toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => new instance(A,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
-                },)
-                describe("2 fields", () => {
-                    test("NaN", () => expect(() => new instance(AB,).get(NaN,),).toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => new instance(AB,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-4",  () => expect(() => new instance(AB,).get(-4,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-3",  () => expect(() => new instance(AB,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-2",  () => expect(new instance(AB,).get(-2,),).toBe('a',),)
-                    test("-1",  () => expect(new instance(AB,).get(-1,),).toBe('b',),)
-                    test('0',   () => expect(new instance(AB,).get(0,),).toBe('a',),)
-                    test('1',   () => expect(new instance(AB,).get(1,),).toBe('b',),)
-                    test('2',   () => expect(() => new instance(AB,).get(2,),).toThrow(IndexOutOfBoundsException,),)
-                    test('3',   () => expect(() => new instance(AB,).get(3,),).toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => new instance(AB,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
-                },)
-                describe("4 fields", () => {
-                    test("NaN", () => expect(() => new instance(ABCD,).get(NaN,),).toThrow(ForbiddenIndexException,),)
-                    test("-∞",  () => expect(() => new instance(ABCD,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
-                    test("-6",  () => expect(() => new instance(ABCD,).get(-6,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-5",  () => expect(() => new instance(ABCD,).get(-5,),).toThrow(IndexOutOfBoundsException,),)
-                    test("-4",  () => expect(new instance(ABCD,).get(-4,),).toBe('a',),)
-                    test("-3",  () => expect(new instance(ABCD,).get(-3,),).toBe('b',),)
-                    test("-2",  () => expect(new instance(ABCD,).get(-2,),).toBe('c',),)
-                    test("-1",  () => expect(new instance(ABCD,).get(-1,),).toBe('d',),)
-                    test('0',   () => expect(new instance(ABCD,).get(0,),).toBe('a',),)
-                    test('1',   () => expect(new instance(ABCD,).get(1,),).toBe('b',),)
-                    test('2',   () => expect(new instance(ABCD,).get(2,),).toBe('c',),)
-                    test('3',   () => expect(new instance(ABCD,).get(3,),).toBe('d',),)
-                    test('4',   () => expect(() => new instance(ABCD,).get(4,),).toThrow(IndexOutOfBoundsException,),)
-                    test('5',   () => expect(() => new instance(ABCD,).get(5,),).toThrow(IndexOutOfBoundsException,),)
-                    test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
-                },)
+                test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.get(0,),).amountOfCall,).toBe(isNormal ? 0 : 1,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.get(0,),).amountOfCall,).toBe(1,),)
             },)
+            describe("getFirst", () => {
+                test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getFirst(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirst(),).amountOfCall,).toBe(1,),)
+            },)
+            describe("getLast", () => {
+                test("empty",    () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.getLast(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLast(),).amountOfCall,).toBe(1,),)
+            },)
+
+            describe("getOrElse", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getOrElse(0, callback,),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrElse(0, callbackAsFail0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+            },)
+            describe("getFirstOrElse", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrElse(callback,),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("getLastOrElse", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrElse(callback,),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrElse(callbackAsFail0,),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrElse( callbackAsFail0,),).amountOfCall,).toBe(1,),)
+            },)
+
+            describe("getOrNull", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getOrNull(0,),).amountOfCall,).toBe(isMinimalist || isNormal ? 1 : 0,),)
+            },)
+            describe("getFirstOrNull", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getFirstOrNull(),).amountOfCall,).toBe(1,),)
+            },)
+            describe("getLastOrNull", () => {
+                test("empty",    () => expect(new instance(EMPTY,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+                test("4 fields", () => expect(new instance(ABCD,).execute(it => it.getLastOrNull(),).amountOfCall,).toBe(1,),)
+
+            },)
+        },)
+
+        describe("get", () => {
+            describe("empty", () => {
+                test("NaN", () => expect(() => new instance(EMPTY,).get(NaN,),).toThrow(EmptyCollectionException,),)
+                test("-∞",  () => expect(() => new instance(EMPTY,).get(-Infinity,),).toThrow(EmptyCollectionException,),)
+                test("-2",  () => expect(() => new instance(EMPTY,).get(-2,),).toThrow(EmptyCollectionException,),)
+                test("-1",  () => expect(() => new instance(EMPTY,).get(-1,),).toThrow(EmptyCollectionException,),)
+                test('0',   () => expect(() => new instance(EMPTY,).get(0,),).toThrow(EmptyCollectionException,),)
+                test('1',   () => expect(() => new instance(EMPTY,).get(1,),).toThrow(EmptyCollectionException,),)
+                test("+∞",  () => expect(() => new instance(EMPTY,).get(Infinity,),).toThrow(EmptyCollectionException,),)
+            },)
+            describe("1 field", () => {
+                test("NaN", () => expect(() => new instance(A,).get(NaN,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => new instance(A,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-3",  () => expect(() => new instance(A,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
+                test("-2",  () => expect(() => new instance(A,).get(-2,),).toThrow(IndexOutOfBoundsException,),)
+                test("-1",  () => expect(new instance(A,).get(-1,),).toBe('a',),)
+                test('0',   () => expect(new instance(A,).get(0,),).toBe('a',),)
+                test('1',   () => expect(() => new instance(A,).get(1,),).toThrow(IndexOutOfBoundsException,),)
+                test('2',   () => expect(() => new instance(A,).get(2,),).toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => new instance(A,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
+            },)
+            describe("2 fields", () => {
+                test("NaN", () => expect(() => new instance(AB,).get(NaN,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => new instance(AB,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-4",  () => expect(() => new instance(AB,).get(-4,),).toThrow(IndexOutOfBoundsException,),)
+                test("-3",  () => expect(() => new instance(AB,).get(-3,),).toThrow(IndexOutOfBoundsException,),)
+                test("-2",  () => expect(new instance(AB,).get(-2,),).toBe('a',),)
+                test("-1",  () => expect(new instance(AB,).get(-1,),).toBe('b',),)
+                test('0',   () => expect(new instance(AB,).get(0,),).toBe('a',),)
+                test('1',   () => expect(new instance(AB,).get(1,),).toBe('b',),)
+                test('2',   () => expect(() => new instance(AB,).get(2,),).toThrow(IndexOutOfBoundsException,),)
+                test('3',   () => expect(() => new instance(AB,).get(3,),).toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => new instance(AB,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
+            },)
+            describe("4 fields", () => {
+                test("NaN", () => expect(() => new instance(ABCD,).get(NaN,),).toThrow(ForbiddenIndexException,),)
+                test("-∞",  () => expect(() => new instance(ABCD,).get(-Infinity,),).toThrow(ForbiddenIndexException,),)
+                test("-6",  () => expect(() => new instance(ABCD,).get(-6,),).toThrow(IndexOutOfBoundsException,),)
+                test("-5",  () => expect(() => new instance(ABCD,).get(-5,),).toThrow(IndexOutOfBoundsException,),)
+                test("-4",  () => expect(new instance(ABCD,).get(-4,),).toBe('a',),)
+                test("-3",  () => expect(new instance(ABCD,).get(-3,),).toBe('b',),)
+                test("-2",  () => expect(new instance(ABCD,).get(-2,),).toBe('c',),)
+                test("-1",  () => expect(new instance(ABCD,).get(-1,),).toBe('d',),)
+                test('0',   () => expect(new instance(ABCD,).get(0,),).toBe('a',),)
+                test('1',   () => expect(new instance(ABCD,).get(1,),).toBe('b',),)
+                test('2',   () => expect(new instance(ABCD,).get(2,),).toBe('c',),)
+                test('3',   () => expect(new instance(ABCD,).get(3,),).toBe('d',),)
+                test('4',   () => expect(() => new instance(ABCD,).get(4,),).toThrow(IndexOutOfBoundsException,),)
+                test('5',   () => expect(() => new instance(ABCD,).get(5,),).toThrow(IndexOutOfBoundsException,),)
+                test("+∞",  () => expect(() => new instance(ABCD,).get(Infinity,),).toThrow(ForbiddenIndexException,),)
+            },)
+        },)
         describe("getFirst", () => {
             test("empty",    () => expect(() => new instance(EMPTY,).getFirst(),).toThrow(EmptyCollectionException,),)
             test("1 field",  () => expect(new instance(A,).getFirst(),).toBe('a',),)
@@ -716,7 +669,7 @@ describe("CollectionHolderTest (value)", () => {
             test("2 fields", () => expect(new instance(AB,).getLastOrNull(),).toBe('b',),)
             test("4 fields", () => expect(new instance(ABCD,).getLastOrNull(),).toBe('d',),)
         },)
-    },)
+    },)},)
 
 },)
 
