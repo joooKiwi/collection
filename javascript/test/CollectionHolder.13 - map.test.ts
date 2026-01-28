@@ -10,17 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_UNDEFINED, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
-import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                         from "./value/callbacks (fail)"
-import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                                 from "./value/callbacks (null)"
-import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                                from "./value/callbacks (string)"
-import {everyCollectionInstances}                                                                                                                                                                  from "./value/instances"
 import {expectToBeInstance}                                                                                                                                                        from "./expect/expectToBeInstance"
+import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
+import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
+import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
+import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                from "./value/callbacks (string)"
+import {everyExtensionMethodInstances, everyInstances}                                                                                                                             from "./value/instances"
 
-import {map, mapByArray, mapByCollectionHolder, mapByMinimalistCollectionHolder}                                                         from "../src/method/map"
-import {mapIndexed, mapIndexedByArray, mapIndexedByCollectionHolder, mapIndexedByMinimalistCollectionHolder}                             from "../src/method/mapIndexed"
-import {mapNotNull, mapNotNullByArray, mapNotNullByCollectionHolder, mapNotNullByMinimalistCollectionHolder}                             from "../src/method/mapNotNull"
-import {mapNotNullIndexed, mapNotNullIndexedByArray, mapNotNullIndexedByCollectionHolder, mapNotNullIndexedByMinimalistCollectionHolder} from "../src/method/mapNotNullIndexed"
 import {CollectionConstants}   from "../src/CollectionConstants"
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
@@ -29,40 +25,23 @@ describe("CollectionHolderTest (map)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("map", () => {
-            test("all",                          () => expect(map(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(mapByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(mapByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(mapByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("mapIndexed", () => {
-            test("all",                          () => expect(mapIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(mapIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(mapIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(mapIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
         test("map",                 () => expectToBeInstance(instance, it => it.map(),),)
         test("mapIndexed",          () => expectToBeInstance(instance, it => it.mapIndexed(),),)
         test("mapNotNull",          () => expectToBeInstance(instance, it => it.mapNotNull(),),)
         test("mapNotNullIndexed",   () => expectToBeInstance(instance, it => it.mapNotNullIndexed(),),)
     },)
 
-        describe("mapNotNull", () => {
-            test("all",                          () => expect(mapNotNull(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(mapNotNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(mapNotNullByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(mapNotNullByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("mapNotNullIndexed", () => {
-            test("all",                          () => expect(mapNotNullIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(mapNotNullIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(mapNotNullIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(mapNotNullIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-    },)
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
+        describe("map",               () => expect(instance.map(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("mapIndexed",        () => expect(instance.mapIndexed(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
+        describe("mapNotNull",        () => expect(instance.mapNotNull(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("mapNotNullIndexed", () => expect(instance.mapNotNullIndexed(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+    },)},)
+
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance, isExtension,},},) => {
         if (!isExtension)
             describe("get() being called", () => {
                 describe("map", () => {
@@ -196,6 +175,6 @@ describe("CollectionHolderTest (map)", () => {
             test("4 fields: even",      () => expect(new instance(ABCD,).mapNotNullIndexed(callbackOnlyIfEvenAlt,).toArray(),).toEqual(AC,),)
             test("4 fields: odd",       () => expect(new instance(ABCD,).mapNotNullIndexed(callbackOnlyIfOddAlt,).toArray(),).toEqual(BD,),)
         },)
-    },)
+    },)},)
 
 },)
