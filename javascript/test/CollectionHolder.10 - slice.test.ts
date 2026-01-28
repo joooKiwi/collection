@@ -10,170 +10,116 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                                        from "./expect/expectToBeInstance"
-import {CollectionHolderFromArray}                                                                                 from "./instance/CollectionHolderFromArray"
-import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY, NULL_UNDEFINED} from "./value/arrays"
-import {everyCollectionInstances, everyIterableInstances}                                                          from "./value/instances"
+import {expectToBeInstance}                                                                        from "./expect/expectToBeInstance"
+import {CollectionHolderFromArray}                                                                 from "./instance/CollectionHolderFromArray"
 import {CollectionIteratorFromArray}                                                               from "./instance/CollectionIteratorFromArray"
+import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY} from "./value/arrays"
+import {everyExtensionMethodInstances, everyInstances, everyIterableInstances}                     from "./value/instances"
 
-import {IndexOutOfBoundsException}                                                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
-import {InvalidIndexRangeException}                                                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
-import {slice, sliceByArray, sliceByCollectionHolder, sliceByMinimalistCollectionHolder}                                                                                                                         from "../src/method/slice"
-import {sliceWithARange, sliceWithARangeByArray, sliceWithARangeByCollectionHolder, sliceWithARangeByMinimalistCollectionHolder}                                                                                 from "../src/method/slice.withARange"
-import {sliceWithArray, sliceWithArrayByArray, sliceWithArrayByCollectionHolder, sliceWithArrayByMinimalistCollectionHolder}                                                                                     from "../src/method/slice.withArray"
-import {sliceWithCollectionHolder, sliceWithCollectionHolderByArray, sliceWithCollectionHolderByCollectionHolder, sliceWithCollectionHolderByMinimalistCollectionHolder}                                         from "../src/method/slice.withCollectionHolder"
-import {sliceWithCollectionIterator, sliceWithCollectionIteratorByArray, sliceWithCollectionIteratorByCollectionHolder, sliceWithCollectionIteratorByMinimalistCollectionHolder}                                 from "../src/method/slice.withCollectionIterator"
-import {sliceWithIterable, sliceWithIterableByArray, sliceWithIterableByCollectionHolder, sliceWithIterableByMinimalistCollectionHolder}                                                                         from "../src/method/slice.withIterable"
-import {sliceWithIterator, sliceWithIteratorByArray, sliceWithIteratorByCollectionHolder, sliceWithIteratorByMinimalistCollectionHolder}                                                                         from "../src/method/slice.withIterator"
-import {sliceWithMinimalistCollectionHolder, sliceWithMinimalistCollectionHolderByArray, sliceWithMinimalistCollectionHolderByCollectionHolder, sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder} from "../src/method/slice.withMinimalistCollectionHolder"
-import {sliceWithSet, sliceWithSetByArray, sliceWithSetByCollectionHolder, sliceWithSetByMinimalistCollectionHolder}                                                                                             from "../src/method/slice.withSet"
 import {CollectionConstants}        from "../src/CollectionConstants"
 import {EmptyCollectionHolder}      from "../src/EmptyCollectionHolder"
 import {ForbiddenIndexException}    from "../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeException"
 
 describe("CollectionHolderTest (slice)", () => {
 
     test("EmptyCollectionHolder", () => expectToBeInstance(EmptyCollectionHolder.get, it => it.slice(),),)
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("slice", () => {
-            test("all",                          () => expect(slice(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (range)", () => {
-            test("all",                          () => expect(sliceWithARange(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithARangeByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithARangeByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithARangeByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (array)", () => {
-            test("all",                          () => expect(sliceWithArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithArrayByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithArrayByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithArrayByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (set)", () => {
-            test("all",                          () => expect(sliceWithSet(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithSetByMinimalistCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithSetByCollectionHolder(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithSetByArray(it, new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (collection holder)", () => {
-            test("all",                          () => expect(sliceWithCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (minimalist collection holder)", () => {
-            test("all",                          () => expect(sliceWithMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithMinimalistCollectionHolderByCollectionHolder(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithMinimalistCollectionHolderByArray(it, new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (collection iterator)", () => {
-            test("all",                          () => expect(sliceWithCollectionIterator(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithCollectionIteratorByMinimalistCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithCollectionIteratorByCollectionHolder(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithCollectionIteratorByArray(it, new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (iterator)", () => {
-            test("all",                          () => expect(sliceWithIterator(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithIteratorByMinimalistCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithIteratorByCollectionHolder(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithIteratorByArray(it, EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("slice (iterable)", () => {
-            test("all",                          () => expect(sliceWithIterable(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(sliceWithIterableByMinimalistCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(sliceWithIterableByCollectionHolder(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(sliceWithIterableByArray(it, EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-    },)
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
+        describe("slice",                                () => expect(instance.slice(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (range)",                        () => expect(instance.sliceWithARange(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (array)",                        () => expect(instance.sliceWithArray(EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (set)",                          () => expect(instance.sliceWithSet(new Set(),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (collection holder)",            () => expect(instance.sliceWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (minimalist collection holder)", () => expect(instance.sliceWithMinimalistCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (collection iterator)",          () => expect(instance.sliceWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (iterator)",                     () => expect(instance.sliceWithIterator(EMPTY[Symbol.iterator](),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (iterable)",                     () => expect(instance.sliceWithIterable(EMPTY,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+    },)},)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension, type,},},) => {
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance, type,},},) => {
         /** The instance is a {@link GenericCollectionHolder} */
         const isNormal = type === "normal"
-        if (!isExtension)
-            describe("get() being called", () => {
-                describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable, message,},) => {
-                    /** The iterable instance is either an {@link Iterable}, an {@link Iterator} or a {@link ReadonlySet} */
-                    const isInNormalOrder = message.startsWith("iterable",) || message == "iterator" || message == "set"
+        describe("get() being called", () => {
+            describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable, message,},) => {
+                /** The iterable instance is either an {@link Iterable}, an {@link Iterator} or a {@link ReadonlySet} */
+                const isInNormalOrder = message.startsWith("iterable",) || message == "iterator" || message == "set"
 
-                    describe("empty", () => {
-                        test("empty", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
-                        test('0',     () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(0,),)
-                        test("01",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(0,),)
-                        test("0123",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("empty", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
-                        test('0',     () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
-                        test("01",    () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
-                        test("0123",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
-                    },)
-                    describe("2 fields", () => {
-                        test("empty", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
-                        test('0',     () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
-                        test("01",    () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(2,),)
-                        test("0123",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 2 : 0) : (isInNormalOrder ? 3 : 1),),)
-                    },)
-                    describe("4 fields", () => {
-                        test("empty", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
-                        test('0',     () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
-                        test("01",    () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(2,),)
-                        test("0123",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
-                describe("by range", () => {
-                    test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(0,),)
-                    test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(1,),)
-                    test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(2,),)
-                    test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(4,),)
-                },)
-            },)
-
-        if (!isExtension)
-            describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable,},) => {
                 describe("empty", () => {
-                    test("none", () => expect(new instance(EMPTY,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test('0',    () => expect(new instance(EMPTY,).slice(newIterable(_0,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test("01",   () => expect(new instance(EMPTY,).slice(newIterable(_01,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test("0123", () => expect(new instance(EMPTY,).slice(newIterable(_0123,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                    test("empty", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                    test('0',     () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(0,),)
+                    test("01",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(0,),)
+                    test("0123",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),).amountOfCall,).toBe(0,),)
                 },)
                 describe("1 field", () => {
-                    test("none", () => expect(new instance(A,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test('0',    () => expect(new instance(A,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
-                    test('4',    () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("01",   () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("45",   () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("0123", () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("4567", () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+                    test("empty", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                    test('0',     () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
+                    test("01",    () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
+                    test("0123",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 1 : 0) : (isInNormalOrder ? 2 : 1),),)
                 },)
                 describe("2 fields", () => {
-                    test("none", () => expect(new instance(AB,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test('0',    () => expect(new instance(AB,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
-                    test('1',    () => expect(new instance(AB,).slice(newIterable(_1,),).toArray(),).toEqual(B,),)
-                    test('4',    () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("01",   () => expect(new instance(AB,).slice(newIterable(_01,),).toArray(),).toEqual(AB,),)
-                    test("45",   () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("0123", () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("4567", () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+                    test("empty", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                    test('0',     () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
+                    test("01",    () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(2,),)
+                    test("0123",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).amountOfCall,).toBe(isNormal ? (isInNormalOrder ? 2 : 0) : (isInNormalOrder ? 3 : 1),),)
                 },)
                 describe("4 fields", () => {
-                    test("none", () => expect(new instance(ABCD,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                    test('0',    () => expect(new instance(ABCD,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
-                    test('1',    () => expect(new instance(ABCD,).slice(newIterable(_1,),).toArray(),).toEqual(B,),)
-                    test('2',    () => expect(new instance(ABCD,).slice(newIterable(_2,),).toArray(),).toEqual(C,),)
-                    test('3',    () => expect(new instance(ABCD,).slice(newIterable(_3,),).toArray(),).toEqual(D,),)
-                    test('4',    () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("01",   () => expect(new instance(ABCD,).slice(newIterable(_01,),).toArray(),).toEqual(AB,),)
-                    test("45",   () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
-                    test("0123", () => expect(new instance(ABCD,).slice(newIterable(_0123,),).toArray(),).toEqual(ABCD,),)
-                    test("4567", () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+                    test("empty", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(EMPTY,),),).amountOfCall,).toBe(0,),)
+                    test('0',     () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0,),),).amountOfCall,).toBe(1,),)
+                    test("01",    () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),).amountOfCall,).toBe(2,),)
+                    test("0123",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),).amountOfCall,).toBe(4,),)
                 },)
             },)
+            describe("by range", () => {
+                test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(0,),)
+                test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(1,),)
+                test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(2,),)
+                test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(),).amountOfCall,).toBe(4,),)
+            },)
+        },)
+
+        describe.each(everyIterableInstances,)("by indices: %s", ({value: newIterable,},) => {
+            describe("empty", () => {
+                test("none", () => expect(new instance(EMPTY,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',    () => expect(new instance(EMPTY,).slice(newIterable(_0,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("01",   () => expect(new instance(EMPTY,).slice(newIterable(_01,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("0123", () => expect(new instance(EMPTY,).slice(newIterable(_0123,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            },)
+            describe("1 field", () => {
+                test("none", () => expect(new instance(A,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',    () => expect(new instance(A,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
+                test('4',    () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("01",   () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_01,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("45",   () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("0123", () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("4567", () => expect(() => new instance(A,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+            },)
+            describe("2 fields", () => {
+                test("none", () => expect(new instance(AB,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',    () => expect(new instance(AB,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
+                test('1',    () => expect(new instance(AB,).slice(newIterable(_1,),).toArray(),).toEqual(B,),)
+                test('4',    () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("01",   () => expect(new instance(AB,).slice(newIterable(_01,),).toArray(),).toEqual(AB,),)
+                test("45",   () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("0123", () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_0123,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("4567", () => expect(() => new instance(AB,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+            },)
+            describe("4 fields", () => {
+                test("none", () => expect(new instance(ABCD,).slice(newIterable(EMPTY,),),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',    () => expect(new instance(ABCD,).slice(newIterable(_0,),).toArray(),).toEqual(A,),)
+                test('1',    () => expect(new instance(ABCD,).slice(newIterable(_1,),).toArray(),).toEqual(B,),)
+                test('2',    () => expect(new instance(ABCD,).slice(newIterable(_2,),).toArray(),).toEqual(C,),)
+                test('3',    () => expect(new instance(ABCD,).slice(newIterable(_3,),).toArray(),).toEqual(D,),)
+                test('4',    () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("01",   () => expect(new instance(ABCD,).slice(newIterable(_01,),).toArray(),).toEqual(AB,),)
+                test("45",   () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_45,),),),).toThrow(IndexOutOfBoundsException,),)
+                test("0123", () => expect(new instance(ABCD,).slice(newIterable(_0123,),).toArray(),).toEqual(ABCD,),)
+                test("4567", () => expect(() => new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.slice(newIterable(_4567,),),),).toThrow(IndexOutOfBoundsException,),)
+            },)
+        },)
         describe("by range", () => {
             describe("empty", () => {
                 test("direct",     () => expect(new instance(EMPTY,).slice(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -337,6 +283,6 @@ describe("CollectionHolderTest (slice)", () => {
                 test("+∞, +∞",     () => expect(() => new instance(ABCD,).slice(Infinity, Infinity,),).toThrow(ForbiddenIndexException,),)
             },)
         },)
-    },)
+    },)},)
 
 },)
