@@ -24,12 +24,12 @@ import {LazyGenericCollectionHolder_TakeLastWhileIndexedAlias}                  
 import {LazyGenericCollectionHolder_TakeWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/LazyGenericCollectionHolder_TakeWhileAlias"
 import {LazyGenericCollectionHolder_TakeWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/LazyGenericCollectionHolder_TakeWhileIndexedAlias"
 import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
-import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY, NULL_UNDEFINED}                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
+import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY}                                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                                                                                                                                                                                                     from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
 import {callbackIsOver0, callbackIsOver0Alt, callbackIsOver1, callbackIsOver1Alt, callbackIsOver2, callbackIsOver2Alt, callbackIsOver3, callbackIsOver3Alt, callbackIsOver4, callbackIsOver4Alt, callbackIsUnder0, callbackIsUnder0Alt, callbackIsUnder1, callbackIsUnder1Alt, callbackIsUnder2, callbackIsUnder2Alt, callbackIsUnder3, callbackIsUnder3Alt, callbackIsUnder4, callbackIsUnder4Alt} from "./value/callbacks (number)"
 import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt, callbackIsOverC, callbackIsOverCAlt, callbackIsOverD, callbackIsOverDAlt, callbackIsOverE, callbackIsOverEAlt, callbackIsUnderA, callbackIsUnderAAlt, callbackIsUnderB, callbackIsUnderBAlt, callbackIsUnderC, callbackIsUnderCAlt, callbackIsUnderD, callbackIsUnderDAlt, callbackIsUnderE, callbackIsUnderEAlt} from "./value/callbacks (string)"
-import {everyCollectionInstances}                                                                                                                                                                                                                                                                                                                                                                   from "./value/instances"
+import {everyExtensionMethodInstances, everyInstances}                                                                                                                                                                                                                                                                                                                                              from "./value/instances"
 
 import {CollectionConstants}                                                                                                                             from "../src/CollectionConstants"
 import {EmptyCollectionHolder}                                                                                                                           from "../src/EmptyCollectionHolder"
@@ -41,17 +41,11 @@ import {limitLastWhileIndexed, limitLastWhileIndexedByArray, limitLastWhileIndex
 import {limitWhile, limitWhileByArray, limitWhileByCollectionHolder, limitWhileByMinimalistCollectionHolder}                                             from "../src/method/limitWhile"
 import {limitWhileIndexed, limitWhileIndexedByArray, limitWhileIndexedByCollectionHolder, limitWhileIndexedByMinimalistCollectionHolder}                 from "../src/method/limitWhileIndexed"
 import * as takeModule                                                                                                                                   from "../src/method/take"
-import {take, takeByArray, takeByCollectionHolder, takeByMinimalistCollectionHolder}                                                                     from "../src/method/take"
 import * as takeLastModule                                                                                                                               from "../src/method/takeLast"
-import {takeLast, takeLastByArray, takeLastByCollectionHolder, takeLastByMinimalistCollectionHolder}                                                     from "../src/method/takeLast"
 import * as takeLastWhileModule                                                                                                                          from "../src/method/takeLastWhile"
-import {takeLastWhile, takeLastWhileByArray, takeLastWhileByCollectionHolder, takeLastWhileByMinimalistCollectionHolder}                                 from "../src/method/takeLastWhile"
 import * as takeLastWhileIndexedModule                                                                                                                   from "../src/method/takeLastWhileIndexed"
-import {takeLastWhileIndexed, takeLastWhileIndexedByArray, takeLastWhileIndexedByCollectionHolder, takeLastWhileIndexedByMinimalistCollectionHolder}     from "../src/method/takeLastWhileIndexed"
 import * as takeWhileModule                                                                                                                              from "../src/method/takeWhile"
-import {takeWhile, takeWhileByArray, takeWhileByCollectionHolder, takeWhileByMinimalistCollectionHolder}                                                 from "../src/method/takeWhile"
 import * as takeWhileIndexedModule                                                                                                                       from "../src/method/takeWhileIndexed"
-import {takeWhileIndexed, takeWhileIndexedByArray, takeWhileIndexedByCollectionHolder, takeWhileIndexedByMinimalistCollectionHolder}                     from "../src/method/takeWhileIndexed"
 
 describe("CollectionHolderTest (take)", () => {
 
@@ -225,179 +219,150 @@ describe("CollectionHolderTest (take)", () => {
         },)
     },)
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("take", () => {
-            test("all",                          () => expect(take(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeWhile", () => {
-            test("all",                          () => expect(takeWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeWhileIndexed", () => {
-            test("all",                          () => expect(takeWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
+        describe("take",                 () => expect(instance.take(NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("takeWhile",            () => expect(instance.takeWhile(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("takeWhileIndexed",     () => expect(instance.takeWhileIndexed(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
 
-        describe("takeLast", () => {
-            test("all",                          () => expect(takeLast(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastByMinimalistCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastByCollectionHolder(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastByArray(it, NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeLastWhile", () => {
-            test("all",                          () => expect(takeLastWhile(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastWhileByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastWhileByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastWhileByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-        describe("takeLastWhileIndexed", () => {
-            test("all",                          () => expect(takeLastWhileIndexed(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("minimalist collection holder", () => expect(takeLastWhileIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("collection holder",            () => expect(takeLastWhileIndexedByCollectionHolder(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("array",                        () => expect(takeLastWhileIndexedByArray(it, callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        },)
-    },)
+        describe("takeLast",             () => expect(instance.takeLast(NaN,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("takeLastWhile",        () => expect(instance.takeLastWhile(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("takeLastWhileIndexed", () => expect(instance.takeLastWhileIndexed(callbackAsFail0,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+    },)},)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
-        if (!isExtension)
-            describe("get() being called", () => {
-                describe("take", () => {
-                    describe("empty", () => {
-                        test("NaN", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(NaN,),).amountOfCall,).toBe(0,),)
-                        test("-∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(0,),)
-                        test('0',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(0,),)
-                        test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(1,),)
-                        test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(0,),)
-                        test('0',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(1,),)
-                        test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(2,),)
-                        test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-3,),).amountOfCall,).toBe(0,),)
-                        test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(1,),)
-                        test('0',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(2,),)
-                        test('3',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(3,),).amountOfCall,).toBe(2,),)
-                        test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(4,),)
-                        test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-5,),).amountOfCall,).toBe(0,),)
-                        test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-4,),).amountOfCall,).toBe(0,),)
-                        test("-3",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-3,),).amountOfCall,).toBe(1,),)
-                        test("-2",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(2,),)
-                        test("-1",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(3,),)
-                        test('0',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(2,),)
-                        test('3',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(3,),).amountOfCall,).toBe(3,),)
-                        test('4',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(4,),).amountOfCall,).toBe(4,),)
-                        test('5',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(5,),).amountOfCall,).toBe(4,),)
-                        test("+∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(4,),)
-                    },)
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
+        describe("get() being called", () => {
+            describe("take", () => {
+                describe("empty", () => {
+                    test("NaN", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(NaN,),).amountOfCall,).toBe(0,),)
+                    test("-∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(0,),)
+                    test('0',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(0,),)
+                    test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(0,),)
                 },)
-                describe("takeWhile", () => {
-                    test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                describe("1 field", () => {
+                    test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(1,),)
+                    test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(0,),)
+                    test('0',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(1,),)
+                    test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(1,),)
                 },)
-                describe("takeWhileIndexed", () => {
-                    test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                describe("2 fields", () => {
+                    test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(2,),)
+                    test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-3,),).amountOfCall,).toBe(0,),)
+                    test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(1,),)
+                    test('0',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(2,),)
+                    test('3',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(3,),).amountOfCall,).toBe(2,),)
+                    test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(2,),)
                 },)
-
-                describe("takeLast", () => {
-                    describe("empty", () => {
-                        test("NaN", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(NaN,),).amountOfCall,).toBe(0,),)
-                        test("-∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(0,),)
-                        test('0',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(0,),)
-                        test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(1,),)
-                        test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(0,),)
-                        test('0',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(1,),)
-                        test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(2,),)
-                        test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-3,),).amountOfCall,).toBe(0,),)
-                        test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
-                        test("-1",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(1,),)
-                        test('0',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(2,),)
-                        test('3',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(3,),).amountOfCall,).toBe(2,),)
-                        test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(4,),)
-                        test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
-                        test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-5,),).amountOfCall,).toBe(0,),)
-                        test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-4,),).amountOfCall,).toBe(0,),)
-                        test("-3",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-3,),).amountOfCall,).toBe(1,),)
-                        test("-2",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(2,),)
-                        test("-1",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(3,),)
-                        test('0',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
-                        test('1',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
-                        test('2',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(2,),)
-                        test('3',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(3,),).amountOfCall,).toBe(3,),)
-                        test('4',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(4,),).amountOfCall,).toBe(4,),)
-                        test('5',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(5,),).amountOfCall,).toBe(4,),)
-                        test("+∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
-                describe("takeLastWhile", () => {
-                    test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                },)
-                describe("takeLastWhileIndexed", () => {
-                    test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
-                    test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                    test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                describe("4 fields", () => {
+                    test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.take(NaN,),),).amountOfCall,).toBe(4,),)
+                    test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-5,),).amountOfCall,).toBe(0,),)
+                    test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-4,),).amountOfCall,).toBe(0,),)
+                    test("-3",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-3,),).amountOfCall,).toBe(1,),)
+                    test("-2",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-2,),).amountOfCall,).toBe(2,),)
+                    test("-1",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(-1,),).amountOfCall,).toBe(3,),)
+                    test('0',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(2,),).amountOfCall,).toBe(2,),)
+                    test('3',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(3,),).amountOfCall,).toBe(3,),)
+                    test('4',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(4,),).amountOfCall,).toBe(4,),)
+                    test('5',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(5,),).amountOfCall,).toBe(4,),)
+                    test("+∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.take(Infinity,),).amountOfCall,).toBe(4,),)
                 },)
             },)
+            describe("takeWhile", () => {
+                test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("takeWhileIndexed", () => {
+                test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+            },)
+
+            describe("takeLast", () => {
+                describe("empty", () => {
+                    test("NaN", () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(NaN,),).amountOfCall,).toBe(0,),)
+                    test("-∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(0,),)
+                    test('0',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(0,),)
+                    test("+∞",  () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("NaN", () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(1,),)
+                    test("-∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-2",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(0,),)
+                    test('0',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(1,),)
+                    test("+∞",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("NaN", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(2,),)
+                    test("-∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-3",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-3,),).amountOfCall,).toBe(0,),)
+                    test("-2",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(0,),)
+                    test("-1",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(1,),)
+                    test('0',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(2,),)
+                    test('3',   () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(3,),).amountOfCall,).toBe(2,),)
+                    test("+∞",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("NaN", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.executeWhileExpectingForbiddenException(it => it.takeLast(NaN,),),).amountOfCall,).toBe(4,),)
+                    test("-∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-Infinity,),).amountOfCall,).toBe(0,),)
+                    test("-5",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-5,),).amountOfCall,).toBe(0,),)
+                    test("-4",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-4,),).amountOfCall,).toBe(0,),)
+                    test("-3",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-3,),).amountOfCall,).toBe(1,),)
+                    test("-2",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-2,),).amountOfCall,).toBe(2,),)
+                    test("-1",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(-1,),).amountOfCall,).toBe(3,),)
+                    test('0',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(0,),).amountOfCall,).toBe(0,),)
+                    test('1',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(1,),).amountOfCall,).toBe(1,),)
+                    test('2',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(2,),).amountOfCall,).toBe(2,),)
+                    test('3',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(3,),).amountOfCall,).toBe(3,),)
+                    test('4',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(4,),).amountOfCall,).toBe(4,),)
+                    test('5',   () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(5,),).amountOfCall,).toBe(4,),)
+                    test("+∞",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.takeLast(Infinity,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("takeLastWhile", () => {
+                test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhile(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("takeLastWhileIndexed", () => {
+                test("true: 0 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(2,),)
+                test("true: 1 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
+                test("true: 2 arguments",  () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
+                test("false: 0 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                test("false: 1 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("false: 2 arguments", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.takeLastWhileIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+            },)
+        },)
 
         describe("take", () => {
             describe("empty", () => {
@@ -676,6 +641,6 @@ describe("CollectionHolderTest (take)", () => {
                 test('4', () => expect(new instance(ABCD,).takeLastWhileIndexed(callbackIsOver4,),).toBeEmpty(),)
             },)
         },)
-    },)
+    },)},)
 
 },)
