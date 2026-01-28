@@ -10,12 +10,12 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                      from "./expect/expectToBeInstance"
-import {LazyGenericCollectionHolder_ToReverseAlias}                              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
-import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY, NULL_UNDEFINED} from "./value/arrays"
-import {everyCollectionInstances}                                                from "./value/instances"
+import {expectToBeInstance}                                      from "./expect/expectToBeInstance"
 import {CollectionHolderFromArray}                               from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
+import {LazyGenericCollectionHolder_ToReverseAlias}              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
+import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY} from "./value/arrays"
+import {everyExtensionMethodInstances, everyInstances}           from "./value/instances"
 
 import {CollectionConstants}                                                                                 from "../src/CollectionConstants"
 import {EmptyCollectionHolder}                                                                               from "../src/EmptyCollectionHolder"
@@ -24,7 +24,6 @@ import {IndexOutOfBoundsException}                                              
 import {InvalidIndexRangeException}                                                                          from "../src/exception/InvalidIndexRangeException"
 import {reversed, reversedByArray, reversedByCollectionHolder, reversedByMinimalistCollectionHolder}         from "../src/method/reversed"
 import * as toReverseModule                                                                                  from "../src/method/toReverse"
-import {toReverse, toReverseByArray, toReverseByCollectionHolder, toReverseByMinimalistCollectionHolder}     from "../src/method/toReverse"
 import {toReversed, toReversedByArray, toReversedByCollectionHolder, toReversedByMinimalistCollectionHolder} from "../src/method/toReversed"
 
 describe("CollectionHolderTest (reverse)", () => {
@@ -93,21 +92,18 @@ describe("CollectionHolderTest (reverse)", () => {
         },)
     },)
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        test("all",                          () => expect(toReverse(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test("minimalist collection holder", () => expect(toReverseByMinimalistCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test("collection holder",            () => expect(toReverseByCollectionHolder(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        test("array",                        () => expect(toReverseByArray(it,),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+    describe("methods", () => {
+        test.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => expect(instance.toReverse(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
     },)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
-        if (!isExtension)
-            describe("get() being called", () => {
-                test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(0,),)
-                test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(1,),)
-                test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(2,),)
-                test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(4,),)
-            },)
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
+        describe("get() being called", () => {
+            test("empty",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(0,),)
+            test("1 field",  () => expect(new instance(A,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(1,),)
+            test("2 fields", () => expect(new instance(AB,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(2,),)
+            test("4 fields", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.toReverse(),).amountOfCall,).toBe(4,),)
+        },)
 
         describe("empty", () => {
             test("direct", () => expect(new instance(EMPTY,).toReverse(),).toEqual(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
@@ -270,6 +266,6 @@ describe("CollectionHolderTest (reverse)", () => {
             test("+∞, 500",    () => expect(() => new instance(ABCD,).toReverse(Infinity, 500,),).toThrow(ForbiddenIndexException,),)
             test("+∞, +∞",     () => expect(() => new instance(ABCD,).toReverse(Infinity, Infinity,),).toThrow(ForbiddenIndexException,),)
         },)
-    },)
+    },)},)
 
 },)
