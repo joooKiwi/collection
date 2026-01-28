@@ -47,10 +47,32 @@ import {MinimalistCollectionHolderFromArray}                       from "../inst
 import {EMPTY}                                                     from "./arrays"
 
 /**
- * The possible instances currently exported to the public as a mocked {@link CollectionHolder}
+ * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
  */
 export const everyCollectionInstances = [
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist",                     instance: CollectionHolder_ByMinimalistCollection, },                            "collection (by minimalist)",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",                         instance: CollectionHolder_ByGenericCollection, },                               "collection (by normal)",),
+    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "array",                          instance: CollectionHolder_ByArrayCollection, },                                 "collection (by array)",),
+    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",                           instance: CollectionHolder_ByLazyCollection, },                                  "collection (by lazy)",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "minimalist extension",           instance: CollectionHolder_FromMinimalistExtensionFunction,},                    "minimalist extension",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null minimalist extension",      instance: CollectionHolder_FromNullMinimalistExtensionFunction,},           "null minimalist extension",),
+    new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined minimalist extension", instance: CollectionHolder_FromUndefinedMinimalistExtensionFunction,}, "undefined minimalist extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "normal extension",               instance: CollectionHolder_FromExtensionFunction,},                                  "normal extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null normal extension",          instance: CollectionHolder_FromNullExtensionFunction,},                         "null normal extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined normal extension",     instance: CollectionHolder_FromUndefinedExtensionFunction,},               "undefined normal extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "array extension",                instance: CollectionHolder_FromArrayExtensionFunction,},                              "array extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null array extension",           instance: CollectionHolder_FromNullArrayExtensionFunction,},                     "null array extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined array extension",      instance: CollectionHolder_FromUndefinedArrayExtensionFunction,},           "undefined array extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null extension",                 instance: CollectionHolder_FromNullPublicExtensionFunction,},                          "null extension",),
+    new Holder({isMinimalist: false, isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined extension",            instance: CollectionHolder_FromUndefinedPublicExtensionFunction,},                "undefined extension",),
+] as const
+
+/**
+ * The possible instances currently exported to the public as a mocked {@link CollectionHolder}
+ * to apply on tests
+ */
+export const everyInstances = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
     // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, type: "array",     instance: CollectionHolder_ByArrayCollection, },      "collection (by array)",),
