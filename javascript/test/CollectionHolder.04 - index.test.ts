@@ -31,19 +31,18 @@ import {LazyGenericCollectionHolder_IndexOfLastAlias}                           
 import {LazyGenericCollectionHolder_IndexOfLastIndexedAlias}                                                                                                                                                                 from "./instance/LazyGenericCollectionHolder_IndexOfLastIndexedAlias"
 import {LazyGenericCollectionHolder_IndexOfLastIndexedOrNullAlias}                                                                                                                                                           from "./instance/LazyGenericCollectionHolder_IndexOfLastIndexedOrNullAlias"
 import {LazyGenericCollectionHolder_IndexOfLastOrNullAlias}                                                                                                                                                                  from "./instance/LazyGenericCollectionHolder_IndexOfLastOrNullAlias"
-import {A, AA, AB, ABAB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                                                                                                        from "./value/arrays"
+import {A, AA, AB, ABAB, ABCD, EMPTY}                                                                                                                                                                                        from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                              from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt} from "./value/callbacks (number)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                     from "./value/callbacks (string)"
-import {everyCollectionInstances}                                                                                                                                                                                            from "./value/instances"
+import {everyExtensionMethodInstances, everyInstances}                                                                                                                                                                       from "./value/instances"
 
 import {EmptyCollectionHolder}                                                                                                                                                   from "../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                                                                                                                                from "../src/exception/EmptyCollectionException"
 import {ForbiddenIndexException}                                                                                                                                                 from "../src/exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                                                                                                                                               from "../src/exception/IndexOutOfBoundsException"
 import {InvalidIndexRangeException}                                                                                                                                              from "../src/exception/InvalidIndexRangeException"
-import {NullCollectionException}                                                                                                                                                 from "../src/exception/NullCollectionException"
 import {findFirstIndex, findFirstIndexByArray, findFirstIndexByCollectionHolder, findFirstIndexByMinimalistCollectionHolder}                                                     from "../src/method/findFirstIndex"
 import {findFirstIndexIndexed, findFirstIndexIndexedByArray, findFirstIndexIndexedByCollectionHolder, findFirstIndexIndexedByMinimalistCollectionHolder}                         from "../src/method/findFirstIndexIndexed"
 import {findFirstIndexIndexedOrNull, findFirstIndexIndexedOrNullByArray, findFirstIndexIndexedOrNullByCollectionHolder, findFirstIndexIndexedOrNullByMinimalistCollectionHolder} from "../src/method/findFirstIndexIndexedOrNull"
@@ -57,29 +56,17 @@ import {findLastIndexIndexed, findLastIndexIndexedByArray, findLastIndexIndexedB
 import {findLastIndexIndexedOrNull, findLastIndexIndexedOrNullByArray, findLastIndexIndexedOrNullByCollectionHolder, findLastIndexIndexedOrNullByMinimalistCollectionHolder}     from "../src/method/findLastIndexIndexedOrNull"
 import {findLastIndexOrNull, findLastIndexOrNullByArray, findLastIndexOrNullByCollectionHolder, findLastIndexOrNullByMinimalistCollectionHolder}                                 from "../src/method/findLastIndexOrNull"
 import * as firstIndexOfModule                                                                                                                                                   from "../src/method/firstIndexOf"
-import {firstIndexOf, firstIndexOfByArray, firstIndexOfByCollectionHolder, firstIndexOfByMinimalistCollectionHolder}                                                             from "../src/method/firstIndexOf"
 import * as firstIndexOfOrNullModule                                                                                                                                             from "../src/method/firstIndexOfOrNull"
-import {firstIndexOfOrNull, firstIndexOfOrNullByArray, firstIndexOfOrNullByCollectionHolder, firstIndexOfOrNullByMinimalistCollectionHolder}                                     from "../src/method/firstIndexOfOrNull"
 import {indexOf, indexOfByArray, indexOfByCollectionHolder, indexOfByMinimalistCollectionHolder}                                                                                 from "../src/method/indexOf"
 import {indexOfOrNull, indexOfOrNullByArray, indexOfOrNullByCollectionHolder, indexOfOrNullByMinimalistCollectionHolder}                                                         from "../src/method/indexOfOrNull"
 import * as indexOfFirstModule                                                                                                                                                   from "../src/method/indexOfFirst"
-import {indexOfFirst, indexOfFirstByArray, indexOfFirstByCollectionHolder, indexOfFirstByMinimalistCollectionHolder}                                                             from "../src/method/indexOfFirst"
 import * as indexOfFirstIndexedModule                                                                                                                                            from "../src/method/indexOfFirstIndexed"
-import {indexOfFirstIndexed, indexOfFirstIndexedByArray, indexOfFirstIndexedByCollectionHolder, indexOfFirstIndexedByMinimalistCollectionHolder}                                 from "../src/method/indexOfFirstIndexed"
 import * as indexOfFirstIndexedOrNullModule                                                                                                                                      from "../src/method/indexOfFirstIndexedOrNull"
-import {indexOfFirstIndexedOrNull, indexOfFirstIndexedOrNullByArray, indexOfFirstIndexedOrNullByCollectionHolder, indexOfFirstIndexedOrNullByMinimalistCollectionHolder}         from "../src/method/indexOfFirstIndexedOrNull"
 import * as indexOfFirstOrNullModule                                                                                                                                             from "../src/method/indexOfFirstOrNull"
-import {indexOfFirstOrNull, indexOfFirstOrNullByArray, indexOfFirstOrNullByCollectionHolder, indexOfFirstOrNullByMinimalistCollectionHolder}                                     from "../src/method/indexOfFirstOrNull"
 import * as indexOfLastModule                                                                                                                                                    from "../src/method/indexOfLast"
-import {indexOfLast, indexOfLastByArray, indexOfLastByCollectionHolder, indexOfLastByMinimalistCollectionHolder}                                                                 from "../src/method/indexOfLast"
 import * as indexOfLastIndexedModule                                                                                                                                             from "../src/method/indexOfLastIndexed"
-import {indexOfLastIndexed, indexOfLastIndexedByArray, indexOfLastIndexedByCollectionHolder, indexOfLastIndexedByMinimalistCollectionHolder}                                     from "../src/method/indexOfLastIndexed"
 import * as indexOfLastIndexedOrNullModule                                                                                                                                       from "../src/method/indexOfLastIndexedOrNull"
-import {indexOfLastIndexedOrNull, indexOfLastIndexedOrNullByArray, indexOfLastIndexedOrNullByCollectionHolder, indexOfLastIndexedOrNullByMinimalistCollectionHolder}             from "../src/method/indexOfLastIndexedOrNull"
 import * as indexOfLastOrNullModule                                                                                                                                              from "../src/method/indexOfLastOrNull"
-import {indexOfLastOrNull, indexOfLastOrNullByArray, indexOfLastOrNullByCollectionHolder, indexOfLastOrNullByMinimalistCollectionHolder}                                         from "../src/method/indexOfLastOrNull"
-import {lastIndexOf, lastIndexOfByArray, lastIndexOfByCollectionHolder, lastIndexOfByMinimalistCollectionHolder}                                                                 from "../src/method/lastIndexOf"
-import {lastIndexOfOrNull, lastIndexOfOrNullByArray, lastIndexOfOrNullByCollectionHolder, lastIndexOfOrNullByMinimalistCollectionHolder}                                         from "../src/method/lastIndexOfOrNull"
 
 describe("CollectionHolderTest (index)", () => {
 
@@ -120,6 +107,7 @@ describe("CollectionHolderTest (index)", () => {
         describe("GenericCollectionHolder", () => {
             test("indexOf",                     () => expect(new GenericCollectionHolder_FirstIndexOfAlias().execute(it => it.indexOf("a",),).amountOfCall,).toBe(1,),)
             test("indexOfOrNull",               () => expect(new GenericCollectionHolder_FirstIndexOfOrNullAlias().execute(it => it.indexOfOrNull("a",),).amountOfCall,).toBe(1,),)
+
             test("findFirstIndex",              () => expect(new GenericCollectionHolder_IndexOfFirstAlias().execute(it => it.findFirstIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findIndex",                   () => expect(new GenericCollectionHolder_IndexOfFirstAlias().execute(it => it.findIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findFirstIndexOrNull",        () => expect(new GenericCollectionHolder_IndexOfFirstOrNullAlias().execute(it => it.findFirstIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
@@ -128,14 +116,16 @@ describe("CollectionHolderTest (index)", () => {
             test("findIndexIndexed",            () => expect(new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it => it.findIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findFirstIndexIndexedOrNull", () => expect(new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it => it.findFirstIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findIndexIndexedOrNull",      () => expect(new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it => it.findIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndex",                () => expect(new GenericCollectionHolder_IndexOfLastAlias().execute(it => it.findLastIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexOrNull",          () => expect(new GenericCollectionHolder_IndexOfLastOrNullAlias().execute(it => it.findLastIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexIndexed",         () => expect(new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it => it.findLastIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexIndexedOrNull",   () => expect(new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it => it.findLastIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+
+            test("findLastIndex",               () => expect(new GenericCollectionHolder_IndexOfLastAlias().execute(it => it.findLastIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexOrNull",         () => expect(new GenericCollectionHolder_IndexOfLastOrNullAlias().execute(it => it.findLastIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexIndexed",        () => expect(new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it => it.findLastIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexIndexedOrNull",  () => expect(new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it => it.findLastIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("indexOf",                     () => expect(new LazyGenericCollectionHolder_FirstIndexOfAlias().execute(it => it.indexOf("a",),).amountOfCall,).toBe(1,),)
             test("indexOfOrNull",               () => expect(new LazyGenericCollectionHolder_FirstIndexOfOrNullAlias().execute(it => it.indexOfOrNull("a",),).amountOfCall,).toBe(1,),)
+
             test("findFirstIndex",              () => expect(new LazyGenericCollectionHolder_IndexOfFirstAlias().execute(it => it.findFirstIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findIndex",                   () => expect(new LazyGenericCollectionHolder_IndexOfFirstAlias().execute(it => it.findIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findFirstIndexOrNull",        () => expect(new LazyGenericCollectionHolder_IndexOfFirstOrNullAlias().execute(it => it.findFirstIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
@@ -144,10 +134,11 @@ describe("CollectionHolderTest (index)", () => {
             test("findIndexIndexed",            () => expect(new LazyGenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it => it.findIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findFirstIndexIndexedOrNull", () => expect(new LazyGenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it => it.findFirstIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
             test("findIndexIndexedOrNull",      () => expect(new LazyGenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it => it.findIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndex",                () => expect(new LazyGenericCollectionHolder_IndexOfLastAlias().execute(it => it.findLastIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexOrNull",          () => expect(new LazyGenericCollectionHolder_IndexOfLastOrNullAlias().execute(it => it.findLastIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexIndexed",         () => expect(new LazyGenericCollectionHolder_IndexOfLastIndexedAlias().execute(it => it.findLastIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("finLastIndexIndexedOrNull",   () => expect(new LazyGenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it => it.findLastIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+
+            test("findLastIndex",               () => expect(new LazyGenericCollectionHolder_IndexOfLastAlias().execute(it => it.findLastIndex(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexOrNull",         () => expect(new LazyGenericCollectionHolder_IndexOfLastOrNullAlias().execute(it => it.findLastIndexOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexIndexed",        () => expect(new LazyGenericCollectionHolder_IndexOfLastIndexedAlias().execute(it => it.findLastIndexIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("findLastIndexIndexedOrNull",  () => expect(new LazyGenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it => it.findLastIndexIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
         },)
 
         describe("indexOf", () => {
@@ -462,375 +453,317 @@ describe("CollectionHolderTest (index)", () => {
         },)
     },)
 
-    describe.each(NULL_UNDEFINED,)("%s", it => {
-        describe("firstIndexOf", () => {
-            test("all",                          () => expect(() => firstIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => firstIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => firstIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => firstIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("firstIndexOfOrNull", () => {
-            test("all",                          () => expect(firstIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(firstIndexOfOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(firstIndexOfOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(firstIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance, emptyException,},},) => {
+        describe("firstIndexOf", () => expect(() => instance.firstIndexOf(null,),).toThrow(emptyException,),)
+        describe("firstIndexOfOrNull", () => expect(instance.firstIndexOfOrNull(null,),).toBeNull(),)
 
-        describe("lastIndexOf", () => {
-            test("all",                          () => expect(() => lastIndexOf(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => lastIndexOfByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => lastIndexOfByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => lastIndexOfByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("lastIndexOfOrNull", () => {
-            test("all",                          () => expect(lastIndexOfOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(lastIndexOfOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(lastIndexOfOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(lastIndexOfOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
+        describe("lastIndexOf", () => expect(() => instance.lastIndexOf(null,),).toThrow(emptyException,),)
+        describe("lastIndexOfOrNull", () => expect(instance.lastIndexOfOrNull(null,),).toBeNull(),)
 
-        describe("indexOfFirst", () => {
-            test("all",                          () => expect(() => indexOfFirst(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfFirstByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfFirstByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfFirstOrNull", () => {
-            test("all",                          () => expect(indexOfFirstOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfFirstOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfFirstOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfFirstOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfFirstIndexed", () => {
-            test("all",                          () => expect(() => indexOfFirstIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfFirstIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfFirstIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfFirstIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfFirstIndexedOrNull", () => {
-            test("all",                          () => expect(indexOfFirstIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfFirstIndexedOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfFirstIndexedOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfFirstIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
+        describe("indexOfFirst", () => expect(() => instance.indexOfFirst(callbackAsFail0,),).toThrow(emptyException,),)
+        describe("indexOfFirstOrNull", () => expect(instance.indexOfFirstOrNull(callbackAsFail0,),).toBeNull(),)
+        describe("indexOfFirstIndexed", () => expect(() => instance.indexOfFirstIndexed(callbackAsFail0,),).toThrow(emptyException,),)
+        describe("indexOfFirstIndexedOrNull", () => expect(instance.indexOfFirstIndexedOrNull(callbackAsFail0,),).toBeNull(),)
 
-        describe("indexOfLast", () => {
-            test("all",                          () => expect(() => indexOfLast(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfLastByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfLastByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfLastOrNull", () => {
-            test("all",                          () => expect(indexOfLastOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfLastOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfLastOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfLastOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-        describe("indexOfLastIndexed", () => {
-            test("all",                          () => expect(() => indexOfLastIndexed(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("minimalist collection holder", () => expect(() => indexOfLastIndexedByMinimalistCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("collection holder",            () => expect(() => indexOfLastIndexedByCollectionHolder(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-            test("array",                        () => expect(() => indexOfLastIndexedByArray(it, callbackAsFail0,),).toThrow(NullCollectionException,),)
-        },)
-        describe("indexOfLastIndexedOrNull", () => {
-            test("all",                          () => expect(indexOfLastIndexedOrNull(it, callbackAsFail0,),).toBeNull(),)
-            test("minimalist collection holder", () => expect(indexOfLastIndexedOrNullByMinimalistCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("collection holder",            () => expect(indexOfLastIndexedOrNullByCollectionHolder(it, callbackAsFail0,),).toBeNull(),)
-            test("array",                        () => expect(indexOfLastIndexedOrNullByArray(it, callbackAsFail0,),).toBeNull(),)
-        },)
-    },)
+        describe("indexOfLast", () => expect(() => instance.indexOfLast(callbackAsFail0,),).toThrow(emptyException,),)
+        describe("indexOfLastOrNull", () => expect(instance.indexOfLastOrNull(callbackAsFail0,),).toBeNull(),)
+        describe("indexOfLastIndexed", () => expect(() => instance.indexOfLastIndexed(callbackAsFail0,),).toThrow(emptyException,),)
+        describe("indexOfLastIndexedOrNull", () => expect(instance.indexOfLastIndexedOrNull(callbackAsFail0,),).toBeNull(),)
+    },)},)
 
-    describe.each(everyCollectionInstances,)("%s", ({value: {instance, isExtension,},},) => {
-        if (!isExtension)
-            describe("get() being called", () => {
-                describe("firstIndexOf", () => {
-                    test("empty",        () => expect(new instance<string>(EMPTY,).executeWhileExpectingEmptyException(it => it.firstIndexOf('a',),).amountOfCall,).toBe(0,),)
-                    test("1 field (a)",  () => expect(new instance(A,).execute(it => it.firstIndexOf('a',),).amountOfCall,).toBe(1,),)
-                    test("1 field (e)",  () => expect(new instance<string>(A,).executeWhileExpectingIndexOutOfBound(it => it.firstIndexOf('e',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (a)", () => expect(new instance(AB,).execute(it => it.firstIndexOf('a',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (k)", () => expect(new instance<string>(AB,).executeWhileExpectingIndexOutOfBound(it => it.firstIndexOf('k',),).amountOfCall,).toBe(2,),)
-                    test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it.firstIndexOf('a',),).amountOfCall,).toBe(1,),)
-                    test("4 fields (k)", () => expect(new instance<string>(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.firstIndexOf('k',),).amountOfCall,).toBe(4,),)
-                },)
-                describe("firstIndexOfOrNull", () => {
-                    test("empty",        () => expect(new instance<string>(EMPTY,).execute(it => it.firstIndexOfOrNull('a',),).amountOfCall,).toBe(0,),)
-                    test("1 field (a)",  () => expect(new instance(A,).execute(it => it.firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
-                    test("1 field (e)",  () => expect(new instance<string>(A,).execute(it => it.firstIndexOfOrNull('e',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (a)", () => expect(new instance(AB,).execute(it => it.firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (k)", () => expect(new instance<string>(AB,).execute(it => it.firstIndexOfOrNull('k',),).amountOfCall,).toBe(2,),)
-                    test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it.firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
-                    test("4 fields (k)", () => expect(new instance<string>(ABCD,).execute(it => it.firstIndexOfOrNull('k',),).amountOfCall,).toBe(4,),)
-                },)
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
 
-                describe("lastIndexOf", () => {
-                    test("empty",        () => expect(new instance<string>(EMPTY,).executeWhileExpectingEmptyException(it => it.lastIndexOf('a',),).amountOfCall,).toBe(0,),)
-                    test("1 field (a)",  () => expect(new instance(A,).execute(it => it.lastIndexOf('a',),).amountOfCall,).toBe(1,),)
-                    test("1 field (k)",  () => expect(new instance<string>(A,).executeWhileExpectingIndexOutOfBound(it => it.lastIndexOf('k',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (b)", () => expect(new instance(AB,).execute(it => it.lastIndexOf('b',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (k)", () => expect(new instance<string>(AB,).executeWhileExpectingIndexOutOfBound(it => it.lastIndexOf('k',),).amountOfCall,).toBe(2,),)
-                    test("4 fields (d)", () => expect(new instance(ABCD,).execute(it => it.lastIndexOf('d',),).amountOfCall,).toBe(1,),)
-                    test("4 fields (k)", () => expect(new instance<string>(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.lastIndexOf('k',),).amountOfCall,).toBe(4,),)
-                },)
-                describe("lastIndexOfOrNull", () => {
-                    test("empty",        () => expect(new instance<string>(EMPTY,).execute(it => it.lastIndexOfOrNull('a',),).amountOfCall,).toBe(0,),)
-                    test("1 field (a)",  () => expect(new instance(A,).execute(it => it.lastIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
-                    test("1 field (k)",  () => expect(new instance<string>(A,).execute(it => it.lastIndexOfOrNull('k',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (b)", () => expect(new instance(AB,).execute(it => it.lastIndexOfOrNull('b',),).amountOfCall,).toBe(1,),)
-                    test("2 fields (k)", () => expect(new instance<string>(AB,).execute(it => it.lastIndexOfOrNull('k',),).amountOfCall,).toBe(2,),)
-                    test("4 fields (d)", () => expect(new instance(ABCD,).execute(it => it.lastIndexOfOrNull('d',),).amountOfCall,).toBe(1,),)
-                    test("4 fields (k)", () => expect(new instance<string>(ABCD,).execute(it => it.lastIndexOfOrNull('k',),).amountOfCall,).toBe(4,),)
-                },)
+        describe("get() being called", () => {
+            describe("firstIndexOf", () => {
+                test("empty",        () => expect(new instance<string>(EMPTY,).executeWhileExpectingEmptyException(it => it.firstIndexOf('a',),).amountOfCall,).toBe(0,),)
+                test("1 field (a)",  () => expect(new instance(A,).execute(it => it                                        .firstIndexOf('a',),).amountOfCall,).toBe(1,),)
+                test("1 field (k)",  () => expect(new instance<string>(A,).executeWhileExpectingIndexOutOfBound(it => it   .firstIndexOf('k',),).amountOfCall,).toBe(1,),)
+                test("2 fields (a)", () => expect(new instance(AB,).execute(it => it                                       .firstIndexOf('a',),).amountOfCall,).toBe(1,),)
+                test("2 fields (k)", () => expect(new instance<string>(AB,).executeWhileExpectingIndexOutOfBound(it => it  .firstIndexOf('k',),).amountOfCall,).toBe(2,),)
+                test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it                                     .firstIndexOf('a',),).amountOfCall,).toBe(1,),)
+                test("4 fields (k)", () => expect(new instance<string>(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.firstIndexOf('k',),).amountOfCall,).toBe(4,),)
+            },)
+            describe("firstIndexOfOrNull", () => {
+                test("empty",        () => expect(new instance<string>(EMPTY,).execute(it => it.firstIndexOfOrNull('a',),).amountOfCall,).toBe(0,),)
+                test("1 field (a)",  () => expect(new instance(A,).execute(it => it            .firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
+                test("1 field (k)",  () => expect(new instance<string>(A,).execute(it => it    .firstIndexOfOrNull('k',),).amountOfCall,).toBe(1,),)
+                test("2 fields (a)", () => expect(new instance(AB,).execute(it => it           .firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
+                test("2 fields (k)", () => expect(new instance<string>(AB,).execute(it => it   .firstIndexOfOrNull('k',),).amountOfCall,).toBe(2,),)
+                test("4 fields (a)", () => expect(new instance(ABCD,).execute(it => it         .firstIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
+                test("4 fields (k)", () => expect(new instance<string>(ABCD,).execute(it => it .firstIndexOfOrNull('k',),).amountOfCall,).toBe(4,),)
+            },)
 
-                describe("indexOfFirst", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
-                describe("indexOfFirstOrNull", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
-                describe("indexOfFirstIndexed", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
-                describe("indexOfFirstIndexedOrNull", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
-                },)
+            describe("lastIndexOf", () => {
+                test("empty",        () => expect(new instance<string>(EMPTY,).executeWhileExpectingEmptyException(it => it.lastIndexOf('a',),).amountOfCall,).toBe(0,),)
+                test("1 field (a)",  () => expect(new instance(A,).execute(it => it                                        .lastIndexOf('a',),).amountOfCall,).toBe(1,),)
+                test("1 field (k)",  () => expect(new instance<string>(A,).executeWhileExpectingIndexOutOfBound(it => it   .lastIndexOf('k',),).amountOfCall,).toBe(1,),)
+                test("2 fields (b)", () => expect(new instance(AB,).execute(it => it                                       .lastIndexOf('b',),).amountOfCall,).toBe(1,),)
+                test("2 fields (k)", () => expect(new instance<string>(AB,).executeWhileExpectingIndexOutOfBound(it => it  .lastIndexOf('k',),).amountOfCall,).toBe(2,),)
+                test("4 fields (d)", () => expect(new instance(ABCD,).execute(it => it                                     .lastIndexOf('d',),).amountOfCall,).toBe(1,),)
+                test("4 fields (k)", () => expect(new instance<string>(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.lastIndexOf('k',),).amountOfCall,).toBe(4,),)
+            },)
+            describe("lastIndexOfOrNull", () => {
+                test("empty",        () => expect(new instance<string>(EMPTY,).execute(it => it.lastIndexOfOrNull('a',),).amountOfCall,).toBe(0,),)
+                test("1 field (a)",  () => expect(new instance(A,).execute(it => it            .lastIndexOfOrNull('a',),).amountOfCall,).toBe(1,),)
+                test("1 field (k)",  () => expect(new instance<string>(A,).execute(it => it    .lastIndexOfOrNull('k',),).amountOfCall,).toBe(1,),)
+                test("2 fields (b)", () => expect(new instance(AB,).execute(it => it           .lastIndexOfOrNull('b',),).amountOfCall,).toBe(1,),)
+                test("2 fields (k)", () => expect(new instance<string>(AB,).execute(it => it   .lastIndexOfOrNull('k',),).amountOfCall,).toBe(2,),)
+                test("4 fields (d)", () => expect(new instance(ABCD,).execute(it => it         .lastIndexOfOrNull('d',),).amountOfCall,).toBe(1,),)
+                test("4 fields (k)", () => expect(new instance<string>(ABCD,).execute(it => it .lastIndexOfOrNull('k',),).amountOfCall,).toBe(4,),)
+            },)
 
-                describe("indexOfLast", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
+            describe("indexOfFirst", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirst(callbackAsFail2,),).amountOfCall,).toBe(0,),)
                 },)
-                describe("indexOfLastOrNull", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it                             .indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
                 },)
-                describe("indexOfLastIndexed", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it                             .indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
                 },)
-                describe("indexOfLastIndexedOrNull", () => {
-                    describe("empty", () => {
-                        test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
-                        test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
-                        test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("1 field", () => {
-                        test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("2 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("4 fields", () => {
-                        test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                        test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
-                        test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                        test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                        test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                    },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirst(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirst(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirst(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirst(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
                 },)
             },)
+            describe("indexOfFirstOrNull", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("indexOfFirstIndexed", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfFirstIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfFirstIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("indexOfFirstIndexedOrNull", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+
+            describe("indexOfLast", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLast(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it                             .indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it                             .indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfLast(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it                             .indexOfLast(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfLast(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLast(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("indexOfLastOrNull", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("indexOfLastIndexed", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).executeWhileExpectingEmptyException(it => it.indexOfLastIndexed(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it                             .indexOfLastIndexed(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.indexOfLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+            describe("indexOfLastIndexedOrNull", () => {
+                describe("empty", () => {
+                    test("0 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail0,),).amountOfCall,).toBe(0,),)
+                    test("1 argument",  () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail1,),).amountOfCall,).toBe(0,),)
+                    test("2 arguments", () => expect(new instance(EMPTY,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFail2,),).amountOfCall,).toBe(0,),)
+                },)
+                describe("1 field", () => {
+                    test("true: 0 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(A,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                },)
+                describe("2 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                },)
+                describe("4 fields", () => {
+                    test("true: 0 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
+                    test("true: 1 argument",   () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue1,),).amountOfCall,).toBe(0,),)
+                    test("true: 2 arguments",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
+                    test("false: 0 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+                    test("false: 1 argument",  () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                    test("false: 2 arguments", () => expect(new instance(ABCD,).execute(it => it.indexOfLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                },)
+            },)
+        },)
 
         describe("firstIndexOf", () => {
             describe("empty", () => {
@@ -1179,11 +1112,9 @@ describe("CollectionHolderTest (index)", () => {
                 test('e', () => expect(() => new instance<string>(AB,).lastIndexOf('e',),).toThrow(IndexOutOfBoundsException,),)
             },)
             describe("4 fields", () => {
-                test('a', () => expect(new instance(ABCD,).lastIndexOf('a',),).toBe(0,),)
-                test('b', () => expect(new instance(ABCD,).lastIndexOf('b',),).toBe(1,),)
-                test('c', () => expect(new instance(ABCD,).lastIndexOf('c',),).toBe(2,),)
-                test('d', () => expect(new instance(ABCD,).lastIndexOf('d',),).toBe(3,),)
-                test('e', () => expect(() => new instance<string>(ABCD,).lastIndexOf('e',),).toThrow(IndexOutOfBoundsException,),)
+                test('a', () => expect(new instance(ABAB,).lastIndexOf('a',),).toBe(2,),)
+                test('b', () => expect(new instance(ABAB,).lastIndexOf('b',),).toBe(3,),)
+                test('e', () => expect(() => new instance<string>(ABAB,).lastIndexOf('e',),).toThrow(IndexOutOfBoundsException,),)
             },)
 
             describe("from", () => {
@@ -1342,11 +1273,9 @@ describe("CollectionHolderTest (index)", () => {
                 test('e', () => expect(new instance<string>(AB,).lastIndexOfOrNull('e',),).toBeNull(),)
             },)
             describe("4 fields", () => {
-                test('a', () => expect(new instance(ABCD,).lastIndexOfOrNull('a',),).toBe(0,),)
-                test('b', () => expect(new instance(ABCD,).lastIndexOfOrNull('b',),).toBe(1,),)
-                test('c', () => expect(new instance(ABCD,).lastIndexOfOrNull('c',),).toBe(2,),)
-                test('d', () => expect(new instance(ABCD,).lastIndexOfOrNull('d',),).toBe(3,),)
-                test('e', () => expect(new instance<string>(ABCD,).lastIndexOfOrNull('e',),).toBeNull(),)
+                test('a', () => expect(new instance(ABAB,).lastIndexOfOrNull('a',),).toBe(2,),)
+                test('b', () => expect(new instance(ABAB,).lastIndexOfOrNull('b',),).toBe(3,),)
+                test('e', () => expect(new instance<string>(ABAB,).lastIndexOfOrNull('e',),).toBeNull(),)
             },)
 
             describe("from", () => {
@@ -1897,7 +1826,6 @@ describe("CollectionHolderTest (index)", () => {
                 test("odd",  () => expect(() => new instance(A,).indexOfFirstIndexed(callbackIsOdd,),).toThrow(IndexOutOfBoundsException,),)
                 test('0',    () => expect(new instance(A,).indexOfFirstIndexed(callbackIs0,),).toBe(0,),)
                 test('4',    () => expect(() => new instance(A,).indexOfFirstIndexed(callbackIs4,),).toThrow(IndexOutOfBoundsException,),)
-
             },)
             describe("2 fields", () => {
                 test('a',    () => expect(new instance(AB,).indexOfFirstIndexed(callbackIsAAlt,),).toBe(0,),)
@@ -1908,7 +1836,6 @@ describe("CollectionHolderTest (index)", () => {
                 test('0',    () => expect(new instance(AB,).indexOfFirstIndexed(callbackIs0,),).toBe(0,),)
                 test('1',    () => expect(new instance(AB,).indexOfFirstIndexed(callbackIs1,),).toBe(1,),)
                 test('4',    () => expect(() => new instance(AB,).indexOfFirstIndexed(callbackIs4,),).toThrow(IndexOutOfBoundsException,),)
-
             },)
             describe("4 fields", () => {
                 test('a',    () => expect(new instance(ABCD,).indexOfFirstIndexed(callbackIsAAlt,),).toBe(0,),)
@@ -2090,7 +2017,6 @@ describe("CollectionHolderTest (index)", () => {
                 test("odd",  () => expect(new instance(A,).indexOfFirstIndexedOrNull(callbackIsOdd,),).toBeNull(),)
                 test('0',    () => expect(new instance(A,).indexOfFirstIndexedOrNull(callbackIs0,),).toBe(0,),)
                 test('4',    () => expect(new instance(A,).indexOfFirstIndexedOrNull(callbackIs4,),).toBeNull(),)
-
             },)
             describe("2 fields", () => {
                 test('a',    () => expect(new instance(AB,).indexOfFirstIndexedOrNull(callbackIsAAlt,),).toBe(0,),)
@@ -2101,7 +2027,6 @@ describe("CollectionHolderTest (index)", () => {
                 test('0',    () => expect(new instance(AB,).indexOfFirstIndexedOrNull(callbackIs0,),).toBe(0,),)
                 test('1',    () => expect(new instance(AB,).indexOfFirstIndexedOrNull(callbackIs1,),).toBe(1,),)
                 test('4',    () => expect(new instance(AB,).indexOfFirstIndexedOrNull(callbackIs4,),).toBeNull(),)
-
             },)
             describe("4 fields", () => {
                 test('a',    () => expect(new instance(ABCD,).indexOfFirstIndexedOrNull(callbackIsAAlt,),).toBe(0,),)
@@ -2666,7 +2591,6 @@ describe("CollectionHolderTest (index)", () => {
                 test("odd",   () => expect(() => new instance(A,).indexOfLastIndexed(callbackIsOdd,),).toThrow(IndexOutOfBoundsException,),)
                 test('0',     () => expect(new instance(A,).indexOfLastIndexed(callbackIs0,),).toBe(0,),)
                 test('4',     () => expect(() => new instance(A,).indexOfLastIndexed(callbackIs4,),).toThrow(IndexOutOfBoundsException,),)
-
             },)
             describe("2 fields", () => {
                 test('a',     () => expect(new instance(AB,).indexOfLastIndexed(callbackIsAAlt,),).toBe(0,),)
@@ -2677,7 +2601,6 @@ describe("CollectionHolderTest (index)", () => {
                 test('0',     () => expect(new instance(AB,).indexOfLastIndexed(callbackIs0,),).toBe(0,),)
                 test('1',     () => expect(new instance(AB,).indexOfLastIndexed(callbackIs1,),).toBe(1,),)
                 test('4',     () => expect(() => new instance(AB,).indexOfLastIndexed(callbackIs4,),).toThrow(IndexOutOfBoundsException,),)
-
             },)
             describe("4 fields", () => {
                 test('a',     () => expect(new instance(ABCD,).indexOfLastIndexed(callbackIsAAlt,),).toBe(0,),)
@@ -2859,7 +2782,6 @@ describe("CollectionHolderTest (index)", () => {
                 test("odd",   () => expect(new instance(A,).indexOfLastIndexedOrNull(callbackIsOdd,),).toBeNull(),)
                 test('0',     () => expect(new instance(A,).indexOfLastIndexedOrNull(callbackIs0,),).toBe(0,),)
                 test('4',     () => expect(new instance(A,).indexOfLastIndexedOrNull(callbackIs4,),).toBeNull(),)
-
             },)
             describe("2 fields", () => {
                 test('a',     () => expect(new instance(AB,).indexOfLastIndexedOrNull(callbackIsAAlt,),).toBe(0,),)
@@ -2870,7 +2792,6 @@ describe("CollectionHolderTest (index)", () => {
                 test('0',     () => expect(new instance(AB,).indexOfLastIndexedOrNull(callbackIs0,),).toBe(0,),)
                 test('1',     () => expect(new instance(AB,).indexOfLastIndexedOrNull(callbackIs1,),).toBe(1,),)
                 test('4',     () => expect(new instance(AB,).indexOfLastIndexedOrNull(callbackIs4,),).toBeNull(),)
-
             },)
             describe("4 fields", () => {
                 test('a',     () => expect(new instance(ABCD,).indexOfLastIndexedOrNull(callbackIsAAlt,),).toBe(0,),)
@@ -3017,6 +2938,6 @@ describe("CollectionHolderTest (index)", () => {
                 test("-∞, +∞",     () => expect(new instance(ABAB,).indexOfLastIndexedOrNull(callbackAsFail0, -Infinity, Infinity,),).toBeNull(),)
             },)
         },)
-    },)
+    },)},)
 
 },)
