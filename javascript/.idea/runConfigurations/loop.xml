@@ -1,12 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="forEach / onEach" type="JavaScriptTestRunnerJest" folderName="CollectionHolder tests">
+  <configuration default="false" name="loop" type="JavaScriptTestRunnerJest" folderName="CollectionHolder tests">
     <node-interpreter value="project" />
     <jest-package value="$PROJECT_DIR$/node_modules/jest" />
     <working-dir value="$PROJECT_DIR$" />
     <jest-options value="--collect-coverage=false" />
     <envs />
     <scope-kind value="SUITE" />
-    <test-file value="$PROJECT_DIR$/test/CollectionHolder.14 - forEach-onEach.test.ts" />
+    <test-file value="$PROJECT_DIR$/test/CollectionHolder.14 - loop.test.ts" />
     <test-names>
       <test-name value="CollectionHolderTest (forEach / onEach)" />
     </test-names>
