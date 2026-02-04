@@ -187,30 +187,30 @@ export class GenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array: readonly T[],)
-    public constructor(lateArray: () => readonly T[],)
-    public constructor(set: ReadonlySet<T>,)
-    public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: CollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
-    public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(array:                                readonly T[],)
+    public constructor(lateArray:                      () => readonly T[],)
+    public constructor(set:                                  ReadonlySet<T>,)
+    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(collectionHolder:                     CollectionHolder<T>,)
+    public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
+    public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
     public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
-    public constructor(collectionIterator: CollectionIterator<T>,)
-    public constructor(lateCollectionIterator: () => CollectionIterator<T>,)
-    public constructor(iterator: Iterator<T, unknown, unknown>,)
-    public constructor(lateIterator: () => Iterator<T, unknown, unknown>,)
-    public constructor(iterableWithSize: IterableWithSize<T>,)
-    public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
-    public constructor(iterableWithLength: IterableWithLength<T>,)
-    public constructor(lateIterableWithLength: () => IterableWithLength<T>,)
-    public constructor(iterableWithCount: IterableWithCount<T>,)
-    public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
-    public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
-    public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(iterable: Iterable<T, unknown, unknown>,)
-    public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
-    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
-    public constructor(lateReference: () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(collectionIterator:                   CollectionIterator<T>,)
+    public constructor(lateCollectionIterator:         () => CollectionIterator<T>,)
+    public constructor(iterator:                             Iterator<T, unknown, unknown>,)
+    public constructor(lateIterator:                   () => Iterator<T, unknown, unknown>,)
+    public constructor(iterableWithSize:                     IterableWithSize<T>,)
+    public constructor(lateIterableWithSize:           () => IterableWithSize<T>,)
+    public constructor(iterableWithLength:                   IterableWithLength<T>,)
+    public constructor(lateIterableWithLength:         () => IterableWithLength<T>,)
+    public constructor(iterableWithCount:                    IterableWithCount<T>,)
+    public constructor(lateIterableWithCount:          () => IterableWithCount<T>,)
+    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
+    public constructor(iterable:                             Iterable<T, unknown, unknown>,)
+    public constructor(lateIterable:                   () => Iterable<T, unknown, unknown>,)
+    public constructor(reference:                            PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(lateReference:                  () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
@@ -221,7 +221,7 @@ export class GenericCollectionHolder<const T = unknown,
             reference = reference()
         this.#reference = reference
 
-        //#region -------------------- initialization by a known instance --------------------
+        //#region -------------------- Initialization from Array --------------------
 
         if (isArray(reference,)) {
             const size = this.#size = reference.length
@@ -270,6 +270,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- Initialization from Array --------------------
+        //#region -------------------- Initialization from Set --------------------
 
         if (isSet(reference,)) {
             this.#hasDuplicate = false
@@ -320,6 +323,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from Set --------------------
+        //#region -------------------- Initialization from CollectionHolder --------------------
+
         if (isCollectionHolder(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
@@ -367,6 +373,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- Initialization from CollectionHolder --------------------
+        //#region -------------------- Initialization from MinimalistCollectionHolder --------------------
 
         if (isMinimalistCollectionHolder(reference,)) {
             const size = this.#size = reference.size
@@ -416,6 +425,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from MinimalistCollectionHolder --------------------
+        //#region -------------------- Initialization from CollectionIterator --------------------
+
         if (isCollectionIterator(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
@@ -464,6 +476,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from CollectionIterator --------------------
+        //#region -------------------- Initialization from Iterator --------------------
+
         if (isIterator(reference,)) {
             let iteratorResult = reference.next()
 
@@ -493,8 +508,9 @@ export class GenericCollectionHolder<const T = unknown,
             return
         }
 
-        //#endregion -------------------- initialization by a known instance --------------------
-        //#region -------------------- initialization by a structure --------------------
+        //#endregion -------------------- Initialization from Iterator --------------------
+
+        //#region -------------------- Initialization from Array by structure --------------------
 
         if (isArrayByStructure<T>(reference,)) {
             const size = this.#size = reference.length
@@ -543,6 +559,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- Initialization from Array by structure --------------------
+        //#region -------------------- Initialization from Set by structure --------------------
 
         if (isSetByStructure<T>(reference,)) {
             this.#hasDuplicate = false
@@ -593,6 +612,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from Set by structure --------------------
+        //#region -------------------- Initialization from CollectionHolder by structure --------------------
+
         if (isCollectionHolderByStructure<T>(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
@@ -640,6 +662,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- Initialization from CollectionHolder by structure --------------------
+        //#region -------------------- Initialization from MinimalistCollectionHolder by structure --------------------
 
         if (isMinimalistCollectionHolderByStructure<T>(reference,)) {
             const size = this.#size = reference.size
@@ -689,6 +714,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from MinimalistCollectionHolder by structure --------------------
+        //#region -------------------- Initialization from CollectionIterator by structure --------------------
+
         if (isCollectionIteratorByStructure<T>(reference,)) {
             //#region -------------------- Initialization (size = 0) --------------------
 
@@ -737,6 +765,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from CollectionIterator by structure --------------------
+        //#region -------------------- Initialization from Iterator by structure --------------------
+
         if (isIteratorByStructure<T>(reference,)) {
             let iteratorResult = reference.next()
 
@@ -766,8 +797,9 @@ export class GenericCollectionHolder<const T = unknown,
             return
         }
 
-        //#endregion -------------------- initialization by a structure --------------------
-        //#region -------------------- initialization by an iterable --------------------
+        //#endregion -------------------- Initialization from Iterator by structure --------------------
+
+        //#region -------------------- Initialization from Iterable with size --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -788,7 +820,7 @@ export class GenericCollectionHolder<const T = unknown,
             //#region -------------------- Initialization (size = 1) --------------------
 
             if (size == 1) {
-                const value = this[0] = (reference[Symbol.iterator]() as Iterator<T, unknown, unknown>).next().value as T
+                const value = this[0] = reference[Symbol.iterator]().next().value as T
                 this.#hasNull = value == null
                 this.#hasDuplicate = false
                 this.#array = Object.freeze([value,],)
@@ -821,6 +853,9 @@ export class GenericCollectionHolder<const T = unknown,
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
+
+        //#endregion -------------------- Initialization from Iterable with size --------------------
+        //#region -------------------- Initialization from Iterable with length --------------------
 
         lengthIf: if ("length" in reference) {
             const size = reference.length
@@ -875,6 +910,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from Iterable with length --------------------
+        //#region -------------------- Initialization from Iterable with count --------------------
+
         countIf: if ("count" in reference) {
             const size = reference.count
             if (size == null) // No size is present, we continue as a normal iterable
@@ -928,6 +966,9 @@ export class GenericCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
+        //#endregion -------------------- Initialization from Iterable with count --------------------
+        //#region -------------------- Initialization from Iterable --------------------
+
         const iterator = reference[Symbol.iterator]()
         let iteratorResult = iterator.next()
 
@@ -954,7 +995,8 @@ export class GenericCollectionHolder<const T = unknown,
 
         //#endregion -------------------- Initialization (size = over 0) --------------------
 
-        //#endregion -------------------- initialization by an iterable --------------------
+        //#endregion -------------------- Initialization from Iterable --------------------
+
     }
 
     //#endregion -------------------- Constructor --------------------
