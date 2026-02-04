@@ -93,7 +93,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
-        // README: The code is based on the GenericCollectionHolder constructor, but with less things handled
+        // README: The code is based on the GenericCollectionHolder constructor, but with fewer things handled
         //         Also, the eager instantiation has some weird shenanigan to keep its nature pure.
         //         And, to be efficient, there is some duplicate code in the constructor.
 
