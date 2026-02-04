@@ -624,9 +624,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
-            let iteratorResult: IteratorResult<T, unknown>
-            while (++index, !(iteratorResult = iterator.next()).done)
-                array[index] = iteratorResult.value
+            while (++index < size)
+                array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
@@ -671,9 +670,8 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
-            let iteratorResult: IteratorResult<T, unknown>
-            while (++index, !(iteratorResult = iterator.next()).done)
-                array[index] = iteratorResult.value
+            while (++index < size)
+                array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
@@ -719,16 +717,14 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
-            let iteratorResult: IteratorResult<T, unknown>
-            while (++index, !(iteratorResult = iterator.next()).done)
-                array[index] = iteratorResult.value
+            while (++index < size)
+                array[index] = iterator.next().value as T
             this.#array = Object.freeze(array,)
             return
 
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
         //#endregion -------------------- Initialization from Iterable with count --------------------
         //#region -------------------- Initialization from Iterable --------------------
 
