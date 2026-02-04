@@ -19,8 +19,8 @@ import {everyIterableInstances}                            from "./value/instanc
 describe("CollectionHolderTest (constructor)", () => {
 
     describe("GenericMinimalistCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new GenericMinimalistCollectionHolder_ConstructorTest<T>(it(values,),).array
+    describe.each(everyIterableInstances,)("%s", ({value: iterable,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericMinimalistCollectionHolder_ConstructorTest<T>(new iterable(values,),).array
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toEqual(A,),)
@@ -30,8 +30,8 @@ describe("CollectionHolderTest (constructor)", () => {
 
     },)},)
     describe("GenericCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new GenericCollectionHolder_ConstructorTest<T>(it(values,),)
+    describe.each(everyIterableInstances,)("%s", ({value: iterable,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new GenericCollectionHolder_ConstructorTest<T>(new iterable(values,),)
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
@@ -41,8 +41,8 @@ describe("CollectionHolderTest (constructor)", () => {
 
     },)},)
     describe("LazyGenericCollectionHolder", () => {
-    describe.each(everyIterableInstances,)("%s", ({value: it,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(it(values,),)
+    describe.each(everyIterableInstances,)("%s", ({value: iterable,},) => {
+        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(new iterable(values,),)
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
