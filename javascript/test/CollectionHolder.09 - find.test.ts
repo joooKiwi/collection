@@ -36,7 +36,6 @@ import {everyExtensionMethodInstances, everyInstances}                          
 
 import {EmptyCollectionException}                                                                                                            from "../src/exception/EmptyCollectionException"
 import {IndexOutOfBoundsException}                                                                                                           from "../src/exception/IndexOutOfBoundsException"
-import {NullCollectionException}                                                                                                             from "../src/exception/NullCollectionException"
 import {EmptyCollectionHolder}                                                                                                               from "../src/EmptyCollectionHolder"
 import {find, findByArray, findByCollectionHolder, findByMinimalistCollectionHolder}                                                         from "../src/method/find"
 import * as findFirstModule                                                                                                                  from "../src/method/findFirst"
@@ -377,16 +376,16 @@ describe("CollectionHolderTest (find)", () => {
     },)
 
     describe("methods", () => {
-    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("findFirst",              () => expect(() => instance.findFirst(callbackAsFail0,),).toThrow(NullCollectionException,),)
-        describe("findFirstOrNull",        () => expect(instance.findFirstOrNull(callbackAsFail0,),).toBeNull(),)
-        describe("findFirstIndexed",       () => expect(() => instance.findFirstIndexed(callbackAsFail0,),).toThrow(NullCollectionException,),)
-        describe("findFirstIndexedOrNull", () => expect(instance.findFirstIndexed(callbackAsFail0,),).toBeNull(),)
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance, emptyException,},},) => {
+        test("findFirst",              () => expect(() => instance.findFirst(callbackAsFail0,),).toThrow(emptyException,),)
+        test("findFirstOrNull",        () => expect(instance.findFirstOrNull(callbackAsFail0,),).toBeNull(),)
+        test("findFirstIndexed",       () => expect(() => instance.findFirstIndexed(callbackAsFail0,),).toThrow(emptyException,),)
+        test("findFirstIndexedOrNull", () => expect(instance.findFirstIndexedOrNull(callbackAsFail0,),).toBeNull(),)
 
-        describe("findLast",               () => expect(() => instance.findLast(callbackAsFail0,),).toThrow(NullCollectionException,),)
-        describe("findLastOrNull",         () => expect(instance.findLastOrNull(callbackAsFail0,),).toBeNull(),)
-        describe("findLastIndexed",        () => expect(() => instance.findLastIndexed(callbackAsFail0,),).toThrow(NullCollectionException,),)
-        describe("findLastIndexedOrNull",  () => expect(instance.findLastIndexedOrNull(callbackAsFail0,),).toBeNull(),)
+        test("findLast",               () => expect(() => instance.findLast(callbackAsFail0,),).toThrow(emptyException,),)
+        test("findLastOrNull",         () => expect(instance.findLastOrNull(callbackAsFail0,),).toBeNull(),)
+        test("findLastIndexed",        () => expect(() => instance.findLastIndexed(callbackAsFail0,),).toThrow(emptyException,),)
+        test("findLastIndexedOrNull",  () => expect(instance.findLastIndexedOrNull(callbackAsFail0,),).toBeNull(),)
     },)},)
 
     describe("instances", () => {
