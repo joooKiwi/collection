@@ -237,7 +237,7 @@ export class CollectionConstants {
             Symbol.unscopables,
             "copyWithin", "with",
             "reverse", "toReversed",
-            "toSorted",
+            "sort", "toSorted",
             "slice", "splice", "toSpliced",
             "toString", "toLocaleString",
         ] as const,),)
