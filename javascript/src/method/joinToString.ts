@@ -24,6 +24,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
+//FIXME: Give […] instead of [] when the limit is 0 on a non-empty collection
 
 /**
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
