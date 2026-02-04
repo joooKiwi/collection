@@ -218,7 +218,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -260,7 +260,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -302,7 +302,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.previousValue
@@ -461,7 +461,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -503,7 +503,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.get(index,)
@@ -545,7 +545,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             let index = size
             while (index-- > 0)
                 array[index] = reference.previousValue
@@ -619,7 +619,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
@@ -664,7 +664,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
@@ -709,7 +709,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 2) --------------------
             //#region -------------------- Initialization (size = over 2) --------------------
 
-            const array: T[] = []
+            const array = new Array<T>(size,)
             const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
             let index = -1
             let iteratorResult: IteratorResult<T, unknown>
