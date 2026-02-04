@@ -32,22 +32,22 @@ export abstract class AbstractNullCollectionHolderForTest<const T, >
     public constructor() { super() }
 
     public override get amountOfCall(): never {
-        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.")
+        throw new Error("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
     }
 
     public override set amountOfCall(_: unknown,) {
-        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.")
+        throw new Error("The setter method “amountOfCall” was not expected to be called on an extension function only test instance.",)
     }
 
     public override get size(): never {
-        throw new Error("The method “size” was not expected to be called directly.")
+        throw new Error("The method “size” was not expected to be called directly.",)
     }
 
     public abstract override get isEmpty(): true
     public abstract override get isNotEmpty(): false
 
     public override get(..._: readonly unknown[]): never {
-        throw new Error("The method “get” was not expected to be called directly.")
+        throw new Error("The method “get” was not expected to be called directly.",)
     }
 
     public abstract hasOneWithArray(values: Nullable<readonly T[]>,): boolean
