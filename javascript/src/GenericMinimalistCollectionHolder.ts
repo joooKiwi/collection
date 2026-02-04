@@ -632,13 +632,13 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = over 2) --------------------
         }
 
-        sizeIf: if ("length" in reference) {
         //#endregion -------------------- Initialization from Iterable with size --------------------
         //#region -------------------- Initialization from Iterable with length --------------------
 
+        lengthIf: if ("length" in reference) {
             const size = reference.length
             if (size == null) // No size is present, we continue as a normal iterable
-                break sizeIf
+                break lengthIf
             this.#size = size
 
             //#region -------------------- Initialization (size = 0) --------------------
