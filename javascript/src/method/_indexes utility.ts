@@ -33,10 +33,10 @@ export function __startingIndex(value: number, size: number,): number {
     if (value == Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", value,)
 
-    if (value == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is over the collection size “${size}”.`, value,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
 
     let startingIndex = value
     if (startingIndex < 0)
@@ -62,9 +62,9 @@ export function __startingIndexOrNull(value: number, size: number,): NullOrNumbe
     if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (value == size)
-        return null
     if (value > size)
+        return null
+    if (value == size)
         return null
 
     let startingIndex = value
@@ -93,10 +93,10 @@ export function __endingIndex(value: number, size: number,) {
     if (value == Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", value,)
 
-    if (value == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is over the collection size “${size}”.`, value,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
 
     let endingIndex = value
     if (endingIndex < 0)
@@ -122,9 +122,9 @@ export function __endingIndexOrNull(value: number, size: number,): NullOrNumber 
     if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (value == size)
-        return null
     if (value > size)
+        return null
+    if (value == size)
         return null
 
     let endingIndex = value
