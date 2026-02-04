@@ -605,8 +605,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1)
+            if (size == 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
+                return
+            }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -650,8 +652,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1)
+            if (size == 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
+                return
+            }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -695,8 +699,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
-            if (size == 1)
+            if (size == 1) {
                 this.#array = Object.freeze([reference[Symbol.iterator]().next().value as T,],)
+                return
+            }
 
             //#endregion -------------------- Initialization (size = 1) --------------------
             //#region -------------------- Initialization (size = 2) --------------------
@@ -704,6 +710,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             if (size == 2) {
                 const iterator: Iterator<T, unknown, unknown> = reference[Symbol.iterator]()
                 this.#array = Object.freeze([iterator.next().value as T, iterator.next().value as T,],)
+                return
             }
 
             //#endregion -------------------- Initialization (size = 2) --------------------
