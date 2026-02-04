@@ -20,7 +20,7 @@ import type {IterableWithPossibleSize}                                          
 import type {IterableWithSize}                                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection}                                                                                                                                      from "./type/possibleInstance"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
 import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
 import {CollectionConstants}                            from "./CollectionConstants"
@@ -167,8 +167,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericCollectionHolder<const T = unknown,
-    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class GenericCollectionHolder<const T = unknown, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------

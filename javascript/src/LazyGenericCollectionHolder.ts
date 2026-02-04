@@ -14,16 +14,16 @@ import type {Lazy}    from "@joookiwi/lazy"
 import type {NullOr}  from "@joookiwi/type"
 import {lazy, lazyOf} from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                                             from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                   from "./MinimalistCollectionHolder"
-import type {CollectionHandler}                                                                                                            from "./handler/CollectionHandler"
-import type {IterableWithCount}                                                                                                            from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                           from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                     from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                             from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                           from "./iterator/CollectionIterator"
-import type {IndexWithReturnCallback}                                                                                                      from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
+import type {CollectionHolder}                                   from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                         from "./MinimalistCollectionHolder"
+import type {CollectionHandler}                                  from "./handler/CollectionHandler"
+import type {IterableWithCount}                                  from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                 from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                           from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                   from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
+import type {IndexWithReturnCallback}                            from "./type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 
 import {AbstractCollectionHolder}                         from "./AbstractCollectionHolder"
 import {CollectionConstants}                              from "./CollectionConstants"
@@ -73,8 +73,7 @@ import {isSetByStructure}                                 from "./method/isSetBy
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const T = unknown,
-    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class LazyGenericCollectionHolder<const T = unknown, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -888,7 +887,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
+    /** The {@link PossibleIterableIteratorArraySetOrCollectionHolder collection, array, set, iterable or iterator} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference.value }
 
     /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */

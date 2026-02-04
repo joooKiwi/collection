@@ -10,13 +10,13 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {CollectionHolder}                                                                                                             from "./CollectionHolder"
-import type {IterableWithCount}                                                                                                            from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                           from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                     from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                             from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                           from "./iterator/CollectionIterator"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
+import type {CollectionHolder}                                   from "./CollectionHolder"
+import type {IterableWithCount}                                  from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                 from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                           from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                   from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 
 import {AbstractMinimalistCollectionHolder}      from "./AbstractMinimalistCollectionHolder"
 import {CollectionConstants}                     from "./CollectionConstants"
@@ -52,8 +52,7 @@ import {isSetByStructure}                        from "./method/isSetByStructure
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
  */
-export class GenericMinimalistCollectionHolder<const T = unknown,
-    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class GenericMinimalistCollectionHolder<const T = unknown, >
     extends AbstractMinimalistCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
