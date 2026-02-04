@@ -190,10 +190,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         //#region -------------------- Initialization from CollectionHolder --------------------
 
         if (isCollectionHolder(reference,)) {
-            const size = this.#size = reference.size
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (reference.isEmpty) {
+                this.#size = 0
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -201,6 +201,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
                 this.#array = Object.freeze([reference.getFirst(),],)
                 return
@@ -273,10 +274,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         //#region -------------------- Initialization from CollectionIterator --------------------
 
         if (isCollectionIterator(reference,)) {
-            const size = this.#size = reference.size
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (reference.isEmpty) {
+                this.#size = 0
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -284,6 +285,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
                 this.#array = Object.freeze([reference.nextValue,],)
                 return
@@ -431,10 +433,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         //#region -------------------- Initialization from CollectionHolder by structure --------------------
 
         if (isCollectionHolderByStructure<T>(reference,)) {
-            const size = this.#size = reference.size
             //#region -------------------- Initialization (size = 0) --------------------
 
             if (reference.isEmpty) {
+                this.#size = 0
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -442,6 +444,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
                 this.#array = Object.freeze([reference.getFirst(),],)
                 return
@@ -514,10 +517,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
         //#region -------------------- Initialization from CollectionIterator by structure --------------------
 
         if (isCollectionIteratorByStructure<T>(reference,)) {
-            const size = this.#size = reference.size
             //#region -------------------- Initialization (size = 0) --------------------
 
-            if (size == 0) {
+            if (reference.isEmpty) {
+                this.#size = 0
                 this.#array = CollectionConstants.EMPTY_ARRAY
                 return
             }
@@ -525,6 +528,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown,
             //#endregion -------------------- Initialization (size = 0) --------------------
             //#region -------------------- Initialization (size = 1) --------------------
 
+            const size = this.#size = reference.size
             if (size == 1) {
                 this.#array = Object.freeze([reference.nextValue,],)
                 return
