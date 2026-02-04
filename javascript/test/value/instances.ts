@@ -16,6 +16,8 @@ import type {CollectionHolder_FromExtension} from "../instance/CollectionHolder_
 import {EmptyCollectionException}                                  from "../../src/exception/EmptyCollectionException"
 import {NullCollectionException}                                   from "../../src/exception/NullCollectionException"
 import {Holder}                                                    from "../Holder"
+import {ArrayByStructureForTest}                                   from "../instance/ArrayByStructureForTest"
+import {ArrayForTest}                                              from "../instance/ArrayForTest"
 import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}                      from "../instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByLazyCollection}                         from "../instance/CollectionHolder_ByLazyCollection"
@@ -44,6 +46,8 @@ import {IterableWithSizeThatFailOnLength}                          from "../inst
 import {IteratorForTest}                                           from "../instance/IteratorForTest"
 import {MinimalistCollectionHolder_ByStructure}                    from "../instance/MinimalistCollectionHolder_ByStructure"
 import {MinimalistCollectionHolderFromArray}                       from "../instance/MinimalistCollectionHolderFromArray"
+import {SetByStructureForTest}                                     from "../instance/SetByStructureForTest"
+import {SetForTest}                                                from "../instance/SetForTest"
 import {EMPTY}                                                     from "./arrays"
 
 /**
@@ -101,27 +105,25 @@ export const everyExtensionMethodInstances = [
 /**
  * The possible instances applicable to the type-alias {@link PossibleIterableIteratorArraySetOrCollectionHolder}
  * to apply on tests
- *
- * @todo Replace the callback nature with the constructor instance
  */
 export const everyIterableInstances = [
-    new Holder(<const T,> (array: readonly T[],) => Array.from(array,),                                 "array",),
-    //TODO add array by structure
-    new Holder(<const T, >(array: readonly T[],) => new Set(array,),                                    "set",),
-    //TODO add set by structure
-    new Holder(<const T, >(array: readonly T[],) => new IterableForTest(array,),                        "iterable",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithSizeForTest(array,),                "iterable with size",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithLengthForTest(array,),              "iterable with length",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithCountForTest(array,),               "iterable with count",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithNullPossibleSize(array,),           "iterable with possible size (all null)",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithSizeThatFailOnLength(array,),       "iterable with possible size (with size & fail on length)",),
-    new Holder(<const T, >(array: readonly T[],) => new IterableWithLengthThatFailOnCount(array,),      "iterable with possible size (with length & fail on count)",),
-    new Holder(<const T, >(array: readonly T[],) => new IteratorForTest(array,),                        "iterator",),
+    new Holder(ArrayForTest,                           "array",),
+    new Holder(ArrayByStructureForTest,                "array (by structure)",),
+    new Holder(SetForTest,                             "set",),
+    new Holder(SetByStructureForTest,                  "set (by structure)",),
+    new Holder(IterableForTest,                        "iterable",),
+    new Holder(IterableWithSizeForTest,                "iterable with size",),
+    new Holder(IterableWithLengthForTest,              "iterable with length",),
+    new Holder(IterableWithCountForTest,               "iterable with count",),
+    new Holder(IterableWithNullPossibleSize,           "iterable with possible size (all null)",),
+    new Holder(IterableWithSizeThatFailOnLength,       "iterable with possible size (with size & fail on length)",),
+    new Holder(IterableWithLengthThatFailOnCount,      "iterable with possible size (with length & fail on count)",),
+    new Holder(IteratorForTest,                        "iterator",),
     //TODO add iterator by structure
-    new Holder(<const T, >(array: readonly T[],) => new CollectionIteratorFromArray(array,),            "collection iterator",),
-    new Holder(<const T, >(array: readonly T[],) => new CollectionIterator_ByStructure(array,),         "collection iterator (by structure)",),
-    new Holder(<const T, >(array: readonly T[],) => new CollectionHolderFromArray(array,),              "collection holder",),
-    new Holder(<const T, >(array: readonly T[],) => new CollectionHolder_ByStructure(array,),           "collection holder (by structure)",),
-    new Holder(<const T, >(array: readonly T[],) => new MinimalistCollectionHolderFromArray(array,),    "minimalist collection holder",),
-    new Holder(<const T, >(array: readonly T[],) => new MinimalistCollectionHolder_ByStructure(array,), "minimalist collection holder (by structure)",),
+    new Holder(CollectionIteratorFromArray,            "collection iterator",),
+    new Holder(CollectionIterator_ByStructure,         "collection iterator (by structure)",),
+    new Holder(CollectionHolderFromArray,              "collection holder",),
+    new Holder(CollectionHolder_ByStructure,           "collection holder (by structure)",),
+    new Holder(MinimalistCollectionHolderFromArray,    "minimalist collection holder",),
+    new Holder(MinimalistCollectionHolder_ByStructure, "minimalist collection holder (by structure)",),
 ] as const
