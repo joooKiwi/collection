@@ -3,7 +3,6 @@ package test;
 import java.lang.reflect.InvocationTargetException;
 import instance.CollectionHolderForTest;
 import joookiwi.collection.java.exception.EmptyCollectionException;
-import joookiwi.collection.java.exception.NullCollectionException;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
