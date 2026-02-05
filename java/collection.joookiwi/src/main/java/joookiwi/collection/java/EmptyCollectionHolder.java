@@ -318,53 +318,53 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Get --------------------
 
-    @Contract(ALWAYS_FAIL_1)           public T get(final byte                                                  index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final short                                                 index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1) @Override public T get(final int                                                   index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final long                                                  index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final float                                                 index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final double                                                index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicInteger                               index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicLong                                  index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable LongAdder                                   index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable LongAccumulator                             index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable DoubleAdder                                 index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable DoubleAccumulator                           index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable Number                                      index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicReference<? extends Number>           index) { throw new EmptyCollectionException(null, index); }
-    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable Object @Nullable ...                      ignored) { throw new EmptyCollectionException(); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final byte                                        index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final short                                       index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1) @Override public T get(final int                                         index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final long                                        index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final float                                       index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final double                                      index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicInteger                     index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicLong                        index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable LongAdder                         index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable LongAccumulator                   index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable DoubleAdder                       index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable DoubleAccumulator                 index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable Number                            index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable AtomicReference<? extends Number> index) { throw new EmptyCollectionException(null, index); }
+    @Contract(ALWAYS_FAIL_1)           public T get(final @Nullable Object @Nullable ...            ignored) { throw new EmptyCollectionException(); }
 
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final byte                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final short                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1)                                            @Override public final T at(final int                                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final long                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final float                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final double                                                index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicInteger                               index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicLong                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAdder                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAccumulator                             index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAdder                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAccumulator                           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable Number                                      index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T at(final @Nullable Object @Nullable ...                      ignored) { return get(); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final byte                                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final short                                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1)                                            @Override public final T at(final int                                         index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final long                                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final float                                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final double                                      index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicInteger                     index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicLong                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAdder                         index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable LongAccumulator                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAdder                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable DoubleAccumulator                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable Number                            index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T at(final @Nullable AtomicReference<? extends Number> index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T at(final @Nullable Object @Nullable ...            ignored) { return get(); }
 
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final byte                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final short                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1)                                            @Override public final T elementAt(final int                                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final long                                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final float                                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final double                                                index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicInteger                               index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicLong                                  index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAdder                                   index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAccumulator                             index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAdder                                 index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAccumulator                           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable Number                                      index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicReference<? extends Number>           index) { return get(index); }
-    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T elementAt(final @Nullable Object @Nullable ...                      ignored) { return get(); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final byte                                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final short                                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1)                                            @Override public final T elementAt(final int                                         index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final long                                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final float                                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final double                                      index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicInteger                     index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicLong                        index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAdder                         index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable LongAccumulator                   index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAdder                       index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable DoubleAccumulator                 index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable Number                            index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias("get")                                        public final T elementAt(final @Nullable AtomicReference<? extends Number> index) { return get(index); }
+    @Contract(ALWAYS_FAIL_1) @Alias(value = "get", arguments = IGNORED)           public final T elementAt(final @Nullable Object @Nullable ...            ignored) { return get(); }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Get first --------------------
