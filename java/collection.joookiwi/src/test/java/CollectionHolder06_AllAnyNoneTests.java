@@ -187,30 +187,30 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             public final instances rootInstance = instances.this;
 
             @Nested class all {
-                @DisplayName("true: () → boolean")        @Test void true0Arg()  { assertEquals(0, newInstance(AB).execute(it -> it.all(callback0AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T) → boolean")       @Test void true1Arg()  { assertEquals(2, newInstance(AB).execute(it -> it.all(callback1AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T, int) → boolean")  @Test void true2Arg()  { assertEquals(2, newInstance(AB).execute(it -> it.all(callback2AsTrue)).getAmountOfCall()); }
-                @DisplayName("false: () → boolean")       @Test void false0Arg() { assertEquals(0, newInstance(AB).execute(it -> it.all(callback0AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T) → boolean")      @Test void false1Arg() { assertEquals(1, newInstance(AB).execute(it -> it.all(callback1AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T, int) → boolean") @Test void false2Arg() { assertEquals(1, newInstance(AB).execute(it -> it.all(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("() → true")        @Test void true0Arg()  { assertEquals(0, newInstance(AB).execute(it -> it.all(callback0AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T) → true")       @Test void true1Arg()  { assertEquals(2, newInstance(AB).execute(it -> it.all(callback1AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T, int) → true")  @Test void true2Arg()  { assertEquals(2, newInstance(AB).execute(it -> it.all(callback2AsTrue)).getAmountOfCall()); }
+                @DisplayName("() → false")       @Test void false0Arg() { assertEquals(0, newInstance(AB).execute(it -> it.all(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T) → false")      @Test void false1Arg() { assertEquals(1, newInstance(AB).execute(it -> it.all(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T, int) → false") @Test void false2Arg() { assertEquals(1, newInstance(AB).execute(it -> it.all(callback2AsFalse)).getAmountOfCall()); }
             }
             @Nested class any {
-                @DisplayName("no predicate")              @Test void noPredicate() { assertEquals(0, newInstance(AB).execute(CollectionHolder::any).getAmountOfCall()); }
-                @DisplayName("true: () → boolean")        @Test void true0Arg()    { assertEquals(0, newInstance(AB).execute(it -> it.any(callback0AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T) → boolean")       @Test void true1Arg()    { assertEquals(1, newInstance(AB).execute(it -> it.any(callback1AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T, int) → boolean")  @Test void true2Arg()    { assertEquals(1, newInstance(AB).execute(it -> it.any(callback2AsTrue)).getAmountOfCall()); }
-                @DisplayName("false: () → boolean")       @Test void false0Arg()   { assertEquals(0, newInstance(AB).execute(it -> it.any(callback0AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T) → boolean")      @Test void false1Arg()   { assertEquals(2, newInstance(AB).execute(it -> it.any(callback1AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T, int) → boolean") @Test void false2Arg()   { assertEquals(2, newInstance(AB).execute(it -> it.any(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("∅")                @Test void testEmpty() { assertEquals(0, newInstance(AB).execute(CollectionHolder::any).getAmountOfCall()); }
+                @DisplayName("() → true")        @Test void true0Arg()  { assertEquals(0, newInstance(AB).execute(it ->          it.any(callback0AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T) → true")       @Test void true1Arg()  { assertEquals(1, newInstance(AB).execute(it ->          it.any(callback1AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T, int) → true")  @Test void true2Arg()  { assertEquals(1, newInstance(AB).execute(it ->          it.any(callback2AsTrue)).getAmountOfCall()); }
+                @DisplayName("() → false")       @Test void false0Arg() { assertEquals(0, newInstance(AB).execute(it ->          it.any(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T) → false")      @Test void false1Arg() { assertEquals(2, newInstance(AB).execute(it ->          it.any(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T, int) → false") @Test void false2Arg() { assertEquals(2, newInstance(AB).execute(it ->          it.any(callback2AsFalse)).getAmountOfCall()); }
             }
             @Nested class none {
-                @DisplayName("no predicate")              @Test void noPredicate() { assertEquals(0, newInstance(AB).execute(CollectionHolder::none).getAmountOfCall()); }
-                @DisplayName("true: () → boolean")        @Test void true0Arg()    { assertEquals(0, newInstance(AB).execute(it -> it.none(callback0AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T) → boolean")       @Test void true1Arg()    { assertEquals(1, newInstance(AB).execute(it -> it.none(callback1AsTrue)).getAmountOfCall()); }
-                @DisplayName("true: (T, int) → boolean")  @Test void true2Arg()    { assertEquals(1, newInstance(AB).execute(it -> it.none(callback2AsTrue)).getAmountOfCall()); }
-                @DisplayName("false: () → boolean")       @Test void false0Arg()   { assertEquals(0, newInstance(AB).execute(it -> it.none(callback0AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T) → boolean")      @Test void false1Arg()   { assertEquals(2, newInstance(AB).execute(it -> it.none(callback1AsFalse)).getAmountOfCall()); }
-                @DisplayName("false: (T, int) → boolean") @Test void false2Arg()   { assertEquals(2, newInstance(AB).execute(it -> it.none(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("∅")                @Test void testEmpty() { assertEquals(0, newInstance(AB).execute(CollectionHolder::none).getAmountOfCall()); }
+                @DisplayName("() → true")        @Test void true0Arg()  { assertEquals(0, newInstance(AB).execute(it ->          it.none(callback0AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T) → true")       @Test void true1Arg()  { assertEquals(1, newInstance(AB).execute(it ->          it.none(callback1AsTrue)).getAmountOfCall()); }
+                @DisplayName("(T, int) → true")  @Test void true2Arg()  { assertEquals(1, newInstance(AB).execute(it ->          it.none(callback2AsTrue)).getAmountOfCall()); }
+                @DisplayName("() → false")       @Test void false0Arg() { assertEquals(0, newInstance(AB).execute(it ->          it.none(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T) → false")      @Test void false1Arg() { assertEquals(2, newInstance(AB).execute(it ->          it.none(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("(T, int) → false") @Test void false2Arg() { assertEquals(2, newInstance(AB).execute(it ->          it.none(callback2AsFalse)).getAmountOfCall()); }
             }
 
         }
