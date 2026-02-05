@@ -145,6 +145,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public final class CollectionHolder_ByViewer<T extends @Nullable Object>
         extends AbstractCollectionHolderForTest<T, CollectionHolder_ByViewer<T>> {
 
+    //#region -------------------- Fields --------------------
+
     /// Tell that the instance is **not** of the type `null`
     public static final boolean IS_NULL = false;
     /// Tell that the instance is **not** of the type [MinimalistCollectionHolder] directly
@@ -160,6 +162,9 @@ public final class CollectionHolder_ByViewer<T extends @Nullable Object>
     public final T @Unmodifiable [] array;
     /// The internal instance that is tested
     public final CollectionViewer<T, ArrayAsCollection<T>> instance;
+
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Tested class --------------------
 
     @NotNullByDefault
     static final class CollectionHolder_CountingGetByCollectionViewer<T extends @Nullable Object>
@@ -181,10 +186,16 @@ public final class CollectionHolder_ByViewer<T extends @Nullable Object>
 
     }
 
+    //#endregion -------------------- Tested class --------------------
+    //#region -------------------- Constructor --------------------
+
     public CollectionHolder_ByViewer(final T @Unmodifiable [] array) {
         super();
         instance = new CollectionHolder_CountingGetByCollectionViewer<>(this.array = array, this);
     }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
 
@@ -2238,5 +2249,7 @@ public final class CollectionHolder_ByViewer<T extends @Nullable Object>
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }

@@ -291,6 +291,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullable Object>
         extends AbstractCollectionHolderForTest<T, CollectionHolder_FromArrayExtensionFunction<T>> {
 
+    //#region -------------------- Fields --------------------
+
     /// Tell that the instance is **not** of the type `null`
     public static final boolean IS_NULL = false;
     /// Tell that the instance is **not** of the type [MinimalistCollectionHolder] directly
@@ -305,10 +307,16 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
     /// The array received in the constructor
     public final T @Unmodifiable [] array;
 
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructor --------------------
+
     public CollectionHolder_FromArrayExtensionFunction(final T @Unmodifiable [] array) {
         super();
         this.array = array;
     }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Test utility methods --------------------
 
@@ -318,6 +326,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
     }
 
     //#endregion -------------------- Test utility methods --------------------
+
     //#region -------------------- Size methods --------------------
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return array.length; }
@@ -2370,5 +2379,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }

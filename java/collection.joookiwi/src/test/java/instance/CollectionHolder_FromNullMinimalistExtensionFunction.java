@@ -290,6 +290,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extends @Nullable Object>
         extends AbstractNullCollectionHolderForTest<T, MinimalistCollectionHolder<T>, CollectionHolder_FromNullMinimalistExtensionFunction<T>> {
 
+    //#region -------------------- Fields --------------------
+
     /// Tell that the instance is of the type `null`
     public static final boolean IS_NULL = true;
     /// Tell that the instance is **not** of the type [MinimalistCollectionHolder] directly
@@ -301,7 +303,13 @@ public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extend
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
     public static final String SIMPLIFIED_NAME = "null minimalist extension";
 
+    //#endregion -------------------- Fields --------------------
+    //#region -------------------- Constructor --------------------
+
     public CollectionHolder_FromNullMinimalistExtensionFunction() { super(); }
+
+    //#endregion -------------------- Constructor --------------------
+    //#region -------------------- Methods --------------------
 
     //#region -------------------- Size methods --------------------
 
@@ -2347,5 +2355,7 @@ public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extend
     //#endregion -------------------- Join to string --------------------
 
     //#endregion -------------------- Conversion methods --------------------
+
+    //#endregion -------------------- Methods --------------------
 
 }
