@@ -720,8 +720,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         @ExtendWith({DisableIfNormalCondition.class, DisableIfViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
-            boolean disableIfNormal() { return isNormal(); }
-            boolean disableIfViewer() { return isViewer(); }
+            public final instances rootInstance = instances.this;
 
             @Nested class get {
                                          @Test void empty()  { assertEquals(1, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.get(0)).getAmountOfCall()); }
@@ -787,7 +786,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         @ExtendWith(DisableIfViewerCondition.class)
         @TestInstance(PER_CLASS) @Nested class get {
-            boolean disableIfViewer() { return isViewer(); }
+            public final instances rootInstance = instances.this;
 
             @Nested class empty {
                                    @Test void min()    { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(MIN_INT_VALUE)); }

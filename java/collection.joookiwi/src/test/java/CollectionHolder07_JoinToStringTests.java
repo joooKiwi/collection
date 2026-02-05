@@ -598,8 +598,7 @@ import static value.Arrays.EMPTY;
 
         @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
-            boolean disableIfNormal() { return isNormal(); }
-            boolean disableIfNormalViewer() { return isNormalViewer(); }
+            public final instances rootInstance = instances.this;
 
             @TestInstance(PER_CLASS) @Nested class empty {
                 @DisplayName("∅") @Test void noArg() { assertEquals(0, newInstance(EMPTY).execute(CollectionHolder::joinToString).getAmountOfCall()); }

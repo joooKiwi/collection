@@ -1,6 +1,7 @@
 package condition;
 
 import org.jetbrains.annotations.NotNullByDefault;
+import test.AbstractInstancesTests;
 
 /// Disable the test if the [instance.CollectionHolderForTest]`#SIMPLIFIED_NAME` is of the type "(normal|minimalist|array) extension"
 ///
@@ -9,8 +10,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 public final class DisableIfExtensionCondition
         extends AbstractCondition {
 
-    @Override Class<DisableIfExtensionCondition> conditionType() { return DisableIfExtensionCondition.class; }
-    @Override String methodName() { return "disableIfExtension"; }
+    @Override boolean condition(final AbstractInstancesTests instance) { return instance.isExtension(); }
     @Override String disabledMessage(final String name) { return "“" + name + "” is disabled because it is an extension type."; }
     @Override String enabledMessage(final String name) { return "“" + name + "” is enabled because it is not an extension type."; }
 

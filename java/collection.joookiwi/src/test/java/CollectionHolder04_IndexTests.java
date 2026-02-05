@@ -1922,8 +1922,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
-            boolean disableIfNormal() { return isNormal(); }
-            boolean disableIfNormalViewer() { return isNormalViewer(); }
+            public final instances rootInstance = instances.this;
 
             @Nested class firstIndexOf {
                                              @Test void empty()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException( it -> it.firstIndexOf("a")).getAmountOfCall()); }

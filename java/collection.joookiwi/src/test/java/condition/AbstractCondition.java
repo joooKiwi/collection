@@ -1,26 +1,20 @@
 package condition;
 
+import java.lang.reflect.Field;
 import org.jetbrains.annotations.NotNullByDefault;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ConditionEvaluationResult;
 import org.junit.jupiter.api.extension.ExecutionCondition;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import test.AbstractInstancesTests;
 
-import static joookiwi.collection.java.method.HasNot.hasNot;
-import static org.junit.platform.commons.util.ReflectionUtils.findMethod;
-import static org.junit.platform.commons.util.ReflectionUtils.invokeMethod;
+import static java.util.Arrays.stream;
 
 /// A generalized [ExecutionCondition] for the tests for a specific method to call
 @NotNullByDefault
 abstract class AbstractCondition
         implements ExecutionCondition {
 
-    /// The condition type (note this should be the current instance type)
-    abstract Class<? extends AbstractCondition> conditionType();
-
-    /// The method to invoke on the instance having the condition
-    abstract String methodName();
+    abstract boolean condition(AbstractInstancesTests instance);
 
     /// The message to tell it is **disabled** based on the name of the instance
     abstract String disabledMessage(String name);
@@ -28,51 +22,64 @@ abstract class AbstractCondition
     /// The message to tell it is **enabled** based on the name of the instance
     abstract String enabledMessage(String name);
 
-
     @Override public ConditionEvaluationResult evaluateExecutionCondition(final ExtensionContext context) {
-        if (context.getTestMethod().isPresent())
-            return ConditionEvaluationResult.enabled("A method is not validated for the disabled condition.");
+        final var optionalTestInstance = context.getTestInstance();
+        if (optionalTestInstance.isEmpty())
+            return ConditionEvaluationResult.enabled("Only a method can be disabled, hence a class should not be evaluated.");
 
-        final var testClass = context.getTestClass().get();
-        if (testParentTestValidation(testClass))
-            return ConditionEvaluationResult.enabled("The instance where it has the “ExtendWith(" + getClass().getSimpleName() + ".class)” is not disabled since it is about its children.");
+        final Object instanceToRetrieveRootInstance = getInstanceToRetrieveRootInstance(context);
+        final Field rootFieldForTheSkippedTests;
+        try {
+            rootFieldForTheSkippedTests = instanceToRetrieveRootInstance.getClass().getField("rootInstance");
+        }
+        catch (NoSuchFieldException e) {
+            throw new RuntimeException("No root field named “rootInstance” was found in “" + instanceToRetrieveRootInstance.getClass().getName() + "”.", e);
+        }
+        rootFieldForTheSkippedTests.setAccessible(true);
 
-        final var parentContext = context.getParent().get();
-        final var extendWithAnnotation = parentContext.getTestClass().get().getAnnotation(ExtendWith.class);
-        if (extendWithAnnotation == null)
-            return ConditionEvaluationResult.enabled("The child test instance is not desire target because it does not have “@ExtendWith” present.");
-        if (hasNot(extendWithAnnotation.value(), conditionType()))
-            return ConditionEvaluationResult.enabled("The child test instance is not desire target because it does not have “@ExtendWith(" + getClass().getSimpleName() + ".class)” present.");
-        final var testInstance = parentContext.getTestInstance().get();
-        final var testInstanceClass = testInstance.getClass();
-        final var instanceName = testInstanceClass + "$" + context.getDisplayName();
-        if ((boolean) invokeMethod(findMethod(testInstanceClass, methodName()).get(), testInstance))
-            return ConditionEvaluationResult.disabled(disabledMessage(instanceName));
-        return ConditionEvaluationResult.enabled(enabledMessage(instanceName));
+        final AbstractInstancesTests rootInstanceForTheSkippedTests;
+        try {
+            rootInstanceForTheSkippedTests = (AbstractInstancesTests) rootFieldForTheSkippedTests.get(instanceToRetrieveRootInstance);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("No root field named “rootInstance” in “" + instanceToRetrieveRootInstance.getClass().getName() + "” was not accessible.", e);
+        }
+
+        if (condition(rootInstanceForTheSkippedTests))
+            return ConditionEvaluationResult.disabled(disabledMessage(getInstanceName(context)));
+        return ConditionEvaluationResult.enabled(enabledMessage(getInstanceName(context)));
     }
 
-    /// Test the parent instance if it has [ExtendWith] present (otherwise, it is ignored).
-    /// Then it test if it has [TestInstance] of type [PER_CLASS][TestInstance.Lifecycle#PER_CLASS].
-    ///
-    /// @param testClass The test instance class to validate the annotations [ExtendWith] and [TestInstance]
-    /// @return `true` if the test is correct. `false` if the test is to ignore
-    boolean testParentTestValidation(final Class<?> testClass) {
-        final var extendWithClass = testClass.getAnnotation(ExtendWith.class);
-        if (extendWithClass == null)
-            return false;
+    private Object getInstanceToRetrieveRootInstance(final ExtensionContext context) {
+        //TODO maybe try to retrieve the “AbstractInstancesTests” without the needs of a temporary variable
+        final var optionalInstance = context.getTestInstance();
+        if (optionalInstance.isEmpty())
+            // We have no test instance associated to the context. We go to the outer class
+            return getInstanceToRetrieveRootInstance(context.getParent().orElseThrow());
 
-        if (hasNot(extendWithClass.value(), conditionType()))
-            return false;
+        final var instance = optionalInstance.get();
+        if (stream(instance.getClass().getFields()).noneMatch(it -> it.getName().equals("rootInstance")))
+            // We have no field and possibly the disabled condition is not here. We go to the outer class
+            return getInstanceToRetrieveRootInstance(context.getParent().orElseThrow());
+        // We have a test instance with “rootInstance” being present
+        return instance;
+    }
 
-        final var testInstanceClass = testClass.getAnnotation(TestInstance.class);
-        if (testInstanceClass == null)
-            throw new RuntimeException("The instance class “" + testClass.getName() + "” did not have the annotation “TestInstance” included. Use “@TestInstance(PER_CLASS)” to work properly.");
-        if (testInstanceClass.value() != TestInstance.Lifecycle.PER_CLASS)
-            throw new RuntimeException("The instance class “" + testClass.getName() + "” was not annotated with “@TestInstance(PER_CLASS)” included.");
+    private String getInstanceName(final ExtensionContext context) {
+        final var instanceNameBuilder = new StringBuilder(context.getDisplayName());
+        var parentContext = context.getParent().orElseThrow();
+        while (true) {
+            final var optionalParentContext = parentContext.getParent();
+            if (optionalParentContext.isEmpty())
+                break;
 
-        if (findMethod(testClass, methodName()).isEmpty())
-            throw new RuntimeException("No method “" + methodName() +"” was found in “" + testClass.getName() + "”.");
-        return true;
+            final var displayedName = parentContext.getDisplayName();
+            if (displayedName.equals("JUnit Jupiter"))
+                break;
+
+            parentContext = optionalParentContext.get();
+            instanceNameBuilder.insert(0, " → ").insert(0, displayedName);
+        }
+        return instanceNameBuilder.toString();
     }
 
 }
