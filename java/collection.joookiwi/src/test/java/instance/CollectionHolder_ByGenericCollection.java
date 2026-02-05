@@ -608,7 +608,13 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
     @Override public CollectionHolder<T> filterNotIndexed(final BooleanSupplier            predicate) { return instance.filterNotIndexed(predicate); }
 
 
-    @Override public CollectionHolder<@NotNull T> filterNotNull() { return instance.filterNotNull(); }
+    @Override public CollectionHolder<@NotNull T> filterNotNull() {
+        final var instance = this.instance;
+        final var newInstance = instance.filterNotNull();
+        if (newInstance == instance)
+            return this;
+        return newInstance;
+    }
 
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
