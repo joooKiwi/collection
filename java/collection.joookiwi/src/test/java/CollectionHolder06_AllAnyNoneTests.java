@@ -174,8 +174,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
     }
 
     @FieldSource("value.Instances#everyInstancesAsArguments")
-//    @TestInstance(PER_CLASS)
-    @ParameterizedClass(name = "{0}") @Nested class instances extends AbstractInstancesTests {
+    @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class instances extends AbstractInstancesTests {
         //#region -------------------- Required test configuration --------------------
 
         public instances(final Class<CollectionHolderForTest<?, ?>> instanceClass) { super(instanceClass); }
