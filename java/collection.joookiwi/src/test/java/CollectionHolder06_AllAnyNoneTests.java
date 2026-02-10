@@ -3,9 +3,10 @@ import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
 import instance.GenericCollectionHolder_AllAlias;
 import instance.GenericCollectionHolder_AnyAlias;
+import instance.GenericCollectionHolder_IsEmptyAlias;
+import instance.GenericCollectionHolder_IsNotEmptyAlias;
 import joookiwi.collection.java.CollectionHolder;
 import org.jetbrains.annotations.NotNullByDefault;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.Simple;
@@ -111,11 +112,15 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")       @Test void test0Arg() { assertEquals(1, new GenericCollectionHolder_AllAlias().execute(it -> it.every(callback0AsTrue)).amountOfCall); }
             }
             @Nested class some {
-                @Disabled @DisplayName("∅")                  @Test void testEmpty() { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(CollectionHolder::some).amountOfCall); }
-                @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback2AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback1AsTrue)).amountOfCall); }
-                @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it ->                    it.some(callback0AsTrue)).amountOfCall); }
+                @DisplayName("∅")                  @Test void testEmpty() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::some).amountOfCall); }
+
+                @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback2AsTrue)).amountOfCall); }
+                @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback1AsTrue)).amountOfCall); }
+                @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback0AsTrue)).amountOfCall); }
             }
+
+            @Test void any() { assertEquals(1, new GenericCollectionHolder_IsEmptyAlias().execute(CollectionHolder::any).getAmountOfCall()); }
+            @Test void none() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::none).getAmountOfCall()); }
         }
 
 //        @Nested class every {
@@ -221,36 +226,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")       @Test void test0Arg() { assertTrue(newInstance(EMPTY).all(predicate0AsFail)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .all(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .all(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).all(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .all(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .all(callback1AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).all(callback1AsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .all(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .all(callback2AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).all(callback2AsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .all(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .all(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).all(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .all(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .all(callback1AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).all(callback1AsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .all(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .all(callback2AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).all(callback2AsFalse)); }
-                }
+                @DisplayName("1 field, (T, int) → true")   @Test void test1_2True()  { assertTrue( newInstance(A)   .all(callback2AsTrue)); }
+                @DisplayName("1 field, (T) → true")        @Test void test1_1True()  { assertTrue( newInstance(A)   .all(callback1AsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertTrue( newInstance(A)   .all(callback0AsTrue)); }
+                @DisplayName("1 field, (T, int) → false")  @Test void test1_2False() { assertFalse(newInstance(A)   .all(callback2AsFalse)); }
+                @DisplayName("1 field, (T) → false")       @Test void test1_1False() { assertFalse(newInstance(A)   .all(callback1AsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertFalse(newInstance(A)   .all(callback0AsFalse)); }
+                @DisplayName("2 fields, (T, int) → true")  @Test void test2_2True()  { assertTrue( newInstance(AB)  .all(callback2AsTrue)); }
+                @DisplayName("2 fields, (T) → true")       @Test void test2_1True()  { assertTrue( newInstance(AB)  .all(callback1AsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertTrue( newInstance(AB)  .all(callback0AsTrue)); }
+                @DisplayName("2 fields, (T, int) → false") @Test void test2_2False() { assertFalse(newInstance(AB)  .all(callback2AsFalse)); }
+                @DisplayName("2 fields, (T) → false")      @Test void test2_1False() { assertFalse(newInstance(AB)  .all(callback1AsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertFalse(newInstance(AB)  .all(callback0AsFalse)); }
+                @DisplayName("4 fields, (T, int) → true")  @Test void test4_2True()  { assertTrue( newInstance(ABCD).all(callback2AsTrue)); }
+                @DisplayName("4 fields, (T) → true")       @Test void test4_1True()  { assertTrue( newInstance(ABCD).all(callback1AsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertTrue( newInstance(ABCD).all(callback0AsTrue)); }
+                @DisplayName("4 fields, (T, int) → false") @Test void test4_2False() { assertFalse(newInstance(ABCD).all(callback2AsFalse)); }
+                @DisplayName("4 fields, (T) → false")      @Test void test4_1False() { assertFalse(newInstance(ABCD).all(callback1AsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertFalse(newInstance(ABCD).all(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertTrue( newInstance(A).all(callbackIsA)); }
@@ -319,36 +312,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("() → boolean")       @Test void test0Arg() { assertFalse(newInstance(EMPTY).any(predicate0AsFail)); }
                 }
                 @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                    @DisplayName("true: 0 arguments") @Nested class True0 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .any(callback0AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .any(callback0AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).any(callback0AsTrue)); }
-                    }
-                    @DisplayName("true: 1 argument") @Nested class True1 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .any(callback1AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .any(callback1AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).any(callback1AsTrue)); }
-                    }
-                    @DisplayName("true: 2 arguments") @Nested class True2 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .any(callback2AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .any(callback2AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).any(callback2AsTrue)); }
-                    }
-                    @DisplayName("false: 0 arguments") @Nested class False0 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .any(callback0AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .any(callback0AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).any(callback0AsFalse)); }
-                    }
-                    @DisplayName("false: 1 argument") @Nested class False1 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .any(callback1AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .any(callback1AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).any(callback1AsFalse)); }
-                    }
-                    @DisplayName("false: 2 arguments") @Nested class False2 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .any(callback2AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .any(callback2AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).any(callback2AsFalse)); }
-                    }
+                    @DisplayName("1 field, (T, int) → true")   @Test void test1_2True()  { assertTrue( newInstance(A)   .any(callback2AsTrue)); }
+                    @DisplayName("1 field, (T) → true")        @Test void test1_1True()  { assertTrue( newInstance(A)   .any(callback1AsTrue)); }
+                    @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertTrue( newInstance(A)   .any(callback0AsTrue)); }
+                    @DisplayName("1 field, (T, int) → false")  @Test void test1_2False() { assertFalse(newInstance(A)   .any(callback2AsFalse)); }
+                    @DisplayName("1 field, (T) → false")       @Test void test1_1False() { assertFalse(newInstance(A)   .any(callback1AsFalse)); }
+                    @DisplayName("1 field, () → false")        @Test void test1_0False() { assertFalse(newInstance(A)   .any(callback0AsFalse)); }
+                    @DisplayName("2 fields, (T, int) → true")  @Test void test2_2True()  { assertTrue( newInstance(AB)  .any(callback2AsTrue)); }
+                    @DisplayName("2 fields, (T) → true")       @Test void test2_1True()  { assertTrue( newInstance(AB)  .any(callback1AsTrue)); }
+                    @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertTrue( newInstance(AB)  .any(callback0AsTrue)); }
+                    @DisplayName("2 fields, (T, int) → false") @Test void test2_2False() { assertFalse(newInstance(AB)  .any(callback2AsFalse)); }
+                    @DisplayName("2 fields, (T) → false")      @Test void test2_1False() { assertFalse(newInstance(AB)  .any(callback1AsFalse)); }
+                    @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertFalse(newInstance(AB)  .any(callback0AsFalse)); }
+                    @DisplayName("4 fields, (T, int) → true")  @Test void test4_2True()  { assertTrue( newInstance(ABCD).any(callback2AsTrue)); }
+                    @DisplayName("4 fields, (T) → true")       @Test void test4_1True()  { assertTrue( newInstance(ABCD).any(callback1AsTrue)); }
+                    @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertTrue( newInstance(ABCD).any(callback0AsTrue)); }
+                    @DisplayName("4 fields, (T, int) → false") @Test void test4_2False() { assertFalse(newInstance(ABCD).any(callback2AsFalse)); }
+                    @DisplayName("4 fields, (T) → false")      @Test void test4_1False() { assertFalse(newInstance(ABCD).any(callback1AsFalse)); }
+                    @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertFalse(newInstance(ABCD).any(callback0AsFalse)); }
                 }
                 @DisplayName("1 field") @Nested class Test1 {
                                       @Test void a()     { assertTrue( newInstance(A).any(callbackIsA)); }
@@ -418,36 +399,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                     @DisplayName("() → boolean")       @Test void test0Arg() { assertTrue(newInstance(EMPTY).none(predicate0AsFail)); }
                 }
                 @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                    @DisplayName("true: 0 arguments") @Nested class True0 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .none(callback0AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .none(callback0AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).none(callback0AsTrue)); }
-                    }
-                    @DisplayName("true: 1 argument") @Nested class True1 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .none(callback1AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .none(callback1AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).none(callback1AsTrue)); }
-                    }
-                    @DisplayName("true: 2 arguments") @Nested class True2 {
-                        @DisplayName("1 field")  @Test void test1() { assertFalse(newInstance(A)   .none(callback2AsTrue)); }
-                        @DisplayName("2 fields") @Test void test2() { assertFalse(newInstance(AB)  .none(callback2AsTrue)); }
-                        @DisplayName("4 fields") @Test void test4() { assertFalse(newInstance(ABCD).none(callback2AsTrue)); }
-                    }
-                    @DisplayName("false: 0 arguments") @Nested class False0 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .none(callback0AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .none(callback0AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).none(callback0AsFalse)); }
-                    }
-                    @DisplayName("false: 1 argument") @Nested class False1 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .none(callback1AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .none(callback1AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).none(callback1AsFalse)); }
-                    }
-                    @DisplayName("false: 2 arguments") @Nested class False2 {
-                        @DisplayName("1 field")  @Test void test1() { assertTrue(newInstance(A)   .none(callback2AsFalse)); }
-                        @DisplayName("2 fields") @Test void test2() { assertTrue(newInstance(AB)  .none(callback2AsFalse)); }
-                        @DisplayName("4 fields") @Test void test4() { assertTrue(newInstance(ABCD).none(callback2AsFalse)); }
-                    }
+                    @DisplayName("1 field, (T, int) → true")   @Test void test1_2True()  { assertFalse(newInstance(A)   .none(callback2AsTrue)); }
+                    @DisplayName("1 field, (T) → true")        @Test void test1_1True()  { assertFalse(newInstance(A)   .none(callback1AsTrue)); }
+                    @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertFalse(newInstance(A)   .none(callback0AsTrue)); }
+                    @DisplayName("1 field, (T, int) → false")  @Test void test1_2False() { assertTrue( newInstance(A)   .none(callback2AsFalse)); }
+                    @DisplayName("1 field, (T) → false")       @Test void test1_1False() { assertTrue( newInstance(A)   .none(callback1AsFalse)); }
+                    @DisplayName("1 field, () → false")        @Test void test1_0False() { assertTrue( newInstance(A)   .none(callback0AsFalse)); }
+                    @DisplayName("2 fields, (T, int) → true")  @Test void test2_2True()  { assertFalse(newInstance(AB)  .none(callback2AsTrue)); }
+                    @DisplayName("2 fields, (T) → true")       @Test void test2_1True()  { assertFalse(newInstance(AB)  .none(callback1AsTrue)); }
+                    @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertFalse(newInstance(AB)  .none(callback0AsTrue)); }
+                    @DisplayName("2 fields, (T, int) → false") @Test void test2_2False() { assertTrue( newInstance(AB)  .none(callback2AsFalse)); }
+                    @DisplayName("2 fields, (T) → false")      @Test void test2_1False() { assertTrue( newInstance(AB)  .none(callback1AsFalse)); }
+                    @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertTrue( newInstance(AB)  .none(callback0AsFalse)); }
+                    @DisplayName("4 fields, (T, int) → true")  @Test void test4_2True()  { assertFalse(newInstance(ABCD).none(callback2AsTrue)); }
+                    @DisplayName("4 fields, (T) → true")       @Test void test4_1True()  { assertFalse(newInstance(ABCD).none(callback1AsTrue)); }
+                    @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertFalse(newInstance(ABCD).none(callback0AsTrue)); }
+                    @DisplayName("4 fields, (T, int) → false") @Test void test4_2False() { assertTrue( newInstance(ABCD).none(callback2AsFalse)); }
+                    @DisplayName("4 fields, (T) → false")      @Test void test4_1False() { assertTrue( newInstance(ABCD).none(callback1AsFalse)); }
+                    @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertTrue( newInstance(ABCD).none(callback0AsFalse)); }
                 }
                 @DisplayName("1 field") @Nested class Test1 {
                                       @Test void a()     { assertFalse(newInstance(A).none(callbackIsA)); }
