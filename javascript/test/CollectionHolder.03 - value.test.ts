@@ -675,9 +675,9 @@ describe("CollectionHolderTest (value)", () => {
 
 // describe.skip("index", () => {
 //     test("empty", () => expect(newInstance(EMPTY,)[0],).toBeUndefined(),)
-//     test("0", () => expect(newInstance(AB,)[0],).toEqual("a",),)
+//     test("0", () => expect(newInstance(AB,)[0],).toBe("a",),)
 //     test("3", () => expect(newInstance(AB,)[3],).toBeUndefined(),)
-//     test("1", () => expect(newInstance(ABCD,)[1],).toEqual("b",),)
+//     test("1", () => expect(newInstance(ABCD,)[1],).toBe("b",),)
 //     test("-1", () => expect(newInstance(ABCD,)[-1],).toBeUndefined(),)
 //     test("-4", () => expect(newInstance(ABCD,)[-4],).toBeUndefined(),)
 //     test("-5", () => expect(newInstance(ABCD,)[-5],).toBeUndefined(),)
