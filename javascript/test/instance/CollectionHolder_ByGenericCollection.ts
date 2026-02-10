@@ -255,10 +255,11 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,) { return this.instance.filterNotIndexed(predicate,) }
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        const instance = this.instance.filterNotNull()
-        if (instance === this.instance)
+        const instance = this.instance
+        const newInstance = instance.filterNotNull()
+        if (newInstance === instance)
             return this as CollectionHolder<NonNullable<T>>
-        return instance
+        return newInstance
     }
 
     //#endregion -------------------- Filter --------------------
