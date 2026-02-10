@@ -628,14 +628,14 @@ describe("CollectionHolderTest (joinToString)", () => {
                 test("separator + prefix + postfix + limit 2", () => expect(new instance(AB,).execute(it => it.joinToString('',   '',   '',   2,),).amountOfCall,).toBe(2,),)
 
 
-                test("truncated",                                          () => expect(new instance(AB,).execute(it => it.joinToString(null, null, null, null, '',),).amountOfCall,).toBe(1,),)
-                test("postfix + truncated",                                () => expect(new instance(AB,).execute(it => it.joinToString(null, null, '',   null, '',),).amountOfCall,).toBe(1,),)
-                test("prefix + truncated",                                 () => expect(new instance(AB,).execute(it => it.joinToString(null, '',   null, null, '',),).amountOfCall,).toBe(1,),)
-                test("prefix + truncated",                                 () => expect(new instance(AB,).execute(it => it.joinToString(null, '',   '',   null, '',),).amountOfCall,).toBe(1,),)
-                test("separator + truncated",                              () => expect(new instance(AB,).execute(it => it.joinToString('',   null, null, null, '',),).amountOfCall,).toBe(1,),)
-                test("separator + postfix + truncated",                    () => expect(new instance(AB,).execute(it => it.joinToString('',   null, '',   null, '',),).amountOfCall,).toBe(1,),)
-                test("separator + prefix + truncated",                     () => expect(new instance(AB,).execute(it => it.joinToString('',   '',   null, null, '',),).amountOfCall,).toBe(1,),)
-                test("separator + prefix + postfix + truncated",           () => expect(new instance(AB,).execute(it => it.joinToString('',   '',   '',   null, '',),).amountOfCall,).toBe(1,),)
+                test("truncated",                                          () => expect(new instance(AB,).execute(it => it.joinToString(null, null, null, null, '',),).amountOfCall,).toBe(2,),)
+                test("postfix + truncated",                                () => expect(new instance(AB,).execute(it => it.joinToString(null, null, '',   null, '',),).amountOfCall,).toBe(2,),)
+                test("prefix + truncated",                                 () => expect(new instance(AB,).execute(it => it.joinToString(null, '',   null, null, '',),).amountOfCall,).toBe(2,),)
+                test("prefix + truncated",                                 () => expect(new instance(AB,).execute(it => it.joinToString(null, '',   '',   null, '',),).amountOfCall,).toBe(2,),)
+                test("separator + truncated",                              () => expect(new instance(AB,).execute(it => it.joinToString('',   null, null, null, '',),).amountOfCall,).toBe(2,),)
+                test("separator + postfix + truncated",                    () => expect(new instance(AB,).execute(it => it.joinToString('',   null, '',   null, '',),).amountOfCall,).toBe(2,),)
+                test("separator + prefix + truncated",                     () => expect(new instance(AB,).execute(it => it.joinToString('',   '',   null, null, '',),).amountOfCall,).toBe(2,),)
+                test("separator + prefix + postfix + truncated",           () => expect(new instance(AB,).execute(it => it.joinToString('',   '',   '',   null, '',),).amountOfCall,).toBe(2,),)
 
                 test("limit 0 + truncated",                                () => expect(new instance(AB,).execute(it => it.joinToString(null, null, null, 0,    '',),).amountOfCall,).toBe(0,),)
                 test("postfix + limit 0 + truncated",                      () => expect(new instance(AB,).execute(it => it.joinToString(null, null, '',   0,    '',),).amountOfCall,).toBe(0,),)
