@@ -26,7 +26,7 @@ export class CollectionHolder_ByMinimalistCollection<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]> {
 
     /** The internal instance that is tested */
-    public readonly instance: GenericMinimalistCollectionHolder<T, readonly T[]>
+    public readonly instance: GenericMinimalistCollectionHolder<T>
 
     public constructor(array: readonly T[],) {
         super(array,)

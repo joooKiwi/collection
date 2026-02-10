@@ -28,7 +28,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: GenericCollectionHolder<T, readonly T[]>
+    public readonly instance: GenericCollectionHolder<T>
 
     /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
     public readonly proxiedArray: readonly T[]
@@ -47,7 +47,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
             },
         }
         this.instance = new class CollectionHolder_CountingGetByGenericCollection
-            extends GenericCollectionHolder<T, readonly T[]> {
+            extends GenericCollectionHolder<T> {
 
             protected override get _array(): readonly T[] { return $this.proxiedArray }
 

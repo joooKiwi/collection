@@ -33,7 +33,7 @@ export class CollectionHolder_ByLazyCollection<const T, >
         super()
         const $this = this
         this.instance = new class CollectionHolder_CountingGetByLazyCollection
-            extends LazyGenericCollectionHolder<T, readonly T[]> {
+            extends LazyGenericCollectionHolder<T> {
 
             public override get(index: number,): T {
                 $this.amountOfCall++
@@ -435,7 +435,7 @@ export class CollectionHolder_ByLazyCollection<const T, >
 }
 
 interface LazyGenericCollectionHolderForTest<T,>
-    extends LazyGenericCollectionHolder<T, readonly T[]> {
+    extends LazyGenericCollectionHolder<T> {
 
     readonly handler: CollectionHandler<T>
 
