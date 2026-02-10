@@ -107,38 +107,38 @@ describe("CollectionHolderTest (all / any / none)", () => {
     describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
         describe("get() being called", () => {
             describe("all", () => {
-                test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                test("true: 1 argument",   () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue1,),).amountOfCall,).toBe(2,),)
-                test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue2,),).amountOfCall,).toBe(2,),)
-                test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                test("false: 1 argument",  () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T, number) → true",  () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new instance(AB,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new instance(AB,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
             },)
             describe("any", () => {
-                test("no predicate",       () => expect(new instance(AB,).execute(it => it.any(),).amountOfCall,).toBe(0,),)
-                test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue0,),).amountOfCall,).toBe(0,),)
-                test("true: 1 arguments",  () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                test("false: 1 arguments", () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test('∅',                   () => expect(new instance(AB,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new instance(AB,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new instance(AB,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
             },)
             describe("none", () => {
-                test("no predicate",       () => expect(new instance(AB,).execute(it => it.none(),).amountOfCall,).toBe(0,),)
-                test("true: 0 arguments",  () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                test("true: 1 arguments",  () => expect(new instance(AB,).execute(it => it.none(callbackAsTrue1,),).amountOfCall,).toBe(1,),)
-                test("true: 2 arguments",  () => expect(new instance(AB,).execute(it => it.none(callbackAsTrue2,),).amountOfCall,).toBe(1,),)
-                test("false: 0 arguments", () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                test("false: 1 arguments", () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                test("false: 2 arguments", () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test('∅',                   () => expect(new instance(AB,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new instance(AB,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new instance(AB,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new instance(AB,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new instance(AB,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
             },)
         },)
 
         describe("all", () => {
             describe("empty", () => {
-                test("0 arguments", () => expect(new instance(EMPTY,).all(callbackAsFail0,),).toBeTrue(),)
-                test("1 argument",  () => expect(new instance(EMPTY,).all(callbackAsFail1,),).toBeTrue(),)
-                test("2 arguments", () => expect(new instance(EMPTY,).all(callbackAsFail2,),).toBeTrue(),)
+                test("(T, number) → boolean", () => expect(new instance(EMPTY,).all(callbackAsFail2,),).toBeTrue(),)
+                test("(T) → boolean",         () => expect(new instance(EMPTY,).all(callbackAsFail1,),).toBeTrue(),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).all(callbackAsFail0,),).toBeTrue(),)
             },)
             describe("boolean callbacks", () => {
                 describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
@@ -200,9 +200,9 @@ describe("CollectionHolderTest (all / any / none)", () => {
             },)
             describe("with predicate", () => {
                 describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).any(callbackAsFail0,),).toBeFalse(),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).any(callbackAsFail1,),).toBeFalse(),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).any(callbackAsFail2,),).toBeFalse(),)
+                    test("(T, number) → boolean", () => expect(new instance(EMPTY,).any(callbackAsFail2,),).toBeFalse(),)
+                    test("(T) → boolean",         () => expect(new instance(EMPTY,).any(callbackAsFail1,),).toBeFalse(),)
+                    test("() → boolean",          () => expect(new instance(EMPTY,).any(callbackAsFail0,),).toBeFalse(),)
                 },)
                 describe("boolean callbacks", () => {
                     describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
@@ -265,9 +265,9 @@ describe("CollectionHolderTest (all / any / none)", () => {
             },)
             describe("with predicate", () => {
                 describe("empty", () => {
-                    test("0 arguments", () => expect(new instance(EMPTY,).none(callbackAsFail0,),).toBeTrue(),)
-                    test("1 argument",  () => expect(new instance(EMPTY,).none(callbackAsFail1,),).toBeTrue(),)
-                    test("2 arguments", () => expect(new instance(EMPTY,).none(callbackAsFail2,),).toBeTrue(),)
+                    test("(T, number) → boolean", () => expect(new instance(EMPTY,).none(callbackAsFail2,),).toBeTrue(),)
+                    test("(T) → boolean",         () => expect(new instance(EMPTY,).none(callbackAsFail1,),).toBeTrue(),)
+                    test("() → boolean",          () => expect(new instance(EMPTY,).none(callbackAsFail0,),).toBeTrue(),)
                 },)
                 describe("boolean callbacks", () => {
                     describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
