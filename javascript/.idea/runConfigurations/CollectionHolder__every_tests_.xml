@@ -6,12 +6,11 @@
     <toRun name="drop" type="JavaScriptTestRunnerJest" />
     <toRun name="filter" type="JavaScriptTestRunnerJest" />
     <toRun name="find" type="JavaScriptTestRunnerJest" />
-    <toRun name="loop" type="JavaScriptTestRunnerJest" />
-    <toRun name="functions" type="JavaScriptTestRunnerJest" />
     <toRun name="has" type="JavaScriptTestRunnerJest" />
     <toRun name="index" type="JavaScriptTestRunnerJest" />
     <toRun name="javascript exclusive" type="JavaScriptTestRunnerJest" />
     <toRun name="joinToString" type="JavaScriptTestRunnerJest" />
+    <toRun name="loop" type="JavaScriptTestRunnerJest" />
     <toRun name="map" type="JavaScriptTestRunnerJest" />
     <toRun name="reverse" type="JavaScriptTestRunnerJest" />
     <toRun name="size" type="JavaScriptTestRunnerJest" />
