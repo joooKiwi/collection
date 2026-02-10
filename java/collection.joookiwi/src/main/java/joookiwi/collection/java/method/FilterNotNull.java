@@ -49,6 +49,7 @@ public final class FilterNotNull
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html">Kotlin filterNotNull(predicate)</a>
+    /// @apiNote The current instance can be returned if no nulls are known to be absent
     @ExtensionFunction
     public static <T> CollectionHolder<T> filterNotNull(final @Nullable CollectionHolder<? extends @Nullable T> collection) {
         if (collection == null)
