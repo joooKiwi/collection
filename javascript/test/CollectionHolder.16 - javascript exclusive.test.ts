@@ -22,17 +22,15 @@ describe("CollectionHolderTest (javascript exclusive)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toEqual(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-        test("Symbol.iterator",    () => expect(instance[Symbol.iterator](),).toEqual(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        test("Symbol.toStringTag", () => expect(instance[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+        test("Symbol.iterator",    () => expect(instance[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
     },)
 
     describe("instances", () => {
     describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
-        describe("Symbol.toStringTag", () => expect(new instance(EMPTY,)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
-        describe("Symbol.iterator", () => {
-            test("empty",     () => expect(new instance(EMPTY,)[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
-            test("non-empty", () => expect(new instance(AB,)[Symbol.iterator](),).toBeInstanceOf(GenericCollectionIterator,),)
-        },)
+        test("Symbol.toStringTag",          () => expect(new instance(EMPTY,)[Symbol.toStringTag],).toBe(CollectionConstants.COLLECTION_HOLDER_TO_STRING_TAG,),)
+        test("Symbol.iterator (empty)",     () => expect(new instance(EMPTY,)[Symbol.iterator](),).toBe(CollectionConstants.EMPTY_COLLECTION_ITERATOR,),)
+        test("Symbol.iterator (non-empty)", () => expect(new instance(AB,)   [Symbol.iterator](),).toBeInstanceOf(GenericCollectionIterator,),)
     },)},)
 
 },)
