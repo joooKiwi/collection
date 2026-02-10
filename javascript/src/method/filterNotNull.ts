@@ -30,6 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @apiNote The current instance (only {@link CollectionHolder}) can be returned if no nulls are known to be absent
  * @extensionFunction
  */
 export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<NonNullable<T>> {
@@ -78,6 +79,7 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
  *
  * @param collection The nullable collection
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+ * @apiNote The current instance can be returned if no nulls are known to be absent
  * @extensionFunction
  */
 export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {

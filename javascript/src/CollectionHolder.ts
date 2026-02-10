@@ -3265,6 +3265,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+     * @apiNote The current instance can be returned if no nulls are known to be absent
      */
     filterNotNull(): CollectionHolder<NonNullable<T>>
 
