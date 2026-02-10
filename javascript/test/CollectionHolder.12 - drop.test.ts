@@ -26,7 +26,7 @@ import {LazyGenericCollectionHolder_DropWhileAlias}                             
 import {LazyGenericCollectionHolder_DropWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/LazyGenericCollectionHolder_DropWhileIndexedAlias"
 import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY}                                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
-import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks}                                                                                                                                                                                                                                                     from "./value/callbacks (boolean)"
+import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                                                                                                                                                                                                    from "./value/callbacks (boolean)"
 import {callbackIsOver0, callbackIsOver0Alt, callbackIsOver1, callbackIsOver1Alt, callbackIsOver2, callbackIsOver2Alt, callbackIsOver3, callbackIsOver3Alt, callbackIsOver4, callbackIsOver4Alt, callbackIsUnder0, callbackIsUnder0Alt, callbackIsUnder1, callbackIsUnder1Alt, callbackIsUnder2, callbackIsUnder2Alt, callbackIsUnder3, callbackIsUnder3Alt, callbackIsUnder4, callbackIsUnder4Alt} from "./value/callbacks (number)"
 import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt, callbackIsOverC, callbackIsOverCAlt, callbackIsOverD, callbackIsOverDAlt, callbackIsOverE, callbackIsOverEAlt, callbackIsUnderA, callbackIsUnderAAlt, callbackIsUnderB, callbackIsUnderBAlt, callbackIsUnderC, callbackIsUnderCAlt, callbackIsUnderD, callbackIsUnderDAlt, callbackIsUnderE, callbackIsUnderEAlt} from "./value/callbacks (string)"
 import {everyExtensionMethodInstances, everyInstances}                                                                                                                                                                                                                                                                                                                                              from "./value/instances"
@@ -421,16 +421,24 @@ describe("CollectionHolderTest (drop)", () => {
                 test("() → boolean",          () => expect(new instance(EMPTY,).dropWhile(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropWhile(it,),).toBeEmpty(),)
-                    test("2 fields", () => expect(new instance(AB,).dropWhile(it,),).toBeEmpty(),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropWhile(it,),).toBeEmpty(),)
-                },)
-                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropWhile(it,).toArray(),).toEqual(A,),)
-                    test("2 fields", () => expect(new instance(AB,).dropWhile(it,).toArray(),).toEqual(AB,),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropWhile(it,).toArray(),).toEqual(ABCD,),)
-                },)
+                test("1 field: (T, number) → true",   () => expect(new instance(A,)   .dropWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("1 field: (T) → true",           () => expect(new instance(A,)   .dropWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("1 field: () → true",            () => expect(new instance(A,)   .dropWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("1 field: (T, number) → false",  () => expect(new instance(A,)   .dropWhile(callbackAsFalse2,).toArray(),).toStrictEqual(A,),)
+                test("1 field: (T) → false",          () => expect(new instance(A,)   .dropWhile(callbackAsFalse1,).toArray(),).toStrictEqual(A,),)
+                test("1 field: () → false",           () => expect(new instance(A,)   .dropWhile(callbackAsFalse0,).toArray(),).toStrictEqual(A,),)
+                test("2 fields: (T, number) → true",  () => expect(new instance(AB,)  .dropWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("2 fields: (T) → true",          () => expect(new instance(AB,)  .dropWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("2 fields: () → true",           () => expect(new instance(AB,)  .dropWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("2 fields: (T, number) → false", () => expect(new instance(AB,)  .dropWhile(callbackAsFalse2,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: (T) → false",         () => expect(new instance(AB,)  .dropWhile(callbackAsFalse1,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: () → false",          () => expect(new instance(AB,)  .dropWhile(callbackAsFalse0,).toArray(),).toStrictEqual(AB,),)
+                test("4 fields: (T, number) → true",  () => expect(new instance(ABCD,).dropWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("4 fields: (T) → true",          () => expect(new instance(ABCD,).dropWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("4 fields: () → true",           () => expect(new instance(ABCD,).dropWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("4 fields: (T, number) → false", () => expect(new instance(ABCD,).dropWhile(callbackAsFalse2,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: (T) → false",         () => expect(new instance(ABCD,).dropWhile(callbackAsFalse1,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: () → false",          () => expect(new instance(ABCD,).dropWhile(callbackAsFalse0,).toArray(),).toStrictEqual(ABCD,),)
             },)
             describe("1 field", () => {
                 test('a', () => expect(new instance(A,).dropWhile(callbackIsUnderA,).toArray(),)   .toStrictEqual(A,),)
@@ -466,16 +474,24 @@ describe("CollectionHolderTest (drop)", () => {
                 test("() → boolean",          () => expect(new instance(EMPTY,).dropWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropWhileIndexed(it,),).toBeEmpty(),)
-                    test("2 fields", () => expect(new instance(AB,).dropWhileIndexed(it,),).toBeEmpty(),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropWhileIndexed(it,),).toBeEmpty(),)
-                },)
-                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropWhileIndexed(it,).toArray(),).toEqual(A,),)
-                    test("2 fields", () => expect(new instance(AB,).dropWhileIndexed(it,).toArray(),).toEqual(AB,),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropWhileIndexed(it,).toArray(),).toEqual(ABCD,),)
-                },)
+                test("1 field: (number, T) → true",   () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("1 field: (number) → true",      () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("1 field: () → true",            () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("1 field: (number, T) → false",  () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
+                test("1 field: (number) → false",     () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue1,).toArray(),).toStrictEqual(A,),)
+                test("1 field: () → false",           () => expect(new instance(A,)   .dropWhileIndexed(callbackAsTrue0,).toArray(),).toStrictEqual(A,),)
+                test("2 fields: (number, T) → true",  () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("2 fields: (number) → true",     () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("2 fields: () → true",           () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("2 fields: (number, T) → false", () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsFalse2,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: (number) → false",    () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsFalse1,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: () → false",          () => expect(new instance(AB,)  .dropWhileIndexed(callbackAsFalse0,).toArray(),).toStrictEqual(AB,),)
+                test("4 fields: (number, T) → true",  () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse2,),)          .toBeEmpty(),)
+                test("4 fields: (number) → true",     () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse1,),)          .toBeEmpty(),)
+                test("4 fields: () → true",           () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse0,),)          .toBeEmpty(),)
+                test("4 fields: (number, T) → false", () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse2,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: (number) → false",    () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse1,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: () → false",          () => expect(new instance(ABCD,).dropWhileIndexed(callbackAsFalse0,).toArray(),).toStrictEqual(ABCD,),)
             },)
             describe("1 field", () => {
                 test('a', () => expect(new instance(A,).dropWhileIndexed(callbackIsUnderAAlt,).toArray(),).toStrictEqual(A,),)
@@ -568,16 +584,24 @@ describe("CollectionHolderTest (drop)", () => {
                 test("() → boolean",          () => expect(new instance(EMPTY,).dropLastWhile(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropLastWhile(it,),).toBeEmpty(),)
-                    test("2 fields", () => expect(new instance(AB,).dropLastWhile(it,),).toBeEmpty(),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropLastWhile(it,),).toBeEmpty(),)
-                },)
-                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropLastWhile(it,).toArray(),).toEqual(A,),)
-                    test("2 fields", () => expect(new instance(AB,).dropLastWhile(it,).toArray(),).toEqual(AB,),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropLastWhile(it,).toArray(),).toEqual(ABCD,),)
-                },)
+                test("1 field: (T, number) → true",   () => expect(new instance(A,)   .dropLastWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("1 field: (T) → true",           () => expect(new instance(A,)   .dropLastWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("1 field: () → true",            () => expect(new instance(A,)   .dropLastWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("1 field: (T, number) → false",  () => expect(new instance(A,)   .dropLastWhile(callbackAsFalse2,).toArray(),).toStrictEqual(A,),)
+                test("1 field: (T) → false",          () => expect(new instance(A,)   .dropLastWhile(callbackAsFalse1,).toArray(),).toStrictEqual(A,),)
+                test("1 field: () → false",           () => expect(new instance(A,)   .dropLastWhile(callbackAsFalse0,).toArray(),).toStrictEqual(A,),)
+                test("2 fields: (T, number) → true",  () => expect(new instance(AB,)  .dropLastWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("2 fields: (T) → true",          () => expect(new instance(AB,)  .dropLastWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("2 fields: () → true",           () => expect(new instance(AB,)  .dropLastWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("2 fields: (T, number) → false", () => expect(new instance(AB,)  .dropLastWhile(callbackAsFalse2,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: (T) → false",         () => expect(new instance(AB,)  .dropLastWhile(callbackAsFalse1,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: () → false",          () => expect(new instance(AB,)  .dropLastWhile(callbackAsFalse0,).toArray(),).toStrictEqual(AB,),)
+                test("4 fields: (T, number) → true",  () => expect(new instance(ABCD,).dropLastWhile(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("4 fields: (T) → true",          () => expect(new instance(ABCD,).dropLastWhile(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("4 fields: () → true",           () => expect(new instance(ABCD,).dropLastWhile(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("4 fields: (T, number) → false", () => expect(new instance(ABCD,).dropLastWhile(callbackAsFalse2,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: (T) → false",         () => expect(new instance(ABCD,).dropLastWhile(callbackAsFalse1,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: () → false",          () => expect(new instance(ABCD,).dropLastWhile(callbackAsFalse0,).toArray(),).toStrictEqual(ABCD,),)
             },)
             describe("1 field", () => {
                 test('a', () => expect(new instance(A,).dropLastWhile(callbackIsOverA,).toArray(),)   .toStrictEqual(A,),)
@@ -613,16 +637,24 @@ describe("CollectionHolderTest (drop)", () => {
                 test("() → boolean",          () => expect(new instance(EMPTY,).dropLastWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropLastWhileIndexed(it,),).toBeEmpty(),)
-                    test("2 fields", () => expect(new instance(AB,).dropLastWhileIndexed(it,),).toBeEmpty(),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropLastWhileIndexed(it,),).toBeEmpty(),)
-                },)
-                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).dropLastWhileIndexed(it,).toArray(),).toEqual(A,),)
-                    test("2 fields", () => expect(new instance(AB,).dropLastWhileIndexed(it,).toArray(),).toEqual(AB,),)
-                    test("4 fields", () => expect(new instance(ABCD,).dropLastWhileIndexed(it,).toArray(),).toEqual(ABCD,),)
-                },)
+                test("1 field: (number, T) → true",   () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("1 field: (number) → true",      () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("1 field: () → true",            () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("1 field: (number, T) → false",  () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsFalse2,).toArray(),).toStrictEqual(A,),)
+                test("1 field: (number) → false",     () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsFalse1,).toArray(),).toStrictEqual(A,),)
+                test("1 field: () → false",           () => expect(new instance(A,)   .dropLastWhileIndexed(callbackAsFalse0,).toArray(),).toStrictEqual(A,),)
+                test("2 fields: (number, T) → true",  () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("2 fields: (number) → true",     () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("2 fields: () → true",           () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("2 fields: (number, T) → false", () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsFalse2,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: (number) → false",    () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsFalse1,).toArray(),).toStrictEqual(AB,),)
+                test("2 fields: () → false",          () => expect(new instance(AB,)  .dropLastWhileIndexed(callbackAsFalse0,).toArray(),).toStrictEqual(AB,),)
+                test("4 fields: (number, T) → true",  () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
+                test("4 fields: (number) → true",     () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsTrue1,),)           .toBeEmpty(),)
+                test("4 fields: () → true",           () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsTrue0,),)           .toBeEmpty(),)
+                test("4 fields: (number, T) → false", () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsFalse2,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: (number) → false",    () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsFalse1,).toArray(),).toStrictEqual(ABCD,),)
+                test("4 fields: () → false",          () => expect(new instance(ABCD,).dropLastWhileIndexed(callbackAsFalse0,).toArray(),).toStrictEqual(ABCD,),)
             },)
             describe("1 field", () => {
                 test('a', () => expect(new instance(A,).dropLastWhileIndexed(callbackIsOverAAlt,).toArray(),).toStrictEqual(A,),)

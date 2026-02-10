@@ -10,17 +10,17 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolderFromArray}                                                                                                              from "./instance/CollectionHolderFromArray"
-import {GenericCollectionHolder_AllAlias}                                                                                                       from "./instance/GenericCollectionHolder_AllAlias"
-import {GenericCollectionHolder_AnyAlias}                                                                                                       from "./instance/GenericCollectionHolder_AnyAlias"
-import {LazyGenericCollectionHolder_AnyAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_AnyAlias"
-import {LazyGenericCollectionHolder_AllAlias}                                                                                                   from "./instance/LazyGenericCollectionHolder_AllAlias"
-import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                                     from "./value/arrays"
-import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2, falseCallbacks, trueCallbacks} from "./value/callbacks (boolean)"
-import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                      from "./value/callbacks (fail)"
-import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt}                    from "./value/callbacks (number)"
-import {callbackIsA, callbackIsB, callbackIsC, callbackIsD, callbackIsE}                                                                        from "./value/callbacks (string)"
-import {everyExtensionMethodInstances, everyInstances}                                                                                          from "./value/instances"
+import {CollectionHolderFromArray}                                                                                           from "./instance/CollectionHolderFromArray"
+import {GenericCollectionHolder_AllAlias}                                                                                    from "./instance/GenericCollectionHolder_AllAlias"
+import {GenericCollectionHolder_AnyAlias}                                                                                    from "./instance/GenericCollectionHolder_AnyAlias"
+import {LazyGenericCollectionHolder_AnyAlias}                                                                                from "./instance/LazyGenericCollectionHolder_AnyAlias"
+import {LazyGenericCollectionHolder_AllAlias}                                                                                from "./instance/LazyGenericCollectionHolder_AllAlias"
+import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                  from "./value/arrays"
+import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}             from "./value/callbacks (boolean)"
+import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                   from "./value/callbacks (fail)"
+import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt} from "./value/callbacks (number)"
+import {callbackIsA, callbackIsB, callbackIsC, callbackIsD, callbackIsE}                                                     from "./value/callbacks (string)"
+import {everyExtensionMethodInstances, everyInstances}                                                                       from "./value/instances"
 
 import {EmptyCollectionHolder}                                                           from "../src/EmptyCollectionHolder"
 import * as allModule                                                                    from "../src/method/all"
@@ -141,16 +141,24 @@ describe("CollectionHolderTest (all / any / none)", () => {
                 test("() → boolean",          () => expect(new instance(EMPTY,).all(callbackAsFail0,),).toBeTrue(),)
             },)
             describe("boolean callbacks", () => {
-                describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).all(it,),).toBeTrue(),)
-                    test("2 fields", () => expect(new instance(AB,).all(it,),).toBeTrue(),)
-                    test("4 fields", () => expect(new instance(ABCD,).all(it,),).toBeTrue(),)
-                },)
-                describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                    test("1 field",  () => expect(new instance(A,).all(it,),).toBeFalse(),)
-                    test("2 fields", () => expect(new instance(AB,).all(it,),).toBeFalse(),)
-                    test("4 fields", () => expect(new instance(ABCD,).all(it,),).toBeFalse(),)
-                },)
+                test("1 field: (T, number) → true",   () => expect(new instance(A,)   .all(callbackAsTrue2,),) .toBeTrue(),)
+                test("1 field: (T) → true",           () => expect(new instance(A,)   .all(callbackAsTrue1,),) .toBeTrue(),)
+                test("1 field: () → true",            () => expect(new instance(A,)   .all(callbackAsTrue0,),) .toBeTrue(),)
+                test("1 field: (T, number) → false",  () => expect(new instance(A,)   .all(callbackAsFalse2,),).toBeFalse(),)
+                test("1 field: (T) → false",          () => expect(new instance(A,)   .all(callbackAsFalse1,),).toBeFalse(),)
+                test("1 field: () → false",           () => expect(new instance(A,)   .all(callbackAsFalse0,),).toBeFalse(),)
+                test("2 fields: (T, number) → true",  () => expect(new instance(AB,)  .all(callbackAsTrue2,),) .toBeTrue(),)
+                test("2 fields: (T) → true",          () => expect(new instance(AB,)  .all(callbackAsTrue1,),) .toBeTrue(),)
+                test("2 fields: () → true",           () => expect(new instance(AB,)  .all(callbackAsTrue0,),) .toBeTrue(),)
+                test("2 fields: (T, number) → false", () => expect(new instance(AB,)  .all(callbackAsFalse2,),).toBeFalse(),)
+                test("2 fields: (T) → false",         () => expect(new instance(AB,)  .all(callbackAsFalse1,),).toBeFalse(),)
+                test("2 fields: () → false",          () => expect(new instance(AB,)  .all(callbackAsFalse0,),).toBeFalse(),)
+                test("4 fields: (T, number) → true",  () => expect(new instance(ABCD,).all(callbackAsTrue2,),) .toBeTrue(),)
+                test("4 fields: (T) → true",          () => expect(new instance(ABCD,).all(callbackAsTrue1,),) .toBeTrue(),)
+                test("4 fields: () → true",           () => expect(new instance(ABCD,).all(callbackAsTrue0,),) .toBeTrue(),)
+                test("4 fields: (T, number) → false", () => expect(new instance(ABCD,).all(callbackAsFalse2,),).toBeFalse(),)
+                test("4 fields: (T) → false",         () => expect(new instance(ABCD,).all(callbackAsFalse1,),).toBeFalse(),)
+                test("4 fields: () → false",          () => expect(new instance(ABCD,).all(callbackAsFalse0,),).toBeFalse(),)
             },)
             describe("1 field", () => {
                 test('a',    () => expect(new instance(A,).all(callbackIsA,),)      .toBeTrue(),)
@@ -205,16 +213,24 @@ describe("CollectionHolderTest (all / any / none)", () => {
                     test("() → boolean",          () => expect(new instance(EMPTY,).any(callbackAsFail0,),).toBeFalse(),)
                 },)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                        test("1 field",  () => expect(new instance(A,).any(it,),).toBeTrue(),)
-                        test("2 fields", () => expect(new instance(AB,).any(it,),).toBeTrue(),)
-                        test("4 fields", () => expect(new instance(ABCD,).any(it,),).toBeTrue(),)
-                    },)
-                    describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                        test("1 field",  () => expect(new instance(A,).any(it,),).toBeFalse(),)
-                        test("2 fields", () => expect(new instance(AB,).any(it,),).toBeFalse(),)
-                        test("4 fields", () => expect(new instance(ABCD,).any(it,),).toBeFalse(),)
-                    },)
+                    test("1 field: (T, number) → true",   () => expect(new instance(A,)   .any(callbackAsTrue2,),) .toBeTrue(),)
+                    test("1 field: (T) → true",           () => expect(new instance(A,)   .any(callbackAsTrue1,),) .toBeTrue(),)
+                    test("1 field: () → true",            () => expect(new instance(A,)   .any(callbackAsTrue0,),) .toBeTrue(),)
+                    test("1 field: (T, number) → false",  () => expect(new instance(A,)   .any(callbackAsFalse2,),).toBeFalse(),)
+                    test("1 field: (T) → false",          () => expect(new instance(A,)   .any(callbackAsFalse1,),).toBeFalse(),)
+                    test("1 field: () → false",           () => expect(new instance(A,)   .any(callbackAsFalse0,),).toBeFalse(),)
+                    test("2 fields: (T, number) → true",  () => expect(new instance(AB,)  .any(callbackAsTrue2,),) .toBeTrue(),)
+                    test("2 fields: (T) → true",          () => expect(new instance(AB,)  .any(callbackAsTrue1,),) .toBeTrue(),)
+                    test("2 fields: () → true",           () => expect(new instance(AB,)  .any(callbackAsTrue0,),) .toBeTrue(),)
+                    test("2 fields: (T, number) → false", () => expect(new instance(AB,)  .any(callbackAsFalse2,),).toBeFalse(),)
+                    test("2 fields: (T) → false",         () => expect(new instance(AB,)  .any(callbackAsFalse1,),).toBeFalse(),)
+                    test("2 fields: () → false",          () => expect(new instance(AB,)  .any(callbackAsFalse0,),).toBeFalse(),)
+                    test("4 fields: (T, number) → true",  () => expect(new instance(ABCD,).any(callbackAsTrue2,),) .toBeTrue(),)
+                    test("4 fields: (T) → true",          () => expect(new instance(ABCD,).any(callbackAsTrue1,),) .toBeTrue(),)
+                    test("4 fields: () → true",           () => expect(new instance(ABCD,).any(callbackAsTrue0,),) .toBeTrue(),)
+                    test("4 fields: (T, number) → false", () => expect(new instance(ABCD,).any(callbackAsFalse2,),).toBeFalse(),)
+                    test("4 fields: (T) → false",         () => expect(new instance(ABCD,).any(callbackAsFalse1,),).toBeFalse(),)
+                    test("4 fields: () → false",          () => expect(new instance(ABCD,).any(callbackAsFalse0,),).toBeFalse(),)
                 },)
                 describe("1 field", () => {
                     test('a',    () => expect(new instance(A,).any(callbackIsA,),)      .toBeTrue(),)
@@ -270,16 +286,24 @@ describe("CollectionHolderTest (all / any / none)", () => {
                     test("() → boolean",          () => expect(new instance(EMPTY,).none(callbackAsFail0,),).toBeTrue(),)
                 },)
                 describe("boolean callbacks", () => {
-                    describe.each(trueCallbacks,)("true: %s", ({value: it,},) => {
-                        test("1 field",  () => expect(new instance(A,).none(it,),).toBeFalse(),)
-                        test("2 fields", () => expect(new instance(AB,).none(it,),).toBeFalse(),)
-                        test("4 fields", () => expect(new instance(ABCD,).none(it,),).toBeFalse(),)
-                    },)
-                    describe.each(falseCallbacks,)("false: %s", ({value: it,},) => {
-                        test("1 field",  () => expect(new instance(A,).none(it,),).toBeTrue(),)
-                        test("2 fields", () => expect(new instance(AB,).none(it,),).toBeTrue(),)
-                        test("4 fields", () => expect(new instance(ABCD,).none(it,),).toBeTrue(),)
-                    },)
+                    test("1 field: (T, number) → true",   () => expect(new instance(A,)   .none(callbackAsTrue2,),) .toBeFalse(),)
+                    test("1 field: (T) → true",           () => expect(new instance(A,)   .none(callbackAsTrue1,),) .toBeFalse(),)
+                    test("1 field: () → true",            () => expect(new instance(A,)   .none(callbackAsTrue0,),) .toBeFalse(),)
+                    test("1 field: (T, number) → false",  () => expect(new instance(A,)   .none(callbackAsFalse2,),).toBeTrue(),)
+                    test("1 field: (T) → false",          () => expect(new instance(A,)   .none(callbackAsFalse1,),).toBeTrue(),)
+                    test("1 field: () → false",           () => expect(new instance(A,)   .none(callbackAsFalse0,),).toBeTrue(),)
+                    test("2 fields: (T, number) → true",  () => expect(new instance(AB,)  .none(callbackAsTrue2,),) .toBeFalse(),)
+                    test("2 fields: (T) → true",          () => expect(new instance(AB,)  .none(callbackAsTrue1,),) .toBeFalse(),)
+                    test("2 fields: () → true",           () => expect(new instance(AB,)  .none(callbackAsTrue0,),) .toBeFalse(),)
+                    test("2 fields: (T, number) → false", () => expect(new instance(AB,)  .none(callbackAsFalse2,),).toBeTrue(),)
+                    test("2 fields: (T) → false",         () => expect(new instance(AB,)  .none(callbackAsFalse1,),).toBeTrue(),)
+                    test("2 fields: () → false",          () => expect(new instance(AB,)  .none(callbackAsFalse0,),).toBeTrue(),)
+                    test("4 fields: (T, number) → true",  () => expect(new instance(ABCD,).none(callbackAsTrue2,),) .toBeFalse(),)
+                    test("4 fields: (T) → true",          () => expect(new instance(ABCD,).none(callbackAsTrue1,),) .toBeFalse(),)
+                    test("4 fields: () → true",           () => expect(new instance(ABCD,).none(callbackAsTrue0,),) .toBeFalse(),)
+                    test("4 fields: (T, number) → false", () => expect(new instance(ABCD,).none(callbackAsFalse2,),).toBeTrue(),)
+                    test("4 fields: (T) → false",         () => expect(new instance(ABCD,).none(callbackAsFalse1,),).toBeTrue(),)
+                    test("4 fields: () → false",          () => expect(new instance(ABCD,).none(callbackAsFalse0,),).toBeTrue(),)
                 },)
                 describe("1 field", () => {
                     test('a',    () => expect(new instance(A,).none(callbackIsA,),)      .toBeFalse(),)
