@@ -7,6 +7,7 @@
     <toRun name="index" type="JUnit" />
     <toRun name="joinToString" type="JUnit" />
     <toRun name="size" type="JUnit" />
+    <toRun name="slice" type="JUnit" />
     <toRun name="value" type="JUnit" />
     <method v="2" />
   </configuration>
