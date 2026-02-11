@@ -19,6 +19,8 @@ public class AbstractMethodsTests {
 
     /// The [CollectionHolderForTest] that should be used for the tests
     public final CollectionHolderForTest<?, ?> instance;
+    /// The [CollectionHolderForTest] that should be used for the tests (with [String] as the type)
+    public final CollectionHolderForTest<String, ?> stringInstance;
     /// The reusable class that contains all the necessary elements
     public final InstanceClassUtil util;
 
@@ -26,7 +28,10 @@ public class AbstractMethodsTests {
     //#region -------------------- Constructor --------------------
 
     @SuppressWarnings("unchecked cast")
-    protected AbstractMethodsTests(final CollectionHolderForTest<?, ?> instance) { util = InstanceClassUtil.get((Class<? extends CollectionHolderForTest<?, ?>>) (this.instance = instance).getClass()); }
+    protected AbstractMethodsTests(final CollectionHolderForTest<?, ?> instance) {
+        util = InstanceClassUtil.get((Class<? extends CollectionHolderForTest<?, ?>>) (this.instance = instance).getClass());
+        stringInstance = (CollectionHolderForTest<String, ?>) instance;
+    }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter method --------------------

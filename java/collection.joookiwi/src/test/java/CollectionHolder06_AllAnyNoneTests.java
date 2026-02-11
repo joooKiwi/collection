@@ -160,21 +160,21 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         //#endregion -------------------- Required test configuration --------------------
 
         @Nested class all {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertTrue(methods.this.<String>getInstance().all(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertTrue(methods.this.<String>getInstance().all(predicate1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg() { assertTrue(                     getInstance().all(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertTrue(stringInstance.all(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertTrue(stringInstance.all(predicate1AsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg() { assertTrue(      instance.all(predicate0AsFail)); }
         }
         @Nested class any {
-            @DisplayName("∅")                  @Test void testEmpty() { assertFalse(                     getInstance().any()); }
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertFalse(methods.this.<String>getInstance().any(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertFalse(methods.this.<String>getInstance().any(predicate1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()  { assertFalse(                     getInstance().any(predicate0AsFail)); }
+            @DisplayName("∅")                  @Test void testEmpty() { assertFalse(      instance.any()); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertFalse(stringInstance.any(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertFalse(stringInstance.any(predicate1AsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg()  { assertFalse(      instance.any(predicate0AsFail)); }
         }
         @Nested class none {
-            @DisplayName("∅")                  @Test void testEmpty() { assertTrue(                     getInstance().none()); }
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertTrue(methods.this.<String>getInstance().none(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertTrue(methods.this.<String>getInstance().none(predicate1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()  { assertTrue(                     getInstance().none(predicate0AsFail)); }
+            @DisplayName("∅")                  @Test void testEmpty() { assertTrue(      instance.none()); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg()  { assertTrue(stringInstance.none(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg()  { assertTrue(stringInstance.none(predicate1AsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg()  { assertTrue(      instance.none(predicate0AsFail)); }
         }
     }
 

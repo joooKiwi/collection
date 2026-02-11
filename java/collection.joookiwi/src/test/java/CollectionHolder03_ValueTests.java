@@ -697,15 +697,15 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         @Test void getLast()  { assertThrowsExactly(emptyExceptionClass(), instance::getLast); }
 
         @Nested class getOrElse {
-            @DisplayName("int → T") @Test void test1Arg() { assertSame(VALUE, getInstance().getOrElse(INVALID_INDEX, callback1Alt)); }
-            @DisplayName("() → T")  @Test void test0Arg() { assertSame(VALUE, getInstance().getOrElse(INVALID_INDEX, callback0)); }
+            @DisplayName("int → T") @Test void test1Arg() { assertSame(VALUE, stringInstance.getOrElse(INVALID_INDEX, callback1Alt)); }
+            @DisplayName("() → T")  @Test void test0Arg() { assertSame(VALUE, stringInstance.getOrElse(INVALID_INDEX, callback0)); }
         }
-        @Test void getFirstOrElse() { assertSame(VALUE, getInstance().getFirstOrElse(callback0)); }
-        @Test void getLastOrElse()  { assertSame(VALUE, getInstance().getLastOrElse(callback0)); }
+        @Test void getFirstOrElse() { assertSame(VALUE, stringInstance.getFirstOrElse(callback0)); }
+        @Test void getLastOrElse()  { assertSame(VALUE, stringInstance.getLastOrElse(callback0)); }
 
-        @Test void getOrNull()      { assertNull(getInstance().getOrNull(INVALID_INDEX)); }
-        @Test void getFirstOrNull() { assertNull(getInstance().getFirstOrNull()); }
-        @Test void getLastOrNull()  { assertNull(getInstance().getLastOrNull()); }
+        @Test void getOrNull()      { assertNull(stringInstance.getOrNull(INVALID_INDEX)); }
+        @Test void getFirstOrNull() { assertNull(stringInstance.getFirstOrNull()); }
+        @Test void getLastOrNull()  { assertNull(stringInstance.getLastOrNull()); }
     }
 
     @FieldSource("value.Instances#everyInstancesAsArguments")
@@ -787,12 +787,12 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             public final instances rootInstance = instances.this;
 
             @Nested class empty {
-                                   @Test void min()    { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(MIN_INT_VALUE)); }
-                @DisplayName("-2") @Test void minus2() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(-2)); }
-                @DisplayName("-1") @Test void minus1() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(-1)); }
-                @DisplayName("0")  @Test void test0()  { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(0)); }
-                @DisplayName("1")  @Test void test1()  { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(1)); }
-                                   @Test void max()    { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).get(MAX_INT_VALUE)); }
+                                   @Test void min()    { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(MIN_INT_VALUE)); }
+                @DisplayName("-2") @Test void minus2() { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(-2)); }
+                @DisplayName("-1") @Test void minus1() { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(-1)); }
+                @DisplayName("0")  @Test void test0()  { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(0)); }
+                @DisplayName("1")  @Test void test1()  { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(1)); }
+                                   @Test void max()    { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).get(MAX_INT_VALUE)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                    @Test void min()    { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A).get(MIN_INT_VALUE)); }
@@ -834,16 +834,16 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
         }
         @Nested class getFirst {
-                                    @Test void empty() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).getFirst()); }
-           @DisplayName("1 field")  @Test void test1() { assertSame(A[0],                                          newInstance(A)    .getFirst()); }
-           @DisplayName("2 fields") @Test void test2() { assertSame(AB[0],                                         newInstance(AB)   .getFirst()); }
-           @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[0],                                       newInstance(ABCD) .getFirst()); }
+                                    @Test void empty() { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).getFirst()); }
+           @DisplayName("1 field")  @Test void test1() { assertSame(A[0],                                 newInstance(A)    .getFirst()); }
+           @DisplayName("2 fields") @Test void test2() { assertSame(AB[0],                                newInstance(AB)   .getFirst()); }
+           @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[0],                              newInstance(ABCD) .getFirst()); }
         }
         @Nested class getLast {
-                                    @Test void empty() { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).getLast()); }
-           @DisplayName("1 field")  @Test void test1() { assertSame(A[0],                                           newInstance(A)   .getLast()); }
-           @DisplayName("2 fields") @Test void test2() { assertSame(AB[1],                                          newInstance(AB)  .getLast()); }
-           @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[3],                                        newInstance(ABCD).getLast()); }
+                                    @Test void empty() { assertThrowsExactly(emptyExceptionClass(), () -> newInstance(EMPTY).getLast()); }
+           @DisplayName("1 field")  @Test void test1() { assertSame(A[0],                                 newInstance(A)   .getLast()); }
+           @DisplayName("2 fields") @Test void test2() { assertSame(AB[1],                                newInstance(AB)  .getLast()); }
+           @DisplayName("4 fields") @Test void test4() { assertSame(ABCD[3],                              newInstance(ABCD).getLast()); }
         }
 
         @TestInstance(PER_CLASS) @Nested class getOrElse {

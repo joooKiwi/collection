@@ -142,24 +142,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         //#endregion -------------------- Required test configuration --------------------
 
         @Nested class filter {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filter(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filter(predicate1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filter(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), stringInstance.filter(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), stringInstance.filter(predicate1AsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(),       instance.filter(predicate0AsFail)); }
         }
         @Nested class filterIndexed {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterIndexed(predicate2AltAsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterIndexed(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterIndexed(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), stringInstance.filterIndexed(predicate2AltAsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(),       instance.filterIndexed(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(),       instance.filterIndexed(predicate0AsFail)); }
         }
         @Nested class filterNot {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNot(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNot(predicate1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNot(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), stringInstance.filterNot(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), stringInstance.filterNot(predicate1AsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(),       instance.filterNot(predicate0AsFail)); }
         }
         @Nested class filterNotIndexed {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNotIndexed(predicate2AltAsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNotIndexed(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(), methods.this.<String>getInstance().filterNotIndexed(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean") @Test void test2Arg() { assertSame(emptyCollectionHolder(), stringInstance.filterNotIndexed(predicate2AltAsFail)); }
+            @DisplayName("(T) → boolean")      @Test void test1Arg() { assertSame(emptyCollectionHolder(),       instance.filterNotIndexed(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")       @Test void test0Arg() { assertSame(emptyCollectionHolder(),       instance.filterNotIndexed(predicate0AsFail)); }
         }
         @Test void filterNotNull() { assertSame(emptyCollectionHolder(), instance.filterNotNull()); }
 
@@ -287,24 +287,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")        @Test void test0Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filter(predicate0AsFail)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertArrayEquals(A,    newInstance(A)    .filter(callback2AsTrue).toArray()); }
-                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertArrayEquals(A,    newInstance(A)    .filter(callback1AsTrue).toArray()); }
-                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertArrayEquals(A,    newInstance(A)    .filter(callback0AsTrue).toArray()); }
-                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertTrue(             newInstance(A)    .filter(callback2AsFalse).isEmpty()); }
-                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertTrue(             newInstance(A)    .filter(callback1AsFalse).isEmpty()); }
-                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertTrue(             newInstance(A)    .filter(callback0AsFalse).isEmpty()); }
-                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertArrayEquals(AB,   newInstance(AB)   .filter(callback2AsTrue).toArray()); }
-                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertArrayEquals(AB,   newInstance(AB)   .filter(callback1AsTrue).toArray()); }
-                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertArrayEquals(AB,   newInstance(AB)   .filter(callback0AsTrue).toArray()); }
-                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertTrue(             newInstance(AB)   .filter(callback2AsFalse).isEmpty()); }
-                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertTrue(             newInstance(AB)   .filter(callback1AsFalse).isEmpty()); }
-                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertTrue(             newInstance(AB)   .filter(callback0AsFalse).isEmpty()); }
-                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filter(callback2AsTrue).toArray()); }
-                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filter(callback1AsTrue).toArray()); }
-                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filter(callback0AsTrue).toArray()); }
-                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertTrue(             newInstance(ABCD) .filter(callback2AsFalse).isEmpty()); }
-                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertTrue(             newInstance(ABCD) .filter(callback1AsFalse).isEmpty()); }
-                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertTrue(             newInstance(ABCD) .filter(callback0AsFalse).isEmpty()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertArrayEquals(A,    newInstance(A)   .filter(callback2AsTrue).toArray()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertArrayEquals(A,    newInstance(A)   .filter(callback1AsTrue).toArray()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertArrayEquals(A,    newInstance(A)   .filter(callback0AsTrue).toArray()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertTrue(             newInstance(A)   .filter(callback2AsFalse).isEmpty()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertTrue(             newInstance(A)   .filter(callback1AsFalse).isEmpty()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertTrue(             newInstance(A)   .filter(callback0AsFalse).isEmpty()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertArrayEquals(AB,   newInstance(AB)  .filter(callback2AsTrue).toArray()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertArrayEquals(AB,   newInstance(AB)  .filter(callback1AsTrue).toArray()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertArrayEquals(AB,   newInstance(AB)  .filter(callback0AsTrue).toArray()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertTrue(             newInstance(AB)  .filter(callback2AsFalse).isEmpty()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertTrue(             newInstance(AB)  .filter(callback1AsFalse).isEmpty()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertTrue(             newInstance(AB)  .filter(callback0AsFalse).isEmpty()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertArrayEquals(ABCD, newInstance(ABCD).filter(callback2AsTrue).toArray()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertArrayEquals(ABCD, newInstance(ABCD).filter(callback1AsTrue).toArray()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertArrayEquals(ABCD, newInstance(ABCD).filter(callback0AsTrue).toArray()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertTrue(             newInstance(ABCD).filter(callback2AsFalse).isEmpty()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertTrue(             newInstance(ABCD).filter(callback1AsFalse).isEmpty()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertTrue(             newInstance(ABCD).filter(callback0AsFalse).isEmpty()); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertArrayEquals(A, newInstance(A).filter(callbackIsA).toArray()); }
@@ -346,24 +346,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")        @Test void test0Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filterIndexed(predicate0AsFail)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertArrayEquals(A,    newInstance(A)    .filterIndexed(callback2AltAsTrue).toArray()); }
-                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertArrayEquals(A,    newInstance(A)    .filterIndexed(callback1AltAsTrue).toArray()); }
-                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertArrayEquals(A,    newInstance(A)    .filterIndexed(callback0AsTrue).toArray()); }
-                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertTrue(             newInstance(A)    .filterIndexed(callback2AltAsFalse).isEmpty()); }
-                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertTrue(             newInstance(A)    .filterIndexed(callback1AltAsFalse).isEmpty()); }
-                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertTrue(             newInstance(A)    .filterIndexed(callback0AsFalse).isEmpty()); }
-                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertArrayEquals(AB,   newInstance(AB)   .filterIndexed(callback2AltAsTrue).toArray()); }
-                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertArrayEquals(AB,   newInstance(AB)   .filterIndexed(callback1AltAsTrue).toArray()); }
-                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertArrayEquals(AB,   newInstance(AB)   .filterIndexed(callback0AsTrue).toArray()); }
-                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertTrue(             newInstance(AB)   .filterIndexed(callback2AltAsFalse).isEmpty()); }
-                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertTrue(             newInstance(AB)   .filterIndexed(callback1AltAsFalse).isEmpty()); }
-                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertTrue(             newInstance(AB)   .filterIndexed(callback0AsFalse).isEmpty()); }
-                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filterIndexed(callback2AltAsTrue).toArray()); }
-                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filterIndexed(callback1AltAsTrue).toArray()); }
-                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertArrayEquals(ABCD, newInstance(ABCD) .filterIndexed(callback0AsTrue).toArray()); }
-                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertTrue(             newInstance(ABCD) .filterIndexed(callback2AltAsFalse).isEmpty()); }
-                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertTrue(             newInstance(ABCD) .filterIndexed(callback1AltAsFalse).isEmpty()); }
-                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertTrue(             newInstance(ABCD) .filterIndexed(callback0AsFalse).isEmpty()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertArrayEquals(A,    newInstance(A)   .filterIndexed(callback2AltAsTrue).toArray()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertArrayEquals(A,    newInstance(A)   .filterIndexed(callback1AltAsTrue).toArray()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertArrayEquals(A,    newInstance(A)   .filterIndexed(callback0AsTrue).toArray()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertTrue(             newInstance(A)   .filterIndexed(callback2AltAsFalse).isEmpty()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertTrue(             newInstance(A)   .filterIndexed(callback1AltAsFalse).isEmpty()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertTrue(             newInstance(A)   .filterIndexed(callback0AsFalse).isEmpty()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertArrayEquals(AB,   newInstance(AB)  .filterIndexed(callback2AltAsTrue).toArray()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertArrayEquals(AB,   newInstance(AB)  .filterIndexed(callback1AltAsTrue).toArray()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertArrayEquals(AB,   newInstance(AB)  .filterIndexed(callback0AsTrue).toArray()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertTrue(             newInstance(AB)  .filterIndexed(callback2AltAsFalse).isEmpty()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertTrue(             newInstance(AB)  .filterIndexed(callback1AltAsFalse).isEmpty()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertTrue(             newInstance(AB)  .filterIndexed(callback0AsFalse).isEmpty()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertArrayEquals(ABCD, newInstance(ABCD).filterIndexed(callback2AltAsTrue).toArray()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertArrayEquals(ABCD, newInstance(ABCD).filterIndexed(callback1AltAsTrue).toArray()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertArrayEquals(ABCD, newInstance(ABCD).filterIndexed(callback0AsTrue).toArray()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertTrue(             newInstance(ABCD).filterIndexed(callback2AltAsFalse).isEmpty()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertTrue(             newInstance(ABCD).filterIndexed(callback1AltAsFalse).isEmpty()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertTrue(             newInstance(ABCD).filterIndexed(callback0AsFalse).isEmpty()); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertArrayEquals(A, newInstance(A).filterIndexed(callbackIsAAlt).toArray()); }
@@ -399,31 +399,31 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
         }
 
-        @TestInstance(PER_CLASS) @Nested class filterIndexedNot {
+        @TestInstance(PER_CLASS) @Nested class filterNot {
             @Nested class empty {
                 @DisplayName("(T, int) → boolean")  @Test void test2Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filterNot(predicate2AsFail)); }
                 @DisplayName("(T) → boolean")       @Test void test1Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filterNot(predicate1AsFail)); }
                 @DisplayName("() → boolean")        @Test void test0Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filterNot(predicate0AsFail)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertTrue(             newInstance(A)    .filterNot(callback2AsTrue).isEmpty()); }
-                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertTrue(             newInstance(A)    .filterNot(callback1AsTrue).isEmpty()); }
-                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertTrue(             newInstance(A)    .filterNot(callback0AsTrue).isEmpty()); }
-                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertArrayEquals(A,    newInstance(A)    .filterNot(callback2AsFalse).toArray()); }
-                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertArrayEquals(A,    newInstance(A)    .filterNot(callback1AsFalse).toArray()); }
-                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertArrayEquals(A,    newInstance(A)    .filterNot(callback0AsFalse).toArray()); }
-                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertTrue(             newInstance(AB)   .filterNot(callback2AsTrue).isEmpty()); }
-                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertTrue(             newInstance(AB)   .filterNot(callback1AsTrue).isEmpty()); }
-                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertTrue(             newInstance(AB)   .filterNot(callback0AsTrue).isEmpty()); }
-                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertArrayEquals(AB,   newInstance(AB)   .filterNot(callback2AsFalse).toArray()); }
-                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertArrayEquals(AB,   newInstance(AB)   .filterNot(callback1AsFalse).toArray()); }
-                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertArrayEquals(AB,   newInstance(AB)   .filterNot(callback0AsFalse).toArray()); }
-                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertTrue(             newInstance(ABCD) .filterNot(callback2AsTrue).isEmpty()); }
-                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertTrue(             newInstance(ABCD) .filterNot(callback1AsTrue).isEmpty()); }
-                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertTrue(             newInstance(ABCD) .filterNot(callback0AsTrue).isEmpty()); }
-                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNot(callback2AsFalse).toArray()); }
-                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNot(callback1AsFalse).toArray()); }
-                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNot(callback0AsFalse).toArray()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertTrue(             newInstance(A)   .filterNot(callback2AsTrue).isEmpty()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertTrue(             newInstance(A)   .filterNot(callback1AsTrue).isEmpty()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertTrue(             newInstance(A)   .filterNot(callback0AsTrue).isEmpty()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertArrayEquals(A,    newInstance(A)   .filterNot(callback2AsFalse).toArray()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertArrayEquals(A,    newInstance(A)   .filterNot(callback1AsFalse).toArray()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertArrayEquals(A,    newInstance(A)   .filterNot(callback0AsFalse).toArray()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertTrue(             newInstance(AB)  .filterNot(callback2AsTrue).isEmpty()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertTrue(             newInstance(AB)  .filterNot(callback1AsTrue).isEmpty()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertTrue(             newInstance(AB)  .filterNot(callback0AsTrue).isEmpty()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertArrayEquals(AB,   newInstance(AB)  .filterNot(callback2AsFalse).toArray()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertArrayEquals(AB,   newInstance(AB)  .filterNot(callback1AsFalse).toArray()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertArrayEquals(AB,   newInstance(AB)  .filterNot(callback0AsFalse).toArray()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertTrue(             newInstance(ABCD).filterNot(callback2AsTrue).isEmpty()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertTrue(             newInstance(ABCD).filterNot(callback1AsTrue).isEmpty()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertTrue(             newInstance(ABCD).filterNot(callback0AsTrue).isEmpty()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNot(callback2AsFalse).toArray()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNot(callback1AsFalse).toArray()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNot(callback0AsFalse).toArray()); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertTrue(          newInstance(A).filterNot(callbackIsA).isEmpty()); }
@@ -465,24 +465,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")        @Test void test0Arg() { assertSame(emptyCollectionHolder(), newInstance(EMPTY).filterNotIndexed(predicate0AsFail)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertTrue(             newInstance(A)    .filterNotIndexed(callback2AltAsTrue).isEmpty()); }
-                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertTrue(             newInstance(A)    .filterNotIndexed(callback1AltAsTrue).isEmpty()); }
-                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertTrue(             newInstance(A)    .filterNotIndexed(callback0AsTrue).isEmpty()); }
-                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertArrayEquals(A,    newInstance(A)    .filterNotIndexed(callback2AltAsFalse).toArray()); }
-                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertArrayEquals(A,    newInstance(A)    .filterNotIndexed(callback1AltAsFalse).toArray()); }
-                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertArrayEquals(A,    newInstance(A)    .filterNotIndexed(callback0AsFalse).toArray()); }
-                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertTrue(             newInstance(AB)   .filterNotIndexed(callback2AltAsTrue).isEmpty()); }
-                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertTrue(             newInstance(AB)   .filterNotIndexed(callback1AltAsTrue).isEmpty()); }
-                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertTrue(             newInstance(AB)   .filterNotIndexed(callback0AsTrue).isEmpty()); }
-                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertArrayEquals(AB,   newInstance(AB)   .filterNotIndexed(callback2AltAsFalse).toArray()); }
-                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertArrayEquals(AB,   newInstance(AB)   .filterNotIndexed(callback1AltAsFalse).toArray()); }
-                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertArrayEquals(AB,   newInstance(AB)   .filterNotIndexed(callback0AsFalse).toArray()); }
-                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertTrue(             newInstance(ABCD) .filterNotIndexed(callback2AltAsTrue).isEmpty()); }
-                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertTrue(             newInstance(ABCD) .filterNotIndexed(callback1AltAsTrue).isEmpty()); }
-                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertTrue(             newInstance(ABCD) .filterNotIndexed(callback0AsTrue).isEmpty()); }
-                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNotIndexed(callback2AltAsFalse).toArray()); }
-                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNotIndexed(callback1AltAsFalse).toArray()); }
-                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertArrayEquals(ABCD, newInstance(ABCD) .filterNotIndexed(callback0AsFalse).toArray()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertTrue(             newInstance(A)   .filterNotIndexed(callback2AltAsTrue).isEmpty()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertTrue(             newInstance(A)   .filterNotIndexed(callback1AltAsTrue).isEmpty()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertTrue(             newInstance(A)   .filterNotIndexed(callback0AsTrue).isEmpty()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertArrayEquals(A,    newInstance(A)   .filterNotIndexed(callback2AltAsFalse).toArray()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertArrayEquals(A,    newInstance(A)   .filterNotIndexed(callback1AltAsFalse).toArray()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertArrayEquals(A,    newInstance(A)   .filterNotIndexed(callback0AsFalse).toArray()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertTrue(             newInstance(AB)  .filterNotIndexed(callback2AltAsTrue).isEmpty()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertTrue(             newInstance(AB)  .filterNotIndexed(callback1AltAsTrue).isEmpty()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertTrue(             newInstance(AB)  .filterNotIndexed(callback0AsTrue).isEmpty()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertArrayEquals(AB,   newInstance(AB)  .filterNotIndexed(callback2AltAsFalse).toArray()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertArrayEquals(AB,   newInstance(AB)  .filterNotIndexed(callback1AltAsFalse).toArray()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertArrayEquals(AB,   newInstance(AB)  .filterNotIndexed(callback0AsFalse).toArray()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertTrue(             newInstance(ABCD).filterNotIndexed(callback2AltAsTrue).isEmpty()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertTrue(             newInstance(ABCD).filterNotIndexed(callback1AltAsTrue).isEmpty()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertTrue(             newInstance(ABCD).filterNotIndexed(callback0AsTrue).isEmpty()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNotIndexed(callback2AltAsFalse).toArray()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNotIndexed(callback1AltAsFalse).toArray()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertArrayEquals(ABCD, newInstance(ABCD).filterNotIndexed(callback0AsFalse).toArray()); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertTrue(          newInstance(A).filterNotIndexed(callbackIsAAlt).isEmpty()); }

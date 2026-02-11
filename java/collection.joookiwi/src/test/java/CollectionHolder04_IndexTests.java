@@ -1748,165 +1748,165 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class indexOfFirst {
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0,    1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0,    1)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0,    null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0,    null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null, null)); }
+            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail, 0)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail, 0)); }
+            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail, 0,    null)); }
+            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirst(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirst(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfFirstOrNull {
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0,    1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0,    1)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0,    null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0,    null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null, null)); }
+            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail, 0)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail, 0)); }
+            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail, 0,    null)); }
+            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(stringInstance.indexOfFirstOrNull(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(stringInstance.indexOfFirstOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(      instance.indexOfFirstOrNull(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfFirstIndexed {
-            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail)); }
-            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail)); }
-            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0)); }
-            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0)); }
-            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null)); }
-            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    null)); }
-            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0,    1)); }
-            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0,    1)); }
-            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0,    null)); }
-            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0,    null)); }
-            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null, null)); }
-            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    null, null)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfFirstIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfFirstIndexed(predicate0AsFail,    null, null)); }
         }
         @Nested class indexOfFirstIndexedOrNull {
-            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail)); }
-            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail)); }
-            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0)); }
-            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0)); }
-            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null)); }
-            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0,    1)); }
-            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    1)); }
-            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    1)); }
-            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    null)); }
-            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0,    null)); }
-            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null, null)); }
-            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    null, null)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(stringInstance.indexOfFirstIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(      instance.indexOfFirstIndexedOrNull(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(      instance.indexOfFirstIndexedOrNull(predicate0AsFail,    null, null)); }
         }
 
         @Nested class indexOfLast {
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null, null)); }
+            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail, 0)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail, 0)); }
+            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail, 0, 1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail, 0, 1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail, 0, 1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail, 0, null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail, 0, null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail, 0, null)); }
+            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLast(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLast(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfLastOrNull {
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0,    1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0,    1)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0,    null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0,    null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null, null)); }
+            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(      instance.indexOfLastOrNull(predicate0AsFail)); }
+            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail, 0)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(      instance.indexOfLastOrNull(predicate0AsFail, 0)); }
+            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(      instance.indexOfLastOrNull(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(      instance.indexOfLastOrNull(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(      instance.indexOfLastOrNull(predicate0AsFail, 0,    null)); }
+            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(stringInstance.indexOfLastOrNull(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(stringInstance.indexOfLastOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(      instance.indexOfLastOrNull(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfLastIndexed {
-            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail)); }
-            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail)); }
-            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0)); }
-            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0)); }
-            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null)); }
-            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    null)); }
-            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0,    1)); }
-            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0,    1)); }
-            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0,    null)); }
-            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0,    null)); }
-            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null, null)); }
-            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    null, null)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> stringInstance.indexOfLastIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () ->       instance.indexOfLastIndexed(predicate0AsFail,    null, null)); }
         }
         @Nested class indexOfLastIndexedOrNull {
-            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail)); }
-            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail)); }
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail)); }
-            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0)); }
-            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0)); }
-            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null)); }
-            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    null)); }
-            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    1)); }
-            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    1)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0,    1)); }
-            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    null)); }
-            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    null)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0,    null)); }
-            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null, null)); }
-            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    null, null)); }
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(stringInstance.indexOfLastIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(      instance.indexOfLastIndexedOrNull(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(      instance.indexOfLastIndexedOrNull(predicate0AsFail,    null, null)); }
         }
 
     }
