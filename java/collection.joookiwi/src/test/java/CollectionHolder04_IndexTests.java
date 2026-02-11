@@ -825,84 +825,84 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstOrNullAlias().execute(it -> it.findIndexOrNull(callback2AsTrue, null, null)).amountOfCall); }
             }
             @Nested class findFirstIndexIndexed {
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findFirstIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
             }
             @Nested class findIndexIndexed {
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedAlias().execute(it -> it.findIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
             }
             @Nested class findFirstIndexIndexedOrNull {
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findFirstIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
             }
             @Nested class findIndexIndexedOrNull {
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromNTo()  { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromNTo()  { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromNTo()  { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromNTo()  { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromNTo()  { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfFirstIndexedOrNullAlias().execute(it -> it.findIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
             }
 
             @Nested class findLastIndex {
@@ -947,43 +947,43 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
             @Nested class findLastIndexIndexed {
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback1AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedAlias().execute(it -> it.findLastIndexIndexed(callback2AltAsTrue, null, null)).amountOfCall); }
             }
             @Nested class findLastIndexIndexedOrNull {
                 @DisplayName("() → boolean")                   @Test void test0Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue)).amountOfCall); }
-                @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
-                @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
+                @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue)).amountOfCall); }
+                @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue)).amountOfCall); }
                 @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue, 1)).amountOfCall); }
-                @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 1)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 1)).amountOfCall); }
                 @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, null)).amountOfCall); }
                 @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 1, 2)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 1, 2)).amountOfCall); }
                 @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, 0, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, 0, null)).amountOfCall); }
                 @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback0AsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
-                @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback1AltAsTrue, null, null)).amountOfCall); }
+                @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertEquals(1, new GenericCollectionHolder_IndexOfLastIndexedOrNullAlias().execute(it -> it.findLastIndexIndexedOrNull(callback2AltAsTrue, null, null)).amountOfCall); }
             }
         }
 
@@ -1029,677 +1029,677 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class findFirstIndex {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndex(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndex(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndex(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndex(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndex(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndex(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndex(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndex(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback2AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
-            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int")            @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int")                            @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback2AsTrue, null, null)); }
-       }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
+            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndex(ABC,                                    callback0AsTrue, null, null)); }
+        }
         @Nested class findIndex {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndex(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndex(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndex(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndex(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndex(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndex(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndex(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndex(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndex(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndex(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndex(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndex(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndex(ABC,                                    callback2AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
-            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int")            @Test void normal2ArgNullNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int")                            @Test void array2ArgNullNull()      { assertEquals(0, findIndex(ABC,                                    callback2AsTrue, null, null)); }
-       }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
+            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findIndex(ABC,                                    callback0AsTrue, null, null)); }
+        }
         @Nested class findFirstIndexOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback2AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
-            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback2AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
+            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndexOrNull(ABC,                                    callback0AsTrue, null, null)); }
         }
         @Nested class findIndexOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndexOrNull(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndexOrNull(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndexOrNull(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndexOrNull(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback2AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback2AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
         }
         @Nested class findFirstIndexIndexed {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
         }
         @Nested class findIndexIndexed {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndexIndexed(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(1, findIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndexIndexed(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndexIndexed(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(1, findIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndexIndexed(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
         }
         @Nested class findFirstIndexIndexedOrNull {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findFirstIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findFirstIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
         }
         @Nested class findIndexIndexedOrNull {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(1, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(1, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(1, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(0, findIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(0, findIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(0, findIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
         }
 
         @Nested class findLastIndex {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
-            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int")            @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int")                            @Test void array2ArgNullNull()      { assertEquals(2, findLastIndex(ABC,                                    callback2AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndex(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndex(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndex(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
+            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndex(ABC,                                    callback0AsTrue, null, null)); }
         }
         @Nested class findLastIndexOrNull {
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
-            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
-            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue)); }
             @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
-            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue)); }
+            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
+            @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
+            @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1)); }
             @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
-            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1)); }
+            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
+            @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null)); }
             @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
-            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null)); }
+            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
+            @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 1, 2)); }
             @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
-            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 1, 2)); }
+            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
+            @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, 0, null)); }
             @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
-            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, 0, null)); }
+            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
+            @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback2AsTrue, null, null)); }
             @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback2AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback1AsTrue, null, null)); }
+            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback1AsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndexOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndexOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
+            @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndexOrNull(ABC,                                    callback0AsTrue, null, null)); }
         }
         @Nested class findLastIndexIndexed {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndexIndexed(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndexIndexed(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(2, findLastIndexIndexed(ABC,                                    callback2AltAsTrue, null, null)); }
         }
         @Nested class findLastIndexIndexedOrNull {
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
+            @DisplayName("T[], (int, T) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean")                @Test void minimalist1Arg()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean")                          @Test void normal1Arg()             { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
+            @DisplayName("T[], (int) → boolean")                                          @Test void array1Arg()              { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean")                   @Test void minimalist0Arg()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue)); }
             @DisplayName("CollectionHolder<T>, () → boolean")                             @Test void normal0Arg()             { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue)); }
             @DisplayName("T[], () → boolean")                                             @Test void array0Arg()              { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean")                  @Test void minimalist1Arg()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean")                            @Test void normal1Arg()             { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue)); }
-            @DisplayName("T[], (T) → boolean")                                            @Test void array1Arg()              { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean")             @Test void minimalist2Arg()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean")                       @Test void normal2Arg()             { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue)); }
-            @DisplayName("T[], (T, int) → boolean")                                       @Test void array2Arg()              { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
+            @DisplayName("T[], (int, T) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int")           @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int")                     @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
+            @DisplayName("T[], (int) → boolean, int")                                     @Test void array1ArgFrom()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int")              @Test void minimalist0ArgFrom()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int")                        @Test void normal0ArgFrom()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1)); }
             @DisplayName("T[], () → boolean, int")                                        @Test void array0ArgFrom()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int")             @Test void minimalist1ArgFrom()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int")                       @Test void normal1ArgFrom()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1)); }
-            @DisplayName("T[], (T) → boolean, int")                                       @Test void array1ArgFrom()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int")        @Test void minimalist2ArgFrom()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int")                  @Test void normal2ArgFrom()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1)); }
-            @DisplayName("T[], (T, int) → boolean, int")                                  @Test void array2ArgFrom()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?")          @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?")                    @Test void normal1ArgNull()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
+            @DisplayName("T[], (int) → boolean, int?")                                    @Test void array1ArgNull()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?")             @Test void minimalist0ArgNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?")                       @Test void normal0ArgNull()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null)); }
             @DisplayName("T[], () → boolean, int?")                                       @Test void array0ArgNull()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?")            @Test void minimalist1ArgNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?")                      @Test void normal1ArgNull()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null)); }
-            @DisplayName("T[], (T) → boolean, int?")                                      @Test void array1ArgNull()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?")       @Test void minimalist2ArgNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?")                 @Test void normal2ArgNull()         { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?")                                 @Test void array2ArgNull()          { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int, T) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int")      @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int")                @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
+            @DisplayName("T[], (int) → boolean, int, int")                                @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int")         @Test void minimalist0ArgFromTo()   { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 1, 2)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int")                   @Test void normal0ArgFromTo()       { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 1, 2)); }
             @DisplayName("T[], () → boolean, int, int")                                   @Test void array0ArgFromTo()        { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int")        @Test void minimalist1ArgFromTo()   { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int")                  @Test void normal1ArgFromTo()       { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T) → boolean, int, int")                                  @Test void array1ArgFromTo()        { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 1, 2)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int")   @Test void minimalist2ArgFromTo()   { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 1, 2)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int")             @Test void normal2ArgFromTo()       { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 1, 2)); }
-            @DisplayName("T[], (T, int) → boolean, int, int")                             @Test void array2ArgFromTo()        { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 1, 2)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int, T) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int, int?")     @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int, int?")               @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
+            @DisplayName("T[], (int) → boolean, int, int?")                               @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int, int?")        @Test void minimalist0ArgFromNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, 0, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int, int?")                  @Test void normal0ArgFromNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, 0, null)); }
             @DisplayName("T[], () → boolean, int, int?")                                  @Test void array0ArgFromNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int, int?")       @Test void minimalist1ArgFromNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int, int?")                 @Test void normal1ArgFromNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T) → boolean, int, int?")                                 @Test void array1ArgFromNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, 0, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int, int?")  @Test void minimalist2ArgFromNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, 0, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int, int?")            @Test void normal2ArgFromNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, 0, null)); }
-            @DisplayName("T[], (T, int) → boolean, int, int?")                            @Test void array2ArgFromNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, 0, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int, T) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int, T) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
+            @DisplayName("T[], (int, T) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
+            @DisplayName("MinimalistCollectionHolder<T>, (int) → boolean, int?, int?")    @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
+            @DisplayName("CollectionHolder<T>, (int) → boolean, int?, int?")              @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
+            @DisplayName("T[], (int) → boolean, int?, int?")                              @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
             @DisplayName("MinimalistCollectionHolder<T>, () → boolean, int?, int?")       @Test void minimalist0ArgNullNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback0AsTrue, null, null)); }
             @DisplayName("CollectionHolder<T>, () → boolean, int?, int?")                 @Test void normal0ArgNullNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback0AsTrue, null, null)); }
             @DisplayName("T[], () → boolean, int?, int?")                                 @Test void array0ArgNullNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback0AsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T) → boolean, int?, int?")      @Test void minimalist1ArgNullNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback1AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T) → boolean, int?, int?")                @Test void normal1ArgNullNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback1AltAsTrue, null, null)); }
-            @DisplayName("T[], (T) → boolean, int?, int?")                                @Test void array1ArgNullNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback1AltAsTrue, null, null)); }
-            @DisplayName("MinimalistCollectionHolder<T>, (T, int) → boolean, int?, int?") @Test void minimalist2ArgNullNull() { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsMinimalistCollection<>(ABC), callback2AltAsTrue, null, null)); }
-            @DisplayName("CollectionHolder<T>, (T, int) → boolean, int?, int?")           @Test void normal2ArgNullNull()     { assertEquals(2, findLastIndexIndexedOrNull(new ArrayAsCollection<>(ABC),           callback2AltAsTrue, null, null)); }
-            @DisplayName("T[], (T, int) → boolean, int?, int?")                           @Test void array2ArgNullNull()      { assertEquals(2, findLastIndexIndexedOrNull(ABC,                                    callback2AltAsTrue, null, null)); }
         }
 
         //TODO add utility static method (index) call to have been called
@@ -1707,7 +1707,6 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @FieldSource("value.Instances#everyExtensionMethodInstancesAsArguments")
     @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class methods extends AbstractMethodsTests {
-
         //#region -------------------- Required test configuration --------------------
 
         public methods(final CollectionHolderForTest<?, ?> instance) { super(instance); }
@@ -1749,165 +1748,165 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
 
         @Nested class indexOfFirst {
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail)); }
             @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0)); }
             @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, 0,    null)); }
             @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirst(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfFirstOrNull {
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail)); }
             @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0)); }
             @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, 0,    null)); }
             @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstOrNull(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfFirstIndexed {
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail)); }
             @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail)); }
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null, null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfFirstIndexed(predicate0AsFail,    null, null)); }
         }
         @Nested class indexOfFirstIndexedOrNull {
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail)); }
             @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail)); }
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null, null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    null)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfFirstIndexedOrNull(predicate0AsFail,    null, null)); }
         }
 
         @Nested class indexOfLast {
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail)); }
             @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0)); }
             @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, 1)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null)); }
             @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, null)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, 1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, 1)); }
             @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, 0, null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, 0, null)); }
             @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLast(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfLastOrNull {
-            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail)); }
             @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0)); }
+            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail)); }
+            @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail)); }
             @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null)); }
+            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0)); }
             @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null)); }
+            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0,    1)); }
+            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0,    1)); }
+            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, 0,    null)); }
+            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, 0,    null)); }
             @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate2AsFail, null, null)); }
+            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate1AsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastOrNull(predicate0AsFail, null, null)); }
         }
         @Nested class indexOfLastIndexed {
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail)); }
             @DisplayName("() → boolean")                   @Test void test0Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail)); }
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null, null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertThrowsExactly(emptyExceptionClass(), () -> methods.this.<String>getInstance().indexOfLastIndexed(predicate0AsFail,    null, null)); }
         }
         @Nested class indexOfLastIndexedOrNull {
+            @DisplayName("(int, T) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail)); }
+            @DisplayName("(int) → boolean")                @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail)); }
             @DisplayName("() → boolean")                   @Test void test0Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail)); }
-            @DisplayName("(T) → boolean")                  @Test void test1Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail)); }
-            @DisplayName("(T, int) → boolean")             @Test void test2Arg()         { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail)); }
-            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail, 0)); }
-            @DisplayName("(T) → boolean, int")             @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0)); }
-            @DisplayName("(T, int) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0)); }
-            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail, null)); }
-            @DisplayName("(T) → boolean, int?")            @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null)); }
-            @DisplayName("(T, int) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null)); }
-            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail, 0, 1)); }
-            @DisplayName("(T) → boolean, int, int")        @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0, 1)); }
-            @DisplayName("(T, int) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0, 1)); }
-            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail, 0, null)); }
-            @DisplayName("(T) → boolean, int, int?")       @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0, null)); }
-            @DisplayName("(T, int) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0, null)); }
-            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail, null, null)); }
-            @DisplayName("(T) → boolean, int?, int?")      @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null, null)); }
-            @DisplayName("(T, int) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int, T) → boolean, int")        @Test void test2ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0)); }
+            @DisplayName("(int) → boolean, int")           @Test void test1ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0)); }
+            @DisplayName("() → boolean, int")              @Test void test0ArgFrom()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0)); }
+            @DisplayName("(int, T) → boolean, int?")       @Test void test2ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null)); }
+            @DisplayName("(int) → boolean, int?")          @Test void test1ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null)); }
+            @DisplayName("() → boolean, int?")             @Test void test0ArgNull()     { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    null)); }
+            @DisplayName("(int, T) → boolean, int, int")   @Test void test2ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    1)); }
+            @DisplayName("(int) → boolean, int, int")      @Test void test1ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    1)); }
+            @DisplayName("() → boolean, int, int")         @Test void test0ArgFromTo()   { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0,    1)); }
+            @DisplayName("(int, T) → boolean, int, int?")  @Test void test2ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, 0,    null)); }
+            @DisplayName("(int) → boolean, int, int?")     @Test void test1ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, 0,    null)); }
+            @DisplayName("() → boolean, int, int?")        @Test void test0ArgFromNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    0,    null)); }
+            @DisplayName("(int, T) → boolean, int?, int?") @Test void test2ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate2AltAsFail, null, null)); }
+            @DisplayName("(int) → boolean, int?, int?")    @Test void test1ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate1AltAsFail, null, null)); }
+            @DisplayName("() → boolean, int?, int?")       @Test void test0ArgNullNull() { assertNull(methods.this.<String>getInstance().indexOfLastIndexedOrNull(predicate0AsFail,    null, null)); }
         }
 
     }
@@ -1963,253 +1962,189 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @TestInstance(PER_CLASS) @Nested class indexOfFirst {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirst(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirst(predicate1AsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirst(predicate2AsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfFirst(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfFirst(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfFirst(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfFirst(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfFirst(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfFirst(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfFirst(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfFirst(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfFirst(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (T, int) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirst(predicate2AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (T) → boolean")       @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirst(predicate1AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirst(predicate0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfFirst(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfFirst(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfFirst(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfFirst(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfFirst(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfFirst(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfFirst(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfFirst(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfFirst(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirst(callback1AsFalse)).getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfFirstOrNull {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate1AsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate2AsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (T, int) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate2AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (T) → boolean")       @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate1AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstOrNull(predicate0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstOrNull(callback0AsFalse)).getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfFirstIndexed {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirstIndexed(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirstIndexed(predicate1AltAsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfFirstIndexed(predicate2AltAsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfFirstIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfFirstIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfFirstIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfFirstIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfFirstIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfFirstIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfFirstIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfFirstIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfFirstIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (int, T) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirstIndexed(predicate2AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (int) → boolean")     @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirstIndexed(predicate1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfFirstIndexed(predicate0AsFail))   .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfFirstIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (int) → true")      @Test void test1_1True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfFirstIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfFirstIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (int) → false")     @Test void test1_1False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfFirstIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → true")     @Test void test2_1True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfFirstIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfFirstIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → false")    @Test void test2_1False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfFirstIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → true")     @Test void test4_1True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfFirstIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfFirstIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → false")    @Test void test4_1False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfFirstIndexed(callback0AsFalse))   .getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfFirstIndexedOrNull {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate1AltAsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate2AltAsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (int, T) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate2AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (int) → boolean")     @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfFirstIndexedOrNull(predicate0AsFail))   .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → true")   @Test void test1_2true()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (int) → true")      @Test void test1_1true()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0true()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → false")  @Test void test1_2false() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (int) → false")     @Test void test1_1false() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0false() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → true")  @Test void test2_2true()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → true")     @Test void test2_1true()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0true()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → false") @Test void test2_2false() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → false")    @Test void test2_1false() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0false() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → true")  @Test void test42_true()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → true")     @Test void test41_true()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test40_true()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → false") @Test void test4_2false() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → false")    @Test void test4_1false() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0false() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfFirstIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
             }
 
             @TestInstance(PER_CLASS) @Nested class indexOfLast {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLast(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLast(predicate1AsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLast(predicate2AsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfLast(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfLast(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfLast(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfLast(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfLast(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfLast(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfLast(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfLast(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfLast(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (T, int) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLast(predicate2AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (T) → boolean")       @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLast(predicate1AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLast(predicate0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfLast(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfLast(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfLast(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfLast(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_1True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfLast(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfLast(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfLast(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfLast(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfLast(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLast(callback0AsFalse)).getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfLastOrNull {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate1AsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate2AsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback1AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback2AsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (T, int) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate2AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (T) → boolean")       @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate1AsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastOrNull(predicate0AsFail)).getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback2AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback1AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback0AsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback2AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback1AsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastOrNull(callback0AsFalse)).getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfLastIndexed {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLastIndexed(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLastIndexed(predicate1AltAsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it -> it.indexOfLastIndexed(predicate2AltAsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfLastIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(A).execute(                             it -> it.indexOfLastIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(                             it -> it.indexOfLastIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfLastIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(AB).execute(                             it -> it.indexOfLastIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(                             it -> it.indexOfLastIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfLastIndexed(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(ABCD).execute(                             it -> it.indexOfLastIndexed(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(                             it -> it.indexOfLastIndexed(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (int, T) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLastIndexed(predicate2AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (int) → boolean")     @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLastIndexed(predicate1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).executeWhileExpectingEmptyException(it ->  it.indexOfLastIndexed(predicate0AsFail))   .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → true")   @Test void test1_2True()  { assertEquals(1, newInstance(A)    .execute(it ->                              it.indexOfLastIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (int) → true")      @Test void test1_1True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfLastIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)    .execute(it ->                              it.indexOfLastIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → false")  @Test void test1_2False() { assertEquals(1, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (int) → false")     @Test void test1_1False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertEquals(0, newInstance(A)    .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)   .execute(it ->                              it.indexOfLastIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → true")     @Test void test2_1True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfLastIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)   .execute(it ->                              it.indexOfLastIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → false") @Test void test2_2False() { assertEquals(2, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → false")    @Test void test2_1False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertEquals(0, newInstance(AB)   .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → true")  @Test void test4_2True()  { assertEquals(1, newInstance(ABCD) .execute(it ->                              it.indexOfLastIndexed(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → true")     @Test void test4_1True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfLastIndexed(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD) .execute(it ->                              it.indexOfLastIndexed(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → false") @Test void test4_2False() { assertEquals(4, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → false")    @Test void test4_1False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertEquals(0, newInstance(ABCD) .executeWhileExpectingIndexOutOfBound(it -> it.indexOfLastIndexed(callback0AsFalse))   .getAmountOfCall()); }
             }
             @TestInstance(PER_CLASS) @Nested class indexOfLastIndexedOrNull {
-                @Nested class empty {
-                    @DisplayName("0 arguments") @Test void test0() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate0AsFail)).getAmountOfCall()); }
-                    @DisplayName("1 argument")  @Test void test1() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate1AltAsFail)).getAmountOfCall()); }
-                    @DisplayName("2 arguments") @Test void test2() { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate2AltAsFail)).getAmountOfCall()); }
-                }
-                @DisplayName("1 field") @Nested class Test1 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(1, newInstance(A).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("2 fields") @Nested class Test2 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(2, newInstance(AB).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
-                @DisplayName("4 fields") @Nested class Test4 {
-                    @DisplayName("true: 0 arguments")  @Test void true0()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 1 argument")   @Test void true1()  { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("true: 2 arguments")  @Test void true2()  { assertEquals(1, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 0 arguments") @Test void false0() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse)).getAmountOfCall()); }
-                    @DisplayName("false: 1 argument")  @Test void false1() { assertEquals(0, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)).getAmountOfCall()); }
-                    @DisplayName("false: 2 arguments") @Test void false2() { assertEquals(4, newInstance(ABCD).execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
-                }
+                @DisplayName("empty: (int, T) → boolean")  @Test void empty_2Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate2AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: (int) → boolean")     @Test void empty_1Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate1AltAsFail)).getAmountOfCall()); }
+                @DisplayName("empty: () → boolean")        @Test void empty_0Arg()   { assertEquals(0, newInstance(EMPTY).execute(it -> it.indexOfLastIndexedOrNull(predicate0AsFail))   .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → true")   @Test void test1_2true()  { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: (int) → true")      @Test void test1_1true()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("1 field: () → true")         @Test void test1_0true()  { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → false")  @Test void test1_2false() { assertEquals(1, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: (int) → false")     @Test void test1_1false() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("1 field: () → false")        @Test void test1_0false() { assertEquals(0, newInstance(A)    .execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → true")  @Test void test2_2true()  { assertEquals(1, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → true")     @Test void test2_1true()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0true()  { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → false") @Test void test2_2false() { assertEquals(2, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → false")    @Test void test2_1false() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0false() { assertEquals(0, newInstance(AB)   .execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → true")  @Test void test4_2true()  { assertEquals(1, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → true")     @Test void test4_1true()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0true()  { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback0AsTrue))    .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → false") @Test void test4_2false() { assertEquals(4, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback2AltAsFalse)).getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → false")    @Test void test4_1false() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback1AltAsTrue)) .getAmountOfCall()); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0false() { assertEquals(0, newInstance(ABCD) .execute(it -> it.indexOfLastIndexedOrNull(callback0AsFalse))   .getAmountOfCall()); }
             }
 
         }
@@ -2647,36 +2582,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).indexOfFirst(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback1AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback1AsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirst(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirst(callback2AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirst(callback2AsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback1AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback1AsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback2AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback2AsFalse)); }
-                }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(0,                                            newInstance(A)   .indexOfFirst(callback2AsTrue)); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(0,                                            newInstance(A)   .indexOfFirst(callback1AsTrue)); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0,                                            newInstance(A)   .indexOfFirst(callback0AsTrue)); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback2AsFalse)); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback1AsFalse)); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirst(callback0AsFalse)); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(0,                                            newInstance(AB)  .indexOfFirst(callback2AsTrue)); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertEquals(0,                                            newInstance(AB)  .indexOfFirst(callback1AsTrue)); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0,                                            newInstance(AB)  .indexOfFirst(callback0AsTrue)); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback2AsFalse)); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback1AsFalse)); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirst(callback0AsFalse)); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(0,                                            newInstance(ABCD).indexOfFirst(callback2AsTrue)); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(0,                                            newInstance(ABCD).indexOfFirst(callback1AsTrue)); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0,                                            newInstance(ABCD).indexOfFirst(callback0AsTrue)); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback2AsFalse)); }
+                @DisplayName("4 fields: (T) → false")      @Test void test3_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback1AsFalse)); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirst(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0,                                            newInstance(A).indexOfFirst(callbackIsA)); }
@@ -2802,36 +2725,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertNull(newInstance(EMPTY).indexOfFirstOrNull(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback1AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback1AsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback2AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback2AsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback1AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback1AsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstOrNull(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstOrNull(callback2AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstOrNull(callback2AsFalse)); }
-                }
+                @DisplayName("1 field: (T, int) → true")   @Test void test1_2True()  { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback2AsTrue)); }
+                @DisplayName("1 field: (T) → true")        @Test void test1_1True()  { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback1AsTrue)); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)   .indexOfFirstOrNull(callback0AsTrue)); }
+                @DisplayName("1 field: (T, int) → false")  @Test void test1_2False() { assertNull(     newInstance(A)   .indexOfFirstOrNull(callback2AsFalse)); }
+                @DisplayName("1 field: (T) → false")       @Test void test1_1False() { assertNull(     newInstance(A)   .indexOfFirstOrNull(callback1AsFalse)); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertNull(     newInstance(A)   .indexOfFirstOrNull(callback0AsFalse)); }
+                @DisplayName("2 fields: (T, int) → true")  @Test void test2_2True()  { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback2AsTrue)); }
+                @DisplayName("2 fields: (T) → true")       @Test void test2_1True()  { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback1AsTrue)); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)  .indexOfFirstOrNull(callback0AsTrue)); }
+                @DisplayName("2 fields: (T, int) → false") @Test void test2_2False() { assertNull(     newInstance(AB)  .indexOfFirstOrNull(callback2AsFalse)); }
+                @DisplayName("2 fields: (T) → false")      @Test void test2_1False() { assertNull(     newInstance(AB)  .indexOfFirstOrNull(callback1AsFalse)); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertNull(     newInstance(AB)  .indexOfFirstOrNull(callback0AsFalse)); }
+                @DisplayName("4 fields: (T, int) → true")  @Test void test4_2True()  { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback2AsTrue)); }
+                @DisplayName("4 fields: (T) → true")       @Test void test4_1True()  { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback1AsTrue)); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD).indexOfFirstOrNull(callback0AsTrue)); }
+                @DisplayName("4 fields: (T, int) → false") @Test void test4_2False() { assertNull(     newInstance(ABCD).indexOfFirstOrNull(callback2AsFalse)); }
+                @DisplayName("4 fields: (T) → false")      @Test void test4_1False() { assertNull(     newInstance(ABCD).indexOfFirstOrNull(callback1AsFalse)); }
+                @DisplayName("4 fields: () → false")       @Test void test3_0False() { assertNull(     newInstance(ABCD).indexOfFirstOrNull(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0, newInstance(A).indexOfFirstOrNull(callbackIsA)); }
@@ -2957,36 +2868,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).indexOfFirstIndexed(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback1AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback1AltAsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexed(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexed(callback2AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexed(callback2AltAsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback1AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback1AltAsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback2AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback2AltAsFalse)); }
-                }
+                @DisplayName("1 field: (int, T) → true")   @Test void test1_2True() { assertEquals(0,                                             newInstance(A)   .indexOfFirstIndexed(callback2AltAsTrue)); }
+                @DisplayName("1 field: (int) → true")      @Test void test1_1True() { assertEquals(0,                                             newInstance(A)   .indexOfFirstIndexed(callback1AltAsTrue)); }
+                @DisplayName("1 field: () → true")         @Test void test1_0True() { assertEquals(0,                                             newInstance(A)   .indexOfFirstIndexed(callback0AsTrue)); }
+                @DisplayName("1 field: (int, T) → false")  @Test void test1_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback2AltAsFalse)); }
+                @DisplayName("1 field: (int) → false")     @Test void test1_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback1AltAsFalse)); }
+                @DisplayName("1 field: () → false")        @Test void test1_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfFirstIndexed(callback0AsFalse)); }
+                @DisplayName("2 fields: (int, T) → true")  @Test void test2_2True() { assertEquals(0,                                             newInstance(AB)  .indexOfFirstIndexed(callback2AltAsTrue)); }
+                @DisplayName("2 fields: (int) → true")     @Test void test2_1True() { assertEquals(0,                                             newInstance(AB)  .indexOfFirstIndexed(callback1AltAsTrue)); }
+                @DisplayName("2 fields: () → true")        @Test void test2_0True() { assertEquals(0,                                             newInstance(AB)  .indexOfFirstIndexed(callback0AsTrue)); }
+                @DisplayName("2 fields: (int, T) → false") @Test void test2_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback2AltAsFalse)); }
+                @DisplayName("2 fields: (int) → false")    @Test void test2_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback1AltAsFalse)); }
+                @DisplayName("2 fields: () → false")       @Test void test2_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfFirstIndexed(callback0AsFalse)); }
+                @DisplayName("4 fields: (int, T) → true")  @Test void test4_2True() { assertEquals(0,                                             newInstance(ABCD).indexOfFirstIndexed(callback2AltAsTrue)); }
+                @DisplayName("4 fields: (int) → true")     @Test void test4_1True() { assertEquals(0,                                             newInstance(ABCD).indexOfFirstIndexed(callback1AltAsTrue)); }
+                @DisplayName("4 fields: () → true")        @Test void test4_0True() { assertEquals(0,                                             newInstance(ABCD).indexOfFirstIndexed(callback0AsTrue)); }
+                @DisplayName("4 fields: (int, T) → false") @Test void test4_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback2AltAsFalse)); }
+                @DisplayName("4 fields: (int) → false")    @Test void test4_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback1AltAsFalse)); }
+                @DisplayName("4 fields: () → false")       @Test void test4_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfFirstIndexed(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0,                                            newInstance(A).indexOfFirstIndexed(callbackIsAAlt)); }
@@ -3112,36 +3011,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertNull(newInstance(EMPTY).indexOfFirstIndexedOrNull(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
-                }
+                @DisplayName("1 field, (int, T) → true")   @Test void test1_2True()  { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("1 field, (int) → true")      @Test void test1_1True()  { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("1 field, (int, T) → false")  @Test void test1_2False() { assertNull(     newInstance(A)   .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("1 field, (int) → false")     @Test void test1_1False() { assertNull(     newInstance(A)   .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertNull(     newInstance(A)   .indexOfFirstIndexedOrNull(callback0AsFalse)); }
+                @DisplayName("2 fields, (int, T) → true")  @Test void test2_2True()  { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("2 fields, (int) → true")     @Test void test2_1True()  { assertEquals(0, newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("2 fields, (int, T) → false") @Test void test2_2False() { assertNull(     newInstance(AB)  .indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("2 fields, (int) → false")    @Test void test2_1False() { assertNull(     newInstance(AB)  .indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertNull(     newInstance(AB)  .indexOfFirstIndexedOrNull(callback0AsFalse)); }
+                @DisplayName("4 fields, (int, T) → true")  @Test void test4_2True()  { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("4 fields, (int) → true")     @Test void test4_1True()  { assertEquals(0, newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("4 fields, (int) → false")    @Test void test4_1False() { assertNull(     newInstance(ABCD).indexOfFirstIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("4 fields, (int, T) → false") @Test void test4_2False() { assertNull(     newInstance(ABCD).indexOfFirstIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertNull(     newInstance(ABCD).indexOfFirstIndexedOrNull(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0, newInstance(A).indexOfFirstIndexedOrNull(callbackIsAAlt)); }
@@ -3268,36 +3155,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).indexOfLast(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback1AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback1AsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLast(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLast(callback2AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLast(callback2AsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback1AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback1AsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback2AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback2AsFalse)); }
-                }
+                @DisplayName("1 field, (T, int) → true")   @Test void test1_2True()  { assertEquals(0,                                            newInstance(A)   .indexOfLast(callback2AsTrue)); }
+                @DisplayName("1 field, (T) → true")        @Test void test1_1True()  { assertEquals(0,                                            newInstance(A)   .indexOfLast(callback1AsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertEquals(0,                                            newInstance(A)   .indexOfLast(callback0AsTrue)); }
+                @DisplayName("1 field, (T, int) → false")  @Test void test1_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback2AsFalse)); }
+                @DisplayName("1 field, (T) → false")       @Test void test1_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback1AsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLast(callback0AsFalse)); }
+                @DisplayName("2 fields, (T, int) → true")  @Test void test2_2True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLast(callback2AsTrue)); }
+                @DisplayName("2 fields, (T) → true")       @Test void test2_1True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLast(callback1AsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLast(callback0AsTrue)); }
+                @DisplayName("2 fields, (T, int) → false") @Test void test2_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback2AsFalse)); }
+                @DisplayName("2 fields, (T) → false")      @Test void test2_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback1AsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLast(callback0AsFalse)); }
+                @DisplayName("4 fields, (T, int) → true")  @Test void test4_2True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLast(callback2AsTrue)); }
+                @DisplayName("4 fields, (T) → true")       @Test void test4_1True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLast(callback1AsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLast(callback0AsTrue)); }
+                @DisplayName("4 fields, (T, int) → false") @Test void test4_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback2AsFalse)); }
+                @DisplayName("4 fields, (T) → false")      @Test void test4_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback1AsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLast(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0,                                            newInstance(A).indexOfLast(callbackIsA)); }
@@ -3423,36 +3298,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertNull(newInstance(EMPTY).indexOfLastOrNull(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback1AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback1AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback1AsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback2AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback2AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback2AsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback1AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback1AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback1AsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastOrNull(callback2AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastOrNull(callback2AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastOrNull(callback2AsFalse)); }
-                }
+                @DisplayName("1 field, (T, int) → true")   @Test void test1_2True()  { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback2AsTrue)); }
+                @DisplayName("1 field, (T) → true")        @Test void test1_1True()  { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback1AsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)   .indexOfLastOrNull(callback0AsTrue)); }
+                @DisplayName("1 field, (T, int) → false")  @Test void test1_2False() { assertNull(     newInstance(A)   .indexOfLastOrNull(callback2AsFalse)); }
+                @DisplayName("1 field, (T) → false")       @Test void test1_1False() { assertNull(     newInstance(A)   .indexOfLastOrNull(callback1AsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertNull(     newInstance(A)   .indexOfLastOrNull(callback0AsFalse)); }
+                @DisplayName("2 fields, (T, int) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback2AsTrue)); }
+                @DisplayName("2 fields, (T) → true")       @Test void test2_1True()  { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback1AsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertEquals(1, newInstance(AB)  .indexOfLastOrNull(callback0AsTrue)); }
+                @DisplayName("2 fields, (T, int) → false") @Test void test2_2False() { assertNull(     newInstance(AB)  .indexOfLastOrNull(callback2AsFalse)); }
+                @DisplayName("2 fields, (T) → false")      @Test void test2_1False() { assertNull(     newInstance(AB)  .indexOfLastOrNull(callback1AsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertNull(     newInstance(AB)  .indexOfLastOrNull(callback0AsFalse)); }
+                @DisplayName("4 fields, (T, int) → true")  @Test void test4_2True()  { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback2AsTrue)); }
+                @DisplayName("4 fields, (T) → true")       @Test void test4_1True()  { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback1AsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertEquals(3, newInstance(ABCD).indexOfLastOrNull(callback0AsTrue)); }
+                @DisplayName("4 fields, (T, int) → false") @Test void test4_2False() { assertNull(     newInstance(ABCD).indexOfLastOrNull(callback2AsFalse)); }
+                @DisplayName("4 fields, (T) → false")      @Test void test4_1False() { assertNull(     newInstance(ABCD).indexOfLastOrNull(callback1AsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertNull(     newInstance(ABCD).indexOfLastOrNull(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0, newInstance(A).indexOfLastOrNull(callbackIsA)); }
@@ -3578,36 +3441,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertThrowsExactly(EmptyCollectionException.class, () -> newInstance(EMPTY).indexOfLastIndexed(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback1AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback1AltAsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexed(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexed(callback2AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexed(callback2AltAsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback1AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback1AltAsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback2AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback2AltAsFalse)); }
-                }
+                @DisplayName("1 field, (int, T) → true")   @Test void test1_2True()  { assertEquals(0,                                            newInstance(A)   .indexOfLastIndexed(callback2AltAsTrue)); }
+                @DisplayName("1 field, (int) → true")      @Test void test1_1True()  { assertEquals(0,                                            newInstance(A)   .indexOfLastIndexed(callback1AltAsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertEquals(0,                                            newInstance(A)   .indexOfLastIndexed(callback0AsTrue)); }
+                @DisplayName("1 field, (int, T) → false")  @Test void test1_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback2AltAsFalse)); }
+                @DisplayName("1 field, (int) → false")     @Test void test1_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback1AltAsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(A)   .indexOfLastIndexed(callback0AsFalse)); }
+                @DisplayName("2 fields, (int, T) → true")  @Test void test2_2True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLastIndexed(callback2AltAsTrue)); }
+                @DisplayName("2 fields, (int) → true")     @Test void test2_1True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLastIndexed(callback1AltAsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertEquals(1,                                            newInstance(AB)  .indexOfLastIndexed(callback0AsTrue)); }
+                @DisplayName("2 fields, (int, T) → false") @Test void test2_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback2AltAsFalse)); }
+                @DisplayName("2 fields, (int) → false")    @Test void test2_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback1AltAsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(AB)  .indexOfLastIndexed(callback0AsFalse)); }
+                @DisplayName("4 fields, (int, T) → true")  @Test void test4_2True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLastIndexed(callback2AltAsTrue)); }
+                @DisplayName("4 fields, (int) → true")     @Test void test4_1True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLastIndexed(callback1AltAsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertEquals(3,                                            newInstance(ABCD).indexOfLastIndexed(callback0AsTrue)); }
+                @DisplayName("4 fields, (int, T) → false") @Test void test4_2False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback2AltAsFalse)); }
+                @DisplayName("4 fields, (int) → false")    @Test void test4_1False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback1AltAsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertThrowsExactly(IndexOutOfBoundsException.class, () -> newInstance(ABCD).indexOfLastIndexed(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0,                                            newInstance(A).indexOfLastIndexed(callbackIsAAlt)); }
@@ -3733,36 +3584,24 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("to (min)")   @Test void toMax()      { assertNull(newInstance(EMPTY).indexOfLastIndexedOrNull(predicate0AsFail, null, MAX_INT_VALUE)); }
             }
             @DisplayName("boolean callbacks") @TestInstance(PER_CLASS) @Nested class BooleanCallbacks {
-                @DisplayName("true: 0 arguments") @Nested class True0 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsTrue)); }
-                }
-                @DisplayName("true: 1 argument") @Nested class True1 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsTrue)); }
-                }
-                @DisplayName("true: 2 arguments") @Nested class True2 {
-                    @DisplayName("1 field")  @Test void test1() { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("2 fields") @Test void test2() { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
-                    @DisplayName("4 fields") @Test void test4() { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsTrue)); }
-                }
-                @DisplayName("false: 0 arguments") @Nested class False0 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsFalse)); }
-                }
-                @DisplayName("false: 1 argument") @Nested class False1 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsFalse)); }
-                }
-                @DisplayName("false: 2 arguments") @Nested class False2 {
-                    @DisplayName("1 field")  @Test void test1() { assertNull(newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("2 fields") @Test void test2() { assertNull(newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
-                    @DisplayName("4 fields") @Test void test4() { assertNull(newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsFalse)); }
-                }
+                @DisplayName("1 field, (int, T) → true")   @Test void test1_2True()  { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("1 field, (int) → true")      @Test void test1_1True()  { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("1 field, () → true")         @Test void test1_0True()  { assertEquals(0, newInstance(A)   .indexOfLastIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("1 field, (int, T) → false")  @Test void test1_2False() { assertNull(     newInstance(A)   .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("1 field, (int) → false")     @Test void test1_1False() { assertNull(     newInstance(A)   .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("1 field, () → false")        @Test void test1_0False() { assertNull(     newInstance(A)   .indexOfLastIndexedOrNull(callback0AsFalse)); }
+                @DisplayName("2 fields, (int, T) → true")  @Test void test2_2True()  { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("2 fields, (int) → true")     @Test void test2_1True()  { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("2 fields, () → true")        @Test void test2_0True()  { assertEquals(1, newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("2 fields, (int, T) → false") @Test void test2_2False() { assertNull(     newInstance(AB)  .indexOfLastIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("2 fields, (int) → false")    @Test void test2_1False() { assertNull(     newInstance(AB)  .indexOfLastIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("2 fields, () → false")       @Test void test2_0False() { assertNull(     newInstance(AB)  .indexOfLastIndexedOrNull(callback0AsFalse)); }
+                @DisplayName("4 fields, (int, T) → true")  @Test void test4_2True()  { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsTrue)); }
+                @DisplayName("4 fields, (int) → true")     @Test void test4_1True()  { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsTrue)); }
+                @DisplayName("4 fields, () → true")        @Test void test4_0True()  { assertEquals(3, newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsTrue)); }
+                @DisplayName("4 fields, (int, T) → false") @Test void test4_2False() { assertNull(     newInstance(ABCD).indexOfLastIndexedOrNull(callback2AltAsFalse)); }
+                @DisplayName("4 fields, (int) → false")    @Test void test4_1False() { assertNull(     newInstance(ABCD).indexOfLastIndexedOrNull(callback1AltAsFalse)); }
+                @DisplayName("4 fields, () → false")       @Test void test4_0False() { assertNull(     newInstance(ABCD).indexOfLastIndexedOrNull(callback0AsFalse)); }
             }
             @DisplayName("1 field") @Nested class Test1 {
                                   @Test void a()     { assertEquals(0, newInstance(A).indexOfLastIndexedOrNull(callbackIsAAlt)); }

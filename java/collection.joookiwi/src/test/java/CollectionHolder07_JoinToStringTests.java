@@ -280,6 +280,56 @@ import static value.Arrays.EMPTY;
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_arguments")
         @ParameterizedTest(name = "{0}") @DisplayName("prefix + postfix + truncate") void prefix_postfix_truncate(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals("{>", invokeMethod(instance, "joinToString", types, values)); }
 
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_1Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_nullTransform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
@@ -306,107 +356,7 @@ import static value.Arrays.EMPTY;
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_0Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_0Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
         @ParameterizedTest(name = "{0}") @DisplayName("transform") void transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(instance, "joinToString", types, values)); }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_1Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments")
@@ -432,57 +382,57 @@ import static value.Arrays.EMPTY;
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
         @ParameterizedTest(name = "{0}") @DisplayName("postfix + transform") void postfix_transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals("[>", invokeMethod(instance, "joinToString", types, values)); }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_1Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
@@ -508,57 +458,57 @@ import static value.Arrays.EMPTY;
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
         @ParameterizedTest(name = "{0}") @DisplayName("prefix + transform") void prefix_transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals("<]", invokeMethod(instance, "joinToString", types, values)); }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_0Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_1Transform_arguments")
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_1Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments")
@@ -584,6 +534,56 @@ import static value.Arrays.EMPTY;
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_2Transform_arguments")
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_2Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_1Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_0Transform_arguments")
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_0Transform_arguments")
         @ParameterizedTest(name = "{0}") @DisplayName("prefix + postfix + transform") void prefix_postfix_transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals("{>", invokeMethod(instance, "joinToString", types, values)); }
 
     }
@@ -649,15 +649,15 @@ import static value.Arrays.EMPTY;
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_0Limit_anyTruncate_anyFailCallbacks_arguments")
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 0 + transform") void limit0Transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_2Callbacks_arguments")
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 2") void limit1Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(A).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
 
              }
 
@@ -691,21 +691,21 @@ import static value.Arrays.EMPTY;
 
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_0Limit_anyTruncate_anyFailCallbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 0 + transform") void limit0Transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 2") void limit1Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_0Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_1Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_2Callbacks_arguments")
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 2") void limit2Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_1Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_0Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(AB).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
 
             }
 
@@ -747,33 +747,33 @@ import static value.Arrays.EMPTY;
 
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_0Limit_anyTruncate_anyFailCallbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 0 + transform") void limit0Transform(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 0") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 2") void limit1Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 0") void limit2Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 1") void limit1Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(1, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_1Limit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 1 + transform 0") void limit1Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 2") void limit2Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_3Limit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 3 + transform 0") void limit3Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_3Limit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 3 + transform 0") void limit3Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(3, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 1") void limit2Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(2, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_2Limit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 2 + transform 0") void limit2Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_3Limit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 3 + transform 0") void limit3Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(3, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_4Limit_anyTruncate_0Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 4 + transform 0") void limit4Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_4Limit_anyTruncate_1Callbacks_arguments")
-                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
-                @ParameterizedTest(name = "{0}") @DisplayName("limit 4 + transform 1") void limit4Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(4, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_3Limit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 3 + transform 0") void limit3Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(3, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_3Limit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 3 + transform 0") void limit3Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_4Limit_anyTruncate_2Callbacks_arguments")
                 @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_2Callbacks_arguments")
                 @ParameterizedTest(name = "{0}") @DisplayName("limit 4 + transform 2") void limit4Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(4, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_4Limit_anyTruncate_1Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_1Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 4 + transform 1") void limit4Transform1(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(4, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_4Limit_anyTruncate_0Callbacks_arguments")
+                @FieldSource("value.JoinToStringValues#anySeparator_anyPrefix_anyPostfix_nullLimit_anyTruncate_0Callbacks_arguments")
+                @ParameterizedTest(name = "{0}") @DisplayName("limit 4 + transform 0") void limit4Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { assertEquals(0, newInstance(ABCD).execute(it -> invokeMethod(it, "joinToString", types, values)).getAmountOfCall()); }
 
             }
 
@@ -2332,102 +2332,37 @@ import static value.Arrays.EMPTY;
 
         }
 
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, …]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2436,89 +2371,154 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, ‥]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, …]",               invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, …]",               invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, …]",          invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, …]",     invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, ‥]",               invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, ‥]",               invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, ‥]",          invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, ‥]",     invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2527,63 +2527,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2592,89 +2592,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("prefix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("prefix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2683,63 +2683,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, …]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, …]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2748,154 +2748,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, ‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, ‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2904,89 +2839,154 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("prefix + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("prefix + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("separator + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("separator + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -2995,63 +2995,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;…]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;…]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;…]",                invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;…]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;…]",             invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;…]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;…]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;…]",        invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3060,89 +3060,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;‥]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;‥]",                  invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;‥]",                invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;‥]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;‥]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;‥]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;‥]",             invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;‥]",        invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3151,63 +3151,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("[>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3216,154 +3216,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("[>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3372,89 +3307,154 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("<]",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3463,63 +3463,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("{>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -3528,57 +3528,57 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("{>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_0Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_2Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
 
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_1Transform_arguments")
@@ -4830,102 +4830,37 @@ import static value.Arrays.EMPTY;
             @DisplayName("4 fields") @Test void test4() { assertEquals("{A;B;C;D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
 
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, …]",               invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, …]",               invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, …]",          invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, …]",     invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -4934,89 +4869,154 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, ‥]",               invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, ‥]",               invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, …]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, ‥]",          invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, ‥]",     invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B]",             invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D]",   invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, ‥]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit2_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5025,63 +5025,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5090,89 +5090,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("prefix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("prefix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5181,63 +5181,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, …]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, …]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, …]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5246,154 +5246,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, ‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, ‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, ‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A, 1:B]",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A, 1:B, 2:C, 3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E, E]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E, E, E, E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Prefix_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5402,89 +5337,154 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",            invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",         invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",                 invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",              invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("prefix + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Prefix_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",                   invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",                invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A, 1:B>",           invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A, 1:B, 2:C, 3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Prefix_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, ‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, ‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("prefix + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Prefix_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E, E>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E, E, E, E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("separator + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("separator + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5493,63 +5493,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;…]",                invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;…]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;…]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;…]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;…]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;…]",             invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;…]",        invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;…]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5558,89 +5558,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;‥]",                invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;‥]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;‥]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;‥]",                  invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;‥]",            invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;‥]",                invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;‥]",        invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;‥]",             invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A]",                  invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B]",              invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D]",      invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E]",                  invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5649,63 +5649,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5714,89 +5714,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("[>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5805,63 +5805,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("<]",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5870,89 +5870,89 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("<]",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("<]",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<E]",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<E;E]",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<E;E;E;E]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<0:A]",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<0:A;1:B]",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<0:A;1:B;2:C;3:D]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_nullLimit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 0 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 0 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Postfix_Limit0_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit0_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -5961,63 +5961,63 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit1_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit1_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 2 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Limit2_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("{>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 2 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 3 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit2_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit3_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 3 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 4 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit3_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit4_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_nullTruncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 4 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 0 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit4_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_0Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 0 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit0_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Postfix_Limit0_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit0_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
@@ -6026,57 +6026,57 @@ import static value.Arrays.EMPTY;
             @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit1_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit1_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+
+            //#endregion -------------------- Required test constructor --------------------
+
+                                     @Test void empty() { assertEquals("{>",    invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+        }
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 2 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Truncated_Transform0 extends AbstractReflectionTests {
+            //#region -------------------- Required test constructor --------------------
+
+            public Separator_Prefix_Postfix_Limit2_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("{>",      invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",   invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",     invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_2Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 2 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit2_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 3 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit2_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit3_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",          invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",   invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_3Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 3 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit3_Truncated_Transform2 extends AbstractReflectionTests {
+        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_0Transform_arguments")
+        @DisplayName("separator + prefix + postfix + limit 4 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Truncated_Transform0 extends AbstractReflectionTests {
             //#region -------------------- Required test constructor --------------------
 
-            public Separator_Prefix_Postfix_Limit3_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
+            public Separator_Prefix_Postfix_Limit4_Truncated_Transform0(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>",              invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",           invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
-        }
-        @FieldSource("value.JoinToStringValues#separator_prefix_postfix_4Limit_truncated_2Transform_arguments")
-        @DisplayName("separator + prefix + postfix + limit 4 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit4_Truncated_Transform2 extends AbstractReflectionTests {
-            //#region -------------------- Required test constructor --------------------
-
-            public Separator_Prefix_Postfix_Limit4_Truncated_Transform2(final @Nullable Object @Unmodifiable [] values, final Class<?> @Unmodifiable [] types) { super(values, types); }
-
-            //#endregion -------------------- Required test constructor --------------------
-
-                                     @Test void empty() { assertEquals("{>",                invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{0:A>",             invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{0:A;1:B>",         invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{0:A;1:B;2:C;3:D>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{E>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{E;E>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{E;E;E;E>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
 
     }
