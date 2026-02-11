@@ -1,16 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="CollectionHolder (every tests)" type="JUnit" factoryName="JUnit">
-    <module name="Collection_(Java).test" />
-    <option name="PACKAGE_NAME" value="" />
-    <option name="MAIN_CLASS_NAME" value="" />
-    <option name="METHOD_NAME" value="" />
-    <option name="TEST_OBJECT" value="package" />
-    <dir value="$PROJECT_DIR$/src/test/java" />
-    <patterns>
-      <pattern testClass="CollectionHolder*+" />
-    </patterns>
-    <method v="2">
-      <option name="Make" enabled="true" />
-    </method>
+  <configuration default="false" name="CollectionHolder (every tests)" type="CompoundRunConfigurationType">
+    <toRun name="all / any / none" type="JUnit" />
+    <toRun name="filter" type="JUnit" />
+    <toRun name="find" type="JUnit" />
+    <toRun name="has" type="JUnit" />
+    <toRun name="index" type="JUnit" />
+    <toRun name="joinToString" type="JUnit" />
+    <toRun name="size" type="JUnit" />
+    <toRun name="value" type="JUnit" />
+    <method v="2" />
   </configuration>
 </component>
