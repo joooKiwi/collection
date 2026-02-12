@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolderFromArray}                                                                                           from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_AllAlias}                                                                                    from "./instance/GenericCollectionHolder_AllAlias"
 import {GenericCollectionHolder_AnyAlias}                                                                                    from "./instance/GenericCollectionHolder_AnyAlias"
 import {LazyGenericCollectionHolder_AnyAlias}                                                                                from "./instance/LazyGenericCollectionHolder_AnyAlias"
@@ -53,44 +52,44 @@ describe("CollectionHolderTest (all / any / none)", () => {
         describe("every", () => {
             test("all", () => {
                 const method = jest.spyOn(allModule, "all",)
-                every(A, callbackAsTrue0,)
+                every(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(allModule, "allByMinimalistCollectionHolder",)
-                everyByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                everyByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(allModule, "allByCollectionHolder",)
-                everyByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                everyByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(allModule, "allByArray",)
-                everyByArray(A, callbackAsTrue0,)
+                everyByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("some", () => {
             test("all", () => {
                 const method = jest.spyOn(anyModule, "any",)
-                some(A, callbackAsTrue0,)
+                some(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(anyModule, "anyByMinimalistCollectionHolder",)
-                someByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                someByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(anyModule, "anyByCollectionHolder",)
-                someByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                someByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(anyModule, "anyByArray",)
-                someByArray(A, callbackAsTrue0,)
+                someByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)

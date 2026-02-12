@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolderFromArray}                                                                                                                                                                                           from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_FirstIndexOfAlias}                                                                                                                                                                           from "./instance/GenericCollectionHolder_FirstIndexOfAlias"
 import {GenericCollectionHolder_FirstIndexOfOrNullAlias}                                                                                                                                                                     from "./instance/GenericCollectionHolder_FirstIndexOfOrNullAlias"
 import {GenericCollectionHolder_IndexOfFirstAlias}                                                                                                                                                                           from "./instance/GenericCollectionHolder_IndexOfFirstAlias"
@@ -140,44 +139,44 @@ describe("CollectionHolderTest (index)", () => {
         describe("indexOf", () => {
             test("all", () => {
                 const method = jest.spyOn(firstIndexOfModule, "firstIndexOf",)
-                indexOf(A, "a",)
+                indexOf(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByMinimalistCollectionHolder",)
-                indexOfByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), "a",)
+                indexOfByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByCollectionHolder",)
-                indexOfByCollectionHolder(new CollectionHolderFromArray(A,), "a",)
+                indexOfByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(firstIndexOfModule, "firstIndexOfByArray",)
-                indexOfByArray(A, "a",)
+                indexOfByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("indexOfOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNull",)
-                indexOfOrNull(A, "a",)
+                indexOfOrNull(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByMinimalistCollectionHolder",)
-                indexOfOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), "a",)
+                indexOfOrNullByMinimalistCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByCollectionHolder",)
-                indexOfOrNullByCollectionHolder(new CollectionHolderFromArray(A,), "a",)
+                indexOfOrNullByCollectionHolder(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(firstIndexOfOrNullModule, "firstIndexOfOrNullByArray",)
-                indexOfOrNullByArray(A, "a",)
+                indexOfOrNullByArray(null, null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -185,176 +184,176 @@ describe("CollectionHolderTest (index)", () => {
         describe("findFirstIndex", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirst",)
-                findFirstIndex(A, callbackAsTrue0,)
+                findFirstIndex(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByMinimalistCollectionHolder",)
-                findFirstIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByCollectionHolder",)
-                findFirstIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByArray",)
-                findFirstIndexByArray(A, callbackAsTrue0,)
+                findFirstIndexByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findIndex", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirst",)
-                findIndex(A, callbackAsTrue0,)
+                findIndex(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByMinimalistCollectionHolder",)
-                findIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByCollectionHolder",)
-                findIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstModule, "indexOfFirstByArray",)
-                findIndexByArray(A, callbackAsTrue0,)
+                findIndexByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findFirstIndexOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNull",)
-                findFirstIndexOrNull(A, callbackAsTrue0,)
+                findFirstIndexOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByMinimalistCollectionHolder",)
-                findFirstIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByCollectionHolder",)
-                findFirstIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByArray",)
-                findFirstIndexOrNullByArray(A, callbackAsTrue0,)
+                findFirstIndexOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findIndexOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNull",)
-                findIndexOrNull(A, callbackAsTrue0,)
+                findIndexOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByMinimalistCollectionHolder",)
-                findIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByCollectionHolder",)
-                findIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstOrNullModule, "indexOfFirstOrNullByArray",)
-                findIndexOrNullByArray(A, callbackAsTrue0,)
+                findIndexOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findFirstIndexIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexed",)
-                findFirstIndexIndexed(A, callbackAsTrue0,)
+                findFirstIndexIndexed(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByMinimalistCollectionHolder",)
-                findFirstIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexIndexedByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByCollectionHolder",)
-                findFirstIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexIndexedByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByArray",)
-                findFirstIndexIndexedByArray(A, callbackAsTrue0,)
+                findFirstIndexIndexedByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findIndexIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexed",)
-                findIndexIndexed(A, callbackAsTrue0,)
+                findIndexIndexed(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByMinimalistCollectionHolder",)
-                findIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexIndexedByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByCollectionHolder",)
-                findIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexIndexedByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstIndexedModule, "indexOfFirstIndexedByArray",)
-                findIndexIndexedByArray(A, callbackAsTrue0,)
+                findIndexIndexedByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findFirstIndexIndexedOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNull",)
-                findFirstIndexIndexedOrNull(A, callbackAsTrue0,)
+                findFirstIndexIndexedOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByMinimalistCollectionHolder",)
-                findFirstIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexIndexedOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByCollectionHolder",)
-                findFirstIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findFirstIndexIndexedOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByArray",)
-                findFirstIndexIndexedOrNullByArray(A, callbackAsTrue0,)
+                findFirstIndexIndexedOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findIndexIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNull",)
-                findIndexIndexedOrNull(A, callbackAsTrue0,)
+                findIndexIndexedOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByMinimalistCollectionHolder",)
-                findIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexIndexedOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByCollectionHolder",)
-                findIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findIndexIndexedOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfFirstIndexedOrNullModule, "indexOfFirstIndexedOrNullByArray",)
-                findIndexIndexedOrNullByArray(A, callbackAsTrue0,)
+                findIndexIndexedOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -362,88 +361,88 @@ describe("CollectionHolderTest (index)", () => {
         describe("findLastIndex", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfLastModule, "indexOfLast",)
-                findLastIndex(A, callbackAsTrue0,)
+                findLastIndex(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfLastModule, "indexOfLastByMinimalistCollectionHolder",)
-                findLastIndexByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfLastModule, "indexOfLastByCollectionHolder",)
-                findLastIndexByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfLastModule, "indexOfLastByArray",)
-                findLastIndexByArray(A, callbackAsTrue0,)
+                findLastIndexByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findLastIndexOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNull",)
-                findLastIndexOrNull(A, callbackAsTrue0,)
+                findLastIndexOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByMinimalistCollectionHolder",)
-                findLastIndexOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByCollectionHolder",)
-                findLastIndexOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfLastOrNullModule, "indexOfLastOrNullByArray",)
-                findLastIndexOrNullByArray(A, callbackAsTrue0,)
+                findLastIndexOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findLastIndexIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexed",)
-                findLastIndexIndexed(A, callbackAsTrue0,)
+                findLastIndexIndexed(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByMinimalistCollectionHolder",)
-                findLastIndexIndexedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexIndexedByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByCollectionHolder",)
-                findLastIndexIndexedByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexIndexedByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfLastIndexedModule, "indexOfLastIndexedByArray",)
-                findLastIndexIndexedByArray(A, callbackAsTrue0,)
+                findLastIndexIndexedByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("findLastIndexIndexedOrNull", () => {
             test("all", () => {
                 const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNull",)
-                findLastIndexIndexedOrNull(A, callbackAsTrue0,)
+                findLastIndexIndexedOrNull(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByMinimalistCollectionHolder",)
-                findLastIndexIndexedOrNullByMinimalistCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexIndexedOrNullByMinimalistCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByCollectionHolder",)
-                findLastIndexIndexedOrNullByCollectionHolder(new CollectionHolderFromArray(A,), callbackAsTrue0,)
+                findLastIndexIndexedOrNullByCollectionHolder(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(indexOfLastIndexedOrNullModule, "indexOfLastIndexedOrNullByArray",)
-                findLastIndexIndexedOrNullByArray(A, callbackAsTrue0,)
+                findLastIndexIndexedOrNullByArray(null, callbackAsTrue0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)

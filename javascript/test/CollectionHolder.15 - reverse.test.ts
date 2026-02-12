@@ -11,7 +11,6 @@
 //··························································
 
 import {expectToBeInstance}                                      from "./expect/expectToBeInstance"
-import {CollectionHolderFromArray}                               from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
 import {LazyGenericCollectionHolder_ToReverseAlias}              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY} from "./value/arrays"
@@ -49,44 +48,44 @@ describe("CollectionHolderTest (reverse)", () => {
         describe("toReversed", () => {
             test("all", () => {
                 const method = jest.spyOn(toReverseModule, "toReverse",)
-                toReversed(A,)
+                toReversed(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
-                toReversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
+                toReversedByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
-                toReversedByCollectionHolder(new CollectionHolderFromArray(A,),)
+                toReversedByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByArray",)
-                toReversedByArray(A,)
+                toReversedByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
         describe("reversed", () => {
             test("all", () => {
                 const method = jest.spyOn(toReverseModule, "toReverse",)
-                reversed(A,)
+                reversed(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByMinimalistCollectionHolder",)
-                reversedByMinimalistCollectionHolder(new CollectionHolderFromArray(A,),)
+                reversedByMinimalistCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByCollectionHolder",)
-                reversedByCollectionHolder(new CollectionHolderFromArray(A,),)
+                reversedByCollectionHolder(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(toReverseModule, "toReverseByArray",)
-                reversedByArray(A,)
+                reversedByArray(null,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
