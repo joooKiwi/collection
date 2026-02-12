@@ -2184,12 +2184,24 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Take --------------------
 
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final byte                                n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final short                               n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> take(final int                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final long                                n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final float                               n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final double                              n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> take(final @Nullable Integer                   n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final @Nullable Number                    n) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> take(final @Nullable Object @Nullable ...ignored) { return this; }
 
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final byte                                 n) { return take(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final short                                n) { return take(n); }
     @Contract(ALWAYS_THIS_1)                @Override public final EmptyCollectionHolder<T> limit(final int                                  n) { return take(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final long                                 n) { return take(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final float                                n) { return take(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final double                               n) { return take(n); }
     @Contract(ALWAYS_THIS_1)                @Override public final EmptyCollectionHolder<T> limit(final @Nullable Integer                    n) { return take(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final @Nullable Number                     n) { return take(n); }
     @Contract(ALWAYS_THIS_1) @Alias("take")           public final EmptyCollectionHolder<T> limit(final @Nullable Object @Nullable ... ignored) { return take(); }
 
     //#endregion -------------------- Take --------------------
@@ -2221,12 +2233,24 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Take while indexed --------------------
     //#region -------------------- Take last --------------------
 
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final byte                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final short                                n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> takeLast(final int                                  n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final long                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final float                                n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final double                               n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> takeLast(final @Nullable Integer                    n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final @Nullable Number                     n) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> takeLast(final @Nullable Object @Nullable ... ignored) { return this; }
 
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final byte                                 n) { return takeLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final short                                n) { return takeLast(n); }
     @Contract(ALWAYS_THIS_1)                    @Override public final EmptyCollectionHolder<T> limitLast(final int                                  n) { return takeLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final long                                 n) { return takeLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final float                                n) { return takeLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final double                               n) { return takeLast(n); }
     @Contract(ALWAYS_THIS_1)                    @Override public final EmptyCollectionHolder<T> limitLast(final @Nullable Integer                    n) { return takeLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final @Nullable Number                     n) { return takeLast(n); }
     @Contract(ALWAYS_THIS_1) @Alias("takeLast")           public final EmptyCollectionHolder<T> limitLast(final @Nullable Object @Nullable ... ignored) { return takeLast(); }
 
     //#endregion -------------------- Take last --------------------
