@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="CollectionHolder (every tests)" type="CompoundRunConfigurationType">
-    <toRun name="take" type="JUnit" />
+    <toRun name="drop" type="JUnit" />
     <toRun name="all / any / none" type="JUnit" />
     <toRun name="filter" type="JUnit" />
     <toRun name="find" type="JUnit" />
@@ -9,6 +9,7 @@
     <toRun name="joinToString" type="JUnit" />
     <toRun name="size" type="JUnit" />
     <toRun name="slice" type="JUnit" />
+    <toRun name="take" type="JUnit" />
     <toRun name="value" type="JUnit" />
     <method v="2" />
   </configuration>
