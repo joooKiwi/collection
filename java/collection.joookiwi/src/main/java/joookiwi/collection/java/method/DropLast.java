@@ -127,7 +127,7 @@ public final class DropLast
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0),});
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -138,7 +138,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0)});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.get(0),});
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
@@ -152,7 +152,7 @@ public final class DropLast
         final var size = collection.size();
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst(),});
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -163,7 +163,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst()});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection.getFirst(),});
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
@@ -177,7 +177,7 @@ public final class DropLast
 
         final var sizeMinus1 = size - 1;
         if (n == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0],});
         if (n > 0)
             if (n >= size)
                 return EmptyCollectionHolder.getInstance();
@@ -188,7 +188,7 @@ public final class DropLast
 
         final var n2 = n + size;
         if (n2 == sizeMinus1)
-            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0]});
+            return new GenericCollectionHolder<>(() -> (T[]) new Object[]{collection[0],});
         return new GenericCollectionHolder<>(__getAll(collection, size - n2));
     }
 
