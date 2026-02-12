@@ -72,11 +72,11 @@ public final class ReusableFields_Null {
     public static final @Nullable String                                           NULL_STRING = null;
     public static final @Nullable Character                                        NULL_CHARACTER = null;
 
-    public static final @Nullable ObjIntFunction<?, ? super String>                NULL_SUPPLIER2 = null;
-    public static final @Nullable IntObjFunction<?, ? super String>                NULL_SUPPLIER2_ALT = null;
-    public static final @Nullable Function<?, ? super String>                      NULL_SUPPLIER1 = null;
+    public static final @Nullable ObjIntFunction<? super String, ?>                NULL_SUPPLIER2 = null;
+    public static final @Nullable IntObjFunction<? super String, ?>                NULL_SUPPLIER2_ALT = null;
+    public static final @Nullable Function<? super String, ?>                      NULL_SUPPLIER1 = null;
     public static final @Nullable IntFunction<? extends String>                    NULL_SUPPLIER1_ALT = null;
-    public static final @Nullable Supplier<? extends String>                       NULL_SUPPLIER0 = null;
+    public static final @Nullable Supplier<?>                                      NULL_SUPPLIER0 = null;
     public static final @Nullable ObjIntPredicate<? super String>                  NULL_PREDICATE2 = null;
     public static final @Nullable IntObjPredicate<? super String>                  NULL_PREDICATE2_ALT = null;
     public static final @Nullable Predicate<? super String>                        NULL_PREDICATE1 = null;

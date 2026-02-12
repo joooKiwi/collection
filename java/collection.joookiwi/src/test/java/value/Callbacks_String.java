@@ -18,6 +18,12 @@ public final class Callbacks_String {
 
     @Contract(ALWAYS_FAIL_0) private Callbacks_String() { throw new Error("The utility class “Callbacks_String” cannot be constructed."); }
 
+    public static final Supplier<? super String>                         callbackAsString0 =    () -> "";
+    public static final Function<? super String, ? extends String>       callbackAsString1 =    _ -> "";
+    public static final IntFunction<? extends String>                    callbackAsString1Alt = _ -> "";
+    public static final ObjIntFunction<? super String, ? extends String> callbackAsString2 =    (_, _) -> "";
+    public static final IntObjFunction<? super String, ? extends String> callbackAsString2Alt = (_, _) -> "";
+
     public static final Supplier<? super String>                         callbackToString0 =         () -> "E";
     public static final Function<? extends String, ? super String>       callbackToUpperString1 =    String::toUpperCase;
     public static final IntFunction<? super String>                      callbackToUpperString1Alt = _ -> "E";
