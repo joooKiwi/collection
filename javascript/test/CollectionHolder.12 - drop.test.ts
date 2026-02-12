@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
 import {GenericCollectionHolder_DropAlias}                                                                                                                                                                                                                                                                                                                                                          from "./instance/GenericCollectionHolder_DropAlias"
 import {GenericCollectionHolder_DropLastAlias}                                                                                                                                                                                                                                                                                                                                                      from "./instance/GenericCollectionHolder_DropLastAlias"
 import {GenericCollectionHolder_DropLastWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/GenericCollectionHolder_DropLastWhileAlias"
@@ -51,18 +50,18 @@ describe("CollectionHolderTest (drop)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("drop",                 () => expectToBeInstance(instance, it => it.drop(),),)
-        test("skip",                 () => expectToBeInstance(instance, it => it.skip(),),)
-        test("dropWhile",            () => expectToBeInstance(instance, it => it.dropWhile(),),)
-        test("skipWhile",            () => expectToBeInstance(instance, it => it.skipWhile(),),)
-        test("dropWhileIndexed",     () => expectToBeInstance(instance, it => it.dropWhileIndexed(),),)
-        test("skipWhileIndexed",     () => expectToBeInstance(instance, it => it.skipWhileIndexed(),),)
-        test("dropLast",             () => expectToBeInstance(instance, it => it.dropLast(),),)
-        test("skipLast",             () => expectToBeInstance(instance, it => it.skipLast(),),)
-        test("dropLastWhile",        () => expectToBeInstance(instance, it => it.dropLastWhile(),),)
-        test("skipLastWhile",        () => expectToBeInstance(instance, it => it.skipLastWhile(),),)
-        test("dropLastWhileIndexed", () => expectToBeInstance(instance, it => it.dropLastWhileIndexed(),),)
-        test("skipLastWhileIndexed", () => expectToBeInstance(instance, it => it.skipLastWhileIndexed(),),)
+        test("drop",                 () => expect(instance.drop(),)                .toBe(instance,),)
+        test("skip",                 () => expect(instance.skip(),)                .toBe(instance,),)
+        test("dropWhile",            () => expect(instance.dropWhile(),)           .toBe(instance,),)
+        test("skipWhile",            () => expect(instance.skipWhile(),)           .toBe(instance,),)
+        test("dropWhileIndexed",     () => expect(instance.dropWhileIndexed(),)    .toBe(instance,),)
+        test("skipWhileIndexed",     () => expect(instance.skipWhileIndexed(),)    .toBe(instance,),)
+        test("dropLast",             () => expect(instance.dropLast(),)            .toBe(instance,),)
+        test("skipLast",             () => expect(instance.skipLast(),)            .toBe(instance,),)
+        test("dropLastWhile",        () => expect(instance.dropLastWhile(),)       .toBe(instance,),)
+        test("skipLastWhile",        () => expect(instance.skipLastWhile(),)       .toBe(instance,),)
+        test("dropLastWhileIndexed", () => expect(instance.dropLastWhileIndexed(),).toBe(instance,),)
+        test("skipLastWhileIndexed", () => expect(instance.skipLastWhileIndexed(),).toBe(instance,),)
     },)
 
     describe("aliases", () => {

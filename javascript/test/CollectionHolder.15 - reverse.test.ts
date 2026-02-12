@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                      from "./expect/expectToBeInstance"
 import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
 import {LazyGenericCollectionHolder_ToReverseAlias}              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY} from "./value/arrays"
@@ -30,9 +29,9 @@ describe("CollectionHolderTest (reverse)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("toReverse",  () => expectToBeInstance(instance, it => it.toReverse(),),)
-        test("toReversed", () => expectToBeInstance(instance, it => it.toReversed(),),)
-        test("reversed",   () => expectToBeInstance(instance, it => it.reversed(),),)
+        test("toReverse",  () => expect(instance.toReverse(),) .toBe(instance,),)
+        test("toReversed", () => expect(instance.toReversed(),).toBe(instance,),)
+        test("reversed",   () => expect(instance.reversed(),)  .toBe(instance,),)
     },)
 
     describe("aliases", () => {

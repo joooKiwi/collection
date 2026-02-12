@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                                                                                                        from "./expect/expectToBeInstance"
 import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL_B_NULL_D, NULL_x2, NULL_x4, UNDEFINED, UNDEFINED_x2, UNDEFINED_x4, UPPER_E, UPPER_EE, UPPER_EEEE} from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
@@ -25,10 +24,10 @@ describe("CollectionHolderTest (map)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("map",                 () => expectToBeInstance(instance, it => it.map(),),)
-        test("mapIndexed",          () => expectToBeInstance(instance, it => it.mapIndexed(),),)
-        test("mapNotNull",          () => expectToBeInstance(instance, it => it.mapNotNull(),),)
-        test("mapNotNullIndexed",   () => expectToBeInstance(instance, it => it.mapNotNullIndexed(),),)
+        test("map",                 () => expect(instance.map(),)              .toBe(instance,),)
+        test("mapIndexed",          () => expect(instance.mapIndexed(),)       .toBe(instance,),)
+        test("mapNotNull",          () => expect(instance.mapNotNull(),)       .toBe(instance,),)
+        test("mapNotNullIndexed",   () => expect(instance.mapNotNullIndexed(),).toBe(instance,),)
     },)
 
     describe("methods", () => {

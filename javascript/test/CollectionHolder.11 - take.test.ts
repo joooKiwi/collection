@@ -22,7 +22,6 @@ import {LazyGenericCollectionHolder_TakeLastWhileAlias}                         
 import {LazyGenericCollectionHolder_TakeLastWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                      from "./instance/LazyGenericCollectionHolder_TakeLastWhileIndexedAlias"
 import {LazyGenericCollectionHolder_TakeWhileAlias}                                                                                                                                                                                                                                                                                                                                                 from "./instance/LazyGenericCollectionHolder_TakeWhileAlias"
 import {LazyGenericCollectionHolder_TakeWhileIndexedAlias}                                                                                                                                                                                                                                                                                                                                          from "./instance/LazyGenericCollectionHolder_TakeWhileIndexedAlias"
-import {expectToBeInstance}                                                                                                                                                                                                                                                                                                                                                                         from "./expect/expectToBeInstance"
 import {A, AB, ABC, ABCD, B, BCD, CD, D, EMPTY}                                                                                                                                                                                                                                                                                                                                                     from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                                                                                                                                                                                                    from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
@@ -51,18 +50,18 @@ describe("CollectionHolderTest (take)", () => {
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
 
-        test("take",                  () => expectToBeInstance(instance, it => it.take(),),)
-        test("limit",                 () => expectToBeInstance(instance, it => it.limit(),),)
-        test("takeWhile",             () => expectToBeInstance(instance, it => it.takeWhile(),),)
-        test("limitWhile",            () => expectToBeInstance(instance, it => it.limitWhile(),),)
-        test("takeWhileIndexed",      () => expectToBeInstance(instance, it => it.takeWhileIndexed(),),)
-        test("limitWhileIndexed",     () => expectToBeInstance(instance, it => it.limitWhileIndexed(),),)
-        test("takeLast",              () => expectToBeInstance(instance, it => it.takeLast(),),)
-        test("limitLast",             () => expectToBeInstance(instance, it => it.limitLast(),),)
-        test("takeLastWhile",         () => expectToBeInstance(instance, it => it.takeLastWhile(),),)
-        test("limitLastWhile",        () => expectToBeInstance(instance, it => it.limitLastWhile(),),)
-        test("takeLastWhileIndexed",  () => expectToBeInstance(instance, it => it.takeLastWhileIndexed(),),)
-        test("limitLastWhileIndexed", () => expectToBeInstance(instance, it => it.limitLastWhileIndexed(),),)
+        test("take",                  () => expect(instance.take(),)                 .toBe(instance,),)
+        test("limit",                 () => expect(instance.limit(),)                .toBe(instance,),)
+        test("takeWhile",             () => expect(instance.takeWhile(),)            .toBe(instance,),)
+        test("limitWhile",            () => expect(instance.limitWhile(),)           .toBe(instance,),)
+        test("takeWhileIndexed",      () => expect(instance.takeWhileIndexed(),)     .toBe(instance,),)
+        test("limitWhileIndexed",     () => expect(instance.limitWhileIndexed(),)    .toBe(instance,),)
+        test("takeLast",              () => expect(instance.takeLast(),)             .toBe(instance,),)
+        test("limitLast",             () => expect(instance.limitLast(),)            .toBe(instance,),)
+        test("takeLastWhile",         () => expect(instance.takeLastWhile(),)        .toBe(instance,),)
+        test("limitLastWhile",        () => expect(instance.limitLastWhile(),)       .toBe(instance,),)
+        test("takeLastWhileIndexed",  () => expect(instance.takeLastWhileIndexed(),) .toBe(instance,),)
+        test("limitLastWhileIndexed", () => expect(instance.limitLastWhileIndexed(),).toBe(instance,),)
     },)
 
     describe("aliases", () => {

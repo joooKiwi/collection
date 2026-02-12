@@ -10,7 +10,6 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {expectToBeInstance}                                                                        from "./expect/expectToBeInstance"
 import {CollectionHolderFromArray}                                                                 from "./instance/CollectionHolderFromArray"
 import {CollectionIteratorFromArray}                                                               from "./instance/CollectionIteratorFromArray"
 import {_0, _01, _0123, _1, _2, _3, _4, _45, _4567, A, AB, ABC, ABCD, B, BC, BCD, C, CD, D, EMPTY} from "./value/arrays"
@@ -24,7 +23,11 @@ import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeExce
 
 describe("CollectionHolderTest (slice)", () => {
 
-    test("EmptyCollectionHolder", () => expectToBeInstance(EmptyCollectionHolder.get, it => it.slice(),),)
+    test("EmptyCollectionHolder", () => {
+        const instance = EmptyCollectionHolder.get
+
+        expect(instance.slice(),).toBe(instance,)
+    },)
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
