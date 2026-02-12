@@ -6,6 +6,7 @@
       <name>value.Callbacks</name>
       <name>value.Callbacks_Boolean</name>
       <name>value.Callbacks_Numeric</name>
+      <name>value.Callbacks_Null</name>
       <name>value.Callbacks_String</name>
       <name>value.ReusableFields</name>
       <name>value.ReusableFields_Null</name>
