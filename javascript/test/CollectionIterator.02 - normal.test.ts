@@ -33,7 +33,7 @@ describe("CollectionIteratorTest", () => {
         const collectionInstance = EmptyCollectionHolder.get
 
         beforeEach(() => instance = newEmptyIterator(),)
-        test("collection", () => expect(instance.collection,).toEqual(collectionInstance,),)
+        test("collection", () => expect(instance.collection,).toBe(collectionInstance,),)
 
         describe("index", () => {
             test("current",  () => expect(instance.currentIndex,).toBeNull(),)
