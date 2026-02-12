@@ -24,17 +24,17 @@ public final class Callbacks_String {
     public static final ObjIntFunction<? extends String, ? super String> callbackToUpperString2 =    (it, i) -> i + ":" + it.toUpperCase();
     public static final IntObjFunction<? extends String, ? super String> callbackToUpperString2Alt = (_, it) -> it.toUpperCase();
 
-    public static final Predicate<? super String> callbackIsA = it -> it.equals("a");
-    public static final Predicate<? super String> callbackIsB = it -> it.equals("b");
-    public static final Predicate<? super String> callbackIsC = it -> it.equals("c");
-    public static final Predicate<? super String> callbackIsD = it -> it.equals("d");
-    public static final Predicate<? super String> callbackIsE = it -> it.equals("e");
+    public static final Predicate<? super String> callbackIsA = "a"::equals;
+    public static final Predicate<? super String> callbackIsB = "b"::equals;
+    public static final Predicate<? super String> callbackIsC = "c"::equals;
+    public static final Predicate<? super String> callbackIsD = "d"::equals;
+    public static final Predicate<? super String> callbackIsE = "e"::equals;
 
-    public static final IntObjPredicate<? super String> callbackIsAAlt = (_, it) -> it.equals("a");
-    public static final IntObjPredicate<? super String> callbackIsBAlt = (_, it) -> it.equals("b");
-    public static final IntObjPredicate<? super String> callbackIsCAlt = (_, it) -> it.equals("c");
-    public static final IntObjPredicate<? super String> callbackIsDAlt = (_, it) -> it.equals("d");
-    public static final IntObjPredicate<? super String> callbackIsEAlt = (_, it) -> it.equals("e");
+    public static final IntObjPredicate<? super String> callbackIsAAlt = (_, it) -> "a".equals(it);
+    public static final IntObjPredicate<? super String> callbackIsBAlt = (_, it) -> "b".equals(it);
+    public static final IntObjPredicate<? super String> callbackIsCAlt = (_, it) -> "c".equals(it);
+    public static final IntObjPredicate<? super String> callbackIsDAlt = (_, it) -> "d".equals(it);
+    public static final IntObjPredicate<? super String> callbackIsEAlt = (_, it) -> "e".equals(it);
 
     public static final Predicate<? super String> callbackIsUnderA = it -> it.compareTo("a") < 0;
     public static final Predicate<? super String> callbackIsUnderB = it -> it.compareTo("b") < 0;
