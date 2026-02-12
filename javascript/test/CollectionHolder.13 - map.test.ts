@@ -70,6 +70,7 @@ describe("CollectionHolderTest (map)", () => {
                 test("4 fields: (number) → U",    () => expect(new instance(ABCD,) .executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString1,),).amountOfCall,).toBe(0,),)
                 test("4 fields: () → U",          () => expect(new instance(ABCD,) .executeWhileHavingIndexesOnField(it => it.mapIndexed(callbackAsString2,),).amountOfCall,).toBe(4,),)
             },)
+
             describe("mapNotNull", () => {
                 test("empty: (T, number) → U",    () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail0,),)  .amountOfCall,).toBe(0,),)
                 test("empty: (T) → U",            () => expect(new instance(EMPTY,).executeWhileHavingIndexesOnField(it => it.mapNotNull(callbackAsFail1,),)  .amountOfCall,).toBe(0,),)
