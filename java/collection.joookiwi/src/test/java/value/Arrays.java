@@ -57,8 +57,9 @@ public final class Arrays {
     public static final @Nullable String[] NULL_B =        {null,       "b",       };
     public static final @Nullable String[] NULL_AB =       {null, "a",  "b",       };
     public static final @Nullable String[] NULL_NULL_AB =  {null, null, "a",  "b", };
-    public static final @Nullable String[] A_NULL_C_NULL = {"a",  null, "c",  null,};
     public static final @Nullable String[] A_NULL_NULL_B = {"a",  null, null, "b", };
+    public static final @Nullable String[] A_NULL_C_NULL = {"a",  null, "c",  null,};
+    public static final @Nullable String[] NULL_B_NULL_D = {null, "b",  null, "d", };
 
     public static final String[] ABC = {"a", "b", "c",};
     public static final String[] ABD = {"a", "b", "d",};
