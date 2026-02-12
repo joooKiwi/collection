@@ -240,8 +240,8 @@ public final class DropWhile
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 var indexToRetrieve = index - 1;
                 var indexToAdd = -1;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection.get(index);
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection.get(indexToRetrieve);
                 return newArray;
             }
         return emptyArray();
@@ -256,8 +256,8 @@ public final class DropWhile
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 var indexToRetrieve = index - 1;
                 var indexToAdd = -1;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection[index];
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection[indexToAdd];
                 return newArray;
             }
         return emptyArray();
@@ -273,10 +273,10 @@ public final class DropWhile
             if (!predicate.test(value)) {
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 newArray[0] = value;
-                var indexToRetrieve = index - 1;
+                var indexToRetrieve = index;
                 var indexToAdd = 0;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection.get(index);
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection.get(indexToRetrieve);
                 return newArray;
             }
         }
@@ -292,10 +292,10 @@ public final class DropWhile
             if (!predicate.test(value)) {
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 newArray[0] = value;
-                var indexToRetrieve = index - 1;
+                var indexToRetrieve = index;
                 var indexToAdd = 0;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection[index];
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection[indexToRetrieve];
                 return newArray;
             }
         }
@@ -312,10 +312,10 @@ public final class DropWhile
             if (!predicate.test(value, index)) {
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 newArray[0] = value;
-                var indexToRetrieve = index - 1;
+                var indexToRetrieve = index;
                 var indexToAdd = 0;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection.get(index);
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection.get(indexToRetrieve);
                 return newArray;
             }
         }
@@ -331,10 +331,10 @@ public final class DropWhile
             if (!predicate.test(value, index)) {
                 @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size - index];
                 newArray[0] = value;
-                var indexToRetrieve = index - 1;
+                var indexToRetrieve = index;
                 var indexToAdd = 0;
-                while (++indexToRetrieve <= size)
-                    newArray[++indexToAdd] = collection[index];
+                while (++indexToRetrieve < size)
+                    newArray[++indexToAdd] = collection[indexToRetrieve];
                 return newArray;
             }
         }
