@@ -86,7 +86,9 @@ import static value.Callbacks_String.callbackIsEAlt;
 import static value.ReusableFields.EMPTY_ARRAY;
 import static value.ReusableFields_Null.NULL_PREDICATE0;
 import static value.ReusableFields_Null.NULL_PREDICATE1;
+import static value.ReusableFields_Null.NULL_PREDICATE1_ALT;
 import static value.ReusableFields_Null.NULL_PREDICATE2;
+import static value.ReusableFields_Null.NULL_PREDICATE2_ALT;
 import static value.ReusableFields_Null.NULL_VARARGS;
 
 @NotNullByDefault
@@ -104,8 +106,8 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
         @Nested class filterIndexed {
             @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.filterIndexed()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.filterIndexed(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.filterIndexed(NULL_PREDICATE1)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2Arg()      { assertSame(instance, instance.filterIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1Arg()      { assertSame(instance, instance.filterIndexed(NULL_PREDICATE1_ALT)); }
             @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.filterIndexed(NULL_PREDICATE0)); }
             @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.filterIndexed(NULL_VARARGS)); }
             @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.filterIndexed(EMPTY_ARRAY)); }
@@ -120,8 +122,8 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         }
         @Nested class filterNotIndexed {
             @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.filterNotIndexed()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.filterNotIndexed(NULL_PREDICATE2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.filterNotIndexed(NULL_PREDICATE1)); }
+            @DisplayName("null (int, T) → boolean") @Test void test2Arg()      { assertSame(instance, instance.filterNotIndexed(NULL_PREDICATE2_ALT)); }
+            @DisplayName("null (int) → boolean")    @Test void test1Arg()      { assertSame(instance, instance.filterNotIndexed(NULL_PREDICATE1_ALT)); }
             @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.filterNotIndexed(NULL_PREDICATE0)); }
             @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.filterNotIndexed(NULL_VARARGS)); }
             @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.filterNotIndexed(EMPTY_ARRAY)); }
