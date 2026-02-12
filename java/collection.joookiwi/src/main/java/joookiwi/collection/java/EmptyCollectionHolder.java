@@ -2283,12 +2283,24 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Drop --------------------
 
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final byte                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final short                                n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> drop(final int                                  n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final long                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final float                                n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final double                               n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> drop(final @Nullable Integer                    n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final @Nullable Number                     n) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> drop(final @Nullable Object @Nullable ... ignored) { return this; }
 
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final byte                                 n) { return drop(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final short                                n) { return drop(n); }
     @Contract(ALWAYS_THIS_1)                @Override public final EmptyCollectionHolder<T> skip(final int                                  n) { return drop(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final long                                 n) { return drop(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final float                                n) { return drop(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final double                               n) { return drop(n); }
     @Contract(ALWAYS_THIS_1)                @Override public final EmptyCollectionHolder<T> skip(final @Nullable Integer                    n) { return drop(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final @Nullable Number                     n) { return drop(n); }
     @Contract(ALWAYS_THIS_1) @Alias("drop")           public final EmptyCollectionHolder<T> skip(final @Nullable Object @Nullable ... ignored) { return drop(); }
 
     //#endregion -------------------- Drop --------------------
@@ -2320,12 +2332,24 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Drop while indexed --------------------
     //#region -------------------- Drop last --------------------
 
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final byte                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final short                                n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> dropLast(final int                                  n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final long                                 n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final float                                n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final double                               n) { return this; }
     @Contract(ALWAYS_THIS_1) @Override public EmptyCollectionHolder<T> dropLast(final @Nullable Integer                    n) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final @Nullable Number                     n) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyCollectionHolder<T> dropLast(final @Nullable Object @Nullable ... ignored) { return this; }
 
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final byte                                 n) { return dropLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final short                                n) { return dropLast(n); }
     @Contract(ALWAYS_THIS_1)                    @Override public final EmptyCollectionHolder<T> skipLast(final int                                  n) { return dropLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final long                                 n) { return dropLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final float                                n) { return dropLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final double                               n) { return dropLast(n); }
     @Contract(ALWAYS_THIS_1)                    @Override public final EmptyCollectionHolder<T> skipLast(final @Nullable Integer                    n) { return dropLast(n); }
+    @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final @Nullable Number                     n) { return dropLast(n); }
     @Contract(ALWAYS_THIS_1) @Alias("dropLast")           public final EmptyCollectionHolder<T> skipLast(final @Nullable Object @Nullable ... ignored) { return dropLast(); }
 
     //#endregion -------------------- Drop last --------------------
