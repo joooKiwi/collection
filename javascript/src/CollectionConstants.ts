@@ -496,6 +496,8 @@ export namespace CollectionConstants {
     export const DEFAULT_JOIN_POSTFIX = ']'
     /** The default {@link String} value for an empty {@link CollectionHolder} */
     export const DEFAULT_EMPTY_COLLECTION = "[]"
+    /** The default {@link String} value for a filled {@link CollectionHolder}, but as nothing being shown */
+    export const DEFAULT_ZERO_FILLED_COLLECTION = "[…]"
 
     //#endregion -------------------- Default references --------------------
     //#region -------------------- Messages --------------------
