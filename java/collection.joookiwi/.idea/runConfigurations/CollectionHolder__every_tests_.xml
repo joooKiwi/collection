@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="CollectionHolder (every tests)" type="CompoundRunConfigurationType">
+    <toRun name="take" type="JUnit" />
     <toRun name="all / any / none" type="JUnit" />
     <toRun name="filter" type="JUnit" />
     <toRun name="find" type="JUnit" />
