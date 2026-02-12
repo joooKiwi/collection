@@ -28,15 +28,15 @@ describe("CollectionHolderTest (slice)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("slice",                                () => expect(instance.slice(),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (range)",                        () => expect(instance.sliceWithARange(),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (array)",                        () => expect(instance.sliceWithArray(EMPTY,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (set)",                          () => expect(instance.sliceWithSet(new Set(),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (collection holder)",            () => expect(instance.sliceWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice",                                () => expect(instance.slice(),)                                                                    .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (range)",                        () => expect(instance.sliceWithARange(),)                                                          .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (array)",                        () => expect(instance.sliceWithArray(EMPTY,),)                                                     .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (set)",                          () => expect(instance.sliceWithSet(new Set(),),)                                                   .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (collection holder)",            () => expect(instance.sliceWithCollectionHolder(new CollectionHolderFromArray(EMPTY,),),)          .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
         describe("slice (minimalist collection holder)", () => expect(instance.sliceWithMinimalistCollectionHolder(new CollectionHolderFromArray(EMPTY,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (collection iterator)",          () => expect(instance.sliceWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (iterator)",                     () => expect(instance.sliceWithIterator(EMPTY[Symbol.iterator](),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("slice (iterable)",                     () => expect(instance.sliceWithIterable(EMPTY,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (collection iterator)",          () => expect(instance.sliceWithCollectionIterator(new CollectionIteratorFromArray(EMPTY,),),)      .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (iterator)",                     () => expect(instance.sliceWithIterator(EMPTY[Symbol.iterator](),),)                               .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("slice (iterable)",                     () => expect(instance.sliceWithIterable(EMPTY,),)                                                  .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
     },)},)
 
     describe("instances", () => {
@@ -90,8 +90,8 @@ describe("CollectionHolderTest (slice)", () => {
         describe.each(everyIterableInstances,)("by indices: %s", ({value: iterable,},) => {
             describe("empty", () => {
                 test("none", () => expect(new instance(EMPTY,).slice(new iterable(EMPTY,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('0',    () => expect(new instance(EMPTY,).slice(new iterable(_0,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("01",   () => expect(new instance(EMPTY,).slice(new iterable(_01,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',    () => expect(new instance(EMPTY,).slice(new iterable(_0,),),)   .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("01",   () => expect(new instance(EMPTY,).slice(new iterable(_01,),),)  .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
                 test("0123", () => expect(new instance(EMPTY,).slice(new iterable(_0123,),),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
             },)
             describe("1 field", () => {

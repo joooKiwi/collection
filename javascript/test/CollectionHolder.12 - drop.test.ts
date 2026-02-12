@@ -68,19 +68,19 @@ describe("CollectionHolderTest (drop)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
-            test("skip",                 () => expect(new GenericCollectionHolder_DropAlias().execute(it => it.skip(0,),).amountOfCall,).toBe(1,),)
-            test("skipWhile",            () => expect(new GenericCollectionHolder_DropWhileAlias().execute(it => it.skipWhile(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("skipWhileIndexed",     () => expect(new GenericCollectionHolder_DropWhileIndexedAlias().execute(it => it.skipWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("skipLast",             () => expect(new GenericCollectionHolder_DropLastAlias().execute(it => it.skipLast(0,),).amountOfCall,).toBe(1,),)
-            test("skipLastWhile",        () => expect(new GenericCollectionHolder_DropLastWhileAlias().execute(it => it.skipLastWhile(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("skip",                 () => expect(new GenericCollectionHolder_DropAlias()                .execute(it => it.skip(0,),)                              .amountOfCall,).toBe(1,),)
+            test("skipWhile",            () => expect(new GenericCollectionHolder_DropWhileAlias()           .execute(it => it.skipWhile(callbackAsTrue0,),)           .amountOfCall,).toBe(1,),)
+            test("skipWhileIndexed",     () => expect(new GenericCollectionHolder_DropWhileIndexedAlias()    .execute(it => it.skipWhileIndexed(callbackAsTrue0,),)    .amountOfCall,).toBe(1,),)
+            test("skipLast",             () => expect(new GenericCollectionHolder_DropLastAlias()            .execute(it => it.skipLast(0,),)                          .amountOfCall,).toBe(1,),)
+            test("skipLastWhile",        () => expect(new GenericCollectionHolder_DropLastWhileAlias()       .execute(it => it.skipLastWhile(callbackAsTrue0,),)       .amountOfCall,).toBe(1,),)
             test("skipLastWhileIndexed", () => expect(new GenericCollectionHolder_DropLastWhileIndexedAlias().execute(it => it.skipLastWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
         },)
         describe("LazyGenericCollectionHolder", () => {
-            test("skip",                 () => expect(new LazyGenericCollectionHolder_DropAlias().execute(it => it.skip(0,),).amountOfCall,).toBe(1,),)
-            test("skipWhile",            () => expect(new LazyGenericCollectionHolder_DropWhileAlias().execute(it => it.skipWhile(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("skipWhileIndexed",     () => expect(new LazyGenericCollectionHolder_DropWhileIndexedAlias().execute(it => it.skipWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
-            test("skipLast",             () => expect(new LazyGenericCollectionHolder_DropLastAlias().execute(it => it.skipLast(0,),).amountOfCall,).toBe(1,),)
-            test("skipLastWhile",        () => expect(new LazyGenericCollectionHolder_DropLastWhileAlias().execute(it => it.skipLastWhile(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
+            test("skip",                 () => expect(new LazyGenericCollectionHolder_DropAlias()                .execute(it => it.skip(0,),)                              .amountOfCall,).toBe(1,),)
+            test("skipWhile",            () => expect(new LazyGenericCollectionHolder_DropWhileAlias()           .execute(it => it.skipWhile(callbackAsTrue0,),)           .amountOfCall,).toBe(1,),)
+            test("skipWhileIndexed",     () => expect(new LazyGenericCollectionHolder_DropWhileIndexedAlias()    .execute(it => it.skipWhileIndexed(callbackAsTrue0,),)    .amountOfCall,).toBe(1,),)
+            test("skipLast",             () => expect(new LazyGenericCollectionHolder_DropLastAlias()            .execute(it => it.skipLast(0,),)                          .amountOfCall,).toBe(1,),)
+            test("skipLastWhile",        () => expect(new LazyGenericCollectionHolder_DropLastWhileAlias()       .execute(it => it.skipLastWhile(callbackAsTrue0,),)       .amountOfCall,).toBe(1,),)
             test("skipLastWhileIndexed", () => expect(new LazyGenericCollectionHolder_DropLastWhileIndexedAlias().execute(it => it.skipLastWhileIndexed(callbackAsTrue0,),).amountOfCall,).toBe(1,),)
         },)
 

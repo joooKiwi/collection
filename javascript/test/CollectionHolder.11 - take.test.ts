@@ -68,19 +68,19 @@ describe("CollectionHolderTest (take)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
-            test("limit",                 () => expect(new GenericCollectionHolder_TakeAlias().execute(it => it.limit(0,),).amountOfCall,).toBe(1,),)
-            test("limitWhile",            () => expect(new GenericCollectionHolder_TakeWhileAlias().execute(it => it.limitWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("limitWhileIndexed",     () => expect(new GenericCollectionHolder_TakeWhileIndexedAlias().execute(it => it.limitWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("limitLast",             () => expect(new GenericCollectionHolder_TakeLastAlias().execute(it => it.limitLast(0,),).amountOfCall,).toBe(1,),)
-            test("limitLastWhile",        () => expect(new GenericCollectionHolder_TakeLastWhileAlias().execute(it => it.limitLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limit",                 () => expect(new GenericCollectionHolder_TakeAlias()                .execute(it => it.limit(0,),)                               .amountOfCall,).toBe(1,),)
+            test("limitWhile",            () => expect(new GenericCollectionHolder_TakeWhileAlias()           .execute(it => it.limitWhile(callbackAsFalse0,),)          .amountOfCall,).toBe(1,),)
+            test("limitWhileIndexed",     () => expect(new GenericCollectionHolder_TakeWhileIndexedAlias()    .execute(it => it.limitWhileIndexed(callbackAsFalse0,),)   .amountOfCall,).toBe(1,),)
+            test("limitLast",             () => expect(new GenericCollectionHolder_TakeLastAlias()            .execute(it => it.limitLast(0,),)                           .amountOfCall,).toBe(1,),)
+            test("limitLastWhile",        () => expect(new GenericCollectionHolder_TakeLastWhileAlias()       .execute(it => it.limitLastWhile(callbackAsFalse0,),)       .amountOfCall,).toBe(1,),)
             test("limitLastWhileIndexed", () => expect(new GenericCollectionHolder_TakeLastWhileIndexedAlias().execute(it => it.limitLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
         },)
         describe("LazyGenericCollectionHolder", () => {
-            test("limit",                 () => expect(new LazyGenericCollectionHolder_TakeAlias().execute(it => it.limit(0,),).amountOfCall,).toBe(1,),)
-            test("limitWhile",            () => expect(new LazyGenericCollectionHolder_TakeWhileAlias().execute(it => it.limitWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("limitWhileIndexed",     () => expect(new LazyGenericCollectionHolder_TakeWhileIndexedAlias().execute(it => it.limitWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("limitLast",             () => expect(new LazyGenericCollectionHolder_TakeLastAlias().execute(it => it.limitLast(0,),).amountOfCall,).toBe(1,),)
-            test("limitLastWhile",        () => expect(new LazyGenericCollectionHolder_TakeLastWhileAlias().execute(it => it.limitLastWhile(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("limit",                 () => expect(new LazyGenericCollectionHolder_TakeAlias()                .execute(it => it.limit(0,),)                               .amountOfCall,).toBe(1,),)
+            test("limitWhile",            () => expect(new LazyGenericCollectionHolder_TakeWhileAlias()           .execute(it => it.limitWhile(callbackAsFalse0,),)           .amountOfCall,).toBe(1,),)
+            test("limitWhileIndexed",     () => expect(new LazyGenericCollectionHolder_TakeWhileIndexedAlias()    .execute(it => it.limitWhileIndexed(callbackAsFalse0,),)    .amountOfCall,).toBe(1,),)
+            test("limitLast",             () => expect(new LazyGenericCollectionHolder_TakeLastAlias()            .execute(it => it.limitLast(0,),)                           .amountOfCall,).toBe(1,),)
+            test("limitLastWhile",        () => expect(new LazyGenericCollectionHolder_TakeLastWhileAlias()       .execute(it => it.limitLastWhile(callbackAsFalse0,),)       .amountOfCall,).toBe(1,),)
             test("limitLastWhileIndexed", () => expect(new LazyGenericCollectionHolder_TakeLastWhileIndexedAlias().execute(it => it.limitLastWhileIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
         },)
 

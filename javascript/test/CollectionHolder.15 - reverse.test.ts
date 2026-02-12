@@ -38,12 +38,12 @@ describe("CollectionHolderTest (reverse)", () => {
 
     describe("aliases", () => {
         describe("GenericCollectionHolder", () => {
-            test("toReversed", () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.toReverse(),).amountOfCall,).toBe(1,),)
-            test("reversed",   () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),).amountOfCall,).toBe(1,),)
+            test("toReversed", () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
         },)
         describe("LazyGenericCollectionHolder", () => {
             test("toReversed", () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
-            test("reversed",   () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),).amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
         },)
 
         describe("toReversed", () => {
