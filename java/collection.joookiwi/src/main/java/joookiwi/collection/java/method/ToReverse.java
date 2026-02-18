@@ -27,7 +27,7 @@ public final class ToReverse
 
     //#region -------------------- ∅ --------------------
 
-    /// Reverse the `collection`
+    /// Reverse `collection` to a new [CollectionHolder]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
@@ -46,7 +46,7 @@ public final class ToReverse
         return __core(collection);
     }
 
-    /// Reverse the `collection`
+    /// Reverse `collection` to a new [CollectionHolder]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
@@ -65,7 +65,7 @@ public final class ToReverse
         return __core(collection);
     }
 
-    /// Reverse the `collection`
+    /// Reverse `collection` to a new [CollectionHolder]
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
@@ -87,9 +87,9 @@ public final class ToReverse
     //#endregion -------------------- ∅ --------------------
     //#region -------------------- from --------------------
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index _(if provided)_
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -114,9 +114,9 @@ public final class ToReverse
         return __core(collection, from);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index _(if provided)_
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -141,9 +141,9 @@ public final class ToReverse
         return __core(collection, from);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index _(if provided)_
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
@@ -169,9 +169,9 @@ public final class ToReverse
     }
 
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -194,9 +194,9 @@ public final class ToReverse
         return __core(collection, from);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -219,9 +219,9 @@ public final class ToReverse
         return __core(collection, from);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to the end of the `collection`
+    /// Reverse to a new [CollectionHolder]
+    /// from the end of the `collection`
+    /// to a start index
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
@@ -247,9 +247,9 @@ public final class ToReverse
     //#endregion -------------------- from --------------------
     //#region -------------------- from, to --------------------
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -274,9 +274,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -301,9 +301,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
@@ -329,9 +329,9 @@ public final class ToReverse
     }
 
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -358,9 +358,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -387,9 +387,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
@@ -417,9 +417,9 @@ public final class ToReverse
     }
 
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -446,9 +446,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -475,9 +475,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
@@ -505,9 +505,9 @@ public final class ToReverse
     }
 
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -539,9 +539,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param from       The inclusive starting index (`0` by default)
@@ -573,9 +573,9 @@ public final class ToReverse
         return __core(collection, from, to);
     }
 
-    /// Reverse the `collection`
-    /// from a start _(if provided)_
-    /// to an end _(if provided)_
+    /// Reverse to a new [CollectionHolder]
+    /// from an ending _(if provided)_ to a starting _(if provided)_ index
+    /// in the `collection`
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param from       The inclusive starting index (`0` by default)
