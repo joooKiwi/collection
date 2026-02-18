@@ -74,36 +74,36 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
     @Nested class EmptyCollectionHolder extends AbstractEmptyCollectionHolderTests {
         @Nested class map {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.map()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.map(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.map(EMPTY_ARRAY)); }
+             @DisplayName("∅")                 @Test void testEmpty()     { assertSame(instance, instance.map()); }
+            @DisplayName("null (T, int) → U") @Test void test2Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER2)); }
+            @DisplayName("null (T) → U")      @Test void test1Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER1)); }
+            @DisplayName("null () → U")       @Test void test0Arg()      { assertSame(instance, instance.map(NULL_SUPPLIER0)); }
+            @DisplayName("null array")        @Test void testNullArray() { assertSame(instance, instance.map(NULL_VARARGS)); }
+            @DisplayName("[]")                @Test void testArray()     { assertSame(instance, instance.map(EMPTY_ARRAY)); }
         }
         @Nested class mapIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.mapIndexed()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER2_ALT)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.mapIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.mapIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                 @Test void testEmpty()     { assertSame(instance, instance.mapIndexed()); }
+            @DisplayName("null (T, int) → U") @Test void test2Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER2_ALT)); }
+            @DisplayName("null (T) → U")      @Test void test1Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER1_ALT)); }
+            @DisplayName("null () → U")       @Test void test0Arg()      { assertSame(instance, instance.mapIndexed(NULL_SUPPLIER0)); }
+            @DisplayName("null array")        @Test void testNullArray() { assertSame(instance, instance.mapIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                @Test void testArray()     { assertSame(instance, instance.mapIndexed(EMPTY_ARRAY)); }
         }
         @Nested class mapNotNull {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.mapNotNull()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER2)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER1)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.mapNotNull(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.mapNotNull(EMPTY_ARRAY)); }
+            @DisplayName("∅")                  @Test void testEmpty()     { assertSame(instance, instance.mapNotNull()); }
+            @DisplayName("null (T, int) → U?") @Test void test2Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER2)); }
+            @DisplayName("null (T) → U?")      @Test void test1Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER1)); }
+            @DisplayName("null () → U?")       @Test void test0Arg()      { assertSame(instance, instance.mapNotNull(NULL_SUPPLIER0)); }
+            @DisplayName("null array")         @Test void testNullArray() { assertSame(instance, instance.mapNotNull(NULL_VARARGS)); }
+            @DisplayName("[]")                 @Test void testArray()     { assertSame(instance, instance.mapNotNull(EMPTY_ARRAY)); }
         }
         @Nested class mapNotNullIndexed {
-            @DisplayName("∅")                       @Test void testEmpty()     { assertSame(instance, instance.mapNotNullIndexed()); }
-            @DisplayName("null (T, int) → boolean") @Test void test2Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER2_ALT)); }
-            @DisplayName("null (T) → boolean")      @Test void test1Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER1_ALT)); }
-            @DisplayName("null () → boolean")       @Test void test0Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER0)); }
-            @DisplayName("null array")              @Test void testNullArray() { assertSame(instance, instance.mapNotNullIndexed(NULL_VARARGS)); }
-            @DisplayName("[]")                      @Test void testArray()     { assertSame(instance, instance.mapNotNullIndexed(EMPTY_ARRAY)); }
+            @DisplayName("∅")                  @Test void testEmpty()     { assertSame(instance, instance.mapNotNullIndexed()); }
+            @DisplayName("null (T, int) → U?") @Test void test2Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER2_ALT)); }
+            @DisplayName("null (T) → U?")      @Test void test1Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER1_ALT)); }
+            @DisplayName("null () → U?")       @Test void test0Arg()      { assertSame(instance, instance.mapNotNullIndexed(NULL_SUPPLIER0)); }
+            @DisplayName("null array")         @Test void testNullArray() { assertSame(instance, instance.mapNotNullIndexed(NULL_VARARGS)); }
+            @DisplayName("[]")                 @Test void testArray()     { assertSame(instance, instance.mapNotNullIndexed(EMPTY_ARRAY)); }
         }
     }
 
@@ -116,25 +116,25 @@ import static value.ReusableFields_Null.NULL_VARARGS;
         //#endregion -------------------- Required test configuration --------------------
 
         @Nested class map {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.map(supplier2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(), stringInstance.map(supplier1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.map(supplier0AsFail)); }
+            @DisplayName("(T, int) → U") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.map(supplier2AsFail)); }
+            @DisplayName("(T) → U")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(), stringInstance.map(supplier1AsFail)); }
+            @DisplayName("() → U")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.map(supplier0AsFail)); }
         }
         @Nested class mapIndexed {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapIndexed(supplier2AltAsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(),       instance.mapIndexed(supplier1AltAsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapIndexed(supplier0AsFail)); }
+            @DisplayName("(T, int) → U") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapIndexed(supplier2AltAsFail)); }
+            @DisplayName("(T) → U")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(),       instance.mapIndexed(supplier1AltAsFail)); }
+            @DisplayName("() → U")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapIndexed(supplier0AsFail)); }
         }
 
         @Nested class mapNotNull {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNull(supplier2AsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNull(supplier1AsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNull(supplier0AsFail)); }
+            @DisplayName("(T, int) → U?") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNull(supplier2AsFail)); }
+            @DisplayName("(T) → U?")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNull(supplier1AsFail)); }
+            @DisplayName("() → U?")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNull(supplier0AsFail)); }
         }
         @Nested class mapNotNullIndexed {
-            @DisplayName("(T, int) → boolean") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNullIndexed(supplier2AltAsFail)); }
-            @DisplayName("(T) → boolean")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNullIndexed(supplier1AltAsFail)); }
-            @DisplayName("() → boolean")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNullIndexed(supplier0AsFail)); }
+            @DisplayName("(T, int) → U?") @Test void test2Arg()      { assertSame(emptyCollectionHolder(), stringInstance.mapNotNullIndexed(supplier2AltAsFail)); }
+            @DisplayName("(T) → U?")      @Test void test1Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNullIndexed(supplier1AltAsFail)); }
+            @DisplayName("() → U?")       @Test void test0Arg()      { assertSame(emptyCollectionHolder(),       instance.mapNotNullIndexed(supplier0AsFail)); }
         }
 
     }
@@ -181,32 +181,32 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             }
 
             @Nested class mapNotNull {
-                @DisplayName("empty: (T, int) → U")    @Test void empty_2Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier2AsFail))  .getAmountOfCall()); }
-                @DisplayName("empty: (T) → U")         @Test void empty_1Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier1AsFail))  .getAmountOfCall()); }
-                @DisplayName("empty: () → U")          @Test void empty_0Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier0AsFail))  .getAmountOfCall()); }
-                @DisplayName("1 field: (T, int) → U")  @Test void test1_2Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
-                @DisplayName("1 field: (T) → U")       @Test void test1_1Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
-                @DisplayName("1 field: () → U")        @Test void test1_0Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
-                @DisplayName("2 fields: (T, int) → U") @Test void test2_2Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
-                @DisplayName("2 fields: (T) → U")      @Test void test2_1Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
-                @DisplayName("2 fields: () → U")       @Test void test2_0Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
-                @DisplayName("4 fields: (T, int) → U") @Test void test4_2Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
-                @DisplayName("4 fields: (T) → U")      @Test void test4_1Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
-                @DisplayName("4 fields: () → U")       @Test void test4_0Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
+                @DisplayName("empty: (T, int) → U?")    @Test void empty_2Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier2AsFail))  .getAmountOfCall()); }
+                @DisplayName("empty: (T) → U?")         @Test void empty_1Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier1AsFail))  .getAmountOfCall()); }
+                @DisplayName("empty: () → U?")          @Test void empty_0Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNull(supplier0AsFail))  .getAmountOfCall()); }
+                @DisplayName("1 field: (T, int) → U?")  @Test void test1_2Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
+                @DisplayName("1 field: (T) → U?")       @Test void test1_1Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
+                @DisplayName("1 field: () → U?")        @Test void test1_0Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T, int) → U?") @Test void test2_2Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
+                @DisplayName("2 fields: (T) → U?")      @Test void test2_1Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → U?")       @Test void test2_0Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T, int) → U?") @Test void test4_2Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString2)).getAmountOfCall()); }
+                @DisplayName("4 fields: (T) → U?")      @Test void test4_1Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString1)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → U?")       @Test void test4_0Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNull(callbackAsString0)).getAmountOfCall()); }
             }
             @Nested class mapNotNullIndexed {
-                @DisplayName("empty: (int, T) → U")    @Test void empty_2Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier2AltAsFail))  .getAmountOfCall()); }
-                @DisplayName("empty: (int) → U")       @Test void empty_1Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier1AltAsFail))  .getAmountOfCall()); }
-                @DisplayName("empty: () → U")          @Test void empty_0Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier0AsFail))     .getAmountOfCall()); }
-                @DisplayName("1 field: (int, T) → U")  @Test void test1_2Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
-                @DisplayName("1 field: (int) → U")     @Test void test1_1Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
-                @DisplayName("1 field: () → U")        @Test void test1_0Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
-                @DisplayName("2 fields: (int, T) → U") @Test void test2_2Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
-                @DisplayName("2 fields: (int) → U")    @Test void test2_1Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
-                @DisplayName("2 fields: () → U")       @Test void test2_0Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
-                @DisplayName("4 fields: (int, T) → U") @Test void test4_2Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
-                @DisplayName("4 fields: (int) → U")    @Test void test4_1Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
-                @DisplayName("4 fields: () → U")       @Test void test4_0Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
+                @DisplayName("empty: (int, T) → U?")    @Test void empty_2Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier2AltAsFail))  .getAmountOfCall()); }
+                @DisplayName("empty: (int) → U?")       @Test void empty_1Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier1AltAsFail))  .getAmountOfCall()); }
+                @DisplayName("empty: () → U?")          @Test void empty_0Arg() { assertEquals(0, newInstance(EMPTY).executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(supplier0AsFail))     .getAmountOfCall()); }
+                @DisplayName("1 field: (int, T) → U?")  @Test void test1_2Arg() { assertEquals(1, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
+                @DisplayName("1 field: (int) → U?")     @Test void test1_1Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
+                @DisplayName("1 field: () → U?")        @Test void test1_0Arg() { assertEquals(0, newInstance(A)    .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
+                @DisplayName("2 fields: (int, T) → U?") @Test void test2_2Arg() { assertEquals(2, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
+                @DisplayName("2 fields: (int) → U?")    @Test void test2_1Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
+                @DisplayName("2 fields: () → U?")       @Test void test2_0Arg() { assertEquals(0, newInstance(AB)   .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
+                @DisplayName("4 fields: (int, T) → U?") @Test void test4_2Arg() { assertEquals(4, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString2Alt)).getAmountOfCall()); }
+                @DisplayName("4 fields: (int) → U?")    @Test void test4_1Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString1Alt)).getAmountOfCall()); }
+                @DisplayName("4 fields: () → U?")       @Test void test4_0Arg() { assertEquals(0, newInstance(ABCD) .executeWhileHavingIndexesOnField(it -> it.mapNotNullIndexed(callbackAsString0))   .getAmountOfCall()); }
             }
 
         }
