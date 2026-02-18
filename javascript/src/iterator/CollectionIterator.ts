@@ -12,7 +12,6 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
@@ -64,16 +63,6 @@ import type {CollectionIteratorName}                                            
 export interface CollectionIterator<out T = unknown, >
     extends IterableIterator<T, AfterLastValueInCollectionIteratorSymbol, unknown> {
 
-    //#region -------------------- Reference methods --------------------
-
-    /**
-     * The {@link MinimalistCollectionHolder collection} to loop over
-     *
-     * @deprecated This is not always applicable. It will be removed in version 1.14
-     */
-    get collection(): MinimalistCollectionHolder<T>
-
-    //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
     /** The {@link CollectionIterator iterator} size */

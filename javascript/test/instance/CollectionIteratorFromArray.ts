@@ -26,7 +26,7 @@ export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {
 
     public readonly array
-    public override readonly collection
+    public readonly collection
 
     public constructor(array: readonly T[],) {
         super()

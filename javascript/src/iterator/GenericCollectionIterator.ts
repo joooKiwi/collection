@@ -21,7 +21,7 @@ import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
 
 export class GenericCollectionIterator<const T = unknown,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
-    extends AbstractCollectionIterator<T, REFERENCE> {
+    extends AbstractCollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -47,13 +47,14 @@ export class GenericCollectionIterator<const T = unknown,
 
     //#region -------------------- Reference methods --------------------
 
-    public override get collection(): REFERENCE { return this.#reference }
+    /** The reference received via its constructor */
+    protected get _reference(): REFERENCE { return this.#reference }
 
     //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
     /** @initializedOnFirstCall */
-    public override get size(): REFERENCE["size"] { return this.#size ??= this.collection.size }
+    public override get size(): REFERENCE["size"] { return this.#size ??= this._reference.size }
     /** @initializedOnFirstCall */
     protected override get _sizeMinus1(): number { return this.#sizeMinus1 ??= super._sizeMinus1 }
     /** @initializedOnFirstCall */
@@ -73,14 +74,14 @@ export class GenericCollectionIterator<const T = unknown,
 
     //#region -------------------- Value methods --------------------
 
-    protected override _getIteratorValue(index: number,): CollectionIteratorValue<T> { return new GenericCollectionIteratorValue(this, this.collection, index,) }
+    protected override _getIteratorValue(index: number,): CollectionIteratorValue<T> { return new GenericCollectionIteratorValue(this, this._reference, index,) }
 
-    protected override _getValue(index: number,): T { return this.collection.get(index,) }
+    protected override _getValue(index: number,): T { return this._reference.get(index,) }
 
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this.collection,) }
+    public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this._reference,) }
 
     //#endregion -------------------- JavaScript methods --------------------
 

@@ -12,7 +12,6 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {MinimalistCollectionHolder}                                                           from "../../src/MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
@@ -33,14 +32,9 @@ export class CollectionIterator_ByStructure<const T, >
 
     public constructor(array: readonly T[],) { this.reference = new CollectionIteratorFromArray(array,) }
 
-    //#region -------------------- Reference methods --------------------
-
-    public get collection(): MinimalistCollectionHolder<T> { return this.reference.collection }
-
-    //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public get size(): this["collection"]["size"] { return this.reference.size }
+    public get size(): this["reference"]["size"] { return this.reference.size }
     public get length(): this["size"] { return this.reference.length }
     public get count(): this["size"] { return this.reference.count }
 
