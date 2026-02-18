@@ -179,10 +179,10 @@ export function __validateInRange(from: number, startingIndex: number, to: numbe
 
     if (to == endingIndex)
         if (from == startingIndex)
-            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}”.`, from, to,)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
         else
-            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
     if (from == startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}”.`, from, to,)
-    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
+    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
 }
