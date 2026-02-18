@@ -65,8 +65,7 @@ import {isSetByStructure}                                 from "./method/isSetBy
  *
  * Meaning that the value in the instance are not retrieved until it is necessary.
  *
- * @typeParam T         The element type
- * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
+ * @typeParam T The element type
  * @note The index in the instance may not be initialized if retrieved directly
  * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder

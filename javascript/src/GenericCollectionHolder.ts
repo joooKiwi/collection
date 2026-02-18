@@ -161,8 +161,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  * But it is not {@link Object.isFrozen frozen} to ensure
  * the children can do their initialization.
  *
- * @typeParam T         The element type
- * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
+ * @typeParam T The element type
  * @see GenericMinimalistCollectionHolder
  * @see LazyGenericCollectionHolder
  * @see EmptyCollectionHolder
