@@ -27,6 +27,7 @@ import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.callback.ObjIntPredicate;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -78,6 +79,16 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
         }
         return fail("The exception “IndexOutOfBoundsException” was expected to be thrown.");
     }
+
+    @Contract(ALWAYS_THIS_1)
+    @SuppressWarnings("Unchecked cast")
+    @Override public final CURRENT_INSTANCE executeWhileExpectingInvalidIndexRange(final Consumer<CURRENT_INSTANCE> action) {
+        try {
+            action.accept((CURRENT_INSTANCE) this);
+        } catch (InvalidIndexRangeException exception) {
+            return (CURRENT_INSTANCE) this;
+        }
+        return fail("The exception “InvalidIndexRangeException” was expected to be thrown.");
     }
 
     @Contract(ALWAYS_THIS_1)

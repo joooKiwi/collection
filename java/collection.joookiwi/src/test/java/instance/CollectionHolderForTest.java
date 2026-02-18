@@ -6,6 +6,7 @@ import java.util.function.Function;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -29,6 +30,15 @@ public interface CollectionHolderForTest<T extends @Nullable Object,
     @Contract(ALWAYS_THIS_1)
     @SuppressWarnings("Unchecked cast")
     INSTANCE executeWhileExpectingIndexOutOfBound(final Consumer<INSTANCE> action);
+
+    /// Do an action on the current [instance][CollectionHolderForTest]
+    /// while expecting a [InvalidIndexRangeException] to be thrown
+    /// and return itself afterward
+    ///
+    /// @param action The action to do
+    @Contract(ALWAYS_THIS_1)
+    @SuppressWarnings("Unchecked cast")
+    INSTANCE executeWhileExpectingInvalidIndexRange(final Consumer<INSTANCE> action);
 
     /// Do an action on the current [instance][CollectionHolderForTest]
     /// while expecting a [EmptyCollectionException] to be thrown
