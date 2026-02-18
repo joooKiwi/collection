@@ -297,20 +297,20 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, collection.size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, collection.size,),)
 }
 
 function __core0ByArray<const T, >(collection: readonly T[],) {
     const size = collection.length
     if (size === 0)
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, 0, size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __allByArray(collection, size,),)
 }
 
 //#endregion -------------------- ∅ --------------------
@@ -337,7 +337,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
@@ -346,7 +346,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
@@ -355,7 +355,7 @@ function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, startingIndex, size - 1,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
 }
 
 //#endregion -------------------- from --------------------
@@ -384,7 +384,9 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, endingIndex,),)
+    if (startingIndex === endingIndex)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
@@ -395,7 +397,9 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, startingIndex, endingIndex,),)
+    if (startingIndex === endingIndex)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
@@ -406,7 +410,9 @@ function __core2ByArray<const T, >(collection: readonly T[], from: number, to: n
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, startingIndex, endingIndex,),)
+    if (startingIndex === endingIndex)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, startingIndex,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
 }
 
 //#endregion -------------------- from, to --------------------
@@ -433,7 +439,9 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const endingIndex = __endingIndex(to, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, endingIndex,),)
+    if (endingIndex === 0)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
@@ -441,7 +449,9 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const endingIndex = __endingIndex(to, collection.size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRange(collection, 0, endingIndex,),)
+    if (endingIndex === 0)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
@@ -450,7 +460,9 @@ function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number
         return CollectionConstants.EMPTY_COLLECTION_HOLDER
 
     const endingIndex = __endingIndex(to, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newReverseArrayByRangeByArray(collection, 0, endingIndex,),)
+    if (endingIndex === 0)
+        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, 0,),)
+    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------
@@ -458,8 +470,55 @@ function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number
 //#endregion -------------------- Core method --------------------
 //#region -------------------- Loop method --------------------
 
-function __newReverseArrayByRange<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
-    const newArray = new Array<T>(endingIndex - startingIndex,)
+function __single<const T, >(collection: MinimalistCollectionHolder<T>, index: number,) {
+    return [collection.get(index,),] as const
+}
+
+function __singleByArray<const T, >(collection: readonly T[], index: number,) {
+    return [collection[index] as T,] as const
+}
+
+
+function __all<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+    const newArray = new Array<T>(size,)
+    let indexAdded = -1
+    let index = size
+    while (--index >= 0)
+        newArray[++indexAdded] = collection.get(index,)
+    return newArray
+}
+
+function __allByArray<const T, >(collection: readonly T[], size: number,) {
+    const newArray = new Array<T>(size,)
+    let indexAdded = -1
+    let index = size
+    while (--index >= 0)
+        newArray[++indexAdded] = collection[index] as T
+    return newArray
+}
+
+
+function __fromStart<const T, >(collection: MinimalistCollectionHolder<T>, size: number, startingIndex: number,) {
+    const newArray = new Array<T>(size - startingIndex,)
+    let indexAdded = -1
+    let index = size
+    while (--index >= startingIndex)
+        newArray[++indexAdded] = collection.get(index,)
+    return newArray
+}
+
+function __fromStartByArray<const T, >(collection: readonly T[], size: number, startingIndex: number,) {
+    const newArray = new Array<T>(size - startingIndex,)
+    let indexAdded = -1
+    let index = size
+    while (--index >= startingIndex)
+        newArray[++indexAdded] = collection[index] as T
+    return newArray
+}
+
+
+function __fromStartToEnd<const T, >(collection: MinimalistCollectionHolder<T>, startingIndex: number, endingIndex: number,) {
+    const newArray = new Array<T>(endingIndex - startingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1
     while (--index >= startingIndex)
@@ -467,11 +526,30 @@ function __newReverseArrayByRange<const T, >(collection: MinimalistCollectionHol
     return newArray
 }
 
-function __newReverseArrayByRangeByArray<const T, >(collection: readonly T[], startingIndex: number, endingIndex: number,) {
-    const newArray = new Array<T>(endingIndex - startingIndex,)
+function __fromStartToEndByArray<const T, >(collection: readonly T[], startingIndex: number, endingIndex: number,) {
+    const newArray = new Array<T>(endingIndex - startingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1
     while (--index >= startingIndex)
+        newArray[++indexAdded] = collection[index] as T
+    return newArray
+}
+
+
+function __toEnd<const T, >(collection: MinimalistCollectionHolder<T>, endingIndex: number,) {
+    const newArray = new Array<T>(endingIndex + 1,)
+    let indexAdded = -1
+    let index = endingIndex + 1
+    while (--index >= 0)
+        newArray[++indexAdded] = collection.get(index,)
+    return newArray
+}
+
+function __toEndByArray<const T, >(collection: readonly T[], endingIndex: number,) {
+    const newArray = new Array<T>(endingIndex + 1,)
+    let indexAdded = -1
+    let index = endingIndex + 1
+    while (--index >= 0)
         newArray[++indexAdded] = collection[index] as T
     return newArray
 }
