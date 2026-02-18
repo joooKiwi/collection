@@ -4109,7 +4109,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4125,7 +4126,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -4157,7 +4159,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4174,7 +4177,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -4207,7 +4211,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4224,7 +4229,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)

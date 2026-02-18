@@ -39,7 +39,8 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
 export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the start of the {@link collection} to the {@link from starting} index
+ * from the end of the {@link collection}
+ * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
@@ -55,7 +56,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
 export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the {@link to ending} to the {@link from starting} index
+ * from an {@link to ending} to a {@link from starting} index
  * in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder} or {@link CollectionHolder}) to reverse
@@ -100,7 +101,8 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the start of the {@link collection} to the {@link from starting} index
+ * from the end of the {@link collection}
+ * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
@@ -117,7 +119,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the {@link to ending} to the {@link from starting} index
+ * from an {@link to ending} to a {@link from starting} index
  * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
@@ -161,7 +163,8 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the start of the {@link collection} to the {@link from starting} index
+ * from the end of the {@link collection}
+ * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
@@ -178,7 +181,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the {@link to ending} to the {@link from starting} index
+ * from an {@link to ending} to a {@link from starting} index
  * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
@@ -222,7 +225,8 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the start of the {@link collection} to the {@link from starting} index
+ * from the end of the {@link collection}
+ * to a {@link from starting index} (<i>if provided</i>)
  *
  * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
@@ -239,7 +243,8 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,)
 export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
- * from the {@link to ending} to the {@link from starting} index in the {@link collection}
+ * from an {@link to ending} to a {@link from starting} index
+ * in the {@link collection}
  *
  * @param collection The nullable collection to reverse
  * @param from       The inclusive starting index (<code>0</code> by default)
