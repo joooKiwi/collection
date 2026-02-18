@@ -694,8 +694,7 @@ public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extend
     @Override public CollectionHolder<@NotNull T> requireNoNulls() {
         if (RequireNoNulls.requireNoNulls(instance) == null)
             return this;
-        fail("The method “requireNoNulls” was not expected to be non-empty.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “requireNoNulls” failing call.");
+        return fail("The method “requireNoNulls” was not expected to be non-empty.");
     }
 
     //#endregion -------------------- Validation methods --------------------

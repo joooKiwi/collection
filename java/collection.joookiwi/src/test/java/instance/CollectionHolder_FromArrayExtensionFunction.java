@@ -320,10 +320,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
 
     //#region -------------------- Test utility methods --------------------
 
-    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() {
-        fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “getAmountOfCall” call.");
-    }
+    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() { return fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance."); }
 
     //#endregion -------------------- Test utility methods --------------------
 
@@ -338,10 +335,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
 
     //#region -------------------- Get --------------------
 
-    @Override public T get(final int index) {
-        fail("The method “get” was not expected to be called directly.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call.");
-    }
+    @Override public T get(final int index) { return fail("The method “get” was not expected to be called directly."); }
 
     @Override public T getFirst() { return GetFirst.getFirst(array); }
     @Override public T getLast() { return GetLast.getLast(array); }
@@ -718,8 +712,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
         final var array = this.array;
         if (RequireNoNulls.requireNoNulls(array) == array)
             return this;
-        fail("The method “requireNoNulls” was not expected to be non-empty.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “requireNoNulls” failing call.");
+        return fail("The method “requireNoNulls” was not expected to be non-empty.");
     }
 
     //#endregion -------------------- Validation methods --------------------

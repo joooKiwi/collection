@@ -582,7 +582,7 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
 
     @Contract(ALWAYS_THIS_0) @Override public CollectionHolder<@NotNull T> requireNoNulls() {
         if (instance.requireNoNulls() != instance)
-            fail("The expected return type for the method “requireNoNulls” was supposed to be the same instance");
+            return fail("The expected return type for the method “requireNoNulls” was supposed to be the same instance");
         return this;
     }
 
@@ -743,38 +743,38 @@ public final class CollectionHolder_ByGenericCollection<T extends @Nullable Obje
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final ObjIntConsumer<? super T> action) {
         if (instance.onEach(action) != instance)
-            fail("The expected return type for the method “onEach” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final Consumer<? super T> action) {
         if (instance.onEach(action) != instance)
-            fail("The expected return type for the method “onEach” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEach(final Runnable action) {
         if (instance.onEach(action) != instance)
-            fail("The expected return type for the method “onEach” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEach” was supposed to be the same instance");
         return this;
     }
 
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final IntObjConsumer<? super T> action) {
         if (instance.onEachIndexed(action) != instance)
-            fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
     }
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final IntConsumer action) {
         if (instance.onEachIndexed(action) != instance)
-            fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
     }
 
     @Contract(ALWAYS_THIS_1) @Override public CollectionHolder_ByGenericCollection<T> onEachIndexed(final Runnable action) {
         if (instance.onEachIndexed(action) != instance)
-            fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
+            return fail("The expected return type for the method “onEachIndexed” was supposed to be the same instance");
         return this;
     }
 

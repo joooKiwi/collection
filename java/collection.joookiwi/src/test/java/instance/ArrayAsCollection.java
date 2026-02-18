@@ -32,14 +32,10 @@ public final class ArrayAsCollection<T extends @Nullable Object>
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return size; }
 
     @Override public T get(final int index) {
-        if (index < 0) {
-            fail("The method “get” was attempting to retrieve with a negative index (“" + index + "”)");
-            throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call if the index was not present in the array.");
-        }
-        if (index >= size) {
-            fail("The method “get” was attempting to retrieve with an invalid index (“" + index + "”)");
-            throw new RuntimeException("Assertions.fail was expected to throw an exception on “get” call if the index was not present in the array.");
-        }
+        if (index < 0)
+            return fail("The method “get” was attempting to retrieve with a negative index (“" + index + "”)");
+        if (index >= size)
+            return fail("The method “get” was attempting to retrieve with an invalid index (“" + index + "”)");
         return array[index];
     }
 

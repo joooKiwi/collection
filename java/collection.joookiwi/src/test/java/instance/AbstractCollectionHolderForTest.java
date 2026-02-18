@@ -76,8 +76,8 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
         } catch (IndexOutOfBoundsException exception) {
             return (CURRENT_INSTANCE) this;
         }
-        fail("The exception “IndexOutOfBoundsException” was expected to be thrown.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “executeWhileExpectingIndexOutOfBound” call if no IndexOutOfBoundsException occurred.");
+        return fail("The exception “IndexOutOfBoundsException” was expected to be thrown.");
+    }
     }
 
     @Contract(ALWAYS_THIS_1)
@@ -88,8 +88,7 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
         } catch (EmptyCollectionException exception) {
             return (CURRENT_INSTANCE) this;
         }
-        fail("The exception “EmptyCollectionException” was expected to be thrown.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “executeWhileExpectingEmptyException” call if no EmptyCollectionException occurred.");
+        return fail("The exception “EmptyCollectionException” was expected to be thrown.");
     }
 
     @Contract(ALWAYS_THIS_1)

@@ -320,10 +320,7 @@ public final class CollectionHolder_FromExtensionFunction<T extends @Nullable Ob
 
     //#region -------------------- Test utility methods --------------------
 
-    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() {
-        fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “getAmountOfCall” call.");
-    }
+    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() { return fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance."); }
 
     //#endregion -------------------- Test utility methods --------------------
 

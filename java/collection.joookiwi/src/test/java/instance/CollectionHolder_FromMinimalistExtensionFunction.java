@@ -32,10 +32,7 @@ public final class CollectionHolder_FromMinimalistExtensionFunction<T extends @N
     public CollectionHolder_FromMinimalistExtensionFunction(final T @Unmodifiable [] array) { super(array); }
 
 
-    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() {
-        fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance.");
-        throw new RuntimeException("Assertions.fail was expected to throw an exception on “getAmountOfCall” call.");
-    }
+    @Contract(ALWAYS_FAIL_0) @Override public int getAmountOfCall() { return fail("The getter method “amountOfCall” was not expected to be called on an extension function only test instance."); }
 
     @Override public @Range(from = 0, to = MAX_INT_VALUE) int size() { return array.length; }
 
