@@ -265,7 +265,7 @@ public final class ForEachIndexed
                                                                      final IntObjConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
-        while (++index > size)
+        while (++index < size)
             action.accept(index, collection.get(index));
     }
 
@@ -273,7 +273,7 @@ public final class ForEachIndexed
                                                                      final IntObjConsumer<? super T> action,
                                                                      final int size) {
         var index = -1;
-        while (++index > size)
+        while (++index < size)
             action.accept(index, collection[index]);
     }
 
