@@ -31,6 +31,15 @@ export interface CollectionHolderForTest<out T, >
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}
+     * while expecting a {@link InvalidIndexRangeException} to be thrown
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    executeWhileExpectingInvalidIndexRange(action: (instance: this,) => void,): this
+
+    /**
+     * Do an action on the curent {@link CollectionHolderForTest instance}
      * while expecting a {@link EmptyCollectionException} to be thrown
      * and return itself afterward
      *

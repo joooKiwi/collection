@@ -20,9 +20,10 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
-import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
-import {ForbiddenIndexException}   from "../../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException} from "../../src/exception/IndexOutOfBoundsException"
+import {EmptyCollectionException}   from "../../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}    from "../../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../../src/exception/InvalidIndexRangeException"
 
 /**
  * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented
@@ -62,6 +63,17 @@ export abstract class AbstractCollectionHolderForTest<const T, >
             throw exception
         }
         throw new Error("The exception “IndexOutOfBoundsException” was expected to be thrown.",)
+    }
+
+    public executeWhileExpectingInvalidIndexRange(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+        } catch (exception) {
+            if (exception instanceof InvalidIndexRangeException)
+                return this
+            throw exception
+        }
+        throw new Error("The exception “InvalidIndexRangeException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingEmptyException(action: (instance: this,) => void,): this {
