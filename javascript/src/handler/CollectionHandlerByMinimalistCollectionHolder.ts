@@ -32,6 +32,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  *
  * @beta
  * @see CollectionHandlerByCollectionHolder
+ * @deprecated Replace with {@link MinimalistCollectionViewer} or {@link CollectionViewer} depending on the needs. This will be removed in v2.0
  */
 export class CollectionHandlerByMinimalistCollectionHolder<const T = unknown,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,

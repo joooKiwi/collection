@@ -30,6 +30,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @beta
  * @see CollectionHandlerBySetOf1
  * @see CollectionHandlerBySetOf2
+ * @deprecated Replace with {@link SetAsCollectionHolder}. This will be removed in v2.0
  */
 export class CollectionHandlerBySet<const T = unknown,
     const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,

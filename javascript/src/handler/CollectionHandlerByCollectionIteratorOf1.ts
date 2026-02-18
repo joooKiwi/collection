@@ -22,6 +22,7 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @beta
  * @see CollectionHandlerByCollectionIterator
  * @see CollectionHandlerByCollectionIteratorOf2
+ * @deprecated Replace with {@link GenericCollectionIteratorOf1}. This will be removed in v2.0
  */
 export class CollectionHandlerByCollectionIteratorOf1<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,

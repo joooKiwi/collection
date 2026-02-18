@@ -15,6 +15,7 @@ import type {CollectionHandler}                                  from "./Collect
 import type {ValueHolder}                                        from "./value/ValueHolder"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../type/possibleInstance"
 
+/** @deprecated Replace with {@link AbstractCollectionHolder}. This will be removed in v2.0 */
 export abstract class AbstractCollectionHandler<const T = unknown,
     const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >

@@ -22,6 +22,7 @@ import {Not0IndexAfterCalculationValueHolder} from "./value/Not0IndexAfterCalcul
 import {PositiveInfinityIndexValueHolder}     from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                     from "./value/ValidValueHolder"
 
+/** @deprecated Replace with {@link AbstractCollectionHolderBy1}. This will be removed in v2.0 */
 export abstract class AbstractCollectionHandlerBy1Value<const T = unknown,
     const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >

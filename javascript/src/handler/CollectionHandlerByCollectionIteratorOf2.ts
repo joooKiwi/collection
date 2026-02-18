@@ -21,6 +21,7 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
  * @beta
  * @see CollectionHandlerByCollectionIterator
  * @see CollectionHandlerByCollectionIteratorOf1
+ * @deprecated Replace with {@link GenericCollectionIteratorOf2}. This will be removed in v2.0
  */
 export class CollectionHandlerByCollectionIteratorOf2<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,

@@ -20,6 +20,7 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @beta
  * @see CollectionHandlerByCollectionHolder
  * @see CollectionHandlerByCollectionHolderOf2
+ * @deprecated Replace with {@link GenericCollectionHolderOf1}. This will be removed in v2.0
  */
 export class CollectionHandlerByCollectionHolderOf1<const T = unknown,
     const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>,

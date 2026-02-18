@@ -21,6 +21,7 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
  * @beta
  * @see CollectionHandlerByMinimalistCollectionHolder
  * @see CollectionHandlerByMinimalistCollectionHolderOf1
+ * @deprecated Replace with {@link MinimalistCollectionViewer} or {@link CollectionViewer} depending on the needs. This will be removed in v2.0
  */
 export class CollectionHandlerByMinimalistCollectionHolderOf2<const T = unknown,
     const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,

@@ -29,6 +29,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  *
  * @see CollectionHandlerByArrayOf1
  * @see CollectionHandlerByArrayOf2
+ * @deprecated Replace with {@link ArrayAsCollectionHolder}. This will be removed in v2.0
  */
 export class CollectionHandlerByArray<const T = unknown,
     const REFERENCE extends readonly T[] = readonly T[],

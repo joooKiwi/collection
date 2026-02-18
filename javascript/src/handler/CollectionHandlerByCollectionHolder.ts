@@ -19,6 +19,7 @@ import {CollectionHandlerByMinimalistCollectionHolder} from "./CollectionHandler
  *
  * @beta
  * @see CollectionHandlerByMinimalistCollectionHolder
+ * @deprecated Replace with {@link GenericCollectionHolder}. This will be removed in v2.0
  */
 export class CollectionHandlerByCollectionHolder<const T = unknown,
     const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>,

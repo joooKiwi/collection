@@ -20,6 +20,7 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @beta
  * @see CollectionHandlerBySet
  * @see CollectionHandlerBySetOf2
+ * @deprecated Replace with {@link SetOf1AsCollectionHolder}. This will be removed in v2.0
  */
 export class CollectionHandlerBySetOf1<const T = unknown,
     const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
