@@ -22,6 +22,9 @@ import {IndexOutOfBoundsException}  from "../src/exception/IndexOutOfBoundsExcep
 import {InvalidIndexRangeException} from "../src/exception/InvalidIndexRangeException"
 
 describe("CollectionHolderTest (slice)", () => {
+    //TODO: update the tests to be similar to reverse on "methods"
+    //TODO: update the tests to be similar to reverse on "instances → by range"
+    //TODO: update the tests to be similar to reverse on "instances → get() being called → by range"
 
     test("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get

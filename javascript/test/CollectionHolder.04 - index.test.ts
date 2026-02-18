@@ -68,6 +68,11 @@ import * as indexOfLastIndexedOrNullModule                                      
 import * as indexOfLastOrNullModule                                                                                                                                              from "../src/method/indexOfLastOrNull"
 
 describe("CollectionHolderTest (index)", () => {
+    //TODO: update the tests to be similar to reverse on "methods"
+    //TODO: update the tests to be similar to reverse on "instances → firstIndexOf"
+    //TODO: update the tests to be similar to reverse on "instances → firstIndexOfOrNull"
+    //TODO: update the tests to be similar to reverse on "instances → lastIndexOf"
+    //TODO: update the tests to be similar to reverse on "instances → lastIndexOfOrNull"
 
     describe("EmptyCollectionHolder", () => {
         const instance = EmptyCollectionHolder.get
