@@ -1,11 +1,15 @@
 package value;
 
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
+import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.callback.ObjIntFunction;
@@ -44,5 +48,17 @@ public final class Callbacks {
     public static final Function<? super String, ?>       supplier1AsFail = _ -> fail("The test was not expected to have the callback being called");
     public static final IntFunction<? extends String>     supplier1AltAsFail = _ -> fail("The test was not expected to have the callback being called");
     public static final Supplier<?>                       supplier0AsFail = () -> fail("The test was not expected to have the callback being called");
+
+    public static final ObjIntConsumer<? super String> consumer2AsFail = (_, _) -> fail("The test was not expected to have the callback being called");
+    public static final IntObjConsumer<? super String> consumer2AltAsFail = (_, _) -> fail("The test was not expected to have the callback being called");
+    public static final Consumer<? super String>       consumer1AsFail = _ -> fail("The test was not expected to have the callback being called");
+    public static final IntConsumer                    consumer1AltAsFail = _ -> fail("The test was not expected to have the callback being called");
+    public static final Runnable                       consumer0AsFail = () -> fail("The test was not expected to have the callback being called");
+
+    public static final ObjIntConsumer<? super String> callback2 = (_, _) -> {};
+    public static final IntObjConsumer<? super String> callback2Alt = (_, _) -> {};
+    public static final Consumer<? super String>       callback1 = _ -> {};
+    public static final IntConsumer                    callback1Alt = _ -> {};
+    public static final Runnable                       callback0 = () -> {};
 
 }

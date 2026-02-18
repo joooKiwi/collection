@@ -44,14 +44,17 @@ import java.util.concurrent.atomic.DoubleAdder;
 import java.util.concurrent.atomic.LongAccumulator;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.IntPredicate;
+import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.IntObjFunction;
 import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.callback.ObjIntFunction;
@@ -72,11 +75,18 @@ public final class ReusableFields_Null {
     public static final @Nullable String                                           NULL_STRING = null;
     public static final @Nullable Character                                        NULL_CHARACTER = null;
 
+    public static final @Nullable ObjIntConsumer<? super String>                   NULL_CONSUMER2 = null;
+    public static final @Nullable IntObjConsumer<? super String>                   NULL_CONSUMER2_ALT = null;
+    public static final @Nullable Consumer<? super String>                         NULL_CONSUMER1 = null;
+    public static final @Nullable IntConsumer                                      NULL_CONSUMER1_ALT = null;
+    public static final @Nullable Runnable                                         NULL_CONSUMER0 = null;
+
     public static final @Nullable ObjIntFunction<? super String, ?>                NULL_SUPPLIER2 = null;
     public static final @Nullable IntObjFunction<? super String, ?>                NULL_SUPPLIER2_ALT = null;
     public static final @Nullable Function<? super String, ?>                      NULL_SUPPLIER1 = null;
     public static final @Nullable IntFunction<? extends String>                    NULL_SUPPLIER1_ALT = null;
     public static final @Nullable Supplier<?>                                      NULL_SUPPLIER0 = null;
+
     public static final @Nullable ObjIntPredicate<? super String>                  NULL_PREDICATE2 = null;
     public static final @Nullable IntObjPredicate<? super String>                  NULL_PREDICATE2_ALT = null;
     public static final @Nullable Predicate<? super String>                        NULL_PREDICATE1 = null;
