@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -33,10 +33,10 @@ export function __startingIndex(value: number, size: number,): number {
     if (value == Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The starting index cannot be an index with +∞.", value,)
 
-    if (value == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is over the collection size “${size}”.`, value,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The starting index “${value}” is the collection size “${size}”.`, value,)
 
     let startingIndex = value
     if (startingIndex < 0)
@@ -62,9 +62,9 @@ export function __startingIndexOrNull(value: number, size: number,): NullOrNumbe
     if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (value == size)
-        return null
     if (value > size)
+        return null
+    if (value == size)
         return null
 
     let startingIndex = value
@@ -93,10 +93,10 @@ export function __endingIndex(value: number, size: number,) {
     if (value == Number.POSITIVE_INFINITY)
         throw new ForbiddenIndexException("Forbidden index. The ending index cannot be an index with +∞.", value,)
 
-    if (value == size)
-        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
     if (value > size)
         throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is over the collection size “${size}”.`, value,)
+    if (value == size)
+        throw new IndexOutOfBoundsException(`Index out of bound. The ending index “${value}” is the collection size “${size}”.`, value,)
 
     let endingIndex = value
     if (endingIndex < 0)
@@ -122,9 +122,9 @@ export function __endingIndexOrNull(value: number, size: number,): NullOrNumber 
     if (value == Number.POSITIVE_INFINITY)
         return null
 
-    if (value == size)
-        return null
     if (value > size)
+        return null
+    if (value == size)
         return null
 
     let endingIndex = value
@@ -179,10 +179,10 @@ export function __validateInRange(from: number, startingIndex: number, to: numbe
 
     if (to == endingIndex)
         if (from == startingIndex)
-            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}”.`, from, to,)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}”.`, from, to,)
         else
-            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+            throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
     if (from == startingIndex)
-        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}”.`, from, to,)
-    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${to}” (“${endingIndex}” after calculation) is over the starting index “${from}” (“${startingIndex}” after calculation).`, from, to,)
+        throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}”.`, from, to,)
+    throw new InvalidIndexRangeException(`Invalid index range. The ending index “${from}” (“${startingIndex}” after calculation) is over the starting index “${to}” (“${endingIndex}” after calculation).`, from, to,)
 }

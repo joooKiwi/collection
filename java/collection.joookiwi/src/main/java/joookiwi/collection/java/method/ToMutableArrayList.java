@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -267,7 +266,7 @@ public final class ToMutableArrayList
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -286,7 +285,7 @@ public final class ToMutableArrayList
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -303,7 +302,7 @@ public final class ToMutableArrayList
     /// with an initial capacity
     ///
     /// @param collection      The [nullable][Nullable] collection
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the `collection.length` if under the size)
     /// @param <T>             The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -326,7 +325,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -349,7 +348,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -370,7 +369,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] collection
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the `collection.length` if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -396,7 +395,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -419,7 +418,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -440,7 +439,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] collection
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the `collection.length` if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -466,7 +465,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][MinimalistCollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -489,7 +488,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] [collection][CollectionHolder]
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the <code>collection.[size][CollectionHolder#size]</code> if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type
@@ -510,7 +509,7 @@ public final class ToMutableArrayList
     /// and applying a transformation
     ///
     /// @param collection      The [nullable][Nullable] collection
-    /// @param initialCapacity The [ArrayList] initial capacity (or the <code>collection.[size][MinimalistCollectionHolder#size]</code> if under the size)
+    /// @param initialCapacity The [list][java.util.ArrayList] initial capacity (or the `collection.length` if under the size)
     /// @param transform       The given transform
     /// @param <T>             The `collection` type
     /// @param <U>             The new type

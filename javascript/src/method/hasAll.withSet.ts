@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: ReadonlySet<T>,): boolean {
+export function hasAllWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithSetByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -57,7 +57,10 @@ export function hasAllWithSet<const T, >(collection: Nullable<| MinimalistCollec
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean {
+export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
+    if (values == null)
+        return true
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
@@ -67,7 +70,7 @@ export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection:
     const size = collection.size
     if (size == 0)
         return false
-    return __hasAll(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, valuesSize,)
 }
 
 /**
@@ -79,7 +82,10 @@ export function hasAllWithSetByMinimalistCollectionHolder<const T, >(collection:
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean {
+export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
+    if (values == null)
+        return true
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
@@ -87,7 +93,7 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
         return false
     if (collection.isEmpty)
         return false
-    return __hasAll(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, valuesSize,)
 }
 
 /**
@@ -99,7 +105,10 @@ export function hasAllWithSetByCollectionHolder<const T, >(collection: Nullable<
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithSetByArray<const T, >(collection: Nullable<readonly T[]>, values: ReadonlySet<T>,): boolean {
+export function hasAllWithSetByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
+    if (values == null)
+        return true
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return true
@@ -109,13 +118,13 @@ export function hasAllWithSetByArray<const T, >(collection: Nullable<readonly T[
     const size = collection.length
     if (size == 0)
         return false
-    return __hasAllByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
     const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {
@@ -129,7 +138,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, values: 
     return true
 }
 
-function __hasAllByArray<const T, >(collection: readonly T[], values: ReadonlySet<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: ReadonlySet<T>, size: number, valuesSize: number,) {
     const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {

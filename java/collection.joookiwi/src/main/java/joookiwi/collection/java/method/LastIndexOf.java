@@ -683,14 +683,14 @@ public final class LastIndexOf
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, size - 1);
+        return __findLastInRange(collection, element, 0, size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final T element) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, collection.size() - 1);
+        return __findLastInRange(collection, element, 0, collection.size() - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
@@ -698,7 +698,7 @@ public final class LastIndexOf
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __findLastInRange(collection, element, -1, size - 1);
+        return __findLastInRange(collection, element, 0, size - 1);
     }
 
     //#endregion -------------------- Core methods (element) --------------------

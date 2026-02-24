@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -10,20 +10,23 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_SizeAlias}                              from "./instance/GenericCollectionHolder_SizeAlias"
-import {EmptyCollectionHolderForTest}                                   from "./instance/EmptyCollectionHolderForTest"
-import {LazyGenericCollectionHolder_SizeAlias}                          from "./instance/LazyGenericCollectionHolder_SizeAlias"
-import {everyCollectionInstancesAndExtensionFunctionAsCollectionHolder} from "./value/instances"
-import {sizeValues}                                                     from "./value/sizes"
+import {GenericCollectionHolder_SizeAlias}             from "./instance/GenericCollectionHolder_SizeAlias"
+import {LazyGenericCollectionHolder_SizeAlias}         from "./instance/LazyGenericCollectionHolder_SizeAlias"
+import {everyExtensionMethodInstances, everyInstances} from "./value/instances"
+import {sizeValues}                                    from "./value/sizes"
+
+import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
 describe("CollectionHolderTest (size)", () => {
 
     describe("EmptyCollectionHolder", () => {
-        test("size",       () => expect(new EmptyCollectionHolderForTest().size,).toBe(0,),)
-        test("length",     () => expect(new EmptyCollectionHolderForTest().length,).toBe(0,),)
-        test("count",      () => expect(new EmptyCollectionHolderForTest().count,).toBe(0,),)
-        test("isEmpty",    () => expect(new EmptyCollectionHolderForTest().isEmpty,).toBeTrue(),)
-        test("isNotEmpty", () => expect(new EmptyCollectionHolderForTest().isNotEmpty,).toBeFalse(),)
+        const instance = EmptyCollectionHolder.get
+
+        test("size",       () => expect(instance.size,).toBe(0,),)
+        test("length",     () => expect(instance.length,).toBe(0,),)
+        test("count",      () => expect(instance.count,).toBe(0,),)
+        test("isEmpty",    () => expect(instance.isEmpty,).toBeTrue(),)
+        test("isNotEmpty", () => expect(instance.isNotEmpty,).toBeFalse(),)
     },)
 
     describe("aliases", () => {
@@ -37,12 +40,18 @@ describe("CollectionHolderTest (size)", () => {
         },)
     },)
 
-    describe.each(everyCollectionInstancesAndExtensionFunctionAsCollectionHolder,)("%s", ({value: {instance, isExtension,},},) => {
+    describe("methods", () => {
+    describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
+        test("isEmpty", () => expect(instance.isEmpty,).toBeTrue(),)
+        test("isNotEmpty", () => expect(instance.isNotEmpty,).toBeFalse(),)
+    },)},)
+
+    describe("instances", () => {
+    describe.each(everyInstances,)("%s", ({value: {instance,},},) => {
     describe.each(sizeValues(),)("%s", ({value: {array, size,},},) => {
-        if (!isExtension)
-            test("size", () => expect(new instance(array,).size,).toBe(size,),)
+        test("size", () => expect(new instance(array,).size,).toBe(size,),)
         test("isEmpty",    () => expect(new instance(array,).isEmpty,)[size == 0 ? "toBeTrue" : "toBeFalse"](),)
         test("isNotEmpty", () => expect(new instance(array,).isNotEmpty,)[size == 0 ? "toBeFalse" : "toBeTrue"](),)
-    },)},)
+    },)},)},)
 
 },)

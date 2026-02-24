@@ -16,7 +16,6 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -29,6 +28,8 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPAC
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
+import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// A mutable behaviour of a [PriorityBlockingQueue]
 ///
@@ -38,7 +39,7 @@ public class MutablePriorityBlockingQueue<T>
         extends PriorityBlockingQueue<T>
         implements MutableBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = -2151991859766935419L;
+    @Serial private static final long serialVersionUID = 869292086233370937L;
 
     //#region -------------------- Constructors --------------------
 
@@ -58,9 +59,8 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) byte initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final byte initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -68,7 +68,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final  @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 1), null); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -76,7 +76,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) short initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final short initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -84,7 +84,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 1), null); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -92,7 +92,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int initialCapacity) { super(initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final int initialCapacity) { super(max(initialCapacity, 1), null); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
@@ -100,7 +100,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, null); }
+    public MutablePriorityBlockingQueue(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 1), null); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- comparator --------------------
@@ -119,55 +119,49 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) byte initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final @Nullable Byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 1), comparator); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) short initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final @Nullable Short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 1), comparator); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) int initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final int initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(max(initialCapacity, 1), comparator); }
 
     /// Create a mutable instance of [PriorityBlockingQueue]
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// ordered according to the `comparator` received
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Range(from = 1, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
-                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, comparator); }
+    public MutablePriorityBlockingQueue(final @Nullable Integer initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 1), comparator); }
 
     //#endregion -------------------- initialCapacity, comparator --------------------
     //#region -------------------- values --------------------
@@ -178,16 +172,7 @@ public class MutablePriorityBlockingQueue<T>
     ///
     /// @throws ClassCastException One element cannot be compared to another element
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
-    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY), null);
-        final var size = values.length;
-        if (size == 0)
-            return;
-
-        var index = -1;
-        while (++index < size)
-            super.offer(values[index]);
-    }
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) { super(toCollection(values)); }
 
     /// Create an [immutable-like][Unmodifiable] instance of [PriorityBlockingQueue]
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
@@ -230,6 +215,205 @@ public class MutablePriorityBlockingQueue<T>
     public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable PriorityQueue<? extends T> values) { super(values); }
 
     //#endregion -------------------- values --------------------
+    //#region -------------------- values, initialCapacity --------------------
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final byte initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Byte initialCapacity) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final short initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Short initialCapacity) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final int initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Integer initialCapacity) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), null);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final byte initialCapacity) {
+        super(max(initialCapacity, values.size()), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Byte initialCapacity) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final short initialCapacity) {
+        super(max(initialCapacity, values.size()), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Short initialCapacity) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final int initialCapacity) {
+        super(max(initialCapacity, values.size()), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// with its [natural ordering][Comparator#naturalOrder]
+    ///
+    /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Integer initialCapacity) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), null);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    //#endregion -------------------- values, initialCapacity --------------------
     //#region -------------------- values, comparator --------------------
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
@@ -240,14 +424,14 @@ public class MutablePriorityBlockingQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                         final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.length, DEFAULT_INITIAL_CAPACITY), comparator);
         final var size = values.length;
+        super(max(size, DEFAULT_INITIAL_CAPACITY), comparator);
         if (size == 0)
             return;
 
         var index = -1;
         while (++index < size)
-            super.offer(values[index]);
+            offer(values[index]);
     }
 
     /// Create an [immutable-like][Unmodifiable] instance of [ConcurrentSkipListSet]
@@ -258,15 +442,226 @@ public class MutablePriorityBlockingQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                         final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.size(), DEFAULT_INITIAL_CAPACITY), comparator);
+        super(max(values.size(), DEFAULT_INITIAL_CAPACITY), comparator);
         if (values.isEmpty())
             return;
 
         for (final var value : values)
-            super.offer(value);
+            offer(value);
     }
 
     //#endregion -------------------- values, comparator --------------------
+    //#region -------------------- values, initialCapacity, comparator --------------------
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(max(initialCapacity, size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(max(initialCapacity, size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final int initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(max(initialCapacity, size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the `values.length`
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                        final @Nullable Integer initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.length;
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), comparator);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            offer(values[index]);
+    }
+
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        super(max(initialCapacity, values.size()), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Byte initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.byteValue(), size), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        super(max(initialCapacity, values.size()), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Short initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.shortValue(), size), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final int initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        super(max(initialCapacity, values.size()), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    /// Create a mutable instance of [PriorityBlockingQueue]
+    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
+    /// ordered according to the `comparator` received
+    ///
+    /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
+    public MutablePriorityBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                        final @Nullable Integer initialCapacity,
+                                        final @Nullable Comparator<? super T> comparator) {
+        final var size = values.size();
+        super(initialCapacity == null ? max(size, DEFAULT_INITIAL_CAPACITY) : max(initialCapacity.intValue(), size), comparator);
+        if (values.isEmpty())
+            return;
+
+        for (final var value : values)
+            offer(value);
+    }
+
+    //#endregion -------------------- values, initialCapacity, comparator --------------------
 
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------

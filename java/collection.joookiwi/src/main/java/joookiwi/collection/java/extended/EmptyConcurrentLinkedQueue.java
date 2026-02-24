@@ -2,14 +2,14 @@ package joookiwi.collection.java.extended;
 
 import java.io.Serial;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -41,7 +41,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyConcurrentLinkedQueue<T>
         extends ImmutableConcurrentLinkedQueue<T> {
 
-    @Serial private static final long serialVersionUID = -384210290705197213L;
+    @Serial private static final long serialVersionUID = 6300422714735007378L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -103,9 +103,9 @@ public class EmptyConcurrentLinkedQueue<T>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- To array methods --------------------

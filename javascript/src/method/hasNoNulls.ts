@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -62,7 +62,7 @@ export function hasNoNullsByMinimalistCollectionHolder<const T, >(collection: Nu
     const size = collection.size
     if (size == 0)
         return true
-    return __hasNoNulls(collection, size,)
+    return __validate(collection, size,)
 }
 
 /**
@@ -77,7 +77,7 @@ export function hasNoNullsByCollectionHolder<const T, >(collection: Nullable<Col
         return true
     if (collection.isEmpty)
         return true
-    return __hasNoNulls(collection, collection.size,)
+    return __validate(collection, collection.size,)
 }
 
 /**
@@ -94,13 +94,13 @@ export function hasNoNullsByArray<const T, >(collection: Nullable<readonly T[]>,
     const size = collection.length
     if (size == 0)
         return true
-    return __hasNoNullsByArray(collection, size,)
+    return __validateByArray(collection, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNoNulls(collection: MinimalistCollectionHolder, size: number,) {
+function __validate(collection: MinimalistCollectionHolder, size: number,) {
     let index = -1
     while (++index < size)
         if (collection.get(index,) == null)
@@ -108,7 +108,7 @@ function __hasNoNulls(collection: MinimalistCollectionHolder, size: number,) {
     return true
 }
 
-function __hasNoNullsByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: readonly unknown[], size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] == null)

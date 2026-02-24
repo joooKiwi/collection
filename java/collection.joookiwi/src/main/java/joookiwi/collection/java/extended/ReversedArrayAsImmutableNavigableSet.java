@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
-import java.util.NavigableSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -13,7 +12,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a reversed-order [NavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
+/// An implementation of a reversed-order [ImmutableNavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [REVERSED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.

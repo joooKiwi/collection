@@ -5,18 +5,20 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX_STRING;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_PREFIX_STRING;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_SEPARATOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asString;
 
 @NotNullByDefault
+@NonNls
 public final class ToString
         extends Utility {
 
@@ -81,7 +83,7 @@ public final class ToString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
     private static String __toString(final @Nullable Object [] collection,
@@ -91,7 +93,7 @@ public final class ToString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asString(collection[index])).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asString(collection[index]) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asString(collection[index]) + DEFAULT_JOIN_POSTFIX;
     }
 
     //#endregion -------------------- Loop method --------------------

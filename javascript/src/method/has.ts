@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -76,7 +76,7 @@ export function hasByMinimalistCollectionHolder<const T, >(collection: Nullable<
     const size = collection.size
     if (size == 0)
         return false
-    return __has(collection, value, size,)
+    return __validate(collection, value, size,)
 }
 
 /**
@@ -98,7 +98,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
         return false
     if (collection.isEmpty)
         return false
-    return __has(collection, value, collection.size,)
+    return __validate(collection, value, collection.size,)
 }
 
 /**
@@ -122,13 +122,13 @@ export function hasByArray<const T, >(collection: Nullable<readonly T[]>, value:
     const size = collection.length
     if (size == 0)
         return false
-    return __hasByArray(collection, value, size,)
+    return __validateByArray(collection, value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __has<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection.get(index,) === value)
@@ -136,7 +136,7 @@ function __has<const T, >(collection: MinimalistCollectionHolder<T>, value: T, s
     return false
 }
 
-function __hasByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)

@@ -6,18 +6,20 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX;
-import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_POSTFIX_STRING;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_PREFIX_STRING;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_JOIN_SEPARATOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleLowerCaseString;
 
 @NotNullByDefault
+@Nls
 public final class ToLocaleLowerCaseString
         extends Utility {
 
@@ -147,7 +149,7 @@ public final class ToLocaleLowerCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleLowerCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleLowerCaseString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
     }
 
     private static <T extends @Nullable Object> String __withNoLocale(final T @Unmodifiable [] collection,
@@ -157,7 +159,7 @@ public final class ToLocaleLowerCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection[index])).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleLowerCaseString(collection[index]) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleLowerCaseString(collection[index]) + DEFAULT_JOIN_POSTFIX;
     }
 
 
@@ -169,7 +171,7 @@ public final class ToLocaleLowerCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection.get(index), locale)).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleLowerCaseString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleLowerCaseString(collection.get(index), locale) + DEFAULT_JOIN_POSTFIX;
     }
 
     private static <T extends @Nullable Object> String __withLocale(final T @Unmodifiable [] collection,
@@ -180,7 +182,7 @@ public final class ToLocaleLowerCaseString
         var index = -1;
         while (++index < sizeMinus1)
             string.append(asLocaleLowerCaseString(collection[index], locale)).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_POSTFIX_STRING + string + asLocaleLowerCaseString(collection[index], locale) + DEFAULT_JOIN_POSTFIX;
+        return DEFAULT_JOIN_PREFIX_STRING + string + asLocaleLowerCaseString(collection[index], locale) + DEFAULT_JOIN_POSTFIX;
     }
 
     //#endregion -------------------- Locale method --------------------

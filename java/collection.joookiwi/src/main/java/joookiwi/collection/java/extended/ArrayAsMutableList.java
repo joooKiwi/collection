@@ -8,6 +8,19 @@ import org.jetbrains.annotations.Nullable;
 import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
+/// A bare-bone implementation of a [java List][java.util.List]
+/// with the mutability in place.
+///
+/// Note that `null` is permitted in this instance.
+/// It is up to the implementor to specify it.
+///
+/// The instance uses the [methods][joookiwi.collection.java.method]
+/// to give similar implementation to the [joookiwi.collection.java.CollectionHolder]
+/// when possible.
+///
+/// @param <T> The type
+/// @see SubdividedArrayAsMutableList
+/// @see ReversedArrayAsMutableList
 @NotNullByDefault
 public class ArrayAsMutableList<T extends @Nullable Object>
         extends AbstractArrayAsMutableList<T> {
@@ -17,19 +30,23 @@ public class ArrayAsMutableList<T extends @Nullable Object>
     private T[] __reference;
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
+    //#region -------------------- Constructors --------------------
 
+    /// Create an instance of a [MutableList] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
     public ArrayAsMutableList() {
         super();
         __reference = emptyArray();
     }
 
+    /// Create an instance of a [MutableList] from the `reference`
+    ///
+    /// @param reference The array to be the internal structure
     public ArrayAsMutableList(final T[] reference) {
         super();
         __reference = reference;
     }
 
-    //#endregion -------------------- Constructor --------------------
+    //#endregion -------------------- Constructors --------------------
     //#region -------------------- Getter / setter methods --------------------
 
     /// The changeable internal reference passed through the constructor or mutated from its setter

@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -20,22 +20,24 @@ import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, 
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 import type {CollectionHolderName}                                                                                                                                                                                                                                              from "../../src/type/toStringTag"
 
-import {EmptyCollectionException}  from "../../src/exception/EmptyCollectionException"
-import {ForbiddenIndexException}   from "../../src/exception/ForbiddenIndexException"
-import {IndexOutOfBoundsException} from "../../src/exception/IndexOutOfBoundsException"
+import {EmptyCollectionException}   from "../../src/exception/EmptyCollectionException"
+import {ForbiddenIndexException}    from "../../src/exception/ForbiddenIndexException"
+import {IndexOutOfBoundsException}  from "../../src/exception/IndexOutOfBoundsException"
+import {InvalidIndexRangeException} from "../../src/exception/InvalidIndexRangeException"
 
 /**
- * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented,
- * but an {@link ReadonlyArray Array} in the constructor
+ * A bare-bone implementation of a {@link CollectionHolderForTest} with nothing implemented
+ *
+ * @typeParam T The type
  */
-export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE extends readonly T[], >
+export abstract class AbstractCollectionHolderForTest<const T, >
     implements CollectionHolderForTest<T> {
 
     [index: TemplateOrNumber]: undefined
 
     #amountOfCall?: number
 
-    public constructor(/** The array received in the constructor */ public readonly array: REFERENCE,) {}
+    public constructor() {}
 
     //#region -------------------- Test utility methods --------------------
 
@@ -61,6 +63,17 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
             throw exception
         }
         throw new Error("The exception “IndexOutOfBoundsException” was expected to be thrown.",)
+    }
+
+    public executeWhileExpectingInvalidIndexRange(action: (instance: this,) => void,): this {
+        try {
+            action(this,)
+        } catch (exception) {
+            if (exception instanceof InvalidIndexRangeException)
+                return this
+            throw exception
+        }
+        throw new Error("The exception “InvalidIndexRangeException” was expected to be thrown.",)
     }
 
     public executeWhileExpectingEmptyException(action: (instance: this,) => void,): this {
@@ -330,27 +343,27 @@ export abstract class AbstractCollectionHolderForTest<const T, const REFERENCE e
 
     public abstract indexOfFirstIndexed(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): number
 
-    public findIndexIndexed(..._: readonly unknown[]): never
-    public findIndexIndexed() {
-        throw new Error("The method “findIndexIndexed” was not expected to be called.",)
-    }
-
     public findFirstIndexIndexed(..._: readonly unknown[]): never
     public findFirstIndexIndexed() {
         throw new Error("The method “findFirstIndexIndexed” was not expected to be called.",)
     }
 
+    public findIndexIndexed(..._: readonly unknown[]): never
+    public findIndexIndexed() {
+        throw new Error("The method “findIndexIndexed” was not expected to be called.",)
+    }
+
 
     public abstract indexOfFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>, from?: NullableNumber, to?: NullableNumber,): NullOrNumber
-
-    public findIndexIndexedOrNull(..._: readonly unknown[]): never
-    public findIndexIndexedOrNull() {
-        throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
-    }
 
     public findFirstIndexIndexedOrNull(..._: readonly unknown[]): never
     public findFirstIndexIndexedOrNull() {
         throw new Error("The method “findFirstIndexIndexedOrNull” was not expected to be called.",)
+    }
+
+    public findIndexIndexedOrNull(..._: readonly unknown[]): never
+    public findIndexIndexedOrNull() {
+        throw new Error("The method “findIndexIndexedOrNull” was not expected to be called.",)
     }
 
     //#endregion -------------------- Index of first --------------------

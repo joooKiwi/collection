@@ -201,8 +201,9 @@ public class ImmutableArrayList<T extends @Nullable Object>
     /// (similar to {@link java.util.List#of(Object[])})
     /// with the capacity as the `values.length`
     public ImmutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(size);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
         var index = -1;
@@ -214,8 +215,9 @@ public class ImmutableArrayList<T extends @Nullable Object>
     /// (similar to [java.util.List#copyOf(Collection)])
     /// with the capacity as the <code>values.[size][Collection#size()]</code>
     public ImmutableArrayList(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values.size());
-        final var size = __size = values.size();
+        final var size = values.size();
+        super(size);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
         super.addAll(values); //TODO change to setAll or set(index, value) if it is possible

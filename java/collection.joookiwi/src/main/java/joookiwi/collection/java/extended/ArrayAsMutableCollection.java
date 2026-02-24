@@ -5,6 +5,7 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A bare-bone implementation of a [java Collection][java.util.Collection]
@@ -27,9 +28,15 @@ public class ArrayAsMutableCollection<T extends @Nullable Object>
     private T[] __reference;
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
+    //#region -------------------- Constructors --------------------
 
-    /// Create an instance of a [java.util.Collection] from the `reference`
+    /// Create an instance of a [MutableCollection] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
+    public ArrayAsMutableCollection() {
+        super();
+        __reference = emptyArray();
+    }
+
+    /// Create an instance of a [MutableCollection] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsMutableCollection(final T[] reference) {
@@ -37,7 +44,7 @@ public class ArrayAsMutableCollection<T extends @Nullable Object>
         __reference = reference;
     }
 
-    //#endregion -------------------- Constructor --------------------
+    //#endregion -------------------- Constructors --------------------
     //#region -------------------- Getter / setter methods --------------------
 
     /// The changeable internal reference passed through the constructor and mutated from its setter

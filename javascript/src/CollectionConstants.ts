@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -149,8 +149,11 @@ export class CollectionConstants {
             "hasNull", "includesNull", "containsNull",
             "hasDuplicate", "includesDuplicate", "containsDuplicate",
             "has", "includes", "contains",
+            "hasNot", "includesNot", "containsNot",
             "hasOne", "includesOne", "containsOne",
+            "hasNotOne", "includesNotOne", "containsNotOne",
             "hasAll", "includesAll", "containsAll",
+            "hasNotAll", "includesNotAll", "containsNotAll",
             "requireNoNulls",
             "filter", "filterIndexed", "filterNot", "filterNotIndexed", "filterNotNull",
             "slice",
@@ -234,7 +237,7 @@ export class CollectionConstants {
             Symbol.unscopables,
             "copyWithin", "with",
             "reverse", "toReversed",
-            "toSorted",
+            "sort", "toSorted",
             "slice", "splice", "toSpliced",
             "toString", "toLocaleString",
         ] as const,),)
@@ -493,6 +496,8 @@ export namespace CollectionConstants {
     export const DEFAULT_JOIN_POSTFIX = ']'
     /** The default {@link String} value for an empty {@link CollectionHolder} */
     export const DEFAULT_EMPTY_COLLECTION = "[]"
+    /** The default {@link String} value for a filled {@link CollectionHolder}, but as nothing being shown */
+    export const DEFAULT_ZERO_FILLED_COLLECTION = "[…]"
 
     //#endregion -------------------- Default references --------------------
     //#region -------------------- Messages --------------------

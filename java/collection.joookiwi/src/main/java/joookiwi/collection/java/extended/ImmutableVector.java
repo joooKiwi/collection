@@ -221,9 +221,10 @@ public class ImmutableVector<T extends @Nullable Object>
     /// with the initial capacity as the `values.length`
     /// and the capacity increment of `0`
     public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length, 0);
-        final var size = __size = elementCount = values.length;
-        if (__isEmpty =- size == 0)
+        final var size = values.length;
+        super(size, 0);
+        __size = elementCount = size;
+        if (__isEmpty = size == 0)
             return;
 
         final var array = elementData;
@@ -237,8 +238,9 @@ public class ImmutableVector<T extends @Nullable Object>
     /// with the initial capacity as the <code>values.[size][Collection#size()]</code>
     /// and the capacity increment of `0`
     public ImmutableVector(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
+        final var size = values.size();
         super(values.size(), 0);
-        final var size = __size = values.size();
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 

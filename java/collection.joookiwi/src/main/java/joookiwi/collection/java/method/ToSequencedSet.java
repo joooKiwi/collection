@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableSequencedSet;
+import joookiwi.collection.java.extended.EmptySequencedSet;
 import joookiwi.collection.java.extended.ImmutableSequencedSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToSequencedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSequencedSet<T> toSequencedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToSequencedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSequencedSet<T> toSequencedSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         if (collection.isEmpty())
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         if (collection.hasDuplicate())
             return new ArrayAsImmutableSequencedSet<>(_values(collection, collection.size()));
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size()));
@@ -65,11 +65,11 @@ public final class ToSequencedSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableSequencedSet<T> toSequencedSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size));
     }
 
@@ -87,11 +87,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -106,9 +106,9 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         if (collection.isEmpty())
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
@@ -123,11 +123,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -145,11 +145,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -164,9 +164,9 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         if (collection.isEmpty())
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
@@ -181,11 +181,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -203,11 +203,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(size, transform));
     }
 
@@ -222,9 +222,9 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         if (collection.isEmpty())
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(collection.size(), transform));
     }
 
@@ -239,11 +239,11 @@ public final class ToSequencedSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableSequencedSet<U> toSequencedSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ArrayAsImmutableSequencedSet<>(_uniqueValues(size, transform));
     }
 

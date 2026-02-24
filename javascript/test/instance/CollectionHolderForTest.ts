@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -28,6 +28,15 @@ export interface CollectionHolderForTest<out T, >
      * @param action The action to do
      */
     executeWhileExpectingIndexOutOfBound(action: (instance: this,) => void,): this
+
+    /**
+     * Do an action on the curent {@link CollectionHolderForTest instance}
+     * while expecting a {@link InvalidIndexRangeException} to be thrown
+     * and return itself afterward
+     *
+     * @param action The action to do
+     */
+    executeWhileExpectingInvalidIndexRange(action: (instance: this,) => void,): this
 
     /**
      * Do an action on the curent {@link CollectionHolderForTest instance}

@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -25,18 +25,18 @@ const NUMBER_REGEX = /\d+/
 
 /** A class to test the functionality of a {@link GenericCollectionHolder} */
 export class CollectionHolder_ByGenericCollection<const T, >
-    extends AbstractCollectionHolderForTest<T, readonly T[]> {
+    extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: GenericCollectionHolder<T, readonly T[]>
+    public readonly instance: GenericCollectionHolder<T>
 
     /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
     public readonly proxiedArray: readonly T[]
     /** The handler associated to the {@link proxiedArray} */
     public readonly proxyHandler: ProxyHandler<readonly T[]>
 
-    public constructor(array: readonly T[],) {
-        super(array,)
+    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
+        super()
         const $this = this
         const handler = this.proxyHandler = {
             get(target: readonly T[], property: StringOrSymbol, receiver: unknown,) {
@@ -47,7 +47,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
             },
         }
         this.instance = new class CollectionHolder_CountingGetByGenericCollection
-            extends GenericCollectionHolder<T, readonly T[]> {
+            extends GenericCollectionHolder<T> {
 
             protected override get _array(): readonly T[] { return $this.proxiedArray }
 
@@ -72,10 +72,6 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override getLast(): T { return this.instance.getLast() }
 
-    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
-
-    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
-
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -89,7 +85,12 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
 
+
     public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
+
+    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
+
+    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find --------------------
@@ -185,45 +186,45 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override hasNot(value: T,): boolean { return this.instance.hasNot(value,) }
 
-    public override hasOne(values: readonly T[],): boolean
-    public override hasOne(values: ReadonlySet<T>,): boolean
-    public override hasOne(values: CollectionHolder<T>,): boolean
-    public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasOne(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasOne(values,) }
+    public override hasOne(values: Nullable<readonly T[]>,): boolean
+    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasOne(values,) }
 
-    public override hasNotOne(values: readonly T[],): boolean
-    public override hasNotOne(values: ReadonlySet<T>,): boolean
-    public override hasNotOne(values: CollectionHolder<T>,): boolean
-    public override hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasNotOne(values: CollectionIterator<T>,): boolean
-    public override hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasNotOne(values,) }
+    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
+    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotOne(values,) }
 
-    public override hasAll(values: readonly T[],): boolean
-    public override hasAll(values: ReadonlySet<T>,): boolean
-    public override hasAll(values: CollectionHolder<T>,): boolean
-    public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasAll(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasAll(values,) }
+    public override hasAll(values: Nullable<readonly T[]>,): boolean
+    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasAll(values,) }
 
-    public override hasNotAll(values: readonly T[],): boolean
-    public override hasNotAll(values: ReadonlySet<T>,): boolean
-    public override hasNotAll(values: CollectionHolder<T>,): boolean
-    public override hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasNotAll(values: CollectionIterator<T>,): boolean
-    public override hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.instance.hasNotAll(values,) }
+    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
+    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotAll(values,) }
 
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
@@ -254,10 +255,11 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,) { return this.instance.filterNotIndexed(predicate,) }
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        const instance = this.instance.filterNotNull()
-        if (instance === this.instance)
+        const instance = this.instance
+        const newInstance = instance.filterNotNull()
+        if (newInstance === instance)
             return this as CollectionHolder<NonNullable<T>>
-        return instance
+        return newInstance
     }
 
     //#endregion -------------------- Filter --------------------

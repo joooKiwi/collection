@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsImmutableIterator;
-import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -27,6 +26,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [PriorityQueue]
 ///
@@ -80,8 +80,9 @@ public class ImmutablePriorityQueue<T>
     ///
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(NumberComparator.getInstance().max(values.length, 1), null);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(max(size, 1), null);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 
@@ -144,8 +145,9 @@ public class ImmutablePriorityQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                   final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.length, 1), comparator);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(max(size, 1), comparator);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 
@@ -160,8 +162,9 @@ public class ImmutablePriorityQueue<T>
     /// @implNote If the `comparator` is `null`, then use a [Comparable] type on [T] to avoid [ClassCastException]
     public ImmutablePriorityQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                                   final @Nullable Comparator<? super T> comparator) {
-        super(NumberComparator.getInstance().max(values.size(), 1), comparator);
-        if (__isEmpty = (__size = values.size()) == 0)
+        final var size = values.size();
+        super(max(size, 1), comparator);
+        if (__isEmpty = (__size = size) == 0)
             return;
 
         for (final var value : values)

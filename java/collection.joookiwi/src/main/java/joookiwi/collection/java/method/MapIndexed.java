@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -13,7 +14,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -43,11 +43,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
@@ -67,9 +67,9 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, collection.size()));
     }
 
@@ -89,11 +89,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final IntObjFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
@@ -116,11 +116,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final IntFunction<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(transform, size));
     }
 
@@ -140,9 +140,9 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final IntFunction<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(transform, collection.size()));
     }
 
@@ -162,11 +162,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final IntFunction<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(transform, size));
     }
 
@@ -189,11 +189,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 
@@ -213,9 +213,9 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, collection.size()));
     }
 
@@ -235,11 +235,11 @@ public final class MapIndexed
     public static <T extends @Nullable Object, U extends @Nullable Object> CollectionHolder<U> mapIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                           final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 

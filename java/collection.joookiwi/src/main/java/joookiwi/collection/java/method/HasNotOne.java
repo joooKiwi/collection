@@ -1,0 +1,1723 @@
+package joookiwi.collection.java.method;
+
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.NavigableSet;
+import java.util.Objects;
+import java.util.Queue;
+import java.util.RandomAccess;
+import java.util.SequencedCollection;
+import java.util.SequencedSet;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.Spliterator;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TransferQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
+import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.MinimalistCollectionHolder;
+import joookiwi.collection.java.annotation.ExtensionFunction;
+import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
+
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_TRUE_2;
+
+@NotNullByDefault
+public final class HasNotOne
+        extends Utility {
+
+    @Contract(ALWAYS_FAIL_0)
+    private HasNotOne() { throw new ImpossibleConstructionException("The utility class “HasNotOne” cannot be constructed.", HasNotOne.class); }
+
+    //#region -------------------- Facade methods --------------------
+
+    //#region -------------------- iterator --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable Iterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable Iterator<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable Iterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- iterator --------------------
+    //#region -------------------- list iterator --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        the `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable ListIterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable ListIterator<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable ListIterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- list iterator --------------------
+    //#region -------------------- spliterator --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable Spliterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable Spliterator<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable Spliterator<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- spliterator --------------------
+    //#region -------------------- enumeration --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable Enumeration<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable Enumeration<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable Enumeration<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- enumeration --------------------
+
+    //#region -------------------- iterable --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable Iterable<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, size, (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __validate(collection, size, (Collection<? extends T>) values);
+        return __validate(collection, size, values.iterator());
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable Iterable<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, collection.size(), (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __validate(collection, collection.size(), (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __validate(collection, collection.size(), (Collection<? extends T>) values);
+        return __validate(collection, collection.size(), values.iterator());
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable Iterable<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, size, (CollectionHolder<? extends T>) values);
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        if (values instanceof Collection<? extends T>)
+            return __validate(collection, size, (Collection<? extends T>) values);
+        return __validate(collection, size, values.iterator());
+    }
+
+    //#endregion -------------------- iterable --------------------
+
+    //#region -------------------- minimalist collection holder --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable MinimalistCollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, size, (CollectionHolder<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable MinimalistCollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, collection.size(), (CollectionHolder<? extends T>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable MinimalistCollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof CollectionHolder<? extends T>)
+            return __validate(collection, size, (CollectionHolder<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- minimalist collection holder --------------------
+    //#region -------------------- collection holder --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable CollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable CollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable CollectionHolder<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- collection holder --------------------
+
+    //#region -------------------- collection --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Collection<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Collection<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, collection.size(), (List<? extends T>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable Collection<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+    //#endregion -------------------- collection --------------------
+    //#region -------------------- sequenced collection --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, collection.size(), (List<? extends T>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable SequencedCollection<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<? extends T>)
+            return __validate(collection, size, (List<? extends T>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- sequenced collection --------------------
+
+    //#region -------------------- list --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable List<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable List<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable List<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- list --------------------
+
+    //#region -------------------- set --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Set<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Set<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable Set<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- set --------------------
+    //#region -------------------- sequenced set --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable SequencedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- sequenced set --------------------
+    //#region -------------------- sorted set --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable SortedSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- sorted set --------------------
+    //#region -------------------- navigable set --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable NavigableSet<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- navigable set --------------------
+
+    //#region -------------------- queue --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Queue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Queue<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable Queue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- queue --------------------
+    //#region -------------------- blocking queue --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable BlockingQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- blocking queue --------------------
+    //#region -------------------- transfer queue --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable TransferQueue<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- transfer queue --------------------
+
+    //#region -------------------- deque --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Deque<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final @Nullable @Unmodifiable Deque<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final @Nullable @Unmodifiable Deque<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- deque --------------------
+    //#region -------------------- blocking deque --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, collection.size(), (List<?>) values);
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                        final @Nullable @Unmodifiable BlockingDeque<? extends T> values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        if (values instanceof List<?>)
+            return __validate(collection, size, (List<?>) values);
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- blocking deque --------------------
+
+    //#region -------------------- array --------------------
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                 final T @Nullable @Unmodifiable [] values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.size();
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final @Nullable CollectionHolder<? extends T> collection,
+                                                                 final T @Nullable @Unmodifiable [] values) {
+        if (collection == null)
+            return true;
+        if (collection.isEmpty())
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, collection.size(), values);
+    }
+
+    /// Tell that none of the `values` exist in the `collection`
+    ///
+    /// @param collection The [nullable][Nullable] collection
+    /// @param values     The values to compare
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(IF_1ST_NULL_THEN_TRUE_2)
+    public static <T extends @Nullable Object> boolean hasNotOne(final T @Nullable @Unmodifiable [] collection,
+                                                                 final T @Nullable @Unmodifiable [] values) {
+        if (collection == null)
+            return true;
+
+        final var size = collection.length;
+        if (size == 0)
+            return true;
+        if (values == null)
+            return false;
+        return __validate(collection, size, values);
+    }
+
+    //#endregion -------------------- array --------------------
+
+    //#endregion -------------------- Facade methods --------------------
+    //#region -------------------- Core methods --------------------
+
+    //#region -------------------- Core methods (iterator) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final Iterator<? extends T> values) {
+        if (!values.hasNext())
+            return false;
+        return __fromIterator(collection, size, values);
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final Iterator<? extends T> values) {
+        if (!values.hasNext())
+            return false;
+        return __fromIterator(collection, size, values);
+    }
+
+    //#endregion -------------------- Core methods (iterator) --------------------
+    //#region -------------------- Core methods (spliterator) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final Spliterator<? extends T> values) {
+        if (values.estimateSize() == 0L)
+            return false;
+        return __fromSpliterator(collection, size, values);
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final Spliterator<? extends T> values) {
+        if (values.estimateSize() == 0L)
+            return false;
+        return __fromSpliterator(collection, size, values);
+    }
+
+    //#endregion -------------------- Core methods (spliterator) --------------------
+    //#region -------------------- Core methods (enumeration) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final Enumeration<? extends T> values) {
+        if (!values.hasMoreElements())
+            return false;
+        return __fromEnumeration(collection, size, values);
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final Enumeration<? extends T> values) {
+        if (!values.hasMoreElements())
+            return false;
+        return __fromEnumeration(collection, size, values);
+    }
+
+    //#endregion -------------------- Core methods (enumeration) --------------------
+
+    //#region -------------------- Core methods (minimalist collection holder) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final MinimalistCollectionHolder<? extends T> values) {
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return false;
+        return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final MinimalistCollectionHolder<? extends T> values) {
+        final var valuesSize = values.size();
+        if (valuesSize == 0)
+            return false;
+        return __fromMinimalistCollectionHolder(collection, size, values, valuesSize);
+    }
+
+    //#endregion -------------------- Core methods (minimalist collection holder) --------------------
+    //#region -------------------- Core methods (collection holder) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final CollectionHolder<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromMinimalistCollectionHolder(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.toIterator());
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final CollectionHolder<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromMinimalistCollectionHolder(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.toIterator());
+    }
+
+    //#endregion -------------------- Core methods (collection holder) --------------------
+
+    //#region -------------------- Core methods (collection) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable Collection<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        return __fromIterator(collection, size, values.iterator());
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable Collection<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        return __fromIterator(collection, size, values.iterator());
+    }
+
+    //#endregion -------------------- Core methods (collection) --------------------
+
+    //#region -------------------- Core methods (list) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable List<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromList(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.iterator());
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable List<? extends T> values) {
+        if (values.isEmpty())
+            return false;
+        if (values instanceof RandomAccess)
+            return __fromList(collection, size, values, values.size());
+        return __fromIterator(collection, size, values.iterator());
+    }
+
+    //#endregion -------------------- Core methods (list) --------------------
+
+    //#region -------------------- Core methods (array) --------------------
+
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final @Nullable Object @Unmodifiable [] values) {
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return false;
+        return __fromArray(collection, size, values, valuesSize);
+    }
+
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final @Nullable Object @Unmodifiable [] values) {
+        final var valuesSize = values.length;
+        if (valuesSize == 0)
+            return false;
+        return __fromArray(collection, size, values, valuesSize);
+    }
+
+    //#endregion -------------------- Core methods (array) --------------------
+
+    //#endregion -------------------- Core methods --------------------
+    //#region -------------------- Loop methods --------------------
+
+    //README: The iterator always has at least one element
+
+    private static <T extends @Nullable Object> boolean __fromIterator(final MinimalistCollectionHolder<? extends T> collection,
+                                                                       final int size,
+                                                                       final Iterator<? extends T> values) {
+        while (values.hasNext()) {
+            final var value = values.next();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), value))
+                    return false;
+        }
+        return true;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromIterator(final T @Unmodifiable [] collection,
+                                                                       final int size,
+                                                                       final Iterator<? extends T> values) {
+        while (values.hasNext()) {
+            final var value = values.next();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return false;
+        }
+        return true;
+    }
+
+
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final MinimalistCollectionHolder<? extends T> collection,
+                                                                          final int size,
+                                                                          final Spliterator<? extends T> values) {
+        final var valueReturned = new AtomicBoolean(true);
+        final Consumer<T> action = it -> {
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), it)) {
+                    valueReturned.set(false);
+                    return;
+                }
+        };
+        while (valueReturned.get())
+            if (!values.tryAdvance(action))
+                return true;
+        return false;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromSpliterator(final T @Unmodifiable [] collection,
+                                                                          final int size,
+                                                                          final Spliterator<? extends T> values) {
+        final var valueReturned = new AtomicBoolean(true);
+        final Consumer<T> action = it -> {
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], it)) {
+                    valueReturned.set(false);
+                    return;
+                }
+        };
+        while (valueReturned.get())
+            if (!values.tryAdvance(action))
+                return true;
+        return false;
+    }
+
+
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final MinimalistCollectionHolder<? extends T> collection,
+                                                                          final int size,
+                                                                          final Enumeration<? extends T> values) {
+        while (values.hasMoreElements()) {
+            final var value = values.nextElement();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), value))
+                    return false;
+        }
+        return true;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromEnumeration(final T @Unmodifiable [] collection,
+                                                                          final int size,
+                                                                          final Enumeration<? extends T> values) {
+        while (values.hasMoreElements()) {
+            final var value = values.nextElement();
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return false;
+        }
+        return true;
+    }
+
+
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final MinimalistCollectionHolder<? extends T> collection,
+                                                                                         final int size,
+                                                                                         final MinimalistCollectionHolder<? extends T> values,
+                                                                                         final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), value))
+                    return false;
+        }
+        return true;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromMinimalistCollectionHolder(final T @Unmodifiable [] collection,
+                                                                                         final int size,
+                                                                                         final MinimalistCollectionHolder<? extends T> values,
+                                                                                         final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return false;
+        }
+        return true;
+    }
+
+
+    private static <T extends @Nullable Object> boolean __fromList(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable List<? extends T> values,
+                                                                   final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), value))
+                    return false;
+        }
+        return true;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromList(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final @Unmodifiable List<? extends T> values,
+                                                                   final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values.get(valuesIndex);
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return false;
+        }
+        return true;
+    }
+
+
+    private static <T extends @Nullable Object> boolean __fromArray(final MinimalistCollectionHolder<? extends T> collection,
+                                                                    final int size,
+                                                                    final T @Unmodifiable [] values,
+                                                                    final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values[valuesIndex];
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection.get(index), value))
+                    return false;
+        }
+        return true;
+    }
+
+    private static <T extends @Nullable Object> boolean __fromArray(final T @Unmodifiable [] collection,
+                                                                    final int size,
+                                                                    final T @Unmodifiable [] values,
+                                                                    final int valuesSize) {
+        var valuesIndex = -1;
+        while (++valuesIndex < valuesSize) {
+            final var value = values[valuesIndex];
+            var index = -1;
+            while (++index < size)
+                if (Objects.deepEquals(collection[index], value))
+                    return false;
+        }
+        return true;
+    }
+
+    //#endregion -------------------- Loop methods --------------------
+
+}

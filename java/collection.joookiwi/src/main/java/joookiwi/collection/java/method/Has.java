@@ -44,7 +44,7 @@ public final class Has
         final var size = collection.size();
         if (size == 0)
             return false;
-        return __has(collection, size, value);
+        return __validate(collection, size, value);
     }
 
     /// Tell whenever the `value` exist in the `collection`
@@ -67,7 +67,7 @@ public final class Has
             return false;
         if (collection.isEmpty())
             return false;
-        return __has(collection, collection.size(), value);
+        return __validate(collection, collection.size(), value);
     }
 
     /// Tell whenever the `value` exist in the `collection`
@@ -93,15 +93,15 @@ public final class Has
         final var size = collection.length;
         if (size == 0)
             return false;
-        return __has(collection, size, value);
+        return __validate(collection, size, value);
     }
 
     //#endregion -------------------- Facade methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    private static <T extends @Nullable Object> boolean __has(final MinimalistCollectionHolder<? extends T> collection,
-                                                              final int size,
-                                                              final T value) {
+    private static <T extends @Nullable Object> boolean __validate(final MinimalistCollectionHolder<? extends T> collection,
+                                                                   final int size,
+                                                                   final T value) {
         var index = -1;
         if (value == null) {
             while (++index < size)
@@ -118,9 +118,9 @@ public final class Has
         return false;
     }
 
-    private static <T extends @Nullable Object> boolean __has(final T @Unmodifiable [] collection,
-                                                              final int size,
-                                                              final T value) {
+    private static <T extends @Nullable Object> boolean __validate(final T @Unmodifiable [] collection,
+                                                                   final int size,
+                                                                   final T value) {
         var index = -1;
         if (value == null) {
             while (++index < size)

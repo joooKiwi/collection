@@ -4,9 +4,10 @@ import java.util.Collection;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -95,9 +96,9 @@ public class EmptyCollection<T extends @Nullable Object>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Comparison methods --------------------

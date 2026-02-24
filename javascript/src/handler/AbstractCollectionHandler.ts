@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -15,6 +15,7 @@ import type {CollectionHandler}                                  from "./Collect
 import type {ValueHolder}                                        from "./value/ValueHolder"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../type/possibleInstance"
 
+/** @deprecated Replace with {@link AbstractCollectionHolder}. This will be removed in v2.0 */
 export abstract class AbstractCollectionHandler<const T = unknown,
     const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >

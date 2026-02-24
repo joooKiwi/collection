@@ -28,6 +28,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedBlockingDeque]
 ///
@@ -39,7 +40,7 @@ public class ImmutableLinkedBlockingDeque<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -5299095481671566064L;
+    @Serial private static final long serialVersionUID = -7200793921217224890L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -191,8 +192,9 @@ public class ImmutableLinkedBlockingDeque<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [LinkedBlockingDeque]
     /// with a capacity as the `values.length` (or `1` if it is empty)
     public ImmutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length == 0 ? 1 : values.length);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(max(size, 1));
+        __size = size;
         if (__isEmpty = size == 0)
             return;
 
@@ -204,8 +206,9 @@ public class ImmutableLinkedBlockingDeque<T>
     /// Create an [immutable-like][org.jetbrains.annotations.Unmodifiable] instance of [LinkedBlockingDeque]
     /// with a capacity as the <code>values.[size][Collection#size()]</code> (or `1` if it is empty)
     public ImmutableLinkedBlockingDeque(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values.isEmpty() ? 1 : values.size());
-        final var size = __size = values.size();
+        final var size = values.size();
+        super(max(size, 1));
+        __size = size;
         if (__isEmpty = size == 0)
             return;
         super.addAll(values);

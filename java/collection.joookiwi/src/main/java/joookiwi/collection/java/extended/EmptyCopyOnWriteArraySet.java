@@ -6,9 +6,10 @@ import java.util.Set;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -32,13 +33,13 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see joookiwi.collection.java.CollectionConstants#emptyHashSet
+/// @see joookiwi.collection.java.CollectionConstants#emptyCopyOnWriteArraySet
 @Singleton
 @NotNullByDefault
 public class EmptyCopyOnWriteArraySet<T>
         extends ImmutableCopyOnWriteArraySet<T> {
 
-    @Serial private static final long serialVersionUID = 8247326321795606031L;
+    @Serial private static final long serialVersionUID = -728520401427825900L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -100,9 +101,9 @@ public class EmptyCopyOnWriteArraySet<T>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Comparison methods --------------------

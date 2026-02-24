@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -17,97 +17,137 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
+import type {CollectionHolder_FromExtension}                                                                                                                                                                                                                                    from "./CollectionHolder_FromExtension"
 
-import {allByCollectionHolder}                       from "../../src/method/all"
-import {anyByCollectionHolder}                       from "../../src/method/any"
-import {dropByCollectionHolder}                      from "../../src/method/drop"
-import {dropLastByCollectionHolder}                  from "../../src/method/dropLast"
-import {dropLastWhileByCollectionHolder}             from "../../src/method/dropLastWhile"
-import {dropLastWhileIndexedByCollectionHolder}      from "../../src/method/dropLastWhileIndexed"
-import {dropWhileByCollectionHolder}                 from "../../src/method/dropWhile"
-import {dropWhileIndexedByCollectionHolder}          from "../../src/method/dropWhileIndexed"
-import {filterByCollectionHolder}                    from "../../src/method/filter"
-import {filterIndexedByCollectionHolder}             from "../../src/method/filterIndexed"
-import {filterNotByCollectionHolder}                 from "../../src/method/filterNot"
-import {filterNotIndexedByCollectionHolder}          from "../../src/method/filterNotIndexed"
-import {filterNotNullByCollectionHolder}             from "../../src/method/filterNotNull"
-import {findFirstByCollectionHolder}                 from "../../src/method/findFirst"
-import {findFirstIndexedByCollectionHolder}          from "../../src/method/findFirstIndexed"
-import {findFirstIndexedOrNullByCollectionHolder}    from "../../src/method/findFirstIndexedOrNull"
-import {findFirstOrNullByCollectionHolder}           from "../../src/method/findFirstOrNull"
-import {findLastByCollectionHolder}                  from "../../src/method/findLast"
-import {findLastIndexedByCollectionHolder}           from "../../src/method/findLastIndexed"
-import {findLastIndexedOrNullByCollectionHolder}     from "../../src/method/findLastIndexedOrNull"
-import {findLastOrNullByCollectionHolder}            from "../../src/method/findLastOrNull"
-import {forEachByCollectionHolder}                   from "../../src/method/forEach"
-import {forEachIndexedByCollectionHolder}            from "../../src/method/forEachIndexed"
-import {firstIndexOfByCollectionHolder}              from "../../src/method/firstIndexOf"
-import {firstIndexOfOrNullByCollectionHolder}        from "../../src/method/firstIndexOfOrNull"
-import {getFirstByCollectionHolder}                  from "../../src/method/getFirst"
-import {getFirstOrElseByCollectionHolder}            from "../../src/method/getFirstOrElse"
-import {getFirstOrNullByCollectionHolder}            from "../../src/method/getFirstOrNull"
-import {getLastByCollectionHolder}                   from "../../src/method/getLast"
-import {getLastOrElseByCollectionHolder}             from "../../src/method/getLastOrElse"
-import {getLastOrNullByCollectionHolder}             from "../../src/method/getLastOrNull"
-import {getOrElseByCollectionHolder}                 from "../../src/method/getOrElse"
-import {getOrNullByCollectionHolder}                 from "../../src/method/getOrNull"
-import {hasByCollectionHolder}                       from "../../src/method/has"
-import {hasAllByCollectionHolder}                    from "../../src/method/hasAll"
-import {hasDuplicateByCollectionHolder}              from "../../src/method/hasDuplicate"
-import {hasNoDuplicatesByCollectionHolder}           from "../../src/method/hasNoDuplicates"
-import {hasNoNullsByCollectionHolder}                from "../../src/method/hasNoNulls"
-import {hasNotByCollectionHolder}                    from "../../src/method/hasNot"
-import {hasNotAllByCollectionHolder}                 from "../../src/method/hasNotAll"
-import {hasNotOneByCollectionHolder}                 from "../../src/method/hasNotOne"
-import {hasNullByCollectionHolder}                   from "../../src/method/hasNull"
-import {hasOneByCollectionHolder}                    from "../../src/method/hasOne"
-import {indexOfFirstByCollectionHolder}              from "../../src/method/indexOfFirst"
-import {indexOfFirstIndexedByCollectionHolder}       from "../../src/method/indexOfFirstIndexed"
-import {indexOfFirstIndexedOrNullByCollectionHolder} from "../../src/method/indexOfFirstIndexedOrNull"
-import {indexOfFirstOrNullByCollectionHolder}        from "../../src/method/indexOfFirstOrNull"
-import {indexOfLastByCollectionHolder}               from "../../src/method/indexOfLast"
-import {indexOfLastIndexedByCollectionHolder}        from "../../src/method/indexOfLastIndexed"
-import {indexOfLastIndexedOrNullByCollectionHolder}  from "../../src/method/indexOfLastIndexedOrNull"
-import {indexOfLastOrNullByCollectionHolder}         from "../../src/method/indexOfLastOrNull"
-import {isEmptyByCollectionHolder}                   from "../../src/method/isEmpty"
-import {isNotEmptyByCollectionHolder}                from "../../src/method/isNotEmpty"
-import {joinToStringByCollectionHolder}              from "../../src/method/joinToString"
-import {lastIndexOfByCollectionHolder}               from "../../src/method/lastIndexOf"
-import {lastIndexOfOrNullByCollectionHolder}         from "../../src/method/lastIndexOfOrNull"
-import {noneByCollectionHolder}                      from "../../src/method/none"
-import {mapByCollectionHolder}                       from "../../src/method/map"
-import {mapIndexedByCollectionHolder}                from "../../src/method/mapIndexed"
-import {mapNotNullByCollectionHolder}                from "../../src/method/mapNotNull"
-import {mapNotNullIndexedByCollectionHolder}         from "../../src/method/mapNotNullIndexed"
-import {onEachByCollectionHolder}                    from "../../src/method/onEach"
-import {onEachIndexedByCollectionHolder}             from "../../src/method/onEachIndexed"
-import {requireNoNullsByCollectionHolder}            from "../../src/method/requireNoNulls"
-import {sliceByCollectionHolder}                     from "../../src/method/slice"
-import {takeByCollectionHolder}                      from "../../src/method/take"
-import {takeLastByCollectionHolder}                  from "../../src/method/takeLast"
-import {takeLastWhileByCollectionHolder}             from "../../src/method/takeLastWhile"
-import {takeLastWhileIndexedByCollectionHolder}      from "../../src/method/takeLastWhileIndexed"
-import {takeWhileByCollectionHolder}                 from "../../src/method/takeWhile"
-import {takeWhileIndexedByCollectionHolder}          from "../../src/method/takeWhileIndexed"
-import {toArrayByCollectionHolder}                   from "../../src/method/toArray"
-import {toIteratorByCollectionHolder}                from "../../src/method/toIterator"
-import {toLocaleLowerCaseStringByCollectionHolder}   from "../../src/method/toLocaleLowerCaseString"
-import {toLocaleStringByCollectionHolder}            from "../../src/method/toLocaleString"
-import {toLocaleUpperCaseStringByCollectionHolder}   from "../../src/method/toLocaleUpperCaseString"
-import {toLowerCaseStringByCollectionHolder}         from "../../src/method/toLowerCaseString"
-import {toMapByCollectionHolder}                     from "../../src/method/toMap"
-import {toMutableArrayByCollectionHolder}            from "../../src/method/toMutableArray"
-import {toMutableMapByCollectionHolder}              from "../../src/method/toMutableMap"
-import {toMutableSetByCollectionHolder}              from "../../src/method/toMutableSet"
-import {toReverseByCollectionHolder}                 from "../../src/method/toReverse"
-import {toSetByCollectionHolder}                     from "../../src/method/toSet"
-import {toStringByCollectionHolder}                  from "../../src/method/toString"
-import {toUpperCaseStringByCollectionHolder}         from "../../src/method/toUpperCaseString"
-import {AbstractCollectionHolderForTest}             from "./AbstractCollectionHolderForTest"
+import {allByCollectionHolder}                                     from "../../src/method/all"
+import {anyByCollectionHolder}                                     from "../../src/method/any"
+import {dropByCollectionHolder}                                    from "../../src/method/drop"
+import {dropLastByCollectionHolder}                                from "../../src/method/dropLast"
+import {dropLastWhileByCollectionHolder}                           from "../../src/method/dropLastWhile"
+import {dropLastWhileIndexedByCollectionHolder}                    from "../../src/method/dropLastWhileIndexed"
+import {dropWhileByCollectionHolder}                               from "../../src/method/dropWhile"
+import {dropWhileIndexedByCollectionHolder}                        from "../../src/method/dropWhileIndexed"
+import {filterByCollectionHolder}                                  from "../../src/method/filter"
+import {filterIndexedByCollectionHolder}                           from "../../src/method/filterIndexed"
+import {filterNotByCollectionHolder}                               from "../../src/method/filterNot"
+import {filterNotIndexedByCollectionHolder}                        from "../../src/method/filterNotIndexed"
+import {filterNotNullByCollectionHolder}                           from "../../src/method/filterNotNull"
+import {findFirstByCollectionHolder}                               from "../../src/method/findFirst"
+import {findFirstIndexedByCollectionHolder}                        from "../../src/method/findFirstIndexed"
+import {findFirstIndexedOrNullByCollectionHolder}                  from "../../src/method/findFirstIndexedOrNull"
+import {findFirstOrNullByCollectionHolder}                         from "../../src/method/findFirstOrNull"
+import {findLastByCollectionHolder}                                from "../../src/method/findLast"
+import {findLastIndexedByCollectionHolder}                         from "../../src/method/findLastIndexed"
+import {findLastIndexedOrNullByCollectionHolder}                   from "../../src/method/findLastIndexedOrNull"
+import {findLastOrNullByCollectionHolder}                          from "../../src/method/findLastOrNull"
+import {forEachByCollectionHolder}                                 from "../../src/method/forEach"
+import {forEachIndexedByCollectionHolder}                          from "../../src/method/forEachIndexed"
+import {firstIndexOfByCollectionHolder}                            from "../../src/method/firstIndexOf"
+import {firstIndexOfOrNullByCollectionHolder}                      from "../../src/method/firstIndexOfOrNull"
+import {getFirstByCollectionHolder}                                from "../../src/method/getFirst"
+import {getFirstOrElseByCollectionHolder}                          from "../../src/method/getFirstOrElse"
+import {getFirstOrNullByCollectionHolder}                          from "../../src/method/getFirstOrNull"
+import {getLastByCollectionHolder}                                 from "../../src/method/getLast"
+import {getLastOrElseByCollectionHolder}                           from "../../src/method/getLastOrElse"
+import {getLastOrNullByCollectionHolder}                           from "../../src/method/getLastOrNull"
+import {getOrElseByCollectionHolder}                               from "../../src/method/getOrElse"
+import {getOrNullByCollectionHolder}                               from "../../src/method/getOrNull"
+import {hasByCollectionHolder}                                     from "../../src/method/has"
+import {hasAllByCollectionHolder}                                  from "../../src/method/hasAll"
+import {hasAllWithArrayByCollectionHolder}                         from "../../src/method/hasAll.withArray"
+import {hasAllWithSetByCollectionHolder}                           from "../../src/method/hasAll.withSet"
+import {hasAllWithCollectionHolderByCollectionHolder}              from "../../src/method/hasAll.withCollectionHolder"
+import {hasAllWithMinimalistCollectionHolderByCollectionHolder}    from "../../src/method/hasAll.withMinimalistCollectionHolder"
+import {hasAllWithCollectionIteratorByCollectionHolder}            from "../../src/method/hasAll.withCollectionIterator"
+import {hasAllWithIteratorByCollectionHolder}                      from "../../src/method/hasAll.withIterator"
+import {hasAllWithIterableByCollectionHolder}                      from "../../src/method/hasAll.withIterable"
+import {hasDuplicateByCollectionHolder}                            from "../../src/method/hasDuplicate"
+import {hasNoDuplicatesByCollectionHolder}                         from "../../src/method/hasNoDuplicates"
+import {hasNoNullsByCollectionHolder}                              from "../../src/method/hasNoNulls"
+import {hasNotByCollectionHolder}                                  from "../../src/method/hasNot"
+import {hasNotAllByCollectionHolder}                               from "../../src/method/hasNotAll"
+import {hasNotAllWithArrayByCollectionHolder}                      from "../../src/method/hasNotAll.withArray"
+import {hasNotAllWithSetByCollectionHolder}                        from "../../src/method/hasNotAll.withSet"
+import {hasNotAllWithCollectionHolderByCollectionHolder}           from "../../src/method/hasNotAll.withCollectionHolder"
+import {hasNotAllWithMinimalistCollectionHolderByCollectionHolder} from "../../src/method/hasNotAll.withMinimalistCollectionHolder"
+import {hasNotAllWithCollectionIteratorByCollectionHolder}         from "../../src/method/hasNotAll.withCollectionIterator"
+import {hasNotAllWithIteratorByCollectionHolder}                   from "../../src/method/hasNotAll.withIterator"
+import {hasNotAllWithIterableByCollectionHolder}                   from "../../src/method/hasNotAll.withIterable"
+import {hasNotOneByCollectionHolder}                               from "../../src/method/hasNotOne"
+import {hasNotOneWithArrayByCollectionHolder}                      from "../../src/method/hasNotOne.withArray"
+import {hasNotOneWithSetByCollectionHolder}                        from "../../src/method/hasNotOne.withSet"
+import {hasNotOneWithCollectionHolderByCollectionHolder}           from "../../src/method/hasNotOne.withCollectionHolder"
+import {hasNotOneWithMinimalistCollectionHolderByCollectionHolder} from "../../src/method/hasNotOne.withMinimalistCollectionHolder"
+import {hasNotOneWithCollectionIteratorByCollectionHolder}         from "../../src/method/hasNotOne.withCollectionIterator"
+import {hasNotOneWithIteratorByCollectionHolder}                   from "../../src/method/hasNotOne.withIterator"
+import {hasNotOneWithIterableByCollectionHolder}                   from "../../src/method/hasNotOne.withIterable"
+import {hasNullByCollectionHolder}                                 from "../../src/method/hasNull"
+import {hasOneByCollectionHolder}                                  from "../../src/method/hasOne"
+import {hasOneWithArrayByCollectionHolder}                         from "../../src/method/hasOne.withArray"
+import {hasOneWithSetByCollectionHolder}                           from "../../src/method/hasOne.withSet"
+import {hasOneWithCollectionHolderByCollectionHolder}              from "../../src/method/hasOne.withCollectionHolder"
+import {hasOneWithMinimalistCollectionHolderByCollectionHolder}    from "../../src/method/hasOne.withMinimalistCollectionHolder"
+import {hasOneWithCollectionIteratorByCollectionHolder}            from "../../src/method/hasOne.withCollectionIterator"
+import {hasOneWithIteratorByCollectionHolder}                      from "../../src/method/hasOne.withIterator"
+import {hasOneWithIterableByCollectionHolder}                      from "../../src/method/hasOne.withIterable"
+import {indexOfFirstByCollectionHolder}                            from "../../src/method/indexOfFirst"
+import {indexOfFirstIndexedByCollectionHolder}                     from "../../src/method/indexOfFirstIndexed"
+import {indexOfFirstIndexedOrNullByCollectionHolder}               from "../../src/method/indexOfFirstIndexedOrNull"
+import {indexOfFirstOrNullByCollectionHolder}                      from "../../src/method/indexOfFirstOrNull"
+import {indexOfLastByCollectionHolder}                             from "../../src/method/indexOfLast"
+import {indexOfLastIndexedByCollectionHolder}                      from "../../src/method/indexOfLastIndexed"
+import {indexOfLastIndexedOrNullByCollectionHolder}                from "../../src/method/indexOfLastIndexedOrNull"
+import {indexOfLastOrNullByCollectionHolder}                       from "../../src/method/indexOfLastOrNull"
+import {isEmptyByCollectionHolder}                                 from "../../src/method/isEmpty"
+import {isNotEmptyByCollectionHolder}                              from "../../src/method/isNotEmpty"
+import {joinToStringByCollectionHolder}                            from "../../src/method/joinToString"
+import {lastIndexOfByCollectionHolder}                             from "../../src/method/lastIndexOf"
+import {lastIndexOfOrNullByCollectionHolder}                       from "../../src/method/lastIndexOfOrNull"
+import {noneByCollectionHolder}                                    from "../../src/method/none"
+import {mapByCollectionHolder}                                     from "../../src/method/map"
+import {mapIndexedByCollectionHolder}                              from "../../src/method/mapIndexed"
+import {mapNotNullByCollectionHolder}                              from "../../src/method/mapNotNull"
+import {mapNotNullIndexedByCollectionHolder}                       from "../../src/method/mapNotNullIndexed"
+import {onEachByCollectionHolder}                                  from "../../src/method/onEach"
+import {onEachIndexedByCollectionHolder}                           from "../../src/method/onEachIndexed"
+import {requireNoNullsByCollectionHolder}                          from "../../src/method/requireNoNulls"
+import {sliceByCollectionHolder}                                   from "../../src/method/slice"
+import {sliceWithARangeByCollectionHolder}                         from "../../src/method/slice.withARange"
+import {sliceWithArrayByCollectionHolder}                          from "../../src/method/slice.withArray"
+import {sliceWithCollectionHolderByCollectionHolder}               from "../../src/method/slice.withCollectionHolder"
+import {sliceWithCollectionIteratorByCollectionHolder}             from "../../src/method/slice.withCollectionIterator"
+import {sliceWithIterableByCollectionHolder}                       from "../../src/method/slice.withIterable"
+import {sliceWithIteratorByCollectionHolder}                       from "../../src/method/slice.withIterator"
+import {sliceWithMinimalistCollectionHolderByCollectionHolder}     from "../../src/method/slice.withMinimalistCollectionHolder"
+import {sliceWithSetByCollectionHolder}                            from "../../src/method/slice.withSet"
+import {takeByCollectionHolder}                                    from "../../src/method/take"
+import {takeLastByCollectionHolder}                                from "../../src/method/takeLast"
+import {takeLastWhileByCollectionHolder}                           from "../../src/method/takeLastWhile"
+import {takeLastWhileIndexedByCollectionHolder}                    from "../../src/method/takeLastWhileIndexed"
+import {takeWhileByCollectionHolder}                               from "../../src/method/takeWhile"
+import {takeWhileIndexedByCollectionHolder}                        from "../../src/method/takeWhileIndexed"
+import {toArrayByCollectionHolder}                                 from "../../src/method/toArray"
+import {toIteratorByCollectionHolder}                              from "../../src/method/toIterator"
+import {toLocaleLowerCaseStringByCollectionHolder}                 from "../../src/method/toLocaleLowerCaseString"
+import {toLocaleStringByCollectionHolder}                          from "../../src/method/toLocaleString"
+import {toLocaleUpperCaseStringByCollectionHolder}                 from "../../src/method/toLocaleUpperCaseString"
+import {toLowerCaseStringByCollectionHolder}                       from "../../src/method/toLowerCaseString"
+import {toMapByCollectionHolder}                                   from "../../src/method/toMap"
+import {toMutableArrayByCollectionHolder}                          from "../../src/method/toMutableArray"
+import {toMutableMapByCollectionHolder}                            from "../../src/method/toMutableMap"
+import {toMutableSetByCollectionHolder}                            from "../../src/method/toMutableSet"
+import {toReverseByCollectionHolder}                               from "../../src/method/toReverse"
+import {toSetByCollectionHolder}                                   from "../../src/method/toSet"
+import {toStringByCollectionHolder}                                from "../../src/method/toString"
+import {toUpperCaseStringByCollectionHolder}                       from "../../src/method/toUpperCaseString"
+import {AbstractCollectionHolderForTest}                           from "./AbstractCollectionHolderForTest"
 
 /** A test instance to exclusively test the extension methods for a {@link CollectionHolder} */
 export class CollectionHolder_FromExtensionFunction<const T, >
-    extends AbstractCollectionHolderForTest<T, readonly T[]> {
+    extends AbstractCollectionHolderForTest<T>
+    implements CollectionHolder_FromExtension<T> {
+
+    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) { super() }
 
     //#region -------------------- Test utility methods --------------------
 
@@ -142,9 +182,11 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public override get(index: number,): T {
         if (index < 0)
             throw new Error("The method “get” was not expected to be called with a negative index",)
-        if (index >= this.array.length)
+
+		const array = this.array
+        if (index >= array.length)
             throw new Error("The method “get” was not expected to be called with an index equal or over the size",)
-        return this.array[index] as T
+        return array[index] as T
     }
 
     public override getFirst(): T {
@@ -338,52 +380,136 @@ export class CollectionHolder_FromExtensionFunction<const T, >
         return hasNotByCollectionHolder<T>(this, value,)
     }
 
-    public override hasOne(values: readonly T[],): boolean
-    public override hasOne(values: ReadonlySet<T>,): boolean
-    public override hasOne(values: CollectionHolder<T>,): boolean
-    public override hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasOne(values: CollectionIterator<T>,): boolean
-    public override hasOne(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasOne(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
-        return hasOneByCollectionHolder<T>(this, values,)
+    public hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+        return hasOneWithArrayByCollectionHolder(this, values,)
+    }
+    public hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+        return hasOneWithSetByCollectionHolder(this, values,)
+    }
+    public hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
+        return hasOneWithCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasOneWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+        return hasOneWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasOneWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean {
+        return hasOneWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+    public hasOneWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+        return hasOneWithIteratorByCollectionHolder(this, values,)
+    }
+    public hasOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+        return hasOneWithIterableByCollectionHolder(this, values,)
+    }
+    public override hasOne(values: Nullable<readonly T[]>,): boolean
+    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        return hasOneByCollectionHolder(this, values,)
     }
 
-    public override hasNotOne(values: readonly T[],): boolean
-    public override hasNotOne(values: ReadonlySet<T>,): boolean
-    public override hasNotOne(values: CollectionHolder<T>,): boolean
-    public override hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasNotOne(values: CollectionIterator<T>,): boolean
-    public override hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
-        return hasNotOneByCollectionHolder<T>(this, values,)
+    public hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+        return hasNotOneWithArrayByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+        return hasNotOneWithSetByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
+        return hasNotOneWithCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+        return hasNotOneWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean {
+        return hasNotOneWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+        return hasNotOneWithIteratorByCollectionHolder(this, values,)
+    }
+    public hasNotOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+        return hasNotOneWithIterableByCollectionHolder(this, values,)
+    }
+    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
+    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        return hasNotOneByCollectionHolder(this, values,)
     }
 
-    public override hasAll(values: readonly T[],): boolean
-    public override hasAll(values: ReadonlySet<T>,): boolean
-    public override hasAll(values: CollectionHolder<T>,): boolean
-    public override hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasAll(values: CollectionIterator<T>,): boolean
-    public override hasAll(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasAll(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
-        return hasAllByCollectionHolder<T>(this, values,)
+    public hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+        return hasAllWithArrayByCollectionHolder(this, values,)
+    }
+    public hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+        return hasAllWithSetByCollectionHolder(this, values,)
+    }
+    public hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
+        return hasAllWithCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasAllWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+        return hasAllWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasAllWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean {
+        return hasAllWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+    public hasAllWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+        return hasAllWithIteratorByCollectionHolder(this, values,)
+    }
+    public hasAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+        return hasAllWithIterableByCollectionHolder(this, values,)
+    }
+    public override hasAll(values: Nullable<readonly T[]>,): boolean
+    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        return hasAllByCollectionHolder(this, values,)
     }
 
-    public override hasNotAll(values: readonly T[],): boolean
-    public override hasNotAll(values: ReadonlySet<T>,): boolean
-    public override hasNotAll(values: CollectionHolder<T>,): boolean
-    public override hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public override hasNotAll(values: CollectionIterator<T>,): boolean
-    public override hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public override hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
-        return hasNotAllByCollectionHolder<T>(this, values,)
+    public hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+        return hasNotAllWithArrayByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+        return hasNotAllWithSetByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
+        return hasNotAllWithCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+        return hasNotAllWithMinimalistCollectionHolderByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean {
+        return hasNotAllWithCollectionIteratorByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithIterator(values: Nullable<Iterator<T, unknown, unknown>>,): boolean {
+        return hasNotAllWithIteratorByCollectionHolder(this, values,)
+    }
+    public hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+        return hasNotAllWithIterableByCollectionHolder(this, values,)
+    }
+    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
+    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+        return hasNotAllByCollectionHolder(this, values,)
     }
 
 
@@ -429,16 +555,32 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
+    public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
+        return sliceWithARangeByCollectionHolder<T>(this, from, to,)
+    }
+    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+        return sliceWithArrayByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+        return sliceWithSetByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithCollectionHolderByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
+        return sliceWithMinimalistCollectionHolderByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T> {
+        return sliceWithCollectionIteratorByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithIterator(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIteratorByCollectionHolder<T>(this, indices,)
+    }
+    public sliceWithIterable(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T> {
+        return sliceWithIterableByCollectionHolder<T>(this, indices,)
+    }
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         return sliceByCollectionHolder<T>(this, indicesOrFrom, to,)
     }

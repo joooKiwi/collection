@@ -289,9 +289,10 @@ public class MutableConcurrentSkipListSet<T>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -302,7 +303,7 @@ public class MutableConcurrentSkipListSet<T>
         super();
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -313,7 +314,7 @@ public class MutableConcurrentSkipListSet<T>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -324,7 +325,7 @@ public class MutableConcurrentSkipListSet<T>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -335,7 +336,7 @@ public class MutableConcurrentSkipListSet<T>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -346,7 +347,7 @@ public class MutableConcurrentSkipListSet<T>
         super(values.comparator());
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values --------------------
@@ -362,9 +363,10 @@ public class MutableConcurrentSkipListSet<T>
         final var size = values.length;
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [ConcurrentSkipListSet]
@@ -376,7 +378,7 @@ public class MutableConcurrentSkipListSet<T>
         super(comparator);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values, comparator --------------------

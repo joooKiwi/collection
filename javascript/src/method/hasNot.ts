@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -24,7 +24,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 //#region -------------------- Facade method --------------------
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @param value      The value to compare
@@ -49,7 +49,7 @@ export function hasNot<const T, >(collection: Nullable<| MinimalistCollectionHol
 
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
@@ -62,11 +62,11 @@ export function hasNotByMinimalistCollectionHolder<const T, >(collection: Nullab
     const size = collection.size
     if (size == 0)
         return true
-    return __hasNot(collection, value, size,)
+    return __validate(collection, value, size,)
 }
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
@@ -77,11 +77,11 @@ export function hasNotByCollectionHolder<const T, >(collection: Nullable<Collect
         return true
     if (collection.isEmpty)
         return true
-    return __hasNot(collection, value, collection.size,)
+    return __validate(collection, value, collection.size,)
 }
 
 /**
- * Tell whenever the {@link value} exist in the {@link collection}
+ * Tell whenever the {@link value} <b>does not</b> exist in the {@link collection}
  *
  * @param collection The nullable collection
  * @param value      The value to compare
@@ -94,13 +94,13 @@ export function hasNotByArray<const T, >(collection: Nullable<readonly T[]>, val
     const size = collection.length
     if (size == 0)
         return true
-    return __hasNotByArray(collection, value, size,)
+    return __validateByArray(collection, value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNot<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection.get(index,) === value)
@@ -108,7 +108,7 @@ function __hasNot<const T, >(collection: MinimalistCollectionHolder<T>, value: T
     return true
 }
 
-function __hasNotByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)

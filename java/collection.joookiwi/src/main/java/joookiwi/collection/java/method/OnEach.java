@@ -90,8 +90,8 @@ public final class OnEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final ObjIntConsumer<? super T> action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEach(final T @Nullable @Unmodifiable [] collection,
+                                                                                   final ObjIntConsumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -169,8 +169,8 @@ public final class OnEach
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @ExtensionFunction
     @Contract(ALWAYS_1ST_2)
-    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Consumer<? super T> action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEach(final T @Nullable @Unmodifiable [] collection,
+                                                                                   final Consumer<? super T> action) {
         if (collection == null)
             return null;
 
@@ -179,6 +179,7 @@ public final class OnEach
             return collection;
         return __with1Argument(collection, action, size);
     }
+
     //#endregion -------------------- predicate (T) → boolean --------------------
     //#region -------------------- predicate () → boolean --------------------
 
@@ -245,8 +246,8 @@ public final class OnEach
     /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set/forEach">Javascript ReadonlySet.forEach</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/on-each.html">Kotlin onEach(action)</a>
     @Contract(ALWAYS_1ST_2)
-    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] __with0Argument(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Runnable action) {
+    public static <T extends @Nullable Object> T @Nullable @Unmodifiable [] onEach(final T @Nullable @Unmodifiable [] collection,
+                                                                                   final Runnable action) {
         if (collection == null)
             return null;
 
@@ -255,6 +256,7 @@ public final class OnEach
             return collection;
         return __with0Argument(collection, action, size);
     }
+
     //#endregion -------------------- predicate () → boolean --------------------
 
     //#endregion -------------------- Facade methods --------------------

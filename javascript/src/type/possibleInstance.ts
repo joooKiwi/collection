@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -15,7 +15,10 @@ import type {GenericCollectionHolder}           from "../GenericCollectionHolder
 import type {GenericMinimalistCollectionHolder} from "../GenericMinimalistCollectionHolder"
 import type {LazyGenericCollectionHolder}       from "../LazyGenericCollectionHolder"
 import type {MinimalistCollectionHolder}        from "../MinimalistCollectionHolder"
+import type {IterableWithCount}                 from "../iterable/IterableWithCount"
+import type {IterableWithLength}                from "../iterable/IterableWithLength"
 import type {IterableWithPossibleSize}          from "../iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                  from "../iterable/IterableWithSize"
 import type {CollectionIterator}                from "../iterator/CollectionIterator"
 
 /**
@@ -25,25 +28,6 @@ import type {CollectionIterator}                from "../iterator/CollectionIter
 export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistCollectionHolder
                                                   | typeof GenericCollectionHolder
                                                   | typeof LazyGenericCollectionHolder
-
-/**
- * A type-alias for the possible type of {@link Iterable} with the size field
- * (size, length or count) or the {@link MinimalistCollectionHolder}.
- *
- * @deprecated Replace to {@link PossibleIterableIteratorArraySetOrCollectionHolder}. It will be removed in version 1.14
- */
-export type PossibleIterableOrCollection<T, > = | MinimalistCollectionHolder<T> | IterableWithPossibleSize<T>
-
-/**
- * A type-alias for the possible {@link ReadonlyArray Array}, {@link ReadonlySet Set},
- * {@link MinimalistCollectionHolder} (with inheritor)
- * and {@link Iterable} (with inheritor)
- *
- * @deprecated Replace to {@link PossibleIterableIteratorArraySetOrCollectionHolder}. It will be removed in version 1.14
- */
-export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
-                                                              | MinimalistCollectionHolder<T> | CollectionHolder<T>
-                                                              | CollectionIterator<T> | Iterable<T> | IterableWithPossibleSize<T>
 
 /**
  * A type-alias for the possible {@link ReadonlyArray Array}, {@link ReadonlySet Set},
@@ -59,9 +43,12 @@ export type PossibleIterableArraySetOrCollectionHolder<T, > = | readonly T[] | R
  * @see CollectionIterator
  * @see Iterator
  * @see Iterable
+ * @see IterableWithSize
+ * @see IterableWithLength
+ * @see IterableWithCount
  * @see IterableWithPossibleSize
  */
 export type PossibleIterableIteratorArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
                                                                       | MinimalistCollectionHolder<T> | CollectionHolder<T>
                                                                       | CollectionIterator<T> | Iterator<T, unknown, unknown>
-                                                                      | Iterable<T, unknown, unknown> | IterableWithPossibleSize<T>
+                                                                      | Iterable<T, unknown, unknown> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T> | IterableWithPossibleSize<T>

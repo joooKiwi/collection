@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -1518,62 +1518,6 @@ export interface CollectionHolder<out T = unknown, >
      * @throws IndexOutOfBoundsException No index could be found
      * @see ReadonlyArray.findIndex
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>,): number
-
-    /**
-     * Get the first index matching the {@link predicate}
-     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
-     *
-     * @param predicate The given predicate
-     * @param from      The inclusive starting index (<code>0</code> by default)
-     * @return {number} The first index found by the {@link predicate} after {@link from}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException {@link from} is not within a valid range
-     * @throws IndexOutOfBoundsException No index could be found
-     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
-
-    /**
-     * Get the first index matching the {@link predicate}
-     * between the {@link from starting} and the {@link to ending} index
-     *
-     * @param predicate The given predicate
-     * @param from      The inclusive starting index (<code>0</code> by default)
-     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
-     * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
-     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
-     * @throws IndexOutOfBoundsException  No index could be found
-     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
-     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
-     * @alias indexOfFirstIndexed
-     * @canReceiveNegativeValue
-     * @onlyGivePositiveValue
-     */
-    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
-
-
-    /**
-     * Get the first index matching the {@link predicate}
-     *
-     * @param predicate The given predicate
-     * @return {number} The first index found by the {@link predicate}
-     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
-     * @throws IndexOutOfBoundsException No index could be found
-     * @see ReadonlyArray.findIndex
-     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
      * @alias CollectionHolder.indexOfFirstIndexed
      * @canReceiveNegativeValue
      * @onlyGivePositiveValue
@@ -1619,6 +1563,62 @@ export interface CollectionHolder<out T = unknown, >
      * @onlyGivePositiveValue
      */
     findFirstIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+
+
+    /**
+     * Get the first index matching the {@link predicate}
+     *
+     * @param predicate The given predicate
+     * @return {number} The first index found by the {@link predicate}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException No index could be found
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>,): number
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * between the {@link from starting index} and the end of the current {@link CollectionHolder instance}
+     *
+     * @param predicate The given predicate
+     * @param from      The inclusive starting index (<code>0</code> by default)
+     * @return {number} The first index found by the {@link predicate} after {@link from}
+     * @throws EmptyCollectionException  The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException {@link from} is not within a valid range
+     * @throws IndexOutOfBoundsException No index could be found
+     * @throws ForbiddenIndexException   {@link from} is an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+
+    /**
+     * Get the first index matching the {@link predicate}
+     * between the {@link from starting} and the {@link to ending} index
+     *
+     * @param predicate The given predicate
+     * @param from      The inclusive starting index (<code>0</code> by default)
+     * @param to        The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
+     * @return {number} The first index found by the {@link predicate} between {@link from} and {@link to}
+     * @throws EmptyCollectionException   The current {@link CollectionHolder instance} {@link CollectionHolder.isEmpty is empty}
+     * @throws IndexOutOfBoundsException  {@link from} or {@link to} are not within a valid range
+     * @throws IndexOutOfBoundsException  No index could be found
+     * @throws ForbiddenIndexException    {@link from} or {@link to} are an undetermined {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @throws InvalidIndexRangeException {@link to} is before {@link from} after the calculation
+     * @see ReadonlyArray.findIndex
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html Kotlin indexOfFirst(predicate)
+     * @alias indexOfFirstIndexed
+     * @canReceiveNegativeValue
+     * @onlyGivePositiveValue
+     */
+    findIndexIndexed(predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
 
     //#endregion -------------------- Index of first indexed --------------------
     //#region -------------------- Index of first indexed or null --------------------
@@ -2314,49 +2314,49 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasOne(values: readonly T[],): boolean
+    hasOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: ReadonlySet<T>,): boolean
+    hasOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: CollectionHolder<T>,): boolean
+    hasOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: MinimalistCollectionHolder<T>,): boolean
+    hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: CollectionIterator<T>,): boolean
+    hasOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: Iterator<T, unknown, unknown>,): boolean
+    hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: Iterable<T, unknown, unknown>,): boolean
+    hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2364,7 +2364,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has one methods (aliases) --------------------
 
@@ -2374,7 +2374,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: readonly T[],): boolean
+    includesOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2382,7 +2382,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: ReadonlySet<T>,): boolean
+    includesOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2390,7 +2390,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: CollectionHolder<T>,): boolean
+    includesOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2398,7 +2398,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: MinimalistCollectionHolder<T>,): boolean
+    includesOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2406,7 +2406,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: CollectionIterator<T>,): boolean
+    includesOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2414,7 +2414,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Iterator<T, unknown, unknown>,): boolean
+    includesOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2422,73 +2422,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     * @typescriptDefinition
-     */
-    includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: readonly T[],): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasOne
-     */
-    containsOne(values: Iterable<T, unknown, unknown>,): boolean
+    includesOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2497,7 +2431,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasOne
      * @typescriptDefinition
      */
-    containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     */
+    containsOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     * @typescriptDefinition
+     */
+    containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has one methods (aliases) --------------------
 
@@ -2509,49 +2509,49 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasNotOne(values: readonly T[],): boolean
+    hasNotOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: ReadonlySet<T>,): boolean
+    hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: CollectionHolder<T>,): boolean
+    hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: CollectionIterator<T>,): boolean
+    hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2559,7 +2559,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has not one methods (aliases) --------------------
 
@@ -2569,7 +2569,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: readonly T[],): boolean
+    includesNotOne(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2577,7 +2577,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: ReadonlySet<T>,): boolean
+    includesNotOne(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2585,7 +2585,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: CollectionHolder<T>,): boolean
+    includesNotOne(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2593,7 +2593,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: MinimalistCollectionHolder<T>,): boolean
+    includesNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2601,7 +2601,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: CollectionIterator<T>,): boolean
+    includesNotOne(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2609,7 +2609,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: Iterator<T, unknown, unknown>,): boolean
+    includesNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2617,73 +2617,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     * @typescriptDefinition
-     */
-    includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: readonly T[],): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotOne
-     */
-    containsNotOne(values: Iterable<T, unknown, unknown>,): boolean
+    includesNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2692,7 +2626,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNotOne
      * @typescriptDefinition
      */
-    containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     */
+    containsNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     * @typescriptDefinition
+     */
+    containsNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has not one methods (aliases) --------------------
 
@@ -2706,7 +2706,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: readonly T[],): boolean
+    hasAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2715,7 +2715,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: ReadonlySet<T>,): boolean
+    hasAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2724,7 +2724,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: CollectionHolder<T>,): boolean
+    hasAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2733,7 +2733,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: MinimalistCollectionHolder<T>,): boolean
+    hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2742,7 +2742,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: CollectionIterator<T>,): boolean
+    hasAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2751,7 +2751,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Iterator<T, unknown, unknown>,): boolean
+    hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2760,7 +2760,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Iterable<T, unknown, unknown>,): boolean
+    hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2770,7 +2770,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      * @typescriptDefinition
      */
-    hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has all methods (aliases) --------------------
 
@@ -2780,7 +2780,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: readonly T[],): boolean
+    includesAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2788,7 +2788,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: ReadonlySet<T>,): boolean
+    includesAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2796,7 +2796,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: CollectionHolder<T>,): boolean
+    includesAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2804,7 +2804,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: MinimalistCollectionHolder<T>,): boolean
+    includesAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2812,7 +2812,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: CollectionIterator<T>,): boolean
+    includesAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2820,7 +2820,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Iterator<T, unknown, unknown>,): boolean
+    includesAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2828,73 +2828,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     * @typescriptDefinition
-     */
-    includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: readonly T[],): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasAll
-     */
-    containsAll(values: Iterable<T, unknown, unknown>,): boolean
+    includesAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2903,7 +2837,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasAll
      * @typescriptDefinition
      */
-    containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     */
+    containsAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has all methods (aliases) --------------------
 
@@ -2915,49 +2915,49 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasNotAll(values: readonly T[],): boolean
+    hasNotAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: ReadonlySet<T>,): boolean
+    hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: CollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: CollectionIterator<T>,): boolean
+    hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2965,7 +2965,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @typescriptDefinition
      */
-    hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#region -------------------- Has not all methods (aliases) --------------------
 
@@ -2975,7 +2975,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: readonly T[],): boolean
+    includesNotAll(values: Nullable<readonly T[]>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2983,7 +2983,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: ReadonlySet<T>,): boolean
+    includesNotAll(values: Nullable<ReadonlySet<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2991,7 +2991,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: CollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<CollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2999,7 +2999,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: MinimalistCollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3007,7 +3007,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: CollectionIterator<T>,): boolean
+    includesNotAll(values: Nullable<CollectionIterator<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3015,7 +3015,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Iterator<T, unknown, unknown>,): boolean
+    includesNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3023,73 +3023,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Iterable<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     * @typescriptDefinition
-     */
-    includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: readonly T[],): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: ReadonlySet<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: CollectionHolder<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: MinimalistCollectionHolder<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: CollectionIterator<T>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: Iterator<T, unknown, unknown>,): boolean
-
-    /**
-     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
-     *
-     * @param values The values to compare
-     * @alias CollectionHolder.hasNotAll
-     */
-    containsNotAll(values: Iterable<T, unknown, unknown>,): boolean
+    includesNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3098,7 +3032,73 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNotAll
      * @typescriptDefinition
      */
-    containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
+    includesNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<readonly T[]>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     */
+    containsNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     * @typescriptDefinition
+     */
+    containsNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
     //#endregion -------------------- Has not all methods (aliases) --------------------
 
@@ -3265,6 +3265,7 @@ export interface CollectionHolder<out T = unknown, >
      * Get a new {@link CollectionHolder} without <b>null</b> or <b>undefined</b>
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/filter-not-null.html Kotlin filterNotNull()
+     * @apiNote The current instance can be returned if no nulls are known to be absent
      */
     filterNotNull(): CollectionHolder<NonNullable<T>>
 
@@ -4108,7 +4109,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4124,7 +4126,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -4156,7 +4159,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4173,7 +4177,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)
@@ -4206,7 +4211,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the start of the current {@link CollectionHolder instance} to the {@link from starting} index
+     * from the end of the current {@link CollectionHolder instance}
+     * to a {@link from starting index} (<i>if provided</i>)
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @throws IndexOutOfBoundsException {@link from} is not within the current {@link CollectionHolder instance} {@link size}
@@ -4223,7 +4229,8 @@ export interface CollectionHolder<out T = unknown, >
 
     /**
      * Reverse to a new {@link CollectionHolder}
-     * from the {@link to ending} to the {@link from starting} index in the current {@link CollectionHolder instance}
+     * from an {@link to ending} to a {@link from starting} index
+     * in the current {@link CollectionHolder instance}
      *
      * @param from The inclusive starting index (<code>0</code> by default)
      * @param to   The inclusive ending index (<code>{@link CollectionHolder.size size} - 1</code> by default)

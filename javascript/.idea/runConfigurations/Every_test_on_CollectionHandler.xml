@@ -1,9 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Every test on CollectionHandler" type="CompoundRunConfigurationType">
-    <toRun name="CollectionHandler (constructor)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionHandler (has)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionHandler (size)" type="JavaScriptTestRunnerJest" />
-    <toRun name="CollectionHandler (value)" type="JavaScriptTestRunnerJest" />
-    <method v="2" />
-  </configuration>
-</component>

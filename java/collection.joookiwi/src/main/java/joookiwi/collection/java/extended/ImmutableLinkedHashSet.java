@@ -40,7 +40,7 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 7677577085911916666L;
+    @Serial private static final long serialVersionUID = 5215448293206379321L;
 
     private boolean __isInitialized = false;
     private int __size = -1;
@@ -174,6 +174,34 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
     }
 
     //#endregion -------------------- ∅ --------------------
+    //#region -------------------- loadFactor --------------------
+
+    /// Create an [immutable-like][Unmodifiable] instance of [LinkedHashSet]
+    /// and the `loadFactor` received
+    /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    ///
+    /// @throws IllegalArgumentException The `loadFactor` was negative
+    public ImmutableLinkedHashSet(final float loadFactor) {
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, loadFactor);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
+
+    /// Create an [immutable-like][Unmodifiable] instance of [LinkedHashSet]
+    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
+    /// and a capacity of [0][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_INITIAL_CAPACITY]
+    ///
+    /// @throws IllegalArgumentException The `loadFactor` was negative
+    public ImmutableLinkedHashSet(final @Nullable Float loadFactor) {
+        super(DEFAULT_EMPTY_INITIAL_CAPACITY, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        __size = 0;
+        __isEmpty = true;
+        __isInitialized = true;
+    }
+
+
+    //#endregion -------------------- loadFactor --------------------
     //#region -------------------- values --------------------
 
     /// Create an [immutable-like][Unmodifiable] instance of [LinkedHashSet]
@@ -181,8 +209,8 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the `values.length`
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length);
         final var size = values.length;
+        super(size);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;
@@ -218,8 +246,8 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
     /// @throws IllegalArgumentException The `loadFactor` was negative
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                   final float loadFactor) {
-        super(values.length, loadFactor);
         final var size = values.length;
+        super(size, loadFactor);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;
@@ -238,8 +266,8 @@ public class ImmutableLinkedHashSet<T extends @Nullable Object>
     /// @throws IllegalArgumentException The `loadFactor` was negative
     public ImmutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                                   final @Nullable Float loadFactor) {
-        super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(size, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;

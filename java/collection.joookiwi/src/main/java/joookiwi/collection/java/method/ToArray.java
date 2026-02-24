@@ -12,8 +12,8 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.method.ArrayCreator.Array;
 
 @NotNullByDefault
 public final class ToArray
@@ -35,11 +35,11 @@ public final class ToArray
     @ExtensionFunction
     public static <T extends @Nullable Object> T[] toArray(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size);
     }
 
@@ -52,9 +52,9 @@ public final class ToArray
     @ExtensionFunction
     public static <T extends @Nullable Object> T[] toArray(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyArray();
+            return Array();
         if (collection.isEmpty())
-            return emptyArray();
+            return Array();
         return _values(collection, collection.size());
     }
 
@@ -67,11 +67,11 @@ public final class ToArray
     @ExtensionFunction
     public static <T extends @Nullable Object> T[] toArray(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size);
     }
 
@@ -91,11 +91,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size, transform);
     }
 
@@ -112,9 +112,9 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable CollectionHolder<? extends T> collection,
                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
         if (collection.isEmpty())
-            return emptyArray();
+            return Array();
         return _values(collection, collection.size(), transform);
     }
 
@@ -131,11 +131,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final T @Nullable @Unmodifiable [] collection,
                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size, transform);
     }
 
@@ -155,11 +155,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size, transform);
     }
 
@@ -176,9 +176,9 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable CollectionHolder<? extends T> collection,
                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
         if (collection.isEmpty())
-            return emptyArray();
+            return Array();
         return _values(collection, collection.size(), transform);
     }
 
@@ -195,11 +195,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final T @Nullable @Unmodifiable [] collection,
                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(collection, size, transform);
     }
 
@@ -219,11 +219,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(size, transform);
     }
 
@@ -240,9 +240,9 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final @Nullable CollectionHolder<? extends T> collection,
                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
         if (collection.isEmpty())
-            return emptyArray();
+            return Array();
         return _values(collection.size(), transform);
     }
 
@@ -259,11 +259,11 @@ public final class ToArray
     public static <T extends @Nullable Object, U extends @Nullable Object> U[] toArray(final T @Nullable @Unmodifiable [] collection,
                                                                                        final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyArray();
+            return Array();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyArray();
+            return Array();
         return _values(size, transform);
     }
 

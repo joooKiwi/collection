@@ -1,5 +1,6 @@
 package joookiwi.collection.java.method;
 
+import java.util.Comparator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -7,14 +8,16 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.EmptyPriorityQueue;
 import joookiwi.collection.java.extended.ImmutablePriorityQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyPriorityQueue;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 
 @NotNullByDefault
 public final class ToPriorityQueue
@@ -32,13 +35,13 @@ public final class ToPriorityQueue
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends Comparable<? super T>> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size));
     }
 
@@ -47,11 +50,11 @@ public final class ToPriorityQueue
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends Comparable<? super T>> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         if (collection.isEmpty())
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, collection.size()));
     }
 
@@ -60,13 +63,13 @@ public final class ToPriorityQueue
     /// @param collection The [nullable][Nullable] collection
     /// @param <T>        The `collection` type
     @ExtensionFunction
-    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends Comparable<? super T>> ImmutablePriorityQueue<T> toPriorityQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size));
     }
 
@@ -81,14 +84,14 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size, transform));
     }
 
@@ -100,12 +103,12 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         if (collection.isEmpty())
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, collection.size(), transform));
     }
 
@@ -117,14 +120,14 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size, transform));
     }
 
@@ -139,14 +142,14 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size, transform));
     }
 
@@ -158,12 +161,12 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         if (collection.isEmpty())
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, collection.size(), transform));
     }
 
@@ -175,14 +178,14 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection, size, transform));
     }
 
@@ -197,14 +200,14 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(size, transform));
     }
 
@@ -216,12 +219,12 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         if (collection.isEmpty())
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(collection.size(), transform));
     }
 
@@ -233,18 +236,289 @@ public final class ToPriorityQueue
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
-                                                                                            final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends Comparable<? super U>> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyPriorityQueue();
+            return EmptyPriorityQueue.getInstance();
         return new ImmutablePriorityQueue<>(_orderedValues(size, transform));
     }
 
     //#endregion -------------------- () → U --------------------
+
+    //#region -------------------- comparator --------------------
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+        if (collection.isEmpty())
+            return new ImmutablePriorityQueue<>(comparator);
+        if (collection.hasDuplicate())
+            return new ImmutablePriorityQueue<>(_values(collection, collection.size()), comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, collection.size()), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T> ImmutablePriorityQueue<T> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size), comparator);
+    }
+
+    //#endregion -------------------- ∅ --------------------
+    //#region -------------------- comparator, (T, int) → U --------------------
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size, transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+        if (collection.isEmpty())
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, (T, int) → U --------------------
+    //#region -------------------- comparator, (T) → U --------------------
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size, transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+        if (collection.isEmpty())
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection, size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, (T) → U --------------------
+    //#region -------------------- comparator, () → U --------------------
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(size, transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+        if (collection.isEmpty())
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to an [ImmutablePriorityQueue]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [queue][java.util.PriorityQueue] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U> ImmutablePriorityQueue<U> toPriorityQueue(final T @Nullable @Unmodifiable [] collection,
+                                                                                            final Comparator<? super U> comparator,
+                                                                                            final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new ImmutablePriorityQueue<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new ImmutablePriorityQueue<>(comparator);
+        return new ImmutablePriorityQueue<>(_uniqueValues(size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
 

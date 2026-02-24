@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableNavigableSet;
+import joookiwi.collection.java.extended.EmptyNavigableSet;
 import joookiwi.collection.java.extended.ImmutableNavigableSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToNavigableSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> toNavigableSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToNavigableSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> toNavigableSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         if (collection.isEmpty())
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         if (collection.hasDuplicate())
             return new ArrayAsImmutableNavigableSet<>(_orderedValues(collection, collection.size()));
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size()));
@@ -65,11 +65,11 @@ public final class ToNavigableSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableNavigableSet<T> toNavigableSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size));
     }
 
@@ -87,11 +87,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -106,9 +106,9 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         if (collection.isEmpty())
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
@@ -123,11 +123,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -145,11 +145,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -164,9 +164,9 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         if (collection.isEmpty())
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, collection.size(), transform));
     }
 
@@ -181,11 +181,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection, size, transform));
     }
 
@@ -203,11 +203,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(size, transform));
     }
 
@@ -222,9 +222,9 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         if (collection.isEmpty())
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(collection.size(), transform));
     }
 
@@ -239,11 +239,11 @@ public final class ToNavigableSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                                    final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ArrayAsImmutableNavigableSet<>(_orderedUniqueValues(size, transform));
     }
 

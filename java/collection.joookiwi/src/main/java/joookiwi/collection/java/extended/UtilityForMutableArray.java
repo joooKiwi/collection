@@ -9,7 +9,6 @@ import java.util.function.UnaryOperator;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.InvalidIndexRangeException;
-import joookiwi.collection.java.helper.ArrayCreator;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.ApiStatus.Experimental;
 import org.jetbrains.annotations.ApiStatus.Internal;
@@ -27,6 +26,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_4;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_6;
 import static joookiwi.collection.java.CommonContracts.IF_ONLY_2ND_NULL_THEN_1ST_2;
 import static joookiwi.collection.java.exception.EmptyCollectionException.DEFAULT_MESSAGE;
+import static joookiwi.collection.java.method.ArrayCreator.Array;
 import static joookiwi.collection.java.method.FirstIndexOfOrNull.firstIndexOfOrNull;
 import static joookiwi.collection.java.method.Has.has;
 
@@ -315,7 +315,7 @@ public final class UtilityForMutableArray
                                                               final T value) {
         final var size = collection.length;
         if (size == 0)
-            return ArrayCreator.getInstance().newArray(value);
+            return Array(value);
         final var sizePlus1 = size + 1;
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[sizePlus1];
         newArray[0] = value;
@@ -346,7 +346,7 @@ public final class UtilityForMutableArray
                                                                 final T value) {
         final var size = collection.length;
         if (size == 0)
-            return ArrayCreator.getInstance().newArray(value);
+            return Array(value);
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size + 1];
         var index = 0;
         while (++index < size)
@@ -363,9 +363,9 @@ public final class UtilityForMutableArray
 
         final var size = collection.length;
         if (size == 0)
-            return ArrayCreator.getInstance().newArray(values);
+            return Array(values);
 
-        final var valuesAsArray = ArrayCreator.getInstance().newArray(values);
+        final var valuesAsArray = Array(values);
         final var valuesSize = values.size();
         final var valuesToAdd = new boolean[valuesSize];
         var valuesIndex1 = -1;
@@ -403,7 +403,7 @@ public final class UtilityForMutableArray
         if (index > size)
             throw new IndexOutOfBoundsException("Index out of bound. The index “" + index + "” is under the size of the collection (" + size + ").", index);
         if (size == 0)
-            return ArrayCreator.getInstance().newArray(values);
+            return Array(values);
 
         final var newSize = size + values.size();
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[newSize];
@@ -461,7 +461,7 @@ public final class UtilityForMutableArray
 
         final var size = collection.length;
         if (size == 0)
-            return ArrayCreator.getInstance().newArray(values);
+            return Array(values);
         @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size + values.size()];
         var index = -1;
         while (++index < size)
@@ -479,7 +479,7 @@ public final class UtilityForMutableArray
             if (collection.isEmpty())
                 return emptyArray();
             else
-                return ArrayCreator.getInstance().newArray(collection);
+                return Array(collection);
 
         final var size = collection.size();
         if (size == 0)

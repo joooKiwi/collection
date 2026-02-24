@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -23,8 +23,17 @@ import {NoElementFoundInCollectionException} from "../exception/NoElementFoundIn
 import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
 import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
 
+/**
+ * A definition of a {@link CollectionIterator} to have a common ancestor.
+ * Only the indexes are stored and updated (if needed).
+ *
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T          The element type
+ * @typeParam COLLECTION (deprecated, it will be removed in version 2.0) The reference of the iterator
+ * @see EmptyCollectionIterator
+ */
 export abstract class AbstractCollectionIterator<const T,
-    const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    const _COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
     implements CollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
@@ -46,16 +55,11 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Reference methods --------------------
-
-    public abstract get collection(): COLLECTION
-
-    //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
     public abstract get size(): number
-    public get length(): number { return this.size }
-    public get count(): number { return this.size }
+    public get length(): this["size"] { return this.size }
+    public get count(): this["size"] { return this.size }
 
 
     /** The {@link size} minus 1 */

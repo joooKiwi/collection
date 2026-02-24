@@ -3,6 +3,7 @@ package joookiwi.collection.java.method;
 import java.util.function.BooleanSupplier;
 import java.util.function.Predicate;
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
@@ -13,7 +14,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -44,11 +44,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                     final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, predicate, size));
     }
 
@@ -69,9 +69,9 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable CollectionHolder<? extends T> collection,
                                                     final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, predicate, collection.size()));
     }
 
@@ -92,11 +92,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final T @Nullable @Unmodifiable [] collection,
                                                     final ObjIntPredicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, predicate, size));
     }
 
@@ -120,11 +120,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                     final Predicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, predicate, size));
     }
 
@@ -145,9 +145,9 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable CollectionHolder<? extends T> collection,
                                                     final Predicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, predicate, collection.size()));
     }
 
@@ -168,11 +168,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final T @Nullable @Unmodifiable [] collection,
                                                     final Predicate<? super T> predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, predicate, size));
     }
 
@@ -196,11 +196,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                     final BooleanSupplier predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(collection, predicate, size));
     }
 
@@ -221,9 +221,9 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final @Nullable CollectionHolder<? extends T> collection,
                                                     final BooleanSupplier predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(collection, predicate, collection.size()));
     }
 
@@ -244,11 +244,11 @@ public final class FilterNot
     public static <T> CollectionHolder<T> filterNot(final T @Nullable @Unmodifiable [] collection,
                                                     final BooleanSupplier predicate) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(collection, predicate, size));
     }
 

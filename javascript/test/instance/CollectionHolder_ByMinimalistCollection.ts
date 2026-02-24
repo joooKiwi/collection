@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -26,7 +26,7 @@ export class CollectionHolder_ByMinimalistCollection<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]> {
 
     /** The internal instance that is tested */
-    public readonly instance: GenericMinimalistCollectionHolder<T, readonly T[]>
+    public readonly instance: GenericMinimalistCollectionHolder<T>
 
     public constructor(array: readonly T[],) {
         super(array,)

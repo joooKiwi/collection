@@ -597,6 +597,7 @@ public final class FirstIndexOfOrNull
         final var startingIndex = _startingIndexOrNull(from, size);
         if (startingIndex == null)
             return null;
+
         final var endingIndex = _endingIndexOrNull(to, size);
         if (endingIndex == null)
             return null;
@@ -666,6 +667,7 @@ public final class FirstIndexOfOrNull
                                                                                    final int to) {
         if (collection.isEmpty())
             return null;
+
         final var endingIndex = _endingIndexOrNull(to, collection.size());
         if (endingIndex == null)
             return null;
@@ -678,6 +680,7 @@ public final class FirstIndexOfOrNull
         final var size = collection.length;
         if (size == 0)
             return null;
+
         final var endingIndex = _endingIndexOrNull(to, size);
         if (endingIndex == null)
             return null;

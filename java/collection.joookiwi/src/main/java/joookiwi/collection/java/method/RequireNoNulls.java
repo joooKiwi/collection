@@ -9,8 +9,8 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FAIL_OR_ELSE_1ST_1;
 
 @NotNullByDefault
 public final class RequireNoNulls
@@ -25,12 +25,12 @@ public final class RequireNoNulls
     ///
     /// @param collection   The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>          The `collection` type
-    /// @throws NullPointerException There is a `null` or the `collection` is null
+    /// @throws NullPointerException There is a `null`
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_1ST_1)
-    public static <T> MinimalistCollectionHolder<T> requireNoNulls(final @Nullable MinimalistCollectionHolder<@Nullable T> collection) {
+    @Contract(ALWAYS_1ST_1)
+    public static <T> @Nullable MinimalistCollectionHolder<T> requireNoNulls(final @Nullable MinimalistCollectionHolder<@Nullable T> collection) {
         if (collection == null)
-            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+            return null;
 
         final var size = collection.size();
         if (size == 0)
@@ -47,12 +47,12 @@ public final class RequireNoNulls
     ///
     /// @param collection   The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param <T>          The `collection` type
-    /// @throws NullPointerException There is a `null` or the `collection` is null
+    /// @throws NullPointerException There is a `null`
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_1ST_1)
-    public static <T> CollectionHolder<T> requireNoNulls(final @Nullable CollectionHolder<@Nullable T> collection) {
+    @Contract(ALWAYS_1ST_1)
+    public static <T> @Nullable CollectionHolder<T> requireNoNulls(final @Nullable CollectionHolder<@Nullable T> collection) {
         if (collection == null)
-            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+            return null;
         if (collection.isEmpty())
             return collection;
 
@@ -68,12 +68,12 @@ public final class RequireNoNulls
     ///
     /// @param collection   The [nullable][Nullable] collection
     /// @param <T>          The `collection` type
-    /// @throws NullPointerException There is a `null` or the `collection` is null
+    /// @throws NullPointerException There is a `null`
     @ExtensionFunction
-    @Contract(IF_1ST_NULL_THEN_FAIL_OR_ELSE_1ST_1)
-    public static <T> T [] requireNoNulls(final T @Nullable @Unmodifiable [] collection) {
+    @Contract(ALWAYS_1ST_1)
+    public static <T> T @Nullable [] requireNoNulls(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            throw new NullPointerException("Forbidden null value. The current collection cannot be null.");
+            return null;
 
         final var size = collection.length;
         if (size == 0)

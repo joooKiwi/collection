@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -24,6 +24,7 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
+//FIXME: Give […] instead of [] when the limit is 0 on a non-empty collection
 
 /**
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}

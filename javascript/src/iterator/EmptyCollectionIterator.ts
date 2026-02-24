@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -10,12 +10,10 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {EmptyCollectionHolder}                                                                from "../EmptyCollectionHolder"
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
-import {CollectionConstants}                 from "../CollectionConstants"
 import {NoElementFoundInCollectionException} from "../exception/NoElementFoundInCollectionException"
 import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
 import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
@@ -34,11 +32,6 @@ export class EmptyCollectionIterator
     //#endregion -------------------- Singleton usage --------------------
     //#region -------------------- Methods --------------------
 
-    //#region -------------------- Reference methods --------------------
-
-    public get collection(): EmptyCollectionHolder { return CollectionConstants.EMPTY_COLLECTION_HOLDER }
-
-    //#endregion -------------------- Reference methods --------------------
     //#region -------------------- Size methods --------------------
 
     public get size(): 0 { return 0 }

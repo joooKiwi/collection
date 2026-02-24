@@ -1,7 +1,6 @@
 package joookiwi.collection.java.extended;
 
 import java.util.Comparator;
-import java.util.NavigableSet;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
@@ -13,7 +12,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[NavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
+/// An implementation of a subdivided-[ImmutableNavigableSet] similar to the [ArrayAsImmutableNavigableSet] in its behaviour.
 /// During its creation, it <u>implies</u> that the [SUBDIVIDED_ARRAY] received has no duplicate.
 ///
 /// Note that `null` is permitted in this instance.
@@ -31,7 +30,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ReversedArrayAsImmutableNavigableSet
 @NotNullByDefault
 public class SubdividedArrayAsImmutableNavigableSet<T extends @Nullable Object,
-        SOURCE extends NavigableSet<? super T>,
+        SOURCE extends ImmutableNavigableSet<? super T>,
         SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableNavigableSet<T> {
 

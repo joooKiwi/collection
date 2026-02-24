@@ -1,6 +1,5 @@
 package joookiwi.collection.java.extended;
 
-import java.util.List;
 import joookiwi.collection.java.annotation.InitializedOnFirstCall;
 import joookiwi.collection.java.helper.ComparatorHelper;
 import org.jetbrains.annotations.Contract;
@@ -12,7 +11,7 @@ import org.jetbrains.annotations.Range;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 
-/// An implementation of a subdivided-[List] similar to the [ArrayAsImmutableList] in its behaviour.
+/// An implementation of a subdivided-[ImmutableList] similar to the [ArrayAsImmutableList] in its behaviour.
 ///
 /// Note that `null` is permitted in this instance.
 /// It is up to the implementor to specify it.
@@ -29,7 +28,7 @@ import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
 /// @see ReversedArrayAsImmutableList
 @NotNullByDefault
 public class SubdividedArrayAsImmutableList<T extends @Nullable Object,
-        SOURCE extends List<? super T>,
+        SOURCE extends ImmutableList<? super T>,
         SUBDIVIDED_ARRAY extends SubdividedArray<? extends T>>
         extends AbstractArrayAsImmutableList<T> {
 

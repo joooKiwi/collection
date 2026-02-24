@@ -6,6 +6,7 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -18,6 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.method.AsString.asLocaleString;
 
 @NotNullByDefault
+@Nls
 public final class ToLocaleString
         extends Utility {
 
@@ -85,7 +87,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 
@@ -105,7 +107,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final @Nullable CollectionHolder<? extends T> collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
         if (collection.isEmpty())
@@ -123,7 +125,7 @@ public final class ToLocaleString
     /// @see String#format(Locale, String, Object...)
     @ExtensionFunction
     public static <T extends @Nullable Object> String toLocaleString(final T @Nullable @Unmodifiable [] collection,
-                                                                              final @Nullable Locale locale) {
+                                                                     final @Nullable Locale locale) {
         if (collection == null)
             return DEFAULT_EMPTY_COLLECTION;
 

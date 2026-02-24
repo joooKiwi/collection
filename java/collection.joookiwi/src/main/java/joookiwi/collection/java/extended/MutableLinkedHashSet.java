@@ -20,11 +20,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static java.lang.Float.isNaN;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_SMALL_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// A mutable behaviour of a [LinkedHashSet]
 ///
@@ -34,20 +37,20 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
         extends LinkedHashSet<T>
         implements MutableSequencedSet<T> {
 
-    @Serial private static final long serialVersionUID = 6804011349926330091L;
+    @Serial private static final long serialVersionUID = 7610728042835359908L;
 
     //#region -------------------- Sub class --------------------
 
-    /// A view of a subdivided or reversed [MutableTreeSet]
+    /// A view of a subdivided or reversed [MutableLinkedHashSet]
     ///
     /// @param <T> The type
     @NotNullByDefault
     private static final class MutableLinkedHashSetView<T extends @Nullable Object>
-            extends MutableTreeSet<T> {
+            extends MutableLinkedHashSet<T> {
 
         //#region -------------------- Fields --------------------
 
-        @Serial private static final long serialVersionUID = 8978271227979986336L;
+        @Serial private static final long serialVersionUID = -6593025073878476244L;
 
         private final SequencedSet<T> __reference;
 
@@ -209,141 +212,121 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     //#region -------------------- initialCapacity --------------------
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity) { super(initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final byte initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity) { super(initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final short initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity) { super(initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final int initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, DEFAULT_LOAD_FACTOR); }
+    public MutableLinkedHashSet(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- initialCapacity, loadFactor --------------------
 
-    /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor`received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity,
-                                final float loadFactor) { super(initialCapacity, loadFactor); }
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor`received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final byte initialCapacity,
+                                final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
-                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Nullable Byte initialCapacity,
+                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) byte initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final byte initialCapacity,
+                                final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Byte initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
+    public MutableLinkedHashSet(final @Nullable Byte initialCapacity,
+                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
-
-    /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity,
-                                final float loadFactor) { super(initialCapacity, loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
-                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final short initialCapacity,
+                                final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) short initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Nullable Short initialCapacity,
+                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Short initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
-
-
-    /// Create a mutable instance of [LinkedHashSet] with the `initialCapacity` and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity,
-                                final float loadFactor) { super(initialCapacity, loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final short initialCapacity,
+                                final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
-                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Nullable Short initialCapacity,
+                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) int initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final int initialCapacity,
+                                final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `initialCapacity` or the `loadFactor` was negative
-    public MutableLinkedHashSet(final @Range(from = 0, to = MAX_INT_VALUE) @Nullable Integer initialCapacity,
-                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : initialCapacity, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Nullable Integer initialCapacity,
+                                final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final int initialCapacity,
+                                final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
+    public MutableLinkedHashSet(final @Nullable Integer initialCapacity,
+                                final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     //#endregion -------------------- initialCapacity, loadFactor --------------------
     //#region -------------------- values --------------------
@@ -352,88 +335,549 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length, DEFAULT_LOAD_FACTOR);
         final var size = values.length;
+        super(size, DEFAULT_LOAD_FACTOR);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
+    /// with the capacity of <code>values.[size()][Collection#size()]</code>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), DEFAULT_LOAD_FACTOR);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values --------------------
-    //#region -------------------- values, loadFactor --------------------
+    //#region -------------------- values, initialCapacity --------------------
 
-    /// Create a mutable instance of [LinkedHashSet]
-    /// with the capacity of the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was negative
+    /// Create a mutable instance of [MutableLinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                final float loadFactor) {
-        super(values.length, loadFactor);
+                                final byte initialCapacity) {
+        super(max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         final var size = values.length;
         if (size == 0)
             return;
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
-    /// Create a mutable instance of [LinkedHashSet]
-    /// with the capacity of the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was negative
+    /// Create a mutable instance of [MutableLinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                                final @Nullable Float loadFactor) {
-        super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+                                final @Nullable Byte initialCapacity) {
+        super(max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
         final var size = values.length;
         if (size == 0)
             return;
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final short initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_LOAD_FACTOR);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Short initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_LOAD_FACTOR);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final int initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_LOAD_FACTOR);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Integer initialCapacity) {
+        final var size = values.length;
+        super(max(initialCapacity, size), DEFAULT_LOAD_FACTOR);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
     }
 
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was negative
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final byte initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Byte initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final short initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Short initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final int initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Integer initialCapacity) {
+        super(max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    //#endregion -------------------- values, initialCapacity --------------------
+    //#region -------------------- values, initialCapacity, loadFactor --------------------
+
+    /// Create a mutable instance of [MutableLinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final byte initialCapacity,
                                 final float loadFactor) {
-        super(values.size(), loadFactor);
-        if (values.isEmpty())
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
             return;
-        super.addAll(values);
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [MutableLinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final byte initialCapacity,
+                                final @Nullable Float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [MutableLinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Byte initialCapacity,
+                                final float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
     }
 
     /// Create a mutable instance of [LinkedHashSet]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was negative
-    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Byte initialCapacity,
                                 final @Nullable Float loadFactor) {
-        super(values.size(), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
-        if (values.isEmpty())
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
             return;
-        super.addAll(values);
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
     }
 
-    //#endregion -------------------- values, loadFactor --------------------
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final short initialCapacity,
+                                final float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final short initialCapacity,
+                                final @Nullable Float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Short initialCapacity,
+                                final float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Short initialCapacity,
+                                final @Nullable Float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final int initialCapacity,
+                                final float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final int initialCapacity,
+                                final @Nullable Float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Integer initialCapacity,
+                                final float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
+                                final @Nullable Integer initialCapacity,
+                                final @Nullable Float loadFactor) {
+        final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (size == 0)
+            return;
+
+        var index = -1;
+        while (++index < size)
+            add(values[index]);
+    }
+
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final byte initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final byte initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Byte initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Byte initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final short initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final short initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Short initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Short initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final int initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final int initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Integer initialCapacity,
+                                final float loadFactor) {
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    /// Create a mutable instance of [LinkedHashSet]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableLinkedHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
+                                final @Nullable Integer initialCapacity,
+                                final @Nullable Float loadFactor) {
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
+        if (values.isEmpty())
+            return;
+        addAll(values);
+    }
+
+    //#endregion -------------------- values, initialCapacity, loadFactor --------------------
 
     //#endregion -------------------- Constructors --------------------
     //#region -------------------- Methods --------------------
@@ -516,7 +960,7 @@ public class MutableLinkedHashSet<T extends @Nullable Object>
     //#region -------------------- As reverse methods --------------------
 
     @Contract(ALWAYS_NEW_0)
-    @Override public MutableTreeSet<T> reversed() { return new MutableLinkedHashSetView<>(super.reversed()); }
+    @Override public MutableLinkedHashSet<T> reversed() { return new MutableLinkedHashSetView<>(super.reversed()); }
 
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------

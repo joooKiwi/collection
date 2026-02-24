@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -46,17 +46,29 @@ export const _45 =            [4,         5,        ] as const
 
 export const A_NULL =                       ['a',       null,                                ] as const
 export const AB_NULL =                      ['a',       'b',       null,                     ] as const
+export const AB_NULL_NULL =                 ['a',       'b',       null,      null,          ] as const
+export const AB_NULL_UNDEFINED =            ['a',       'b',       null,      undefined,     ] as const
+export const AB_UNDEFINED_NULL =            ['a',       'b',       undefined, null,          ] as const
+export const AB_UNDEFINED_UNDEFINED =       ['a',       'b',       undefined, undefined,     ] as const
 export const A_NULL_B =                     ['a',       null,      'b',                      ] as const
 export const NULL_A =                       [null,      'a',                                 ] as const
 export const NULL_B =                       [null,      'b',                                 ] as const
 export const NULL_AB =                      [null,      'a',       'b',                      ] as const
+export const NULL_NULL_AB =                 [null,      null,      'a',       'b',           ] as const
+export const NULL_UNDEFINED_AB =            [null,      undefined, 'a',       'b',           ] as const
+export const UNDEFINED_NULL_AB =            [undefined, null,      'a',       'b',           ] as const
+export const UNDEFINED_UNDEFINED_AB =       [undefined, undefined, 'a',       'b',           ] as const
 export const A_UNDEFINED =                  ['a',       undefined,                           ] as const
 export const AB_UNDEFINED =                 ['a',       'b',       undefined,                ] as const
 export const A_UNDEFINED_B =                ['a',       undefined, 'b',                      ] as const
 export const UNDEFINED_A =                  [undefined, 'a',                                 ] as const
 export const UNDEFINED_AB =                 [undefined, 'a',       'b',                      ] as const
+export const A_NULL_NULL_B =                ['a',       null,      null,      'b',           ] as const
 export const A_NULL_UNDEFINED_B =           ['a',       null,      undefined, 'b',           ] as const
+export const A_UNDEFINED_NULL_B =           ['a',       undefined, null,      'b',           ] as const
+export const A_UNDEFINED_UNDEFINED_B =      ['a',       undefined, undefined,      'b',      ] as const
 export const A_NULL_C_NULL =                ['a',       null,      'c',       null,          ] as const
+export const A_UNDEFINED_C_UNDEFINED =      ['a',       undefined, 'c',       undefined,     ] as const
 export const NULL_B_NULL_D =                [null,      'b',       null,      'd',           ] as const
 export const A_NULL_NULL_UNDEFINED_B =      ['a',       null,      null,      undefined, 'b',] as const
 export const A_NULL_UNDEFINED_UNDEFINED_B = ['a',       null,      undefined, undefined, 'b',] as const
@@ -73,6 +85,7 @@ export const AB_AB =          ['a',       'b',       'A',       'B',      ] as c
 export const AABC =           ['a',       'a',       'b',       'c',      ] as const
 export const ABCD =           ['a',       'b',       'c',       'd',      ] as const
 export const ABBC =           ['a',       'b',       'b',       'c',      ] as const
+export const ABCC =           ['a',       'b',       'c',       'c',      ] as const
 export const DCBA =           ['d',       'c',       'b',       'a',      ] as const
 export const UPPER_EEEE =     ['E',       'E',       'E',       'E',      ] as const
 export const EFGH =           ['e',       'f',       'g',       'h',      ] as const

@@ -1,5 +1,6 @@
 package joookiwi.collection.java.method;
 
+import java.util.Comparator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -16,6 +17,7 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_2;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 
 @NotNullByDefault
 public final class ToMutableTreeSet
@@ -34,7 +36,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<? super T>> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -50,7 +52,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
+    public static <T extends @Nullable Comparable<? super T>> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -66,7 +68,7 @@ public final class ToMutableTreeSet
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_1)
-    public static <T> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
+    public static <T extends @Nullable Comparable<? super T>> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -88,8 +90,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -108,8 +110,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -126,8 +128,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final ObjIntFunction<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -149,8 +151,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -169,8 +171,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -187,8 +189,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final Function<? super T, ? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -210,8 +212,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -230,8 +232,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
         if (collection.isEmpty())
@@ -248,8 +250,8 @@ public final class ToMutableTreeSet
     /// @param <U>        The new type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
-    public static <T extends @Nullable Object, U> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
-                                                                                     final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Comparable<? super U>> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
             return new MutableTreeSet<>();
 
@@ -260,6 +262,277 @@ public final class ToMutableTreeSet
     }
 
     //#endregion -------------------- () → U --------------------
+
+    //#region -------------------- comparator --------------------
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                  final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                  final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+        if (collection.isEmpty())
+            return new MutableTreeSet<>(comparator);
+        if (collection.hasDuplicate())
+            return new MutableTreeSet<>(_orderedValues(collection, collection.size()), comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size()), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param <T>        The `collection` type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_2)
+    public static <T extends @Nullable Object> MutableTreeSet<T> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                  final Comparator<? super T> comparator) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size), comparator);
+    }
+
+    //#endregion -------------------- comparator --------------------
+    //#region -------------------- comparator, (T, int) → U --------------------
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+        if (collection.isEmpty())
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final ObjIntFunction<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, (T, int) → U --------------------
+    //#region -------------------- comparator, (T) → U --------------------
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+        if (collection.isEmpty())
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Function<? super T, ? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection, size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, (T) → U --------------------
+    //#region -------------------- comparator, () → U --------------------
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.size();
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(size, transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+        if (collection.isEmpty())
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(collection.size(), transform), comparator);
+    }
+
+    /// Convert the `collection` to a new [MutableTreeSet]
+    /// with a [Comparator]
+    /// and applying a transformation
+    ///
+    /// @param collection The [nullable][Nullable] collection to convert
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param transform  The given transform
+    /// @param <T>        The `collection` type
+    /// @param <U>        The new type
+    @ExtensionFunction
+    @Contract(ALWAYS_NEW_3)
+    public static <T extends @Nullable Object, U extends @Nullable Object> MutableTreeSet<U> toMutableTreeSet(final T @Nullable @Unmodifiable [] collection,
+                                                                                                              final Comparator<? super U> comparator,
+                                                                                                              final Supplier<? extends U> transform) {
+        if (collection == null)
+            return new MutableTreeSet<>(comparator);
+
+        final var size = collection.length;
+        if (size == 0)
+            return new MutableTreeSet<>(comparator);
+        return new MutableTreeSet<>(_orderedUniqueValues(size, transform), comparator);
+    }
+
+    //#endregion -------------------- comparator, () → U --------------------
 
     //#endregion -------------------- Facade methods --------------------
 

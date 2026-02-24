@@ -28,6 +28,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [ArrayBlockingQueue]
 ///
@@ -39,7 +40,7 @@ public class ImmutableArrayBlockingQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 144129504428249204L;
+    @Serial private static final long serialVersionUID = -55600415744670614L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -65,8 +66,9 @@ public class ImmutableArrayBlockingQueue<T>
     /// with a capacity as the `values.length` (or `1` if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     public ImmutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length == 0 ? 1 : values.length, DEFAULT_FAIRNESS);
-        final var size = __size = values.length;
+        final var size = values.length;
+        super(max(size, 1), DEFAULT_FAIRNESS);
+        __size = size;
         if (__isEmpty = size == 0)
             return;
         var index = -1;
@@ -78,8 +80,9 @@ public class ImmutableArrayBlockingQueue<T>
     /// with a capacity as the <code>values.[size][Collection#size()]</code> (or `1` if it is empty)
     /// and [no fairness][joookiwi.collection.java.CollectionConstants#DEFAULT_FAIRNESS]
     public ImmutableArrayBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
-        super(values.isEmpty() ? 1 : values.size(), DEFAULT_FAIRNESS);
-        __size = values.size();
+        final var size = values.size();
+        super(max(size, 1), DEFAULT_FAIRNESS);
+        __size = size;
         if (__isEmpty = values.isEmpty())
             return;
         super.addAll(values);

@@ -8,13 +8,13 @@ import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.extended.ArrayAsImmutableBlockingQueue;
+import joookiwi.collection.java.extended.EmptyBlockingQueue;
 import joookiwi.collection.java.extended.ImmutableBlockingQueue;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyBlockingQueue;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,11 +35,11 @@ public final class ToBlockingQueue
     @ExtensionFunction
     public static <T> ImmutableBlockingQueue<T> toBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size));
     }
 
@@ -50,9 +50,9 @@ public final class ToBlockingQueue
     @ExtensionFunction
     public static <T> ImmutableBlockingQueue<T> toBlockingQueue(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         if (collection.isEmpty())
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, collection.size()));
     }
 
@@ -63,11 +63,11 @@ public final class ToBlockingQueue
     @ExtensionFunction
     public static <T> ImmutableBlockingQueue<T> toBlockingQueue(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size));
     }
 
@@ -85,11 +85,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size, transform));
     }
 
@@ -104,9 +104,9 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         if (collection.isEmpty())
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
@@ -121,11 +121,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                             final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size, transform));
     }
 
@@ -143,11 +143,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size, transform));
     }
 
@@ -162,9 +162,9 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         if (collection.isEmpty())
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, collection.size(), transform));
     }
 
@@ -179,11 +179,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                             final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection, size, transform));
     }
 
@@ -201,11 +201,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(size, transform));
     }
 
@@ -220,9 +220,9 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final @Nullable CollectionHolder<? extends T> collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         if (collection.isEmpty())
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(collection.size(), transform));
     }
 
@@ -237,11 +237,11 @@ public final class ToBlockingQueue
     public static <T extends @Nullable Object, U> ImmutableBlockingQueue<U> toBlockingQueue(final T @Nullable @Unmodifiable [] collection,
                                                                                             final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyBlockingQueue();
+            return EmptyBlockingQueue.getInstance();
         return new ArrayAsImmutableBlockingQueue<>(_values(size, transform));
     }
 

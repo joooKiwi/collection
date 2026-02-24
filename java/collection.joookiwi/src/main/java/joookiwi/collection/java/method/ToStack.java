@@ -7,13 +7,13 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.EmptyStack;
 import joookiwi.collection.java.extended.ImmutableStack;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyStack;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -34,11 +34,11 @@ public final class ToStack
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableStack<T> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size));
     }
 
@@ -49,9 +49,9 @@ public final class ToStack
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableStack<T> toStack(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
         if (collection.isEmpty())
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, collection.size()));
     }
 
@@ -62,11 +62,11 @@ public final class ToStack
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableStack<T> toStack(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size));
     }
 
@@ -84,11 +84,11 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size, transform));
     }
 
@@ -103,9 +103,9 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
         if (collection.isEmpty())
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, collection.size(), transform));
     }
 
@@ -120,11 +120,11 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
                                                                                                      final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size, transform));
     }
 
@@ -142,11 +142,11 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size, transform));
     }
 
@@ -161,9 +161,9 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
         if (collection.isEmpty())
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, collection.size(), transform));
     }
 
@@ -178,11 +178,11 @@ public final class ToStack
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
                                                                                                      final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection, size, transform));
     }
 
@@ -197,14 +197,14 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable MinimalistCollectionHolder<? extends T> collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(size, transform));
     }
 
@@ -216,12 +216,12 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final @Nullable CollectionHolder<? extends T> collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
         if (collection.isEmpty())
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(collection.size(), transform));
     }
 
@@ -233,14 +233,14 @@ public final class ToStack
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
     @ExtensionFunction
-    public static <T, U> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
-                                                   final Supplier<? extends U> transform) {
+    public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableStack<U> toStack(final T @Nullable @Unmodifiable [] collection,
+                                                                                                     final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyStack();
+            return EmptyStack.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyStack();
+            return EmptyStack.getInstance();
         return new ImmutableStack<>(_values(size, transform));
     }
 

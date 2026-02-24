@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -22,6 +22,7 @@ import {Not0Or1IndexAfterCalculationValueHolder} from "./value/Not0Or1IndexAfter
 import {PositiveInfinityIndexValueHolder}        from "./value/PositiveInfinityIndexValueHolder"
 import {ValidValueHolder}                        from "./value/ValidValueHolder"
 
+/** @deprecated Replace with {@link AbstractCollectionHolderBy2}. This will be removed in v2.0 */
 export abstract class AbstractCollectionHandlerBy2Values<const T = unknown,
     const REFERENCE extends PossibleIterableIteratorArraySetOrCollectionHolder<T> = PossibleIterableIteratorArraySetOrCollectionHolder<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >

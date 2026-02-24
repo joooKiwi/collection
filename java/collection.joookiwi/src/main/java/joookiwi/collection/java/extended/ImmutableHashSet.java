@@ -97,8 +97,8 @@ public class ImmutableHashSet<T extends @Nullable Object>
     /// with a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR]
     /// and the capacity is the `values.length`
     public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length);
         final var size = values.length;
+        super(size);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;
@@ -134,8 +134,8 @@ public class ImmutableHashSet<T extends @Nullable Object>
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
     public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final float loadFactor) {
-        super(values.length, loadFactor);
         final var size = values.length;
+        super(size, loadFactor);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;
@@ -154,8 +154,8 @@ public class ImmutableHashSet<T extends @Nullable Object>
     /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
     public ImmutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                             final @Nullable Float loadFactor) {
-        super(values.length, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(size, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         if (__isEmpty = size == 0) {
             __isInitialized = true;
             __size = 0;

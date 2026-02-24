@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -47,7 +47,7 @@ import {isSetByStructure}                                                       
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: readonly T[],): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -56,7 +56,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: ReadonlySet<T>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -65,7 +65,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionHolder<T>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -74,7 +74,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -83,7 +83,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: CollectionIterator<T>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -92,7 +92,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterator<T, unknown, unknown>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -101,7 +101,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterable<T, unknown, unknown>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -111,8 +111,8 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @facadeFunction
  * @typescriptDefinition
  */
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (isArray(values,))
         return hasOneWithArray(collection, values,)
     if (isSet(values,))
@@ -151,7 +151,7 @@ export function hasOne<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: readonly T[],): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -160,7 +160,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: ReadonlySet<T>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -169,7 +169,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionHolder<T>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -178,7 +178,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -187,7 +187,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: CollectionIterator<T>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -196,7 +196,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterator<T, unknown, unknown>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -205,7 +205,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T, unknown, unknown>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -214,8 +214,8 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (isArray(values,))
         return hasOneWithArrayByMinimalistCollectionHolder(collection, values,)
     if (isSet(values,))
@@ -253,7 +253,7 @@ export function hasOneByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: readonly T[],): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -262,7 +262,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: ReadonlySet<T>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -271,7 +271,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionHolder<T>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -280,7 +280,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -289,7 +289,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: CollectionIterator<T>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -298,7 +298,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterator<T, unknown, unknown>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -307,7 +307,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T, unknown, unknown>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -316,8 +316,8 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasOneByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (isArray(values,))
         return hasOneWithArrayByCollectionHolder(collection, values,)
     if (isSet(values,))
@@ -355,7 +355,7 @@ export function hasOneByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: readonly T[],): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -364,7 +364,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: ReadonlySet<T>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -373,7 +373,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionHolder<T>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -382,7 +382,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -391,7 +391,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: CollectionIterator<T>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -400,7 +400,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterator<T, unknown, unknown>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -409,7 +409,7 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T, unknown, unknown>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that one of the {@link values} exist in the {@link collection}
  *
@@ -418,8 +418,8 @@ export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasOneByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (isArray(values,))
         return hasOneWithArrayByArray(collection, values,)
     if (isSet(values,))

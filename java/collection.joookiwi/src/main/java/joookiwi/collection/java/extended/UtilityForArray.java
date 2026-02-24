@@ -17,12 +17,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyDeque;
-import static joookiwi.collection.java.CollectionConstants.emptyList;
-import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
-import static joookiwi.collection.java.CollectionConstants.emptySequencedCollection;
-import static joookiwi.collection.java.CollectionConstants.emptySequencedSet;
-import static joookiwi.collection.java.CollectionConstants.emptySortedSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_4;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_6;
@@ -387,7 +381,7 @@ sealed class UtilityForArray
     //#endregion -------------------- Index --------------------
     //#region -------------------- As subdivided --------------------
 
-    public static <T extends @Nullable Object> ImmutableList<T> asSubdivided(final List<? super T> source,
+    public static <T extends @Nullable Object> ImmutableList<T> asSubdivided(final ImmutableList<? super T> source,
                                                                              final T @Unmodifiable [] reference,
                                                                              final int from,
                                                                              final int to) {
@@ -403,15 +397,15 @@ sealed class UtilityForArray
         }
 
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         if (from == to)
-            return emptyList();
+            return EmptyList.getInstance();
         return new SubdividedArrayAsImmutableList<>(source, new SubdividedArray<>(reference, from, to));
     }
 
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> ImmutableSortedSet<T> asSubdivided(final SortedSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asSubdivided(final ImmutableSortedSet<? super T> source,
                                                                                   final T @Unmodifiable [] reference,
                                                                                   final T from,
                                                                                   final T to) {
@@ -432,7 +426,7 @@ sealed class UtilityForArray
     }
 
     @Contract(ALWAYS_NEW_6)
-    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final NavigableSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                      final T @Unmodifiable [] reference,
                                                                                      final T from,
                                                                                      final boolean fromIsInclusive,
@@ -464,7 +458,7 @@ sealed class UtilityForArray
 
 
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object> ImmutableSortedSet<T> asHeadSubdivided(final SortedSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asHeadSubdivided(final ImmutableSortedSet<? super T> source,
                                                                                       final T @Unmodifiable [] reference,
                                                                                       final T to) {
         final var size = reference.length;
@@ -476,7 +470,7 @@ sealed class UtilityForArray
     }
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final NavigableSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asHeadSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                          final T @Unmodifiable [] reference,
                                                                                          final T to,
                                                                                          final boolean isInclusive) {
@@ -491,7 +485,7 @@ sealed class UtilityForArray
     }
 
     @Contract(ALWAYS_NEW_3)
-    public static <T extends @Nullable Object> ImmutableSortedSet<T> asTailSubdivided(final SortedSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableSortedSet<T> asTailSubdivided(final ImmutableSortedSet<? super T> source,
                                                                                       final T @Unmodifiable [] reference,
                                                                                       final T from) {
         final var size = reference.length;
@@ -503,7 +497,7 @@ sealed class UtilityForArray
     }
 
     @Contract(ALWAYS_NEW_4)
-    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asTailSubdivided(final NavigableSet<? super T> source,
+    public static <T extends @Nullable Object> ImmutableNavigableSet<T> asTailSubdivided(final ImmutableNavigableSet<? super T> source,
                                                                                          final T @Unmodifiable [] reference,
                                                                                          final T from,
                                                                                          final boolean isInclusive) {
@@ -524,7 +518,7 @@ sealed class UtilityForArray
                                                                                           final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptySequencedCollection();
+            return EmptySequencedCollection.getInstance();
         return new ReversedArrayAsImmutableSequencedCollection<>(source, new ReversedArray<>(reference));
     }
 
@@ -532,7 +526,7 @@ sealed class UtilityForArray
                                                                            final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptyList();
+            return EmptyList.getInstance();
         return new ReversedArrayAsImmutableList<>(source, new ReversedArray<>(reference));
     }
 
@@ -540,7 +534,7 @@ sealed class UtilityForArray
                                                                                    final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptySequencedSet();
+            return EmptySequencedSet.getInstance();
         return new ReversedArrayAsImmutableSequencedSet<>(source, new ReversedArray<>(reference));
     }
 
@@ -548,7 +542,7 @@ sealed class UtilityForArray
                                                                                 final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptySortedSet();
+            return EmptySortedSet.getInstance();
         return new ReversedArrayAsImmutableSortedSet<>(source, new ReversedArray<>(reference));
     }
 
@@ -556,7 +550,7 @@ sealed class UtilityForArray
                                                                                    final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptyNavigableSet();
+            return EmptyNavigableSet.getInstance();
         return new ReversedArrayAsImmutableNavigableSet<>(source, new ReversedArray<>(reference));
     }
 
@@ -564,7 +558,7 @@ sealed class UtilityForArray
                                                                             final T @Unmodifiable [] reference) {
         final var size = reference.length;
         if (size == 0)
-            return emptyDeque();
+            return EmptyDeque.getInstance();
         return new ReversedArrayAsImmutableDeque<>(source, new ReversedArray<>(reference));
     }
 

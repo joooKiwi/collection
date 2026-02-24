@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
+export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithIterableByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -57,7 +57,10 @@ export function hasAllWithIterable<const T, >(collection: Nullable<| MinimalistC
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean {
+export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return true
+
     const iterator = values[Symbol.iterator]() as IterableIterator<unknown>
     const iteratorResult: IteratorResult<unknown, unknown> = iterator.next()
     if (iteratorResult.done)
@@ -68,7 +71,7 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
     const size = collection.size
     if (size == 0)
         return false
-    return __hasAll(collection, iterator, iteratorResult.value, size,)
+    return __validate(collection, iterator, iteratorResult.value, size,)
 }
 
 /**
@@ -80,7 +83,10 @@ export function hasAllWithIterableByMinimalistCollectionHolder<const T, >(collec
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean {
+export function hasAllWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return true
+
     const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
     const iteratorResult: IteratorResult<T, unknown> = iterator.next()
     if (iteratorResult.done)
@@ -89,7 +95,7 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
         return false
     if (collection.isEmpty)
         return false
-    return __hasAll(collection, iterator, iteratorResult.value, collection.size,)
+    return __validate(collection, iterator, iteratorResult.value, collection.size,)
 }
 
 /**
@@ -101,7 +107,10 @@ export function hasAllWithIterableByCollectionHolder<const T, >(collection: Null
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T>,): boolean {
+export function hasAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+    if (values == null)
+        return true
+
     const iterator = values[Symbol.iterator]() as IterableIterator<T, unknown, unknown>
     const iteratorResult: IteratorResult<T, unknown> = iterator.next()
     if (iteratorResult.done)
@@ -112,13 +121,13 @@ export function hasAllWithIterableByArray<const T, >(collection: Nullable<readon
     const size = collection.length
     if (size == 0)
         return false
-    return __hasAllByArray(collection, iterator, iteratorResult.value, size,)
+    return __validateByArray(collection, iterator, iteratorResult.value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)
@@ -139,7 +148,7 @@ function __hasAll<const T, >(collection: MinimalistCollectionHolder<T>, iterator
     return true
 }
 
-function __hasAllByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)

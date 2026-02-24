@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -14,16 +14,16 @@ import type {Lazy}    from "@joookiwi/lazy"
 import type {NullOr}  from "@joookiwi/type"
 import {lazy, lazyOf} from "@joookiwi/lazy"
 
-import type {CollectionHolder}                                                                                                             from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                   from "./MinimalistCollectionHolder"
-import type {CollectionHandler}                                                                                                            from "./handler/CollectionHandler"
-import type {IterableWithCount}                                                                                                            from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                                                                                           from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                                                                                                     from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                                                                                             from "./iterable/IterableWithSize"
-import type {CollectionIterator}                                                                                                           from "./iterator/CollectionIterator"
-import type {IndexWithReturnCallback}                                                                                                      from "./type/callback"
-import type {PossibleIterableArraySetOrCollectionHolder, PossibleIterableIteratorArraySetOrCollectionHolder, PossibleIterableOrCollection} from "./type/possibleInstance"
+import type {CollectionHolder}                                   from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                         from "./MinimalistCollectionHolder"
+import type {CollectionHandler}                                  from "./handler/CollectionHandler"
+import type {IterableWithCount}                                  from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                 from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                           from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                   from "./iterable/IterableWithSize"
+import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
+import type {IndexWithReturnCallback}                            from "./type/callback"
+import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "./type/possibleInstance"
 
 import {AbstractCollectionHolder}                         from "./AbstractCollectionHolder"
 import {CollectionConstants}                              from "./CollectionConstants"
@@ -65,16 +65,14 @@ import {isSetByStructure}                                 from "./method/isSetBy
  *
  * Meaning that the value in the instance are not retrieved until it is necessary.
  *
- * @typeParam T         The element type
- * @typeParam REFERENCE (deprecated, it will be removed in version 1.14) The reference passed in the constructor
+ * @typeParam T The element type
  * @note The index in the instance may not be initialized if retrieved directly
  * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder
  * @see EmptyCollectionHolder
  * @beta
  */
-export class LazyGenericCollectionHolder<const T = unknown,
-    const _REFERENCE extends PossibleIterableOrCollection<T> = PossibleIterableArraySetOrCollectionHolder<T>, >
+export class LazyGenericCollectionHolder<const T = unknown, >
     extends AbstractCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
@@ -100,30 +98,30 @@ export class LazyGenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array: readonly T[],)
-    public constructor(lateArray: () => readonly T[],)
-    public constructor(set: ReadonlySet<T>,)
-    public constructor(lateSet: () => ReadonlySet<T>,)
-    public constructor(collectionHolder: CollectionHolder<T>,)
-    public constructor(lateCollectionHolder: () => CollectionHolder<T>,)
-    public constructor(minimalistCollectionHolder: MinimalistCollectionHolder<T>,)
+    public constructor(array:                                readonly T[],)
+    public constructor(lateArray:                      () => readonly T[],)
+    public constructor(set:                                  ReadonlySet<T>,)
+    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(collectionHolder:                     CollectionHolder<T>,)
+    public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
+    public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
     public constructor(lateMinimalistCollectionHolder: () => MinimalistCollectionHolder<T>,)
-    public constructor(collectionIterable: CollectionIterator<T>,)
-    public constructor(lateCollectionIterable: () => CollectionIterator<T>,)
-    public constructor(iterator: Iterator<T, unknown, unknown>,)
-    public constructor(lateIterator: () => Iterator<T, unknown, unknown>,)
-    public constructor(iterableWithSize: IterableWithSize<T>,)
-    public constructor(lateIterableWithSize: () => IterableWithSize<T>,)
-    public constructor(iterableWithLength: IterableWithLength<T>,)
-    public constructor(lateIterableWithLength: () => IterableWithLength<T>,)
-    public constructor(iterableWithCount: IterableWithCount<T>,)
-    public constructor(lateIterableWithCount: () => IterableWithCount<T>,)
-    public constructor(iterableWithPossibleSize: IterableWithPossibleSize<T>,)
-    public constructor(lateIterableWithPossibleSize: () => IterableWithPossibleSize<T>,)
-    public constructor(iterable: Iterable<T, unknown, unknown>,)
-    public constructor(lateIterable: () => Iterable<T, unknown, unknown>,)
-    public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
-    public constructor(lateReference: () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(collectionIterator:                   CollectionIterator<T>,)
+    public constructor(lateCollectionIterator:         () => CollectionIterator<T>,)
+    public constructor(iterator:                             Iterator<T, unknown, unknown>,)
+    public constructor(lateIterator:                   () => Iterator<T, unknown, unknown>,)
+    public constructor(iterableWithSize:                     IterableWithSize<T>,)
+    public constructor(lateIterableWithSize:           () => IterableWithSize<T>,)
+    public constructor(iterableWithLength:                   IterableWithLength<T>,)
+    public constructor(lateIterableWithLength:         () => IterableWithLength<T>,)
+    public constructor(iterableWithCount:                    IterableWithCount<T>,)
+    public constructor(lateIterableWithCount:          () => IterableWithCount<T>,)
+    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
+    public constructor(iterable:                             Iterable<T, unknown, unknown>,)
+    public constructor(lateIterable:                   () => Iterable<T, unknown, unknown>,)
+    public constructor(reference:                            PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
+    public constructor(lateReference:                  () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),) {
         super()
@@ -131,7 +129,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
         //         Also, to be efficient, there is some duplicate code in the constructor.
         //         Note that some paths are not fully optimized yet
 
-        //#region -------------------- Initialization by a known instance --------------------
+        //#region -------------------- Initialization from Array --------------------
 
         if (isArray(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -142,6 +140,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
         }
 
+        //#endregion -------------------- Initialization from Array --------------------
+        //#region -------------------- Initialization from Set --------------------
+
         if (isSet(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerBySet(reference,),)
@@ -150,6 +151,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#hasDuplicate = false
         }
+
+        //#endregion -------------------- Initialization from Set --------------------
+        //#region -------------------- Initialization from CollectionHolder --------------------
 
         if (isCollectionHolder(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -161,6 +165,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from CollectionHolder --------------------
+        //#region -------------------- Initialization from MinimalistCollectionHolder --------------------
+
         if (isMinimalistCollectionHolder(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
@@ -170,6 +177,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
+
+        //#endregion -------------------- Initialization from MinimalistCollectionHolder --------------------
+        //#region -------------------- Initialization from CollectionIterator --------------------
 
         if (isCollectionIterator(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -181,6 +191,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from CollectionIterator --------------------
+        //#region -------------------- Initialization from Iterator --------------------
+
         if (isIterator(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => new CollectionHandlerByIterator(this, reference,),)
@@ -191,8 +204,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
-        //#endregion -------------------- Initialization by a known instance --------------------
-        //#region -------------------- Initialization by a structure --------------------
+        //#endregion -------------------- Initialization from Iterator --------------------
+
+        //#region -------------------- Initialization from Array by structure --------------------
 
         if (isArrayByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -202,6 +216,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
         }
 
+        //#endregion -------------------- Initialization from Array by structure --------------------
+        //#region -------------------- Initialization from Set by structure --------------------
+
         if (isSetByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference ,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerBySet(reference,),)
@@ -210,6 +227,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasNull = lazy(() => handler.value.hasNull,)
             this.#hasDuplicate = false
         }
+
+        //#endregion -------------------- Initialization from Set by structure --------------------
+        //#region -------------------- Initialization from CollectionHolder by structure --------------------
 
         if (isCollectionHolderByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -221,6 +241,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from CollectionHolder by structure --------------------
+        //#region -------------------- Initialization from MinimalistCollectionHolder by structure --------------------
+
         if (isMinimalistCollectionHolderByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => this.#handlerByMinimalistCollectionHolder(reference,),)
@@ -230,6 +253,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
+
+        //#endregion -------------------- Initialization from MinimalistCollectionHolder by structure --------------------
+        //#region -------------------- Initialization from CollectionIterator by structure --------------------
 
         if (isCollectionIteratorByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
@@ -241,6 +267,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from CollectionIterator by structure --------------------
+        //#region -------------------- Initialization from Iterator by structure --------------------
+
         if (isIteratorByStructure<T>(reference,)) {
             this.#reference = lazyOf(reference,)
             const handler = this.#lazyHandler = lazy(() => new CollectionHandlerByIterator(this, reference,),)
@@ -251,14 +280,14 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
-        //#endregion -------------------- Initialization by a structure --------------------
+        //#endregion -------------------- Initialization from Iterator by structure --------------------
 
         if (reference instanceof Function) {
             const lazyReference = this.#reference = lazy(reference,)
             const handler = this.#lazyHandler = lazy<CollectionHandler<T>>(() => {
                 const referenceFound = lazyReference.value
 
-                //#region -------------------- Late-initialization by a known instance --------------------
+                //#region -------------------- Late-initialization from Array --------------------
 
                 if (isArray(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByArray(referenceFound,)
@@ -271,6 +300,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from Array --------------------
+                //#region -------------------- Late-initialization from Set --------------------
+
                 if (isSet(referenceFound,)) {
                     const handler = this.#handler = this.#handlerBySet(referenceFound,)
                     if (this.#size == null)
@@ -279,6 +311,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                         this.#lazyHasNull = lazy(() => handler.hasNull,)
                     this.#hasDuplicate = false
                 }
+
+                //#endregion -------------------- Late-initialization from Set --------------------
+                //#region -------------------- Late-initialization from CollectionHolder --------------------
 
                 if (isCollectionHolder(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByCollectionHolder(referenceFound,)
@@ -291,6 +326,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from CollectionHolder --------------------
+                //#region -------------------- Late-initialization from MinimalistCollectionHolder --------------------
+
                 if (isMinimalistCollectionHolder(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
                     if (this.#size == null)
@@ -301,6 +339,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                         this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
                     return handler
                 }
+
+                //#endregion -------------------- Late-initialization from MinimalistCollectionHolder --------------------
+                //#region -------------------- Late-initialization from CollectionIterator --------------------
 
                 if (isCollectionIterator(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByCollectionIterator(referenceFound,)
@@ -313,6 +354,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from CollectionIterator --------------------
+                //#region -------------------- Late-initialization from Iterator --------------------
+
                 if (isIterator(referenceFound,)) {
                     const handler = this.#handler = new CollectionHandlerByIterator(this, referenceFound,)
                     if (this.#size != null)
@@ -324,8 +368,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
-                //#endregion -------------------- Late-initialization by a known instance --------------------
-                //#region -------------------- Late-initialization by a structure --------------------
+                //#endregion -------------------- Late-initialization from Iterator --------------------
+
+                //#region -------------------- Late-initialization from Array by structure --------------------
 
                 if (isArrayByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByArray(referenceFound,)
@@ -338,6 +383,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from Array by structure --------------------
+                //#region -------------------- Late-initialization from Set by structure --------------------
+
                 if (isSetByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerBySet(referenceFound,)
                     if (this.#size == null)
@@ -346,6 +394,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                         this.#lazyHasNull = lazy(() => handler.hasNull,)
                     this.#hasDuplicate = false
                 }
+
+                //#endregion -------------------- Late-initialization from Set by structure --------------------
+                //#region -------------------- Late-initialization from CollectionHolder by structure --------------------
 
                 if (isCollectionHolderByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
@@ -358,6 +409,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from CollectionHolder by structure --------------------
+                //#region -------------------- Late-initialization from MinimalistCollectionHolder by structure --------------------
+
                 if (isMinimalistCollectionHolderByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByMinimalistCollectionHolder(referenceFound,)
                     if (this.#size == null)
@@ -368,6 +422,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                         this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
                     return handler
                 }
+
+                //#endregion -------------------- Late-initialization from MinimalistCollectionHolder by structure --------------------
+                //#region -------------------- Late-initialization from CollectionIterator by structure --------------------
 
                 if (isCollectionIteratorByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = this.#handlerByCollectionIterator(referenceFound,)
@@ -380,6 +437,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from CollectionIterator by structure --------------------
+                //#region -------------------- Late-initialization from Iterator by structure --------------------
+
                 if (isIteratorByStructure<T>(referenceFound,)) {
                     const handler = this.#handler = new CollectionHandlerByIterator(this, referenceFound,)
                     if (this.#size != null)
@@ -391,8 +451,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
-                //#endregion -------------------- Late-initialization by a structure --------------------
-                //#region -------------------- Late-initialization by an iterator --------------------
+                //#endregion -------------------- Late-initialization from Iterator by structure --------------------
+
+                //#region -------------------- Late-initialization from Iterable with size --------------------
 
                 sizeIf: if ("size" in referenceFound) {
                     const size = referenceFound.size
@@ -408,6 +469,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from Iterable with size --------------------
+                //#region -------------------- Late-initialization from Iterable with length --------------------
+
                 lengthIf: if ("length" in referenceFound) {
                     const size = referenceFound.length
                     if (size == null) // No size is present even though there is a value in the reference
@@ -421,6 +485,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                         this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
                     return handler
                 }
+
+                //#endregion -------------------- Late-initialization from Iterable with length --------------------
+                //#region -------------------- Late-initialization from Iterable with count --------------------
 
                 countIf: if ("count" in referenceFound) {
                     const size = referenceFound.count
@@ -436,6 +503,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     return handler
                 }
 
+                //#endregion -------------------- Late-initialization from Iterable with count --------------------
+                //#region -------------------- Late-initialization from Iterable --------------------
+
                 const handler = this.#handler = new CollectionHandlerByIterable(this, referenceFound,)
                 if (this.#size != null)
                     this.#lazySize = lazy(() => handler.size,)
@@ -445,7 +515,8 @@ export class LazyGenericCollectionHolder<const T = unknown,
                     this.#lazyHasDuplicate = lazy(() => handler.hasDuplicate,)
                 return handler
 
-                //#endregion -------------------- Late-initialization by an iterator --------------------
+                //#endregion -------------------- Late-initialization from Iterable --------------------
+
             },)
             this.#lazySize = lazy(() => handler.value.size,)
             this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
@@ -454,9 +525,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
-        //#region -------------------- Initialization by an iterator --------------------
-
         this.#reference = lazyOf(reference,)
+
+        //#region -------------------- Initialization from Iterable with size --------------------
 
         sizeIf: if ("size" in reference) {
             const size = reference.size
@@ -471,6 +542,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from Iterable with size --------------------
+        //#region -------------------- Initialization from Iterable with length --------------------
+
         lengthIf: if ("length" in reference) {
             const size = reference.length
             if (size == null) // No size is present even though there is a value in the reference
@@ -483,6 +557,9 @@ export class LazyGenericCollectionHolder<const T = unknown,
             this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
             return
         }
+
+        //#endregion -------------------- Initialization from Iterable with length --------------------
+        //#region -------------------- Initialization from Iterable with count --------------------
 
         countIf: if ("count" in reference) {
             const size = reference.count
@@ -497,13 +574,17 @@ export class LazyGenericCollectionHolder<const T = unknown,
             return
         }
 
+        //#endregion -------------------- Initialization from Iterable with count --------------------
+        //#region -------------------- Initialization from Iterable --------------------
+
         const handler = this.#lazyHandler = lazyOf(new CollectionHandlerByIterable(this, reference,),)
         this.#lazySize = lazy(() => handler.value.size,)
         this.#lazyIsEmpty = lazy(() => handler.value.isEmpty,)
         this.#lazyHasNull = lazy(() => handler.value.hasNull,)
         this.#lazyHasDuplicate = lazy(() => handler.value.hasDuplicate,)
 
-        //#endregion -------------------- Initialization by an iterator --------------------
+        //#endregion -------------------- Initialization from Iterable --------------------
+
     }
 
     //#region -------------------- Constructor helper methods --------------------
@@ -805,7 +886,7 @@ export class LazyGenericCollectionHolder<const T = unknown,
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Getter methods --------------------
 
-    /** The {@link PossibleIterableOrCollection iterable or collection} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
+    /** The {@link PossibleIterableIteratorArraySetOrCollectionHolder collection, array, set, iterable or iterator} received in the {@link LazyGenericCollectionHolder.constructor constructor} */
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference.value }
 
     /** The {@link CollectionHandler handler} created from the {@link LazyGenericCollectionHolder} {@link LazyGenericCollectionHolder.constructor constructor} */

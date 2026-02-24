@@ -1,13 +1,13 @@
 package joookiwi.collection.java.method;
 
 import joookiwi.collection.java.CollectionHolder;
+import joookiwi.collection.java.EmptyCollectionHolder;
 import joookiwi.collection.java.GenericCollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
@@ -15,7 +15,6 @@ import org.jetbrains.annotations.Unmodifiable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionHolder;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -45,11 +44,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final ObjIntFunction<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
@@ -69,9 +68,9 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final ObjIntFunction<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, collection.size()));
     }
 
@@ -91,11 +90,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final T @Nullable @Unmodifiable [] collection,
                                                                                  final ObjIntFunction<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with2Argument(collection, transform, size));
     }
 
@@ -118,11 +117,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final Function<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, transform, size));
     }
 
@@ -142,9 +141,9 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final Function<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, transform, collection.size()));
     }
 
@@ -164,11 +163,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final T @Nullable @Unmodifiable [] collection,
                                                                                  final Function<? super T, ? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with1Argument(collection, transform, size));
     }
 
@@ -191,11 +190,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                  final Supplier<? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.size();
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 
@@ -215,9 +214,9 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final @Nullable CollectionHolder<? extends T> collection,
                                                                                  final Supplier<? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         if (collection.isEmpty())
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, collection.size()));
     }
 
@@ -237,11 +236,11 @@ public final class MapNotNull
     public static <T extends @Nullable Object, U> CollectionHolder<U> mapNotNull(final T @Nullable @Unmodifiable [] collection,
                                                                                  final Supplier<? extends @Nullable U> transform) {
         if (collection == null)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
 
         final var size = collection.length;
         if (size == 0)
-            return emptyCollectionHolder();
+            return EmptyCollectionHolder.getInstance();
         return new GenericCollectionHolder<>(__with0Argument(transform, size));
     }
 

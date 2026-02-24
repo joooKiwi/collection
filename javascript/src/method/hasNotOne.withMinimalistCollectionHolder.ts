@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -55,18 +55,20 @@ export function hasNotOneWithMinimalistCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.size
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOne(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, valuesSize,)
 }
 
 /**
@@ -76,16 +78,18 @@ export function hasNotOneWithMinimalistCollectionHolderByMinimalistCollectionHol
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
     if (collection.isEmpty)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOne(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, valuesSize,)
 }
 
 /**
@@ -95,24 +99,26 @@ export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
-    return __hasNotOneByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
@@ -124,7 +130,7 @@ function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, value
     return true
 }
 
-function __hasNotOneByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

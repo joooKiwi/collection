@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterable<T>,): boolean {
+export function hasNotOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -55,20 +55,22 @@ export function hasNotOneWithIterable<const T, >(collection: Nullable<| Minimali
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterable<T>,): boolean {
+export function hasNotOneWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.size
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const iterator: Iterator<T, unknown, unknown> = values[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return false
 
-    return __hasNotOne(collection, iterator, iteratorResult.value, size,)
+    return __validate(collection, iterator, iteratorResult.value, size,)
 }
 
 /**
@@ -78,18 +80,20 @@ export function hasNotOneWithIterableByMinimalistCollectionHolder<const T, >(col
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterable<T>,): boolean {
+export function hasNotOneWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return true
     if (collection.isEmpty)
         return true
+    if (values == null)
+        return false
 
     const iterator: Iterator<T, unknown, unknown> = values[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return false
 
-    return __hasNotOne(collection, iterator, iteratorResult.value, collection.size,)
+    return __validate(collection, iterator, iteratorResult.value, collection.size,)
 }
 
 /**
@@ -99,26 +103,28 @@ export function hasNotOneWithIterableByCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterable<T>,): boolean {
+export function hasNotOneWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return true
 
     const size = collection.length
     if (size == 0)
         return true
+    if (values == null)
+        return false
 
     const iterator: Iterator<T, unknown, unknown> = values[Symbol.iterator]()
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return false
 
-    return __hasNotOneByArray(collection, iterator, iteratorResult.value, size,)
+    return __validateByArray(collection, iterator, iteratorResult.value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection.get(index1,) === firstValue)
@@ -135,7 +141,7 @@ function __hasNotOne<const T, >(collection: MinimalistCollectionHolder<T>, itera
     return true
 }
 
-function __hasNotOneByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection[index1] === firstValue)

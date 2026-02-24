@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -29,6 +29,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  *
  * @see CollectionHandlerByArrayOf1
  * @see CollectionHandlerByArrayOf2
+ * @deprecated Replace with {@link ArrayAsCollectionHolder}. This will be removed in v2.0
  */
 export class CollectionHandlerByArray<const T = unknown,
     const REFERENCE extends readonly T[] = readonly T[],

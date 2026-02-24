@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.helper.NumberComparator;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -20,11 +19,14 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
+import static java.lang.Float.isNaN;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_INITIAL_CAPACITY;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_LOAD_FACTOR;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_SMALL_LOAD_FACTOR;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
+import static joookiwi.collection.java.helper.NumberComparator.max;
 
 /// A mutable behaviour of a [HashSet]
 ///
@@ -34,7 +36,7 @@ public class MutableHashSet<T extends @Nullable Object>
         extends HashSet<T>
         implements MutableSet<T> {
 
-    @Serial private static final long serialVersionUID = 5137042745144204565L;
+    @Serial private static final long serialVersionUID = -2384944121390432222L;
 
     //#region -------------------- Constructors --------------------
 
@@ -49,129 +51,121 @@ public class MutableHashSet<T extends @Nullable Object>
     //#region -------------------- initialCapacity --------------------
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final byte initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final byte initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.byteValue(), 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final short initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final short initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.shortValue(), 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received
+    /// with the `initialCapacity` received (_capped to be over `0`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final int initialCapacity) { super(NumberComparator.getInstance().max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final int initialCapacity) { super(max(initialCapacity, 0), DEFAULT_LOAD_FACTOR); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// with the `initialCapacity` received (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.intValue(), 0), DEFAULT_LOAD_FACTOR); }
+    public MutableHashSet(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), DEFAULT_LOAD_FACTOR); }
 
     //#endregion -------------------- initialCapacity --------------------
     //#region -------------------- initialCapacity, loadFactor --------------------
 
-    /// Create a mutable instance of [HashSet] with the `initialCapacity` and the `loadFactor`received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// Create a mutable instance of [HashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor`received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final byte initialCapacity,
-                          final float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor); }
+                          final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableHashSet(final @Nullable Byte initialCapacity,
+                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
+    /// Create a mutable instance of [HashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final byte initialCapacity,
-                          final @Nullable Float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+                          final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
     public MutableHashSet(final @Nullable Byte initialCapacity,
-                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.byteValue(), 0), loadFactor); }
+                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final @Nullable Byte initialCapacity,
-                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.byteValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
-
-
-    /// Create a mutable instance of [HashSet] with the `initialCapacity` and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final short initialCapacity,
-                          final float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor); }
+                                final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableHashSet(final @Nullable Short initialCapacity,
+                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
+    /// Create a mutable instance of [HashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final short initialCapacity,
-                          final @Nullable Float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+                          final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Nullable Short initialCapacity,
-                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.shortValue(), 0), loadFactor); }
+                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final @Nullable Short initialCapacity,
-                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.shortValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
-
-
-    /// Create a mutable instance of [HashSet] with the `initialCapacity` and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final int initialCapacity,
-                          final float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor); }
+                          final float loadFactor) { super(max(initialCapacity, 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
+    public MutableHashSet(final @Nullable Integer initialCapacity,
+                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
+
+    /// Create a mutable instance of [HashSet]
+    /// with the `initialCapacity` (_capped to be over `0`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final int initialCapacity,
-                          final @Nullable Float loadFactor) { super(NumberComparator.getInstance().max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+                          final @Nullable Float loadFactor) { super(max(initialCapacity, 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_capped to be over `0` or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
     public MutableHashSet(final @Nullable Integer initialCapacity,
-                          final float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.intValue(), 0), loadFactor); }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the `initialCapacity` (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
-    public MutableHashSet(final @Nullable Integer initialCapacity,
-                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : NumberComparator.getInstance().max(initialCapacity.intValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor); }
+                          final @Nullable Float loadFactor) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 0), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor); }
 
     //#endregion -------------------- initialCapacity, loadFactor --------------------
     //#region -------------------- values --------------------
@@ -180,553 +174,446 @@ public class MutableHashSet<T extends @Nullable Object>
     /// with the capacity of the `values.length`
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(values.length, DEFAULT_LOAD_FACTOR);
         final var size = values.length;
+        super(size, DEFAULT_LOAD_FACTOR);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the capacity of <code>values.[size][Collection#size()]</code>
+    /// with the capacity of <code>values.[size()][Collection#size()]</code>
     /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values) {
         super(values.size(), DEFAULT_LOAD_FACTOR);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values --------------------
-    //#region -------------------- values, initialCapacity --------------------
+    //#region -------------------- values, loadFactor --------------------
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    /// with the capacity of the `values.length`
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was or [NaN][Float#NaN]_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
+                          final float loadFactor) {
         final var size = values.length;
+        super(size, isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    /// with the capacity of the `values.length`
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final @Nullable Byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
+                          final @Nullable Float loadFactor) {
         final var size = values.length;
+        super(size, loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
-        final var size = values.length;
-        if (size == 0)
-            return;
-        var index = -1;
-        while (++index < size)
-            super.add(values[index]);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final @Nullable Short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
-        final var size = values.length;
-        if (size == 0)
-            return;
-        var index = -1;
-        while (++index < size)
-            super.add(values[index]);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
-        final var size = values.length;
-        if (size == 0)
-            return;
-        var index = -1;
-        while (++index < size)
-            super.add(values[index]);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
-                          final @Nullable Integer initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), DEFAULT_LOAD_FACTOR);
-        final var size = values.length;
-        if (size == 0)
-            return;
-        var index = -1;
-        while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    /// with the capacity of <code>values.[size()][Collection#size()]</code>
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was or [NaN][Float#NaN]_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+                          final float loadFactor) {
+        super(values.size(), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
+    /// with the capacity of <code>values.[size()][Collection#size()]</code>
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]_)
+    ///
+    /// @throws IllegalArgumentException The `loadFactor` was negative
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final @Nullable Byte initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
+                          final @Nullable Float loadFactor) {
+        super(values.size(), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
-        if (values.isEmpty())
-            return;
-        super.addAll(values);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final @Nullable Short initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
-        if (values.isEmpty())
-            return;
-        super.addAll(values);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final int initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
-        if (values.isEmpty())
-            return;
-        super.addAll(values);
-    }
-
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and a load factor of [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_EMPTY_LOAD_FACTOR]
-    public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
-                          final @Nullable Integer initialCapacity) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), DEFAULT_LOAD_FACTOR);
-        if (values.isEmpty())
-            return;
-        super.addAll(values);
-    }
-
-    //#endregion -------------------- values, initialCapacity --------------------
+    //#endregion -------------------- values, loadFactor --------------------
     //#region -------------------- values, initialCapacity, loadFactor --------------------
 
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// Create a mutable instance of [MutableHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final byte initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// Create a mutable instance of [MutableHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final byte initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
-    /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// Create a mutable instance of [MutableHashSet]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Byte initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Byte initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final short initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final short initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Short initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Short initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final int initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final int initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Integer initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the `values.length`
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or `values.length` if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values,
                           final @Nullable Integer initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.length), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
         final var size = values.length;
+        super(max(initialCapacity, size), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (size == 0)
             return;
+
         var index = -1;
         while (++index < size)
-            super.add(values[index]);
+            add(values[index]);
     }
 
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final byte initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final byte initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Byte initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Byte initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final short initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final short initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Short initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Short initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final int initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final int initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was [NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Integer initialCapacity,
                           final float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor);
+        super(max(initialCapacity, values.size()), isNaN(loadFactor) ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     /// Create a mutable instance of [HashSet]
-    /// with the largest value between the `initialCapacity` and the <code>values.[size][Collection#size()]</code>
-    /// and the `loadFactor` received (_or [0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`_)
-    ///
-    /// @throws IllegalArgumentException The `loadFactor` was non-positive or [NaN][Float#NaN]
+    /// with the `initialCapacity` (_or <code>values.[size()][Collection#size()]</code> if it was larger_)
+    /// and the `loadFactor` received (_[0.75][joookiwi.collection.java.CollectionConstants#DEFAULT_LOAD_FACTOR] if it was `null`|[NaN][Float#NaN]
+    /// or [0.01][joookiwi.collection.java.CollectionConstants#DEFAULT_SMALL_LOAD_FACTOR] if it was `≤ 0`_)
     public MutableHashSet(final @Flow(sourceIsContainer = true, targetIsContainer = true) @Unmodifiable Collection<? extends T> values,
                           final @Nullable Integer initialCapacity,
                           final @Nullable Float loadFactor) {
-        super(NumberComparator.getInstance().max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor);
+        super(max(initialCapacity, values.size()), loadFactor == null ? DEFAULT_LOAD_FACTOR : loadFactor.isNaN() ? DEFAULT_LOAD_FACTOR : loadFactor <= 0.0F ? DEFAULT_SMALL_LOAD_FACTOR : loadFactor);
         if (values.isEmpty())
             return;
-        super.addAll(values);
+        addAll(values);
     }
 
     //#endregion -------------------- values, initialCapacity, loadFactor --------------------

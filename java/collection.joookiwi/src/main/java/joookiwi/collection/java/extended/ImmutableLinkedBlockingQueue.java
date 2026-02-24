@@ -27,7 +27,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
-import static joookiwi.collection.java.method.ToList.toList;
+import static joookiwi.collection.java.method.ToCollection.toCollection;
 
 /// An [immutable-like][Unmodifiable] behaviour of a [LinkedBlockingQueue]
 ///
@@ -39,7 +39,7 @@ public class ImmutableLinkedBlockingQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 7553589953573596976L;
+    @Serial private static final long serialVersionUID = 7679443302608032637L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -64,7 +64,7 @@ public class ImmutableLinkedBlockingQueue<T>
     /// with the capacity as [Integer#MAX_VALUE]
     /// with only the `values` stored inside
     public ImmutableLinkedBlockingQueue(final @Flow(sourceIsContainer = true, targetIsContainer = true) T @Unmodifiable [] values) {
-        super(toList(values));
+        super(toCollection(values));
         __isEmpty = (__size = values.length) == 0;
     }
 

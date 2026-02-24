@@ -8,9 +8,10 @@ import java.util.Set;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
-import java.util.stream.Stream;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -20,7 +21,6 @@ import org.jetbrains.annotations.Unmodifiable;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyNavigableSet;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CollectionConstants.emptyStream;
@@ -38,14 +38,13 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 /// but in an empty form
 ///
 /// @param <T> The type of the element
-/// @see java.util.Collections#emptySet
 /// @see joookiwi.collection.java.CollectionConstants#emptyConcurrentSkipListSet
 @Singleton
 @NotNullByDefault
 public class EmptyConcurrentSkipListSet<T>
         extends ImmutableConcurrentSkipListSet<T> {
 
-    @Serial private static final long serialVersionUID = 2912163353868699472L;
+    @Serial private static final long serialVersionUID = 9097053412573358027L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -126,23 +125,23 @@ public class EmptyConcurrentSkipListSet<T>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public Stream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
-    @Contract(pure = true) @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Subset methods --------------------
 
-    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final boolean fromIsInclusive, final @Nullable T to, final boolean toIsInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> subSet(final @Nullable T from, final @Nullable T to) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to, final boolean isInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> headSet(final @Nullable T to) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return emptyNavigableSet(); }
-    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from, final boolean isInclusive) { return EmptyNavigableSet.getInstance(); }
+    @Override public EmptyNavigableSet<T> tailSet(final @Nullable T from) { return EmptyNavigableSet.getInstance(); }
 
-    @Override public EmptyNavigableSet<T> descendingSet() { return emptyNavigableSet(); }
+    @Override public EmptyNavigableSet<T> descendingSet() { return EmptyNavigableSet.getInstance(); }
 
     //#endregion -------------------- Subset methods --------------------
     //#region -------------------- As reverse methods --------------------

@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithMinimalistCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,10 @@ export function hasNotAllWithMinimalistCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
@@ -63,7 +66,7 @@ export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHol
     const size = collection.size
     if (size == 0)
         return true
-    return __hasNotAll(collection, values, size, valuesSize,)
+    return __validate(collection, values, size, valuesSize,)
 }
 
 /**
@@ -73,7 +76,10 @@ export function hasNotAllWithMinimalistCollectionHolderByMinimalistCollectionHol
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
@@ -81,7 +87,7 @@ export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const 
         return true
     if (collection.isEmpty)
         return true
-    return __hasNotAll(collection, values, collection.size, valuesSize,)
+    return __validate(collection, values, collection.size, valuesSize,)
 }
 
 /**
@@ -91,7 +97,10 @@ export function hasNotAllWithMinimalistCollectionHolderByCollectionHolder<const 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: MinimalistCollectionHolder<T>,): boolean {
+export function hasNotAllWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+    if (values == null)
+        return false
+
     const valuesSize = values.size
     if (valuesSize == 0)
         return false
@@ -101,13 +110,13 @@ export function hasNotAllWithMinimalistCollectionHolderByArray<const T, >(collec
     const size = collection.length
     if (size == 0)
         return true
-    return __hasNotAllByArray(collection, values, size, valuesSize,)
+    return __validateByArray(collection, values, size, valuesSize,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasNotAll<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
@@ -120,7 +129,7 @@ function __hasNotAll<const T, >(collection: MinimalistCollectionHolder<T>, value
     return false
 }
 
-function __hasNotAllByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

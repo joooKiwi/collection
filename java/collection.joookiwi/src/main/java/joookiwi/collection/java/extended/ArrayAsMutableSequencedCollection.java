@@ -5,6 +5,7 @@ import org.jetbrains.annotations.MustBeInvokedByOverriders;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
+import static joookiwi.collection.java.CollectionConstants.emptyArray;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 
 /// A bare-bone implementation of a [java SequencedCollection][java.util.SequencedCollection]
@@ -18,6 +19,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 /// when possible.
 ///
 /// @param <T> The type
+/// @see ReversedArrayAsMutableSequencedCollection
 @NotNullByDefault
 public class ArrayAsMutableSequencedCollection<T extends @Nullable Object>
         extends AbstractArrayAsMutableSequencedCollection<T> {
@@ -27,9 +29,15 @@ public class ArrayAsMutableSequencedCollection<T extends @Nullable Object>
     private T[] __reference;
 
     //#endregion -------------------- Fields --------------------
-    //#region -------------------- Constructor --------------------
+    //#region -------------------- Constructors --------------------
 
-    /// Create an instance of a [java.util.SequencedCollection] from the `reference`
+    /// Create an instance of a [MutableSequencedCollection] from an [empty array][joookiwi.collection.java.CollectionConstants#emptyArray]
+    public ArrayAsMutableSequencedCollection() {
+        super();
+        __reference = emptyArray();
+    }
+
+    /// Create an instance of a [MutableSequencedCollection] from the `reference`
     ///
     /// @param reference The array to be the internal structure
     public ArrayAsMutableSequencedCollection(final T[] reference) {
@@ -37,7 +45,7 @@ public class ArrayAsMutableSequencedCollection<T extends @Nullable Object>
         __reference = reference;
     }
 
-    //#endregion -------------------- Constructor --------------------
+    //#endregion -------------------- Constructors --------------------
     //#region -------------------- Getter / setter methods --------------------
 
     /// The changeable internal reference passed through the constructor or mutated from its setter

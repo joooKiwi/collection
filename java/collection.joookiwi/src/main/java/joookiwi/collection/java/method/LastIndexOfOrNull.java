@@ -523,14 +523,14 @@ public final class LastIndexOfOrNull
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, -1, size - 1);
+        return __findLastInRange(collection, element, 0, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
                                                                          final T element) {
         if (collection.isEmpty())
             return null;
-        return __findLastInRange(collection, element, -1, collection.size() - 1);
+        return __findLastInRange(collection, element, 0, collection.size() - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
@@ -538,7 +538,7 @@ public final class LastIndexOfOrNull
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, -1, size - 1);
+        return __findLastInRange(collection, element, 0, size - 1);
     }
 
     //#endregion -------------------- Core methods (element) --------------------
@@ -550,7 +550,11 @@ public final class LastIndexOfOrNull
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final CollectionHolder<? extends T> collection,
@@ -560,7 +564,10 @@ public final class LastIndexOfOrNull
             return null;
 
         final var size = collection.size();
-        return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, startingIndex, size - 1);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __core(final T @Unmodifiable [] collection,
@@ -569,7 +576,11 @@ public final class LastIndexOfOrNull
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, _startingIndex(from, size), size - 1);
+
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, startingIndex, size - 1);
     }
 
     //#endregion -------------------- Core methods (element, from) --------------------
@@ -583,8 +594,13 @@ public final class LastIndexOfOrNull
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(from, size);
-        final var endingIndex = _endingIndex(to, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __findLastInRange(collection, element, startingIndex, endingIndex);
@@ -598,8 +614,13 @@ public final class LastIndexOfOrNull
             return null;
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(from, size);
-        final var endingIndex = _endingIndex(to, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __findLastInRange(collection, element, startingIndex, endingIndex);
@@ -613,8 +634,13 @@ public final class LastIndexOfOrNull
         if (size == 0)
             return null;
 
-        final var startingIndex = _startingIndex(from, size);
-        final var endingIndex = _endingIndex(to, size);
+        final var startingIndex = _startingIndexOrNull(from, size);
+        if (startingIndex == null)
+            return null;
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
         if (endingIndex < startingIndex)
             return null;
         return __findLastInRange(collection, element, startingIndex, endingIndex);
@@ -629,7 +655,11 @@ public final class LastIndexOfOrNull
         final var size = collection.size();
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, 0, _endingIndex(to, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final CollectionHolder<? extends T> collection,
@@ -637,7 +667,11 @@ public final class LastIndexOfOrNull
                                                                                    final int to) {
         if (collection.isEmpty())
             return null;
-        return __findLastInRange(collection, element, 0, _endingIndex(to, collection.size()));
+
+        final var endingIndex = _endingIndexOrNull(to, collection.size());
+        if (endingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, 0, endingIndex);
     }
 
     private static <T extends @Nullable Object> @Nullable Integer __coreWithNoFrom(final T @Unmodifiable [] collection,
@@ -646,7 +680,11 @@ public final class LastIndexOfOrNull
         final var size = collection.length;
         if (size == 0)
             return null;
-        return __findLastInRange(collection, element, 0, _endingIndex(to, size));
+
+        final var endingIndex = _endingIndexOrNull(to, size);
+        if (endingIndex == null)
+            return null;
+        return __findLastInRange(collection, element, 0, endingIndex);
     }
 
     //#endregion -------------------- Core methods (element, to) --------------------

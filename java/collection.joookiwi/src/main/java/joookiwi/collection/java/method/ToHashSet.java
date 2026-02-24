@@ -1,6 +1,5 @@
 package joookiwi.collection.java.method;
 
-import java.util.HashSet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -8,13 +7,13 @@ import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.annotation.ExtensionFunction;
 import joookiwi.collection.java.callback.ObjIntFunction;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.extended.EmptyHashSet;
 import joookiwi.collection.java.extended.ImmutableHashSet;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyHashSet;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 
 @NotNullByDefault
@@ -35,7 +34,7 @@ public final class ToHashSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection);
     }
 
@@ -46,7 +45,7 @@ public final class ToHashSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable CollectionHolder<? extends T> collection) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection);
     }
 
@@ -57,7 +56,7 @@ public final class ToHashSet
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final T @Nullable @Unmodifiable [] collection) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection);
     }
 
@@ -75,7 +74,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -90,7 +89,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -105,7 +104,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -123,7 +122,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -138,7 +137,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -153,7 +152,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -171,7 +170,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -186,7 +185,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -201,7 +200,7 @@ public final class ToHashSet
     public static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> toHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, transform);
     }
 
@@ -212,39 +211,39 @@ public final class ToHashSet
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                              final float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor);
     }
 
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                              final float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor);
     }
 
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                              final float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor);
     }
 
@@ -252,13 +251,13 @@ public final class ToHashSet
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                              final @Nullable Float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection);
         return __core(collection, loadFactor);
@@ -267,13 +266,13 @@ public final class ToHashSet
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final @Nullable CollectionHolder<? extends T> collection,
                                                                              final @Nullable Float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection);
         return __core(collection, loadFactor);
@@ -282,13 +281,13 @@ public final class ToHashSet
     /// Convert the `collection` to an [ImmutableHashSet]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param <T>        The `collection` type
     @ExtensionFunction
     public static <T extends @Nullable Object> ImmutableHashSet<T> toHashSet(final T @Nullable @Unmodifiable [] collection,
                                                                              final @Nullable Float loadFactor) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection);
         return __core(collection, loadFactor);
@@ -301,7 +300,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -310,7 +309,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -318,7 +317,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -327,7 +326,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -335,7 +334,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -344,7 +343,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -353,7 +352,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -362,7 +361,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -372,7 +371,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -381,7 +380,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -391,7 +390,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -400,7 +399,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -413,7 +412,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -422,7 +421,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -430,7 +429,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -439,7 +438,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -447,7 +446,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -456,7 +455,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -464,7 +463,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -473,7 +472,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -483,7 +482,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -492,7 +491,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -502,7 +501,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -511,7 +510,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Function<? super T, ? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -524,7 +523,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -533,7 +532,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -541,7 +540,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -550,7 +549,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -558,7 +557,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -567,7 +566,7 @@ public final class ToHashSet
                                                                                                          final float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return __core(collection, loadFactor, transform);
     }
 
@@ -575,7 +574,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -584,7 +583,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -594,7 +593,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -603,7 +602,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -613,7 +612,7 @@ public final class ToHashSet
     /// applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param loadFactor The [HashSet] load factor
+    /// @param loadFactor The [set][java.util.HashSet] load factor
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -622,7 +621,7 @@ public final class ToHashSet
                                                                                                          final @Nullable Float loadFactor,
                                                                                                          final Supplier<? extends U> transform) {
         if (collection == null)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (loadFactor == null)
             return __core(collection, transform);
         return __core(collection, loadFactor, transform);
@@ -638,13 +637,13 @@ public final class ToHashSet
     private static <T extends @Nullable Object> ImmutableHashSet<T> __core(final MinimalistCollectionHolder<? extends T> collection) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size));
     }
 
     private static <T extends @Nullable Object> ImmutableHashSet<T> __core(final CollectionHolder<? extends T> collection) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (collection.hasDuplicate())
             return new ImmutableHashSet<>(_values(collection, collection.size()));
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size()));
@@ -653,7 +652,7 @@ public final class ToHashSet
     private static <T extends @Nullable Object> ImmutableHashSet<T> __core(final T @Unmodifiable [] collection) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size));
     }
 
@@ -664,14 +663,14 @@ public final class ToHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> __core(final CollectionHolder<? extends T> collection,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
@@ -679,7 +678,7 @@ public final class ToHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -688,14 +687,14 @@ public final class ToHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> __core(final CollectionHolder<? extends T> collection,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform));
     }
 
@@ -703,7 +702,7 @@ public final class ToHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform));
     }
 
@@ -712,14 +711,14 @@ public final class ToHashSet
                                                                                                        final Supplier<? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(size, transform));
     }
 
     private static <T extends @Nullable Object, U extends @Nullable Object> ImmutableHashSet<U> __core(final CollectionHolder<? extends T> collection,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection.size(), transform));
     }
 
@@ -727,7 +726,7 @@ public final class ToHashSet
                                                                                                        final Supplier<? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(size, transform));
     }
 
@@ -738,14 +737,14 @@ public final class ToHashSet
                                                                            final float loadFactor) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size), loadFactor);
     }
 
     private static <T extends @Nullable Object> ImmutableHashSet<T> __core(final CollectionHolder<? extends T> collection,
                                                                            final float loadFactor) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         if (collection.hasDuplicate())
             return new ImmutableHashSet<>(_values(collection, collection.size()), loadFactor);
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size()), loadFactor);
@@ -755,7 +754,7 @@ public final class ToHashSet
                                                                            final float loadFactor) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size), loadFactor);
     }
 
@@ -767,7 +766,7 @@ public final class ToHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
     }
 
@@ -775,7 +774,7 @@ public final class ToHashSet
                                                                                                        final float loadFactor,
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform), loadFactor);
     }
 
@@ -784,7 +783,7 @@ public final class ToHashSet
                                                                                                        final ObjIntFunction<? super T, ? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
     }
 
@@ -794,7 +793,7 @@ public final class ToHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
     }
 
@@ -802,7 +801,7 @@ public final class ToHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Function<? super T, ? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, collection.size(), transform), loadFactor);
     }
 
@@ -811,7 +810,7 @@ public final class ToHashSet
                                                                                                        final Function<? super T, ? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection, size, transform), loadFactor);
     }
 
@@ -821,7 +820,7 @@ public final class ToHashSet
                                                                                                        final Supplier<? extends U> transform) {
         final var size = collection.size();
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(size, transform), loadFactor);
     }
 
@@ -829,7 +828,7 @@ public final class ToHashSet
                                                                                                        final float loadFactor,
                                                                                                        final Supplier<? extends U> transform) {
         if (collection.isEmpty())
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(collection.size(), transform), loadFactor);
     }
 
@@ -838,7 +837,7 @@ public final class ToHashSet
                                                                                                        final Supplier<? extends U> transform) {
         final var size = collection.length;
         if (size == 0)
-            return emptyHashSet();
+            return EmptyHashSet.getInstance();
         return new ImmutableHashSet<>(_uniqueValues(size, transform), loadFactor);
     }
 

@@ -1,7 +1,6 @@
 package joookiwi.collection.java.method;
 
 import java.util.Comparator;
-import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import joookiwi.collection.java.CollectionHolder;
@@ -267,9 +266,10 @@ public final class ToMutableConcurrentSkipListSet
     //#region -------------------- comparator --------------------
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
+    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -285,9 +285,10 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
+    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -303,9 +304,10 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
+    /// with a [Comparator]
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param <T>        The `collection` type
     @ExtensionFunction
     @Contract(ALWAYS_NEW_2)
@@ -324,10 +326,11 @@ public final class ToMutableConcurrentSkipListSet
     //#region -------------------- comparator, (T, int) → U --------------------
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -346,10 +349,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -366,10 +370,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -391,10 +396,11 @@ public final class ToMutableConcurrentSkipListSet
     //#region -------------------- comparator, (T) → U --------------------
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -413,10 +419,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -433,10 +440,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -458,10 +466,11 @@ public final class ToMutableConcurrentSkipListSet
     //#region -------------------- comparator, () → U --------------------
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -480,10 +489,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder] to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type
@@ -500,10 +510,11 @@ public final class ToMutableConcurrentSkipListSet
     }
 
     /// Convert the `collection` to a new [MutableConcurrentSkipListSet]
-    /// applying a transformation
+    /// with a [Comparator]
+    /// and applying a transformation
     ///
     /// @param collection The [nullable][Nullable] collection to convert
-    /// @param comparator The [ConcurrentSkipListSet] [Comparator] to compare the values to each other
+    /// @param comparator The [set][java.util.concurrent.ConcurrentSkipListSet] [Comparator] to compare the values to each other
     /// @param transform  The given transform
     /// @param <T>        The `collection` type
     /// @param <U>        The new type

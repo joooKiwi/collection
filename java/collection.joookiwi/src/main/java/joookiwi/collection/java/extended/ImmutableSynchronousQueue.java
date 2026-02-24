@@ -10,9 +10,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
+import joookiwi.collection.java.extended.stream.EmptyParallelStream;
+import joookiwi.collection.java.extended.stream.EmptySequentialStream;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -45,7 +46,7 @@ public class ImmutableSynchronousQueue<T>
         extends SynchronousQueue<T>
         implements ImmutableBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = 3483681936182593177L;
+    @Serial private static final long serialVersionUID = -9021853154393733247L;
 
     //#region -------------------- Constructors --------------------
 
@@ -145,10 +146,10 @@ public class ImmutableSynchronousQueue<T>
     //#region -------------------- Stream methods --------------------
 
     @Contract(pure = true)
-    @Override public Stream<T> stream() { return emptyStream(); }
+    @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
 
     @Contract(pure = true)
-    @Override public Stream<T> parallelStream() { return emptyParallelStream(); }
+    @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------

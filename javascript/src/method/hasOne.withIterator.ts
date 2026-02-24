@@ -1,5 +1,5 @@
 //··························································
-// Copyright (c) 2023-2025. Jonathan Bédard ~ JóôòKiwi
+// Copyright (c) 2023-2026. Jonathan Bédard ~ JóôòKiwi
 //
 // This project is free to use.
 // All the right is reserved to the author of this project.
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Iterator<T>,): boolean {
+export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,19 +55,21 @@ export function hasOneWithIterator<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.size
     if (size == 0)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
         return true
 
-    return __hasOne(collection, values, iteratorResult.value, size,)
+    return __validate(collection, values, iteratorResult.value, size,)
 }
 
 /**
@@ -77,17 +79,19 @@ export function hasOneWithIteratorByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
         return true
 
-    return __hasOne(collection, values, iteratorResult.value, collection.size,)
+    return __validate(collection, values, iteratorResult.value, collection.size,)
 }
 
 /**
@@ -97,25 +101,27 @@ export function hasOneWithIteratorByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Iterator<T>,): boolean {
+export function hasOneWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T>>,): boolean {
     if (collection == null)
         return false
 
     const size = collection.length
     if (size == 0)
         return false
+    if (values == null)
+        return true
 
     const iteratorResult = values.next()
     if (iteratorResult.done)
         return true
 
-    return __hasOneByArray(collection, values, iteratorResult.value, size,)
+    return __validateByArray(collection, values, iteratorResult.value, size,)
 }
 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __hasOne<const T, >(collection: MinimalistCollectionHolder<T>, values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection.get(index1,) === firstValue)
@@ -132,7 +138,7 @@ function __hasOne<const T, >(collection: MinimalistCollectionHolder<T>, values: 
     return false
 }
 
-function __hasOneByArray<const T, >(collection: readonly T[], values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: readonly T[], values: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     let index1 = -1
     while (++index1 < size)
         if (collection[index1] === firstValue)

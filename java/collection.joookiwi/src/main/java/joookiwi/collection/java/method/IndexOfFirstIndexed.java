@@ -11,6 +11,7 @@ import joookiwi.collection.java.callback.IntObjPredicate;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
 import joookiwi.collection.java.exception.IndexOutOfBoundsException;
+import joookiwi.collection.java.exception.InvalidIndexRangeException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
@@ -40,7 +41,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -57,7 +61,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -74,7 +81,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -94,7 +104,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -111,7 +124,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -128,7 +144,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -148,7 +167,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -165,7 +187,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -182,7 +207,10 @@ public final class IndexOfFirstIndexed
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
     /// @param <T>        The `collection` type
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @OnlyGivePositiveValue
@@ -203,10 +231,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -214,10 +245,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -225,10 +256,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -236,10 +270,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -247,10 +281,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -258,10 +295,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -270,10 +307,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -281,12 +321,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -294,10 +334,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -305,12 +348,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -318,10 +361,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -329,12 +375,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from --------------------
@@ -345,10 +391,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -356,10 +405,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -367,10 +416,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -378,10 +430,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -389,10 +441,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -400,10 +455,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -412,10 +467,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -423,12 +481,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -436,10 +494,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -447,12 +508,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -460,10 +521,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -471,12 +535,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate (int) → boolean, from --------------------
@@ -487,10 +551,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -498,10 +565,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -509,10 +576,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -520,10 +590,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -531,10 +601,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -542,10 +615,10 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex) {
+                                                                                                            final int from) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
 
@@ -554,10 +627,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -565,12 +641,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -578,10 +654,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -589,12 +668,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     /// Get the first index matching the `predicate`
@@ -602,10 +681,13 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
+    /// @param from       The inclusive starting index (`0` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` is not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException   The `collection` is `null`
+    /// @throws EmptyCollectionException  The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException `from` is not within a valid range
+    /// @throws IndexOutOfBoundsException No index could be found
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -613,12 +695,12 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_3)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex) {
+                                                                                                            final @Nullable Integer from) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
+        if (from == null)
             return __core(collection, predicate);
-        return __core(collection, predicate, fromIndex);
+        return __core(collection, predicate, from);
     }
 
     //#endregion -------------------- predicate () → boolean, from --------------------
@@ -630,11 +712,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -642,11 +728,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -654,11 +740,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -666,11 +756,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -678,11 +768,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -690,11 +784,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -703,11 +797,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -715,13 +813,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -729,11 +827,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -741,13 +843,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -755,11 +857,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -767,13 +873,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -782,11 +888,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -794,13 +904,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -808,11 +918,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -820,13 +934,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -834,11 +948,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -846,13 +964,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -861,11 +979,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -873,18 +995,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -892,11 +1014,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -904,18 +1030,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -923,11 +1049,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -935,18 +1065,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntObjPredicate<? super T> predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate (int, T) → boolean, from, to --------------------
@@ -957,11 +1087,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -969,11 +1103,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -981,11 +1115,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -993,11 +1131,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1005,11 +1143,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1017,11 +1159,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1030,11 +1172,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1042,13 +1188,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1056,11 +1202,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1068,13 +1218,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1082,11 +1232,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1094,13 +1248,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1109,11 +1263,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1121,13 +1279,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1135,11 +1293,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1147,13 +1309,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1161,11 +1323,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1173,13 +1339,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1188,11 +1354,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1200,18 +1370,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1219,11 +1389,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1231,18 +1405,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1250,11 +1424,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1262,18 +1440,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final IntPredicate predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate (int) → boolean, from, to --------------------
@@ -1284,11 +1462,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1296,11 +1478,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1308,11 +1490,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1320,11 +1506,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1332,11 +1518,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1344,11 +1534,11 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final int from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        return __core(collection, predicate, fromIndex, toIndex);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1357,11 +1547,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1369,13 +1563,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1383,11 +1577,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1395,13 +1593,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1409,11 +1607,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1421,13 +1623,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final int fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final int from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            return __core(collection, predicate, fromIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (to == null)
+            return __core(collection, predicate, from);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1436,11 +1638,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1448,13 +1654,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1462,11 +1668,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1474,13 +1684,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1488,11 +1698,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1500,13 +1714,13 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final int toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final int to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
 
@@ -1515,11 +1729,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][MinimalistCollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][MinimalistCollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1527,18 +1745,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable MinimalistCollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1546,11 +1764,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] [collection][CollectionHolder]
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (<code>[size][CollectionHolder#size] - 1</code> by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1558,18 +1780,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final @Nullable CollectionHolder<? extends T> collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     /// Get the first index matching the `predicate`
@@ -1577,11 +1799,15 @@ public final class IndexOfFirstIndexed
     ///
     /// @param collection The [nullable][Nullable] collection
     /// @param predicate  The given predicate
-    /// @param fromIndex  The inclusive starting index (`0` by default)
-    /// @param toIndex    The inclusive ending index (`size - 1` by default)
+    /// @param from       The inclusive starting index (`0` by default)
+    /// @param to         The inclusive ending index (`size - 1` by default)
     /// @param <T>        The `collection` type
-    /// @throws IndexOutOfBoundsException The `fromIndex` or `toIndex` are not within a valid range
-    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" >ReadonlyArray.findIndex(predicate)</a>
+    /// @throws NullCollectionException    The `collection` is `null`
+    /// @throws EmptyCollectionException   The `collection` **is empty**
+    /// @throws IndexOutOfBoundsException  `from` or `to` are not within a valid range
+    /// @throws IndexOutOfBoundsException  No index could be found
+    /// @throws InvalidIndexRangeException `to` is before `from` after the calculation
+    /// @see <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex">ReadonlyArray.findIndex(predicate)</a>
     /// @see <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/index-of-first.html">Kotlin indexOfFirst(predicate)</a>
     @ExtensionFunction
     @CanReceiveNegativeValue
@@ -1589,18 +1815,18 @@ public final class IndexOfFirstIndexed
     @Contract(IF_1ST_NULL_THEN_FAIL_4)
     public static <T extends @Nullable Object> @Range(from = 0, to = MAX_INT_VALUE) int indexOfFirstIndexed(final T @Nullable @Unmodifiable [] collection,
                                                                                                             final BooleanSupplier predicate,
-                                                                                                            final @Nullable Integer fromIndex,
-                                                                                                            final @Nullable Integer toIndex) {
+                                                                                                            final @Nullable Integer from,
+                                                                                                            final @Nullable Integer to) {
         if (collection == null)
             throw new NullCollectionException();
-        if (toIndex == null)
-            if (fromIndex == null)
+        if (to == null)
+            if (from == null)
                 return __core(collection, predicate);
             else
-                return __core(collection, predicate, fromIndex);
-        if (fromIndex == null)
-            return __coreWithNoFrom(collection, predicate, toIndex);
-        return __core(collection, predicate, fromIndex, toIndex);
+                return __core(collection, predicate, from);
+        if (from == null)
+            return __coreWithNoFrom(collection, predicate, to);
+        return __core(collection, predicate, from, to);
     }
 
     //#endregion -------------------- predicate () → boolean, from, to --------------------
@@ -1691,30 +1917,30 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with2Argument(collection, predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with2Argument(collection, predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with2Argument(collection, predicate, _startingIndex(from, size), size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate (int, T) → boolean, from) --------------------
@@ -1722,30 +1948,30 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with1Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with1Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with1Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with1Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate (int) → boolean, from) --------------------
@@ -1753,30 +1979,30 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with0Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with0Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex) {
+                                                           final int from) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with0Argument(predicate, _startingIndex(fromIndex, size), size - 1);
+        return __with0Argument(predicate, _startingIndex(from, size), size - 1);
     }
 
     //#endregion -------------------- Core methods (predicate () → boolean, from) --------------------
@@ -1785,46 +2011,43 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final IntObjPredicate<? super T> predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with2Argument(collection, predicate, startingIndex, endingIndex);
     }
 
@@ -1833,46 +2056,43 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with1Argument(predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with1Argument(predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final IntPredicate predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with1Argument(predicate, startingIndex, endingIndex);
     }
 
@@ -1881,46 +2101,43 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __core(final MinimalistCollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final CollectionHolder<? extends T> collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
 
         final var size = collection.size();
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
     private static <T extends @Nullable Object> int __core(final T @Unmodifiable [] collection,
                                                            final BooleanSupplier predicate,
-                                                           final int fromIndex,
-                                                           final int toIndex) {
+                                                           final int from,
+                                                           final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
 
-        final var startingIndex = _startingIndex(fromIndex, size);
-        final var endingIndex = _endingIndex(toIndex, size);
-        if (endingIndex < startingIndex)
-            throw new EmptyCollectionException();
+        final var startingIndex = _startingIndex(from, size);
+        final var endingIndex = _endingIndex(to, size);
+        _validateInRange(from, startingIndex, to, endingIndex);
         return __with0Argument(predicate, startingIndex, endingIndex);
     }
 
@@ -1930,28 +2147,28 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                      final IntObjPredicate<? super T> predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, size));
+        return __with2Argument(collection, predicate, 0, _endingIndex(to, size));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                      final IntObjPredicate<? super T> predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, collection.size()));
+        return __with2Argument(collection, predicate, 0, _endingIndex(to, collection.size()));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                      final IntObjPredicate<? super T> predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with2Argument(collection, predicate, 0, _endingIndex(toIndex, size));
+        return __with2Argument(collection, predicate, 0, _endingIndex(to, size));
     }
 
     //#endregion -------------------- Core methods (predicate (int, T) → boolean, to) --------------------
@@ -1959,28 +2176,28 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                      final IntPredicate predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, size));
+        return __with1Argument(predicate, 0, _endingIndex(to, size));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                      final IntPredicate predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, collection.size()));
+        return __with1Argument(predicate, 0, _endingIndex(to, collection.size()));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                      final IntPredicate predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with1Argument(predicate, 0, _endingIndex(toIndex, size));
+        return __with1Argument(predicate, 0, _endingIndex(to, size));
     }
 
     //#endregion -------------------- Core methods (predicate (int) → boolean, to) --------------------
@@ -1988,28 +2205,28 @@ public final class IndexOfFirstIndexed
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final MinimalistCollectionHolder<? extends T> collection,
                                                                      final BooleanSupplier predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.size();
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, size));
+        return __with0Argument(predicate, 0, _endingIndex(to, size));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final CollectionHolder<? extends T> collection,
                                                                      final BooleanSupplier predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         if (collection.isEmpty())
             throw new EmptyCollectionException();
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, collection.size()));
+        return __with0Argument(predicate, 0, _endingIndex(to, collection.size()));
     }
 
     private static <T extends @Nullable Object> int __coreWithNoFrom(final T @Unmodifiable [] collection,
                                                                      final BooleanSupplier predicate,
-                                                                     final int toIndex) {
+                                                                     final int to) {
         final var size = collection.length;
         if (size == 0)
             throw new EmptyCollectionException();
-        return __with0Argument(predicate, 0, _endingIndex(toIndex, size));
+        return __with0Argument(predicate, 0, _endingIndex(to, size));
     }
 
     //#endregion -------------------- Core methods (predicate () → boolean, to) --------------------
@@ -2020,7 +2237,7 @@ public final class IndexOfFirstIndexed
     private static int __with0Argument(final BooleanSupplier predicate,
                                        final int startingIndex,
                                        final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.getAsBoolean())
                 return index;
@@ -2031,7 +2248,7 @@ public final class IndexOfFirstIndexed
     private static int __with1Argument(final IntPredicate predicate,
                                        final int startingIndex,
                                        final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index))
                 return index;
@@ -2043,7 +2260,7 @@ public final class IndexOfFirstIndexed
                                                                     final IntObjPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index, collection.get(index)))
                 return index;
@@ -2054,7 +2271,7 @@ public final class IndexOfFirstIndexed
                                                                     final IntObjPredicate<? super T> predicate,
                                                                     final int startingIndex,
                                                                     final int endingIndex) {
-        var index = startingIndex;
+        var index = startingIndex - 1;
         while (++index <= endingIndex)
             if (predicate.test(index, collection[index]))
                 return index;
