@@ -10,6 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import {CollectionHolderFromArray}                       from "./instance/CollectionHolderFromArray"
 import {GenericCollectionHolder_GetAlias}                from "./instance/GenericCollectionHolder_GetAlias"
 import {GenericCollectionHolder_GetFirstAlias}           from "./instance/GenericCollectionHolder_GetFirstAlias"
 import {GenericCollectionHolder_GetFirstOrNullAlias}     from "./instance/GenericCollectionHolder_GetFirstOrNullAlias"
@@ -24,6 +25,7 @@ import {LazyGenericCollectionHolder_GetLastAlias}        from "./instance/LazyGe
 import {LazyGenericCollectionHolder_GetLastOrNullAlias}  from "./instance/LazyGenericCollectionHolder_GetLastOrNullAlias"
 import {LazyGenericCollectionHolder_GetOrElseAlias}      from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
 import {LazyGenericCollectionHolder_GetOrNullAlias}      from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
+import {MinimalistCollectionHolderFromArray}             from "./instance/MinimalistCollectionHolderFromArray"
 import {A, AB, ABCD, EMPTY}                              from "./value/arrays"
 import {callbackAsFail0}                                 from "./value/callbacks (fail)"
 import {callbackAsNull0}                                 from "./value/callbacks (null)"
@@ -130,22 +132,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("first", () => {
             test("all", () => {
                 const method = jest.spyOn(getFirstModule, "getFirst",)
-                first(null,)
+                first(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByMinimalistCollectionHolder",)
-                firstByMinimalistCollectionHolder(null,)
+                firstByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByCollectionHolder",)
-                firstByCollectionHolder(null,)
+                firstByCollectionHolder(new CollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByArray",)
-                firstByArray(null,)
+                firstByArray(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -174,22 +176,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("firstIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(getFirstModule, "getFirst",)
-                firstIndexed(null,)
+                firstIndexed(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByMinimalistCollectionHolder",)
-                firstIndexedByMinimalistCollectionHolder(null,)
+                firstIndexedByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByCollectionHolder",)
-                firstIndexedByCollectionHolder(null,)
+                firstIndexedByCollectionHolder(new CollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getFirstModule, "getFirstByArray",)
-                firstIndexedByArray(null,)
+                firstIndexedByArray(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -219,22 +221,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("last", () => {
             test("all", () => {
                 const method = jest.spyOn(getLastModule, "getLast",)
-                last(null,)
+                last(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getLastModule, "getLastByMinimalistCollectionHolder",)
-                lastByMinimalistCollectionHolder(null,)
+                lastByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getLastModule, "getLastByCollectionHolder",)
-                lastByCollectionHolder(null,)
+                lastByCollectionHolder(new CollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getLastModule, "getLastByArray",)
-                lastByArray(null,)
+                lastByArray(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -263,22 +265,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("lastIndexed", () => {
             test("all", () => {
                 const method = jest.spyOn(getLastModule, "getLast",)
-                lastIndexed(null,)
+                lastIndexed(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getLastModule, "getLastByMinimalistCollectionHolder",)
-                lastIndexedByMinimalistCollectionHolder(null,)
+                lastIndexedByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getLastModule, "getLastByCollectionHolder",)
-                lastIndexedByCollectionHolder(null,)
+                lastIndexedByCollectionHolder(new CollectionHolderFromArray(A,),)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getLastModule, "getLastByArray",)
-                lastIndexedByArray(null,)
+                lastIndexedByArray(A,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -308,22 +310,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("atOrElse", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElse",)
-                atOrElse(null, 0, callbackAsFail0,)
+                atOrElse(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByMinimalistCollectionHolder",)
-                atOrElseByMinimalistCollectionHolder(null, 0, callbackAsFail0,)
+                atOrElseByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByCollectionHolder",)
-                atOrElseByCollectionHolder(null, 0, callbackAsFail0,)
+                atOrElseByCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByArray",)
-                atOrElseByArray(null, 0, callbackAsFail0,)
+                atOrElseByArray(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
@@ -352,22 +354,22 @@ describe("CollectionHolderTest (value)", () => {
         describe("elementAtOrElse", () => {
             test("all", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElse",)
-                elementAtOrElse(null, 0, callbackAsFail0,)
+                elementAtOrElse(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("minimalist collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByMinimalistCollectionHolder",)
-                elementAtOrElseByMinimalistCollectionHolder(null, 0, callbackAsFail0,)
+                elementAtOrElseByMinimalistCollectionHolder(new MinimalistCollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("collection holder", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByCollectionHolder",)
-                elementAtOrElseByCollectionHolder(null, 0, callbackAsFail0,)
+                elementAtOrElseByCollectionHolder(new CollectionHolderFromArray(A,), 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
             test("array", () => {
                 const method = jest.spyOn(getOrElseModule, "getOrElseByArray",)
-                elementAtOrElseByArray(null, 0, callbackAsFail0,)
+                elementAtOrElseByArray(A, 0, callbackAsFail0,)
                 expect(method,).toHaveBeenCalledOnce()
             },)
         },)
