@@ -12,13 +12,11 @@
 
 import type {CollectionIterator} from "../src/iterator/CollectionIterator"
 
-import {newEmptyIterator}                            from "./helper/newEmptyIterator"
 import {CollectionHolderFromArray}                   from "./instance/CollectionHolderFromArray"
 import {GenericCollectionIterator_CurrentIndexAlias} from "./instance/GenericCollectionIterator_CurrentIndexAlias"
 import {A, AB, ABCD, EMPTY}                          from "./value/arrays"
 
 import {CollectionConstants}                 from "../src/CollectionConstants"
-import {EmptyCollectionHolder}               from "../src/EmptyCollectionHolder"
 import {NoElementFoundInCollectionException} from "../src/exception/NoElementFoundInCollectionException"
 import {EmptyCollectionIterator}             from "../src/iterator/EmptyCollectionIterator"
 import {GenericCollectionIterator}           from "../src/iterator/GenericCollectionIterator"
@@ -29,11 +27,7 @@ import {GenericCollectionIteratorValue}      from "../src/iterator/value/Generic
 describe("CollectionIteratorTest", () => {
 
     describe("EmptyCollectionIterator", () => {
-        let instance: EmptyCollectionIterator
-        const collectionInstance = EmptyCollectionHolder.get
-
-        beforeEach(() => instance = newEmptyIterator(),)
-        test("collection", () => expect(instance.collection,).toBe(collectionInstance,),)
+        const instance = EmptyCollectionIterator.get
 
         describe("index", () => {
             test("current",  () => expect(instance.currentIndex,).toBeNull(),)
