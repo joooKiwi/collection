@@ -2280,8 +2280,8 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public CollectionHolder<T> slice(final Iterable<? extends Integer>                                          indices) { return Slice.slice(this, indices); }
     @Override public CollectionHolder<T> slice(final MinimalistCollectionHolder<? extends Integer>                        indices) { return Slice.slice(this, indices); }
     @Override public CollectionHolder<T> slice(final CollectionHolder<? extends Integer>                                  indices) { return Slice.slice(this, indices); }
-    @Override public CollectionHolder<T> slice(final Collection<? extends Integer>                                        indices) { return Slice.slice(this, indices); }
-    @Override public CollectionHolder<T> slice(final SequencedCollection<? extends Integer>                               indices) { return Slice.slice(this, indices); }
+    @Override public CollectionHolder<T> slice(final @Unmodifiable Collection<? extends Integer>                          indices) { return Slice.slice(this, indices); }
+    @Override public CollectionHolder<T> slice(final @Unmodifiable SequencedCollection<? extends Integer>                 indices) { return Slice.slice(this, indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable List<? extends Integer>                                indices) { return Slice.slice(this, indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable Set<? extends Integer>                                 indices) { return Slice.slice(this, indices); }
     @Override public CollectionHolder<T> slice(final @Unmodifiable SequencedSet<? extends Integer>                        indices) { return Slice.slice(this, indices); }
