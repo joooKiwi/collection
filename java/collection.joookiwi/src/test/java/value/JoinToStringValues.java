@@ -80,8 +80,11 @@ public final class JoinToStringValues {
     private static final @Nullable Object @Unmodifiable [] __0AndNull =              {0, null,};
     private static final @Nullable Object @Unmodifiable [] __500AndNull =            {500, null,};
     private static final @Nullable Object @Unmodifiable [] __0CallbackValues =       {callbackToString0,};
+    private static final @Nullable Object @Unmodifiable [] __0FailCallbackValues =   {stringTransform0AsFail,};
     private static final @Nullable Object @Unmodifiable [] __1CallbackValues =       {callbackToUpperString1,};
+    private static final @Nullable Object @Unmodifiable [] __1FailCallbackValues =   {stringTransform1AsFail,};
     private static final @Nullable Object @Unmodifiable [] __2CallbackValues =       {callbackToUpperString2,};
+    private static final @Nullable Object @Unmodifiable [] __2FailCallbackValues =   {stringTransform2AsFail,};
     private static final @Nullable Object @Unmodifiable [] __callbackValues =        {callbackToUpperString2, callbackToUpperString1, callbackToString0,};
     private static final @Nullable Object @Unmodifiable [] __failCallbackValues =    {stringTransform2AsFail, stringTransform1AsFail, stringTransform0AsFail,};
 
@@ -1159,7 +1162,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __0CallbackValues
+            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1192,7 +1195,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __0CallbackValues
+            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1243,7 +1246,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __0CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1276,7 +1279,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __0CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1327,7 +1330,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __0CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1360,7 +1363,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __0CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1411,7 +1414,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __0CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1444,7 +1447,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __0CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1495,7 +1498,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __0CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1528,7 +1531,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __0CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1579,7 +1582,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __0CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1612,7 +1615,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __0CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1663,7 +1666,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __0CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1696,7 +1699,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __0CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1747,7 +1750,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_nullTruncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __0CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __0CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments = create6Arguments(
@@ -1780,7 +1783,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_truncated_0Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __0CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __0CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __0CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __0FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_truncated_0Transform_arguments = create6Arguments(
@@ -1865,7 +1868,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __1CallbackValues
+            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -1916,7 +1919,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __1CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -1949,7 +1952,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __1CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2000,7 +2003,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __1CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2033,7 +2036,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __1CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2084,7 +2087,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __1CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2117,7 +2120,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __1CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2168,7 +2171,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __1CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2201,7 +2204,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __1CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2252,7 +2255,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __1CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2285,7 +2288,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __1CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2336,7 +2339,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __1CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2369,7 +2372,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __1CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2420,7 +2423,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_nullTruncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __1CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __1CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments = create6Arguments(
@@ -2453,7 +2456,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_truncated_1Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __1CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __1CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __1CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __1FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_truncated_1Transform_arguments = create6Arguments(
@@ -2505,7 +2508,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __2CallbackValues
+            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2538,7 +2541,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __2CallbackValues
+            __2Nulls,                   __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -2589,7 +2592,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __2CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2622,7 +2625,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacter,          __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __2CallbackValues
+            __2Nulls,                   __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -2673,7 +2676,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __2CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2706,7 +2709,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __2CallbackValues
+            __2Nulls,                   __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -2757,7 +2760,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __2CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2790,7 +2793,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __nullStringCharacterNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacter,          __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __2CallbackValues
+            __2Nulls,                   __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] nullSeparator_prefix_postfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -2841,7 +2844,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __2CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2874,7 +2877,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacter,          __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __2CallbackValues
+            __separatorStringValues,    __2Nulls,                   __2Nulls,                   __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -2925,7 +2928,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __2CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -2958,7 +2961,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __nullStringCharacterNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacter,          __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __2CallbackValues
+            __separatorStringValues,    __2Nulls,                   __postfixStringValues,      __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -3009,7 +3012,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __2CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -3042,7 +3045,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __nullStringCharacterNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacter,          __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __2CallbackValues
+            __separatorStringValues,    __prefixStringValues,       __2Nulls,                   __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments = create6Arguments(
@@ -3093,7 +3096,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_nullTruncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __nullStringCharacterNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacter,          __2CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __2CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __2Nulls,                   __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments = create6Arguments(
@@ -3126,7 +3129,7 @@ public final class JoinToStringValues {
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_0Limit_truncated_2Transform_arguments = create6Arguments(
             __StringCharacterCharNames, __StringCharacterCharNames, __StringCharacterCharNames, __0IntIntegerNames, __StringCharacterCharNames, __2CallbackNames,
             __StringCharacterChar,      __StringCharacterChar,      __StringCharacterChar,      __intInteger,       __StringCharacterChar,      __2CallbackClasses,
-            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __2CallbackValues
+            __separatorStringValues,    __prefix2StringValues,      __postfixStringValues,      __2_0,              __truncateStringValues,     __2FailCallbackValues
     );
 
     public static final Arguments @Unmodifiable [] separator_prefix_postfix_1Limit_truncated_2Transform_arguments = create6Arguments(
