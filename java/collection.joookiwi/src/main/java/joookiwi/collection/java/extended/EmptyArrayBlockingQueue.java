@@ -8,8 +8,8 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.extended.iterator.EmptyIterator;
-import joookiwi.collection.java.extended.stream.EmptyParallelStream;
-import joookiwi.collection.java.extended.stream.EmptySequentialStream;
+import joookiwi.collection.java.stream.EmptyParallelStream;
+import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +21,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CO
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CollectionConstants.emptySequentialStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
@@ -40,7 +40,7 @@ import static joookiwi.collection.java.CommonContracts.IF_1ST_NULL_THEN_FALSE_1;
 public class EmptyArrayBlockingQueue<T>
         extends ImmutableArrayBlockingQueue<T> {
 
-    @Serial private static final long serialVersionUID = -5894772340151650121L;
+    @Serial private static final long serialVersionUID = -9029462530853610711L;
 
     //#region -------------------- Singleton usage --------------------
 
@@ -102,7 +102,7 @@ public class EmptyArrayBlockingQueue<T>
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptySequentialStream(); }
 
     @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
 
