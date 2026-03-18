@@ -533,20 +533,20 @@ public class GenericCollectionHolder<T extends @Nullable Object>
             if (value2 == null) {
                 __hasDuplicate = __hasNull = TRUE;
                 __hashCode = HashCodeCreator.getInstance().newHashCode();
-                return Array(value1, value2);
+                return Array(null, null);
             }
 
             __hasNull = TRUE;
             __hasDuplicate = FALSE;
             __hashCode = HashCodeCreator.getInstance().newHashCode(value2);
-            return Array(value1, value2);
+            return Array(null, value2);
         }
 
         if (value2 == null) {
             __hasNull = TRUE;
             __hasDuplicate = FALSE;
             __hashCode = HashCodeCreator.getInstance().newHashCode(value1);
-            return Array(value1, value2);
+            return Array(value1, null);
         }
 
         __hasNull = FALSE;
@@ -607,14 +607,14 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable Collection<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable SequencedCollection<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
@@ -622,21 +622,21 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     private T @Unmodifiable [] __initializeAsUnknown(final CollectionHolder<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final MinimalistCollectionHolder<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final CollectionIterator<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
@@ -644,28 +644,28 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable List<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable Set<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable SequencedSet<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable Queue<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
@@ -673,14 +673,14 @@ public class GenericCollectionHolder<T extends @Nullable Object>
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable Deque<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
 
     private T @Unmodifiable [] __initializeAsUnknown(final @Unmodifiable BasicStack<? extends T> values,
                                                      final @Range(from = 3, to = MAX_INT_VALUE) int size) {
-        final var array = Array(Array(values, size));
+        final var array = Array(values, size);
         __hashCode = HashCodeCreator.getInstance().newHashCode(array, size);
         return array;
     }
