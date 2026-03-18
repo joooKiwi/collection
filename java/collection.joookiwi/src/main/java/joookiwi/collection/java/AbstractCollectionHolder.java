@@ -239,6 +239,7 @@ import joookiwi.collection.java.method.ToMutableLinkedHashSet;
 import joookiwi.collection.java.method.ToMutableLinkedList;
 import joookiwi.collection.java.method.ToMutableLinkedTransferQueue;
 import joookiwi.collection.java.method.ToMutableList;
+import joookiwi.collection.java.method.ToMutableNavigableSet;
 import joookiwi.collection.java.method.ToMutablePriorityBlockingQueue;
 import joookiwi.collection.java.method.ToMutablePriorityQueue;
 import joookiwi.collection.java.method.ToMutableQueue;
@@ -2809,10 +2810,10 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public <U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final Function<? super T, ? extends U>       transform) { return ToNavigableSet.toNavigableSet(this, transform); }
     @Override public <U extends @Nullable Object> ImmutableNavigableSet<U> toNavigableSet(final Supplier<? extends U>                  transform) { return ToNavigableSet.toNavigableSet(this, transform); }
 
-    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableNavigableSet<T> toMutableNavigableSet(                                                      ) { throw new RuntimeException("TODO: Implements the toMutableNavigableSet method"); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { throw new RuntimeException("TODO: Implements the toMutableNavigableSet method"); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Supplier<? extends U>                  transform) { throw new RuntimeException("TODO: Implements the toMutableNavigableSet method"); }
-    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Function<? super T, ? extends U>       transform) { throw new RuntimeException("TODO: Implements the toMutableNavigableSet method"); }
+    @Contract(value = ALWAYS_NEW_0, pure = true) @Override public                              MutableNavigableSet<T> toMutableNavigableSet(                                                      ) { return ToMutableNavigableSet.toMutableNavigableSet(this); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final ObjIntFunction<? super T, ? extends U> transform) { return ToMutableNavigableSet.toMutableNavigableSet(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Function<? super T, ? extends U>       transform) { return ToMutableNavigableSet.toMutableNavigableSet(this, transform); }
+    @Contract(value = ALWAYS_NEW_1, pure = true) @Override public <U extends @Nullable Object> MutableNavigableSet<U> toMutableNavigableSet(final Supplier<? extends U>                  transform) { return ToMutableNavigableSet.toMutableNavigableSet(this, transform); }
 
     //#endregion -------------------- To navigable set --------------------
     //#region -------------------- To concurrent skip list set --------------------
