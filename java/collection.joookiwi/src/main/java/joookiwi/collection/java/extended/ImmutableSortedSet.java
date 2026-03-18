@@ -69,11 +69,11 @@ public interface ImmutableSortedSet<T extends @Nullable Object>
 
     // README: By default, “from” is inclusive and “to” is exclusive
 
-    @Override ImmutableSortedSet<T> subSet(T from, T to);
+    @Override ImmutableSortedSet<T> tailSet(T from);
 
     @Override ImmutableSortedSet<T> headSet(T to);
 
-    @Override ImmutableSortedSet<T> tailSet(T from);
+    @Override ImmutableSortedSet<T> subSet(T from, T to);
 
     //#endregion -------------------- As subdivided methods --------------------
     //#region -------------------- As reverse methods --------------------
