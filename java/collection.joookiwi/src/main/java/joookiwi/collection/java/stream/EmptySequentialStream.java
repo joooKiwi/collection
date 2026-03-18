@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended.stream;
+package joookiwi.collection.java.stream;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -56,6 +56,14 @@ import static joookiwi.collection.java.method.ArrayCreator.Array;
 ///
 /// @param <T> The type
 /// @see EmptyParallelStream
+/// @see EmptySequentialBooleanStream
+/// @see EmptySequentialCharStream
+/// @see EmptySequentialByteStream
+/// @see EmptySequentialShortStream
+/// @see EmptySequentialIntStream
+/// @see EmptySequentialLongStream
+/// @see EmptySequentialFloatStream
+/// @see EmptySequentialDoubleStream
 @Singleton
 @NotNullByDefault
 public class EmptySequentialStream<T extends @Nullable Object>
@@ -92,17 +100,20 @@ public class EmptySequentialStream<T extends @Nullable Object>
     //#endregion -------------------- Is parallel --------------------
     //#region -------------------- Sequential --------------------
 
-    @Contract(ALWAYS_THIS_0) @Override public EmptySequentialStream<T> sequential() { return this; }
+    @Contract(ALWAYS_THIS_0) @Override public EmptySequentialStream<T> sequential(                                            ) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialStream<T> sequential(final @Nullable Object @Nullable ... ignored) { return this; }
 
     //#endregion -------------------- Sequential --------------------
     //#region -------------------- Parallel --------------------
 
-    @Override public EmptyParallelStream<T> parallel() { return EmptyParallelStream.getInstance(); }
+    @Override public EmptyParallelStream<T> parallel(                                            ) { return EmptyParallelStream.getInstance(); }
+              public EmptyParallelStream<T> parallel(final @Nullable Object @Nullable ... ignored) { return EmptyParallelStream.getInstance(); }
 
     //#endregion -------------------- Parallel --------------------
     //#region -------------------- Unordered --------------------
 
-    @Contract(ALWAYS_THIS_0) @Override public EmptySequentialStream<T> unordered() { return this; }
+    @Contract(ALWAYS_THIS_0) @Override public EmptySequentialStream<T> unordered(                                            ) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialStream<T> unordered(final @Nullable Object @Nullable ... ignored) { return this; }
 
     //#endregion -------------------- Unordered --------------------
     //#region -------------------- Filter --------------------
@@ -118,17 +129,17 @@ public class EmptySequentialStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptySequentialStream<U> map(final @Nullable Supplier<? extends U>            mapper) { return (EmptySequentialStream<U>) this; }
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptySequentialStream<U> map(final @Nullable Object @Nullable ...            ignored) { return (EmptySequentialStream<U>) this; }
 
-    @Override public IntStream mapToInt(final @Nullable ToIntFunction<? super T> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapToInt(final @Nullable IntSupplier              mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapToInt(final @Nullable Object @Nullable ...    ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptySequentialIntStream mapToInt(final @Nullable ToIntFunction<? super T> mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream mapToInt(final @Nullable IntSupplier              mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream mapToInt(final @Nullable Object @Nullable ...    ignored) { return EmptySequentialIntStream.getInstance(); }
 
-    @Override public LongStream mapToLong(final @Nullable ToLongFunction<? super T> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapToLong(final @Nullable LongSupplier              mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapToLong(final @Nullable Object @Nullable ...     ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptySequentialLongStream mapToLong(final @Nullable ToLongFunction<? super T> mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream mapToLong(final @Nullable LongSupplier              mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream mapToLong(final @Nullable Object @Nullable ...     ignored) { return EmptySequentialLongStream.getInstance(); }
 
-    @Override public DoubleStream mapToDouble(final @Nullable ToDoubleFunction<? super T> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapToDouble(final @Nullable DoubleSupplier              mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapToDouble(final @Nullable Object @Nullable ...       ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptySequentialDoubleStream mapToDouble(final @Nullable ToDoubleFunction<? super T> mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream mapToDouble(final @Nullable DoubleSupplier              mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream mapToDouble(final @Nullable Object @Nullable ...       ignored) { return EmptySequentialDoubleStream.getInstance(); }
 
     //#endregion -------------------- Map --------------------
     //#region -------------------- Flat map --------------------
@@ -137,17 +148,17 @@ public class EmptySequentialStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptySequentialStream<U> flatMap(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>            mapper) { return (EmptySequentialStream<U>) this; }
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptySequentialStream<U> flatMap(final @Nullable Object @Nullable ...                                        ignored) { return (EmptySequentialStream<U>) this; }
 
-    @Override public IntStream flatMapToInt(final @Nullable Function<? super T, ? extends @Nullable IntStream> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream flatMapToInt(final @Nullable Supplier<? extends @Nullable IntStream>            mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream flatMapToInt(final @Nullable Object @Nullable ...                              ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptySequentialIntStream flatMapToInt(final @Nullable Function<? super T, ? extends @Nullable IntStream> mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream flatMapToInt(final @Nullable Supplier<? extends @Nullable IntStream>            mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream flatMapToInt(final @Nullable Object @Nullable ...                              ignored) { return EmptySequentialIntStream.getInstance(); }
 
-    @Override public LongStream flatMapToLong(final @Nullable Function<? super T, ? extends @Nullable LongStream> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream flatMapToLong(final @Nullable Supplier<? extends @Nullable LongStream>            mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream flatMapToLong(final @Nullable Object @Nullable ...                               ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptySequentialLongStream flatMapToLong(final @Nullable Function<? super T, ? extends @Nullable LongStream> mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream flatMapToLong(final @Nullable Supplier<? extends @Nullable LongStream>            mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream flatMapToLong(final @Nullable Object @Nullable ...                               ignored) { return EmptySequentialLongStream.getInstance(); }
 
-    @Override public DoubleStream flatMapToDouble(final @Nullable Function<? super T, ? extends @Nullable DoubleStream> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream flatMapToDouble(final @Nullable Supplier<? extends @Nullable DoubleStream>            mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream flatMapToDouble(final @Nullable Object @Nullable ...                                 ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptySequentialDoubleStream flatMapToDouble(final @Nullable Function<? super T, ? extends @Nullable DoubleStream> mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream flatMapToDouble(final @Nullable Supplier<? extends @Nullable DoubleStream>            mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream flatMapToDouble(final @Nullable Object @Nullable ...                                 ignored) { return EmptySequentialDoubleStream.getInstance(); }
 
     //#endregion -------------------- Flat map --------------------
     //#region -------------------- Map multi --------------------
@@ -157,20 +168,20 @@ public class EmptySequentialStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast")           public <U extends @Nullable Object> EmptySequentialStream<U> mapMulti(final @Nullable Runnable                                             mapper) { return (EmptySequentialStream<U>) this; }
     @SuppressWarnings("unchecked cast")           public <U extends @Nullable Object> EmptySequentialStream<U> mapMulti(final @Nullable Object @Nullable ...                                ignored) { return (EmptySequentialStream<U>) this; }
 
-    @Override public IntStream mapMultiToInt(final @Nullable BiConsumer<? super T, ? super @Nullable IntConsumer> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Consumer<? super T>                                  mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Runnable                                             mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Object @Nullable ...                                ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptySequentialIntStream mapMultiToInt(final @Nullable BiConsumer<? super T, ? super @Nullable IntConsumer> mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream mapMultiToInt(final @Nullable Consumer<? super T>                                  mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream mapMultiToInt(final @Nullable Runnable                                             mapper) { return EmptySequentialIntStream.getInstance(); }
+              public EmptySequentialIntStream mapMultiToInt(final @Nullable Object @Nullable ...                                ignored) { return EmptySequentialIntStream.getInstance(); }
 
-    @Override public LongStream mapMultiToLong(final @Nullable BiConsumer<? super T, ? super @Nullable LongConsumer> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Consumer<? super T>                                   mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Runnable                                              mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Object @Nullable ...                                 ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptySequentialLongStream mapMultiToLong(final @Nullable BiConsumer<? super T, ? super @Nullable LongConsumer> mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream mapMultiToLong(final @Nullable Consumer<? super T>                                   mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream mapMultiToLong(final @Nullable Runnable                                              mapper) { return EmptySequentialLongStream.getInstance(); }
+              public EmptySequentialLongStream mapMultiToLong(final @Nullable Object @Nullable ...                                 ignored) { return EmptySequentialLongStream.getInstance(); }
 
-    @Override public DoubleStream mapMultiToDouble(final @Nullable BiConsumer<? super T, ? super @Nullable DoubleConsumer> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Consumer<? super T>                                     mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Runnable                                                mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                                   ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable BiConsumer<? super T, ? super @Nullable DoubleConsumer> mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable Consumer<? super T>                                     mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable Runnable                                                mapper) { return EmptySequentialDoubleStream.getInstance(); }
+              public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                                   ignored) { return EmptySequentialDoubleStream.getInstance(); }
 
     //#endregion -------------------- Map multi --------------------
     //#region -------------------- Distinct --------------------
@@ -249,8 +260,9 @@ public class EmptySequentialStream<T extends @Nullable Object>
     //#endregion -------------------- For each ordered --------------------
     //#region -------------------- To array --------------------
 
-                           @Override public                              T[] toArray(                                                                ) { return Array(); }
-    @Contract(pure = true) @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
+                           @Override public                              T[] toArray(                                            ) { return Array(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> U[] toArray(final IntFunction<U[]>             generator) { return generator.apply(0); }
+                                     public                              T[] toArray(final @Nullable Object @Nullable ... ignored) { return Array(); }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- Reduce --------------------
@@ -304,24 +316,28 @@ public class EmptySequentialStream<T extends @Nullable Object>
     //#endregion -------------------- Collect --------------------
     //#region -------------------- To list --------------------
 
-    @Override public EmptyList<T> toList() { return EmptyList.getInstance(); }
+    @Override public EmptyList<T> toList(                                            ) { return EmptyList.getInstance(); }
+              public EmptyList<T> toList(final @Nullable Object @Nullable ... ignored) { return EmptyList.getInstance(); }
 
     //#endregion -------------------- To list --------------------
     //#region -------------------- Min --------------------
 
               public Optional<@NotNull T> min(                                                ) { return Optional.empty(); }
     @Override public Optional<@NotNull T> min(final @Nullable Comparator<? super T> comparator) { return Optional.empty(); }
+              public Optional<@NotNull T> min(final @Nullable Object @Nullable ...     ignored) { return Optional.empty(); }
 
     //#endregion -------------------- Min --------------------
     //#region -------------------- Max --------------------
 
               public Optional<@NotNull T> max(                                                ) { return Optional.empty(); }
     @Override public Optional<@NotNull T> max(final @Nullable Comparator<? super T> comparator) { return Optional.empty(); }
+              public Optional<@NotNull T> max(final @Nullable Object @Nullable ...     ignored) { return Optional.empty(); }
 
     //#endregion -------------------- Max --------------------
     //#region -------------------- Count --------------------
 
-    @Contract(pure = true) @Override public @Range(from = 0, to = 0) long count() { return 0; }
+    @Contract(pure = true) @Override public @Range(from = 0, to = 0) long count(                                            ) { return 0; }
+    @Contract(pure = true)           public @Range(from = 0, to = 0) long count(final @Nullable Object @Nullable ... ignored) { return 0; }
 
     //#endregion -------------------- Count --------------------
     //#region -------------------- All match --------------------
@@ -359,6 +375,36 @@ public class EmptySequentialStream<T extends @Nullable Object>
               public Optional<@NotNull T> findAny(final @Nullable Object @Nullable ... ignored) { return Optional.empty(); }
 
     //#endregion -------------------- Find any --------------------
+    //#region -------------------- As stream --------------------
+
+    @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_0) public <U extends @Nullable Object> EmptySequentialStream<U> asStream(                                            ) { return (EmptySequentialStream<U>) this; }
+    @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1) public <U extends @Nullable Object> EmptySequentialStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return (EmptySequentialStream<U>) this; }
+
+    public EmptySequentialBooleanStream asBooleanStream(                                            ) { return EmptySequentialBooleanStream.getInstance(); }
+    public EmptySequentialBooleanStream asBooleanStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialBooleanStream.getInstance(); }
+
+    public EmptySequentialCharStream asCharStream(                                            ) { return EmptySequentialCharStream.getInstance(); }
+    public EmptySequentialCharStream asCharStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialCharStream.getInstance(); }
+
+    public EmptySequentialByteStream asByteStream(                                            ) { return EmptySequentialByteStream.getInstance(); }
+    public EmptySequentialByteStream asByteStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialByteStream.getInstance(); }
+
+    public EmptySequentialShortStream asShortStream(                                            ) { return EmptySequentialShortStream.getInstance(); }
+    public EmptySequentialShortStream asShortStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialShortStream.getInstance(); }
+
+    public EmptySequentialIntStream asIntStream(                                            ) { return EmptySequentialIntStream.getInstance(); }
+    public EmptySequentialIntStream asIntStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialIntStream.getInstance(); }
+
+    public EmptySequentialLongStream asLongStream(                                            ) { return EmptySequentialLongStream.getInstance(); }
+    public EmptySequentialLongStream asLongStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialLongStream.getInstance(); }
+
+    public EmptySequentialFloatStream asFloatStream(                                            ) { return EmptySequentialFloatStream.getInstance(); }
+    public EmptySequentialFloatStream asFloatStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialFloatStream.getInstance(); }
+
+    public EmptySequentialDoubleStream asDoubleStream(                                            ) { return EmptySequentialDoubleStream.getInstance(); }
+    public EmptySequentialDoubleStream asDoubleStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialDoubleStream.getInstance(); }
+
+    //#endregion -------------------- As stream --------------------
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyIterator<T> iterator() { return EmptyIterator.getInstance(); }

@@ -1,4 +1,4 @@
-package joookiwi.collection.java.extended.stream;
+package joookiwi.collection.java.stream;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -56,6 +56,14 @@ import static joookiwi.collection.java.method.ArrayCreator.Array;
 ///
 /// @param <T> The type
 /// @see EmptySequentialStream
+/// @see EmptyParallelBooleanStream
+/// @see EmptyParallelCharStream
+/// @see EmptyParallelByteStream
+/// @see EmptyParallelShortStream
+/// @see EmptyParallelIntStream
+/// @see EmptyParallelLongStream
+/// @see EmptyParallelFloatStream
+/// @see EmptyParallelDoubleStream
 @Singleton
 @NotNullByDefault
 public class EmptyParallelStream<T extends @Nullable Object>
@@ -118,17 +126,17 @@ public class EmptyParallelStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptyParallelStream<U> map(final @Nullable Supplier<? extends U>            mapper) { return (EmptyParallelStream<U>) this; }
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptyParallelStream<U> map(final @Nullable Object @Nullable ...            ignored) { return (EmptyParallelStream<U>) this; }
 
-    @Override public IntStream mapToInt(final @Nullable ToIntFunction<? super T> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapToInt(final @Nullable IntSupplier              mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapToInt(final @Nullable Object @Nullable ...    ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptyParallelIntStream mapToInt(final @Nullable ToIntFunction<? super T> mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapToInt(final @Nullable IntSupplier              mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapToInt(final @Nullable Object @Nullable ...    ignored) { return EmptyParallelIntStream.getInstance(); }
 
-    @Override public LongStream mapToLong(final @Nullable ToLongFunction<? super T> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapToLong(final @Nullable LongSupplier              mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapToLong(final @Nullable Object @Nullable ...     ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptyParallelLongStream mapToLong(final @Nullable ToLongFunction<? super T> mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapToLong(final @Nullable LongSupplier              mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapToLong(final @Nullable Object @Nullable ...     ignored) { return EmptyParallelLongStream.getInstance(); }
 
-    @Override public DoubleStream mapToDouble(final @Nullable ToDoubleFunction<? super T> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapToDouble(final @Nullable DoubleSupplier              mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapToDouble(final @Nullable Object @Nullable ...       ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptyParallelDoubleStream mapToDouble(final @Nullable ToDoubleFunction<? super T> mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapToDouble(final @Nullable DoubleSupplier              mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapToDouble(final @Nullable Object @Nullable ...       ignored) { return EmptyParallelDoubleStream.getInstance(); }
 
     //#endregion -------------------- Map --------------------
     //#region -------------------- Flat map --------------------
@@ -137,17 +145,17 @@ public class EmptyParallelStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptyParallelStream<U> flatMap(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>            mapper) { return (EmptyParallelStream<U>) this; }
     @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1)           public <U extends @Nullable Object> EmptyParallelStream<U> flatMap(final @Nullable Object @Nullable ...                                        ignored) { return (EmptyParallelStream<U>) this; }
 
-    @Override public IntStream flatMapToInt(final @Nullable Function<? super T, ? extends @Nullable IntStream> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream flatMapToInt(final @Nullable Supplier<? extends @Nullable IntStream>            mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream flatMapToInt(final @Nullable Object @Nullable ...                              ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptyParallelIntStream flatMapToInt(final @Nullable Function<? super T, ? extends @Nullable IntStream> mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream flatMapToInt(final @Nullable Supplier<? extends @Nullable IntStream>            mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream flatMapToInt(final @Nullable Object @Nullable ...                              ignored) { return EmptyParallelIntStream.getInstance(); }
 
-    @Override public LongStream flatMapToLong(final @Nullable Function<? super T, ? extends @Nullable LongStream> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream flatMapToLong(final @Nullable Supplier<? extends @Nullable LongStream>            mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream flatMapToLong(final @Nullable Object @Nullable ...                               ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptyParallelLongStream flatMapToLong(final @Nullable Function<? super T, ? extends @Nullable LongStream> mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream flatMapToLong(final @Nullable Supplier<? extends @Nullable LongStream>            mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream flatMapToLong(final @Nullable Object @Nullable ...                               ignored) { return EmptyParallelLongStream.getInstance(); }
 
-    @Override public DoubleStream flatMapToDouble(final @Nullable Function<? super T, ? extends @Nullable DoubleStream> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream flatMapToDouble(final @Nullable Supplier<? extends @Nullable DoubleStream>            mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream flatMapToDouble(final @Nullable Object @Nullable ...                                 ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptyParallelDoubleStream flatMapToDouble(final @Nullable Function<? super T, ? extends @Nullable DoubleStream> mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream flatMapToDouble(final @Nullable Supplier<? extends @Nullable DoubleStream>            mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream flatMapToDouble(final @Nullable Object @Nullable ...                                 ignored) { return EmptyParallelDoubleStream.getInstance(); }
 
     //#endregion -------------------- Flat map --------------------
     //#region -------------------- Map multi --------------------
@@ -157,20 +165,20 @@ public class EmptyParallelStream<T extends @Nullable Object>
     @SuppressWarnings("unchecked cast")           public <U extends @Nullable Object> EmptyParallelStream<U> mapMulti(final @Nullable Runnable                                             mapper) { return (EmptyParallelStream<U>) this; }
     @SuppressWarnings("unchecked cast")           public <U extends @Nullable Object> EmptyParallelStream<U> mapMulti(final @Nullable Object @Nullable ...                                ignored) { return (EmptyParallelStream<U>) this; }
 
-    @Override public IntStream mapMultiToInt(final @Nullable BiConsumer<? super T, ? super @Nullable IntConsumer> mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Consumer<? super T>                                  mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Runnable                                             mapper) { return CollectionCreator.getInstance().IntStream(); }
-              public IntStream mapMultiToInt(final @Nullable Object @Nullable ...                                ignored) { return CollectionCreator.getInstance().IntStream(); }
+    @Override public EmptyParallelIntStream mapMultiToInt(final @Nullable BiConsumer<? super T, ? super @Nullable IntConsumer> mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapMultiToInt(final @Nullable Consumer<? super T>                                  mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapMultiToInt(final @Nullable Runnable                                             mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapMultiToInt(final @Nullable Object @Nullable ...                                ignored) { return EmptyParallelIntStream.getInstance(); }
 
-    @Override public LongStream mapMultiToLong(final @Nullable BiConsumer<? super T, ? super @Nullable LongConsumer> mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Consumer<? super T>                                   mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Runnable                                              mapper) { return CollectionCreator.getInstance().LongStream(); }
-              public LongStream mapMultiToLong(final @Nullable Object @Nullable ...                                 ignored) { return CollectionCreator.getInstance().LongStream(); }
+    @Override public EmptyParallelLongStream mapMultiToLong(final @Nullable BiConsumer<? super T, ? super @Nullable LongConsumer> mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapMultiToLong(final @Nullable Consumer<? super T>                                   mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapMultiToLong(final @Nullable Runnable                                              mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapMultiToLong(final @Nullable Object @Nullable ...                                 ignored) { return EmptyParallelLongStream.getInstance(); }
 
-    @Override public DoubleStream mapMultiToDouble(final @Nullable BiConsumer<? super T, ? super @Nullable DoubleConsumer> mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Consumer<? super T>                                     mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Runnable                                                mapper) { return CollectionCreator.getInstance().DoubleStream(); }
-              public DoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                                   ignored) { return CollectionCreator.getInstance().DoubleStream(); }
+    @Override public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable BiConsumer<? super T, ? super @Nullable DoubleConsumer> mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable Consumer<? super T>                                     mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable Runnable                                                mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                                   ignored) { return EmptyParallelDoubleStream.getInstance(); }
 
     //#endregion -------------------- Map multi --------------------
     //#region -------------------- Distinct --------------------
@@ -359,6 +367,36 @@ public class EmptyParallelStream<T extends @Nullable Object>
               public Optional<@NotNull T> findAny(final @Nullable Object @Nullable ... ignored) { return Optional.empty(); }
 
     //#endregion -------------------- Find any --------------------
+    //#region -------------------- As stream --------------------
+
+    @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_0) public <U extends @Nullable Object> EmptyParallelStream<U> asStream(                                            ) { return (EmptyParallelStream<U>) this; }
+    @SuppressWarnings("unchecked cast") @Contract(ALWAYS_THIS_1) public <U extends @Nullable Object> EmptyParallelStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return (EmptyParallelStream<U>) this; }
+
+    public EmptyParallelBooleanStream asBooleanStream(                                            ) { return EmptyParallelBooleanStream.getInstance(); }
+    public EmptyParallelBooleanStream asBooleanStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelBooleanStream.getInstance(); }
+
+    public EmptyParallelCharStream asCharStream(                                            ) { return EmptyParallelCharStream.getInstance(); }
+    public EmptyParallelCharStream asCharStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelCharStream.getInstance(); }
+
+    public EmptyParallelByteStream asByteStream(                                            ) { return EmptyParallelByteStream.getInstance(); }
+    public EmptyParallelByteStream asByteStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelByteStream.getInstance(); }
+
+    public EmptyParallelShortStream asShortStream(                                            ) { return EmptyParallelShortStream.getInstance(); }
+    public EmptyParallelShortStream asShortStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelShortStream.getInstance(); }
+
+    public EmptyParallelIntStream asIntStream(                                            ) { return EmptyParallelIntStream.getInstance(); }
+    public EmptyParallelIntStream asIntStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelIntStream.getInstance(); }
+
+    public EmptyParallelLongStream asLongStream(                                            ) { return EmptyParallelLongStream.getInstance(); }
+    public EmptyParallelLongStream asLongStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelLongStream.getInstance(); }
+
+    public EmptyParallelFloatStream asFloatStream(                                            ) { return EmptyParallelFloatStream.getInstance(); }
+    public EmptyParallelFloatStream asFloatStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelFloatStream.getInstance(); }
+
+    public EmptyParallelDoubleStream asDoubleStream(                                            ) { return EmptyParallelDoubleStream.getInstance(); }
+    public EmptyParallelDoubleStream asDoubleStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelDoubleStream.getInstance(); }
+
+    //#endregion -------------------- As stream --------------------
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyIterator<T> iterator() { return EmptyIterator.getInstance(); }
