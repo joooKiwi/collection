@@ -272,17 +272,17 @@ public class ImmutableStack<T extends @Nullable Object>
     //#endregion -------------------- Has methods --------------------
     //#region -------------------- Index methods --------------------
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int search(final @Nullable Object value) { return super.search(value); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int search(final @Nullable Object value) { return super.search(value); }
 
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int indexOf(final @Nullable Object value, final int index) { return super.indexOf(value, index); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value, final int index) { return super.indexOf(value, index); }
 
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
 
-    @Override public @Range(from = -1, to = MAX_INT_VALUE - 1) int lastIndexOf(final @Nullable Object value, final int index) { return super.lastIndexOf(value, index); }
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value, final int index) { return super.lastIndexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------
@@ -357,7 +357,7 @@ public class ImmutableStack<T extends @Nullable Object>
     //#endregion -------------------- Clone methods --------------------
     //#region -------------------- Copy into methods --------------------
 
-    @Override public void copyInto(final Object[] reference) { super.copyInto(reference); }
+    @Override public void copyInto(final @Nullable Object[] reference) { super.copyInto(reference); }
 
     //#endregion -------------------- Copy into methods --------------------
     //#region -------------------- To string methods --------------------

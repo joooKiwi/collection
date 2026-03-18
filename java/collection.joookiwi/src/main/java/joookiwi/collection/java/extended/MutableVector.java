@@ -673,7 +673,7 @@ public class MutableVector<T extends @Nullable Object>
     //#region -------------------- Copy into methods --------------------
 
     @Contract(mutates = "param1")
-    @Override public void copyInto(final Object[] anArray) { super.copyInto(anArray); }
+    @Override public void copyInto(final @Nullable Object[] anArray) { super.copyInto(anArray); }
 
     //#endregion -------------------- Copy into methods --------------------
     //#region -------------------- Stream methods --------------------
