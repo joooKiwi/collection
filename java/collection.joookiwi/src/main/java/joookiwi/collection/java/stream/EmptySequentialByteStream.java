@@ -10,12 +10,11 @@ import java.util.function.DoubleConsumer;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
-import java.util.function.LongFunction;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
@@ -139,9 +138,9 @@ public class EmptySequentialByteStream
     @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream map(final @Nullable ByteSupplier          mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream map(final @Nullable Object @Nullable ... ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable ByteFunction<? extends U> mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable Supplier<? extends U>     mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable Object @Nullable ...      ignored) { return EmptySequentialStream.getInstance(); }
+    @Override public <U> EmptySequentialStream<U> mapToObj(final @Nullable ByteFunction<? extends U> mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapToObj(final @Nullable Supplier<? extends U>     mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapToObj(final @Nullable Object @Nullable ...     ignored) { return EmptySequentialStream.getInstance(); }
 
     @Override public EmptySequentialBooleanStream mapToBoolean(final @Nullable ByteToBooleanFunction  mapper) { return EmptySequentialBooleanStream.getInstance(); }
               public EmptySequentialBooleanStream mapToBoolean(final @Nullable BooleanSupplier        mapper) { return EmptySequentialBooleanStream.getInstance(); }
@@ -150,6 +149,10 @@ public class EmptySequentialByteStream
     @Override public EmptySequentialCharStream mapToChar(final @Nullable ByteToCharFunction    mapper) { return EmptySequentialCharStream.getInstance(); }
               public EmptySequentialCharStream mapToChar(final @Nullable CharSupplier          mapper) { return EmptySequentialCharStream.getInstance(); }
               public EmptySequentialCharStream mapToChar(final @Nullable Object @Nullable ... ignored) { return EmptySequentialCharStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapToByte(final @Nullable ByteUnaryOperator     mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapToByte(final @Nullable ByteSupplier          mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapToByte(final @Nullable Object @Nullable ... ignored) { return this; }
 
     @Override public EmptySequentialShortStream mapToShort(final @Nullable ByteToShortFunction   mapper) { return EmptySequentialShortStream.getInstance(); }
               public EmptySequentialShortStream mapToShort(final @Nullable ShortSupplier         mapper) { return EmptySequentialShortStream.getInstance(); }
@@ -176,11 +179,11 @@ public class EmptySequentialByteStream
 
     @Contract(ALWAYS_THIS_1) @Override public EmptySequentialByteStream flatMap(final @Nullable ByteFunction<? extends @Nullable ByteStream> mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream flatMap(final @Nullable Supplier<? extends @Nullable ByteStream>     mapper) { return this; }
-    @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream flatMap(final @Nullable Object @Nullable ...                         ignored) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream flatMap(final @Nullable Object @Nullable ...                        ignored) { return this; }
 
-    public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable ByteFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>     mapper) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                 ignored) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable ByteFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>     mapper) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                 ignored) { return EmptySequentialStream.getInstance(); }
 
     public EmptySequentialBooleanStream flatMapToBoolean(final @Nullable ByteFunction<? extends @Nullable BooleanStream> mapper) { return EmptySequentialBooleanStream.getInstance(); }
     public EmptySequentialBooleanStream flatMapToBoolean(final @Nullable Supplier<? extends @Nullable BooleanStream>     mapper) { return EmptySequentialBooleanStream.getInstance(); }
@@ -189,6 +192,10 @@ public class EmptySequentialByteStream
     public EmptySequentialCharStream flatMapToChar(final @Nullable ByteFunction<? extends @Nullable CharStream> mapper) { return EmptySequentialCharStream.getInstance(); }
     public EmptySequentialCharStream flatMapToChar(final @Nullable Supplier<? extends @Nullable CharStream>     mapper) { return EmptySequentialCharStream.getInstance(); }
     public EmptySequentialCharStream flatMapToChar(final @Nullable Object @Nullable ...                        ignored) { return EmptySequentialCharStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream flatMapToByte(final @Nullable ByteFunction<? extends @Nullable ByteStream> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream flatMapToByte(final @Nullable Supplier<? extends @Nullable ByteStream>     mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream flatMapToByte(final @Nullable Object @Nullable ...                        ignored) { return this; }
 
     public EmptySequentialShortStream flatMapToShort(final @Nullable ByteFunction<? extends @Nullable ShortStream> mapper) { return EmptySequentialShortStream.getInstance(); }
     public EmptySequentialShortStream flatMapToShort(final @Nullable Supplier<? extends @Nullable ShortStream>     mapper) { return EmptySequentialShortStream.getInstance(); }
@@ -213,25 +220,30 @@ public class EmptySequentialByteStream
     //#endregion -------------------- Flat map --------------------
     //#region -------------------- Map multi --------------------
 
-    @Override public EmptySequentialByteStream mapMulti(final @Nullable ByteObjConsumer<? super ByteConsumer> mapper) { return this; }
-              public EmptySequentialByteStream mapMulti(final @Nullable LongConsumer                           mapper) { return this; }
-              public EmptySequentialByteStream mapMulti(final @Nullable Runnable                               mapper) { return this; }
-              public EmptySequentialByteStream mapMulti(final @Nullable Object @Nullable ...                  ignored) { return this; }
+    @Contract(ALWAYS_THIS_1) @Override public EmptySequentialByteStream mapMulti(final @Nullable ByteObjConsumer<? super ByteConsumer> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream mapMulti(final @Nullable ByteConsumer                          mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream mapMulti(final @Nullable Runnable                              mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptySequentialByteStream mapMulti(final @Nullable Object @Nullable ...                 ignored) { return this; }
 
-    public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable ByteObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable Consumer<U>                                    mapper) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable Runnable                                       mapper) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                          ignored) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable ByteObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable ByteConsumer                                   mapper) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable Runnable                                       mapper) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                          ignored) { return EmptySequentialStream.getInstance(); }
 
     public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable ByteObjConsumer<? super @Nullable BooleanConsumer> mapper) { return EmptySequentialBooleanStream.getInstance(); }
-    public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable BooleanConsumer                                    mapper) { return EmptySequentialBooleanStream.getInstance(); }
+    public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable ByteConsumer                                      mapper) { return EmptySequentialBooleanStream.getInstance(); }
     public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable Runnable                                           mapper) { return EmptySequentialBooleanStream.getInstance(); }
     public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable Object @Nullable ...                              ignored) { return EmptySequentialBooleanStream.getInstance(); }
 
     public EmptySequentialCharStream mapMultiToChar(final @Nullable ByteObjConsumer<? super @Nullable CharConsumer> mapper) { return EmptySequentialCharStream.getInstance(); }
-    public EmptySequentialCharStream mapMultiToChar(final @Nullable CharConsumer                                    mapper) { return EmptySequentialCharStream.getInstance(); }
+    public EmptySequentialCharStream mapMultiToChar(final @Nullable ByteConsumer                                    mapper) { return EmptySequentialCharStream.getInstance(); }
     public EmptySequentialCharStream mapMultiToChar(final @Nullable Runnable                                        mapper) { return EmptySequentialCharStream.getInstance(); }
     public EmptySequentialCharStream mapMultiToChar(final @Nullable Object @Nullable ...                           ignored) { return EmptySequentialCharStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapMultiToByte(final @Nullable ByteObjConsumer<? super ByteConsumer> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapMultiToByte(final @Nullable ByteConsumer                          mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapMultiToByte(final @Nullable Runnable                              mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptySequentialByteStream mapMultiToByte(final @Nullable Object @Nullable ...                 ignored) { return this; }
 
     public EmptySequentialShortStream mapMultiToShort(final @Nullable ByteObjConsumer<? super @Nullable ShortConsumer> mapper) { return EmptySequentialShortStream.getInstance(); }
     public EmptySequentialShortStream mapMultiToShort(final @Nullable ByteConsumer                                     mapper) { return EmptySequentialShortStream.getInstance(); }
@@ -239,22 +251,22 @@ public class EmptySequentialByteStream
     public EmptySequentialShortStream mapMultiToShort(final @Nullable Object @Nullable ...                            ignored) { return EmptySequentialShortStream.getInstance(); }
 
     public EmptySequentialIntStream mapMultiToInt(final @Nullable ByteObjConsumer<? super @Nullable IntConsumer> mapper) { return EmptySequentialIntStream.getInstance(); }
-    public EmptySequentialIntStream mapMultiToInt(final @Nullable IntConsumer                                    mapper) { return EmptySequentialIntStream.getInstance(); }
+    public EmptySequentialIntStream mapMultiToInt(final @Nullable ByteConsumer                                   mapper) { return EmptySequentialIntStream.getInstance(); }
     public EmptySequentialIntStream mapMultiToInt(final @Nullable Runnable                                       mapper) { return EmptySequentialIntStream.getInstance(); }
     public EmptySequentialIntStream mapMultiToInt(final @Nullable Object @Nullable ...                          ignored) { return EmptySequentialIntStream.getInstance(); }
 
     public EmptySequentialLongStream mapMultiToLong(final @Nullable ByteObjConsumer<? super @Nullable LongConsumer> mapper) { return EmptySequentialLongStream.getInstance(); }
-    public EmptySequentialLongStream mapMultiToLong(final @Nullable LongConsumer                                    mapper) { return EmptySequentialLongStream.getInstance(); }
+    public EmptySequentialLongStream mapMultiToLong(final @Nullable ByteConsumer                                    mapper) { return EmptySequentialLongStream.getInstance(); }
     public EmptySequentialLongStream mapMultiToLong(final @Nullable Runnable                                        mapper) { return EmptySequentialLongStream.getInstance(); }
     public EmptySequentialLongStream mapMultiToLong(final @Nullable Object @Nullable ...                           ignored) { return EmptySequentialLongStream.getInstance(); }
 
     public EmptySequentialFloatStream mapMultiToFloat(final @Nullable ByteObjConsumer<? super @Nullable FloatConsumer> mapper) { return EmptySequentialFloatStream.getInstance(); }
-    public EmptySequentialFloatStream mapMultiToFloat(final @Nullable FloatConsumer                                    mapper) { return EmptySequentialFloatStream.getInstance(); }
+    public EmptySequentialFloatStream mapMultiToFloat(final @Nullable ByteConsumer                                     mapper) { return EmptySequentialFloatStream.getInstance(); }
     public EmptySequentialFloatStream mapMultiToFloat(final @Nullable Runnable                                         mapper) { return EmptySequentialFloatStream.getInstance(); }
     public EmptySequentialFloatStream mapMultiToFloat(final @Nullable Object @Nullable ...                            ignored) { return EmptySequentialFloatStream.getInstance(); }
 
     public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable ByteObjConsumer<? super @Nullable DoubleConsumer> mapper) { return EmptySequentialDoubleStream.getInstance(); }
-    public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable DoubleConsumer                                    mapper) { return EmptySequentialDoubleStream.getInstance(); }
+    public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable ByteConsumer                                      mapper) { return EmptySequentialDoubleStream.getInstance(); }
     public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable Runnable                                          mapper) { return EmptySequentialDoubleStream.getInstance(); }
     public EmptySequentialDoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                             ignored) { return EmptySequentialDoubleStream.getInstance(); }
 
@@ -334,8 +346,8 @@ public class EmptySequentialByteStream
     //#endregion -------------------- For each ordered --------------------
     //#region -------------------- To array --------------------
 
-                           @Override public                              byte[] toArray(                                 ) { return ByteArray(); }
-    @Contract(pure = true)           public <U extends @Nullable Object> U[]    toArray(final LongFunction<U[]> generator) { return generator.apply(0); }
+                           @Override public                              byte[] toArray(                                ) { return ByteArray(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> U[]    toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- Reduce --------------------
@@ -453,8 +465,8 @@ public class EmptySequentialByteStream
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------
 
-    public <U extends @Nullable Object> EmptySequentialStream<U> asStream(                                            ) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> asStream(                                            ) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialStream.getInstance(); }
 
     public EmptySequentialBooleanStream asBooleanStream(                                            ) { return EmptySequentialBooleanStream.getInstance(); }
     public EmptySequentialBooleanStream asBooleanStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialBooleanStream.getInstance(); }

@@ -18,10 +18,10 @@ import java.util.function.DoubleToLongFunction;
 import java.util.function.DoubleUnaryOperator;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.ObjDoubleConsumer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
@@ -131,9 +131,9 @@ public class EmptySequentialDoubleStream
     @Contract(ALWAYS_THIS_1)           public EmptySequentialDoubleStream map(final @Nullable DoubleSupplier        mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptySequentialDoubleStream map(final @Nullable Object @Nullable ... ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable DoubleFunction<? extends U> mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable Supplier<? extends U>       mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapToObj(final @Nullable Object @Nullable ...       ignored) { return EmptySequentialStream.getInstance(); }
+    @Override public <U> EmptySequentialStream<U> mapToObj(final @Nullable DoubleFunction<? extends U> mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapToObj(final @Nullable Supplier<? extends U>       mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapToObj(final @Nullable Object @Nullable ...       ignored) { return EmptySequentialStream.getInstance(); }
 
     @Override public EmptySequentialBooleanStream mapToBoolean(final @Nullable DoubleToBooleanFunction mapper) { return EmptySequentialBooleanStream.getInstance(); }
               public EmptySequentialBooleanStream mapToBoolean(final @Nullable DoubleSupplier          mapper) { return EmptySequentialBooleanStream.getInstance(); }
@@ -174,9 +174,9 @@ public class EmptySequentialDoubleStream
     @Contract(ALWAYS_THIS_1)           public EmptySequentialDoubleStream flatMap(final @Nullable Supplier<? extends @Nullable DoubleStream>                        mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptySequentialDoubleStream flatMap(final @Nullable Object @Nullable ...                                             ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable DoubleFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>       mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                   ignored) { return EmptySequentialStream.getInstance(); }
+    @Override public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable DoubleFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>       mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                   ignored) { return EmptySequentialStream.getInstance(); }
 
     @Override public EmptySequentialBooleanStream flatMapToBoolean(final @Nullable DoubleFunction<? extends @Nullable BooleanStream> mapper) { return EmptySequentialBooleanStream.getInstance(); }
               public EmptySequentialBooleanStream flatMapToBoolean(final @Nullable Supplier<? extends @Nullable BooleanStream>       mapper) { return EmptySequentialBooleanStream.getInstance(); }
@@ -213,15 +213,15 @@ public class EmptySequentialDoubleStream
     //#endregion -------------------- Flat map --------------------
     //#region -------------------- Map multi --------------------
 
-    @Override public  EmptySequentialDoubleStream mapMulti(final @Nullable DoubleMapMultiConsumer  mapper) { return this; }
-              public  EmptySequentialDoubleStream mapMulti(final @Nullable DoubleConsumer          mapper) { return this; }
-              public  EmptySequentialDoubleStream mapMulti(final @Nullable Runnable                mapper) { return this; }
-              public  EmptySequentialDoubleStream mapMulti(final @Nullable Object @Nullable ...   ignored) { return this; }
+    @Override public EmptySequentialDoubleStream mapMulti(final @Nullable DoubleMapMultiConsumer  mapper) { return this; }
+              public EmptySequentialDoubleStream mapMulti(final @Nullable DoubleConsumer          mapper) { return this; }
+              public EmptySequentialDoubleStream mapMulti(final @Nullable Runnable                mapper) { return this; }
+              public EmptySequentialDoubleStream mapMulti(final @Nullable Object @Nullable ...   ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable DoubleObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable DoubleConsumer                                   mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable Runnable                                         mapper) { return EmptySequentialStream.getInstance(); }
-              public <U extends @Nullable Object> EmptySequentialStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                            ignored) { return EmptySequentialStream.getInstance(); }
+    @Override public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable DoubleObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable DoubleConsumer                                   mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable Runnable                                         mapper) { return EmptySequentialStream.getInstance(); }
+              public <U> EmptySequentialStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                            ignored) { return EmptySequentialStream.getInstance(); }
 
     @Override public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable DoubleObjConsumer<? super @Nullable BooleanConsumer> mapper) { return EmptySequentialBooleanStream.getInstance(); }
               public EmptySequentialBooleanStream mapMultiToBoolean(final @Nullable DoubleConsumer                                       mapper) { return EmptySequentialBooleanStream.getInstance(); }
@@ -339,8 +339,8 @@ public class EmptySequentialDoubleStream
     //#endregion -------------------- For each ordered --------------------
     //#region -------------------- To array --------------------
 
-                           @Override public                              double[] toArray(                                            ) { return DoubleArray(); }
-    @Contract(pure = true)           public <U extends @Nullable Object> U[]      toArray(final DoubleFunction<U[]> generator) { return generator.apply(0); }
+                           @Override public                              double[] toArray(                                ) { return DoubleArray(); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> U[]      toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- Reduce --------------------
@@ -458,8 +458,8 @@ public class EmptySequentialDoubleStream
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------
 
-    public <U extends @Nullable Object> EmptySequentialStream<U> asStream(                                            ) { return EmptySequentialStream.getInstance(); }
-    public <U extends @Nullable Object> EmptySequentialStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> asStream(                                            ) { return EmptySequentialStream.getInstance(); }
+    public <U> EmptySequentialStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialStream.getInstance(); }
 
     public EmptySequentialBooleanStream asBooleanStream(                                            ) { return EmptySequentialBooleanStream.getInstance(); }
     public EmptySequentialBooleanStream asBooleanStream(final @Nullable Object @Nullable ... ignored) { return EmptySequentialBooleanStream.getInstance(); }

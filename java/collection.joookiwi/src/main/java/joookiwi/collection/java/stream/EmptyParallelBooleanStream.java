@@ -10,12 +10,11 @@ import java.util.function.DoubleConsumer;
 import java.util.function.DoubleSupplier;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
-import java.util.function.LongFunction;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanBinaryOperator;
@@ -136,9 +135,13 @@ public class EmptyParallelBooleanStream
     @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream map(final @Nullable BooleanSupplier       mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream map(final @Nullable Object @Nullable ... ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptyParallelStream<U> mapToObj(final @Nullable BooleanFunction<? extends U> mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> mapToObj(final @Nullable Supplier<? extends U>        mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> mapToObj(final @Nullable Object @Nullable ...        ignored) { return EmptyParallelStream.getInstance(); }
+    @Override public <U> EmptyParallelStream<U> mapToObj(final @Nullable BooleanFunction<? extends U> mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> mapToObj(final @Nullable Supplier<? extends U>        mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> mapToObj(final @Nullable Object @Nullable ...        ignored) { return EmptyParallelStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapToBoolean(final @Nullable BooleanUnaryOperator  mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapToBoolean(final @Nullable BooleanSupplier       mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapToBoolean(final @Nullable Object @Nullable ... ignored) { return this; }
 
     @Override public EmptyParallelCharStream mapToChar(final @Nullable BooleanToCharFunction mapper) { return EmptyParallelCharStream.getInstance(); }
               public EmptyParallelCharStream mapToChar(final @Nullable CharSupplier          mapper) { return EmptyParallelCharStream.getInstance(); }
@@ -175,9 +178,14 @@ public class EmptyParallelBooleanStream
     @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream flatMap(final @Nullable Supplier<? extends @Nullable BooleanStream>        mapper) { return this; }
     @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream flatMap(final @Nullable Object @Nullable ...                              ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptyParallelStream<U> flatMapToObj(final @Nullable BooleanFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>        mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                    ignored) { return EmptyParallelStream.getInstance(); }
+    @Override public <U> EmptyParallelStream<U> flatMapToObj(final @Nullable BooleanFunction<? extends @Nullable Stream<? extends U>> mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> flatMapToObj(final @Nullable Supplier<? extends @Nullable Stream<? extends U>>        mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> flatMapToObj(final @Nullable Object @Nullable ...                                    ignored) { return EmptyParallelStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream flatMapToBoolean(final @Nullable BooleanFunction<? extends @Nullable BooleanStream> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream flatMapToBoolean(final @Nullable Supplier<? extends @Nullable BooleanStream>        mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream flatMapToBoolean(final @Nullable Object @Nullable ...                              ignored) { return this; }
+
 
     @Override public EmptyParallelCharStream flatMapToChar(final @Nullable BooleanFunction<? extends @Nullable CharStream> mapper) { return EmptyParallelCharStream.getInstance(); }
               public EmptyParallelCharStream flatMapToChar(final @Nullable Supplier<? extends @Nullable CharStream>        mapper) { return EmptyParallelCharStream.getInstance(); }
@@ -210,48 +218,53 @@ public class EmptyParallelBooleanStream
     //#endregion -------------------- Flat map --------------------
     //#region -------------------- Map multi --------------------
 
-    @Override public EmptyParallelBooleanStream mapMulti(final @Nullable BooleanObjConsumer<? super BooleanConsumer> mapper) { return this; }
-              public EmptyParallelBooleanStream mapMulti(final @Nullable LongConsumer                                mapper) { return this; }
-              public EmptyParallelBooleanStream mapMulti(final @Nullable Runnable                                    mapper) { return this; }
-              public EmptyParallelBooleanStream mapMulti(final @Nullable Object @Nullable ...                       ignored) { return this; }
+    @Contract(ALWAYS_THIS_1) @Override public EmptyParallelBooleanStream mapMulti(final @Nullable BooleanObjConsumer<? super BooleanConsumer> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream mapMulti(final @Nullable BooleanConsumer                             mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream mapMulti(final @Nullable Runnable                                    mapper) { return this; }
+    @Contract(ALWAYS_THIS_1)           public EmptyParallelBooleanStream mapMulti(final @Nullable Object @Nullable ...                       ignored) { return this; }
 
-    @Override public <U extends @Nullable Object> EmptyParallelStream<U> mapMultiToObj(final @Nullable BooleanObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> mapMultiToObj(final @Nullable Consumer<U>                                       mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> mapMultiToObj(final @Nullable Runnable                                          mapper) { return EmptyParallelStream.getInstance(); }
-              public <U extends @Nullable Object> EmptyParallelStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                             ignored) { return EmptyParallelStream.getInstance(); }
+    @Override public <U> EmptyParallelStream<U> mapMultiToObj(final @Nullable BooleanObjConsumer<? super @Nullable Consumer<U>> mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> mapMultiToObj(final @Nullable BooleanConsumer                                   mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> mapMultiToObj(final @Nullable Runnable                                          mapper) { return EmptyParallelStream.getInstance(); }
+              public <U> EmptyParallelStream<U> mapMultiToObj(final @Nullable Object @Nullable ...                             ignored) { return EmptyParallelStream.getInstance(); }
+
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapMultiToBoolean(final @Nullable BooleanObjConsumer<? super BooleanConsumer> mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapMultiToBoolean(final @Nullable BooleanConsumer                             mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapMultiToBoolean(final @Nullable Runnable                                    mapper) { return this; }
+    @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream mapMultiToBoolean(final @Nullable Object @Nullable ...                       ignored) { return this; }
 
     @Override public EmptyParallelCharStream mapMultiToChar(final @Nullable BooleanObjConsumer<? super @Nullable CharConsumer> mapper) { return EmptyParallelCharStream.getInstance(); }
-              public EmptyParallelCharStream mapMultiToChar(final @Nullable CharConsumer                                       mapper) { return EmptyParallelCharStream.getInstance(); }
+              public EmptyParallelCharStream mapMultiToChar(final @Nullable BooleanConsumer                                    mapper) { return EmptyParallelCharStream.getInstance(); }
               public EmptyParallelCharStream mapMultiToChar(final @Nullable Runnable                                           mapper) { return EmptyParallelCharStream.getInstance(); }
               public EmptyParallelCharStream mapMultiToChar(final @Nullable Object @Nullable ...                              ignored) { return EmptyParallelCharStream.getInstance(); }
 
     @Override public EmptyParallelByteStream mapMultiToByte(final @Nullable BooleanObjConsumer<? super @Nullable ByteConsumer> mapper) { return EmptyParallelByteStream.getInstance(); }
-              public EmptyParallelByteStream mapMultiToByte(final @Nullable ByteConsumer                                       mapper) { return EmptyParallelByteStream.getInstance(); }
+              public EmptyParallelByteStream mapMultiToByte(final @Nullable BooleanConsumer                                    mapper) { return EmptyParallelByteStream.getInstance(); }
               public EmptyParallelByteStream mapMultiToByte(final @Nullable Runnable                                           mapper) { return EmptyParallelByteStream.getInstance(); }
               public EmptyParallelByteStream mapMultiToByte(final @Nullable Object @Nullable ...                              ignored) { return EmptyParallelByteStream.getInstance(); }
 
     @Override public EmptyParallelShortStream mapMultiToShort(final @Nullable BooleanObjConsumer<? super @Nullable ShortConsumer> mapper) { return EmptyParallelShortStream.getInstance(); }
-              public EmptyParallelShortStream mapMultiToShort(final @Nullable ShortConsumer                                       mapper) { return EmptyParallelShortStream.getInstance(); }
+              public EmptyParallelShortStream mapMultiToShort(final @Nullable BooleanConsumer                                     mapper) { return EmptyParallelShortStream.getInstance(); }
               public EmptyParallelShortStream mapMultiToShort(final @Nullable Runnable                                            mapper) { return EmptyParallelShortStream.getInstance(); }
               public EmptyParallelShortStream mapMultiToShort(final @Nullable Object @Nullable ...                               ignored) { return EmptyParallelShortStream.getInstance(); }
 
     @Override public EmptyParallelIntStream mapMultiToInt(final @Nullable BooleanObjConsumer<? super @Nullable IntConsumer> mapper) { return EmptyParallelIntStream.getInstance(); }
-              public EmptyParallelIntStream mapMultiToInt(final @Nullable IntConsumer                                       mapper) { return EmptyParallelIntStream.getInstance(); }
+              public EmptyParallelIntStream mapMultiToInt(final @Nullable BooleanConsumer                                   mapper) { return EmptyParallelIntStream.getInstance(); }
               public EmptyParallelIntStream mapMultiToInt(final @Nullable Runnable                                          mapper) { return EmptyParallelIntStream.getInstance(); }
               public EmptyParallelIntStream mapMultiToInt(final @Nullable Object @Nullable ...                             ignored) { return EmptyParallelIntStream.getInstance(); }
 
     @Override public EmptyParallelLongStream mapMultiToLong(final @Nullable BooleanObjConsumer<? super @Nullable LongConsumer> mapper) { return EmptyParallelLongStream.getInstance(); }
-              public EmptyParallelLongStream mapMultiToLong(final @Nullable LongConsumer                                       mapper) { return EmptyParallelLongStream.getInstance(); }
+              public EmptyParallelLongStream mapMultiToLong(final @Nullable BooleanConsumer                                    mapper) { return EmptyParallelLongStream.getInstance(); }
               public EmptyParallelLongStream mapMultiToLong(final @Nullable Runnable                                           mapper) { return EmptyParallelLongStream.getInstance(); }
               public EmptyParallelLongStream mapMultiToLong(final @Nullable Object @Nullable ...                              ignored) { return EmptyParallelLongStream.getInstance(); }
 
     @Override public EmptyParallelFloatStream mapMultiToFloat(final @Nullable BooleanObjConsumer<? super @Nullable FloatConsumer> mapper) { return EmptyParallelFloatStream.getInstance(); }
-              public EmptyParallelFloatStream mapMultiToFloat(final @Nullable FloatConsumer                                       mapper) { return EmptyParallelFloatStream.getInstance(); }
+              public EmptyParallelFloatStream mapMultiToFloat(final @Nullable BooleanConsumer                                     mapper) { return EmptyParallelFloatStream.getInstance(); }
               public EmptyParallelFloatStream mapMultiToFloat(final @Nullable Runnable                                            mapper) { return EmptyParallelFloatStream.getInstance(); }
               public EmptyParallelFloatStream mapMultiToFloat(final @Nullable Object @Nullable ...                               ignored) { return EmptyParallelFloatStream.getInstance(); }
 
     @Override public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable BooleanObjConsumer<? super @Nullable DoubleConsumer> mapper) { return EmptyParallelDoubleStream.getInstance(); }
-              public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable DoubleConsumer                                       mapper) { return EmptyParallelDoubleStream.getInstance(); }
+              public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable BooleanConsumer                                      mapper) { return EmptyParallelDoubleStream.getInstance(); }
               public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable Runnable                                             mapper) { return EmptyParallelDoubleStream.getInstance(); }
               public EmptyParallelDoubleStream mapMultiToDouble(final @Nullable Object @Nullable ...                                ignored) { return EmptyParallelDoubleStream.getInstance(); }
 
@@ -332,7 +345,7 @@ public class EmptyParallelBooleanStream
     //#region -------------------- To array --------------------
 
                            @Override public                              boolean[] toArray(                                 ) { return BooleanArray(); }
-    @Contract(pure = true)           public <U extends @Nullable Object> U[]       toArray(final LongFunction<U[]> generator) { return generator.apply(0); }
+    @Contract(pure = true) @Override public <U extends @Nullable Object> U[]       toArray(final IntFunction<U[]> generator) { return generator.apply(0); }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- Reduce --------------------
@@ -426,8 +439,8 @@ public class EmptyParallelBooleanStream
     //#endregion -------------------- Find any --------------------
     //#region -------------------- As stream --------------------
 
-    public <U extends @Nullable Object> EmptyParallelStream<U> asStream(                                            ) { return EmptyParallelStream.getInstance(); }
-    public <U extends @Nullable Object> EmptyParallelStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelStream.getInstance(); }
+    public <U> EmptyParallelStream<U> asStream(                                            ) { return EmptyParallelStream.getInstance(); }
+    public <U> EmptyParallelStream<U> asStream(final @Nullable Object @Nullable ... ignored) { return EmptyParallelStream.getInstance(); }
 
     @Contract(ALWAYS_THIS_0) public EmptyParallelBooleanStream asBooleanStream(                                            ) { return this; }
     @Contract(ALWAYS_THIS_1) public EmptyParallelBooleanStream asBooleanStream(final @Nullable Object @Nullable ... ignored) { return this; }
