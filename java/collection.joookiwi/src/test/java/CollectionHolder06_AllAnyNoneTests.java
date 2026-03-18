@@ -119,8 +119,8 @@ import static value.ReusableFields_Null.NULL_VARARGS;
                 @DisplayName("() → boolean")       @Test void test0Arg()  { assertEquals(1, new GenericCollectionHolder_AnyAlias().execute(it -> it.some(callback0AsTrue)).amountOfCall); }
             }
 
-            @Test void any() { assertEquals(1, new GenericCollectionHolder_IsEmptyAlias().execute(CollectionHolder::any).getAmountOfCall()); }
-            @Test void none() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::none).getAmountOfCall()); }
+            @Test void any() { assertEquals(1, new GenericCollectionHolder_IsNotEmptyAlias().execute(CollectionHolder::any).getAmountOfCall()); }
+            @Test void none() { assertEquals(1, new GenericCollectionHolder_IsEmptyAlias().execute(CollectionHolder::none).getAmountOfCall()); }
         }
 
 //        @Nested class every {
