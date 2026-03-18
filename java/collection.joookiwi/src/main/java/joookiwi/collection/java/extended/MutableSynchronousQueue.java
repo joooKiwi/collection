@@ -13,8 +13,8 @@ import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
-import joookiwi.collection.java.extended.stream.EmptyParallelStream;
-import joookiwi.collection.java.extended.stream.EmptySequentialStream;
+import joookiwi.collection.java.stream.EmptyParallelStream;
+import joookiwi.collection.java.stream.EmptySequentialStream;
 import org.intellij.lang.annotations.Flow;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.MustBeInvokedByOverriders;
@@ -28,7 +28,7 @@ import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
 import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CollectionConstants.emptyStream;
+import static joookiwi.collection.java.CollectionConstants.emptySequentialStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
@@ -280,7 +280,7 @@ public class MutableSynchronousQueue<T>
     //#region -------------------- Stream methods --------------------
 
     @Contract(pure = true)
-    @Override public EmptySequentialStream<T> stream() { return emptyStream(); }
+    @Override public EmptySequentialStream<T> stream() { return emptySequentialStream(); }
 
     @Contract(pure = true)
     @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
