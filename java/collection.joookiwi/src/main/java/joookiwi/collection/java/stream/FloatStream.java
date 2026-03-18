@@ -4,10 +4,10 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.Supplier;
 import java.util.stream.BaseStream;
-import java.util.stream.Stream;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
 import joookiwi.collection.java.callback.additional.CharConsumer;
@@ -44,7 +44,7 @@ public interface FloatStream
     //#region -------------------- Map methods --------------------
 
     FloatStream map(FloatUnaryOperator mapper);
-    <U extends @Nullable Object> Stream<U> mapToObj(FloatFunction<? extends U> mapper);
+    <U> Stream<U> mapToObj(FloatFunction<? extends U> mapper);
     BooleanStream mapToBoolean(FloatToBooleanFunction mapper);
     CharStream mapToChar(FloatToCharFunction mapper);
     ByteStream mapToByte(FloatToByteFunction mapper);
@@ -54,7 +54,7 @@ public interface FloatStream
     DoubleStream mapToDouble(FloatToDoubleFunction mapper);
 
     FloatStream flatMap(FloatFunction<? extends FloatStream> mapper);
-    <U extends @Nullable Object> Stream<U> flatMapToObj(FloatFunction<? extends Stream<? extends U>> mapper);
+    <U> Stream<U> flatMapToObj(FloatFunction<? extends Stream<? extends U>> mapper);
     BooleanStream flatMapToBoolean(FloatFunction<? extends BooleanStream> mapper);
     CharStream flatMapToChar(FloatFunction<? extends CharStream> mapper);
     ByteStream flatMapToByte(FloatFunction<? extends ByteStream> mapper);
@@ -64,7 +64,7 @@ public interface FloatStream
     DoubleStream flatMapToDouble(FloatFunction<? extends DoubleStream> mapper);
 
     FloatStream mapMulti(final FloatObjConsumer<? super FloatConsumer> mapper);
-    <U extends @Nullable Object> Stream<U> mapMultiToObj(FloatObjConsumer<? super Consumer<U>> mapper);
+    <U> Stream<U> mapMultiToObj(FloatObjConsumer<? super Consumer<U>> mapper);
     BooleanStream mapMultiToBoolean(FloatObjConsumer<? super BooleanConsumer> mapper);
     CharStream mapMultiToChar(FloatObjConsumer<? super CharConsumer> mapper);
     ByteStream mapMultiToByte(FloatObjConsumer<? super ByteConsumer> mapper);
@@ -145,6 +145,7 @@ public interface FloatStream
     @Override FloatSpliterator spliterator();
 
     float[] toArray();
+    <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);
 
     //#endregion -------------------- Conversion methods --------------------
     //#region -------------------- Close methods --------------------

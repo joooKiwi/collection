@@ -13,10 +13,10 @@ import java.util.function.DoubleToIntFunction;
 import java.util.function.DoubleToLongFunction;
 import java.util.function.DoubleUnaryOperator;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.ObjDoubleConsumer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
 import joookiwi.collection.java.callback.additional.CharConsumer;
@@ -44,7 +44,7 @@ public interface DoubleStream
     //#region -------------------- Map methods --------------------
 
     @Override DoubleStream map(DoubleUnaryOperator mapper);
-    @Override <U extends @Nullable Object> Stream<U> mapToObj(DoubleFunction<? extends U> mapper);
+    @Override <U> Stream<U> mapToObj(DoubleFunction<? extends U> mapper);
     BooleanStream mapToBoolean(DoubleToBooleanFunction mapper);
     CharStream mapToChar(DoubleToCharFunction mapper);
     ByteStream mapToByte(DoubleToByteFunction mapper);
@@ -54,7 +54,7 @@ public interface DoubleStream
     FloatStream mapToFloat(DoubleToFloatFunction mapper);
 
     @Override DoubleStream flatMap(DoubleFunction<? extends java.util.stream.DoubleStream> mapper);
-    <U extends @Nullable Object> Stream<U> flatMapToObj(DoubleFunction<? extends Stream<? extends U>> mapper);
+    <U> Stream<U> flatMapToObj(DoubleFunction<? extends Stream<? extends U>> mapper);
     BooleanStream flatMapToBoolean(DoubleFunction<? extends BooleanStream> mapper);
     CharStream flatMapToChar(DoubleFunction<? extends CharStream> mapper);
     ByteStream flatMapToByte(DoubleFunction<? extends ByteStream> mapper);
@@ -64,7 +64,7 @@ public interface DoubleStream
     FloatStream flatMapToFloat(DoubleFunction<? extends FloatStream> mapper);
 
     @Override DoubleStream mapMulti(java.util.stream.DoubleStream.DoubleMapMultiConsumer mapper);
-    <U extends @Nullable Object> Stream<U> mapMultiToObj(DoubleObjConsumer<? super Consumer<U>> mapper);
+    <U> Stream<U> mapMultiToObj(DoubleObjConsumer<? super Consumer<U>> mapper);
     BooleanStream mapMultiToBoolean(DoubleObjConsumer<? super BooleanConsumer> mapper);
     CharStream mapMultiToChar(DoubleObjConsumer<? super CharConsumer> mapper);
     ByteStream mapMultiToByte(DoubleObjConsumer<? super ByteConsumer> mapper);
@@ -143,6 +143,7 @@ public interface DoubleStream
     @Override Spliterator.OfDouble spliterator();
 
     @Override double[] toArray();
+    <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);
 
     //#endregion -------------------- Conversion methods --------------------
     //#region -------------------- Close methods --------------------

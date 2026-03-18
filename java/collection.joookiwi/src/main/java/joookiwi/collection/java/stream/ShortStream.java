@@ -6,10 +6,10 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.Supplier;
 import java.util.stream.BaseStream;
-import java.util.stream.Stream;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
 import joookiwi.collection.java.callback.additional.CharConsumer;
@@ -45,7 +45,7 @@ public interface ShortStream
     //#region -------------------- Map methods --------------------
 
     ShortStream map(ShortUnaryOperator mapper);
-    <U extends @Nullable Object> Stream<U> mapToObj(ShortFunction<? extends U> mapper);
+    <U> Stream<U> mapToObj(ShortFunction<? extends U> mapper);
     BooleanStream mapToBoolean(ShortToBooleanFunction mapper);
     CharStream mapToChar(ShortToCharFunction mapper);
     ByteStream mapToByte(ShortToByteFunction mapper);
@@ -55,7 +55,7 @@ public interface ShortStream
     DoubleStream mapToDouble(ShortToDoubleFunction mapper);
 
     ShortStream flatMap(ShortFunction<? extends ShortStream> mapper);
-    <U extends @Nullable Object> Stream<U> flatMapToObj(ShortFunction<? extends Stream<? extends U>> mapper);
+    <U> Stream<U> flatMapToObj(ShortFunction<? extends Stream<? extends U>> mapper);
     BooleanStream flatMapToBoolean(ShortFunction<? extends BooleanStream> mapper);
     CharStream flatMapToChar(ShortFunction<? extends CharStream> mapper);
     ByteStream flatMapToByte(ShortFunction<? extends ByteStream> mapper);
@@ -65,7 +65,7 @@ public interface ShortStream
     DoubleStream flatMapToDouble(ShortFunction<? extends DoubleStream> mapper);
 
     ShortStream mapMulti(ShortObjConsumer<? super ShortConsumer> mapper);
-    <U extends @Nullable Object> Stream<U> mapMultiToObj(ShortObjConsumer<? super Consumer<U>> mapper);
+    <U> Stream<U> mapMultiToObj(ShortObjConsumer<? super Consumer<U>> mapper);
     BooleanStream mapMultiToBoolean(ShortObjConsumer<? super BooleanConsumer> mapper);
     CharStream mapMultiToChar(ShortObjConsumer<? super CharConsumer> mapper);
     ByteStream mapMultiToByte(ShortObjConsumer<? super ByteConsumer> mapper);
@@ -131,7 +131,7 @@ public interface ShortStream
 
     @Override ShortStream unordered();
 
-    //#region -------------------- As stream methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
     IntStream asIntStream();
 
@@ -141,14 +141,16 @@ public interface ShortStream
 
     DoubleStream asDoubleStream();
 
-    //#endregion -------------------- As stream methods --------------------
-
     Stream<Short> boxed();
 
-    @Override ShortIterator iterator();//TODO create interface ShortIterator
+    @Override ShortIterator iterator();
+
     @Override Spliterator.OfPrimitive<Short, ShortConsumer, ?> spliterator();//TODO create interface ShortSpliterator
 
     short[] toArray();
+    <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);
+
+    //#endregion -------------------- Conversion methods --------------------
 
     @Override void close();
     @Override ShortStream onClose(Runnable closeHandler);

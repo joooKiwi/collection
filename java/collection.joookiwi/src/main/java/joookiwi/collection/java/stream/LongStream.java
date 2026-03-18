@@ -8,6 +8,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
 import java.util.function.IntConsumer;
+import java.util.function.IntFunction;
 import java.util.function.LongBinaryOperator;
 import java.util.function.LongConsumer;
 import java.util.function.LongFunction;
@@ -17,7 +18,6 @@ import java.util.function.LongToIntFunction;
 import java.util.function.LongUnaryOperator;
 import java.util.function.ObjLongConsumer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
 import joookiwi.collection.java.callback.additional.CharConsumer;
@@ -45,7 +45,7 @@ public interface LongStream
     //#region -------------------- Map methods --------------------
 
     @Override LongStream map(LongUnaryOperator mapper);
-    @Override <U extends @Nullable Object> Stream<U> mapToObj(LongFunction<? extends U> mapper);
+    @Override <U> Stream<U> mapToObj(LongFunction<? extends U> mapper);
     BooleanStream mapToBoolean(LongToBooleanFunction mapper);
     CharStream mapToChar(LongToCharFunction mapper);
     ByteStream mapToByte(LongToByteFunction mapper);
@@ -55,7 +55,7 @@ public interface LongStream
     @Override DoubleStream mapToDouble(LongToDoubleFunction mapper);
 
     @Override LongStream flatMap(LongFunction<? extends java.util.stream.LongStream> mapper);
-    <U extends @Nullable Object> Stream<U> flatMapToObj(LongFunction<? extends Stream<? extends U>> mapper);
+    <U> Stream<U> flatMapToObj(LongFunction<? extends Stream<? extends U>> mapper);
     BooleanStream flatMapToBoolean(LongFunction<? extends BooleanStream> mapper);
     CharStream flatMapToChar(LongFunction<? extends CharStream> mapper);
     ByteStream flatMapToByte(LongFunction<? extends ByteStream> mapper);
@@ -65,7 +65,7 @@ public interface LongStream
     DoubleStream flatMapToDouble(LongFunction<? extends DoubleStream> mapper);
 
     @Override LongStream mapMulti(LongMapMultiConsumer mapper);
-    <U extends @Nullable Object> Stream<U> mapMultiToObj(LongObjConsumer<? super Consumer<U>> mapper);
+    <U> Stream<U> mapMultiToObj(LongObjConsumer<? super Consumer<U>> mapper);
     BooleanStream mapMultiToBoolean(LongObjConsumer<? super BooleanConsumer> mapper);
     CharStream mapMultiToChar(LongObjConsumer<? super CharConsumer> mapper);
     ByteStream mapMultiToByte(LongObjConsumer<? super ByteConsumer> mapper);
@@ -137,18 +137,18 @@ public interface LongStream
 
     //#region -------------------- Conversion methods --------------------
 
+    @Override Stream<Long> boxed();
+
     FloatStream asFloatStream();
 
-    @Override
-    DoubleStream asDoubleStream();
-
-    @Override Stream<Long> boxed();
+    @Override DoubleStream asDoubleStream();
 
     @Override LongIterator iterator();
 
-    @Override Spliterator.OfLong spliterator();
+    @Override Spliterator.OfLong spliterator();//TODO create interface LongSpliterator
 
     @Override long[] toArray();
+    <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);
 
     //#endregion -------------------- Conversion methods --------------------
     //#region -------------------- Close methods --------------------

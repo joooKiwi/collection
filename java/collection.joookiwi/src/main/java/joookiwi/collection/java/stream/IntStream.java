@@ -17,7 +17,6 @@ import java.util.function.IntUnaryOperator;
 import java.util.function.LongConsumer;
 import java.util.function.ObjIntConsumer;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -30,7 +29,6 @@ import joookiwi.collection.java.callback.additional.IntToFloatFunction;
 import joookiwi.collection.java.callback.additional.IntToShortFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.IntIterator;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -46,7 +44,7 @@ public interface IntStream
     //#region -------------------- Map methods --------------------
 
     @Override IntStream map(IntUnaryOperator mapper);
-    @Override <U extends @Nullable Object> Stream<U> mapToObj(IntFunction<? extends U> mapper);
+    @Override <U> Stream<U> mapToObj(IntFunction<? extends U> mapper);
     BooleanStream mapToBoolean(IntToBooleanFunction mapper);
     CharStream mapToChar(IntToCharFunction mapper);
     ByteStream mapToByte(IntToByteFunction mapper);
@@ -56,7 +54,7 @@ public interface IntStream
     @Override DoubleStream mapToDouble(IntToDoubleFunction mapper);
 
     @Override IntStream flatMap(IntFunction<? extends java.util.stream.IntStream> mapper);
-    <U extends @Nullable Object> Stream<U> flatMapToObj(IntFunction<? extends Stream<? extends U>> mapper);
+    <U> Stream<U> flatMapToObj(IntFunction<? extends Stream<? extends U>> mapper);
     BooleanStream flatMapToBoolean(IntFunction<? extends BooleanStream> mapper);
     CharStream flatMapToChar(IntFunction<? extends CharStream> mapper);
     ByteStream flatMapToByte(IntFunction<? extends ByteStream> mapper);
@@ -66,7 +64,7 @@ public interface IntStream
     DoubleStream flatMapToDouble(IntFunction<? extends DoubleStream> mapper);
 
     @Override IntStream mapMulti(IntMapMultiConsumer mapper);
-    <U extends @Nullable Object> Stream<U> mapMultiToObj(IntObjConsumer<? super Consumer<U>> mapper);
+    <U> Stream<U> mapMultiToObj(IntObjConsumer<? super Consumer<U>> mapper);
     BooleanStream mapMultiToBoolean(IntObjConsumer<? super BooleanConsumer> mapper);
     CharStream mapMultiToChar(IntObjConsumer<? super CharConsumer> mapper);
     ByteStream mapMultiToByte(IntObjConsumer<? super ByteConsumer> mapper);
@@ -148,9 +146,10 @@ public interface IntStream
 
     @Override IntIterator iterator();
 
-    @Override Spliterator.OfInt spliterator();
+    @Override Spliterator.OfInt spliterator();//TODO create interface IntSpliterator
 
     @Override int[] toArray();
+    <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);
 
     //#endregion -------------------- Conversion methods --------------------
     //#region -------------------- Close methods --------------------
