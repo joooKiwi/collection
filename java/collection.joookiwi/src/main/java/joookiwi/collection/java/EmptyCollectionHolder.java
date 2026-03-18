@@ -168,6 +168,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.emptyCollectionIterator;
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -2520,7 +2521,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     @Override public EmptyCollectionIterator<T> toIterator() { return emptyCollectionIterator(); }
 
-    @Override public Spliterator<T> toSpliterator() { return CollectionCreator.getInstance().Spliterator(); }
+    @Override public Spliterator<T> toSpliterator() { return emptySpliterator(); }
 
     //#endregion -------------------- To iterator --------------------
 
