@@ -6215,7 +6215,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     @Override public boolean equals(final @Nullable Object other) {
         if (other == null)
             return false;
-        if (this == other)
+        if (other == this)
             return true;
         if (other instanceof CollectionHolder<?> otherConverted)
             return otherConverted.isEmpty();
@@ -6228,7 +6228,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     public boolean equals(final @Nullable MinimalistCollectionHolder<?> other) {
         if (other == null)
             return false;
-        if (this == other)
+        if (other == this)
             return true;
         if (other instanceof CollectionHolder<?> otherConverted)
             return otherConverted.isEmpty();
@@ -6239,7 +6239,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     public boolean equals(final @Nullable CollectionHolder<?> other) {
         if (other == null)
             return false;
-        if (this == other)
+        if (other == this)
             return true;
         return other.isEmpty();
     }
@@ -6249,13 +6249,13 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#endregion -------------------- Equals --------------------
     //#region -------------------- Reference equals --------------------
 
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) @Override public boolean referenceEquals(final @Nullable Object                                other) { return this == other; }
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable MinimalistCollectionHolder<?>         other) { return this == other; }
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true) @Override public boolean referenceEquals(final @Nullable Object                                other) { return other == this; }
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable MinimalistCollectionHolder<?>         other) { return other == this; }
     @Contract(value = ALWAYS_FALSE_1,           pure = true)           public boolean referenceEquals(final @Nullable AbstractMinimalistCollectionHolder<?> other) { return false; }
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable CollectionHolder<?>                   other) { return this == other; }
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable CollectionHolder<?>                   other) { return other == this; }
     @Contract(value = ALWAYS_FALSE_1,           pure = true)           public boolean referenceEquals(final @Nullable AbstractCollectionHolder<?>           other) { return false; }
     @Contract(value = ALWAYS_FALSE_1,           pure = true)           public boolean referenceEquals(final @Nullable GenericCollectionHolder<?>            other) { return false; }
-    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable EmptyCollectionHolder<?>              other) { return this == other; }
+    @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)           public boolean referenceEquals(final @Nullable EmptyCollectionHolder<?>              other) { return other == this; }
 
     //#endregion -------------------- Reference equals --------------------
 

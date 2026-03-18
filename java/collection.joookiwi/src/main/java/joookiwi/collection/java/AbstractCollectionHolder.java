@@ -5720,7 +5720,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     @Override public boolean equals(final @Nullable Object other) {
         if (other == null)
             return false;
-        if (this == other)
+        if (other == this)
             return true;
 
         if (!(other instanceof MinimalistCollectionHolder<?> otherConverted))
@@ -5750,7 +5750,7 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Reference equals --------------------
 
     @Contract(value = IF_1ST_NULL_THEN_FALSE_1, pure = true)
-    @Override public boolean referenceEquals(final @Nullable Object other) { return this == other; }
+    @Override public boolean referenceEquals(final @Nullable Object other) { return other == this; }
 
     //#endregion -------------------- Reference equals --------------------
 
