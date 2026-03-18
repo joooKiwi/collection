@@ -1633,8 +1633,8 @@ public abstract class AbstractCollectionHolderForTest<T extends @Nullable Object
     //#region -------------------- Clone methods --------------------
 
     @Contract(ALWAYS_FAIL_0) @Override public final CollectionHolder<T> clone() { throw new RuntimeException("The method “clone” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_0) @Override public final CollectionHolder<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
-    @Contract(ALWAYS_FAIL_0) @Override public final CollectionHolder<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
+//    @Contract(ALWAYS_FAIL_0) @Override public final CollectionHolder<T> shallowClone() { throw new RuntimeException("The method “shallowClone” was not expected to be called in a test."); }
+//    @Contract(ALWAYS_FAIL_0) @Override public final CollectionHolder<T> deepClone() { throw new RuntimeException("The method “deepClone” was not expected to be called in a test."); }
 
     //#endregion -------------------- Clone methods --------------------
 

@@ -1409,13 +1409,13 @@ public class CollectionViewer<T extends @Nullable Object,
     @Contract(ALWAYS_NEW_0)
     @Override public CollectionViewer<T, REFERENCE> clone() { return (CollectionViewer<T, REFERENCE>) super.clone(); }
 
-    @MustBeInvokedByOverriders
-    @Contract(ALWAYS_NEW_0)
-    @Override public CollectionViewer<T, REFERENCE> shallowClone() { return clone(); }
-
-    @MustBeInvokedByOverriders
-    @Contract(ALWAYS_NEW_0)
-    @Override public CollectionViewer<T, CollectionHolder<T>> deepClone() { return new CollectionViewer<>(getReference().deepClone()); }
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public CollectionViewer<T, REFERENCE> shallowClone() { return clone(); }
+//
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public CollectionViewer<T, CollectionHolder<T>> deepClone() { return new CollectionViewer<>(getReference().deepClone()); }
 
     //#endregion -------------------- Clone methods --------------------
 

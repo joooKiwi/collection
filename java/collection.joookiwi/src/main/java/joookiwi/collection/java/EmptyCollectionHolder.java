@@ -6264,8 +6264,8 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
     //#region -------------------- Clone methods --------------------
 
     @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyCollectionHolder<T> clone() { return this; }
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyCollectionHolder<T> shallowClone() { return this; }
-    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyCollectionHolder<T> deepClone() { return this; }
+//    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyCollectionHolder<T> shallowClone() { return this; }
+//    @Contract(value = ALWAYS_THIS_0, pure = true) @Override public EmptyCollectionHolder<T> deepClone() { return this; }
 
     //#endregion -------------------- Clone methods --------------------
 

@@ -185,7 +185,6 @@ import joookiwi.collection.java.extended.SubdividedMutableArray;
 import joookiwi.collection.java.extended.iterator.ImmutableIterator;
 import joookiwi.collection.java.extended.iterator.ImmutableListIterator;
 import joookiwi.collection.java.helper.ArrayCreator;
-import joookiwi.collection.java.helper.CloneInvokator;
 import joookiwi.collection.java.helper.HashCodeCreator;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import joookiwi.collection.java.iterator.MinimalistCollectionIterator;
@@ -3175,25 +3174,25 @@ public class GenericCollectionHolder<T extends @Nullable Object>
     @Contract(ALWAYS_NEW_0)
     @Override public GenericCollectionHolder<T> clone() { return (GenericCollectionHolder<T>) super.clone(); }
 
-    @MustBeInvokedByOverriders
-    @Contract(ALWAYS_NEW_0)
-    @Override public GenericCollectionHolder<T> shallowClone() { return clone(); }
-
-
-    @MustBeInvokedByOverriders
-    @Contract(ALWAYS_NEW_0)
-    @Override public GenericCollectionHolder<T> deepClone() {
-        final var cloneInvokator = CloneInvokator.getInstance();
-        final var values = _array();
-        final var size = values.length;
-        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
-
-        var index = -1;
-        while (++index < size)
-            newArray[index] = cloneInvokator.cloneIfCloneable(values[index]);
-
-        return new GenericCollectionHolder<>(newArray);
-    }
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public GenericCollectionHolder<T> shallowClone() { return clone(); }
+//
+//
+//    @MustBeInvokedByOverriders
+//    @Contract(ALWAYS_NEW_0)
+//    @Override public GenericCollectionHolder<T> deepClone() {
+//        final var cloneInvokator = CloneInvokator.getInstance();
+//        final var values = _array();
+//        final var size = values.length;
+//        @SuppressWarnings("unchecked cast") final var newArray = (T[]) new Object[size];
+//
+//        var index = -1;
+//        while (++index < size)
+//            newArray[index] = cloneInvokator.cloneIfCloneable(values[index]);
+//
+//        return new GenericCollectionHolder<>(newArray);
+//    }
 
     //#endregion -------------------- Clone methods --------------------
 
