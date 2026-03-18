@@ -82,8 +82,8 @@ public final class ToString
         var sizeMinus1 = size - 1;
         var index = -1;
         while (++index < sizeMinus1)
-            string.append(asString(collection.get(index))).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_PREFIX_STRING + string + asString(collection.get(index)) + DEFAULT_JOIN_POSTFIX;
+            string.append(asString(collection.get(index))).append(", ");
+        return "[" + string + asString(collection.get(index)) + ']';
     }
 
     private static String __toString(final @Nullable Object [] collection,
@@ -92,8 +92,8 @@ public final class ToString
         var sizeMinus1 = size - 1;
         var index = -1;
         while (++index < sizeMinus1)
-            string.append(asString(collection[index])).append(DEFAULT_JOIN_SEPARATOR);
-        return DEFAULT_JOIN_PREFIX_STRING + string + asString(collection[index]) + DEFAULT_JOIN_POSTFIX;
+            string.append(asString(collection[index])).append(", ");
+        return "[" + string + asString(collection[index]) + ']';
     }
 
     //#endregion -------------------- Loop method --------------------
