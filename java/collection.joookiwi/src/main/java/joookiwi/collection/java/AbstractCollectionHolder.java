@@ -5772,9 +5772,11 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
     }
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public abstract AbstractCollectionHolder<T> shallowClone();
 
     @MustBeInvokedByOverriders
+    @Contract(ALWAYS_NEW_0)
     @Override public abstract AbstractCollectionHolder<T> deepClone();
 
     //#endregion -------------------- Clone methods --------------------
