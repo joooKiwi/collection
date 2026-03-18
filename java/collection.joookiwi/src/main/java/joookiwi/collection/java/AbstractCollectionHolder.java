@@ -2463,16 +2463,16 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- Map --------------------
 
-    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final ObjIntFunction<? super T, ? extends U> action) { return joookiwi.collection.java.method.Map.map(this, action); }
-    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final Function<? super T, ? extends U>       action) { return joookiwi.collection.java.method.Map.map(this, action); }
-    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final Supplier<? extends U>                  action) { return joookiwi.collection.java.method.Map.map(this, action); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final ObjIntFunction<? super T, ? extends U> transform) { return joookiwi.collection.java.method.Map.map(this, transform); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final Function<? super T, ? extends U>       transform) { return joookiwi.collection.java.method.Map.map(this, transform); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> map(final Supplier<? extends U>                  transform) { return joookiwi.collection.java.method.Map.map(this, transform); }
 
     //#endregion -------------------- Map --------------------
     //#region -------------------- Map indexed --------------------
 
-    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final IntObjFunction<? super T, ? extends U> action) { return MapIndexed.mapIndexed(this, action); }
-    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final IntFunction<? extends U>               action) { return MapIndexed.mapIndexed(this, action); }
-    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final Supplier<? extends U>                  action) { return MapIndexed.mapIndexed(this, action); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final IntObjFunction<? super T, ? extends U> transform) { return MapIndexed.mapIndexed(this, transform); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final IntFunction<? extends U>               transform) { return MapIndexed.mapIndexed(this, transform); }
+    @Override public <U extends @Nullable Object> CollectionHolder<U> mapIndexed(final Supplier<? extends U>                  transform) { return MapIndexed.mapIndexed(this, transform); }
 
     //#endregion -------------------- Map indexed --------------------
 
