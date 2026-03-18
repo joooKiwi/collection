@@ -274,6 +274,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
+import test.Types;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
@@ -301,7 +302,7 @@ public final class CollectionHolder_FromNullMinimalistExtensionFunction<T extend
     /// Tell that the instance is a **not** viewer instance
     public static final boolean IS_VIEWER = false;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
-    public static final String SIMPLIFIED_NAME = "null minimalist extension";
+    public static final String SIMPLIFIED_NAME = Types.NULL_MINIMALIST_EXTENSION;
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------

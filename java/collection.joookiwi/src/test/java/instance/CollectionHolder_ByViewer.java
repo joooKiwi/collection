@@ -128,6 +128,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
+import test.Types;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
@@ -156,7 +157,7 @@ public final class CollectionHolder_ByViewer<T extends @Nullable Object>
     /// Tell that the instance is a viewer instance
     public static final boolean IS_VIEWER = true;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
-    public static final String SIMPLIFIED_NAME = "normal viewer";
+    public static final String SIMPLIFIED_NAME = Types.NORMAL_VIEWER;
 
     /// The array received in the constructor
     public final T @Unmodifiable [] array;

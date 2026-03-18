@@ -6,6 +6,7 @@ import instance.CollectionHolderForTest;
 import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.intellij.lang.annotations.MagicConstant;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 import org.junit.jupiter.params.ParameterizedClass;
 
@@ -26,7 +27,7 @@ public final class InstanceClassUtil {
 
     public @Nullable Class<? extends EmptyCollectionException> __emptyExceptionClass;
 
-    private @Nullable String __type;
+    @MagicConstant(valuesFromClass = Types.class) private @NonNls @Nullable String __type;
 
     private boolean __isNull;
     private boolean __isNullInitialized = false;
@@ -65,7 +66,7 @@ public final class InstanceClassUtil {
     }
 
 
-    @MagicConstant(stringValues = {"normal", "minimalist", "normal viewer", "minimalist viewer" , "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() {
+    @MagicConstant(valuesFromClass = Types.class) public @NonNls String type() {
         final var value = __type;
         if (value != null)
             return value;

@@ -274,6 +274,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
+import test.Types;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
@@ -302,7 +303,7 @@ public final class CollectionHolder_FromArrayExtensionFunction<T extends @Nullab
     /// Tell that the instance is a **not** viewer instance
     public static final boolean IS_VIEWER = false;
     /// The simplified named to be used in the test “ParameterizedTest” or “ParameterizedClass”
-    public static final String SIMPLIFIED_NAME = "array extension";
+    public static final String SIMPLIFIED_NAME = Types.ARRAY_EXTENSION;
 
     /// The array received in the constructor
     public final T @Unmodifiable [] array;

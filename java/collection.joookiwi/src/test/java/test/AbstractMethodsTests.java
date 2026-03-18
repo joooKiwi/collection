@@ -8,6 +8,7 @@ import joookiwi.collection.java.exception.EmptyCollectionException;
 import joookiwi.collection.java.exception.NullCollectionException;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.Nullable;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
@@ -43,7 +44,7 @@ public class AbstractMethodsTests {
     ///
     /// If it has "extension" in it, then it directly uses the extension methods.
     /// Otherwise, it is on an already defined instance.
-    @MagicConstant(stringValues = {"normal", "minimalist", "normal viewer", "minimalist viewer", "normal extension", "minimalist extension", "array extension", "null normal extension", "null minimalist extension", "null array extension",}) public String type() { return util.type(); }
+    @MagicConstant(valuesFromClass = Types.class) public @NonNls String type() { return util.type(); }
 
     /// Tell if the [#instanceClass] is of the type `null`
     public boolean isNull() { return util.isNull(); }
