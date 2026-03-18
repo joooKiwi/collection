@@ -1,6 +1,7 @@
 package joookiwi.collection.java.method;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Enumeration;
@@ -14,6 +15,7 @@ import java.util.Spliterator;
 import joookiwi.collection.java.CollectionHolder;
 import joookiwi.collection.java.MinimalistCollectionHolder;
 import joookiwi.collection.java.exception.ImpossibleConstructionException;
+import joookiwi.collection.java.exception.IndexOutOfBoundsException;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
 import joookiwi.collection.java.iterator.CollectionIterator;
 import org.jetbrains.annotations.Contract;
@@ -60,6 +62,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         @SuppressWarnings("unchecked cast") final var value = (T[]) valueHolder.get();
         if (value != null)
             return value;
@@ -67,26 +70,6 @@ public final class ArrayCreator
         // We re-assign a new value since the old value is no longer referenced anywhere
         @SuppressWarnings("unchecked cast") final var newValue = (T[]) new Object[0];
         __emptyArray = new WeakReference<>(newValue);
-        return newValue;
-    }
-
-    /// Give an [empty Array][java.lang.reflect.Array] of the specified type.
-    ///
-    /// Note that it reuses the [empty Array][java.lang.reflect.Array] depending on the type received.
-    /// But, it does not hold any strong reference to the value returned
-    @SuppressWarnings("unchecked cast")
-    public static <T> T @Unmodifiable [] Array(final Class<? super T> clazz) {
-        if (clazz == Object.class)
-            return Array();
-
-        final var map = __otherEmptyArrays;
-        if (map.containsKey(clazz)) {
-            final var valueFound = map.get(clazz).get();
-            if (valueFound != null)
-                return (T[]) valueFound;
-        }
-        final var newValue = (T[]) java.lang.reflect.Array.newInstance(clazz, 0);
-        map.put(clazz, new WeakReference<>(newValue));
         return newValue;
     }
 
@@ -99,6 +82,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -118,6 +102,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -137,6 +122,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -156,6 +142,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -175,6 +162,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -194,6 +182,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -213,6 +202,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -232,6 +222,7 @@ public final class ArrayCreator
             return value;
         }
 
+        // We see if the value from the WeakReference still exists
         final var value = valueHolder.get();
         if (value != null)
             return value;
@@ -243,11 +234,55 @@ public final class ArrayCreator
     }
 
     //#endregion -------------------- ∅ --------------------
-    //#region -------------------- value --------------------
+    //#region -------------------- type --------------------
 
+    /// Give an [empty Array][java.lang.reflect.Array] of the specified type.
+    ///
+    /// Note that it reuses the [empty Array][java.lang.reflect.Array] depending on the type received.
+    /// But, it does not hold any strong reference to the value returned
+    ///
+    /// @param <T> The type
+    /// @param type The [Class] type to get a new empty array
     @Contract(value = ALWAYS_NEW_1, pure = true)
     @SuppressWarnings("unchecked cast")
-    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value) { return (T[]) new Object[]{value,}; }
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final Class<? extends T> type) {
+        if (type == Object.class)
+            return Array();
+
+        final var map = __otherEmptyArrays;
+        if (map.containsKey(type)) {
+            final var valueFound = map.get(type).get();
+            if (valueFound != null)
+                return (T[]) valueFound;
+        }
+        final var newValue = (T[]) Array.newInstance(type, 0);
+        map.put(type, new WeakReference<>(newValue));
+        return newValue;
+    }
+
+    @Contract(value = ALWAYS_NEW_2, pure = true)
+    @SuppressWarnings("unchecked cast")
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final Class<? extends T> type, int size) {
+        if (size == 0)
+            return Array(type);
+        if (size < 0)
+            throw new IndexOutOfBoundsException("No array can be created with a negative size (“" + size + "”).", size);//TODO: replace with a negative index exception instead
+        return (T[]) Array.newInstance(type, size);
+    }
+
+    //#endregion -------------------- type --------------------
+    //#region -------------------- value --------------------
+
+    @SuppressWarnings("unchecked cast")
+    @Contract(value = ALWAYS_NEW_1, pure = true)
+    public static <T extends @Nullable Object> T @Unmodifiable [] Array(final T value) {
+        if (value == null)
+            return (T[]) new Object[]{null,};
+
+        final var newArray = (T[]) Array.newInstance(value.getClass());
+        newArray[0] = value;
+        return newArray;
+    }
 
     @Contract(value = ALWAYS_NEW_1, pure = true)
     public static boolean @Unmodifiable [] Array(final boolean value) { return new boolean[]{value,}; }
