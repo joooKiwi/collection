@@ -5722,16 +5722,13 @@ public abstract class AbstractCollectionHolder<T extends @Nullable Object>
             return false;
         if (other == this)
             return true;
-
-        if (!(other instanceof MinimalistCollectionHolder<?> otherConverted))
+        if (!(other instanceof MinimalistCollectionHolder<?> otherConverted)) //Quick check without a lot of boilerplate methods to validate for the instanceof
             return false;
-
-        if (isEmpty()) {
+        if (isEmpty())
             if (other instanceof CollectionHolder<?> otherConverted2)
-                if (otherConverted2.isEmpty())
-                    return true;
-            return otherConverted.size() == 0;
-        }
+                return otherConverted2.isEmpty();
+            else
+                return otherConverted.size() == 0;
 
         final var size = size();
         if (size != otherConverted.size())
