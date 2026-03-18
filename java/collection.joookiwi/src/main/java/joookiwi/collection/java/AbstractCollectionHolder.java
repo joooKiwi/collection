@@ -290,9 +290,13 @@ import static joookiwi.collection.java.NumericConstants.NULL_INT;
 
 /// A definition of a [CollectionHolder] to have a common ancestor.
 /// No state or reference is held in this instance.
-/// It only uses the extension function for the method implementation
+/// It only uses the extension function for the method implementation.
 ///
 /// @param <T> The type
+/// @implNote The instance remove a good chuck of redundant call with either `null` or aliases as `final` methods.
+///           In the case of needed overriden, implementing [CollectionHolder] should be used directly instead.
+/// @see AbstractOf1CollectionHolder
+/// @see AbstractOf2CollectionHolder
 /// @see EmptyCollectionHolder
 /// @see GenericCollectionHolder
 /// @see CollectionViewer
