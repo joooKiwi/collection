@@ -1,16 +1,13 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.PrimitiveIterator;
 import java.util.function.LongConsumer;
-import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-
+@NotNullByDefault
 public class EmptyLongIterator
         extends EmptyIterator<Long>
-        implements PrimitiveIterator.OfLong {
+        implements LongIterator {
 
     //#region -------------------- Singleton usage --------------------
 
@@ -31,8 +28,6 @@ public class EmptyLongIterator
     }
 
     //#endregion -------------------- Singleton usage --------------------
-
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public long nextLong() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
 
     @Override public void forEachRemaining(final @Nullable LongConsumer action) {}
 

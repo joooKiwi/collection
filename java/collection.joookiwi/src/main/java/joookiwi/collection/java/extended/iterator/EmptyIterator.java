@@ -3,14 +3,12 @@ package joookiwi.collection.java.extended.iterator;
 import java.util.function.Consumer;
 import java.util.function.ObjIntConsumer;
 import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
-import joookiwi.collection.java.exception.UnsupportedMethodException;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 
 @NotNullByDefault
@@ -46,7 +44,15 @@ public class EmptyIterator<T extends @Nullable Object>
 
     @Contract(pure = true) @Override public @Range(from = 0, to = 0) int nextIndex() { return 0; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T next() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T       next()        { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public boolean nextBoolean() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public char    nextChar()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public byte    nextByte()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public short   nextShort()   { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public int     nextInt()     { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public long    nextLong()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public float   nextFloat()   { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public double  nextDouble()  { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
@@ -55,7 +61,15 @@ public class EmptyIterator<T extends @Nullable Object>
 
     @Contract(pure = true) @Override public @Range(from = -1, to = -1) int previousIndex() { return -1; }
 
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T previous() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public T       previous()        { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public boolean previousBoolean() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public char    previousChar()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public byte    previousByte()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public short   previousShort()   { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public int     previousInt()     { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public long    previousLong()    { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public float   previousFloat()   { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
+    @Contract(value = ALWAYS_FAIL_0, pure = true)           public double  previousDouble()  { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
 
     //#endregion -------------------- Previous methods --------------------
 

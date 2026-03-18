@@ -1,16 +1,13 @@
 package joookiwi.collection.java.extended.iterator;
 
-import java.util.PrimitiveIterator;
 import java.util.function.IntConsumer;
-import joookiwi.collection.java.exception.NoElementFoundInCollectionException;
-import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
-
+@NotNullByDefault
 public class EmptyIntIterator
         extends EmptyIterator<Integer>
-        implements PrimitiveIterator.OfInt {
+        implements IntIterator {
 
     //#region -------------------- Singleton usage --------------------
 
@@ -31,8 +28,6 @@ public class EmptyIntIterator
     }
 
     //#endregion -------------------- Singleton usage --------------------
-
-    @Contract(value = ALWAYS_FAIL_0, pure = true) @Override public int nextInt() { throw new NoElementFoundInCollectionException("An empty iterator has no value to retrieve."); }
 
     @Override public void forEachRemaining(final @Nullable IntConsumer action) {}
 
