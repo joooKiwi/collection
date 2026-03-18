@@ -165,12 +165,11 @@ public class ImmutableConcurrentSkipListSet<T>
         @Contract(ALWAYS_NEW_0)
         @Override public ImmutableIterator<T> iterator() { return new IteratorAsImmutableIterator<>(__reference.iterator()); }
 
-        @Contract(value = ALWAYS_NEW_0, pure = true)
-        @Override public Spliterator<T> spliterator() { return __reference.spliterator(); }
-
-
         @Contract(ALWAYS_NEW_0)
         @Override public ImmutableIterator<T> descendingIterator() { return new IteratorAsImmutableIterator<>(__reference.descendingIterator()); }
+
+        @Contract(value = ALWAYS_NEW_0, pure = true)
+        @Override public Spliterator<T> spliterator() { return __reference.spliterator(); }
 
         //#endregion -------------------- Iterator methods --------------------
         //#region -------------------- To array methods --------------------
@@ -476,11 +475,10 @@ public class ImmutableConcurrentSkipListSet<T>
     @Override public ImmutableIterator<T> iterator() { return new IteratorAsImmutableIterator<>(super.iterator()); }
 
     @Contract(ALWAYS_NEW_0)
-    @Override public Spliterator<T> spliterator() { return super.spliterator(); }
-
+    @Override public ImmutableIterator<T> descendingIterator() { return new IteratorAsImmutableIterator<>(super.descendingIterator()); }
 
     @Contract(ALWAYS_NEW_0)
-    @Override public ImmutableIterator<T> descendingIterator() { return new IteratorAsImmutableIterator<>(super.descendingIterator()); }
+    @Override public Spliterator<T> spliterator() { return super.spliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- To array methods --------------------

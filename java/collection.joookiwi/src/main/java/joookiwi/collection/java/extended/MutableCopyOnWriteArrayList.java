@@ -37,8 +37,6 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
         extends CopyOnWriteArrayList<T>
         implements MutableList<T> {
 
-    @Serial private static final long serialVersionUID = 5177738755614921832L;
-
     //#region -------------------- Sub class --------------------
 
     /// A view of a subdivided or reversed [MutableCopyOnWriteArrayList]
@@ -48,8 +46,6 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
             extends MutableCopyOnWriteArrayList<T> {
 
         //#region -------------------- Fields --------------------
-
-        @Serial private static final long serialVersionUID = -4303293806816374648L;
 
         private final List<T> __reference;
 
@@ -290,6 +286,9 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
     @Override public boolean add(final T value) { return super.add(value); }
 
     @Contract(mutates = "this")
+    @Override public boolean addIfAbsent(final T value) { return super.addIfAbsent(value); }
+
+    @Contract(mutates = "this")
     @Override public void addFirst(final T value) { super.addFirst(value); }
 
     @Contract(mutates = "this")
@@ -305,6 +304,9 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Contract(mutates = "this")
     @Override public boolean addAll(final int index, final @Unmodifiable Collection<? extends T> values) { return super.addAll(index, values); }
+
+    @Contract(mutates = "this")
+    @Override public int addAllAbsent(final @Unmodifiable Collection<? extends T> values) { return super.addAllAbsent(values); }
 
     //#endregion -------------------- Add methods --------------------
     //#region -------------------- Remove methods --------------------
@@ -361,7 +363,12 @@ public class MutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
 
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final T value, final int index) { return super.indexOf(value, index); }
+
+
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
+
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final T value, final int index) { return super.lastIndexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------

@@ -42,7 +42,7 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = 8483170757952943697L;
+    @Serial private static final long serialVersionUID = 2736991273859744942L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -249,7 +249,12 @@ public class ImmutableCopyOnWriteArrayList<T extends @Nullable Object>
 
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final @Nullable Object value) { return super.indexOf(value); }
 
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int indexOf(final T value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.indexOf(value, index); }
+
+
     @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final @Nullable Object value) { return super.lastIndexOf(value); }
+
+    @Override public @Range(from = -1, to = MAX_INT_VALUE) int lastIndexOf(final T value, final @Range(from = 0, to = MAX_INT_VALUE) int index) { return super.lastIndexOf(value, index); }
 
     //#endregion -------------------- Index methods --------------------
     //#region -------------------- For each methods --------------------
