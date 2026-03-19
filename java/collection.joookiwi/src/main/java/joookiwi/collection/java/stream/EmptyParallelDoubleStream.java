@@ -2,7 +2,6 @@ package joookiwi.collection.java.stream;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.OptionalDouble;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -22,7 +21,6 @@ import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.ObjDoubleConsumer;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -36,12 +34,14 @@ import joookiwi.collection.java.callback.additional.DoubleToShortFunction;
 import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.callback.additional.ObjDoubleFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
+import joookiwi.collection.java.extended.iterator.DoubleSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyDoubleIterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyDoubleSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -495,7 +495,7 @@ public class EmptyParallelDoubleStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyDoubleIterator iterator() { return EmptyDoubleIterator.getInstance(); }
-    @Override public Spliterator.OfDouble spliterator() { return CollectionCreator.getInstance().DoubleSpliterator(); }
+    @Override public DoubleSpliterator spliterator() { return emptyDoubleSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

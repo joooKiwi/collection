@@ -1,6 +1,5 @@
 package joookiwi.collection.java.stream;
 
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -27,6 +26,7 @@ import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.callback.additional.ObjBooleanConsumer;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.BooleanIterator;
+import joookiwi.collection.java.extended.iterator.BooleanSpliterator;
 import joookiwi.collection.java.optional.OptionalBoolean;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -131,7 +131,7 @@ public interface BooleanStream
 
     @Override BooleanIterator iterator();
 
-    @Override Spliterator.OfPrimitive<Boolean, BooleanConsumer, ?> spliterator();
+    @Override BooleanSpliterator spliterator();
 
     boolean[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

@@ -3,7 +3,6 @@ package joookiwi.collection.java.stream;
 import java.util.IntSummaryStatistics;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -24,7 +23,6 @@ import java.util.function.LongConsumer;
 import java.util.function.LongSupplier;
 import java.util.function.ObjIntConsumer;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.IntObjConsumer;
 import joookiwi.collection.java.callback.ObjIntFunction;
@@ -43,11 +41,13 @@ import joookiwi.collection.java.callback.additional.IntToShortFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
 import joookiwi.collection.java.extended.iterator.EmptyIntIterator;
+import joookiwi.collection.java.extended.iterator.IntSpliterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyIntSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -501,7 +501,7 @@ public class EmptySequentialIntStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyIntIterator iterator() { return EmptyIntIterator.getInstance(); }
-    @Override public Spliterator.OfInt spliterator() { return CollectionCreator.getInstance().IntSpliterator(); }
+    @Override public IntSpliterator spliterator() { return emptyIntSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

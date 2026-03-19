@@ -15,7 +15,6 @@ import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteBinaryOperator;
@@ -48,6 +47,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyByteSpliterator;
 import static joookiwi.collection.java.CollectionCreator.emptyOptionalByte;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
@@ -502,7 +502,7 @@ public class EmptySequentialByteStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyByteIterator iterator() { return EmptyByteIterator.getInstance(); }
-    @Override public ByteSpliterator spliterator() { return CollectionCreator.getInstance().ByteSpliterator(); }
+    @Override public ByteSpliterator spliterator() { return emptyByteSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

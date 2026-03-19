@@ -1,6 +1,5 @@
 package joookiwi.collection.java.stream;
 
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -15,7 +14,7 @@ import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
+
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanBinaryOperator;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
@@ -38,6 +37,7 @@ import joookiwi.collection.java.callback.additional.ObjBooleanConsumer;
 import joookiwi.collection.java.callback.additional.ObjBooleanFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
+import joookiwi.collection.java.extended.iterator.BooleanSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyBooleanIterator;
 import joookiwi.collection.java.optional.OptionalBoolean;
 import org.jetbrains.annotations.Contract;
@@ -45,6 +45,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyBooleanSpliterator;
 import static joookiwi.collection.java.CollectionCreator.emptyOptionalBoolean;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
@@ -476,7 +477,7 @@ public class EmptyParallelBooleanStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyBooleanIterator iterator() { return EmptyBooleanIterator.getInstance(); }
-    @Override public Spliterator.OfPrimitive<Boolean, BooleanConsumer, ?> spliterator() { return CollectionCreator.getInstance().BooleanSpliterator(); }
+    @Override public BooleanSpliterator spliterator() { return emptyBooleanSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

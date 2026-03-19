@@ -3,7 +3,6 @@ package joookiwi.collection.java.stream;
 import java.util.IntSummaryStatistics;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -29,6 +28,7 @@ import joookiwi.collection.java.callback.additional.IntToFloatFunction;
 import joookiwi.collection.java.callback.additional.IntToShortFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.IntIterator;
+import joookiwi.collection.java.extended.iterator.IntSpliterator;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -146,7 +146,7 @@ public interface IntStream
 
     @Override IntIterator iterator();
 
-    @Override Spliterator.OfInt spliterator();//TODO create interface IntSpliterator
+    @Override IntSpliterator spliterator();
 
     @Override int[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

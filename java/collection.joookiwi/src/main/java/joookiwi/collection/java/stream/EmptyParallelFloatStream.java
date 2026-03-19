@@ -11,7 +11,6 @@ import java.util.function.IntConsumer;
 import java.util.function.IntFunction;
 import java.util.function.LongConsumer;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -495,7 +494,7 @@ public class EmptyParallelFloatStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyFloatIterator iterator() { return EmptyFloatIterator.getInstance(); }
-    @Override public EmptyFloatSpliterator spliterator() { return CollectionCreator.getInstance().FloatSpliterator(); }
+    @Override public EmptyFloatSpliterator spliterator() { return EmptyFloatSpliterator.getInstance(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

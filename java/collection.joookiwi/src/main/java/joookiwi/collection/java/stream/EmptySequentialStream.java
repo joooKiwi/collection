@@ -27,7 +27,6 @@ import java.util.stream.DoubleStream;
 import java.util.stream.Gatherer;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -49,6 +48,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -484,7 +484,7 @@ public class EmptySequentialStream<T>
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyIterator<T> iterator() { return EmptyIterator.getInstance(); }
-    @Override public Spliterator<T> spliterator() { return CollectionCreator.getInstance().Spliterator(); }
+    @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

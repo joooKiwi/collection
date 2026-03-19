@@ -2,7 +2,6 @@ package joookiwi.collection.java.stream;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.OptionalDouble;
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleBinaryOperator;
@@ -29,6 +28,7 @@ import joookiwi.collection.java.callback.additional.DoubleToShortFunction;
 import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.DoubleIterator;
+import joookiwi.collection.java.extended.iterator.DoubleSpliterator;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -140,7 +140,7 @@ public interface DoubleStream
 
     @Override DoubleIterator iterator();
 
-    @Override Spliterator.OfDouble spliterator();
+    @Override DoubleSpliterator spliterator();
 
     @Override double[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

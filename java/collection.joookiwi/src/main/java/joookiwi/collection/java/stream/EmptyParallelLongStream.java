@@ -3,7 +3,6 @@ package joookiwi.collection.java.stream;
 import java.util.LongSummaryStatistics;
 import java.util.OptionalDouble;
 import java.util.OptionalLong;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -24,7 +23,6 @@ import java.util.function.LongToIntFunction;
 import java.util.function.LongUnaryOperator;
 import java.util.function.ObjLongConsumer;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -39,11 +37,13 @@ import joookiwi.collection.java.callback.additional.LongToShortFunction;
 import joookiwi.collection.java.callback.additional.ObjLongFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.EmptyLongIterator;
+import joookiwi.collection.java.extended.iterator.LongSpliterator;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyLongSpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_3;
@@ -497,7 +497,7 @@ public class EmptyParallelLongStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyLongIterator iterator() { return EmptyLongIterator.getInstance(); }
-    @Override public Spliterator.OfLong spliterator() { return CollectionCreator.getInstance().LongSpliterator(); }
+    @Override public LongSpliterator spliterator() { return emptyLongSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

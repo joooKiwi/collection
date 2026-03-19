@@ -1,6 +1,5 @@
 package joookiwi.collection.java.stream;
 
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -28,6 +27,7 @@ import joookiwi.collection.java.callback.additional.FloatConsumer;
 import joookiwi.collection.java.callback.additional.ObjCharConsumer;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.CharIterator;
+import joookiwi.collection.java.extended.iterator.CharSpliterator;
 import joookiwi.collection.java.optional.OptionalChar;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -132,7 +132,7 @@ public interface CharStream
 
     @Override CharIterator iterator();
 
-    @Override Spliterator.OfPrimitive<Character, CharConsumer, ?> spliterator();
+    @Override CharSpliterator spliterator();
 
     char[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

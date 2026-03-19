@@ -1,7 +1,6 @@
 package joookiwi.collection.java.stream;
 
 import java.util.OptionalDouble;
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -29,6 +28,7 @@ import joookiwi.collection.java.callback.additional.ShortToIntFunction;
 import joookiwi.collection.java.callback.additional.ShortToLongFunction;
 import joookiwi.collection.java.callback.additional.ShortUnaryOperator;
 import joookiwi.collection.java.extended.iterator.ShortIterator;
+import joookiwi.collection.java.extended.iterator.ShortSpliterator;
 import joookiwi.collection.java.optional.OptionalShort;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
@@ -145,7 +145,7 @@ public interface ShortStream
 
     @Override ShortIterator iterator();
 
-    @Override Spliterator.OfPrimitive<Short, ShortConsumer, ?> spliterator();//TODO create interface ShortSpliterator
+    @Override ShortSpliterator spliterator();
 
     short[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

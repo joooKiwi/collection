@@ -3,7 +3,6 @@ package joookiwi.collection.java.stream;
 import java.util.LongSummaryStatistics;
 import java.util.OptionalDouble;
 import java.util.OptionalLong;
-import java.util.Spliterator;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.DoubleConsumer;
@@ -30,6 +29,7 @@ import joookiwi.collection.java.callback.additional.LongToFloatFunction;
 import joookiwi.collection.java.callback.additional.LongToShortFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.extended.iterator.LongIterator;
+import joookiwi.collection.java.extended.iterator.LongSpliterator;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
@@ -145,7 +145,7 @@ public interface LongStream
 
     @Override LongIterator iterator();
 
-    @Override Spliterator.OfLong spliterator();//TODO create interface LongSpliterator
+    @Override LongSpliterator spliterator();
 
     @Override long[] toArray();
     <U extends @Nullable Object> U[] toArray(IntFunction<U[]> generator);

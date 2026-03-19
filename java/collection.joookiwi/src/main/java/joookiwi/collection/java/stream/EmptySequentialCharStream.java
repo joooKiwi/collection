@@ -1,6 +1,5 @@
 package joookiwi.collection.java.stream;
 
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -15,7 +14,6 @@ import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -39,6 +37,7 @@ import joookiwi.collection.java.callback.additional.ObjCharConsumer;
 import joookiwi.collection.java.callback.additional.ObjCharFunction;
 import joookiwi.collection.java.callback.additional.ShortConsumer;
 import joookiwi.collection.java.callback.additional.ShortSupplier;
+import joookiwi.collection.java.extended.iterator.CharSpliterator;
 import joookiwi.collection.java.extended.iterator.EmptyCharIterator;
 import joookiwi.collection.java.optional.OptionalChar;
 import org.jetbrains.annotations.Contract;
@@ -46,6 +45,7 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyCharSpliterator;
 import static joookiwi.collection.java.CollectionCreator.emptyOptionalChar;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
@@ -476,7 +476,7 @@ public class EmptySequentialCharStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyCharIterator iterator() { return EmptyCharIterator.getInstance(); }
-    @Override public Spliterator.OfPrimitive<Character, CharConsumer, ?> spliterator() { return CollectionCreator.getInstance().CharSpliterator(); }
+    @Override public CharSpliterator spliterator() { return emptyCharSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------

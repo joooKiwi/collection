@@ -1,7 +1,6 @@
 package joookiwi.collection.java.stream;
 
 import java.util.OptionalDouble;
-import java.util.Spliterator;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -16,7 +15,6 @@ import java.util.function.IntSupplier;
 import java.util.function.LongConsumer;
 import java.util.function.LongSupplier;
 import java.util.function.Supplier;
-import joookiwi.collection.java.CollectionCreator;
 import joookiwi.collection.java.annotation.Singleton;
 import joookiwi.collection.java.callback.additional.BooleanConsumer;
 import joookiwi.collection.java.callback.additional.ByteConsumer;
@@ -42,12 +40,14 @@ import joookiwi.collection.java.callback.additional.ShortToIntFunction;
 import joookiwi.collection.java.callback.additional.ShortToLongFunction;
 import joookiwi.collection.java.callback.additional.ShortUnaryOperator;
 import joookiwi.collection.java.extended.iterator.EmptyShortIterator;
+import joookiwi.collection.java.extended.iterator.ShortSpliterator;
 import joookiwi.collection.java.optional.OptionalShort;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
+import static joookiwi.collection.java.CollectionConstants.emptyShortSpliterator;
 import static joookiwi.collection.java.CollectionCreator.emptyOptionalShort;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
@@ -490,7 +490,7 @@ public class EmptyParallelShortStream
     //#region -------------------- Java methods --------------------
 
     @Override public EmptyShortIterator iterator() { return EmptyShortIterator.getInstance(); }
-    @Override public Spliterator.OfPrimitive<Short, ShortConsumer, ?> spliterator() { return CollectionCreator.getInstance().ShortSpliterator(); }
+    @Override public ShortSpliterator spliterator() { return emptyShortSpliterator(); }
 
     //#endregion -------------------- Java methods --------------------
     //#region -------------------- Close methods --------------------
