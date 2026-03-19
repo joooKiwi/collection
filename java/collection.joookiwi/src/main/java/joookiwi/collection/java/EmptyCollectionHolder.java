@@ -167,7 +167,6 @@ import org.jetbrains.annotations.Range;
 import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
-import static joookiwi.collection.java.CollectionConstants.emptyCollectionIterator;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_2;
@@ -274,6 +273,7 @@ import static joookiwi.collection.java.method.VectorCreator.Vector;
 /// A [CollectionHolder] with no values (as a [singleton][Singleton] instance)
 ///
 /// @param <T> The type
+/// @see CollectionConstants#emptyCollectionHolder
 /// @see GenericMinimalistCollectionHolder
 /// @see GenericCollectionHolder
 @Singleton
@@ -2519,7 +2519,7 @@ public class EmptyCollectionHolder<T extends @Nullable Object>
 
     //#region -------------------- To iterator --------------------
 
-    @Override public EmptyCollectionIterator<T> toIterator() { return emptyCollectionIterator(); }
+    @Override public EmptyCollectionIterator<T> toIterator() { return EmptyCollectionIterator.getInstance(); }
 
     @Override public Spliterator<T> toSpliterator() { return emptySpliterator(); }
 
