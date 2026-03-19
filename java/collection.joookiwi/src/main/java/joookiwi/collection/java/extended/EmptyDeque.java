@@ -7,7 +7,6 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 
-import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NULL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
@@ -63,7 +62,7 @@ public class EmptyDeque<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public EmptyIterator<T> descendingIterator() { return emptyIterator(); }
+    @Override public EmptyIterator<T> descendingIterator() { return EmptyIterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Clone methods --------------------

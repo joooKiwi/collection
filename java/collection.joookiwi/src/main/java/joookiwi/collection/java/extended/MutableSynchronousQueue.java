@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import joookiwi.collection.java.exception.UnexpectedCloneableExceptionThrownError;
+import joookiwi.collection.java.extended.iterator.EmptyIterator;
 import joookiwi.collection.java.extended.iterator.IteratorAsMutableIterator;
 import joookiwi.collection.java.extended.iterator.MutableIterator;
 import joookiwi.collection.java.stream.EmptyParallelStream;
@@ -25,10 +26,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_FAIRNESS;
-import static joookiwi.collection.java.CollectionConstants.emptyIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CollectionConstants.emptySequentialStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
@@ -251,7 +249,7 @@ public class MutableSynchronousQueue<T>
     //#region -------------------- Iterator methods --------------------
 
     @Contract(ALWAYS_NEW_0)
-    @Override public MutableIterator<T> iterator() { return new IteratorAsMutableIterator<>(emptyIterator()); }
+    @Override public MutableIterator<T> iterator() { return new IteratorAsMutableIterator<>(EmptyIterator.getInstance()); }
 
     @Contract(pure = true)
     @Override public Spliterator<T> spliterator() { return emptySpliterator(); }
@@ -280,10 +278,10 @@ public class MutableSynchronousQueue<T>
     //#region -------------------- Stream methods --------------------
 
     @Contract(pure = true)
-    @Override public EmptySequentialStream<T> stream() { return emptySequentialStream(); }
+    @Override public EmptySequentialStream<T> stream() { return EmptySequentialStream.getInstance(); }
 
     @Contract(pure = true)
-    @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
+    @Override public EmptyParallelStream<T> parallelStream() { return EmptyParallelStream.getInstance(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Clone methods --------------------

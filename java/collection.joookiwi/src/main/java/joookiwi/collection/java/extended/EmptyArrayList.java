@@ -19,10 +19,7 @@ import org.jetbrains.annotations.Unmodifiable;
 
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_HASH_CODE;
-import static joookiwi.collection.java.CollectionConstants.emptyIterator;
-import static joookiwi.collection.java.CollectionConstants.emptyParallelStream;
 import static joookiwi.collection.java.CollectionConstants.emptySpliterator;
-import static joookiwi.collection.java.CollectionConstants.emptySequentialStream;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_1ST_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
@@ -109,9 +106,9 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- For each methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Contract(pure = true) @Override public EmptyIterator<T>     iterator(               ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(               ) { return emptyIterator(); }
-    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(final int index) { return emptyIterator(); }
+    @Contract(pure = true) @Override public EmptyIterator<T>     iterator(               ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(               ) { return EmptyIterator.getInstance(); }
+    @Contract(pure = true) @Override public EmptyIterator<T> listIterator(final int index) { return EmptyIterator.getInstance(); }
     @Contract(pure = true) @Override public Spliterator<T>    spliterator(               ) { return emptySpliterator(); }
 
     //#endregion -------------------- Iterator methods --------------------
@@ -124,9 +121,9 @@ public class EmptyArrayList<T extends @Nullable Object>
     //#endregion -------------------- To array methods --------------------
     //#region -------------------- Stream methods --------------------
 
-    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return emptySequentialStream(); }
+    @Contract(pure = true) @Override public EmptySequentialStream<T> stream() { return EmptySequentialStream.getInstance(); }
 
-    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return emptyParallelStream(); }
+    @Contract(pure = true) @Override public EmptyParallelStream<T> parallelStream() { return EmptyParallelStream.getInstance(); }
 
     //#endregion -------------------- Stream methods --------------------
     //#region -------------------- Sublist methods --------------------

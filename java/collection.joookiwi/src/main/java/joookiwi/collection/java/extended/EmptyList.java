@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNullByDefault;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 
-import static joookiwi.collection.java.CollectionConstants.emptyIterator;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_THIS_0;
@@ -73,9 +72,9 @@ public class EmptyList<T extends @Nullable Object>
     //#endregion -------------------- As reverse methods --------------------
     //#region -------------------- Iterator methods --------------------
 
-    @Override public EmptyIterator<T> listIterator() { return emptyIterator(); }
+    @Override public EmptyIterator<T> listIterator() { return EmptyIterator.getInstance(); }
 
-    @Override public EmptyIterator<T> listIterator(final int index) { return emptyIterator(); }
+    @Override public EmptyIterator<T> listIterator(final int index) { return EmptyIterator.getInstance(); }
 
     //#endregion -------------------- Iterator methods --------------------
     //#region -------------------- Comparison methods --------------------
