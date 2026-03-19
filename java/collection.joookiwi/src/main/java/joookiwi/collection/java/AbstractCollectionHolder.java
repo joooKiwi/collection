@@ -299,6 +299,7 @@ import static joookiwi.collection.java.NumericConstants.NULL_INT;
 /// @see AbstractOf2CollectionHolder
 /// @see EmptyCollectionHolder
 /// @see GenericCollectionHolder
+/// @see ArrayAsCollectionHolder
 /// @see CollectionViewer
 @NotNullByDefault
 public abstract class AbstractCollectionHolder<T extends @Nullable Object>
