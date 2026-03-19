@@ -24,6 +24,7 @@ import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_1;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_2;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_FAIL_3;
+import static joookiwi.collection.java.CommonContracts.ALWAYS_FALSE_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_0;
 import static joookiwi.collection.java.CommonContracts.ALWAYS_NEW_1;
 import static joookiwi.collection.java.NumericConstants.MAX_INT_VALUE;
@@ -38,7 +39,7 @@ public class ImmutableLinkedTransferQueue<T>
 
     //#region -------------------- Fields --------------------
 
-    @Serial private static final long serialVersionUID = -1860333235856970101L;
+    @Serial private static final long serialVersionUID = -1338676328608207777L;
 
     private final int __size;
     private final boolean __isEmpty;
@@ -84,6 +85,15 @@ public class ImmutableLinkedTransferQueue<T>
 
     //#region -------------------- Supported methods --------------------
 
+    //#region -------------------- Consumer methods --------------------
+
+    @Contract(value = ALWAYS_FALSE_0, pure = true)
+    @Override public boolean hasWaitingConsumer() { return false; }
+
+    @Contract(pure = true)
+    @Override public @Range(from = 0, to = 0) int getWaitingConsumerCount() { return 0; }
+
+    //#endregion -------------------- Consumer methods --------------------
     //#region -------------------- Size methods --------------------
 
     @Contract(pure = true)
