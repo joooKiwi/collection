@@ -66,7 +66,6 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final  @Nullable Byte initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.byteValue(), 1), null); }
 
@@ -74,7 +73,6 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final short initialCapacity) { super(max(initialCapacity, 1), null); }
 
@@ -82,7 +80,6 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Nullable Short initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.shortValue(), 1), null); }
 
@@ -90,7 +87,6 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final int initialCapacity) { super(max(initialCapacity, 1), null); }
 
@@ -98,7 +94,6 @@ public class MutablePriorityBlockingQueue<T>
     /// with the `initialCapacity` received (_or [16][joookiwi.collection.java.CollectionConstants#DEFAULT_INITIAL_CAPACITY] if it was `null`_)
     /// with its [natural ordering][Comparator#naturalOrder]
     ///
-    /// @throws IllegalArgumentException The `initialCapacity` was negative
     /// @implNote Use a [Comparable] type on [T] to avoid [ClassCastException]
     public MutablePriorityBlockingQueue(final @Nullable Integer initialCapacity) { super(initialCapacity == null ? DEFAULT_INITIAL_CAPACITY : max(initialCapacity.intValue(), 1), null); }
 
