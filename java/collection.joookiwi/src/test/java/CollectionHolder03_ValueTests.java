@@ -1,3 +1,4 @@
+import condition.DisableIfArrayCondition;
 import condition.DisableIfNormalCondition;
 import condition.DisableIfViewerCondition;
 import instance.CollectionHolderForTest;
@@ -716,7 +717,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @ExtendWith({DisableIfNormalCondition.class, DisableIfViewerCondition.class,})
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfArrayCondition.class, DisableIfViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             public final instances rootInstance = instances.this;
 

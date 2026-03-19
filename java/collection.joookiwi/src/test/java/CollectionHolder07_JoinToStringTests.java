@@ -1,3 +1,4 @@
+import condition.DisableIfArrayCondition;
 import condition.DisableIfNormalCondition;
 import condition.DisableIfNormalViewerCondition;
 import instance.CollectionHolderForTest;
@@ -596,7 +597,7 @@ import static value.Arrays.EMPTY;
 
         //#endregion -------------------- Required test constructor --------------------
 
-        @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfArrayCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             public final instances rootInstance = instances.this;
 

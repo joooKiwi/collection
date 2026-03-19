@@ -35,6 +35,9 @@ public final class InstanceClassUtil {
     private boolean __isNormal;
     private boolean __isNormalInitialized = false;
 
+    private boolean __isArray;
+    private boolean __isArrayInitialized = false;
+
     private boolean __isNormalViewer;
     private boolean __isNormalViewerInitialized = false;
 
@@ -70,7 +73,31 @@ public final class InstanceClassUtil {
         final var value = __type;
         if (value != null)
             return value;
-        return __type = getStaticStringField(instanceClass, "SIMPLIFIED_NAME");
+
+        final var newValue = __type = getStaticStringField(instanceClass, "SIMPLIFIED_NAME");
+        if (newValue == Types.NORMAL)
+            return newValue;
+        if (newValue == Types.MINIMALIST)
+            return newValue;
+        if (newValue == Types.ARRAY)
+            return newValue;
+        if (newValue == Types.NORMAL_VIEWER)
+            return newValue;
+        if (newValue == Types.MINIMALIST_VIEWER)
+            return newValue;
+        if (newValue == Types.NORMAL_EXTENSION)
+            return newValue;
+        if (newValue == Types.MINIMALIST_EXTENSION)
+            return newValue;
+        if (newValue == Types.ARRAY_EXTENSION)
+            return newValue;
+        if (newValue == Types.NULL_NORMAL_EXTENSION)
+            return newValue;
+        if (newValue == Types.NULL_MINIMALIST_EXTENSION)
+            return newValue;
+        if (newValue == Types.NULL_ARRAY_EXTENSION)
+            return newValue;
+        throw new RuntimeException("The type is not one of the value of in “test.Types”.");
     }
 
     public boolean isNull() {
@@ -86,8 +113,17 @@ public final class InstanceClassUtil {
         if (__isNormalInitialized)
             return __isNormal;
 
-        final var value = __isNormal = type().equals("normal");
+        final var value = __isNormal = type() == Types.NORMAL;
         __isNormalInitialized = true;
+        return value;
+    }
+
+    public boolean isArray() {
+        if (__isArrayInitialized)
+            return __isArray;
+
+        final var value = __isArray = type() == Types.ARRAY;
+        __isArrayInitialized = true;
         return value;
     }
 
@@ -95,7 +131,7 @@ public final class InstanceClassUtil {
         if (__isNormalViewerInitialized)
             return __isNormalViewer;
 
-        final var value = __isNormalViewer = type().equals("normal viewer");
+        final var value = __isNormalViewer = type() == Types.NORMAL_VIEWER;
         __isNormalViewerInitialized = true;
         return value;
     }

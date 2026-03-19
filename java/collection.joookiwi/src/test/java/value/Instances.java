@@ -33,6 +33,7 @@ import instance.ArrayAsJavaTransferQueue;
 import instance.ArrayAsJavaTreeSet;
 import instance.ArrayAsJavaVector;
 import instance.CollectionHolderForTest;
+import instance.CollectionHolder_ByArrayCollection;
 import instance.CollectionHolder_ByMinimalistViewer;
 import instance.CollectionHolder_ByGenericCollection;
 import instance.CollectionHolder_ByMinimalistCollection;
@@ -74,7 +75,7 @@ public final class Instances {
     @SuppressWarnings("unchecked cast") public static final Class<CollectionHolderForTest<?, ?>>[] everyCollectionInstances = (Class<CollectionHolderForTest<?, ?>>[]) new Class[]{
             CollectionHolder_ByMinimalistCollection.class,
             CollectionHolder_ByGenericCollection.class,
-//            CollectionHolder_ByArrayCollection.class,
+            CollectionHolder_ByArrayCollection.class,
             CollectionHolder_ByMinimalistViewer.class,
             CollectionHolder_ByViewer.class,
             CollectionHolder_FromMinimalistExtensionFunction.class,
@@ -89,7 +90,7 @@ public final class Instances {
     @SuppressWarnings("unchecked cast") public static final Class<CollectionHolderForTest<?, ?>>[] everyInstances = (Class<CollectionHolderForTest<?, ?>>[]) new Class[]{
             CollectionHolder_ByMinimalistCollection.class,
             CollectionHolder_ByGenericCollection.class,
-//            CollectionHolder_ByArrayCollection.class,
+            CollectionHolder_ByArrayCollection.class,
             CollectionHolder_ByMinimalistViewer.class,
             CollectionHolder_ByViewer.class,
     };
@@ -97,7 +98,7 @@ public final class Instances {
     public static final Arguments[] everyInstancesAsArguments = {
             Arguments.of(Named.of("collection (by minimalist)",        CollectionHolder_ByMinimalistCollection.class)),
             Arguments.of(Named.of("collection (by normal)",            CollectionHolder_ByGenericCollection.class)),
-//            Arguments.of(Named.of("collection (by array)",             CollectionHolder_ByArrayCollection.class)),
+            Arguments.of(Named.of("collection (by array)",             CollectionHolder_ByArrayCollection.class)),
             Arguments.of(Named.of("collection (by minimalist viewer)", CollectionHolder_ByMinimalistViewer.class)),
             Arguments.of(Named.of("collection (by normal viewer)",     CollectionHolder_ByViewer.class)),
     };

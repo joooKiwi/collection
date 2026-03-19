@@ -19,8 +19,12 @@ public class AbstractMethodsTests {
     //#region -------------------- Fields --------------------
 
     /// The [CollectionHolderForTest] that should be used for the tests
+    ///
+    /// @implNote The value is the same as [#stringInstance]
     public final CollectionHolderForTest<?, ?> instance;
     /// The [CollectionHolderForTest] that should be used for the tests (with [String] as the type)
+    ///
+    /// @implNote The value is the same as [#instance]
     public final CollectionHolderForTest<String, ?> stringInstance;
     /// The reusable class that contains all the necessary elements
     public final InstanceClassUtil util;
@@ -51,6 +55,9 @@ public class AbstractMethodsTests {
 
     /// Tell if the [#instanceClass] is of the type [GenericCollectionHolder][joookiwi.collection.java.GenericCollectionHolder]
     public boolean isNormal() { return util.isNormal(); }
+
+    /// Tell if the [#instanceClass] is of the type [ArrayAsCollectionHolder][joookiwi.collection.java.ArrayAsCollectionHolder]
+    public boolean isArray() { return util.isArray(); }
 
     /// Tell if the [#instanceClass] is of the type [CollectionViewer][joookiwi.collection.java.CollectionViewer]
     public boolean isNormalViewer() { return util.isNormalViewer(); }

@@ -49,6 +49,9 @@ public abstract class AbstractInstancesTests {
     /// Tell if the [#instanceClass] is of the type [GenericCollectionHolder][joookiwi.collection.java.GenericCollectionHolder]
     public boolean isNormal() { return util.isNormal(); }
 
+    /// Tell if the [#instanceClass] is of the type [ArrayAsCollectionHolder][joookiwi.collection.java.ArrayAsCollectionHolder]
+    public boolean isArray() { return util.isArray(); }
+
     /// Tell if the [#instanceClass] is of the type [CollectionViewer][joookiwi.collection.java.CollectionViewer]
     public boolean isNormalViewer() { return util.isNormalViewer(); }
 

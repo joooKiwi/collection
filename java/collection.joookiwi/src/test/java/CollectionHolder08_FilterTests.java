@@ -1,3 +1,4 @@
+import condition.DisableIfArrayCondition;
 import condition.DisableIfMinimalistCondition;
 import condition.DisableIfNormalCondition;
 import condition.DisableIfNormalViewerCondition;
@@ -175,7 +176,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
 
         //#endregion -------------------- Required test configuration --------------------
 
-        @ExtendWith({DisableIfNormalCondition.class, DisableIfNormalViewerCondition.class,})
+        @ExtendWith({DisableIfNormalCondition.class, DisableIfArrayCondition.class, DisableIfNormalViewerCondition.class,})
         @DisplayName("get() being called") @TestInstance(PER_CLASS) @Nested class GetBeingCalled {
             public final instances rootInstance = instances.this;
 
@@ -532,7 +533,7 @@ import static value.ReusableFields_Null.NULL_VARARGS;
             @DisplayName("3 fields (null at center)") @Test void test3_nullCenter() { assertArrayEquals(AB,               newInstance(A_NULL_B).filterNotNull().toArray()); }
             @DisplayName("3 fields (null at end)")    @Test void test3_nullEnd()    { assertArrayEquals(AB,               newInstance(AB_NULL) .filterNotNull().toArray()); }
 
-            @ExtendWith({DisableIfMinimalistCondition.class, DisableIfViewerCondition.class,})
+            @ExtendWith({DisableIfMinimalistCondition.class, DisableIfArrayCondition.class, DisableIfViewerCondition.class,})
             @DisplayName("Same instance") @TestInstance(PER_CLASS) @Nested class SameInstance {
                 public final instances rootInstance = instances.this;
 
