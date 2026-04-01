@@ -17,6 +17,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -53,7 +54,7 @@ export function takeWhile<const T, const S extends T, >(collection: Nullable<| M
 export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return takeWhileByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -96,11 +97,11 @@ export function takeWhileByMinimalistCollectionHolder<const T, const S extends T
 export function takeWhileByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function takeWhileByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
@@ -135,9 +136,9 @@ export function takeWhileByCollectionHolder<const T, const S extends T, >(collec
 export function takeWhileByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function takeWhileByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, collection.size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)
@@ -172,11 +173,11 @@ export function takeWhileByArray<const T, const S extends T, >(collection: Nulla
 export function takeWhileByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function takeWhileByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1ArgumentByArray(collection, size, predicate as (value: T,) => boolean,),)
     if (predicate.length >= 2)

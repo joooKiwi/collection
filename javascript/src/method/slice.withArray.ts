@@ -16,6 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -38,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function sliceWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: readonly number[],): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithArrayByCollectionHolder(collection, indices,)
     if (isArray(collection,))
@@ -67,13 +68,13 @@ export function sliceWithArray<const T, >(collection: Nullable<| MinimalistColle
  */
 export function sliceWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const indicesSize = indices.length
     if (indicesSize == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
@@ -90,13 +91,13 @@ export function sliceWithArrayByMinimalistCollectionHolder<const T, >(collection
  */
 export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: readonly number[],): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const indicesSize = indices.length
     if (indicesSize == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
@@ -113,13 +114,13 @@ export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable
  */
 export function sliceWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, indices: readonly number[],): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const indicesSize = indices.length
     if (indicesSize == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }
 

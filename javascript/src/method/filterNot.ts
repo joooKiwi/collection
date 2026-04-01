@@ -17,6 +17,7 @@ import type {MinimalistCollectionHolder}                 from "../MinimalistColl
 import type {BooleanCallback, RestrainedBooleanCallback} from "../type/callback"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -61,7 +62,7 @@ export function filterNot<const T, const S extends T, >(collection: Nullable<| M
 export function filterNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterNot<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -112,11 +113,11 @@ export function filterNotByMinimalistCollectionHolder<const T, const S extends T
 export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterNotByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)
@@ -159,9 +160,9 @@ export function filterNotByCollectionHolder<const T, const S extends T, >(collec
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterNotByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, predicate as (value: T,) => boolean, collection.size,),)
     if (predicate.length >= 2)
@@ -204,11 +205,11 @@ export function filterNotByArray<const T, const S extends T, >(collection: Nulla
 export function filterNotByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
 export function filterNotByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.length
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (predicate.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1ArgumentByArray(collection, predicate as (value: T,) => boolean, size,),)
     if (predicate.length >= 2)

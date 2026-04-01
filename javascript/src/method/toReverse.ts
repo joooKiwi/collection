@@ -16,6 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}                               from "../CollectionConstants"
+import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
@@ -75,7 +76,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
 export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0(collection,)
@@ -138,7 +139,7 @@ export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nul
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverseByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByMinimalistCollectionHolder(collection,)
@@ -200,7 +201,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverseByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByMinimalistCollectionHolder(collection,)
@@ -262,7 +263,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
 export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
 export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (to == null)
         if (from == null)
             return __core0ByArray(collection,)
@@ -296,20 +297,20 @@ function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
     return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, collection.size,),)
+        return EmptyCollectionHolder.get
 }
 
 function __core0ByArray<const T, >(collection: readonly T[],) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __allByArray(collection, size,),)
 }
 
@@ -334,7 +335,7 @@ function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
@@ -342,7 +343,7 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
@@ -352,7 +353,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
 function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
@@ -379,7 +380,7 @@ function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | Collec
 function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, from: number, to: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
@@ -391,7 +392,7 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
@@ -405,7 +406,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
 function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
     const endingIndex = __endingIndex(to, size,)
@@ -436,7 +437,7 @@ function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T>
 function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, to: number,) {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
@@ -446,7 +447,7 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, collection.size,)
     if (endingIndex === 0)
@@ -457,7 +458,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
 function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)

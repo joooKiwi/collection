@@ -24,6 +24,7 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 
 import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
 import {CollectionConstants}                            from "./CollectionConstants"
+import {EmptyCollectionHolder}                          from "./EmptyCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -1425,7 +1426,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
         if (this.isEmpty)
-            return CollectionConstants.EMPTY_COLLECTION_HOLDER
+            return EmptyCollectionHolder.get
         if (this.hasNull)
             return new CollectionConstants.LazyGenericCollectionHolder(() => {
                 const array = this._array

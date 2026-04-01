@@ -16,6 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -35,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return filterNotNullByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -60,11 +61,11 @@ export function filterNotNull<const T, >(collection: Nullable<| MinimalistCollec
  */
 export function filterNotNullByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)
     let index = -1
@@ -84,9 +85,9 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
  */
 export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.hasNull)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNull(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
@@ -101,11 +102,11 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
  */
 export function filterNotNullByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<NonNullable<T>> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.length
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const temporaryArray = new Array<T>(size,)
     let index = -1

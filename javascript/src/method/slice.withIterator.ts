@@ -16,6 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -38,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: Iterator<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return sliceWithIteratorByCollectionHolder(collection, indices,)
     if (isArray(collection,))
@@ -67,13 +68,13 @@ export function sliceWithIterator<const T, >(collection: Nullable<| MinimalistCo
  */
 export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: Iterator<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
@@ -90,13 +91,13 @@ export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collect
  */
 export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: Iterator<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
@@ -113,13 +114,13 @@ export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nulla
  */
 export function sliceWithIteratorByArray<const T, >(collection: Nullable<readonly T[]>, indices: Iterator<number>,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const iteratorResult = indices.next()
     if (iteratorResult.done)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, iteratorResult.value,),)
 }
 

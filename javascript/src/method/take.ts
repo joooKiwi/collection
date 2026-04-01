@@ -16,6 +16,7 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -40,7 +41,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function take<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArray(collection,))
@@ -71,7 +72,7 @@ export function take<const T, >(collection: Nullable<| MinimalistCollectionHolde
  */
 export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByMinimalistCollectionHolder(collection, n,)
 }
 
@@ -90,7 +91,7 @@ export function takeByMinimalistCollectionHolder<const T, >(collection: Nullable
  */
 export function takeByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByCollectionHolder(collection, n,)
 }
 
@@ -109,7 +110,7 @@ export function takeByCollectionHolder<const T, >(collection: Nullable<Collectio
  */
 export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     return __coreByArray(collection, n,)
 }
 
@@ -119,15 +120,15 @@ export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: nu
 function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
     const size = collection.size
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(0,),],)
     if (n > 0)
@@ -136,7 +137,7 @@ function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistColl
         else
             return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n,),)
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
@@ -146,15 +147,15 @@ function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistColl
 
 function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
     if (n > 0)
@@ -165,7 +166,7 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
 
     const size = collection.size
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
@@ -176,15 +177,15 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
 function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
         throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
     if (n === Number.NEGATIVE_INFINITY)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
         return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
     if (n === 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (n === 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[0] as T,],)
     if (n > 0)
@@ -193,7 +194,7 @@ function __coreByArray<const T,>(collection: readonly T[], n: number,): Collecti
         else
             return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n,),)
     if (n <= -size)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)

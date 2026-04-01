@@ -17,6 +17,7 @@ import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 import type {ValueIndexWithReturnCallback} from "../type/callback"
 
 import {CollectionConstants}           from "../CollectionConstants"
+import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -42,7 +43,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function mapNotNull<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
         return mapNotNullByCollectionHolder(collection, transform,)
     if (isArray(collection,))
@@ -75,11 +76,11 @@ export function mapNotNull<const T, const U extends NonNullable<unknown>, >(coll
  */
 export function mapNotNullByMinimalistCollectionHolder<const T, const U extends NonNullable<unknown>, >(collection: Nullable<MinimalistCollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.size
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (transform.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => Nullable<U>, size,),)
     if (transform.length >= 2)
@@ -104,9 +105,9 @@ export function mapNotNullByMinimalistCollectionHolder<const T, const U extends 
  */
 export function mapNotNullByCollectionHolder<const T, const U extends NonNullable<unknown>, >(collection: Nullable<CollectionHolder<T>>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (transform.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(collection, transform as (value: T,) => Nullable<U>, collection.size,),)
     if (transform.length >= 2)
@@ -131,11 +132,11 @@ export function mapNotNullByCollectionHolder<const T, const U extends NonNullabl
  */
 export function mapNotNullByArray<const T, const U extends NonNullable<unknown>, >(collection: Nullable<readonly T[]>, transform: ValueIndexWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
 
     const size = collection.length
     if (size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_HOLDER
+        return EmptyCollectionHolder.get
     if (transform.length == 1)
         return new CollectionConstants.LazyGenericCollectionHolder(() => __with1ArgumentByArray(collection, transform as (value: T,) => Nullable<U>, size,),)
     if (transform.length >= 2)
