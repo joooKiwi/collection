@@ -37,7 +37,7 @@ export function __get<const T, >(array: readonly T[], index: number,): T {
 
     const indexToRetrieve = index + size
     if (indexToRetrieve < 0)
-        throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (${indexToRetrieve} after calculation) is under 0.`, index,)
+        throw new IndexOutOfBoundsException(`Index out of bound. The index “${index}” (“${indexToRetrieve}” after calculation) is under 0.`, index,)
     return array[indexToRetrieve] as T
 }
 
