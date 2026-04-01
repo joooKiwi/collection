@@ -13,6 +13,7 @@
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
@@ -61,7 +62,7 @@ import type {CollectionIteratorName}                                            
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
 export interface CollectionIterator<out T = unknown, >
-    extends IterableIterator<T, AfterLastValueInCollectionIteratorSymbol, unknown> {
+    extends IterableIterator<T, | BeforeFirstValueInCollectionIteratorSymbol | AfterLastValueInCollectionIteratorSymbol, unknown> {
 
     //#region -------------------- Size methods --------------------
 
@@ -136,7 +137,7 @@ export interface CollectionIterator<out T = unknown, >
     get nextValue(): T
 
     /** Retrieve the next value in the line */
-    next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol>
+    next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol>
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
@@ -156,7 +157,7 @@ export interface CollectionIterator<out T = unknown, >
     get previousIndex(): NullOrNumber
 
     /** Retrieve the previous value in the line */
-    previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol>
+    previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol>
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------

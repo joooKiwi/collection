@@ -11,7 +11,7 @@
 //··························································
 
 import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
-import type {IteratorValue}              from "./IteratorValue"
+import type {InsideIteratorValue}        from "./InsideIteratorValue"
 
 /**
  * An {@link IteratorValue iterator value} made to retrieve a {@link value}
@@ -20,8 +20,7 @@ import type {IteratorValue}              from "./IteratorValue"
  * @see GenericCollectionIteratorValue
  */
 export interface CollectionIteratorValue<out T = unknown, >
-    extends IteratorValue<T>,
-            IteratorYieldResult<T> {
+    extends InsideIteratorValue<T> {
 
     /** The {@link MinimalistCollectionHolder collection} to use in the {@link CollectionIteratorValue.value get value} */
     get collection(): MinimalistCollectionHolder<T>
@@ -29,23 +28,5 @@ export interface CollectionIteratorValue<out T = unknown, >
 
     /** The index to retrieve in the {@link collection} by the {@link CollectionIteratorValue.value get value} */
     get index(): number
-
-
-    /** Tell that the {@link CollectionIteratorValue iterator value} is able to progress (<i>at the moment of its creation</i>) */
-    isDone(): false
-
-    /**
-     * Tell that the {@link CollectionIteratorValue iterator value} is able to progress (<i>at the moment of its creation</i>)
-     *
-     * @alias CollectionIteratorValue.isDone
-     */
-    get done(): false
-
-    /** Tell that the {@link CollectionIteratorValue iterator value} is <b>not</b> able to progress (<i>at the moment of its creation</i>) */
-    isNotDone(): true
-
-
-    /** The value to retrieve by the iterator */
-    get value(): T
 
 }

@@ -16,6 +16,7 @@ import type {MinimalistCollectionHolder}                                        
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
 import type {CollectionIteratorValue}                                                              from "./value/CollectionIteratorValue"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
+import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
@@ -230,7 +231,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> {
+    public next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericAfterLastIteratorValue.get
 
@@ -377,7 +378,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> {
+    public previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericBeforeFirstIteratorValue.get
 

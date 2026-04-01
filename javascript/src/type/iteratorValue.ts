@@ -10,12 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-export type * from "./callback"
-export type * from "./isEmpty"
-export type * from "./isNotEmpty"
-export type * from "./iteratorValue"
-export type * from "./keyOf"
-export type * from "./possibleInstance"
-export type * from "./toStringTag"
-export type * from "./symbol"
-export type * from "./TypedArray"
+import type {InsideIteratorValue}  from "../iterator/value/InsideIteratorValue"
+import type {OutsideIteratorValue} from "../iterator/value/OutsideIteratorValue"
+
+export type PossibleIteratorValue<T = unknown, Symbol extends symbol = symbol, > = | InsideIteratorValue<T>
+                                                                                   | OutsideIteratorValue<Symbol>

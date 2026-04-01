@@ -11,6 +11,7 @@
 //··························································
 
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
+import type {OutsideIteratorValue}                                                                 from "./value/OutsideIteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
@@ -63,7 +64,7 @@ export class EmptyCollectionIterator
     public get nextIndex(): null { return null }
     public get nextValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
-    public next(... _: readonly unknown[]): IteratorReturnResult<AfterLastValueInCollectionIteratorSymbol>
+    public next(... _: readonly unknown[]): OutsideIteratorValue<AfterLastValueInCollectionIteratorSymbol>
     public next() { return GenericAfterLastIteratorValue.get }
 
     //#endregion -------------------- Next methods --------------------
@@ -74,7 +75,7 @@ export class EmptyCollectionIterator
     public get previousIndex(): null { return null }
     public get previousValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
-    public previous(... _: readonly unknown[]): IteratorReturnResult<BeforeFirstValueInCollectionIteratorSymbol>
+    public previous(... _: readonly unknown[]): OutsideIteratorValue<BeforeFirstValueInCollectionIteratorSymbol>
     public previous() { return GenericBeforeFirstIteratorValue.get }
 
     //#endregion -------------------- Previous methods --------------------
