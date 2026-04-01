@@ -46,12 +46,16 @@ describe("CollectionIteratorTest", () => {
         },)
         describe("iterator result", () => {
             describe("next", () => {
-                test("done",  () => expect(instance.next().done,).toBeTrue(),)
-                test("value", () => expect(instance.next().value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
+                test("done",      () => expect(instance.next().done,).toBeTrue(),)
+                test("isDone",    () => expect(instance.next().isDone(),).toBeTrue(),)
+                test("isNotDone", () => expect(instance.next().isNotDone(),).toBeFalse(),)
+                test("value",     () => expect(instance.next().value,).toBe(CollectionConstants.AFTER_LAST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
             describe("previous", () => {
-                test("done",  () => expect(instance.previous().done,).toBeTrue(),)
-                test("value", () => expect(instance.previous().value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
+                test("done",      () => expect(instance.previous().done,).toBeTrue(),)
+                test("isDone",    () => expect(instance.previous().isDone(),).toBeTrue(),)
+                test("isNotDone", () => expect(instance.previous().isNotDone(),).toBeFalse(),)
+                test("value",     () => expect(instance.previous().value,).toBe(CollectionConstants.BEFORE_FIRST_VALUE_IN_ITERATOR_SYMBOL,),)
             },)
         },)
         test("for‥of", () => expect(() => { for (const _ of instance); },).not.toThrow(),)

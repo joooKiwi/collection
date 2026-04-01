@@ -10,21 +10,23 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {newEmptyIterator}          from "./helper/newEmptyIterator"
 import {CollectionHolderFromArray} from "./instance/CollectionHolderFromArray"
 import {sizeValues}                from "./value/sizes"
 
-import {GenericCollectionIterator} from "../src/iterator/GenericCollectionIterator"
+import {EmptyCollectionIterator}             from "../src/iterator/EmptyCollectionIterator"
+import {GenericCollectionIterator}           from "../src/iterator/GenericCollectionIterator"
 import {GenericCollectionIterator_SizeAlias} from "./instance/GenericCollectionIterator_SizeAlias"
 
 describe("CollectionIteratorTest (size)", () => {
 
     describe("EmptyCollectionIterator", () => {
-        test("size",       () => expect(newEmptyIterator().size,).toBe(0,),)
-        test("length",     () => expect(newEmptyIterator().length,).toBe(0,),)
-        test("count",      () => expect(newEmptyIterator().count,).toBe(0,),)
-        test("isEmpty",    () => expect(newEmptyIterator().isEmpty,).toBeTrue(),)
-        test("isNotEmpty", () => expect(newEmptyIterator().isNotEmpty,).toBeFalse(),)
+        const instance = EmptyCollectionIterator.get
+
+        test("size",       () => expect(instance.size,).toBe(0,),)
+        test("length",     () => expect(instance.length,).toBe(0,),)
+        test("count",      () => expect(instance.count,).toBe(0,),)
+        test("isEmpty",    () => expect(instance.isEmpty,).toBeTrue(),)
+        test("isNotEmpty", () => expect(instance.isNotEmpty,).toBeFalse(),)
     },)
 
     describe("aliases", () => {
