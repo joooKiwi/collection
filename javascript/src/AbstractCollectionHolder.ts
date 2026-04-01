@@ -156,7 +156,12 @@ import {toUpperCaseStringByCollectionHolder}                       from "./metho
  *
  * @note The non-aliased described by the {@link CollectionHolder} are called when possible
  * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T The type
+ * @see AbstractCollectionHolderOf1
+ * @see AbstractCollectionHolderOf2
  * @see EmptyCollectionHolder
+ * @see ArrayAsCollectionHolder
+ * @see SetAsCollectionHolder
  * @see GenericCollectionHolder
  * @see LazyCollectionHolder
  */
@@ -1674,7 +1679,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- JavaScript methods --------------------
 
     public [Symbol.iterator](): CollectionIterator<T> {
-        return toIteratorByCollectionHolder(this,)
+        return this.toIterator()
     }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
@@ -1687,7 +1692,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- To iterator --------------------
 
     public toIterator(): CollectionIterator<T> {
-        return this[Symbol.iterator]()
+        return toIteratorByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To iterator --------------------

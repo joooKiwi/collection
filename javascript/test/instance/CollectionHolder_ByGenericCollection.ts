@@ -391,11 +391,6 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override toReverse(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> { return this.instance.toReverse(from, to,) }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public override [Symbol.iterator](): CollectionIterator<T> { return this.instance[Symbol.iterator]() }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] { return this.instance.toArray() }
@@ -404,6 +399,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override toMutableSet(): Set<T> { return this.instance.toMutableSet() }
     public override toMap(): ReadonlyMap<number, T> { return this.instance.toMap() }
     public override toMutableMap(): Map<number, T> { return this.instance.toMutableMap() }
+    public override toIterator(): CollectionIterator<T> { return this.instance.toIterator() }
+
 
 
     public override toString(): string { return this.instance.toString() }

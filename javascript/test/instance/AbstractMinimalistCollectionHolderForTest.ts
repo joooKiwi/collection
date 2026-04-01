@@ -549,14 +549,12 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByMinimalistCollectionHolder(this,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] {
         return toArrayByMinimalistCollectionHolder(this,)

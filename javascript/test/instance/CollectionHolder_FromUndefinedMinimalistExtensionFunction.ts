@@ -651,14 +651,12 @@ export class CollectionHolder_FromUndefinedMinimalistExtensionFunction<const T, 
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByMinimalistCollectionHolder(undefined,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] {
         return toArrayByMinimalistCollectionHolder(undefined,)

@@ -706,14 +706,12 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByCollectionHolder<T>(this,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] {
         return toArrayByCollectionHolder<T>(this,)

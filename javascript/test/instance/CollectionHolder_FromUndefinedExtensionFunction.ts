@@ -649,14 +649,12 @@ export class CollectionHolder_FromUndefinedExtensionFunction<const T, >
     }
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
+    //#region -------------------- Conversion methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override toIterator(): CollectionIterator<T> {
         return toIteratorByCollectionHolder(undefined,)
     }
 
-    //#endregion -------------------- JavaScript methods --------------------
-    //#region -------------------- Conversion methods --------------------
 
     public override toArray(): readonly T[] {
         return toArrayByCollectionHolder(undefined,)

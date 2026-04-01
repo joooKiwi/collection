@@ -4256,6 +4256,7 @@ export interface CollectionHolder<out T = unknown, >
      * A JavaScript way to implement a "for‥of" over the {@link CollectionHolder collection
      *
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/iterator
+     * @alias CollectionHolder.toIterator
      */
     [Symbol.iterator](): CollectionIterator<T>
 

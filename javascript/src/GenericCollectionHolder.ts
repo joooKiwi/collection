@@ -1625,14 +1625,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- To reverse --------------------
 
     //#endregion -------------------- Reordering methods --------------------
-    //#region -------------------- JavaScript methods --------------------
-
-    public override [Symbol.iterator](): CollectionIterator<T> { return toIteratorByArray(this._array,) }
-
-    //#endregion -------------------- JavaScript methods --------------------
     //#region -------------------- Conversion methods --------------------
 
     //#region -------------------- To other structure --------------------
+
+    public override toIterator(): CollectionIterator<T> { return toIteratorByArray(this._array,) }
 
     public override toArray(): readonly T[] { return this.#array }
     public override toMutableArray(): T[] { return toMutableArrayByArray(this._array,) }

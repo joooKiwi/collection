@@ -814,7 +814,9 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract [Symbol.iterator](): CollectionIterator<T>
+    public [Symbol.iterator](): never {
+        throw new Error("The method “Symbol.iterator” was not expected to be called.",)
+    }
 
     public get [Symbol.toStringTag](): CollectionHolderName {
         return "CollectionHolder"
@@ -825,9 +827,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     //#region -------------------- To other structure --------------------
 
-    public toIterator(): CollectionIterator<T> {
-        return this[Symbol.iterator]()
-    }
+    public abstract toIterator(): CollectionIterator<T>
 
 
     public abstract toArray(): readonly T[]
