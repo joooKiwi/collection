@@ -19,7 +19,7 @@ import {EmptyCollectionValueHolder} from "./value/EmptyCollectionValueHolder"
  * An implementation of an empty {@link CollectionHandler}
  *
  * @beta
- * @deprecated Replace with {@link EmptyCollectionHolder}. This will be removed in v2.0
+ * @deprecated Replace with {@link EmptyCollectionHolder}. This will be removed in v2.1
  */
 export class EmptyCollectionHandler
     implements CollectionHandler<never> {

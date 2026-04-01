@@ -19,7 +19,7 @@ import type {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsEx
  * A holder to have a singular {@link value}
  * and tell if it is valid via its {@link isForbidden} or {@link cause} getter methods
  *
- * @beta
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export interface ValueHolder<out T = unknown, > {
 

@@ -33,6 +33,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @see CollectionHandlerByIterable
  * @see CollectionHandlerByIterableWithSizeOf1
  * @see CollectionHandlerByIterableWithSizeOf2
+ * @deprecated Replace with {@link JsIterableAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByIterableWithSize<const T = unknown,
     const REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,

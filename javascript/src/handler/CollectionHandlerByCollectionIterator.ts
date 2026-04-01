@@ -33,7 +33,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @beta
  * @see CollectionHandlerByCollectionIteratorOf1
  * @see CollectionHandlerByCollectionIteratorOf2
- * @deprecated Replace with {@link GenericCollectionIterator}. This will be removed in v2.0
+ * @deprecated Replace with {@link IteratorAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByCollectionIterator<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,

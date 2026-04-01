@@ -22,6 +22,7 @@ import {AbstractCollectionHandlerWithIterableOrIterator} from "./AbstractCollect
  * @see CollectionHandlerByIterableWithSize
  * @see CollectionHandlerByIterableWithSizeOf1
  * @see CollectionHandlerByIterableWithSizeOf2
+ * @deprecated Replace with {@link JsIterableAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByIterable<const T = unknown,
     const REFERENCE extends Iterable<T> = Iterable<T>,

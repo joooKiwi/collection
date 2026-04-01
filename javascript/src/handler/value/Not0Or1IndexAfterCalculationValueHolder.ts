@@ -19,8 +19,8 @@ import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsExcepti
  * because of an index that was not 1, 0, -1 or -2
  * after it was calculated
  *
- * @beta
  * @see Not0Or1IndexValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class Not0Or1IndexAfterCalculationValueHolder
     implements ValueHolder<never> {

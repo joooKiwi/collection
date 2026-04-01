@@ -19,7 +19,7 @@ import {AbstractCollectionHandlerBy2Values} from "./AbstractCollectionHandlerBy2
  *
  * @see CollectionHandlerByArray
  * @see CollectionHandlerByArrayOf1
- * @deprecated Replace with {@link ArrayOf2AsCollectionHolder}. This will be removed in v2.0
+ * @deprecated Replace with {@link CollectionHolderOf2} or {@link ArrayOf2AsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByArrayOf2<const T = unknown,
     const REFERENCE extends readonly [T, T,] = readonly [T, T,],

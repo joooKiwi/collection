@@ -17,7 +17,7 @@ import {AbstractCollectionHandlerWithIterableOrIterator} from "./AbstractCollect
 /**
  * An implementation of a {@link CollectionHandler} for an {@link Iterator}
  *
- * @beta
+ * @deprecated Replace with {@link JsIteratorAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByIterator<const T = unknown,
     const REFERENCE extends Iterator<T, unknown, unknown> = Iterator<T, unknown, unknown>,

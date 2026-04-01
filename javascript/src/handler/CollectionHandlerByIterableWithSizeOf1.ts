@@ -24,6 +24,7 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @see CollectionHandlerByIterable
  * @see CollectionHandlerByIterableWithSize
  * @see CollectionHandlerByIterableWithSizeOf2
+ * @deprecated Replace with {@link CollectionHolderOf1}. This will be removed in v2.1
  */
 export class CollectionHandlerByIterableWithSizeOf1<const T = unknown,
     const REFERENCE extends PossibleIterableWithSize<T> = PossibleIterableWithSize<T>,

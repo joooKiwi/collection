@@ -19,7 +19,7 @@ import {EmptyCollectionException} from "../../exception/EmptyCollectionException
  * throw a {@link EmptyCollectionException}
  * and give if it {@link isForbidden is forbidden}
  *
- * @beta
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class EmptyCollectionValueHolder
     implements ValueHolder<never> {

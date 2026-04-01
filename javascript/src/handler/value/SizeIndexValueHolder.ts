@@ -18,8 +18,8 @@ import {IndexOutOfBoundsException} from "../../exception/IndexOutOfBoundsExcepti
  * A {@link ValueHolder} meant to throw a {@link IndexOutOfBoundsException}
  * because the <b>index</b> was the {@link CollectionHolder collection} {@link CollectionHolder.size size}
  *
- * @beta
  * @see SizeIndexAfterCalculationValueHolder
+ * @deprecated Since the handler will be removed, this should no longer be usable. This will be removed in version 2.1
  */
 export class SizeIndexValueHolder
     implements ValueHolder<never> {
