@@ -10,14 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {LazyGenericCollectionHolder} from "../../src/LazyGenericCollectionHolder"
+import {LazyCollectionHolder} from "../../src/LazyCollectionHolder"
 
 /** A {@link CollectionHolder} that have no end and always have a next value to <b>a</b> */
 export class InfiniteCollectionHolder
-    extends LazyGenericCollectionHolder<'a'> {
+    extends LazyCollectionHolder<'a'> {
 
     public constructor() {
-        super({ *[Symbol.iterator]() { while (true) yield 'a' },} satisfies Iterable<'a'>,)
+        super({ *[Symbol.iterator]() { while (true) yield 'a' }, } satisfies Iterable<'a'>,)
     }
 
 }

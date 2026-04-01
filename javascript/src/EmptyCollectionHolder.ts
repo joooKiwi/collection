@@ -41,7 +41,7 @@ import {prefixAndPostfixOnly}                    from "./method/joinToString"
  *
  * @see GenericMinimalistCollectionHolder
  * @see GenericCollectionHolder
- * @see LazyGenericCollectionHolder
+ * @see LazyCollectionHolder
  * @singleton
  */
 export class EmptyCollectionHolder

@@ -158,7 +158,7 @@ import {toUpperCaseStringByCollectionHolder}                       from "./metho
  * @note This class should be inherited if new classes are being made to be more usable by the tools
  * @see EmptyCollectionHolder
  * @see GenericCollectionHolder
- * @see LazyGenericCollectionHolder
+ * @see LazyCollectionHolder
  */
 export abstract class AbstractCollectionHolder<const T = unknown, >
     extends AbstractMinimalistCollectionHolder<T>

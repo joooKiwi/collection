@@ -11,7 +11,7 @@
 //··························································
 
 import {GenericCollectionHolder_JoinToStringAlias}                                                                                  from "./instance/GenericCollectionHolder_JoinToStringAlias"
-import {LazyGenericCollectionHolder_JoinToStringAlias}                                                                              from "./instance/LazyGenericCollectionHolder_JoinToStringAlias"
+import {LazyCollectionHolder_JoinToStringAlias}                                                                                     from "./instance/LazyCollectionHolder_JoinToStringAlias"
 import {A, AB, ABCD, EMPTY}                                                                                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
@@ -38,8 +38,8 @@ describe("CollectionHolderTest (joinToString)", () => {
     },)
 
     describe("alias (join)", () => {
-        test("GenericCollectionHolder",     () => expect(new GenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
-        test("LazyGenericCollectionHolder", () => expect(new LazyGenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
+        test("GenericCollectionHolder", () => expect(new GenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolder",    () => expect(new LazyCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
 
         test("all", () => {
             const method = jest.spyOn(joinToStringModule, "joinToString",)

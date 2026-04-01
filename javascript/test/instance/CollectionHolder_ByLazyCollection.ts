@@ -14,45 +14,35 @@ import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} fro
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
-import type {CollectionHandler}                                                                                                                                                                                                                                                 from "../../src/handler/CollectionHandler"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "../../src/type/possibleInstance"
 
-import {LazyGenericCollectionHolder}     from "../../src/LazyGenericCollectionHolder"
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
+import {LazyCollectionHolder}            from "../../src/LazyCollectionHolder"
 
-/** A class to test the functionality of a {@link LazyGenericCollectionHolder} */
+/** A class to test the functionality of a {@link LazyCollectionHolder} */
 export class CollectionHolder_ByLazyCollection<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
-    public readonly instance: LazyGenericCollectionHolderForTest<T>
+    public readonly instance: LazyCollectionHolderForTest<T>
 
     public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
         super()
         const $this = this
         this.instance = new class CollectionHolder_CountingGetByLazyCollection
-            extends LazyGenericCollectionHolder<T> {
+            extends LazyCollectionHolder<T>
+            implements LazyCollectionHolderForTest<T> {
 
             public override get(index: number,): T {
                 $this.amountOfCall++
                 return super.get(index,)
             }
 
-            public get handler(): CollectionHandler<T> { return this._handler }
+            public get innerCollection(): CollectionHolder<T> { return this._innerCollection }
 
         }(array,)
-    }
-
-    public get handler(): CollectionHandler<T> {
-        return this.instance.handler
-    }
-
-    /** Retrieve the internal value of the {@link LazyGenericCollectionHolder._handler} and return the current instance afterward */
-    public retrieveHandler(): this {
-        this.handler
-        return this
     }
 
     //#region -------------------- Size methods --------------------
@@ -434,9 +424,9 @@ export class CollectionHolder_ByLazyCollection<const T, >
 
 }
 
-interface LazyGenericCollectionHolderForTest<T,>
-    extends LazyGenericCollectionHolder<T> {
+interface LazyCollectionHolderForTest<T,>
+    extends LazyCollectionHolder<T> {
 
-    readonly handler: CollectionHandler<T>
+    readonly innerCollection: CollectionHolder<T>
 
 }

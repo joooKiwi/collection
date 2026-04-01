@@ -22,7 +22,7 @@ import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIt
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
-import type {LazyGenericCollectionHolder}       from "./LazyGenericCollectionHolder"
+import type {LazyCollectionHolder}              from "./LazyCollectionHolder"
 import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
 import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
 
@@ -70,7 +70,7 @@ export class CollectionConstants {
     static #EmptyCollectionHolder?: typeof EmptyCollectionHolder
     static #GenericCollectionHolder?: typeof GenericCollectionHolder
     static #GenericMinimalistCollectionHolder?: typeof GenericMinimalistCollectionHolder
-    static #LazyGenericCollectionHolder?: typeof LazyGenericCollectionHolder
+    static #LazyCollectionHolder?: typeof LazyCollectionHolder
 
     //#endregion -------------------- Fields held --------------------
 
@@ -459,9 +459,13 @@ export class CollectionConstants {
         return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link LazyGenericCollectionHolder} */
-    public static get LazyGenericCollectionHolder(): typeof LazyGenericCollectionHolder {
-        return CollectionConstants.#LazyGenericCollectionHolder ??= require("./LazyGenericCollectionHolder",).LazyGenericCollectionHolder
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link LazyCollectionHolder}
+     *
+     * @deprecated Use the {@link LazyCollectionHolder} instance directly. This will be removed in version 2.1
+     */
+    public static get LazyGenericCollectionHolder(): typeof LazyCollectionHolder {
+        return CollectionConstants.#LazyCollectionHolder ??= require("./LazyCollectionHolder",).LazyCollectionHolder
     }
 
     //#endregion -------------------- Constructor references --------------------

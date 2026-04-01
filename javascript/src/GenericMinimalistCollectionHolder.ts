@@ -48,7 +48,7 @@ import {isSetByStructure}                        from "./method/isSetByStructure
  *
  * @typeParam T The element type
  * @see GenericCollectionHolder
- * @see LazyGenericCollectionHolder
+ * @see LazyCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericMinimalistCollectionHolder<const T = unknown, >

@@ -11,7 +11,7 @@
 //··························································
 
 import {GenericCollectionHolder_SizeAlias}             from "./instance/GenericCollectionHolder_SizeAlias"
-import {LazyGenericCollectionHolder_SizeAlias}         from "./instance/LazyGenericCollectionHolder_SizeAlias"
+import {LazyCollectionHolder_SizeAlias}                from "./instance/LazyCollectionHolder_SizeAlias"
 import {everyExtensionMethodInstances, everyInstances} from "./value/instances"
 import {sizeValues}                                    from "./value/sizes"
 
@@ -34,9 +34,9 @@ describe("CollectionHolderTest (size)", () => {
             test("length", () => expect(new GenericCollectionHolder_SizeAlias().execute(it => it.length,).amountOfCall,).toBe(1,),)
             test("count",  () => expect(new GenericCollectionHolder_SizeAlias().execute(it => it.count,).amountOfCall,).toBe(1,),)
         },)
-        describe("LazyGenericCollectionHolder", () => {
-            test("length", () => expect(new LazyGenericCollectionHolder_SizeAlias().execute(it => it.length,).amountOfCall,).toBe(1,),)
-            test("count",  () => expect(new LazyGenericCollectionHolder_SizeAlias().execute(it => it.count,).amountOfCall,).toBe(1,),)
+        describe("LazyCollectionHolder", () => {
+            test("length", () => expect(new LazyCollectionHolder_SizeAlias().execute(it => it.length,).amountOfCall,).toBe(1,),)
+            test("count",  () => expect(new LazyCollectionHolder_SizeAlias().execute(it => it.count,).amountOfCall,).toBe(1,),)
         },)
     },)
 

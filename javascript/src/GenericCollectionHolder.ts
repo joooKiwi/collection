@@ -163,7 +163,7 @@ import {toUpperCaseStringByArray}                       from "./method/toUpperCa
  *
  * @typeParam T The element type
  * @see GenericMinimalistCollectionHolder
- * @see LazyGenericCollectionHolder
+ * @see LazyCollectionHolder
  * @see EmptyCollectionHolder
  */
 export class GenericCollectionHolder<const T = unknown, >

@@ -18,13 +18,13 @@ import {GenericCollectionHolder_GetLastAlias}            from "./instance/Generi
 import {GenericCollectionHolder_GetLastOrNullAlias}      from "./instance/GenericCollectionHolder_GetLastOrNullAlias"
 import {GenericCollectionHolder_GetOrElseAlias}          from "./instance/GenericCollectionHolder_GetOrElseAlias"
 import {GenericCollectionHolder_GetOrNullAlias}          from "./instance/GenericCollectionHolder_GetOrNullAlias"
-import {LazyGenericCollectionHolder_GetAlias}            from "./instance/LazyGenericCollectionHolder_GetAlias"
-import {LazyGenericCollectionHolder_GetFirstAlias}       from "./instance/LazyGenericCollectionHolder_GetFirstAlias"
-import {LazyGenericCollectionHolder_GetFirstOrNullAlias} from "./instance/LazyGenericCollectionHolder_GetFirstOrNullAlias"
-import {LazyGenericCollectionHolder_GetLastAlias}        from "./instance/LazyGenericCollectionHolder_GetLastAlias"
-import {LazyGenericCollectionHolder_GetLastOrNullAlias}  from "./instance/LazyGenericCollectionHolder_GetLastOrNullAlias"
-import {LazyGenericCollectionHolder_GetOrElseAlias}      from "./instance/LazyGenericCollectionHolder_GetOrElseAlias"
-import {LazyGenericCollectionHolder_GetOrNullAlias}      from "./instance/LazyGenericCollectionHolder_GetOrNullAlias"
+import {LazyCollectionHolder_GetAlias}                   from "./instance/LazyCollectionHolder_GetAlias"
+import {LazyCollectionHolder_GetFirstAlias}              from "./instance/LazyCollectionHolder_GetFirstAlias"
+import {LazyCollectionHolder_GetFirstOrNullAlias}        from "./instance/LazyCollectionHolder_GetFirstOrNullAlias"
+import {LazyCollectionHolder_GetLastAlias}               from "./instance/LazyCollectionHolder_GetLastAlias"
+import {LazyCollectionHolder_GetLastOrNullAlias}         from "./instance/LazyCollectionHolder_GetLastOrNullAlias"
+import {LazyCollectionHolder_GetOrElseAlias}             from "./instance/LazyCollectionHolder_GetOrElseAlias"
+import {LazyCollectionHolder_GetOrNullAlias}             from "./instance/LazyCollectionHolder_GetOrNullAlias"
 import {MinimalistCollectionHolderFromArray}             from "./instance/MinimalistCollectionHolderFromArray"
 import {A, AB, ABCD, EMPTY}                              from "./value/arrays"
 import {callbackAsFail0}                                 from "./value/callbacks (fail)"
@@ -112,21 +112,21 @@ describe("CollectionHolderTest (value)", () => {
             test("elementAtOrElse",    () => expect(new GenericCollectionHolder_GetOrElseAlias()     .execute(it => it.elementAtOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
             test("elementAtOrNull",    () => expect(new GenericCollectionHolder_GetOrNullAlias()     .execute(it => it.elementAtOrNull(invalidIndex,),)                 .amountOfCall,).toBe(1,),)
         },)
-        describe("LazyGenericCollectionHolder", () => {
-            test("first",              () => expect(new LazyGenericCollectionHolder_GetFirstAlias()      .execute(it => it.first(),)                                        .amountOfCall,).toBe(1,),)
-            test("firstOrNull",        () => expect(new LazyGenericCollectionHolder_GetFirstOrNullAlias().execute(it => it.firstOrNull(),)                                  .amountOfCall,).toBe(1,),)
-            test("firstIndexed",       () => expect(new LazyGenericCollectionHolder_GetFirstAlias()      .execute(it => it.firstIndexed(),)                                 .amountOfCall,).toBe(1,),)
-            test("firstIndexedOrNull", () => expect(new LazyGenericCollectionHolder_GetFirstOrNullAlias().execute(it => it.firstIndexedOrNull(),)                           .amountOfCall,).toBe(1,),)
-            test("last",               () => expect(new LazyGenericCollectionHolder_GetLastAlias()       .execute(it => it.last(),)                                         .amountOfCall,).toBe(1,),)
-            test("lastOrNull",         () => expect(new LazyGenericCollectionHolder_GetLastOrNullAlias() .execute(it => it.lastOrNull(),)                                   .amountOfCall,).toBe(1,),)
-            test("lastIndexed",        () => expect(new LazyGenericCollectionHolder_GetLastAlias()       .execute(it => it.lastIndexed(),)                                  .amountOfCall,).toBe(1,),)
-            test("lastOrNull",         () => expect(new LazyGenericCollectionHolder_GetLastOrNullAlias() .execute(it => it.lastIndexedOrNull(),)                            .amountOfCall,).toBe(1,),)
-            test("at",                 () => expect(new LazyGenericCollectionHolder_GetAlias()           .execute(it => it.at(existantIndex,),)                             .amountOfCall,).toBe(1,),)
-            test("atOrElse",           () => expect(new LazyGenericCollectionHolder_GetOrElseAlias()     .execute(it => it.atOrElse(invalidIndex, callbackAsNull0,),)       .amountOfCall,).toBe(1,),)
-            test("atOrNull",           () => expect(new LazyGenericCollectionHolder_GetOrNullAlias()     .execute(it => it.atOrNull(invalidIndex,),)                        .amountOfCall,).toBe(1,),)
-            test("elementAt",          () => expect(new LazyGenericCollectionHolder_GetAlias()           .execute(it => it.elementAt(existantIndex,),)                      .amountOfCall,).toBe(1,),)
-            test("elementAtOrElse",    () => expect(new LazyGenericCollectionHolder_GetOrElseAlias()     .execute(it => it.elementAtOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
-            test("elementAtOrNull",    () => expect(new LazyGenericCollectionHolder_GetOrNullAlias()     .execute(it => it.elementAtOrNull(invalidIndex,),)                 .amountOfCall,).toBe(1,),)
+        describe("LazyCollectionHolder", () => {
+            test("first",              () => expect(new LazyCollectionHolder_GetFirstAlias()      .execute(it => it.first(),)                                        .amountOfCall,).toBe(1,),)
+            test("firstOrNull",        () => expect(new LazyCollectionHolder_GetFirstOrNullAlias().execute(it => it.firstOrNull(),)                                  .amountOfCall,).toBe(1,),)
+            test("firstIndexed",       () => expect(new LazyCollectionHolder_GetFirstAlias()      .execute(it => it.firstIndexed(),)                                 .amountOfCall,).toBe(1,),)
+            test("firstIndexedOrNull", () => expect(new LazyCollectionHolder_GetFirstOrNullAlias().execute(it => it.firstIndexedOrNull(),)                           .amountOfCall,).toBe(1,),)
+            test("last",               () => expect(new LazyCollectionHolder_GetLastAlias()       .execute(it => it.last(),)                                         .amountOfCall,).toBe(1,),)
+            test("lastOrNull",         () => expect(new LazyCollectionHolder_GetLastOrNullAlias() .execute(it => it.lastOrNull(),)                                   .amountOfCall,).toBe(1,),)
+            test("lastIndexed",        () => expect(new LazyCollectionHolder_GetLastAlias()       .execute(it => it.lastIndexed(),)                                  .amountOfCall,).toBe(1,),)
+            test("lastOrNull",         () => expect(new LazyCollectionHolder_GetLastOrNullAlias() .execute(it => it.lastIndexedOrNull(),)                            .amountOfCall,).toBe(1,),)
+            test("at",                 () => expect(new LazyCollectionHolder_GetAlias()           .execute(it => it.at(existantIndex,),)                             .amountOfCall,).toBe(1,),)
+            test("atOrElse",           () => expect(new LazyCollectionHolder_GetOrElseAlias()     .execute(it => it.atOrElse(invalidIndex, callbackAsNull0,),)       .amountOfCall,).toBe(1,),)
+            test("atOrNull",           () => expect(new LazyCollectionHolder_GetOrNullAlias()     .execute(it => it.atOrNull(invalidIndex,),)                        .amountOfCall,).toBe(1,),)
+            test("elementAt",          () => expect(new LazyCollectionHolder_GetAlias()           .execute(it => it.elementAt(existantIndex,),)                      .amountOfCall,).toBe(1,),)
+            test("elementAtOrElse",    () => expect(new LazyCollectionHolder_GetOrElseAlias()     .execute(it => it.elementAtOrElse(invalidIndex, callbackAsNull0,),).amountOfCall,).toBe(1,),)
+            test("elementAtOrNull",    () => expect(new LazyCollectionHolder_GetOrNullAlias()     .execute(it => it.elementAtOrNull(invalidIndex,),)                 .amountOfCall,).toBe(1,),)
         },)
 
         describe("first", () => {

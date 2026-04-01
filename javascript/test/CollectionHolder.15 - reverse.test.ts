@@ -11,7 +11,7 @@
 //··························································
 
 import {GenericCollectionHolder_ToReverseAlias}                  from "./instance/GenericCollectionHolder_ToReverseAlias"
-import {LazyGenericCollectionHolder_ToReverseAlias}              from "./instance/LazyGenericCollectionHolder_ToReverseAlias"
+import {LazyCollectionHolder_ToReverseAlias}                     from "./instance/LazyCollectionHolder_ToReverseAlias"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY} from "./value/arrays"
 import {everyExtensionMethodInstances, everyInstances}           from "./value/instances"
 
@@ -39,9 +39,9 @@ describe("CollectionHolderTest (reverse)", () => {
             test("toReversed", () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
             test("reversed",   () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
         },)
-        describe("LazyGenericCollectionHolder", () => {
-            test("toReversed", () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
-            test("reversed",   () => expect(new LazyGenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
+        describe("LazyCollectionHolder", () => {
+            test("toReversed", () => expect(new LazyCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new LazyCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
         },)
 
         describe("toReversed", () => {

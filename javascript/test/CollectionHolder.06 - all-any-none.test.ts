@@ -12,8 +12,8 @@
 
 import {GenericCollectionHolder_AllAlias}                                                                                    from "./instance/GenericCollectionHolder_AllAlias"
 import {GenericCollectionHolder_AnyAlias}                                                                                    from "./instance/GenericCollectionHolder_AnyAlias"
-import {LazyGenericCollectionHolder_AnyAlias}                                                                                from "./instance/LazyGenericCollectionHolder_AnyAlias"
-import {LazyGenericCollectionHolder_AllAlias}                                                                                from "./instance/LazyGenericCollectionHolder_AllAlias"
+import {LazyCollectionHolder_AnyAlias}                                                                                       from "./instance/LazyCollectionHolder_AnyAlias"
+import {LazyCollectionHolder_AllAlias}                                                                                       from "./instance/LazyCollectionHolder_AllAlias"
 import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                   from "./value/callbacks (fail)"
@@ -44,9 +44,9 @@ describe("CollectionHolderTest (all / any / none)", () => {
             test("every", () => expect(new GenericCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
             test("some",  () => expect(new GenericCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
         },)
-        describe("LazyGenericCollectionHolder", () => {
-            test("every", () => expect(new LazyGenericCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("some",  () => expect(new LazyGenericCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+        describe("LazyCollectionHolder", () => {
+            test("every", () => expect(new LazyCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new LazyCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
         },)
 
         describe("every", () => {
