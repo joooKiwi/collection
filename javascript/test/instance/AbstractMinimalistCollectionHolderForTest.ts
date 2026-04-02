@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -322,8 +322,8 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasNotByMinimalistCollectionHolder(this, value,)
     }
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -334,8 +334,8 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasOneByMinimalistCollectionHolder(this, values,)
     }
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -346,8 +346,8 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasNotOneByMinimalistCollectionHolder(this, values,)
     }
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -358,8 +358,8 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
         return hasAllByMinimalistCollectionHolder(this, values,)
     }
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -414,8 +414,8 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -556,45 +556,57 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T, const R
     }
 
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArrayByMinimalistCollectionHolder(this,)
     }
-    public override toMutableArray(): T[] {
+
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArrayByMinimalistCollectionHolder(this,)
     }
 
-    public override toSet(): ReadonlySet<T> {
+
+    public override toSet(): Set<T> {
         return toSetByMinimalistCollectionHolder(this,)
     }
-    public override toMutableSet(): Set<T> {
+
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSetByMinimalistCollectionHolder(this,)
     }
 
-    public override toMap(): ReadonlyMap<number, T> {
+
+    public override toMap(): NumberKeyMap<T> {
         return toMapByMinimalistCollectionHolder(this,)
     }
-    public override toMutableMap(): Map<number, T> {
+
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMapByMinimalistCollectionHolder(this,)
     }
+
 
     public override toString(): string {
         return toStringByMinimalistCollectionHolder(this,)
     }
+
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByMinimalistCollectionHolder(this, locale,)
     }
+
     public override toLowerCaseString(): string {
         return toLowerCaseStringByMinimalistCollectionHolder(this,)
     }
+
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByMinimalistCollectionHolder(this, locale,)
     }
+
     public override toUpperCaseString(): string {
         return toUpperCaseStringByMinimalistCollectionHolder(this,)
     }
+
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByMinimalistCollectionHolder(this, locale,)
     }
+
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByMinimalistCollectionHolder(this, separator, prefix, postfix, limit, truncated, transform,)

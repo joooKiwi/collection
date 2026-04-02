@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, StringOrSymbol} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set, StringOrSymbol} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -186,8 +186,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
 
     public override hasNot(value: T,): boolean { return this.instance.hasNot(value,) }
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -196,8 +196,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasOne(values,) }
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -206,8 +206,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotOne(values,) }
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -216,8 +216,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasAll(values,) }
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -266,8 +266,8 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -393,14 +393,14 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- Conversion methods --------------------
 
-    public override toArray(): readonly T[] { return this.instance.toArray() }
-    public override toMutableArray(): T[] { return this.instance.toMutableArray() }
-    public override toSet(): ReadonlySet<T> { return this.instance.toSet() }
-    public override toMutableSet(): Set<T> { return this.instance.toMutableSet() }
-    public override toMap(): ReadonlyMap<number, T> { return this.instance.toMap() }
-    public override toMutableMap(): Map<number, T> { return this.instance.toMutableMap() }
     public override toIterator(): CollectionIterator<T> { return this.instance.toIterator() }
 
+    public override toArray(): Array<T> { return this.instance.toArray() }
+    public override toMutableArray(): MutableArray<T> { return this.instance.toMutableArray() }
+    public override toSet(): Set<T> { return this.instance.toSet() }
+    public override toMutableSet(): MutableSet<T> { return this.instance.toMutableSet() }
+    public override toMap(): NumberKeyMap<T> { return this.instance.toMap() }
+    public override toMutableMap(): MutableNumberKeyMap<T> { return this.instance.toMutableMap() }
 
 
     public override toString(): string { return this.instance.toString() }

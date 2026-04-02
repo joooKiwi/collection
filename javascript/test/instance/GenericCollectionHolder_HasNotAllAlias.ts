@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Nullable} from "@joookiwi/type"
+
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 import type {StraightCollectionHolderForTest}                    from "./StraightCollectionHolderForTest"
 
@@ -29,7 +31,7 @@ export class GenericCollectionHolder_HasNotAllAlias
         return this
     }
 
-    public override hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<string>,): boolean {
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<string>>,): boolean {
         this.amountOfCall++
         return super.hasNotAll(values,)
     }

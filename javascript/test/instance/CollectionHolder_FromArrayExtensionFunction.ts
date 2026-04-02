@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -376,10 +376,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasNotByArray(this.array, value,)
     }
 
-    public hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasOneWithArrayByArray(this.array, values,)
     }
-    public hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasOneWithSetByArray(this.array, values,)
     }
     public hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -401,10 +401,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasOneByArray(this.array, values,)
     }
 
-    public hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotOneWithArrayByArray(this.array, values,)
     }
-    public hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotOneWithSetByArray(this.array, values,)
     }
     public hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -426,10 +426,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasNotOneByArray(this.array, values,)
     }
 
-    public hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasAllWithArrayByArray(this.array, values,)
     }
-    public hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasAllWithSetByArray(this.array, values,)
     }
     public hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -451,10 +451,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
         return hasAllByArray(this.array, values,)
     }
 
-    public hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public hasNotAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotAllWithArrayByArray(this.array, values,)
     }
-    public hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public hasNotAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotAllWithSetByArray(this.array, values,)
     }
     public hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -525,10 +525,10 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
     public sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return sliceWithARangeByArray(this.array, from, to,)
     }
-    public sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+    public sliceWithArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByArray(this.array, indices,)
     }
-    public sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    public sliceWithSet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByArray(this.array, indices,)
     }
     public sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
@@ -683,45 +683,57 @@ export class CollectionHolder_FromArrayExtensionFunction<const T, >
     }
 
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArrayByArray(this.array,)
     }
-    public override toMutableArray(): T[] {
+
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArrayByArray(this.array,)
     }
 
-    public override toSet(): ReadonlySet<T> {
+
+    public override toSet(): Set<T> {
         return toSetByArray(this.array,)
     }
-    public override toMutableSet(): Set<T> {
+
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSetByArray(this.array,)
     }
 
-    public override toMap(): ReadonlyMap<number, T> {
+
+    public override toMap(): NumberKeyMap<T> {
         return toMapByArray(this.array,)
     }
-    public override toMutableMap(): Map<number, T> {
+
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMapByArray(this.array,)
     }
+
 
     public override toString(): string {
         return toStringByArray(this.array,)
     }
+
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleStringByArray(this.array, locale,)
     }
+
     public override toLowerCaseString(): string {
         return toLowerCaseStringByArray(this.array,)
     }
+
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseStringByArray(this.array, locale,)
     }
+
     public override toUpperCaseString(): string {
         return toUpperCaseStringByArray(this.array,)
     }
+
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseStringByArray(this.array, locale,)
     }
+
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToStringByArray(this.array, separator, prefix, postfix, limit, truncated, transform,)

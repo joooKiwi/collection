@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
@@ -351,10 +351,10 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
         return hasNot(null, value,)
     }
 
-    public override hasOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasOneWithArray(null, values,)
     }
-    public override hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasOneWithSet(null, values,)
     }
     public override hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -372,8 +372,8 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     public override hasOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasOneWithIterable(null, values,)
     }
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -384,10 +384,10 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
         return hasOne(null, values,)
     }
 
-    public override hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasNotOneWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotOneWithArray(null, values,)
     }
-    public override hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasNotOneWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotOneWithSet(null, values,)
     }
     public override hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -405,8 +405,8 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     public override hasNotOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasNotOneWithIterable(null, values,)
     }
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -417,10 +417,10 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
         return hasNotOne(null, values,)
     }
 
-    public override hasAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasAllWithArray(null, values,)
     }
-    public override hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasAllWithSet(null, values,)
     }
     public override hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -438,8 +438,8 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     public override hasAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasAllWithIterable(null, values,)
     }
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -450,10 +450,10 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
         return hasAll(null, values,)
     }
 
-    public override hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean {
+    public override hasNotAllWithArray(values: Nullable<Array<T>>,): boolean {
         return hasNotAllWithArray(null, values,)
     }
-    public override hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean {
+    public override hasNotAllWithSet(values: Nullable<Set<T>>,): boolean {
         return hasNotAllWithSet(null, values,)
     }
     public override hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean {
@@ -471,8 +471,8 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     public override hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasNotAllWithIterable(null, values,)
     }
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -531,10 +531,10 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     public override sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T> {
         return sliceWithARange(null, from, to,)
     }
-    public override sliceWithArray(indices: readonly number[],): CollectionHolder<T> {
+    public override sliceWithArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArray(null, indices,)
     }
-    public override sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    public override sliceWithSet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSet(null, indices,)
     }
     public override sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T> {
@@ -688,45 +688,57 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
     }
 
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArray(null,)
     }
-    public override toMutableArray(): T[] {
+
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArray(null,)
     }
 
-    public override toSet(): ReadonlySet<T> {
+
+    public override toSet(): Set<T> {
         return toSet(null,)
     }
-    public override toMutableSet(): Set<T> {
+
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSet(null,)
     }
 
-    public override toMap(): ReadonlyMap<number, T> {
+
+    public override toMap(): NumberKeyMap<T> {
         return toMap(null,)
     }
-    public override toMutableMap(): Map<number, T> {
+
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMap(null,)
     }
+
 
     public override toString(): string {
         return toString(null,)
     }
+
     public override toLocaleString(locale?: NullableString,): string {
         return toLocaleString(null, locale,)
     }
+
     public override toLowerCaseString(): string {
         return toLowerCaseString(null,)
     }
+
     public override toLocaleLowerCaseString(locale?: NullableString,): string {
         return toLocaleLowerCaseString(null, locale,)
     }
+
     public override toUpperCaseString(): string {
         return toUpperCaseString(null,)
     }
+
     public override toLocaleUpperCaseString(locale?: NullableString,): string {
         return toLocaleUpperCaseString(null, locale,)
     }
+
 
     public override joinToString(separator?: NullableString, prefix?: NullableString, postfix?: NullableString, limit?: NullableNumber, truncated?: NullableString, transform?: Nullable<StringCallback<T>>,): string {
         return joinToString(null, separator, prefix, postfix, limit, truncated, transform,)
