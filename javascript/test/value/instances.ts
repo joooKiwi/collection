@@ -13,6 +13,7 @@
 import type {CollectionHolder}               from "../../src/CollectionHolder"
 import type {CollectionHolder_FromExtension} from "../instance/CollectionHolder_FromExtension"
 
+import {EmptyCollectionHolder}                                     from "../../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                  from "../../src/exception/EmptyCollectionException"
 import {NullCollectionException}                                   from "../../src/exception/NullCollectionException"
 import {Holder}                                                    from "../Holder"
@@ -49,6 +50,10 @@ import {MinimalistCollectionHolderFromArray}                       from "../inst
 import {SetByStructureForTest}                                     from "../instance/SetByStructureForTest"
 import {SetForTest}                                                from "../instance/SetForTest"
 import {EMPTY}                                                     from "./arrays"
+
+/** A constant to give the {@link EmptyCollectionHolder} instance directly */
+export const emptyCollectionHolder = EmptyCollectionHolder.get
+
 
 /**
  * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}

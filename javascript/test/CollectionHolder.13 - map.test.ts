@@ -14,9 +14,8 @@ import {A, A_NULL, A_NULL_C_NULL, AB, ABCD, AC, B, BD, EMPTY, NULL, NULL_B, NULL
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                         from "./value/callbacks (fail)"
 import {callbackAsNull0, callbackAsUndefined0, callbackOnlyIfEven, callbackOnlyIfEvenAlt, callbackOnlyIfOdd, callbackOnlyIfOddAlt}                                                 from "./value/callbacks (null)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0}                                                                                                from "./value/callbacks (string)"
-import {everyExtensionMethodInstances, everyInstances}                                                                                                                             from "./value/instances"
+import {emptyCollectionHolder, everyExtensionMethodInstances, everyInstances}                                                                                                      from "./value/instances"
 
-import {CollectionConstants}   from "../src/CollectionConstants"
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
 describe("CollectionHolderTest (map)", () => {
@@ -32,11 +31,11 @@ describe("CollectionHolderTest (map)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("map",               () => expect(instance.map(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("mapIndexed",        () => expect(instance.mapIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("map",               () => expect(instance.map(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("mapIndexed",        () => expect(instance.mapIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
 
-        describe("mapNotNull",        () => expect(instance.mapNotNull(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("mapNotNullIndexed", () => expect(instance.mapNotNullIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("mapNotNull",        () => expect(instance.mapNotNull(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("mapNotNullIndexed", () => expect(instance.mapNotNullIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
     },)},)
 
     describe("instances", () => {
@@ -102,7 +101,7 @@ describe("CollectionHolderTest (map)", () => {
         },)
 
         describe("map", () => {
-            test("empty",               () => expect(new instance(EMPTY,).map(callbackAsFail0,),)               .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty",               () => expect(new instance(EMPTY,).map(callbackAsFail0,),)               .toBe(emptyCollectionHolder,),)
             test("1 field: value",      () => expect(new instance(A,)    .map(callbackToString0,).toArray(),)   .toStrictEqual(UPPER_E,),)
             test("1 field: null",       () => expect(new instance(A,)    .map(callbackAsNull0,).toArray(),)     .toStrictEqual(NULL,),)
             test("1 field: undefined",  () => expect(new instance(A,)    .map(callbackAsUndefined0,).toArray(),).toStrictEqual(UNDEFINED,),)
@@ -120,7 +119,7 @@ describe("CollectionHolderTest (map)", () => {
             test("4 fields: odd",       () => expect(new instance(ABCD,) .map(callbackOnlyIfOdd,).toArray(),)   .toStrictEqual(NULL_B_NULL_D,),)
         },)
         describe("mapIndexed", () => {
-            test("empty",               () => expect(new instance(EMPTY,).mapIndexed(callbackAsFail0,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty",               () => expect(new instance(EMPTY,).mapIndexed(callbackAsFail0,),)                .toBe(emptyCollectionHolder,),)
             test("1 field: value",      () => expect(new instance(A,)    .mapIndexed(callbackToString0,).toArray(),)    .toStrictEqual(UPPER_E,),)
             test("1 field: null",       () => expect(new instance(A,)    .mapIndexed(callbackAsNull0,).toArray(),)      .toStrictEqual(NULL,),)
             test("1 field: undefined",  () => expect(new instance(A,)    .mapIndexed(callbackAsUndefined0,).toArray(),) .toStrictEqual(UNDEFINED,),)
@@ -139,7 +138,7 @@ describe("CollectionHolderTest (map)", () => {
         },)
 
         describe("mapNotNull", () => {
-            test("empty",               () => expect(new instance(EMPTY,).mapNotNull(callbackAsFail0,),)             .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty",               () => expect(new instance(EMPTY,).mapNotNull(callbackAsFail0,),)             .toBe(emptyCollectionHolder,),)
             test("1 field: value",      () => expect(new instance(A,)    .mapNotNull(callbackToString0,).toArray(),) .toStrictEqual(UPPER_E,),)
             test("1 field: null",       () => expect(new instance(A,)    .mapNotNull(callbackAsNull0,),)             .toBeEmpty(),)
             test("1 field: undefined",  () => expect(new instance(A,)    .mapNotNull(callbackAsUndefined0,),)        .toBeEmpty(),)
@@ -157,7 +156,7 @@ describe("CollectionHolderTest (map)", () => {
             test("4 fields: odd",       () => expect(new instance(ABCD,) .mapNotNull(callbackOnlyIfOdd,).toArray(),) .toStrictEqual(BD,),)
         },)
         describe("mapNotNullIndexed", () => {
-            test("empty",               () => expect(new instance(EMPTY,).mapNotNullIndexed(callbackAsFail0,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty",               () => expect(new instance(EMPTY,).mapNotNullIndexed(callbackAsFail0,),)                .toBe(emptyCollectionHolder,),)
             test("1 field: value",      () => expect(new instance(A,)    .mapNotNullIndexed(callbackToString0,).toArray(),)    .toStrictEqual(UPPER_E,),)
             test("1 field: null",       () => expect(new instance(A,)    .mapNotNullIndexed(callbackAsNull0,),)                .toBeEmpty(),)
             test("1 field: undefined",  () => expect(new instance(A,)    .mapNotNullIndexed(callbackAsUndefined0,),)           .toBeEmpty(),)

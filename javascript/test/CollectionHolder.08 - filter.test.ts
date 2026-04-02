@@ -16,9 +16,8 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                             from "./value/callbacks (fail)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt}           from "./value/callbacks (number)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                               from "./value/callbacks (string)"
-import {everyExtensionMethodInstances, everyInstances}                                                                                                                                                                                 from "./value/instances"
+import {emptyCollectionHolder, everyExtensionMethodInstances, everyInstances}                                                                                                                                                          from "./value/instances"
 
-import {CollectionConstants}   from "../src/CollectionConstants"
 import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
 
 describe("CollectionHolderTest (filter)", () => {
@@ -35,11 +34,11 @@ describe("CollectionHolderTest (filter)", () => {
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        describe("filter",           () => expect(instance.filter(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("filterIndexed",    () => expect(instance.filterIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("filterNot",        () => expect(instance.filterNot(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("filterNotIndexed", () => expect(instance.filterNotIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-        describe("filterNotNull",    () => expect(instance.filterNotNull(),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+        describe("filter",           () => expect(instance.filter(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("filterIndexed",    () => expect(instance.filterIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("filterNot",        () => expect(instance.filterNot(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("filterNotIndexed", () => expect(instance.filterNotIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
+        describe("filterNotNull",    () => expect(instance.filterNotNull(),).toBe(emptyCollectionHolder,),)
     },)},)
 
     describe("instances", () => {
@@ -152,9 +151,9 @@ describe("CollectionHolderTest (filter)", () => {
 
         describe("filter", () => {
             describe("empty", () => {
-                test("(T, number) → boolean", () => expect(new instance(EMPTY,).filter(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(T) → boolean",         () => expect(new instance(EMPTY,).filter(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).filter(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(T, number) → boolean", () => expect(new instance(EMPTY,).filter(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(T) → boolean",         () => expect(new instance(EMPTY,).filter(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).filter(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field, (T, number) → true",   () => expect(new instance(A,)   .filter(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
@@ -211,9 +210,9 @@ describe("CollectionHolderTest (filter)", () => {
         },)
         describe("filterIndexed", () => {
             describe("empty", () => {
-                test("(number, T) → boolean", () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(number) → boolean",    () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(number, T) → boolean", () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(number) → boolean",    () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).filterIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (number, T) → true",   () => expect(new instance(A,)   .filterIndexed(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
@@ -271,9 +270,9 @@ describe("CollectionHolderTest (filter)", () => {
 
         describe("filterNot", () => {
             describe("empty", () => {
-                test("(T, number) → boolean", () => expect(new instance(EMPTY,).filterNot(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(T) → boolean",         () => expect(new instance(EMPTY,).filterNot(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).filterNot(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(T, number) → boolean", () => expect(new instance(EMPTY,).filterNot(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(T) → boolean",         () => expect(new instance(EMPTY,).filterNot(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).filterNot(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (T, number) → true",   () => expect(new instance(A,)   .filterNot(callbackAsTrue2,),)           .toBeEmpty(),)
@@ -330,9 +329,9 @@ describe("CollectionHolderTest (filter)", () => {
         },)
         describe("filterNotIndexed", () => {
             describe("empty", () => {
-                test("(number, T) → boolean", () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(number) → boolean",    () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(number, T) → boolean", () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(number) → boolean",    () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).filterNotIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (number, T) → true",   () => expect(new instance(A,)   .filterNotIndexed(callbackAsTrue2,),)           .toBeEmpty(),)
@@ -389,7 +388,7 @@ describe("CollectionHolderTest (filter)", () => {
         },)
 
         describe("filterNotNull", () => {
-            test("empty",                          () => expect(new instance(EMPTY,)             .filterNotNull(),)          .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("empty",                          () => expect(new instance(EMPTY,)             .filterNotNull(),)          .toBe(emptyCollectionHolder,),)
             test("1 field (non-null)",             () => expect(new instance(A,)                 .filterNotNull().toArray(),).toStrictEqual(A,),)
             test("1 field (null)",                 () => expect(new instance(NULL,)              .filterNotNull(),)          .toBeEmpty(),)
             test("1 field (undefined)",            () => expect(new instance(UNDEFINED,)         .filterNotNull(),)          .toBeEmpty(),)

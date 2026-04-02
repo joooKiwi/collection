@@ -27,9 +27,8 @@ import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, c
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                                                                                                                                                                                          from "./value/callbacks (fail)"
 import {callbackIsOver0, callbackIsOver0Alt, callbackIsOver1, callbackIsOver1Alt, callbackIsOver2, callbackIsOver2Alt, callbackIsOver3, callbackIsOver3Alt, callbackIsOver4, callbackIsOver4Alt, callbackIsUnder0, callbackIsUnder0Alt, callbackIsUnder1, callbackIsUnder1Alt, callbackIsUnder2, callbackIsUnder2Alt, callbackIsUnder3, callbackIsUnder3Alt, callbackIsUnder4, callbackIsUnder4Alt} from "./value/callbacks (number)"
 import {callbackIsOverA, callbackIsOverAAlt, callbackIsOverB, callbackIsOverBAlt, callbackIsOverC, callbackIsOverCAlt, callbackIsOverD, callbackIsOverDAlt, callbackIsOverE, callbackIsOverEAlt, callbackIsUnderA, callbackIsUnderAAlt, callbackIsUnderB, callbackIsUnderBAlt, callbackIsUnderC, callbackIsUnderCAlt, callbackIsUnderD, callbackIsUnderDAlt, callbackIsUnderE, callbackIsUnderEAlt} from "./value/callbacks (string)"
-import {everyExtensionMethodInstances, everyInstances}                                                                                                                                                                                                                                                                                                                                              from "./value/instances"
+import {emptyCollectionHolder, everyExtensionMethodInstances, everyInstances}                                                                                                                                                                                                                                                                                                                       from "./value/instances"
 
-import {CollectionConstants}                                                                                                                             from "../src/CollectionConstants"
 import {EmptyCollectionHolder}                                                                                                                           from "../src/EmptyCollectionHolder"
 import {ForbiddenIndexException}                                                                                                                         from "../src/exception/ForbiddenIndexException"
 import {limit, limitByArray, limitByCollectionHolder, limitByMinimalistCollectionHolder}                                                                 from "../src/method/limit"
@@ -220,41 +219,41 @@ describe("CollectionHolderTest (take)", () => {
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
         describe("take", () => {
-            test("NaN", () => expect(instance.take(NaN,),)      .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("-∞",  () => expect(instance.take(-Infinity,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("-1",  () => expect(instance.take(-1,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('0',   () => expect(instance.take(0,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('1',   () => expect(instance.take(1,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("+∞",  () => expect(instance.take(Infinity,),) .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("NaN", () => expect(instance.take(NaN,),)      .toBe(emptyCollectionHolder,),)
+            test("-∞",  () => expect(instance.take(-Infinity,),).toBe(emptyCollectionHolder,),)
+            test("-1",  () => expect(instance.take(-1,),)       .toBe(emptyCollectionHolder,),)
+            test('0',   () => expect(instance.take(0,),)        .toBe(emptyCollectionHolder,),)
+            test('1',   () => expect(instance.take(1,),)        .toBe(emptyCollectionHolder,),)
+            test("+∞",  () => expect(instance.take(Infinity,),) .toBe(emptyCollectionHolder,),)
         },)
         describe("takeWhile", () => {
-            test("(T, number) → boolean", () => expect(instance.takeWhile(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("(T) → boolean",         () => expect(instance.takeWhile(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("() → boolean",          () => expect(instance.takeWhile(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("(T, number) → boolean", () => expect(instance.takeWhile(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+            test("(T) → boolean",         () => expect(instance.takeWhile(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+            test("() → boolean",          () => expect(instance.takeWhile(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
         },)
         describe("takeWhileIndexed", () => {
-            test("(T, number) → boolean", () => expect(instance.takeWhileIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("(T) → boolean",         () => expect(instance.takeWhileIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("() → boolean",          () => expect(instance.takeWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("(T, number) → boolean", () => expect(instance.takeWhileIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+            test("(T) → boolean",         () => expect(instance.takeWhileIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+            test("() → boolean",          () => expect(instance.takeWhileIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
         },)
 
         describe("takeLast", () => {
-            test("NaN", () => expect(instance.takeLast(NaN,),)      .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("-∞",  () => expect(instance.takeLast(-Infinity,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("-1",  () => expect(instance.takeLast(-1,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('0',   () => expect(instance.takeLast(0,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test('1',   () => expect(instance.takeLast(1,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("+∞",  () => expect(instance.takeLast(Infinity,),) .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("NaN", () => expect(instance.takeLast(NaN,),)      .toBe(emptyCollectionHolder,),)
+            test("-∞",  () => expect(instance.takeLast(-Infinity,),).toBe(emptyCollectionHolder,),)
+            test("-1",  () => expect(instance.takeLast(-1,),)       .toBe(emptyCollectionHolder,),)
+            test('0',   () => expect(instance.takeLast(0,),)        .toBe(emptyCollectionHolder,),)
+            test('1',   () => expect(instance.takeLast(1,),)        .toBe(emptyCollectionHolder,),)
+            test("+∞",  () => expect(instance.takeLast(Infinity,),) .toBe(emptyCollectionHolder,),)
         },)
         describe("takeLastWhile", () => {
-            test("(T, number) → boolean", () => expect(instance.takeLastWhile(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("(T) → boolean",         () => expect(instance.takeLastWhile(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("() → boolean",          () => expect(instance.takeLastWhile(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("(T, number) → boolean", () => expect(instance.takeLastWhile(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+            test("(T) → boolean",         () => expect(instance.takeLastWhile(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+            test("() → boolean",          () => expect(instance.takeLastWhile(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
         },)
         describe("takeLastWhileIndexed", () => {
-            test("(T, number) → boolean", () => expect(instance.takeLastWhileIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("(T) → boolean",         () => expect(instance.takeLastWhileIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-            test("() → boolean",          () => expect(instance.takeLastWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+            test("(T, number) → boolean", () => expect(instance.takeLastWhileIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+            test("(T) → boolean",         () => expect(instance.takeLastWhileIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+            test("() → boolean",          () => expect(instance.takeLastWhileIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
         },)
     },)},)
 
@@ -392,33 +391,33 @@ describe("CollectionHolderTest (take)", () => {
 
         describe("take", () => {
             describe("empty", () => {
-                test("NaN", () => expect(new instance(EMPTY,).take(NaN,),)      .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-∞",  () => expect(new instance(EMPTY,).take(-Infinity,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(new instance(EMPTY,).take(-2,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-1",  () => expect(new instance(EMPTY,).take(-1,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('0',   () => expect(new instance(EMPTY,).take(0,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('1',   () => expect(new instance(EMPTY,).take(1,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("+∞",  () => expect(new instance(EMPTY,).take(Infinity,),) .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("NaN", () => expect(new instance(EMPTY,).take(NaN,),)      .toBe(emptyCollectionHolder,),)
+                test("-∞",  () => expect(new instance(EMPTY,).take(-Infinity,),).toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(new instance(EMPTY,).take(-2,),)       .toBe(emptyCollectionHolder,),)
+                test("-1",  () => expect(new instance(EMPTY,).take(-1,),)       .toBe(emptyCollectionHolder,),)
+                test('0',   () => expect(new instance(EMPTY,).take(0,),)        .toBe(emptyCollectionHolder,),)
+                test('1',   () => expect(new instance(EMPTY,).take(1,),)        .toBe(emptyCollectionHolder,),)
+                test("+∞",  () => expect(new instance(EMPTY,).take(Infinity,),) .toBe(emptyCollectionHolder,),)
             },)
             describe("1 field", () => {
                 test("NaN", () => expect(() => new instance(A,).take(NaN,),)         .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(new instance(A,).take(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-3",  () => expect(new instance(A,).take(-3,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(new instance(A,).take(-2,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-1",  () => expect(new instance(A,).take(-1,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('0',   () => expect(new instance(A,).take(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(new instance(A,).take(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-3",  () => expect(new instance(A,).take(-3,),)                .toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(new instance(A,).take(-2,),)                .toBe(emptyCollectionHolder,),)
+                test("-1",  () => expect(new instance(A,).take(-1,),)                .toBe(emptyCollectionHolder,),)
+                test('0',   () => expect(new instance(A,).take(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(new instance(A,).take(1,).toArray(),)       .toStrictEqual(A,),)
                 test('2',   () => expect(new instance(A,).take(2,).toArray(),)       .toStrictEqual(A,),)
                 test("+∞",  () => expect(new instance(A,).take(Infinity,).toArray(),).toStrictEqual(A,),)
             },)
             describe("2 fields", () => {
                 test("NaN", () => expect(() => new instance(AB,).take(NaN,),)               .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(      new instance(AB,).take(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-4",  () => expect(      new instance(AB,).take(-4,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-3",  () => expect(      new instance(AB,).take(-3,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(      new instance(AB,).take(-2,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(      new instance(AB,).take(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-4",  () => expect(      new instance(AB,).take(-4,),)                .toBe(emptyCollectionHolder,),)
+                test("-3",  () => expect(      new instance(AB,).take(-3,),)                .toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(      new instance(AB,).take(-2,),)                .toBe(emptyCollectionHolder,),)
                 test("-1",  () => expect(      new instance(AB,).take(-1,).toArray(),)      .toStrictEqual(A,),)
-                test('0',   () => expect(      new instance(AB,).take(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',   () => expect(      new instance(AB,).take(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(      new instance(AB,).take(1,).toArray(),)       .toStrictEqual(A,),)
                 test('2',   () => expect(      new instance(AB,).take(2,).toArray(),)       .toStrictEqual(AB,),)
                 test('3',   () => expect(      new instance(AB,).take(3,).toArray(),)       .toStrictEqual(AB,),)
@@ -426,14 +425,14 @@ describe("CollectionHolderTest (take)", () => {
             },)
             describe("4 fields", () => {
                 test("NaN", () => expect(() => new instance(ABCD,).take(NaN,),)               .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(      new instance(ABCD,).take(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-6",  () => expect(      new instance(ABCD,).take(-6,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-5",  () => expect(      new instance(ABCD,).take(-5,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-4",  () => expect(      new instance(ABCD,).take(-4,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(      new instance(ABCD,).take(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-6",  () => expect(      new instance(ABCD,).take(-6,),)                .toBe(emptyCollectionHolder,),)
+                test("-5",  () => expect(      new instance(ABCD,).take(-5,),)                .toBe(emptyCollectionHolder,),)
+                test("-4",  () => expect(      new instance(ABCD,).take(-4,),)                .toBe(emptyCollectionHolder,),)
                 test("-3",  () => expect(      new instance(ABCD,).take(-3,).toArray(),)      .toStrictEqual(A,),)
                 test("-2",  () => expect(      new instance(ABCD,).take(-2,).toArray(),)      .toStrictEqual(AB,),)
                 test("-1",  () => expect(      new instance(ABCD,).take(-1,).toArray(),)      .toStrictEqual(ABC,),)
-                test('0',   () => expect(      new instance(ABCD,).take(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',   () => expect(      new instance(ABCD,).take(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(      new instance(ABCD,).take(1,).toArray(),)       .toStrictEqual(A,),)
                 test('2',   () => expect(      new instance(ABCD,).take(2,).toArray(),)       .toStrictEqual(AB,),)
                 test('3',   () => expect(      new instance(ABCD,).take(3,).toArray(),)       .toStrictEqual(ABC,),)
@@ -444,9 +443,9 @@ describe("CollectionHolderTest (take)", () => {
         },)
         describe("takeWhile", () => {
             describe("empty", () => {
-                test("(T, number) → boolean", () => expect(new instance(EMPTY,).takeWhile(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(T) → boolean",         () => expect(new instance(EMPTY,).takeWhile(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).takeWhile(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(T, number) → boolean", () => expect(new instance(EMPTY,).takeWhile(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(T) → boolean",         () => expect(new instance(EMPTY,).takeWhile(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).takeWhile(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (T, number) → true",   () => expect(new instance(A,)   .takeWhile(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
@@ -497,9 +496,9 @@ describe("CollectionHolderTest (take)", () => {
         },)
         describe("takeWhileIndexed", () => {
             describe("empty", () => {
-                test("(number, T) → boolean", () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(number) → boolean",    () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(number, T) → boolean", () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(number) → boolean",    () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).takeWhileIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (number, T) → true",   () => expect(new instance(A,)   .takeWhileIndexed(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
@@ -551,33 +550,33 @@ describe("CollectionHolderTest (take)", () => {
 
         describe("takeLast", () => {
             describe("empty", () => {
-                test("NaN", () => expect(new instance(EMPTY,).takeLast(NaN,),)      .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-∞",  () => expect(new instance(EMPTY,).takeLast(-Infinity,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(new instance(EMPTY,).takeLast(-2,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-1",  () => expect(new instance(EMPTY,).takeLast(-1,),)       .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('0',   () => expect(new instance(EMPTY,).takeLast(0,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('1',   () => expect(new instance(EMPTY,).takeLast(1,),)        .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("+∞",  () => expect(new instance(EMPTY,).takeLast(Infinity,),) .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("NaN", () => expect(new instance(EMPTY,).takeLast(NaN,),)      .toBe(emptyCollectionHolder,),)
+                test("-∞",  () => expect(new instance(EMPTY,).takeLast(-Infinity,),).toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(new instance(EMPTY,).takeLast(-2,),)       .toBe(emptyCollectionHolder,),)
+                test("-1",  () => expect(new instance(EMPTY,).takeLast(-1,),)       .toBe(emptyCollectionHolder,),)
+                test('0',   () => expect(new instance(EMPTY,).takeLast(0,),)        .toBe(emptyCollectionHolder,),)
+                test('1',   () => expect(new instance(EMPTY,).takeLast(1,),)        .toBe(emptyCollectionHolder,),)
+                test("+∞",  () => expect(new instance(EMPTY,).takeLast(Infinity,),) .toBe(emptyCollectionHolder,),)
             },)
             describe("1 field", () => {
                 test("NaN", () => expect(() => new instance(A,).takeLast(NaN,),)         .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(new instance(A,).takeLast(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-3",  () => expect(new instance(A,).takeLast(-3,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(new instance(A,).takeLast(-2,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-1",  () => expect(new instance(A,).takeLast(-1,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test('0',   () => expect(new instance(A,).takeLast(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(new instance(A,).takeLast(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-3",  () => expect(new instance(A,).takeLast(-3,),)                .toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(new instance(A,).takeLast(-2,),)                .toBe(emptyCollectionHolder,),)
+                test("-1",  () => expect(new instance(A,).takeLast(-1,),)                .toBe(emptyCollectionHolder,),)
+                test('0',   () => expect(new instance(A,).takeLast(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(new instance(A,).takeLast(1,).toArray(),)       .toStrictEqual(A,),)
                 test('2',   () => expect(new instance(A,).takeLast(2,).toArray(),)       .toStrictEqual(A,),)
                 test("+∞",  () => expect(new instance(A,).takeLast(Infinity,).toArray(),).toStrictEqual(A,),)
             },)
             describe("2 fields", () => {
                 test("NaN", () => expect(() => new instance(AB,).takeLast(NaN,),)         .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(new instance(AB,).takeLast(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-4",  () => expect(new instance(AB,).takeLast(-4,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-3",  () => expect(new instance(AB,).takeLast(-3,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-2",  () => expect(new instance(AB,).takeLast(-2,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(new instance(AB,).takeLast(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-4",  () => expect(new instance(AB,).takeLast(-4,),)                .toBe(emptyCollectionHolder,),)
+                test("-3",  () => expect(new instance(AB,).takeLast(-3,),)                .toBe(emptyCollectionHolder,),)
+                test("-2",  () => expect(new instance(AB,).takeLast(-2,),)                .toBe(emptyCollectionHolder,),)
                 test("-1",  () => expect(new instance(AB,).takeLast(-1,).toArray(),)      .toStrictEqual(B,),)
-                test('0',   () => expect(new instance(AB,).takeLast(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',   () => expect(new instance(AB,).takeLast(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(new instance(AB,).takeLast(1,).toArray(),)       .toStrictEqual(B,),)
                 test('2',   () => expect(new instance(AB,).takeLast(2,).toArray(),)       .toStrictEqual(AB,),)
                 test('3',   () => expect(new instance(AB,).takeLast(3,).toArray(),)       .toStrictEqual(AB,),)
@@ -585,14 +584,14 @@ describe("CollectionHolderTest (take)", () => {
             },)
             describe("4 fields", () => {
                 test("NaN", () => expect(() => new instance(ABCD,).takeLast(NaN,),)         .toThrow(ForbiddenIndexException,),)
-                test("-∞",  () => expect(new instance(ABCD,).takeLast(-Infinity,),)         .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-6",  () => expect(new instance(ABCD,).takeLast(-6,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-5",  () => expect(new instance(ABCD,).takeLast(-5,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("-4",  () => expect(new instance(ABCD,).takeLast(-4,),)                .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("-∞",  () => expect(new instance(ABCD,).takeLast(-Infinity,),)         .toBe(emptyCollectionHolder,),)
+                test("-6",  () => expect(new instance(ABCD,).takeLast(-6,),)                .toBe(emptyCollectionHolder,),)
+                test("-5",  () => expect(new instance(ABCD,).takeLast(-5,),)                .toBe(emptyCollectionHolder,),)
+                test("-4",  () => expect(new instance(ABCD,).takeLast(-4,),)                .toBe(emptyCollectionHolder,),)
                 test("-3",  () => expect(new instance(ABCD,).takeLast(-3,).toArray(),)      .toStrictEqual(D,),)
                 test("-2",  () => expect(new instance(ABCD,).takeLast(-2,).toArray(),)      .toStrictEqual(CD,),)
                 test("-1",  () => expect(new instance(ABCD,).takeLast(-1,).toArray(),)      .toStrictEqual(BCD,),)
-                test('0',   () => expect(new instance(ABCD,).takeLast(0,),)                 .toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test('0',   () => expect(new instance(ABCD,).takeLast(0,),)                 .toBe(emptyCollectionHolder,),)
                 test('1',   () => expect(new instance(ABCD,).takeLast(1,).toArray(),)       .toStrictEqual(D,),)
                 test('2',   () => expect(new instance(ABCD,).takeLast(2,).toArray(),)       .toStrictEqual(CD,),)
                 test('3',   () => expect(new instance(ABCD,).takeLast(3,).toArray(),)       .toStrictEqual(BCD,),)
@@ -603,9 +602,9 @@ describe("CollectionHolderTest (take)", () => {
         },)
         describe("takeLastWhile", () => {
             describe("empty", () => {
-                test("(T, number) → boolean", () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(T) → boolean",         () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(T, number) → boolean", () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(T) → boolean",         () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).takeLastWhile(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (T, number) → true",   () => expect(new instance(A,)   .takeLastWhile(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
@@ -656,9 +655,9 @@ describe("CollectionHolderTest (take)", () => {
         },)
         describe("takeLastWhileIndexed", () => {
             describe("empty", () => {
-                test("(number, T) → boolean", () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail2,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("(number) → boolean",    () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail1,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
-                test("() → boolean",          () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail0,),).toBe(CollectionConstants.EMPTY_COLLECTION_HOLDER,),)
+                test("(number, T) → boolean", () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
+                test("(number) → boolean",    () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail1,),).toBe(emptyCollectionHolder,),)
+                test("() → boolean",          () => expect(new instance(EMPTY,).takeLastWhileIndexed(callbackAsFail0,),).toBe(emptyCollectionHolder,),)
             },)
             describe("boolean callbacks", () => {
                 test("1 field: (number, T) → true",   () => expect(new instance(A,)   .takeLastWhileIndexed(callbackAsTrue2,).toArray(),).toStrictEqual(A,),)
