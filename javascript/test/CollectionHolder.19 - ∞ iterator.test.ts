@@ -16,7 +16,7 @@ import {callbackToString0}        from "./value/callbacks (string)"
 
 import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
 
-describe("LazyCollectionHolderTest (∞ iterator)", () => {
+describe("CollectionHolderTest (∞ iterator)", () => {
     // README: The duplicate cannot be tested since it gives a Jest heap exception (too much arguments),
     // And as such, it should work as intended
     // const newNonDuplicateCollection = () => new LazyCollectionHolderThatCanRetrieveHandler<number>({ *[Symbol.iterator]() {
