@@ -12,7 +12,7 @@
 
 import {GenericCollectionHolder_ConstructorTest}           from "./instance/GenericCollectionHolder_ConstructorTest"
 import {GenericMinimalistCollectionHolder_ConstructorTest} from "./instance/GenericMinimalistCollectionHolder_ConstructorTest"
-import {LazyGenericCollectionHolder_ConstructorTest}       from "./instance/LazyGenericCollectionHolder_ConstructorTest"
+import {LazyCollectionHolder_ConstructorTest}              from "./instance/LazyCollectionHolder_ConstructorTest"
 import {A, AB, ABC, ABCD, EMPTY}                           from "./value/arrays"
 import {everyIterableInstances}                            from "./value/instances"
 
@@ -40,9 +40,9 @@ describe("CollectionHolderTest (constructor)", () => {
         test("4 fields", () => expect(newCollection(ABCD,),).toContainAllValues(ABCD,),)
 
     },)},)
-    describe("LazyGenericCollectionHolder", () => {
+    describe("LazyCollectionHolder", () => {
     describe.each(everyIterableInstances,)("%s", ({value: iterable,},) => {
-        const newCollection = <const T, >(values: readonly T[],) => new LazyGenericCollectionHolder_ConstructorTest(new iterable(values,),)
+        const newCollection = <const T, >(values: readonly T[],) => new LazyCollectionHolder_ConstructorTest(new iterable(values,),)
 
         test("empty",    () => expect(newCollection(EMPTY,),).toBeEmpty(),)
         test("1 field",  () => expect(newCollection(A,),).toContainAllValues(A,),)
