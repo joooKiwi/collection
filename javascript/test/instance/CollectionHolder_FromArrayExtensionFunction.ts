@@ -142,8 +142,13 @@ import {toStringByArray}                                from "../../src/method/t
 import {toUpperCaseStringByArray}                       from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}                from "./AbstractCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for an {@link ReadonlyArray Array} */
-export class CollectionHolder_FromArrayExtensionFunction<const T, >
+/**
+ * A test instance to exclusively test the extension methods for
+ * an {@link ReadonlyArray Array}
+ *
+ * @typeParam T The type
+ */
+export class CollectionHolder_FromArrayExtensionFunction<const T , >
     extends AbstractCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 

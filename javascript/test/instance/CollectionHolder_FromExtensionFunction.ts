@@ -142,7 +142,12 @@ import {toStringByCollectionHolder}                                from "../../s
 import {toUpperCaseStringByCollectionHolder}                       from "../../src/method/toUpperCaseString"
 import {AbstractCollectionHolderForTest}                           from "./AbstractCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for a {@link CollectionHolder} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * a {@link CollectionHolder}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_FromExtensionFunction<const T, >
     extends AbstractCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {

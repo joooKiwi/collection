@@ -55,7 +55,10 @@ import {sliceWithMinimalistCollectionHolderByMinimalistCollectionHolder}     fro
 import {sliceWithSetByMinimalistCollectionHolder}                            from "../../src/method/slice.withSet"
 import {AbstractMinimalistCollectionHolderForTest}                           from "./AbstractMinimalistCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for a {@link MinimalistCollectionHolder} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * a {@link MinimalistCollectionHolder}
+ */
 export class CollectionHolder_FromMinimalistExtensionFunction<const T, >
     extends AbstractMinimalistCollectionHolderForTest<T, readonly T[]>
     implements CollectionHolder_FromExtension<T> {

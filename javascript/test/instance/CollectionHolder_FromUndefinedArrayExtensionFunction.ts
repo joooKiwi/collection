@@ -141,7 +141,12 @@ import {toStringByArray}                                from "../../src/method/t
 import {toUpperCaseStringByArray}                       from "../../src/method/toUpperCaseString"
 import {AbstractNullCollectionHolderForTest}            from "./AbstractNullCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for an `undefined` {@link ReadonlyArray Array} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * an `undefined` {@link ReadonlyArray Array}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_FromUndefinedArrayExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {
 

@@ -23,7 +23,11 @@ import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest
 
 const NUMBER_REGEX = /\d+/
 
-/** A class to test the functionality of a {@link GenericCollectionHolder} */
+/**
+ * A class to test the functionality of a {@link GenericCollectionHolder}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_ByGenericCollection<const T, >
     extends AbstractCollectionHolderForTest<T> {
 

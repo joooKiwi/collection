@@ -17,7 +17,13 @@ import type {MinimalistCollectionHolder}                         from "../../src
 import type {CollectionIterator}                                 from "../../src/iterator/CollectionIterator"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src/type/possibleInstance"
 
-export interface CollectionHolder_FromExtension<out T,>
+/**
+ * A test instance declaration of a {@link CollectionHolder} to test the extension methods directly
+ * (when there are multiple starting with the same name)
+ *
+ * @typeParam T The type
+ */
+export interface CollectionHolder_FromExtension<out T, >
     extends CollectionHolder<T> {
 
     /** The never possible amount of call {@link CollectionHolder.get} has been called */

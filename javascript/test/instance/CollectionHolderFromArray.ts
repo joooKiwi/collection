@@ -15,8 +15,10 @@ import {AbstractCollectionHolder} from "../../src/AbstractCollectionHolder"
 /**
  * A {@link CollectionHolder} having the functionality from an {@link ReadonlyArray array}
  * without handling negative indexes in the {@link CollectionHolder.get} method
+ *
+ * @typeParam T The type
  */
-export class CollectionHolderFromArray<const out T = unknown, >
+export class CollectionHolderFromArray<const T, >
     extends AbstractCollectionHolder<T> {
 
     public readonly array

@@ -16,6 +16,8 @@ import type {StraightCollectionHolderForTest} from "./StraightCollectionHolderFo
 /**
  * A {@link StraightCollectionHolderForTest} that has more utility methods
  * and is watching the amount of time {@link get} is being called for the tests
+ *
+ * @typeParam T The type
  */
 export interface CollectionHolderForTest<out T, >
     extends StraightCollectionHolderForTest<T> {

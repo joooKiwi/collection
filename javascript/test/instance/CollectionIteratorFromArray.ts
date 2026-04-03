@@ -21,6 +21,8 @@ import {CollectionHolderFromArray}      from "./CollectionHolderFromArray"
  * A {@link CollectionIterator} having the functionality from an {@link ReadonlyArray array}.
  *
  * Internally, it is using {@link CollectionHolderFromArray} as the {@link CollectionIterator.collection}
+ *
+ * @typeParam T The type
  */
 export class CollectionIteratorFromArray<const T, >
     extends AbstractCollectionIterator<T> {

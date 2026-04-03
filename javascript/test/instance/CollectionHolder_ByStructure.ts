@@ -26,6 +26,8 @@ import {CollectionHolderFromArray} from "./CollectionHolderFromArray"
  * but without inheriting the {@link AbstractCollectionHolder}.
  *
  * Internally, it is using a {@link CollectionHolderFromArray} for every method
+ *
+ * @typeParam T The type
  */
 export class CollectionHolder_ByStructure<const T, >
     implements CollectionHolder<T> {

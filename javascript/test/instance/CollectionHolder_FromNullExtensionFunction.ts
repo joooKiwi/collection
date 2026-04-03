@@ -141,7 +141,12 @@ import {toStringByCollectionHolder}                                from "../../s
 import {toUpperCaseStringByCollectionHolder}                       from "../../src/method/toUpperCaseString"
 import {AbstractNullCollectionHolderForTest}                       from "./AbstractNullCollectionHolderForTest"
 
-/** A test instance to exclusively test the extension methods for a `null` {@link CollectionHolder} */
+/**
+ * A test instance to exclusively test the extension methods for
+ * a `null` {@link CollectionHolder}
+ *
+ * @typeParam T The type
+ */
 export class CollectionHolder_FromNullExtensionFunction<const T, >
     extends AbstractNullCollectionHolderForTest<T> {
 
