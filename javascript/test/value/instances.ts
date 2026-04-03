@@ -19,9 +19,8 @@ import {NullCollectionException}                                   from "../../s
 import {Holder}                                                    from "../Holder"
 import {ArrayByStructureForTest}                                   from "../instance/ArrayByStructureForTest"
 import {ArrayForTest}                                              from "../instance/ArrayForTest"
-import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByGenericCollection}                      from "../instance/CollectionHolder_ByGenericCollection"
-import {CollectionHolder_ByLazyCollection}                         from "../instance/CollectionHolder_ByLazyCollection"
+import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByStructure}                              from "../instance/CollectionHolder_ByStructure"
 import {CollectionHolder_FromArrayExtensionFunction}               from "../instance/CollectionHolder_FromArrayExtensionFunction"
 import {CollectionHolder_FromExtensionFunction}                    from "../instance/CollectionHolder_FromExtensionFunction"
@@ -34,6 +33,7 @@ import {CollectionHolder_FromUndefinedArrayExtensionFunction}      from "../inst
 import {CollectionHolder_FromUndefinedExtensionFunction}           from "../instance/CollectionHolder_FromUndefinedExtensionFunction"
 import {CollectionHolder_FromUndefinedMinimalistExtensionFunction} from "../instance/CollectionHolder_FromUndefinedMinimalistExtensionFunction"
 import {CollectionHolder_FromUndefinedPublicExtensionFunction}     from "../instance/CollectionHolder_FromUndefinedPublicExtensionFunction"
+import {CollectionHolder_Lazy}                                     from "../instance/CollectionHolder_Lazy"
 import {CollectionHolderFromArray}                                 from "../instance/CollectionHolderFromArray"
 import {CollectionIterator_ByStructure}                            from "../instance/CollectionIterator_ByStructure"
 import {CollectionIteratorFromArray}                               from "../instance/CollectionIteratorFromArray"
@@ -62,8 +62,7 @@ export const emptyCollectionHolder = EmptyCollectionHolder.get
 export const everyCollectionInstances = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist",                     instance: CollectionHolder_ByMinimalistCollection, },                            "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",                         instance: CollectionHolder_ByGenericCollection, },                               "collection (by normal)",),
-    // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "array",                          instance: CollectionHolder_ByArrayCollection, },                                 "collection (by array)",),
-    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",                           instance: CollectionHolder_ByLazyCollection, },                                  "collection (by lazy)",),
+    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",                           instance: CollectionHolder_Lazy, },                                              "collection (lazy)",),
     new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: false, emptyException: EmptyCollectionException, type: "minimalist extension",           instance: CollectionHolder_FromMinimalistExtensionFunction,},                    "minimalist extension",),
     new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "null minimalist extension",      instance: CollectionHolder_FromNullMinimalistExtensionFunction,},           "null minimalist extension",),
     new Holder({isMinimalist: true,  isLazy: false, isExtension: true,  isNull: true,  emptyException: NullCollectionException,  type: "undefined minimalist extension", instance: CollectionHolder_FromUndefinedMinimalistExtensionFunction,}, "undefined minimalist extension",),
@@ -85,7 +84,7 @@ export const everyInstances = [
     new Holder({isMinimalist: true,  isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "minimalist", instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
     new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "normal",     instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
     // new Holder({isMinimalist: false, isLazy: false, isExtension: false, isNull: false, type: "array",     instance: CollectionHolder_ByArrayCollection, },      "collection (by array)",),
-    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",       instance: CollectionHolder_ByLazyCollection, },       "collection (by lazy)",),
+    new Holder({isMinimalist: false, isLazy: true,  isExtension: false, isNull: false, emptyException: EmptyCollectionException, type: "lazy",       instance: CollectionHolder_Lazy, },                   "collection (by lazy)",),
 ] as const satisfies readonly Holder<{readonly isExtension: false, isNull: false, emptyException: typeof EmptyCollectionException, }, string>[]
 
 /**

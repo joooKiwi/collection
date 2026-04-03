@@ -21,8 +21,12 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 import {AbstractCollectionHolderForTest} from "./AbstractCollectionHolderForTest"
 import {LazyCollectionHolder}            from "../../src/LazyCollectionHolder"
 
-/** A class to test the functionality of a {@link LazyCollectionHolder} */
-export class CollectionHolder_ByLazyCollection<const T, >
+/**
+ * A class to test the functionality of a {@link LazyCollectionHolder}
+ *
+ * @typeParam T The type
+ */
+export class CollectionHolder_Lazy<const T, >
     extends AbstractCollectionHolderForTest<T> {
 
     /** The internal instance that is tested */
@@ -31,7 +35,7 @@ export class CollectionHolder_ByLazyCollection<const T, >
     public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
         super()
         const $this = this
-        this.instance = new class CollectionHolder_CountingGetByLazyCollection
+        this.instance = new class CollectionHolder_CountingGetOnLazy
             extends LazyCollectionHolder<T>
             implements LazyCollectionHolderForTest<T> {
 
@@ -62,10 +66,6 @@ export class CollectionHolder_ByLazyCollection<const T, >
 
     public override getLast(): T { return this.instance.getLast() }
 
-    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
-
-    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
-
 
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
@@ -79,26 +79,31 @@ export class CollectionHolder_ByLazyCollection<const T, >
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return this.instance.getLastOrElse(defaultValue,) }
 
+
     public override getOrNull(index: number,): NullOr<T> { return this.instance.getOrNull(index,) }
+
+    public override getFirstOrNull(): NullOr<T> { return this.instance.getFirstOrNull() }
+
+    public override getLastOrNull(): NullOr<T> { return this.instance.getLastOrNull() }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
-    public override findFirst(predicate: BooleanCallback<T>,) { return this.instance.find(predicate,) }
+    public override findFirst(predicate: BooleanCallback<T>,) { return this.instance.findFirst(predicate,) }
 
     public override findFirstOrNull<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
     public override findFirstOrNull(predicate: BooleanCallback<T>,): NullOr<T>
-    public override findFirstOrNull(predicate: BooleanCallback<T>,) { return this.instance.findOrNull(predicate,) }
+    public override findFirstOrNull(predicate: BooleanCallback<T>,) { return this.instance.findFirstOrNull(predicate,) }
 
     public override findFirstIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): S
     public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,): T
-    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,) { return this.instance.findIndexed(predicate,) }
+    public override findFirstIndexed(predicate: ReverseBooleanCallback<T>,) { return this.instance.findFirstIndexed(predicate,) }
 
     public override findFirstIndexedOrNull<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): NullOr<S>
     public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
-    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.instance.findIndexedOrNull(predicate,) }
+    public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this.instance.findFirstIndexedOrNull(predicate,) }
 
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
