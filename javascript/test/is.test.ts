@@ -18,7 +18,7 @@ import {MinimalistCollectionHolder_ByStructure} from "./instance/MinimalistColle
 
 import {GenericCollectionHolder}                 from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder}       from "../src/GenericMinimalistCollectionHolder"
-import {LazyGenericCollectionHolder}             from "../src/LazyGenericCollectionHolder"
+import {LazyCollectionHolder}                    from "../src/LazyCollectionHolder"
 import {GenericCollectionIterator}               from "../src/iterator/GenericCollectionIterator"
 import {isArray}                                 from "../src/method/isArray"
 import {isArrayByStructure}                      from "../src/method/isArrayByStructure"
@@ -87,7 +87,7 @@ describe("is", () => {
         //TODO add weakMap by structure
         new Holder(new GenericMinimalistCollectionHolder([],),                         "minimalist collection holder (normal)",),
         new Holder(new GenericCollectionHolder([],),                                   "collection holder (normal)",),
-        new Holder(new LazyGenericCollectionHolder([],),                               "collection holder (lazy)",),
+        new Holder(new LazyCollectionHolder([],),                                      "collection holder (lazy)",),
         new Holder(new MinimalistCollectionHolder_ByStructure([],),                    "minimalist collection holder (by structure)",),
         new Holder(new CollectionHolder_ByStructure([],),                              "collection holder (by structure)",),
         new Holder([][Symbol.iterator](),                                              "iterator (array)",),
