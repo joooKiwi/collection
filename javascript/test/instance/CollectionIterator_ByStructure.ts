@@ -14,6 +14,7 @@ import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
+import type {PossibleIteratorValue}                                                                from "../../src/type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../../src/type/symbol"
 import type {CollectionIteratorName}                                                               from "../../src/type/toStringTag"
 
@@ -61,7 +62,7 @@ export class CollectionIterator_ByStructure<const T, >
     public get nextIndex(): NullOrNumber { return this.reference.nextIndex }
     public get nextValue(): T { return this.reference.nextValue }
 
-    public next(): IteratorResult<T, AfterLastValueInCollectionIteratorSymbol> { return this.reference.next() }
+    public next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> { return this.reference.next() }
 
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
@@ -70,7 +71,7 @@ export class CollectionIterator_ByStructure<const T, >
     public get previousValue(): T { return this.reference.previousValue }
     public get previousIndex(): NullOrNumber { return this.reference.previousIndex }
 
-    public previous(): IteratorResult<T, BeforeFirstValueInCollectionIteratorSymbol> { return this.reference.previous() }
+    public previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> { return this.reference.previous() }
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
