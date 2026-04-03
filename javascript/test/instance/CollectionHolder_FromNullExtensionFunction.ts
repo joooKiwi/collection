@@ -173,6 +173,7 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
         return getLastByCollectionHolder(null,)
     }
 
+
     public override getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>,): | T | U
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
@@ -186,6 +187,7 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
     public override getLastOrElse(defaultValue: ReturnCallback<unknown>,) { return getLastOrElseByCollectionHolder(null, defaultValue,) }
+
 
     public override getOrNull(index: number,): NullOr<T> {
         return getOrNullByCollectionHolder(null, index,)
