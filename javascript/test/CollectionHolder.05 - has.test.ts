@@ -196,15 +196,15 @@ describe("CollectionHolderTest (has)", () => {
 
         describe.each(everyIterableInstances,)("hasAll: %s", ({value: iterable,},) => {
             test("empty",    () => expect(instance.hasAll(new iterable(EMPTY,),),).toBeTrue(),)
-            test("1 field",  () => expect(instance.hasAll(new iterable(A,),),).toBeFalse(),)
-            test("2 fields", () => expect(instance.hasAll(new iterable(AB,),),).toBeFalse(),)
-            test("4 fields", () => expect(instance.hasAll(new iterable(ABCD,),),).toBeFalse(),)
+            test("1 field",  () => expect(instance.hasAll(new iterable(A,),),)    .toBeFalse(),)
+            test("2 fields", () => expect(instance.hasAll(new iterable(AB,),),)   .toBeFalse(),)
+            test("4 fields", () => expect(instance.hasAll(new iterable(ABCD,),),) .toBeFalse(),)
         },)
         describe.each(everyIterableInstances,)("hasNotAll: %s", ({value: iterable,},) => {
             test("empty",    () => expect(instance.hasNotAll(new iterable(EMPTY,),),).toBeFalse(),)
-            test("1 field",  () => expect(instance.hasNotAll(new iterable(A,),),).toBeTrue(),)
-            test("2 fields", () => expect(instance.hasNotAll(new iterable(AB,),),).toBeTrue(),)
-            test("4 fields", () => expect(instance.hasNotAll(new iterable(ABCD,),),).toBeTrue(),)
+            test("1 field",  () => expect(instance.hasNotAll(new iterable(A,),),)    .toBeTrue(),)
+            test("2 fields", () => expect(instance.hasNotAll(new iterable(AB,),),)   .toBeTrue(),)
+            test("4 fields", () => expect(instance.hasNotAll(new iterable(ABCD,),),) .toBeTrue(),)
         },)
 
         test("hasNull",              () => expect(instance.hasNull,).toBeFalse(),)
