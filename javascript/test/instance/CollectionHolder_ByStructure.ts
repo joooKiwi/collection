@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set, TemplateOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
@@ -35,7 +35,7 @@ export class CollectionHolder_ByStructure<const T, >
     [index: TemplateOrNumber]: undefined
     public readonly reference
 
-    public constructor(array: readonly T[],) { this.reference = new CollectionHolderFromArray(array,) }
+    public constructor(array: Array<T>,) { this.reference = new CollectionHolderFromArray(array,) }
 
     //#region -------------------- Size methods --------------------
 
@@ -311,134 +311,134 @@ export class CollectionHolder_ByStructure<const T, >
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public hasOne(values: readonly T[],): boolean
-    public hasOne(values: ReadonlySet<T>,): boolean
-    public hasOne(values: CollectionHolder<T>,): boolean
-    public hasOne(values: MinimalistCollectionHolder<T>,): boolean
-    public hasOne(values: CollectionIterator<T>,): boolean
-    public hasOne(values: Iterator<T, unknown, unknown>,): boolean
-    public hasOne(values: Iterable<T, unknown, unknown>,): boolean
-    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasOne(values,) }
+    public hasOne(values: Nullable<Array<T>>,): boolean
+    public hasOne(values: Nullable<Set<T>>,): boolean
+    public hasOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.hasOne(values,) }
 
-    public includesOne(values: readonly T[],): boolean
-    public includesOne(values: ReadonlySet<T>,): boolean
-    public includesOne(values: CollectionHolder<T>,): boolean
-    public includesOne(values: MinimalistCollectionHolder<T>,): boolean
-    public includesOne(values: CollectionIterator<T>,): boolean
-    public includesOne(values: Iterator<T, unknown, unknown>,): boolean
-    public includesOne(values: Iterable<T, unknown, unknown>,): boolean
-    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesOne(values,) }
+    public includesOne(values: Nullable<Array<T>>,): boolean
+    public includesOne(values: Nullable<Set<T>>,): boolean
+    public includesOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.includesOne(values,) }
 
-    public containsOne(values: readonly T[],): boolean
-    public containsOne(values: ReadonlySet<T>,): boolean
-    public containsOne(values: CollectionHolder<T>,): boolean
-    public containsOne(values: MinimalistCollectionHolder<T>,): boolean
-    public containsOne(values: CollectionIterator<T>,): boolean
-    public containsOne(values: Iterator<T, unknown, unknown>,): boolean
-    public containsOne(values: Iterable<T, unknown, unknown>,): boolean
-    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsOne(values,) }
+    public containsOne(values: Nullable<Array<T>>,): boolean
+    public containsOne(values: Nullable<Set<T>>,): boolean
+    public containsOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.containsOne(values,) }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public hasNotOne(values: readonly T[],): boolean
-    public hasNotOne(values: ReadonlySet<T>,): boolean
-    public hasNotOne(values: CollectionHolder<T>,): boolean
-    public hasNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public hasNotOne(values: CollectionIterator<T>,): boolean
-    public hasNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public hasNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasNotOne(values,) }
+    public hasNotOne(values: Nullable<Array<T>>,): boolean
+    public hasNotOne(values: Nullable<Set<T>>,): boolean
+    public hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.hasNotOne(values,) }
 
-    public includesNotOne(values: readonly T[],): boolean
-    public includesNotOne(values: ReadonlySet<T>,): boolean
-    public includesNotOne(values: CollectionHolder<T>,): boolean
-    public includesNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public includesNotOne(values: CollectionIterator<T>,): boolean
-    public includesNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public includesNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesNotOne(values,) }
+    public includesNotOne(values: Nullable<Array<T>>,): boolean
+    public includesNotOne(values: Nullable<Set<T>>,): boolean
+    public includesNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.includesNotOne(values,) }
 
-    public containsNotOne(values: readonly T[],): boolean
-    public containsNotOne(values: ReadonlySet<T>,): boolean
-    public containsNotOne(values: CollectionHolder<T>,): boolean
-    public containsNotOne(values: MinimalistCollectionHolder<T>,): boolean
-    public containsNotOne(values: CollectionIterator<T>,): boolean
-    public containsNotOne(values: Iterator<T, unknown, unknown>,): boolean
-    public containsNotOne(values: Iterable<T, unknown, unknown>,): boolean
-    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsNotOne(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsNotOne(values,) }
+    public containsNotOne(values: Nullable<Array<T>>,): boolean
+    public containsNotOne(values: Nullable<Set<T>>,): boolean
+    public containsNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.containsNotOne(values,) }
 
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public hasAll(values: readonly T[],): boolean
-    public hasAll(values: ReadonlySet<T>,): boolean
-    public hasAll(values: CollectionHolder<T>,): boolean
-    public hasAll(values: MinimalistCollectionHolder<T>,): boolean
-    public hasAll(values: CollectionIterator<T>,): boolean
-    public hasAll(values: Iterator<T, unknown, unknown>,): boolean
-    public hasAll(values: Iterable<T, unknown, unknown>,): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasAll(values,) }
+    public hasAll(values: Nullable<Array<T>>,): boolean
+    public hasAll(values: Nullable<Set<T>>,): boolean
+    public hasAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.hasAll(values,) }
 
-    public includesAll(values: readonly T[],): boolean
-    public includesAll(values: ReadonlySet<T>,): boolean
-    public includesAll(values: CollectionHolder<T>,): boolean
-    public includesAll(values: MinimalistCollectionHolder<T>,): boolean
-    public includesAll(values: CollectionIterator<T>,): boolean
-    public includesAll(values: Iterator<T, unknown, unknown>,): boolean
-    public includesAll(values: Iterable<T, unknown, unknown>,): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesAll(values,) }
+    public includesAll(values: Nullable<Array<T>>,): boolean
+    public includesAll(values: Nullable<Set<T>>,): boolean
+    public includesAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.includesAll(values,) }
 
-    public containsAll(values: readonly T[],): boolean
-    public containsAll(values: ReadonlySet<T>,): boolean
-    public containsAll(values: CollectionHolder<T>,): boolean
-    public containsAll(values: MinimalistCollectionHolder<T>,): boolean
-    public containsAll(values: CollectionIterator<T>,): boolean
-    public containsAll(values: Iterator<T, unknown, unknown>,): boolean
-    public containsAll(values: Iterable<T, unknown, unknown>,): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsAll(values,) }
+    public containsAll(values: Nullable<Array<T>>,): boolean
+    public containsAll(values: Nullable<Set<T>>,): boolean
+    public containsAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.containsAll(values,) }
 
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public hasNotAll(values: readonly T[],): boolean
-    public hasNotAll(values: ReadonlySet<T>,): boolean
-    public hasNotAll(values: CollectionHolder<T>,): boolean
-    public hasNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public hasNotAll(values: CollectionIterator<T>,): boolean
-    public hasNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public hasNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public hasNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.hasNotAll(values,) }
+    public hasNotAll(values: Nullable<Array<T>>,): boolean
+    public hasNotAll(values: Nullable<Set<T>>,): boolean
+    public hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.hasNotAll(values,) }
 
-    public includesNotAll(values: readonly T[],): boolean
-    public includesNotAll(values: ReadonlySet<T>,): boolean
-    public includesNotAll(values: CollectionHolder<T>,): boolean
-    public includesNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public includesNotAll(values: CollectionIterator<T>,): boolean
-    public includesNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public includesNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public includesNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.includesNotAll(values,) }
+    public includesNotAll(values: Nullable<Array<T>>,): boolean
+    public includesNotAll(values: Nullable<Set<T>>,): boolean
+    public includesNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public includesNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public includesNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public includesNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public includesNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public includesNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public includesNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.includesNotAll(values,) }
 
-    public containsNotAll(values: readonly T[],): boolean
-    public containsNotAll(values: ReadonlySet<T>,): boolean
-    public containsNotAll(values: CollectionHolder<T>,): boolean
-    public containsNotAll(values: MinimalistCollectionHolder<T>,): boolean
-    public containsNotAll(values: CollectionIterator<T>,): boolean
-    public containsNotAll(values: Iterator<T, unknown, unknown>,): boolean
-    public containsNotAll(values: Iterable<T, unknown, unknown>,): boolean
-    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,): boolean
-    public containsNotAll(values: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) { return this.reference.containsNotAll(values,) }
+    public containsNotAll(values: Nullable<Array<T>>,): boolean
+    public containsNotAll(values: Nullable<Set<T>>,): boolean
+    public containsNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public containsNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public containsNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public containsNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public containsNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public containsNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public containsNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.reference.containsNotAll(values,) }
 
     //#endregion -------------------- Has not all --------------------
 
@@ -476,8 +476,8 @@ export class CollectionHolder_ByStructure<const T, >
     //#region -------------------- Slice --------------------
 
     public slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public slice(indices: readonly number[],): CollectionHolder<T>
-    public slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public slice(indices: NumberArray,): CollectionHolder<T>
+    public slice(indices: NumberSet,): CollectionHolder<T>
     public slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -654,14 +654,14 @@ export class CollectionHolder_ByStructure<const T, >
 
     public toIterator(): CollectionIterator<T> { return this.reference.toIterator() }
 
-    public toArray(): readonly T[] { return this.reference.toArray() }
-    public toMutableArray(): T[] { return this.reference.toMutableArray() }
+    public toArray(): Array<T> { return this.reference.toArray() }
+    public toMutableArray(): MutableArray<T> { return this.reference.toMutableArray() }
 
-    public toSet(): ReadonlySet<T> { return this.reference.toSet() }
-    public toMutableSet(): Set<T> { return this.reference.toMutableSet() }
+    public toSet(): Set<T> { return this.reference.toSet() }
+    public toMutableSet(): MutableSet<T> { return this.reference.toMutableSet() }
 
-    public toMap(): ReadonlyMap<number, T> { return this.reference.toMap() }
-    public toMutableMap(): Map<number, T> { return this.reference.toMutableMap() }
+    public toMap(): NumberKeyMap<T> { return this.reference.toMap() }
+    public toMutableMap(): MutableNumberKeyMap<T> { return this.reference.toMutableMap() }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------

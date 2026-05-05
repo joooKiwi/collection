@@ -48,7 +48,7 @@ export class CollectionIteratorFromArray<const T, >
         return this.collection.get(index,)
     }
 
-    public override [Symbol.iterator](): CollectionIterator<T> {
+    public override [Symbol.iterator](): CollectionIteratorFromArray<T> {
         return new CollectionIteratorFromArray(this.array,)
     }
 

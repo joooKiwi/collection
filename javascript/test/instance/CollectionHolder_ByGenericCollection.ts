@@ -34,12 +34,12 @@ export class CollectionHolder_ByGenericCollection<const T, >
     /** The internal instance that is tested */
     public readonly instance: GenericCollectionHolder<T>
 
-    /** The {@link CollectionHolder_FromExtensionFunction.array array} encapsulated in a {@link Proxy} */
-    public readonly proxiedArray: readonly T[]
+    /** The {@link CollectionHolder_ByGenericCollection.array array} encapsulated in a {@link Proxy} */
+    public readonly proxiedArray: Array<T>
     /** The handler associated to the {@link proxiedArray} */
-    public readonly proxyHandler: ProxyHandler<readonly T[]>
+    public readonly proxyHandler: ProxyHandler<Array<T>>
 
-    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
         const $this = this
         const handler = this.proxyHandler = {

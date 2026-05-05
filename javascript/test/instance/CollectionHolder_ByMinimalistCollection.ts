@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {MinimalistCollectionHolder} from "../../src/MinimalistCollectionHolder"
 
 import {GenericMinimalistCollectionHolder}                from "../../src/GenericMinimalistCollectionHolder"
@@ -30,7 +32,7 @@ export class CollectionHolder_ByMinimalistCollection<const T, >
     /** The internal instance that is tested */
     public readonly instance: GenericMinimalistCollectionHolder<T>
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         super(array,)
         this.instance = new GenericMinimalistCollectionHolder(array,)
     }

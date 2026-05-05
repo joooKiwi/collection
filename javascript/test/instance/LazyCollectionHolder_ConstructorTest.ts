@@ -14,7 +14,7 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder} from "../../src
 
 import {LazyCollectionHolder} from "../../src/LazyCollectionHolder"
 
-export class LazyCollectionHolder_ConstructorTest<T>
+export class LazyCollectionHolder_ConstructorTest<const T, >
     extends LazyCollectionHolder<T> {
 
     public constructor(reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>,) {

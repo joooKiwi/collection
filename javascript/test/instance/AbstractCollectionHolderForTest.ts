@@ -110,7 +110,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Test utility methods --------------------
     //#region -------------------- Size methods --------------------
 
-    public abstract get size(): number
+    public abstract readonly size: number
 
     public get length(): never {
         throw new Error("The getter method “length” was not expected to be called.",)
@@ -120,8 +120,8 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The getter method “count” was not expected to be called.",)
     }
 
-    public abstract get isEmpty(): boolean
-    public abstract get isNotEmpty(): boolean
+    public abstract readonly isEmpty: boolean
+    public abstract readonly isNotEmpty: boolean
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -437,7 +437,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
 
     //#region -------------------- Has null --------------------
 
-    public abstract get hasNull(): boolean
+    public abstract readonly hasNull: boolean
 
     public get includesNull(): never {
         throw new Error("The getter method “includesNull” was not expected to be called.",)
@@ -450,7 +450,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has no nulls --------------------
 
-    public abstract get hasNoNulls(): boolean
+    public abstract readonly hasNoNulls: boolean
 
     public get includesNoNulls(): never {
         throw new Error("The getter method “includesNoNulls” was not expected to be called.",)
@@ -463,7 +463,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
 
-    public abstract get hasDuplicate(): boolean
+    public abstract readonly hasDuplicate: boolean
 
     public get includesDuplicate(): never {
         throw new Error("The getter method “includesDuplicate” was not expected to be called.",)
@@ -476,7 +476,7 @@ export abstract class AbstractCollectionHolderForTest<const T, >
     //#endregion -------------------- Has duplicate --------------------
     //#region -------------------- Has no duplicates --------------------
 
-    public abstract get hasNoDuplicates(): boolean
+    public abstract readonly hasNoDuplicates: boolean
 
     public get includesNoDuplicates(): never {
         throw new Error("The getter method “includesNoDuplicates” was not expected to be called.",)

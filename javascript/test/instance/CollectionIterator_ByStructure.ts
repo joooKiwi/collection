@@ -53,7 +53,7 @@ export class CollectionIterator_ByStructure<const T, >
     //#region -------------------- Current methods --------------------
 
     public get currentIndex(): NullOrNumber { return this.reference.currentIndex }
-    public get index(): NullOrNumber { return this.reference.index }
+    public get index(): this["currentIndex"] { return this.reference.index }
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------

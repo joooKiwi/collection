@@ -152,7 +152,7 @@ export class CollectionHolder_FromArrayExtensionFunction<const T , >
     extends AbstractCollectionHolderForTest<T>
     implements CollectionHolder_FromExtension<T> {
 
-    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) { super() }
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) { super() }
 
     //#region -------------------- Test utility methods --------------------
 

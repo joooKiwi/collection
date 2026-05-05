@@ -10,13 +10,15 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 /** An {@link Iterable} that is made for the tests with an {@link ReadonlyArray Array} under the hood */
 export class IterableForTest<const T, >
-    implements Iterable<T> {
+    implements Iterable<T, unknown, unknown> {
 
     public readonly array
 
-    public constructor(array: readonly T[],) { this.array = array }
+    public constructor(array: Array<T>,) { this.array = array }
 
     public [Symbol.iterator](): ArrayIterator<T> { return this.array[Symbol.iterator]() }
 
