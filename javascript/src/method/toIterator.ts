@@ -16,7 +16,8 @@ import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionIterator}         from "../iterator/CollectionIterator"
 
-import {CollectionConstants}           from "../CollectionConstants"
+import {LateRetriever}                 from "../LateRetriever"
+import {EmptyCollectionIterator}       from "../iterator/EmptyCollectionIterator"
 import {GenericCollectionIterator}     from "../iterator/GenericCollectionIterator"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -32,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+        return EmptyCollectionIterator.get
     if (isCollectionHolder(collection,))
         return toIteratorByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -56,10 +57,10 @@ export function toIterator<const T, >(collection: Nullable<| MinimalistCollectio
  */
 export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): CollectionIterator<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+        return EmptyCollectionIterator.get
     if (collection.size == 0)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    return new GenericCollectionIterator(collection,)
+        return EmptyCollectionIterator.get
+    return new GenericCollectionIterator(new LateRetriever.MinimalistAsCollectionHolder<T>(collection,),)
 }
 
 /**
@@ -70,9 +71,9 @@ export function toIteratorByMinimalistCollectionHolder<const T, >(collection: Nu
  */
 export function toIteratorByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): CollectionIterator<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+        return EmptyCollectionIterator.get
     if (collection.isEmpty)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+        return EmptyCollectionIterator.get
     return new GenericCollectionIterator(collection,)
 }
 
@@ -84,8 +85,8 @@ export function toIteratorByCollectionHolder<const T, >(collection: Nullable<Col
  */
 export function toIteratorByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionIterator<T> {
     if (collection == null)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
+        return EmptyCollectionIterator.get
     if (collection.length == 0)
-        return CollectionConstants.EMPTY_COLLECTION_ITERATOR
-    return new GenericCollectionIterator(new CollectionConstants.GenericMinimalistCollectionHolder(collection,),)
+        return EmptyCollectionIterator.get
+    return new GenericCollectionIterator(new LateRetriever.ArrayAsCollectionHolder<T>(collection,),)
 }
