@@ -15,8 +15,9 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LateRetriever}                 from "../LateRetriever"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__reduceTo}                    from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -71,8 +72,8 @@ export function filterNotNullByMinimalistCollectionHolder<const T, >(collection:
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection.get(index,) as T) == null)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(collection as MinimalistCollectionHolder<NonNullable<T>>,)
+            return new LazyCollectionHolder(() => __filterNotNullByMinimalist(collection, size, index, temporaryArray,),)
+    return new LateRetriever.MinimalistAsCollectionHolder<NonNullable<T>>(collection as MinimalistCollectionHolder<NonNullable<T>>,)
 }
 
 /**
@@ -89,7 +90,7 @@ export function filterNotNullByCollectionHolder<const T, >(collection: Nullable<
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (collection.hasNull)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNull(collection,),)
+        return new LazyCollectionHolder(() => __filterNotNull(collection,),)
     return collection as CollectionHolder<NonNullable<T>>
 }
 
@@ -112,8 +113,8 @@ export function filterNotNullByArray<const T, >(collection: Nullable<readonly T[
     let index = -1
     while (++index < size)
         if ((temporaryArray[index] = collection[index] as T) == null)
-                return new CollectionConstants.LazyGenericCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(collection as readonly NonNullable<T>[],)
+            return new LazyCollectionHolder(() => __filterNotNullByArray(collection, size, index, temporaryArray,),)
+    return new LateRetriever.ArrayAsCollectionHolder<NonNullable<T>>(collection as readonly NonNullable<T>[],)
 }
 
 //#endregion -------------------- Facade method --------------------
