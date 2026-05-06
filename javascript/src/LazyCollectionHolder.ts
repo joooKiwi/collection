@@ -24,16 +24,18 @@ import type {CollectionIterator}                                                
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
-import {ArrayAsCollectionHolder}                 from "./ArrayAsCollectionHolder"
 import {AbstractUnimplementedCollectionHolder}   from "./AbstractUnimplementedCollectionHolder"
+import type {ArrayAsCollectionHolder}            from "./ArrayAsCollectionHolder"
+import type {CollectionHolderOf1}                from "./CollectionHolderOf1"
+import type {CollectionHolderOf2}                from "./CollectionHolderOf2"
 import {EmptyCollectionHolder}                   from "./EmptyCollectionHolder"
-import {IteratorAsCollectionHolder}              from "./IteratorAsCollectionHolder"
-import {JsIterableAsCollectionHolder}            from "./JsIterableAsCollectionHolder"
-import {JsIteratorAsCollectionHolder}            from "./JsIteratorAsCollectionHolder"
-import {LazyCollectionHolderOf1}                 from "./LazyCollectionHolderOf1"
-import {LazyCollectionHolderOf2}                 from "./LazyCollectionHolderOf2"
-import {MinimalistAsCollectionHolder}            from "./MinimalistAsCollectionHolder"
-import {SetAsCollectionHolder}                   from "./SetAsCollectionHolder"
+import type {IteratorAsCollectionHolder}         from "./IteratorAsCollectionHolder"
+import type {JsIterableAsCollectionHolder}       from "./JsIterableAsCollectionHolder"
+import {LateRetriever}                           from "./LateRetriever"
+import type {LazyCollectionHolderOf1}            from "./LazyCollectionHolderOf1"
+import type {LazyCollectionHolderOf2}            from "./LazyCollectionHolderOf2"
+import type {MinimalistAsCollectionHolder}       from "./MinimalistAsCollectionHolder"
+import type {SetAsCollectionHolder}              from "./SetAsCollectionHolder"
 import {isArray}                                 from "./method/isArray"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
@@ -46,7 +48,7 @@ import {isMinimalistCollectionHolder}            from "./method/isMinimalistColl
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
 import {isSet}                                   from "./method/isSet"
 import {isSetByStructure}                        from "./method/isSetByStructure"
-import {Couple}                                  from "./tuple/Couple.next"
+import {Couple}                                  from "./tuple/Couple"
 
 /**
  * A {@link CollectionHolder} having the values associated to it, but lazily retrieved.
@@ -150,7 +152,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
         if (isIterator(reference,)) {
             this.#reference = lazyOf(new WeakRef(reference,),)
-            this.#innerCollection = lazy(() => new JsIteratorAsCollectionHolder(reference,),)
+            this.#innerCollection = lazy(() => new LateRetriever.JsIteratorAsCollectionHolder<T>(reference,),)
             return
         }
 
@@ -205,7 +207,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
         if (isIteratorByStructure<T>(reference,)) {
             this.#reference = lazyOf(new WeakRef(reference,),)
-            this.#innerCollection = lazy(() => new JsIteratorAsCollectionHolder(this, reference,),)
+            this.#innerCollection = lazy(() => new LateRetriever.JsIteratorAsCollectionHolder<T>(reference,),)
             return
         }
 
@@ -228,7 +230,7 @@ export class LazyCollectionHolder<const T = unknown, >
                 if (isCollectionIterator(referenceFound,))
                     return instanceByCollectionIterator(referenceFound,)
                 if (isIterator(referenceFound,))
-                    return new JsIteratorAsCollectionHolder(this, referenceFound,)
+                    return new LateRetriever.JsIteratorAsCollectionHolder<T>(referenceFound,)
 
                 if (isArrayByStructure<T>(referenceFound,))
                     return instanceByArray(referenceFound,)
@@ -241,7 +243,7 @@ export class LazyCollectionHolder<const T = unknown, >
                 if (isCollectionIteratorByStructure<T>(referenceFound,))
                     return instanceByCollectionIterator(referenceFound,)
                 if (isIteratorByStructure<T>(referenceFound,))
-                    return new JsIteratorAsCollectionHolder(referenceFound,)
+                    return new LateRetriever.JsIteratorAsCollectionHolder<T>(referenceFound,)
                 if ("size" in referenceFound) {
                     const size = referenceFound.size
                     if (size != null) // No size is present even though there is a value in the reference
@@ -257,7 +259,7 @@ export class LazyCollectionHolder<const T = unknown, >
                     if (size != null) // No size is present even though there is a value in the reference
                         return instanceByIterableWithSize(referenceFound, size,)
                 }
-                return new JsIterableAsCollectionHolder(referenceFound,)
+                return new LateRetriever.JsIterableAsCollectionHolder<T>(referenceFound,)
             },)
             return
         }
@@ -299,7 +301,7 @@ export class LazyCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from Iterable with count --------------------
         //#region -------------------- Initialization from Iterable --------------------
 
-        this.#innerCollection = lazyOf(new JsIterableAsCollectionHolder(reference,),)
+        this.#innerCollection = lazy(() => new LateRetriever.JsIterableAsCollectionHolder<T>(reference,),)
 
         //#endregion -------------------- Initialization from Iterable --------------------
     }
@@ -712,15 +714,15 @@ export class LazyCollectionHolder<const T = unknown, >
 
 }
 
-function instanceByArray<const T, >(reference: Array<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | ArrayAsCollectionHolder<T> {
+function instanceByArray<const T, >(reference: Array<T>,): | EmptyCollectionHolder | CollectionHolderOf1<T> | CollectionHolderOf2<T> | ArrayAsCollectionHolder<T> {
     const size = reference.length
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference[0] as T,)
+        return new LateRetriever.CollectionHolderOf1(reference[0] as T,)
     if (size === 2)
-        return new LazyCollectionHolderOf2(() => new Couple(reference[0] as T, reference[1] as T,),)
-    return new ArrayAsCollectionHolder(reference,)
+        return new LateRetriever.CollectionHolderOf2(reference[0] as T, reference[1] as T,)
+    return new LateRetriever.ArrayAsCollectionHolder(reference,)
 }
 
 function instanceBySet<const T, >(reference: Set<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | SetAsCollectionHolder<T> {
@@ -728,13 +730,13 @@ function instanceBySet<const T, >(reference: Set<T>,): | EmptyCollectionHolder |
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference[Symbol.iterator]().next().value as T,)
+        return new LateRetriever.LazyCollectionHolderOf1(() => reference[Symbol.iterator]().next().value as T,)
     if (size === 2)
-        return new LazyCollectionHolderOf2(() => {
+        return new LateRetriever.LazyCollectionHolderOf2(() => {
             const iterator = reference[Symbol.iterator]()
             return new Couple(iterator.next().value as T, iterator.next().value as T,)
         },)
-    return new SetAsCollectionHolder(reference,)
+    return new LateRetriever.SetAsCollectionHolder(reference,)
 
     //#endregion -------------------- Initialization (size = over 2) --------------------
 }
@@ -745,9 +747,9 @@ function instanceByCollectionHolder<const T, >(reference: CollectionHolder<T>,):
 
     const size = reference.size
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference.getFirst(),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => reference.getFirst(),)
     if (size === 2)
-        return new LazyCollectionHolderOf2<T>(() => new Couple(reference.getFirst(), reference.getLast(),),)
+        return new LateRetriever.LazyCollectionHolderOf2<T>(() => new Couple(reference.getFirst(), reference.getLast(),),)
     return reference
 }
 
@@ -756,10 +758,10 @@ function instanceByMinimalistCollectionHolder<const T, >(reference: MinimalistCo
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference.get(0,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => reference.get(0,),)
     if (size === 2)
-        return new LazyCollectionHolderOf2(() => new Couple(reference.get(0), reference.get(1,),),)
-    return new MinimalistAsCollectionHolder(reference,)
+        return new LateRetriever.LazyCollectionHolderOf2(() => new Couple(reference.get(0), reference.get(1,),),)
+    return new LateRetriever.MinimalistAsCollectionHolder(reference,)
 }
 
 function instanceByCollectionIterator<const T, >(reference: CollectionIterator<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | IteratorAsCollectionHolder<T> {
@@ -767,21 +769,21 @@ function instanceByCollectionIterator<const T, >(reference: CollectionIterator<T
     if (size === 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference.nextValue,)
+        return new LateRetriever.LazyCollectionHolderOf1(() => reference.nextValue,)
     if (size === 2)
-        return new LazyCollectionHolderOf2(() => new Couple(reference.nextValue, reference.nextValue,),)
-    return new IteratorAsCollectionHolder(reference,)
+        return new LateRetriever.LazyCollectionHolderOf2(() => new Couple(reference.nextValue, reference.nextValue,),)
+    return new LateRetriever.IteratorAsCollectionHolder(reference,)
 }
 
 function instanceByIterableWithSize<const T, >(reference: Iterable<T, unknown, unknown>, size: number,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | JsIterableAsCollectionHolder<T> {
     if (size == 0)
         return EmptyCollectionHolder.get
     if (size === 1)
-        return new LazyCollectionHolderOf1(() => reference[Symbol.iterator]().next().value as T,)
+        return new LateRetriever.LazyCollectionHolderOf1(() => reference[Symbol.iterator]().next().value as T,)
     if (size === 2)
-        return new LazyCollectionHolderOf2(() => {
+        return new LateRetriever.LazyCollectionHolderOf2(() => {
             const iterator = reference[Symbol.iterator]()
             return new Couple(iterator.next().value as T, iterator.next().value as T,)
         },)
-    return new JsIterableAsCollectionHolder(reference, size,)
+    return new LateRetriever.JsIterableAsCollectionHolder(reference, size,)
 }
