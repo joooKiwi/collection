@@ -15,8 +15,9 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LateRetriever}                 from "../LateRetriever"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {ForbiddenIndexException}       from "../exception/ForbiddenIndexException"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -117,7 +118,7 @@ export function takeByArray<const T, >(collection: Nullable<readonly T[]>, n: nu
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
     const size = collection.size
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -126,26 +127,26 @@ function __coreByMinimalistCollectionHolder<const T,>(collection: MinimalistColl
     if (n === Number.NEGATIVE_INFINITY)
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(0,),],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
     if (n > 0)
         if (n >= size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            return new LateRetriever.MinimalistAsCollectionHolder<T>(collection,)
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyCollectionHolder(() => __getAll(collection, n,),)
     if (n <= -size)
         return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.get(0,),],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n2,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+    return new LazyCollectionHolder(() => __getAll(collection, n2,),)
 }
 
-function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
@@ -153,16 +154,16 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
     if (n === Number.NEGATIVE_INFINITY)
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        return collection
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
     if (n > 0)
         if (n >= collection.size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            return collection
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n,),)
+            return new LazyCollectionHolder(() => __getAll(collection, n,),)
 
     const size = collection.size
     if (n <= -size)
@@ -170,11 +171,11 @@ function __coreByCollectionHolder<const T,>(collection: CollectionHolder<T>, n: 
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection.getFirst(),],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAll(collection, n + size,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    return new LazyCollectionHolder(() => __getAll(collection, n + size,),)
 }
 
-function __coreByArray<const T,>(collection: readonly T[], n: number,): CollectionHolder<T> {
+function __coreByArray<const T, >(collection: readonly T[], n: number,): CollectionHolder<T> {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -183,23 +184,23 @@ function __coreByArray<const T,>(collection: readonly T[], n: number,): Collecti
     if (n === Number.NEGATIVE_INFINITY)
         return EmptyCollectionHolder.get
     if (n === Number.POSITIVE_INFINITY)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+        return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
     if (n === 0)
         return EmptyCollectionHolder.get
     if (n === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[0] as T,],)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
     if (n > 0)
         if (n >= size)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => collection,)
+            return new LateRetriever.ArrayAsCollectionHolder<T>(collection,)
         else
-            return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n,),)
+            return new LazyCollectionHolder(() => __getAllByArray(collection, n,),)
     if (n <= -size)
         return EmptyCollectionHolder.get
 
     const n2 = n + size
     if (n2 === 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => [collection[0] as T,],)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __getAllByArray(collection, n + size,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    return new LazyCollectionHolder(() => __getAllByArray(collection, n + size,),)
 }
 
 //#endregion -------------------- Core method --------------------
