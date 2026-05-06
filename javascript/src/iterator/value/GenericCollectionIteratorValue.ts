@@ -10,15 +10,15 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
-import type {CollectionIterator}         from "../CollectionIterator"
-import type {CollectionIteratorValue}    from "./CollectionIteratorValue"
+import type {CollectionHolder}        from "../../CollectionHolder"
+import type {CollectionIterator}      from "../CollectionIterator"
+import type {CollectionIteratorValue} from "./CollectionIteratorValue"
 
 import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
 export class GenericCollectionIteratorValue<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
-    const COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>,
+    const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>,
     const INDEX extends number = number, >
     extends AbstractIteratorValue<T, false>
     implements CollectionIteratorValue<T> {

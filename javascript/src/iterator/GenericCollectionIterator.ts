@@ -10,17 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder}             from "../MinimalistCollectionHolder"
-import type {CollectionIterator}                     from "./CollectionIterator"
-import type {CollectionIteratorValue}                from "./value/CollectionIteratorValue"
-import type {IsEmptyOnMinimalistCollectionHolder}    from "../type/isEmpty"
-import type {IsNotEmptyOnMinimalistCollectionHolder} from "../type/isNotEmpty"
+import type {CollectionHolder}        from "../CollectionHolder"
+import type {CollectionIteratorValue} from "./value/CollectionIteratorValue"
 
 import {GenericCollectionIteratorValue} from "./value/GenericCollectionIteratorValue"
 import {AbstractCollectionIterator}     from "./AbstractCollectionIterator"
 
 export class GenericCollectionIterator<const T = unknown,
-    const REFERENCE extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
+    const REFERENCE extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
@@ -29,8 +26,8 @@ export class GenericCollectionIterator<const T = unknown,
     #size?: REFERENCE["size"]
     #sizeMinus1?: number
     #sizeMinus2?: number
-    #isEmpty?: IsEmptyOnMinimalistCollectionHolder<REFERENCE>
-    #isNotEmpty?: IsNotEmptyOnMinimalistCollectionHolder<REFERENCE>
+    #isEmpty?: REFERENCE["isEmpty"]
+    #isNotEmpty?: REFERENCE["isNotEmpty"]
     #hasOnly1Element?: boolean
     #hasOnly2Elements?: boolean
 
@@ -61,9 +58,9 @@ export class GenericCollectionIterator<const T = unknown,
     protected override get _sizeMinus2(): number { return this.#sizeMinus2 ??= super._sizeMinus2 }
 
     /** @initializedOnFirstCall */
-    public override get isEmpty(): IsEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isEmpty ??= super.isEmpty as IsEmptyOnMinimalistCollectionHolder<REFERENCE> }
+    public override get isEmpty(): REFERENCE["isEmpty"] { return this.#isEmpty ??= this._reference.isEmpty }
     /** @initializedOnFirstCall */
-    public override get isNotEmpty(): IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> { return this.#isNotEmpty ??= super.isNotEmpty as IsNotEmptyOnMinimalistCollectionHolder<REFERENCE> }
+    public override get isNotEmpty(): REFERENCE["isNotEmpty"] { return this.#isNotEmpty ??= this._reference.isNotEmpty }
 
     /** @initializedOnFirstCall */
     protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
@@ -81,7 +78,7 @@ export class GenericCollectionIterator<const T = unknown,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public override [Symbol.iterator](): CollectionIterator<T> { return new GenericCollectionIterator(this._reference,) }
+    public override [Symbol.iterator](): GenericCollectionIterator<T, REFERENCE> { return new GenericCollectionIterator(this._reference,) }
 
     //#endregion -------------------- JavaScript methods --------------------
 
