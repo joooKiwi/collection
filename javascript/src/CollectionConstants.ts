@@ -482,11 +482,11 @@ export namespace CollectionConstants {
     /** An empty {@link ReadonlySet set} */
     export const EMPTY_SET = Object.freeze(new Set<never>(),) as EmptySet
     /** An empty {@link WeakSet weak set} */
-    export const EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet<never>
+    export const EMPTY_WEAK_SET = Object.freeze(new WeakSet(),) as EmptyWeakSet
     /** An empty {@link ReadonlyMap map} */
-    export const EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap<never>
+    export const EMPTY_MAP = Object.freeze(new Map<never, never>(),) as EmptyMap
     /** An empty {@link WeakSet weak set} */
-    export const EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap<never>
+    export const EMPTY_WEAK_MAP = Object.freeze(new WeakMap(),) as EmptyWeakMap
 
     //#endregion -------------------- Empty references --------------------
     //#region -------------------- Default references --------------------
