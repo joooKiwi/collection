@@ -15,8 +15,9 @@ import type {Nullable, NullableNumber} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}                               from "../CollectionConstants"
 import {EmptyCollectionHolder}                             from "../EmptyCollectionHolder"
+import {LateRetriever}                                     from "../LateRetriever"
+import {LazyCollectionHolder}                              from "../LazyCollectionHolder"
 import {__endingIndex, __startingIndex, __validateInRange} from "./_indexes utility"
 import {isArray}                                           from "./isArray"
 import {isArrayByStructure}                                from "./isArrayByStructure"
@@ -298,20 +299,28 @@ function __core0ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const size = collection.size
     if (size === 0)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, size,),)
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0),)
+    return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) {
     if (collection.isEmpty)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __all(collection, collection.size,),)
         return EmptyCollectionHolder.get
+
+    const size = collection.size
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
 function __core0ByArray<const T, >(collection: readonly T[],) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __allByArray(collection, size,),)
+    if (size === 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    return new LazyCollectionHolder(() => __allByArray(collection, size,),)
 }
 
 //#endregion -------------------- ∅ --------------------
@@ -338,7 +347,10 @@ function __core1ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
         return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    const sizeMinus1 = size - 1
+    if (startingIndex === sizeMinus1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(sizeMinus1,),)
+    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number,) {
@@ -347,7 +359,9 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
 
     const size = collection.size
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
+    if (startingIndex === size - 1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getLast(),)
+    return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
 function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
@@ -356,7 +370,10 @@ function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
         return EmptyCollectionHolder.get
 
     const startingIndex = __startingIndex(from, size,)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
+    const sizeMinus1 = size - 1
+    if (startingIndex === sizeMinus1)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[sizeMinus1] as T,)
+    return new LazyCollectionHolder(() => __fromStartByArray(collection, size, startingIndex,),)
 }
 
 //#endregion -------------------- from --------------------
@@ -386,8 +403,8 @@ function __core2ByMinimalistCollectionHolder<const T, >(collection: MinimalistCo
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, from: number, to: number,) {
@@ -399,8 +416,8 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(startingIndex,),)
+    return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
 function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
@@ -412,8 +429,8 @@ function __core2ByArray<const T, >(collection: readonly T[], from: number, to: n
     const endingIndex = __endingIndex(to, size,)
     __validateInRange(from, startingIndex, to, endingIndex,)
     if (startingIndex === endingIndex)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, startingIndex,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[startingIndex] as T,)
+    return new LazyCollectionHolder(() => __fromStartToEndByArray(collection, startingIndex, endingIndex,),)
 }
 
 //#endregion -------------------- from, to --------------------
@@ -441,8 +458,8 @@ function __coreWithNoFromByMinimalistCollectionHolder<const T, >(collection: Min
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.get(0,),)
+    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHolder<T>, to: number,) {
@@ -451,8 +468,8 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
 
     const endingIndex = __endingIndex(to, collection.size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __single(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEnd(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection.getFirst(),)
+    return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
 function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
@@ -462,23 +479,14 @@ function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number
 
     const endingIndex = __endingIndex(to, size,)
     if (endingIndex === 0)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __singleByArray(collection, 0,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
+        return new LateRetriever.LazyCollectionHolderOf1(() => collection[0] as T,)
+    return new LazyCollectionHolder(() => __toEndByArray(collection, endingIndex,),)
 }
 
 //#endregion -------------------- to --------------------
 
 //#endregion -------------------- Core method --------------------
 //#region -------------------- Loop method --------------------
-
-function __single<const T, >(collection: MinimalistCollectionHolder<T>, index: number,) {
-    return [collection.get(index,),] as const
-}
-
-function __singleByArray<const T, >(collection: readonly T[], index: number,) {
-    return [collection[index] as T,] as const
-}
-
 
 function __all<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     const newArray = new Array<T>(size,)
