@@ -12,7 +12,9 @@
 
 export {AbstractCollectionIterator}              from "./AbstractCollectionIterator"
 export {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
+export {AbstractCollectionIteratorOf1}           from "./AbstractCollectionIteratorOf1"
 export type {CollectionIterator}                 from "./CollectionIterator"
+export {CollectionIteratorOf1}                   from "./CollectionIteratorOf1"
 export {EmptyCollectionIterator}                 from "./EmptyCollectionIterator"
 export {GenericCollectionIterator}               from "./GenericCollectionIterator"
 export *                                         from "./value/index"
