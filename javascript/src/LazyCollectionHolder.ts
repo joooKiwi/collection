@@ -10,22 +10,22 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                from "@joookiwi/lazy"
-import {lazy, lazyOf}                                                                                                        from "@joookiwi/lazy"
-import type {MutableNumberKeyMap, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, UndefinedOr} from "@joookiwi/type"
+import type {Lazy}                                                                                                                       from "@joookiwi/lazy"
+import {lazy, lazyOf}                                                                                                                                                                      from "@joookiwi/lazy"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set, UndefinedOr} from "@joookiwi/type"
 
-import type {CollectionHolder}                                   from "./CollectionHolder"
-import type {MinimalistCollectionHolder}                         from "./MinimalistCollectionHolder"
-import type {IterableWithCount}                                  from "./iterable/IterableWithCount"
-import type {IterableWithLength}                                 from "./iterable/IterableWithLength"
-import type {IterableWithPossibleSize}                           from "./iterable/IterableWithPossibleSize"
-import type {IterableWithSize}                                   from "./iterable/IterableWithSize"
+import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
+import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
+import type {IterableWithCount}                                                                                                                                                                                                                                                 from "./iterable/IterableWithCount"
+import type {IterableWithLength}                                                                                                                                                                                                                                                from "./iterable/IterableWithLength"
+import type {IterableWithPossibleSize}                                                                                                                                                                                                                                          from "./iterable/IterableWithPossibleSize"
+import type {IterableWithSize}                                                                                                                                                                                                                                                  from "./iterable/IterableWithSize"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                                                                                                                                                from "./type/possibleInstance"
 
-import {AbstractCollectionHolder}                from "./AbstractCollectionHolder"
 import {ArrayAsCollectionHolder}                 from "./ArrayAsCollectionHolder"
+import {AbstractUnimplementedCollectionHolder}   from "./AbstractUnimplementedCollectionHolder"
 import {EmptyCollectionHolder}                   from "./EmptyCollectionHolder"
 import {IteratorAsCollectionHolder}              from "./IteratorAsCollectionHolder"
 import {JsIterableAsCollectionHolder}            from "./JsIterableAsCollectionHolder"
@@ -61,7 +61,7 @@ import {Couple}                                  from "./tuple/Couple.next"
  * @beta
  */
 export class LazyCollectionHolder<const T = unknown, >
-    extends AbstractCollectionHolder<T> {
+    extends AbstractUnimplementedCollectionHolder<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -71,10 +71,10 @@ export class LazyCollectionHolder<const T = unknown, >
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array:                                readonly T[],)
-    public constructor(lateArray:                      () => readonly T[],)
-    public constructor(set:                                  ReadonlySet<T>,)
-    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(array:                                Array<T>,)
+    public constructor(lateArray:                      () => Array<T>,)
+    public constructor(set:                                  Set<T>,)
+    public constructor(lateSet:                        () => Set<T>,)
     public constructor(collectionHolder:                     CollectionHolder<T>,)
     public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
@@ -344,11 +344,9 @@ export class LazyCollectionHolder<const T = unknown, >
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<T>,): T
     public override getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this._innerCollection.getOrElse(index, defaultValue,) }
 
-
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T
     public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) { return this._innerCollection.getFirstOrElse(defaultValue,) }
-
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
@@ -362,7 +360,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override getLastOrNull(): NullOr<T> {return this._innerCollection.getLastOrNull() }
 
     //#endregion -------------------- Get --------------------
-    //#region -------------------- Find first --------------------
+    //#region -------------------- Find --------------------
 
     public override findFirst<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findFirst(predicate: BooleanCallback<T>,): T
@@ -380,8 +378,6 @@ export class LazyCollectionHolder<const T = unknown, >
     public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public override findFirstIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.findFirstIndexedOrNull(predicate,) }
 
-    //#endregion -------------------- Find first --------------------
-    //#region -------------------- Find last --------------------
 
     public override findLast<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): S
     public override findLast(predicate: BooleanCallback<T>,): T
@@ -399,7 +395,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,): NullOr<T>
     public override findLastIndexedOrNull(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.findLastIndexedOrNull(predicate,) }
 
-    //#endregion -------------------- Find last --------------------
+    //#endregion -------------------- Find --------------------
 
     //#endregion -------------------- Research methods --------------------
     //#region -------------------- Index methods --------------------
@@ -447,9 +443,6 @@ export class LazyCollectionHolder<const T = unknown, >
     public override any(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override any(predicate?: Nullable<BooleanCallback<T>>,) { return this._innerCollection.any(predicate,) }
 
-    protected override _any(..._: readonly unknown[]): never
-    protected override _any() { throw new EvalError("The protected method “LazyCollectionHolder._any()” was not expected to be called.",) }
-
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
@@ -457,25 +450,20 @@ export class LazyCollectionHolder<const T = unknown, >
     public override none(predicate: Nullable<BooleanCallback<T>>,): boolean
     public override none(predicate?: Nullable<BooleanCallback<T>>,) { return this._innerCollection.none(predicate,) }
 
-    protected override _none(..._: readonly unknown[]): never
-    protected override _none() { throw new EvalError("The protected method “LazyCollectionHolder._none()” was not expected to be called.",) }
-
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     public override get hasNull(): boolean { return this._innerCollection.hasNull }
 
     public override get hasNoNulls(): boolean { return this._innerCollection.hasNoNulls }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean { return this._innerCollection.hasDuplicate }
 
     public override get hasNoDuplicates(): boolean { return this._innerCollection.hasNoDuplicates }
 
-    //#endregion -------------------- Has duplicate --------------------
+    //#endregion -------------------- Has ‥ --------------------
 
     //#region -------------------- Has --------------------
 
@@ -486,8 +474,8 @@ export class LazyCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -496,36 +484,11 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this._innerCollection.hasOne(values,) }
 
-
-    protected override _hasOneByNull(..._: readonly unknown[]): never
-    protected override _hasOneByNull() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByNull()” was not expected to be called.",) }
-
-    protected override _hasOneByArray(..._: readonly unknown[]): never
-    protected override _hasOneByArray() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByArray()” was not expected to be called.",) }
-
-    protected override _hasOneBySet(..._: readonly unknown[]): never
-    protected override _hasOneBySet() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneBySet()” was not expected to be called.",) }
-
-    protected override _hasOneByMinimalistCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasOneByMinimalistCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByMinimalistCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasOneByCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasOneByCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasOneByCollectionIterator(..._: readonly unknown[]): never
-    protected override _hasOneByCollectionIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByCollectionIterator()” was not expected to be called.",) }
-
-    protected override _hasOneByIterator(..._: readonly unknown[]): never
-    protected override _hasOneByIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByIterator()” was not expected to be called.",) }
-
-    protected override _hasOneByIterable(..._: readonly unknown[]): never
-    protected override _hasOneByIterable() { throw new EvalError("The protected method “LazyCollectionHolder._hasOneByIterable()” was not expected to be called.",) }
-
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -534,36 +497,11 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this._innerCollection.hasNotOne(values,) }
 
-
-    protected override _hasNotOneByNull(..._: readonly unknown[]): never
-    protected override _hasNotOneByNull() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByNull()” was not expected to be called.",) }
-
-    protected override _hasNotOneByArray(..._: readonly unknown[]): never
-    protected override _hasNotOneByArray() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByArray()” was not expected to be called.",) }
-
-    protected override _hasNotOneBySet(..._: readonly unknown[]): never
-    protected override _hasNotOneBySet() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneBySet()” was not expected to be called.",) }
-
-    protected override _hasNotOneByMinimalistCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasNotOneByMinimalistCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByMinimalistCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasNotOneByCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasNotOneByCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasNotOneByCollectionIterator(..._: readonly unknown[]): never
-    protected override _hasNotOneByCollectionIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByCollectionIterator()” was not expected to be called.",) }
-
-    protected override _hasNotOneByIterator(..._: readonly unknown[]): never
-    protected override _hasNotOneByIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByIterator()” was not expected to be called.",) }
-
-    protected override _hasNotOneByIterable(..._: readonly unknown[]): never
-    protected override _hasNotOneByIterable() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotOneByIterable()” was not expected to be called.",) }
-
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -572,36 +510,11 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this._innerCollection.hasAll(values,) }
 
-
-    protected override _hasAllByNull(..._: readonly unknown[]): never
-    protected override _hasAllByNull() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByNull()” was not expected to be called.",) }
-
-    protected override _hasAllByArray(..._: readonly unknown[]): never
-    protected override _hasAllByArray() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByArray()” was not expected to be called.",) }
-
-    protected override _hasAllBySet(..._: readonly unknown[]): never
-    protected override _hasAllBySet() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllBySet()” was not expected to be called.",) }
-
-    protected override _hasAllByMinimalistCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasAllByMinimalistCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByMinimalistCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasAllByCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasAllByCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasAllByCollectionIterator(..._: readonly unknown[]): never
-    protected override _hasAllByCollectionIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByCollectionIterator()” was not expected to be called.",) }
-
-    protected override _hasAllByIterator(..._: readonly unknown[]): never
-    protected override _hasAllByIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByIterator()” was not expected to be called.",) }
-
-    protected override _hasAllByIterable(..._: readonly unknown[]): never
-    protected override _hasAllByIterable() { throw new EvalError("The protected method “LazyCollectionHolder._hasAllByIterable()” was not expected to be called.",) }
-
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -610,38 +523,12 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this._innerCollection.hasNotAll(values,) }
 
-
-    protected override _hasNotAllByNull(..._: readonly unknown[]): never
-    protected override _hasNotAllByNull() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByNull()” was not expected to be called.",) }
-
-    protected override _hasNotAllByArray(..._: readonly unknown[]): never
-    protected override _hasNotAllByArray() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByArray()” was not expected to be called.",) }
-
-    protected override _hasNotAllBySet(..._: readonly unknown[]): never
-    protected override _hasNotAllBySet() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllBySet()” was not expected to be called.",) }
-
-    protected override _hasNotAllByMinimalistCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasNotAllByMinimalistCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByMinimalistCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasNotAllByCollectionHolder(..._: readonly unknown[]): never
-    protected override _hasNotAllByCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByCollectionHolder()” was not expected to be called.",) }
-
-    protected override _hasNotAllByCollectionIterator(..._: readonly unknown[]): never
-    protected override _hasNotAllByCollectionIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByCollectionIterator()” was not expected to be called.",) }
-
-    protected override _hasNotAllByIterator(..._: readonly unknown[]): never
-    protected override _hasNotAllByIterator() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByIterator()” was not expected to be called.",) }
-
-    protected override _hasNotAllByIterable(..._: readonly unknown[]): never
-    protected override _hasNotAllByIterable() { throw new EvalError("The protected method “LazyCollectionHolder._hasNotAllByIterable()” was not expected to be called.",) }
-
     //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
-        if (this._innerCollection.hasNull)
-            throw new TypeError("Forbidden null value. The current collection contains null values.",)
+        this._innerCollection.requireNoNulls()
         return this as CollectionHolder<NonNullable<T>>
     }
 
@@ -676,8 +563,8 @@ export class LazyCollectionHolder<const T = unknown, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -686,40 +573,6 @@ export class LazyCollectionHolder<const T = unknown, >
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) { return this._innerCollection.slice(indicesOrFrom, to,) }
-
-
-    protected override _sliceWith0Argument(..._: readonly unknown[]): never
-    protected override _sliceWith0Argument() { throw new EvalError("The protected method “LazyCollectionHolder._sliceWith0Argument()” was not expected to be called.",) }
-
-    protected override _sliceWith1Argument(..._: readonly unknown[]): never
-    protected override _sliceWith1Argument() { throw new EvalError("The protected method “LazyCollectionHolder._sliceWith1Argument()” was not expected to be called.",) }
-
-    protected override _sliceWith2Argument(..._: readonly unknown[]): never
-    protected override _sliceWith2Argument() { throw new EvalError("The protected method “LazyCollectionHolder._sliceWith2Argument()” was not expected to be called.",) }
-
-    protected override _sliceWith2ArgumentWhere1stIsNull(..._: readonly unknown[]): never
-    protected override _sliceWith2ArgumentWhere1stIsNull() { throw new EvalError("The protected method “LazyCollectionHolder._sliceWith2ArgumentWhere1stIsNull()” was not expected to be called.",) }
-
-    protected override _sliceByArray(..._: readonly unknown[]): never
-    protected override _sliceByArray() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByArray()” was not expected to be called.",) }
-
-    protected override _sliceBySet(..._: readonly unknown[]): never
-    protected override _sliceBySet() { throw new EvalError("The protected method “LazyCollectionHolder._sliceBySet()” was not expected to be called.",) }
-
-    protected override _sliceByMinimalistCollectionHolder(..._: readonly unknown[]): never
-    protected override _sliceByMinimalistCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByMinimalistCollectionHolder()” was not expected to be called.",) }
-
-    protected override _sliceByCollectionHolder(..._: readonly unknown[]): never
-    protected override _sliceByCollectionHolder() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByCollectionHolder()” was not expected to be called.",) }
-
-    protected override _sliceByCollectionIterator(..._: readonly unknown[]): never
-    protected override _sliceByCollectionIterator() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByCollectionIterator()” was not expected to be called.",) }
-
-    protected override _sliceByIterator(..._: readonly unknown[]): never
-    protected override _sliceByIterator() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByIterator()” was not expected to be called.",) }
-
-    protected override _sliceByIterable(..._: readonly unknown[]): never
-    protected override _sliceByIterable() { throw new EvalError("The protected method “LazyCollectionHolder._sliceByIterable()” was not expected to be called.",) }
 
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
@@ -786,14 +639,10 @@ export class LazyCollectionHolder<const T = unknown, >
     //#endregion -------------------- Transformation methods --------------------
     //#region -------------------- Loop methods --------------------
 
-    //#region -------------------- For each --------------------
-
     public override forEach(action: ValueIndexCallback<T>,): void { this._innerCollection.forEach(action,) }
 
     public override forEachIndexed(action: IndexValueCallback<T>,): void { this._innerCollection.forEachIndexed(action,) }
 
-    //#endregion -------------------- For each --------------------
-    //#region -------------------- On each --------------------
 
     public override onEach(action: ValueIndexCallback<T>,): this {
         this._innerCollection.forEach(action,)
@@ -804,8 +653,6 @@ export class LazyCollectionHolder<const T = unknown, >
         this._innerCollection.forEachIndexed(action,)
         return this
     }
-
-    //#endregion -------------------- On each --------------------
 
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- Reordering methods --------------------
@@ -823,13 +670,13 @@ export class LazyCollectionHolder<const T = unknown, >
 
     public override toIterator(): CollectionIterator<T> { return this._innerCollection.toIterator() }
 
-    public override toArray(): readonly T[] { return this._innerCollection.toArray() }
+    public override toArray(): Array<T> { return this._innerCollection.toArray() }
 
-    public override toMutableArray(): T[] { return this._innerCollection.toMutableArray() }
+    public override toMutableArray(): MutableArray<T> { return this._innerCollection.toMutableArray() }
 
-    public override toSet(): ReadonlySet<T> { return this._innerCollection.toSet() }
+    public override toSet(): Set<T> { return this._innerCollection.toSet() }
 
-    public override toMutableSet(): Set<T> { return this._innerCollection.toMutableSet() }
+    public override toMutableSet(): MutableSet<T> { return this._innerCollection.toMutableSet() }
 
     public override toMap(): NumberKeyMap<T> { return this._innerCollection.toMap() }
 
@@ -865,7 +712,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
 }
 
-function instanceByArray<const T, >(reference: ReadonlyArray<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | ArrayAsCollectionHolder<T> {
+function instanceByArray<const T, >(reference: Array<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | ArrayAsCollectionHolder<T> {
     const size = reference.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -876,7 +723,7 @@ function instanceByArray<const T, >(reference: ReadonlyArray<T>,): | EmptyCollec
     return new ArrayAsCollectionHolder(reference,)
 }
 
-function instanceBySet<const T, >(reference: ReadonlySet<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | SetAsCollectionHolder<T> {
+function instanceBySet<const T, >(reference: Set<T>,): | EmptyCollectionHolder | LazyCollectionHolderOf1<T> | LazyCollectionHolderOf2<T> | SetAsCollectionHolder<T> {
     const size = reference.size
     if (size === 0)
         return EmptyCollectionHolder.get
