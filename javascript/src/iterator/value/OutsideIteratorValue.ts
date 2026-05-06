@@ -13,9 +13,10 @@
 import {IteratorValue} from "./IteratorValue"
 
 /**
- * An {@link IteratorValue iterator value} made to retrieve a consistent value
+ * An {@link IteratorValue} made to retrieve a consistent value
  * when it is outside a {@link CollectionIterator} range
  *
+ * @typeParam T The element type (`symbol` by default)
  * @see GenericBeforeFirstIteratorValue
  * @see GenericAfterLastIteratorValue
  */

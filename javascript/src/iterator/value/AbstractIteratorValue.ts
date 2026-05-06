@@ -12,6 +12,12 @@
 
 import type {IteratorValue} from "./IteratorValue"
 
+/**
+ * A generalization of a {@link IteratorValue} to have a common ancestor.
+ *
+ * @typeParam T       The element type
+ * @typeParam IS_DONE Whenever the {@link IteratorValue} has finished or not (`boolean` by default)
+ */
 export abstract class AbstractIteratorValue<const T,
     const IS_DONE extends boolean = boolean, >
     implements IteratorValue<T> {

@@ -17,6 +17,7 @@ import type {InsideIteratorValue} from "./InsideIteratorValue"
  * An {@link IteratorValue iterator value} made to retrieve a {@link value}
  * from a {@link collection} using its {@link index}
  *
+ * @typeParam T The element type (`unknown` by default)
  * @see GenericCollectionIteratorValue
  */
 export interface CollectionIteratorValue<out T = unknown, >

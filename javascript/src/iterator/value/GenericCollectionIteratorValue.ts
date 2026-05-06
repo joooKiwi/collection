@@ -16,6 +16,17 @@ import type {CollectionIteratorValue} from "./CollectionIteratorValue"
 
 import {AbstractIteratorValue} from "./AbstractIteratorValue"
 
+/**
+ * An implementation of a {@link CollectionIteratorValue}
+ * with specified {@link CollectionIterator} (for debugging purpose),
+ * a {@link CollectionHolder} (for debugging purpose)
+ * and the {@link index} to give the index that the {@link value} needs to be retrieved.
+ *
+ * @typeParam T          The element type (`unknown` by default)
+ * @typeParam REFERENCE  The {@link CollectionIterator} source (`CollectionIterator<T>` by default)
+ * @typeParam COLLECTION The {@link CollectionHolder} source (`CollectionHolder<T>` by default)
+ * @typeParam INDEX      The index to retrieve in the {@link collection} (`number` by default)
+ */
 export class GenericCollectionIteratorValue<const T = unknown,
     const REFERENCE extends CollectionIterator<T> = CollectionIterator<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>,

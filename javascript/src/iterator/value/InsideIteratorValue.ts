@@ -12,6 +12,16 @@
 
 import type {IteratorValue} from "./IteratorValue"
 
+/**
+ * An {@link IteratorValue} made to retrieve a consistent value
+ * when it is inside a {@link CollectionIterator} range
+ *
+ * @typeParam T The element type
+ * @see GenericCollectionIteratorValue
+ * @see IteratorValueOf1
+ * @see IteratorValueOf1On2
+ * @see IteratorValueOf2On2
+ */
 export interface InsideIteratorValue<out T, >
     extends IteratorValue<T>,
             IteratorYieldResult<T> {
