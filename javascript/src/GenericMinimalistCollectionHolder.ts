@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array, Set} from "@joookiwi/type"
+
 import type {CollectionHolder}                                   from "./CollectionHolder"
 import type {IterableWithCount}                                  from "./iterable/IterableWithCount"
 import type {IterableWithLength}                                 from "./iterable/IterableWithLength"
@@ -59,15 +61,15 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
     readonly #size: number
 
     readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
-    readonly #array: readonly T[]
+    readonly #array: Array<T>
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array:                                readonly T[],)
-    public constructor(lateArray:                      () => readonly T[],)
-    public constructor(set:                                  ReadonlySet<T>,)
-    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(array:                                Array<T>,)
+    public constructor(lateArray:                      () => Array<T>,)
+    public constructor(set:                                  Set<T>,)
+    public constructor(lateSet:                        () => Set<T>,)
     public constructor(collectionHolder:                     CollectionHolder<T>,)
     public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
@@ -82,10 +84,10 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
     public constructor(lateIterableWithLength:         () => IterableWithLength<T>,)
     public constructor(iterableWithCount:                    IterableWithCount<T>,)
     public constructor(lateIterableWithCount:          () => IterableWithCount<T>,)
-    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
-    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(iterable:                             Iterable<T, unknown, unknown>,)
     public constructor(lateIterable:                   () => Iterable<T, unknown, unknown>,)
+    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(reference:                            PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(lateReference:                  () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
@@ -762,7 +764,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
     }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericMinimalistCollectionHolder instance} */
-    protected get _array(): readonly T[] {
+    protected get _array(): Array<T> {
         return this.#array
     }
 
