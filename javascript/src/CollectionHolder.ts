@@ -41,7 +41,7 @@ import type {CollectionHolderName}                                              
  */
 export interface CollectionHolder<out T = unknown, >
     extends MinimalistCollectionHolder<T>,
-            Iterable<T> {
+            Iterable<T, unknown, unknown> {
 
     /**
      * Get the value at the index (without validating if it exists in the {@link CollectionHolder})
@@ -64,7 +64,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      */
-    get size(): number
+    readonly size: number
 
     /**
      * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder instance}
@@ -79,7 +79,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      * @alias CollectionHolder.size
      */
-    get length(): this["size"]
+    readonly length: this["size"]
 
     /**
      * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder instance}
@@ -94,7 +94,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      * @alias CollectionHolder.size
      */
-    get count(): this["size"]
+    readonly count: this["size"]
 
 
     /**
@@ -105,17 +105,17 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
-     * @see isNotEmpty
+     * @see CollectionHolder.isNotEmpty
      */
-    get isEmpty(): boolean
+    readonly isEmpty: boolean
 
     /**
      * The {@link CollectionHolder collection} has at least one value
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
-     * @see isEmpty
+     * @see CollectionHolder.isEmpty
      */
-    get isNotEmpty(): boolean
+    readonly isNotEmpty: boolean
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
@@ -2130,7 +2130,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
      */
-    get hasNull(): boolean
+    readonly hasNull: boolean
 
     /**
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
@@ -2138,7 +2138,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNull
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
      */
-    get includesNull(): this["hasNull"]
+    readonly includesNull: this["hasNull"]
 
     /**
      * The {@link CollectionHolder} has at least one <b>null</b> or <b>undefined</b>
@@ -2146,7 +2146,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNull
      * @return {boolean} <b>true</b> only if one element is <b>null</b> or <b>undefined</b>
      */
-    get containsNull(): this["hasNull"]
+    readonly containsNull: this["hasNull"]
 
     //#endregion -------------------- Has null --------------------
     //#region -------------------- Has no nulls --------------------
@@ -2156,7 +2156,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
      */
-    get hasNoNulls(): boolean
+    readonly hasNoNulls: boolean
 
     /**
      * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
@@ -2164,7 +2164,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNoNulls
      * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
      */
-    get includesNoNulls(): this["hasNoNulls"]
+    readonly includesNoNulls: this["hasNoNulls"]
 
     /**
      * The {@link CollectionHolder} has no <b>null</b> or <b>undefined</b>
@@ -2172,7 +2172,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNoNulls
      * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
      */
-    get containsNoNulls(): this["hasNoNulls"]
+    readonly containsNoNulls: this["hasNoNulls"]
 
     //#endregion -------------------- Has no nulls --------------------
     //#region -------------------- Has duplicate --------------------
@@ -2182,7 +2182,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @return {boolean} <b>true</b> only if one element is equal (===) to another one
      */
-    get hasDuplicate(): boolean
+    readonly hasDuplicate: boolean
 
     /**
      * The {@link CollectionHolder} has at least one duplicate value
@@ -2190,7 +2190,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasDuplicate
      * @return {boolean} <b>true</b> only if one element is equal (===) to another one
      */
-    get includesDuplicate(): this["hasDuplicate"]
+    readonly includesDuplicate: this["hasDuplicate"]
 
     /**
      * The {@link CollectionHolder} has at least one duplicate value
@@ -2198,7 +2198,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasDuplicate
      * @return {boolean} <b>true</b> only if one element is equal (===) to another one
      */
-    get containsDuplicate(): this["hasDuplicate"]
+    readonly containsDuplicate: this["hasDuplicate"]
 
     //#endregion -------------------- Has duplicate --------------------
     //#region -------------------- Has no duplicates --------------------
@@ -2208,7 +2208,7 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @return {boolean} <b>true</b> only if no element is equal (===) to another one
      */
-    get hasNoDuplicates(): boolean
+    readonly hasNoDuplicates: boolean
 
     /**
      * The {@link CollectionHolder} has no duplicated value
@@ -2216,7 +2216,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNoDuplicates
      * @return {boolean} <b>true</b> only if no element is equal (===) to another one
      */
-    get includesNoDuplicates(): this["hasNoDuplicates"]
+    readonly includesNoDuplicates: this["hasNoDuplicates"]
 
     /**
      * The {@link CollectionHolder} has no duplicated value
@@ -2224,7 +2224,7 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNoDuplicates
      * @return {boolean} <b>true</b> only if no element is equal (===) to another one
      */
-    get containsNoDuplicates(): this["hasNoDuplicates"]
+    readonly containsNoDuplicates: this["hasNoDuplicates"]
 
     //#endregion -------------------- Has no duplicates --------------------
 
