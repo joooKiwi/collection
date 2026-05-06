@@ -12,30 +12,26 @@
 
 import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
-import type {MinimalistCollectionHolder}                                                           from "../MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
 import type {CollectionIteratorValue}                                                              from "./value/CollectionIteratorValue"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../type/callback"
 import type {PossibleIteratorValue}                                                                from "../type/iteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
-import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
-import {NoElementFoundInCollectionException} from "../exception/NoElementFoundInCollectionException"
-import {GenericAfterLastIteratorValue}       from "./value/GenericAfterLastIteratorValue"
-import {GenericBeforeFirstIteratorValue}     from "./value/GenericBeforeFirstIteratorValue"
+import {AbstractUnimplementedCollectionIterator} from "./AbstractUnimplementedCollectionIterator"
+import {NoElementFoundInCollectionException}     from "../exception/NoElementFoundInCollectionException"
+import {GenericAfterLastIteratorValue}           from "./value/GenericAfterLastIteratorValue"
+import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirstIteratorValue"
 
 /**
  * A definition of a {@link CollectionIterator} to have a common ancestor.
  * Only the indexes are stored and updated (if needed).
  *
- * @note This class should be inherited if new classes are being made to be more usable by the tools
- * @typeParam T          The element type
- * @typeParam COLLECTION (deprecated, it will be removed in version 2.0) The reference of the iterator
+ * @typeParam T The element type
  * @see EmptyCollectionIterator
  */
-export abstract class AbstractCollectionIterator<const T,
-    const _COLLECTION extends MinimalistCollectionHolder<T> = MinimalistCollectionHolder<T>, >
-    implements CollectionIterator<T> {
+export abstract class AbstractCollectionIterator<const T, >
+    extends AbstractUnimplementedCollectionIterator<T> {
 
     //#region -------------------- Fields --------------------
 
@@ -50,6 +46,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#region -------------------- Constructor --------------------
 
     protected constructor() {
+        super()
         this.#currentIndex = null
     }
 
@@ -58,20 +55,11 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Size methods --------------------
 
-    public abstract get size(): number
-    public get length(): this["size"] { return this.size }
-    public get count(): this["size"] { return this.size }
-
-
     /** The {@link size} minus 1 */
     protected get _sizeMinus1(): number { return this.size - 1 }
 
     /** The {@link size} minus 2 */
     protected get _sizeMinus2(): number { return this.size - 2 }
-
-
-    public get isEmpty(): boolean { return this.size == 0 }
-    public get isNotEmpty(): boolean { return this.size != 0 }
 
 
     /** Tell that the {@link size} is only of <b>1</b> */
@@ -84,7 +72,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#region -------------------- End-point index methods --------------------
 
     /** @initializedOnFirstCall */
-    public get firstIndex(): NullOrZeroNumber {
+    public override get firstIndex(): NullOrZeroNumber {
         const value = this.#firstIndex
         if (value !== undefined)
             return value
@@ -99,7 +87,7 @@ export abstract class AbstractCollectionIterator<const T,
 
 
     /** @initializedOnFirstCall */
-    public get lastIndex(): NullOrNumber {
+    public override get lastIndex(): NullOrNumber {
         const value = this.#lastIndex
         if (value !== undefined)
             return value
@@ -116,7 +104,7 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Current methods --------------------
 
-    public get currentIndex(): NullOrNumber { return this._currentIndex }
+    public override get currentIndex(): NullOrNumber { return this._currentIndex }
 
     /**
      * Get the index that the {@link AbstractCollectionIterator instance} is at
@@ -132,13 +120,10 @@ export abstract class AbstractCollectionIterator<const T,
      */
     protected set _currentIndex(value: NullOrNumber,) { this.#currentIndex = value }
 
-
-    public get index(): NullOrNumber { return this.currentIndex }
-
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------
 
-    public get hasNext(): boolean {
+    public override get hasNext(): boolean {
         if (this.isEmpty)
             return false
         if (this._isNextIndexInitialized)
@@ -151,7 +136,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public get nextIndex(): NullOrNumber { return this._nextIndex }
+    public override get nextIndex(): NullOrNumber { return this._nextIndex }
 
     /**
      * Get the next index that the {@link AbstractCollectionIterator instance} should be at
@@ -177,7 +162,7 @@ export abstract class AbstractCollectionIterator<const T,
     protected get _isNextIndexInitialized(): boolean { return this.#nextIndex !== undefined }
 
 
-    public get nextValue(): T {
+    public override get nextValue(): T {
         if (this.isEmpty)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
 
@@ -231,7 +216,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
+    public override next(): PossibleIteratorValue<T, AfterLastValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericAfterLastIteratorValue.get
 
@@ -285,7 +270,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Next methods --------------------
     //#region -------------------- Previous methods --------------------
 
-    public get hasPrevious(): boolean {
+    public override get hasPrevious(): boolean {
         if (this.isEmpty)
             return false
         if (this._isPreviousIndexInitialized)
@@ -298,7 +283,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public get previousIndex(): NullOrNumber { return this._previousIndex }
+    public override get previousIndex(): NullOrNumber { return this._previousIndex }
 
     /**
      * Get the previous index that the {@link AbstractCollectionIterator instance} should be at
@@ -324,7 +309,7 @@ export abstract class AbstractCollectionIterator<const T,
     protected get _isPreviousIndexInitialized(): boolean { return this.#previousIndex !== undefined }
 
 
-    public get previousValue(): T {
+    public override get previousValue(): T {
         if (this.isEmpty)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
 
@@ -378,7 +363,7 @@ export abstract class AbstractCollectionIterator<const T,
     }
 
 
-    public previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
+    public override previous(): PossibleIteratorValue<T, BeforeFirstValueInCollectionIteratorSymbol> {
         if (this.isEmpty)
             return GenericBeforeFirstIteratorValue.get
 
@@ -451,7 +436,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Value methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    public reset(): void {
+    public override reset(): void {
         this._previousIndex = null
         this._currentIndex = null
         this._nextIndex = null
@@ -461,7 +446,7 @@ export abstract class AbstractCollectionIterator<const T,
 
     //#region -------------------- Loop methods --------------------
 
-    public forEach(operation: ValueIndexCallback<T>,): this {
+    public override forEach(operation: ValueIndexCallback<T>,): this {
         if (this.isEmpty)
             return this
 
@@ -502,7 +487,7 @@ export abstract class AbstractCollectionIterator<const T,
         return this
     }
 
-    public forEachIndexed(operation: IndexValueCallback<T>,): this {
+    public override forEachIndexed(operation: IndexValueCallback<T>,): this {
         if (this.isEmpty)
             return this
 
@@ -546,9 +531,7 @@ export abstract class AbstractCollectionIterator<const T,
     //#endregion -------------------- Loop methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public abstract [Symbol.iterator](): CollectionIterator<T>
-
-    public get [Symbol.toStringTag](): CollectionIteratorName { return "CollectionIterator" }
+    public abstract override [Symbol.iterator](): AbstractCollectionIterator<T>
 
     //#endregion -------------------- JavaScript methods --------------------
 
