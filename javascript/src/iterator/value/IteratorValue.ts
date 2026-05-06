@@ -27,13 +27,13 @@ export interface IteratorValue<out T = unknown, > {
      *
      * @alias IteratorValue.isDone
      */
-    get done(): boolean
+    readonly done: boolean
 
     /** Tell that the {@link IteratorValue iterator value} could <b>not</b> be able to progress */
     isNotDone(): boolean
 
 
     /** The value to retrieve by the iterator */
-    get value(): T
+    readonly value: T
 
 }

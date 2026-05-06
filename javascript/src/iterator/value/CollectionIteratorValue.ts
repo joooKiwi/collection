@@ -10,8 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {MinimalistCollectionHolder} from "../../MinimalistCollectionHolder"
-import type {InsideIteratorValue}        from "./InsideIteratorValue"
+import type {CollectionHolder}    from "../../CollectionHolder"
+import type {InsideIteratorValue} from "./InsideIteratorValue"
 
 /**
  * An {@link IteratorValue iterator value} made to retrieve a {@link value}
@@ -23,10 +23,10 @@ export interface CollectionIteratorValue<out T = unknown, >
     extends InsideIteratorValue<T> {
 
     /** The {@link MinimalistCollectionHolder collection} to use in the {@link CollectionIteratorValue.value get value} */
-    get collection(): MinimalistCollectionHolder<T>
+    readonly collection: CollectionHolder<T>
 
 
     /** The index to retrieve in the {@link collection} by the {@link CollectionIteratorValue.value get value} */
-    get index(): number
+    readonly index: number
 
 }
