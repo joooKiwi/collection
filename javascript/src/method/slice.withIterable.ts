@@ -15,8 +15,8 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -76,7 +76,7 @@ export function sliceWithIterableByMinimalistCollectionHolder<const T, >(collect
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -100,7 +100,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArray(collection, iterator, iteratorResult.value,),)
 }
 
 /**
@@ -124,7 +124,7 @@ export function sliceWithIterableByArray<const T, >(collection: Nullable<readonl
     const iteratorResult = iterator.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, iterator, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------

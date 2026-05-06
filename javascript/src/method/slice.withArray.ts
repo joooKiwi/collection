@@ -15,8 +15,8 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -75,7 +75,7 @@ export function sliceWithArrayByMinimalistCollectionHolder<const T, >(collection
     const indicesSize = indices.length
     if (indicesSize == 0)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
+    return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 /**
@@ -98,7 +98,7 @@ export function sliceWithArrayByCollectionHolder<const T, >(collection: Nullable
     const indicesSize = indices.length
     if (indicesSize == 0)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
+    return new LazyCollectionHolder(() => __newArray(collection, indices, indicesSize,),)
 }
 
 /**
@@ -121,7 +121,7 @@ export function sliceWithArrayByArray<const T, >(collection: Nullable<readonly T
     const indicesSize = indices.length
     if (indicesSize == 0)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, indicesSize,),)
 }
 
 //#endregion -------------------- Facade method --------------------

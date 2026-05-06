@@ -15,8 +15,8 @@ import type {Nullable} from "@joookiwi/type"
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {__get}                         from "./_array utility"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
@@ -75,7 +75,7 @@ export function sliceWithIteratorByMinimalistCollectionHolder<const T, >(collect
     const iteratorResult = indices.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
 /**
@@ -98,7 +98,7 @@ export function sliceWithIteratorByCollectionHolder<const T, >(collection: Nulla
     const iteratorResult = indices.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArray(collection, indices, iteratorResult.value,),)
 }
 
 /**
@@ -121,7 +121,7 @@ export function sliceWithIteratorByArray<const T, >(collection: Nullable<readonl
     const iteratorResult = indices.next()
     if (iteratorResult.done)
         return EmptyCollectionHolder.get
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __newArrayByArray(collection, indices, iteratorResult.value,),)
+    return new LazyCollectionHolder(() => __newArrayByArray(collection, indices, iteratorResult.value,),)
 }
 
 //#endregion -------------------- Facade method --------------------
