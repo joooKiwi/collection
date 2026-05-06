@@ -45,11 +45,9 @@ export class CollectionConstants {
     //#endregion -------------------- Thrown constructor --------------------
     //#region -------------------- Fields held --------------------
 
-    static #EMPTY_COLLECTION_HOLDER?: EmptyCollectionHolder
     static #LAZY_EMPTY_COLLECTION_HOLDER?: Lazy<EmptyCollectionHolder>
     static #EMPTY_COLLECTION_HANDLER?: EmptyCollectionHandler
     static #LAZY_EMPTY_COLLECTION_HANDLER?: Lazy<EmptyCollectionHandler>
-    static #EMPTY_COLLECTION_ITERATOR?: EmptyCollectionIterator
     static #LAZY_EMPTY_COLLECTION_ITERATOR?: Lazy<EmptyCollectionIterator>
 
     static #MINIMALIST_COLLECTION_MEMBERS?: CollectionHolder<KeyOfMinimalistCollectionHolder>
@@ -79,12 +77,12 @@ export class CollectionConstants {
 
     /** An {@link EmptyCollectionHolder} instance */
     public static get EMPTY_COLLECTION_HOLDER(): EmptyCollectionHolder {
-        return CollectionConstants.#EMPTY_COLLECTION_HOLDER ??= Object.freeze(EmptyCollectionHolder.get,)
+        return EmptyCollectionHolder.get
     }
 
     /** An {@link EmptyCollectionHolder} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_HOLDER(): Lazy<EmptyCollectionHolder> {
-        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HOLDER,)
+        return this.#LAZY_EMPTY_COLLECTION_HOLDER ??= lazyOf(EmptyCollectionHolder.get,)
     }
 
 
@@ -101,12 +99,12 @@ export class CollectionConstants {
 
     /** An {@link EmptyCollectionIterator} instance */
     public static get EMPTY_COLLECTION_ITERATOR(): EmptyCollectionIterator {
-        return CollectionConstants.#EMPTY_COLLECTION_ITERATOR ??= Object.freeze(EmptyCollectionIterator.get,)
+        return EmptyCollectionIterator.get
     }
 
     /** An {@link EmptyCollectionIterator} instance in a {@link Lazy} */
     public static get LAZY_EMPTY_COLLECTION_ITERATOR(): Lazy<EmptyCollectionIterator> {
-        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_ITERATOR,)
+        return this.#LAZY_EMPTY_COLLECTION_ITERATOR ??= lazyOf(EmptyCollectionIterator.get,)
     }
 
     //#endregion -------------------- Empty references --------------------
