@@ -22,6 +22,7 @@ import type {KeyOfArray, KeyOfCollectionHolder, KeyOfCollectionIterator, KeyOfIt
 import {EmptyCollectionHolder}                  from "./EmptyCollectionHolder"
 import type {GenericCollectionHolder}           from "./GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "./GenericMinimalistCollectionHolder"
+import {LateRetriever}                          from "./LateRetriever"
 import type {LazyCollectionHolder}              from "./LazyCollectionHolder"
 import {EmptyCollectionIterator}                from "./iterator/EmptyCollectionIterator"
 import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionHandler"
@@ -115,7 +116,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link MinimalistCollectionHolder} */
     public static get MINIMALIST_COLLECTION_MEMBERS(): CollectionHolder<KeyOfMinimalistCollectionHolder> {
-        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder(["size", "get",],),)
+        return CollectionConstants.#MINIMALIST_COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfMinimalistCollectionHolder>("size", "get",),)
     }
 
     //#endregion -------------------- Members references (minimalist collection holder) --------------------
@@ -123,7 +124,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionHolder} */
     public static get COLLECTION_MEMBERS(): CollectionHolder<KeyOfCollectionHolder> {
-        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionHolder>([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "get", "getFirst", "getLast", "at", "elementAt",
@@ -187,7 +188,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link ReadonlyArray Array} */
     public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
-        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfArray>([
             "length",
             "at",
             "indexOf", "lastIndexOf",
@@ -215,7 +216,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link Array MutableArray} */
     public static get MUTABLE_ARRAY_MEMBERS(): CollectionHolder<KeyOfMutableArray> {
-        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableArray>([
             "length",
             "at", "push", "pop",
             "shift", "unshift",
@@ -248,7 +249,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link TypedArray} */
     public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
-        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfTypedArray>([
             "length",
             "at", "set",
             "buffer",
@@ -281,7 +282,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link ReadonlySet Set} */
     public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
-        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfSet>([
             "size",
             "has",
             "forEach",
@@ -297,7 +298,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link Set MutableSet} */
     public static get MUTABLE_SET_MEMBERS(): CollectionHolder<KeyOfMutableSet> {
-        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableSet>([
             "size",
             "clear",
             "add", "delete",
@@ -318,15 +319,15 @@ export class CollectionConstants {
 
     /** Every method applicable to an immutable {@link WeakSet} */
     public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
-        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfWeakSet>(
             "has",
             Symbol.toStringTag,
-        ] as const,),)
+        ),)
     }
 
     /** Every method applicable to a mutable {@link WeakSet} */
     public static get MUTABLE_WEAK_SET_MEMBERS(): CollectionHolder<KeyOfMutableWeakSet> {
-        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakSet>([
             "add", "delete",
             "has",
             Symbol.toStringTag,
@@ -338,7 +339,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link ReadonlyMap Map} */
     public static get MAP_MEMBERS(): CollectionHolder<KeyOfMap> {
-        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMap>([
             "size",
             "get",
             "has",
@@ -351,7 +352,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an {@link Map MutableMap} */
     public static get MUTABLE_MAP_MEMBERS(): CollectionHolder<KeyOfMutableMap> {
-        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableMap>([
             "size",
             "get",
             "set", "delete",
@@ -369,7 +370,7 @@ export class CollectionConstants {
 
     /** Every method applicable to an immutable {@link WeakMap} */
     public static get WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfWeakMap> {
-        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfWeakMap>([
             "get",
             "has",
             Symbol.toStringTag,
@@ -378,7 +379,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a mutable {@link WeakMap} */
     public static get MUTABLE_WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfMutableWeakMap> {
-        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakMap>([
             "get",
             "set", "delete",
             "has",
@@ -396,9 +397,9 @@ export class CollectionConstants {
      * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
      */
     public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf1(
             "next",
-        ] as const,),)
+        ),)
     }
 
     // /**
@@ -408,7 +409,7 @@ export class CollectionConstants {
     //  * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator#browser_compatibility
     //  */
     // public static get ITERATOR_MEMBERS(): CollectionHolder<KeyOfIterator> {
-    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+    //     return CollectionConstants.#ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfIterator>([
     //         "next",
     //         "every", "some",
     //         "find", "filter", "reduce",
@@ -425,7 +426,7 @@ export class CollectionConstants {
 
     /** Every method applicable to a {@link CollectionIterator} */
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
-        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new CollectionConstants.GenericCollectionHolder([
+        return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionIterator>([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
             "currentIndex", "index",
@@ -436,7 +437,7 @@ export class CollectionConstants {
             "reset",
             "forEach", "forEachIndexed",
             Symbol.iterator, Symbol.toStringTag,
-        ] as const,),)
+        ],),)
     }
 
     //#endregion -------------------- Members references (collection iterator) --------------------
