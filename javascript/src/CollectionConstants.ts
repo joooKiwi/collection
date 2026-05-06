@@ -86,12 +86,20 @@ export class CollectionConstants {
     }
 
 
-    /** An {@link EmptyCollectionHandler} instance */
+    /**
+     * An {@link EmptyCollectionHandler} instance
+     *
+     * @deprecated Replace with {@link CollectionConstants.EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get EMPTY_COLLECTION_HANDLER(): EmptyCollectionHandler {
         return CollectionConstants.#EMPTY_COLLECTION_HANDLER ??= Object.freeze(EmptyCollectionHandler.get,)
     }
 
-    /** An {@link EmptyCollectionHandler} instance in a {@link Lazy} */
+    /**
+     * An {@link EmptyCollectionHandler} instance in a {@link Lazy}
+     *
+     * @deprecated Replace with {@link CollectionConstants.LAZY_EMPTY_COLLECTION_HOLDER}. This will be removed in version 2.1
+     */
     public static get LAZY_EMPTY_COLLECTION_HANDLER(): Lazy<EmptyCollectionHandler> {
         return this.#LAZY_EMPTY_COLLECTION_HANDLER ??= lazyOf(CollectionConstants.EMPTY_COLLECTION_HANDLER,)
     }
@@ -443,17 +451,29 @@ export class CollectionConstants {
     //#endregion -------------------- Members references --------------------
     //#region -------------------- Constructor references --------------------
 
-    /** The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of an {@link EmptyCollectionHolder}
+     *
+     * @deprecated Use the {@link EmptyCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get EmptyCollectionHolder(): typeof EmptyCollectionHolder {
         return CollectionConstants.#EmptyCollectionHolder ??= EmptyCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link GenericCollectionHolder}
+     *
+     * @deprecated Use the {@link GenericCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get GenericCollectionHolder(): typeof GenericCollectionHolder {
         return CollectionConstants.#GenericCollectionHolder ??= require("./GenericCollectionHolder",).GenericCollectionHolder
     }
 
-    /** The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder} */
+    /**
+     * The {@link Object.constructor constructor} reference of a {@link GenericMinimalistCollectionHolder}
+     *
+     * @deprecated Use the {@link GenericMinimalistCollectionHolder} instance directly. This will be removed in version 2.1
+     */
     public static get GenericMinimalistCollectionHolder(): typeof GenericMinimalistCollectionHolder {
         return CollectionConstants.#GenericMinimalistCollectionHolder ??= require("./GenericMinimalistCollectionHolder",).GenericMinimalistCollectionHolder
     }
