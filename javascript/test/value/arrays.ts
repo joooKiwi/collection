@@ -80,6 +80,7 @@ export const BCD =  ['b', 'c', 'd',] as const
 export const CBA =  ['c', 'b', 'a',] as const
 export const DCB =  ['d', 'c', 'b',] as const
 
+export const AAAA =           ['a',       'a',       'a',       'a',      ] as const
 export const ABAB =           ['a',       'b',       'a',       'b',      ] as const
 export const AB_AB =          ['a',       'b',       'A',       'B',      ] as const
 export const AABC =           ['a',       'a',       'b',       'c',      ] as const
