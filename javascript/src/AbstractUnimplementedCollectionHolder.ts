@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -524,8 +524,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public abstract hasOne(values: Nullable<readonly T[]>,): boolean
-    public abstract hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public abstract hasOne(values: Nullable<Array<T>>,): boolean
+    public abstract hasOne(values: Nullable<Set<T>>,): boolean
     public abstract hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public abstract hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public abstract hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -533,8 +533,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     public abstract hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public abstract hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesOne(values: Nullable<readonly T[]>,): boolean
-    public includesOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesOne(values: Nullable<Array<T>>,): boolean
+    public includesOne(values: Nullable<Set<T>>,): boolean
     public includesOne(values: Nullable<CollectionHolder<T>>,): boolean
     public includesOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public includesOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -545,8 +545,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
         return this.hasOne(values,)
     }
 
-    public containsOne(values: Nullable<readonly T[]>,): boolean
-    public containsOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsOne(values: Nullable<Array<T>>,): boolean
+    public containsOne(values: Nullable<Set<T>>,): boolean
     public containsOne(values: Nullable<CollectionHolder<T>>,): boolean
     public containsOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public containsOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -560,8 +560,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public abstract hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public abstract hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public abstract hasNotOne(values: Nullable<Array<T>>,): boolean
+    public abstract hasNotOne(values: Nullable<Set<T>>,): boolean
     public abstract hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public abstract hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public abstract hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -569,8 +569,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     public abstract hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public abstract hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesNotOne(values: Nullable<readonly T[]>,): boolean
-    public includesNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesNotOne(values: Nullable<Array<T>>,): boolean
+    public includesNotOne(values: Nullable<Set<T>>,): boolean
     public includesNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public includesNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public includesNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -581,8 +581,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
         return this.hasNotOne(values,)
     }
 
-    public containsNotOne(values: Nullable<readonly T[]>,): boolean
-    public containsNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsNotOne(values: Nullable<Array<T>>,): boolean
+    public containsNotOne(values: Nullable<Set<T>>,): boolean
     public containsNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public containsNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public containsNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -596,8 +596,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public abstract hasAll(values: Nullable<readonly T[]>,): boolean
-    public abstract hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public abstract hasAll(values: Nullable<Array<T>>,): boolean
+    public abstract hasAll(values: Nullable<Set<T>>,): boolean
     public abstract hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public abstract hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public abstract hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -605,8 +605,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     public abstract hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public abstract hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesAll(values: Nullable<readonly T[]>,): boolean
-    public includesAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesAll(values: Nullable<Array<T>>,): boolean
+    public includesAll(values: Nullable<Set<T>>,): boolean
     public includesAll(values: Nullable<CollectionHolder<T>>,): boolean
     public includesAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public includesAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -617,8 +617,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
         return this.hasAll(values,)
     }
 
-    public containsAll(values: Nullable<readonly T[]>,): boolean
-    public containsAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsAll(values: Nullable<Array<T>>,): boolean
+    public containsAll(values: Nullable<Set<T>>,): boolean
     public containsAll(values: Nullable<CollectionHolder<T>>,): boolean
     public containsAll(values: Nullable<CollectionHolder<T>>,): boolean
     public containsAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
@@ -633,8 +633,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public abstract hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public abstract hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public abstract hasNotAll(values: Nullable<Array<T>>,): boolean
+    public abstract hasNotAll(values: Nullable<Set<T>>,): boolean
     public abstract hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public abstract hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public abstract hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -642,8 +642,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     public abstract hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public abstract hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    public includesNotAll(values: Nullable<readonly T[]>,): boolean
-    public includesNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public includesNotAll(values: Nullable<Array<T>>,): boolean
+    public includesNotAll(values: Nullable<Set<T>>,): boolean
     public includesNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public includesNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public includesNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -654,8 +654,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
         return this.hasNotAll(values,)
     }
 
-    public containsNotAll(values: Nullable<readonly T[]>,): boolean
-    public containsNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public containsNotAll(values: Nullable<Array<T>>,): boolean
+    public containsNotAll(values: Nullable<Set<T>>,): boolean
     public containsNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public containsNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public containsNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
@@ -713,8 +713,8 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#region -------------------- Slice --------------------
 
     public abstract slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public abstract slice(indices: readonly number[],): CollectionHolder<T>
-    public abstract slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public abstract slice(indices: NumberArray,): CollectionHolder<T>
+    public abstract slice(indices: NumberSet,): CollectionHolder<T>
     public abstract slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public abstract slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -944,23 +944,23 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
 
-    public abstract toArray(): readonly T[]
+    public abstract toArray(): Array<T>
 
-    public abstract toMutableArray(): T[]
+    public abstract toMutableArray(): MutableArray<T>
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
-    public abstract toSet(): ReadonlySet<T>
+    public abstract toSet(): Set<T>
 
-    public abstract toMutableSet(): Set<T>
+    public abstract toMutableSet(): MutableSet<T>
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
-    public abstract toMap(): ReadonlyMap<number, T>
+    public abstract toMap(): NumberKeyMap<T>
 
-    public abstract toMutableMap(): Map<number, T>
+    public abstract toMutableMap(): MutableNumberKeyMap<T>
 
     //#endregion -------------------- To map --------------------
 

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set, TemplateOrNumber, UndefinedOr} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
@@ -2314,14 +2314,14 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasOne(values: Nullable<readonly T[]>,): boolean
+    hasOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    hasOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2374,7 +2374,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Nullable<readonly T[]>,): boolean
+    includesOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2382,7 +2382,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    includesOne(values: Nullable<ReadonlySet<T>>,): boolean
+    includesOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2440,7 +2440,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    containsOne(values: Nullable<readonly T[]>,): boolean
+    containsOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2448,7 +2448,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
      */
-    containsOne(values: Nullable<ReadonlySet<T>>,): boolean
+    containsOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2509,14 +2509,14 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasNotOne(values: Nullable<readonly T[]>,): boolean
+    hasNotOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    hasNotOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2569,7 +2569,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: Nullable<readonly T[]>,): boolean
+    includesNotOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2577,7 +2577,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    includesNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    includesNotOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2635,7 +2635,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    containsNotOne(values: Nullable<readonly T[]>,): boolean
+    containsNotOne(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2643,7 +2643,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
      */
-    containsNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    containsNotOne(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2706,7 +2706,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Nullable<readonly T[]>,): boolean
+    hasAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2715,7 +2715,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
-    hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    hasAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2780,7 +2780,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Nullable<readonly T[]>,): boolean
+    includesAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2788,7 +2788,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    includesAll(values: Nullable<ReadonlySet<T>>,): boolean
+    includesAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2846,7 +2846,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    containsAll(values: Nullable<readonly T[]>,): boolean
+    containsAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2854,7 +2854,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
      */
-    containsAll(values: Nullable<ReadonlySet<T>>,): boolean
+    containsAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2915,14 +2915,14 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Nullable<readonly T[]>,): boolean
+    hasNotAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
      */
-    hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    hasNotAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2975,7 +2975,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Nullable<readonly T[]>,): boolean
+    includesNotAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2983,7 +2983,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    includesNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    includesNotAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3041,7 +3041,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    containsNotAll(values: Nullable<readonly T[]>,): boolean
+    containsNotAll(values: Nullable<Array<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3049,7 +3049,7 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
      */
-    containsNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    containsNotAll(values: Nullable<Set<T>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3324,7 +3324,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      * @see https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1.slice C# Slice(start, length)
      */
-    slice(indices: readonly number[],): CollectionHolder<T>
+    slice(indices: NumberArray,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -3336,7 +3336,7 @@ export interface CollectionHolder<out T = unknown, >
      * @see ReadonlyArray.slice
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
-    slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    slice(indices: NumberSet,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}
@@ -4280,28 +4280,28 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- To array --------------------
 
     /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlyArray array} */
-    toArray(): readonly T[]
+    toArray(): Array<T>
 
     /** Convert the current {@link CollectionHolder instance} to a new {@link Array mutable array} */
-    toMutableArray(): T[]
+    toMutableArray(): MutableArray<T>
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
     /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlySet set} */
-    toSet(): ReadonlySet<T>
+    toSet(): Set<T>
 
     /** Convert the current {@link CollectionHolder instance} to a new {@link Set mutable set} */
-    toMutableSet(): Set<T>
+    toMutableSet(): MutableSet<T>
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
     /** Convert the current {@link CollectionHolder instance} to a {@link ReadonlyMap map} */
-    toMap(): ReadonlyMap<number, T>
+    toMap(): NumberKeyMap<T>
 
     /** Convert the current {@link CollectionHolder instance} to a new {@link Map mutable map} */
-    toMutableMap(): Map<number, T>
+    toMutableMap(): MutableNumberKeyMap<T>
 
     //#endregion -------------------- To map --------------------
 
