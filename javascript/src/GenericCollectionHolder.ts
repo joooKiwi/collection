@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, Set, NumberKeyMap, NumberArray, NumberSet, MutableArray, MutableSet, MutableNumberKeyMap} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -25,6 +25,7 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 import {AbstractCollectionHolder}                       from "./AbstractCollectionHolder"
 import {CollectionConstants}                            from "./CollectionConstants"
 import {EmptyCollectionHolder}                          from "./EmptyCollectionHolder"
+import {LazyCollectionHolder}                           from "./LazyCollectionHolder"
 import {EmptyCollectionException}                       from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                        from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}                      from "./exception/IndexOutOfBoundsException"
@@ -176,9 +177,9 @@ export class GenericCollectionHolder<const T = unknown, >
     readonly #isEmpty: boolean
 
     readonly #reference: PossibleIterableIteratorArraySetOrCollectionHolder<T>
-    readonly #array: readonly T[]
-    #set?: ReadonlySet<T>
-    #map?: ReadonlyMap<number, T>
+    readonly #array: Array<T>
+    #set?: Set<T>
+    #map?: NumberKeyMap<T>
 
     #hasNull?: boolean
     #hasDuplicate?: boolean
@@ -186,10 +187,10 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor(array:                                readonly T[],)
-    public constructor(lateArray:                      () => readonly T[],)
-    public constructor(set:                                  ReadonlySet<T>,)
-    public constructor(lateSet:                        () => ReadonlySet<T>,)
+    public constructor(array:                                Array<T>,)
+    public constructor(lateArray:                      () => Array<T>,)
+    public constructor(set:                                  Set<T>,)
+    public constructor(lateSet:                        () => Set<T>,)
     public constructor(collectionHolder:                     CollectionHolder<T>,)
     public constructor(lateCollectionHolder:           () => CollectionHolder<T>,)
     public constructor(minimalistCollectionHolder:           MinimalistCollectionHolder<T>,)
@@ -204,10 +205,10 @@ export class GenericCollectionHolder<const T = unknown, >
     public constructor(lateIterableWithLength:         () => IterableWithLength<T>,)
     public constructor(iterableWithCount:                    IterableWithCount<T>,)
     public constructor(lateIterableWithCount:          () => IterableWithCount<T>,)
-    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
-    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(iterable:                             Iterable<T, unknown, unknown>,)
     public constructor(lateIterable:                   () => Iterable<T, unknown, unknown>,)
+    public constructor(iterableWithPossibleSize:             IterableWithPossibleSize<T>,)
+    public constructor(lateIterableWithPossibleSize:   () => IterableWithPossibleSize<T>,)
     public constructor(reference:                            PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(lateReference:                  () => PossibleIterableIteratorArraySetOrCollectionHolder<T>,)
     public constructor(reference: | PossibleIterableIteratorArraySetOrCollectionHolder<T> | (() => PossibleIterableIteratorArraySetOrCollectionHolder<T>),)
@@ -1007,7 +1008,7 @@ export class GenericCollectionHolder<const T = unknown, >
     protected get _reference(): PossibleIterableIteratorArraySetOrCollectionHolder<T> { return this.#reference }
 
     /** The {@link Array} stored (from the construction) for the current {@link GenericCollectionHolder instance} */
-    protected get _array(): readonly T[] { return this.#array }
+    protected get _array(): Array<T> { return this.#array }
 
     //#endregion -------------------- Reference methods --------------------
 
@@ -1066,13 +1067,11 @@ export class GenericCollectionHolder<const T = unknown, >
         return getOrElseByArray(this._array, index, defaultValue,)
     }
 
-
     public override getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getFirstOrElse(defaultValue: ReturnCallback<T>,): T
     public override getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
         return getFirstOrElseByArray(this._array, defaultValue,)
     }
-
 
     public override getLastOrElse<const U, >(defaultValue: ReturnCallback<U>,): | T | U
     public override getLastOrElse(defaultValue: ReturnCallback<T>,): T
@@ -1258,11 +1257,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    protected override _hasOneByArray(values: readonly T[],): boolean {
+    protected override _hasOneByArray(values: Array<T>,): boolean {
         return hasOneWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasOneBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasOneBySet(values: Set<T>,): boolean {
         return hasOneWithSetByArray(this._array, values,)
     }
 
@@ -1289,11 +1288,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    protected override _hasNotOneByArray(values: readonly T[],): boolean {
+    protected override _hasNotOneByArray(values: Array<T>,): boolean {
         return hasNotOneWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasNotOneBySet(values: Set<T>,): boolean {
         return hasNotOneWithSetByArray(this._array, values,)
     }
 
@@ -1320,11 +1319,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    protected override _hasAllByArray(values: readonly T[],): boolean {
+    protected override _hasAllByArray(values: Array<T>,): boolean {
         return hasAllWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasAllBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasAllBySet(values: Set<T>,): boolean {
         return hasAllWithSetByArray(this._array, values,)
     }
 
@@ -1351,11 +1350,11 @@ export class GenericCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    protected override _hasNotAllByArray(values: readonly T[],): boolean {
+    protected override _hasNotAllByArray(values: Array<T>,): boolean {
         return hasNotAllWithArrayByArray(this._array, values,)
     }
 
-    protected override _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+    protected override _hasNotAllBySet(values: Set<T>,): boolean {
         return hasNotAllWithSetByArray(this._array, values,)
     }
 
@@ -1428,7 +1427,7 @@ export class GenericCollectionHolder<const T = unknown, >
         if (this.isEmpty)
             return EmptyCollectionHolder.get
         if (this.hasNull)
-            return new CollectionConstants.LazyGenericCollectionHolder(() => {
+            return new LazyCollectionHolder(() => {
                 const array = this._array
                 const size = array.length
                 const tempArray = new Array<NonNullable<T>>(size,)
@@ -1463,11 +1462,11 @@ export class GenericCollectionHolder<const T = unknown, >
         return sliceWithARangeByArray(this._array, from, to,)
     }
 
-    protected override _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+    protected override _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByArray(this._array, indices,)
     }
 
-    protected override _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    protected override _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByArray(this._array, indices,)
     }
 
@@ -1631,14 +1630,14 @@ export class GenericCollectionHolder<const T = unknown, >
 
     public override toIterator(): CollectionIterator<T> { return toIteratorByArray(this._array,) }
 
-    public override toArray(): readonly T[] { return this.#array }
-    public override toMutableArray(): T[] { return toMutableArrayByArray(this._array,) }
+    public override toArray(): Array<T> { return this.#array }
+    public override toMutableArray(): MutableArray<T> { return toMutableArrayByArray(this._array,) }
 
-    public override toSet(): ReadonlySet<T> { return this.#set ??= toSetByArray(this._array,) }
-    public override toMutableSet(): Set<T> { return toMutableSetByArray(this._array,) }
+    public override toSet(): Set<T> { return this.#set ??= toSetByArray(this._array,) }
+    public override toMutableSet(): MutableSet<T> { return toMutableSetByArray(this._array,) }
 
-    public override toMap(): ReadonlyMap<number, T> { return this.#map ??= toMapByArray(this._array,) }
-    public override toMutableMap(): Map<number, T> { return toMutableMapByArray(this._array,) }
+    public override toMap(): NumberKeyMap<T> { return this.#map ??= toMapByArray(this._array,) }
+    public override toMutableMap(): MutableNumberKeyMap<T> { return toMutableMapByArray(this._array,) }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------
