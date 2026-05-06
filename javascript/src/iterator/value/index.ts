@@ -17,4 +17,7 @@ export {GenericBeforeFirstIteratorValue} from "./GenericBeforeFirstIteratorValue
 export {GenericCollectionIteratorValue}  from "./GenericCollectionIteratorValue"
 export type {InsideIteratorValue}        from "./InsideIteratorValue"
 export type {IteratorValue}              from "./IteratorValue"
+export {IteratorValueOf1}                from "./IteratorValueOf1"
+export {IteratorValueOf1On2}             from "./IteratorValueOf1On2"
+export {IteratorValueOf2On2}             from "./IteratorValueOf2On2"
 export type {OutsideIteratorValue}       from "./OutsideIteratorValue"
