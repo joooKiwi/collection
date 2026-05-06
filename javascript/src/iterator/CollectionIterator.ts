@@ -58,6 +58,10 @@ import type {CollectionIteratorName}                                            
  * }
  * </pre>
  *
+ * @see IteratorObject
+ * @see ArrayIterator
+ * @see SetIterator
+ * @see MapIterator
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-iterator Kotlin Iterator
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list-iterator Kotlin ListIterator
  */
@@ -117,7 +121,7 @@ export interface CollectionIterator<out T = unknown, >
      *
      * @alias currentIndex
      */
-    get index(): NullOrNumber
+    get index(): this["currentIndex"]
 
     //#endregion -------------------- Current methods --------------------
     //#region -------------------- Next methods --------------------

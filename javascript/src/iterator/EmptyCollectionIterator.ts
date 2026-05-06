@@ -36,8 +36,8 @@ export class EmptyCollectionIterator
     //#region -------------------- Size methods --------------------
 
     public get size(): 0 { return 0 }
-    public get length(): 0 { return 0 }
-    public get count(): 0 { return 0 }
+    public get length(): this["size"] { return this.size }
+    public get count(): this["size"] { return this.size }
 
     public get isEmpty(): true { return true }
     public get isNotEmpty(): false { return false }
@@ -53,7 +53,7 @@ export class EmptyCollectionIterator
 
     //#region -------------------- Current methods --------------------
 
-    public get index(): null { return null }
+    public get index(): this["currentIndex"] { return this.currentIndex }
     public get currentIndex(): null { return null }
 
     //#endregion -------------------- Current methods --------------------

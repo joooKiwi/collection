@@ -18,6 +18,16 @@ import type {PossibleIteratorValue}                                             
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
 import type {CollectionIteratorName}                                                               from "../type/toStringTag"
 
+/**
+ * A definition of a {@link CollectionIterator} to have a common ancestor.
+ * But requiring nothing out of the instance in comparison to the direct implementors.
+ *
+ * @note This class should be inherited if new classes are being made to be more usable by the tools
+ * @typeParam T The element type
+ * @see AbstractCollectionIterator
+ * @see AbstractCollectionIteratorOf1
+ * @see AbstractCollectionIteratorOf2
+ */
 export abstract class AbstractUnimplementedCollectionIterator<const T, >
     implements CollectionIterator<T> {
 

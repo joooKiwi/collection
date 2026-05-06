@@ -29,6 +29,7 @@ import {GenericBeforeFirstIteratorValue}         from "./value/GenericBeforeFirs
  *
  * @typeParam T The element type
  * @see EmptyCollectionIterator
+ * @see GenericCollectionIterator
  */
 export abstract class AbstractCollectionIterator<const T, >
     extends AbstractUnimplementedCollectionIterator<T> {
