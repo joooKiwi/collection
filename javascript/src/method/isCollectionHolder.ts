@@ -12,12 +12,12 @@
 
 import type {CollectionHolder} from "../CollectionHolder"
 
-import {AbstractCollectionHolder} from "../AbstractCollectionHolder"
-import {EmptyCollectionHolder}    from "../EmptyCollectionHolder"
+import {AbstractUnimplementedCollectionHolder} from "../AbstractUnimplementedCollectionHolder"
+import {EmptyCollectionHolder}                 from "../EmptyCollectionHolder"
 
 /**
  * Tell that the value is a {@link CollectionHolder}
- * if it is an {@link AbstractCollectionHolder} or an {@link EmptyCollectionHolder}
+ * if it is an {@link AbstractUnimplementedCollectionHolder} or an {@link EmptyCollectionHolder}
  *
  * @param value The value to identify
  * @see isCollectionHolderByStructure
@@ -26,7 +26,7 @@ import {EmptyCollectionHolder}    from "../EmptyCollectionHolder"
 export function isCollectionHolder<const T, const INSTANCE extends CollectionHolder<T> = CollectionHolder<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
-    if (value instanceof AbstractCollectionHolder)
+    if (value instanceof AbstractUnimplementedCollectionHolder)
         return true
     if (value instanceof EmptyCollectionHolder)
         return true

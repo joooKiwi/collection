@@ -12,12 +12,12 @@
 
 import type {CollectionIterator} from "../iterator/CollectionIterator"
 
-import {AbstractCollectionIterator} from "../iterator/AbstractCollectionIterator"
-import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
+import {AbstractUnimplementedCollectionIterator} from "../iterator/AbstractUnimplementedCollectionIterator"
+import {EmptyCollectionIterator}                 from "../iterator/EmptyCollectionIterator"
 
 /**
  * Tell that the value is a {@link CollectionIterator}
- * if it is an {@link AbstractCollectionIterator} or an {@link EmptyCollectionIterator}
+ * if it is an {@link AbstractUnimplementedCollectionIterator} or an {@link EmptyCollectionIterator}
  *
  * @param value The value to identify
  * @see isCollectionIteratorByStructure
@@ -26,7 +26,7 @@ import {EmptyCollectionIterator}    from "../iterator/EmptyCollectionIterator"
 export function isCollectionIterator<const T, const INSTANCE extends CollectionIterator<T> = CollectionIterator<T>, >(value: unknown,): value is INSTANCE {
     if (value == null)
         return false
-    if (value instanceof AbstractCollectionIterator)
+    if (value instanceof AbstractUnimplementedCollectionIterator)
         return true
     if (value instanceof EmptyCollectionIterator)
         return true
