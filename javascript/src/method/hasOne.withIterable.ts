@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T>>,): boolean {
+export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -55,7 +55,7 @@ export function hasOneWithIterable<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T>>,): boolean {
+export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
 
@@ -80,7 +80,7 @@ export function hasOneWithIterableByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T>>,): boolean {
+export function hasOneWithIterableByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
     if (collection.isEmpty)
@@ -103,7 +103,7 @@ export function hasOneWithIterableByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T>>,): boolean {
+export function hasOneWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (collection == null)
         return false
 
