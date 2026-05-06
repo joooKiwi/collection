@@ -29,7 +29,7 @@ export interface MinimalistCollectionHolder<out T = unknown, > {
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#size() Java Map.size()
      * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.count C# Count()
      */
-    get size(): number
+    readonly size: number
 
     /**
      * Get the element at the specified index in the {@link MinimalistCollectionHolder collection}
