@@ -16,8 +16,8 @@ import type {CollectionHolder}             from "../CollectionHolder"
 import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
 import type {IndexValueWithReturnCallback} from "../type/callback"
 
-import {CollectionConstants}           from "../CollectionConstants"
 import {EmptyCollectionHolder}         from "../EmptyCollectionHolder"
+import {LazyCollectionHolder}          from "../LazyCollectionHolder"
 import {isArray}                       from "./isArray"
 import {isArrayByStructure}            from "./isArrayByStructure"
 import {isCollectionHolder}            from "./isCollectionHolder"
@@ -82,10 +82,10 @@ export function mapNotNullIndexedByMinimalistCollectionHolder<const T, const U e
     if (size == 0)
         return EmptyCollectionHolder.get
     if (transform.length == 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
+        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, transform, size,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
+        return new LazyCollectionHolder(() => __with2Argument(collection, transform, size,),)
+    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
 }
 
 /**
@@ -109,10 +109,10 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (transform.length == 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, collection.size,),)
+        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, collection.size,),)
     if (transform.length >= 2)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, collection.size,),)
+        return new LazyCollectionHolder(() => __with2Argument(collection, transform, collection.size,),)
+    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, collection.size,),)
 }
 
 /**
@@ -138,10 +138,10 @@ export function mapNotNullIndexedByArray<const T, const U extends NonNullable<un
     if (size == 0)
         return EmptyCollectionHolder.get
     if (transform.length == 1)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
+        return new LazyCollectionHolder(() => __with1Argument(transform as (index: number,) => Nullable<U>, size,),)
     if (transform.length >= 2)
-        return new CollectionConstants.LazyGenericCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
-    return new CollectionConstants.LazyGenericCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
+        return new LazyCollectionHolder(() => __with2ArgumentByArray(collection, transform, size,),)
+    return new LazyCollectionHolder(() => __with0Argument(transform as () => Nullable<U>, size,),)
 }
 
 //#endregion -------------------- Facade method --------------------
