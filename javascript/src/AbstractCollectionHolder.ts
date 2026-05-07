@@ -704,6 +704,7 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
         return this._hasNotAllByIterable(values,)
     }
 
+
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: NullOrUndefined)} */
     protected _hasNotAllByNull(_values: NullOrUndefined,): false {
         return false
