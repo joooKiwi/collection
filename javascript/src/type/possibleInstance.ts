@@ -15,7 +15,7 @@ import type {Array, Set} from "@joookiwi/type"
 import type {CollectionHolder}                  from "../CollectionHolder"
 import type {GenericCollectionHolder}           from "../GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "../GenericMinimalistCollectionHolder"
-import type {LazyGenericCollectionHolder}       from "../LazyGenericCollectionHolder"
+import type {LazyCollectionHolder}              from "../LazyCollectionHolder"
 import type {MinimalistCollectionHolder}        from "../MinimalistCollectionHolder"
 import type {IterableWithCount}                 from "../iterable/IterableWithCount"
 import type {IterableWithLength}                from "../iterable/IterableWithLength"
@@ -26,10 +26,12 @@ import type {CollectionIterator}                from "../iterator/CollectionIter
 /**
  * The possible {@link Object.constructor constructor} types that are inherited
  * from a {@link MinimalistCollectionHolder} or a {@link CollectionHolder}
+ *
+ * @deprecated This feature is no longer useful and would give too many possibilities with the new instances. Use the `typeof xx` directly. This will be removed in version 2.1
  */
 export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistCollectionHolder
                                                   | typeof GenericCollectionHolder
-                                                  | typeof LazyGenericCollectionHolder
+                                                  | typeof LazyCollectionHolder
 
 /**
  * A type-alias for the possible {@link ReadonlyArray Array}, {@link ReadonlySet Set},
