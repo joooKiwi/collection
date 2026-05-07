@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
+export function hasNoNulls<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -87,7 +87,7 @@ export function hasNoNullsByCollectionHolder<const T, >(collection: Nullable<Col
  * @return {boolean} <b>true</b> only if no element is <b>null</b> or <b>undefined</b>
  * @extensionFunction
  */
-export function hasNoNullsByArray<const T, >(collection: Nullable<readonly T[]>,): boolean {
+export function hasNoNullsByArray<const T, >(collection: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return true
 
@@ -108,7 +108,7 @@ function __validate(collection: MinimalistCollectionHolder, size: number,) {
     return true
 }
 
-function __validateByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: Array<unknown>, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] == null)

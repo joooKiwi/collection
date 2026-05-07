@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./value/ValueHolder"
 
@@ -32,7 +34,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @deprecated Replace with {@link ArrayAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerByArray<const T = unknown,
-    const REFERENCE extends readonly T[] = readonly T[],
+    const REFERENCE extends Array<T> = Array<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 

@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Set} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 
 import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1Value"
@@ -23,7 +25,7 @@ import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1V
  * @deprecated Replace with {@link CollectionHolderOf1} or {@link SetOf1AsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerBySetOf1<const T = unknown,
-    const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
+    const REFERENCE extends Set<T> = Set<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 

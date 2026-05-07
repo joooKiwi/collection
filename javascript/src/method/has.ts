@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 import type {CollectionHolder}           from "../CollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, value: T,): boolean {
+export function has<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, value: T,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -115,7 +115,7 @@ export function hasByCollectionHolder<const T, >(collection: Nullable<Collection
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object) Java Map.containsValue(value)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.contains C# contains(value)
  */
-export function hasByArray<const T, >(collection: Nullable<readonly T[]>, value: T,): boolean {
+export function hasByArray<const T, >(collection: Nullable<Array<T>>, value: T,): boolean {
     if (collection == null)
         return false
 
@@ -136,7 +136,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, value:
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], value: T, size: number,) {
+function __validateByArray<const T, >(collection: Array<T>, value: T, size: number,) {
     let index = -1
     while (++index < size)
         if (collection[index] === value)

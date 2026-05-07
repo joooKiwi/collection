@@ -43,7 +43,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
         super()
         const $this = this
         const handler = this.proxyHandler = {
-            get(target: readonly T[], property: StringOrSymbol, receiver: unknown,) {
+            get(target: Array<T>, property: StringOrSymbol, receiver: unknown,) {
                 if (typeof property == "string")
                     if (NUMBER_REGEX.test(property,))
                         $this.amountOfCall++
@@ -53,7 +53,7 @@ export class CollectionHolder_ByGenericCollection<const T, >
         this.instance = new class CollectionHolder_CountingGetByGenericCollection
             extends GenericCollectionHolder<T> {
 
-            protected override get _array(): readonly T[] { return $this.proxiedArray }
+            protected override get _array(): Array<T> { return $this.proxiedArray }
 
         }(array,)
         this.proxiedArray = new Proxy(array, handler,)

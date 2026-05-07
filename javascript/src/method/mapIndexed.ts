@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}             from "../CollectionHolder"
 import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
@@ -41,7 +41,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapIndexed<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+export function mapIndexed<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -130,7 +130,7 @@ export function mapIndexedByCollectionHolder<const T, const U, >(collection: Nul
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapIndexedByArray<const T, const U, >(collection: Nullable<readonly T[]>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
+export function mapIndexedByArray<const T, const U, >(collection: Nullable<Array<T>>, transform: IndexValueWithReturnCallback<T, U>,): CollectionHolder<U> {
     if (collection == null)
         return EmptyCollectionHolder.get
 
@@ -173,7 +173,7 @@ function __with2Argument<const T, const U, >(collection: MinimalistCollectionHol
     return newArray
 }
 
-function __with2ArgumentByArray<const T, const U, >(collection: readonly T[], transform: (index: number, value: T,) => U, size: number,) {
+function __with2ArgumentByArray<const T, const U, >(collection: Array<T>, transform: (index: number, value: T,) => U, size: number,) {
     const newArray = new Array<U>(size,)
     let index = -1
     while (++index < size)

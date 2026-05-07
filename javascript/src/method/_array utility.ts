@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import {CollectionConstants}       from "../CollectionConstants"
 import {EmptyCollectionException}  from "../exception/EmptyCollectionException"
 import {ForbiddenIndexException}   from "../exception/ForbiddenIndexException"
@@ -25,7 +27,7 @@ import {IndexOutOfBoundsException} from "../exception/IndexOutOfBoundsException"
  * @throws IndexOutOfBoundsException The {@link index} calculated is under zero or over the {@link size} (after calculation)
  * @throws ForbiddenIndexException   The {@link index} is a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
  */
-export function __get<const T, >(array: readonly T[], index: number,): T {
+export function __get<const T, >(array: Array<T>, index: number,): T {
     const size = array.length
     if (size == 0)
         throw new EmptyCollectionException(null, index,)
@@ -58,7 +60,7 @@ export function __get<const T, >(array: readonly T[], index: number,): T {
  * @note It imply that {@link newSize} is under the size of the {@link array}
  * @internal
  */
-export function __reduceTo<const T, >(array: readonly T[], newSize: number,): readonly T[] {
+export function __reduceTo<const T, >(array: Array<T>, newSize: number,): Array<T> {
     if (newSize == 0)
         return CollectionConstants.EMPTY_ARRAY
 

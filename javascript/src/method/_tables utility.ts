@@ -10,10 +10,12 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array, MutableArray} from "@joookiwi/type"
+
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
 
 /** @internal */
-export function __values<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+export function __values<const T, >(collection: MinimalistCollectionHolder<T>, size: number,): MutableArray<T> {
     const array = new Array<T>(size,)
     let index = size
     while (index-- > 0)
@@ -22,7 +24,7 @@ export function __values<const T, >(collection: MinimalistCollectionHolder<T>, s
 }
 
 /** @internal */
-export function __valuesByArray<const T, >(collection: readonly T[], size: number,) {
+export function __valuesByArray<const T, >(collection: Array<T>, size: number,): MutableArray<T> {
     const array = new Array<T>(size,)
     let index = size
     while (index-- > 0)
@@ -32,7 +34,7 @@ export function __valuesByArray<const T, >(collection: readonly T[], size: numbe
 
 
 /** @internal */
-export function __uniqueValues<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+export function __uniqueValues<const T, >(collection: MinimalistCollectionHolder<T>, size: number,): MutableArray<T> {
     //#region -------------------- Possibly remove duplicates --------------------
 
     const array1 = new Array<T>(size,)
@@ -65,7 +67,7 @@ export function __uniqueValues<const T, >(collection: MinimalistCollectionHolder
 }
 
 /** @internal */
-export function __uniqueValuesByArray<const T, >(collection: readonly T[], size: number,) {
+export function __uniqueValuesByArray<const T, >(collection: Array<T>, size: number,): MutableArray<T> {
     //#region -------------------- Possibly remove duplicates --------------------
 
     const array1 = new Array<T>(size,)
@@ -99,7 +101,7 @@ export function __uniqueValuesByArray<const T, >(collection: readonly T[], size:
 
 
 /** @internal */
-export function __associativeValues<const T, >(collection: MinimalistCollectionHolder<T>, size: number,) {
+export function __associativeValues<const T, >(collection: MinimalistCollectionHolder<T>, size: number,): MutableArray<readonly [number, T,]> {
     const array = new Array<readonly [number, T,]>(size,)
     let index = size
     while (index-- > 0)
@@ -108,7 +110,7 @@ export function __associativeValues<const T, >(collection: MinimalistCollectionH
 }
 
 /** @internal */
-export function __associativeValuesByArray<const T, >(collection: readonly T[], size: number,) {
+export function __associativeValuesByArray<const T, >(collection: Array<T>, size: number,): MutableArray<readonly [number, T,]> {
     const array = new Array<readonly [number, T,]>(size,)
     let index = size
     while (index-- > 0)

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+export function hasNotAllWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithIterableByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -99,7 +99,7 @@ export function hasNotAllWithIterableByCollectionHolder<const T, >(collection: N
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
+export function hasNotAllWithIterableByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
     if (values == null)
         return false
 
@@ -140,7 +140,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, iterat
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
+function __validateByArray<const T, >(collection: Array<T>, iterator: Iterator<T, unknown, unknown>, firstValue: T, size: number,) {
     firstValueLoop: {
         let index1 = -1
         while (++index1 < size)

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -34,7 +34,7 @@ import {findFirst, findFirstByArray, findFirstByCollectionHolder, findFirstByMin
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -51,7 +51,7 @@ export function first<const T, >(collection: Nullable<| MinimalistCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function first<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -67,8 +67,8 @@ export function first<const T, const S extends T, >(collection: Nullable<| Minim
  * @extensionFunction
  * @facadeFunction
  */
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function first<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirst(collection,)
     return findFirst(collection, predicate,)
@@ -194,7 +194,7 @@ export function firstByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>,): T
+export function firstByArray<const T, >(collection: Nullable<Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -211,7 +211,7 @@ export function firstByArray<const T, >(collection: Nullable<readonly T[]>,): T
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
+export function firstByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -227,8 +227,8 @@ export function firstByArray<const T, const S extends T, >(collection: Nullable<
  * @extensionFunction
  * @facadeFunction
  */
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): T
-export function firstByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function firstByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<BooleanCallback<T>>,): T
+export function firstByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstByArray(collection,)
     return findFirstByArray(collection, predicate,)

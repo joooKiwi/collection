@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
+export function hasNotAllWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Set<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasNotAllWithSetByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -53,7 +53,7 @@ export function hasNotAllWithSet<const T, >(collection: Nullable<| MinimalistCol
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
+export function hasNotAllWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Set<T>>,): boolean {
     if (values == null)
         return false
 
@@ -76,7 +76,7 @@ export function hasNotAllWithSetByMinimalistCollectionHolder<const T, >(collecti
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean {
+export function hasNotAllWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Set<T>>,): boolean {
     if (values == null)
         return false
 
@@ -97,7 +97,7 @@ export function hasNotAllWithSetByCollectionHolder<const T, >(collection: Nullab
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotAllWithSetByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean {
+export function hasNotAllWithSetByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Set<T>>,): boolean {
     if (values == null)
         return false
 
@@ -116,7 +116,7 @@ export function hasNotAllWithSetByArray<const T, >(collection: Nullable<readonly
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: ReadonlySet<T>, size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Set<T>, size: number, valuesSize: number,) {
     const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {
@@ -130,7 +130,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: ReadonlySet<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: Set<T>, size: number, valuesSize: number,) {
     const iterator = values[Symbol.iterator]()
     let valuesIndex = valuesSize + 1
     valueLoop: while (--valuesIndex > 0) {

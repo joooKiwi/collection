@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceWithIterable<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -114,7 +114,7 @@ export function sliceWithIterableByCollectionHolder<const T, >(collection: Nulla
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithIterableByArray<const T, >(collection: Nullable<readonly T[]>, indices: Iterable<number>,): CollectionHolder<T> {
+export function sliceWithIterableByArray<const T, >(collection: Nullable<Array<T>>, indices: Iterable<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (collection.length == 0)
@@ -138,7 +138,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, iterat
     return newArray
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], iterator: Iterator<number, unknown, unknown>, firstValue: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, iterator: Iterator<number, unknown, unknown>, firstValue: number,) {
     const newArray = [__get(collection, firstValue,),]
     let iteratorResult: IteratorResult<number, unknown>
     while (!(iteratorResult = iterator.next()).done)

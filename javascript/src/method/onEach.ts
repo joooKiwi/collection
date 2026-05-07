@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -40,8 +40,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function onEach<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION
-export function onEach<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: ValueIndexCallback<T>,) {
+export function onEach<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION
+export function onEach<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, action: ValueIndexCallback<T>,) {
     if (collection == null)
         return collection
     if (isCollectionHolder(collection,))
@@ -133,7 +133,7 @@ export function onEachByCollectionHolder<const T, const COLLECTION extends Nulla
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function onEachByArray<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {
+export function onEachByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION, action: ValueIndexCallback<T>,): COLLECTION {
     if (collection == null)
         return collection
 
@@ -165,7 +165,7 @@ function __with1Argument<const T, const COLLECTION extends MinimalistCollectionH
     return collection
 }
 
-function __with1ArgumentByArray<const T, const COLLECTION extends readonly T[], >(collection: COLLECTION, action: (value: T,) => void, size: number,) {
+function __with1ArgumentByArray<const T, const COLLECTION extends Array<T>, >(collection: COLLECTION, action: (value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection[index] as T,)
@@ -180,7 +180,7 @@ function __with2Argument<const T, const COLLECTION extends MinimalistCollectionH
     return collection
 }
 
-function __with2ArgumentByArray<const T, const COLLECTION extends readonly T[], >(collection: COLLECTION, action: (value: T, index: number,) => void, size: number,) {
+function __with2ArgumentByArray<const T, const COLLECTION extends Array<T>, >(collection: COLLECTION, action: (value: T, index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection[index] as T, index,)

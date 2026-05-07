@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableString} from "@joookiwi/type"
+import type {Array, Nullable, NullableString} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, locale?: NullableString,): string {
+export function toLocaleLowerCaseString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
@@ -100,7 +100,7 @@ export function toLocaleLowerCaseStringByCollectionHolder<const T, >(collection:
  * @see String.toLocaleLowerCase
  * @extensionFunction
  */
-export function toLocaleLowerCaseStringByArray<const T, >(collection: Nullable<readonly T[]>, locale?: NullableString,): string {
+export function toLocaleLowerCaseStringByArray<const T, >(collection: Nullable<Array<T>>, locale?: NullableString,): string {
     if (collection == null)
         return "[]"
 
@@ -124,7 +124,7 @@ function __withNoLocale(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asLocaleLowerCaseString(collection.get(index,),)}]`
 }
 
-function __withNoLocaleByArray(collection: readonly unknown[], size: number,) {
+function __withNoLocaleByArray(collection: Array<unknown>, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1
@@ -143,7 +143,7 @@ function __withLocale(collection: MinimalistCollectionHolder, locale: string, si
 }
 
 
-function __withLocaleByArray(collection: readonly unknown[], locale: string, size: number,) {
+function __withLocaleByArray(collection: Array<unknown>, locale: string, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

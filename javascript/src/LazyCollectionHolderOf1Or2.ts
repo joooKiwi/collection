@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                                                                               from "@joookiwi/lazy"
-import type {MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberKeyMap, Set} from "@joookiwi/type"
-import {lazy, lazyOf}                                                                                                            from "@joookiwi/lazy"
+import type {Lazy}                                                                                                                                              from "@joookiwi/lazy"
+import type {Array, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
+import {lazy, lazyOf}                                                                                                                                           from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -235,8 +235,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -248,8 +248,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -261,8 +261,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -274,8 +274,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -325,8 +325,8 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -443,13 +443,13 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
 
     public override toMutableArray(): | [T, T,] | [T,] { return this._innerCollection.toMutableArray() }
 
-    public override toSet(): | Set<T> { return this._innerCollection.toSet() }
+    public override toSet(): Set<T> { return this._innerCollection.toSet() }
 
-    public override toMutableSet(): | MutableSet<T> { return this._innerCollection.toMutableSet() }
+    public override toMutableSet(): MutableSet<T> { return this._innerCollection.toMutableSet() }
 
-    public override toMap(): | NumberKeyMap<T, | 0 | 1> { return this._innerCollection.toMap() }
+    public override toMap(): NumberKeyMap<T, | 0 | 1> { return this._innerCollection.toMap() }
 
-    public override toMutableMap(): | MutableNumberKeyMap<T, | 0 | 1> { return this._innerCollection.toMutableMap() }
+    public override toMutableMap(): MutableNumberKeyMap<T, | 0 | 1> { return this._innerCollection.toMutableMap() }
 
     //#endregion -------------------- To other structure --------------------
     //#region -------------------- To string --------------------

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param defaultValue The callback to retrieve the default value if it is over the size (after calculation)
  * @extensionFunction
  */
-export function getFirstOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<U>,): | T | U
+export function getFirstOrElse<const T, const U, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the first element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -43,8 +43,8 @@ export function getFirstOrElse<const T, const U, >(collection: Nullable<| Minima
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getFirstOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<T>,): T
-export function getFirstOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, defaultValue: ReturnCallback<unknown>,) {
+export function getFirstOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, defaultValue: ReturnCallback<T>,): T
+export function getFirstOrElse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
         return defaultValue()
     if (isCollectionHolder(collection,))
@@ -130,7 +130,7 @@ export function getFirstOrElseByCollectionHolder<const T, >(collection: Nullable
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getFirstOrElseByArray<const T, const U, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<U>,): | T | U
+export function getFirstOrElseByArray<const T, const U, >(collection: Nullable<Array<T>>, defaultValue: ReturnCallback<U>,): | T | U
 /**
  * Get the first element in the {@link collection}
  * or calling the {@link defaultValue} function
@@ -140,8 +140,8 @@ export function getFirstOrElseByArray<const T, const U, >(collection: Nullable<r
  * @param defaultValue The callback to retrieve the default value if it is over the {@link size} (after calculation)
  * @extensionFunction
  */
-export function getFirstOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<T>,): T
-export function getFirstOrElseByArray<const T, >(collection: Nullable<readonly T[]>, defaultValue: ReturnCallback<unknown>,) {
+export function getFirstOrElseByArray<const T, >(collection: Nullable<Array<T>>, defaultValue: ReturnCallback<T>,): T
+export function getFirstOrElseByArray<const T, >(collection: Nullable<Array<T>>, defaultValue: ReturnCallback<unknown>,) {
     if (collection == null)
         return defaultValue()
     const size = collection.length

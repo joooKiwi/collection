@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                       from "@joookiwi/lazy"
-import type {EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
-import {lazyOf}                                                          from "@joookiwi/lazy"
+import type {Lazy}                                                              from "@joookiwi/lazy"
+import type {Array, EmptyArray, EmptyMap, EmptySet, EmptyWeakMap, EmptyWeakSet} from "@joookiwi/type"
+import {lazyOf}                                                                 from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                              from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                    from "./MinimalistCollectionHolder"
@@ -585,6 +585,6 @@ export interface CollectionConstants {
      * @param args Any possible arguments sent
      * @throws {EvalError} The class cannot be created
      */
-    new(...args: readonly unknown[]): never
+    new(...args: Array<unknown>): never
 
 }

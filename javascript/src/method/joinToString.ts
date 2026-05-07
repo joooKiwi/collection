@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NullableString} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -51,7 +51,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
-export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
     if (isCollectionHolder(collection,))
@@ -170,7 +170,7 @@ export function joinToStringByCollectionHolder<const T, >(collection: Nullable<C
  * @see https://learn.microsoft.com/dotnet/api/system.string.join C# String.Join(separator, prefix?, postfix?)
  * @canReceiveNegativeValue
  */
-export function joinToStringByArray<const T, >(collection: Nullable<readonly T[]>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
+export function joinToStringByArray<const T, >(collection: Nullable<Array<T>>, separator: NullableString = null, prefix: NullableString = null, postfix: NullableString = null, limit: NullableNumber = null, truncated: NullableString = null, transform: Nullable<StringCallback<T>> = null,): string {
     if (collection == null)
         return prefixAndPostfixOnly(prefix, postfix,)
     if (transform == null)
@@ -217,7 +217,7 @@ function __coreByMinimalistCollectionHolder(collection: MinimalistCollectionHold
     return __withNothing(collection, separator, prefix, postfix, size,)
 }
 
-function __coreByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string,) {
+function __coreByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string,) {
     const size = collection.length
     if (size == 0)
         return prefix + postfix
@@ -253,7 +253,7 @@ function __coreWithLimitByMinimalistCollectionHolder(collection: MinimalistColle
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
 }
 
-function __coreWithLimitByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
+function __coreWithLimitByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, limit: number, truncated: string,) {
     const size = collection.length
     if (size == 0)
         return prefix + postfix
@@ -313,7 +313,7 @@ function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(coll
     return __withTruncatedAnd0Argument(separator, prefix, postfix, lastIndex, truncated, transform as () => string,)
 }
 
-function __coreWithLimitAndTransformByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
+function __coreWithLimitAndTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, limit: number, truncated: string, transform: StringCallback<T>,) {
     const size = collection.length
     if (size == 0)
         return prefix + postfix
@@ -359,7 +359,7 @@ function __coreWithTransformByMinimalistCollectionHolder<const T, >(collection: 
     return __with0Argument(separator, prefix, postfix, size, transform as () => string,)
 }
 
-function __coreWithTransformByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
+function __coreWithTransformByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, transform: StringCallback<T>,) {
     const size = collection.length
     if (size == 0)
         return prefix + postfix
@@ -384,7 +384,7 @@ function __withNothing(collection: MinimalistCollectionHolder, separator: string
     return `${prefix}${string}${collection.get(index,)}${postfix}`
 }
 
-function __withNothingByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, lastIndex: number,) {
+function __withNothingByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, lastIndex: number,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -413,7 +413,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return `${prefix}${string}${transform(collection.get(index,),)}${postfix}`
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T,) => string,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T,) => string,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -432,7 +432,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return `${prefix}${string}${transform(collection.get(index,), index,)}${postfix}`
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T, index: number,) => string,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, transform: (value: T, index: number,) => string,) {
     let string = ""
     const sizeMinus1 = lastIndex - 1
     let index = -1
@@ -450,7 +450,7 @@ function __withTruncated(collection: MinimalistCollectionHolder, separator: stri
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedByArray(collection: readonly unknown[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string,) {
+function __withTruncatedByArray(collection: Array<unknown>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)
@@ -476,7 +476,7 @@ function __withTruncatedAnd1Argument<const T, >(collection: MinimalistCollection
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedAnd1ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T,) => string,) {
+function __withTruncatedAnd1ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T,) => string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)
@@ -493,7 +493,7 @@ function __withTruncatedAnd2Argument<const T, >(collection: MinimalistCollection
     return `${prefix}${string}${truncated}${postfix}`
 }
 
-function __withTruncatedAnd2ArgumentByArray<const T, >(collection: readonly T[], separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T, index: number,) => string,) {
+function __withTruncatedAnd2ArgumentByArray<const T, >(collection: Array<T>, separator: string, prefix: string, postfix: string, lastIndex: number, truncated: string, transform: (value: T, index: number,) => string,) {
     let string = ""
     let index = -1
     while (++index < lastIndex)

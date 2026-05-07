@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -39,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#takeWhile(java.util.function.DoublePredicate) Java DoubleStream.takeWhile(predicate)
  * @typescriptDefinition
  */
-export function takeWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function takeWhile<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
  *
@@ -51,8 +51,8 @@ export function takeWhile<const T, const S extends T, >(collection: Nullable<| M
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#takeWhile(java.util.function.LongPredicate) Java LongStream.takeWhile(predicate)
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#takeWhile(java.util.function.DoublePredicate) Java DoubleStream.takeWhile(predicate)
  */
-export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function takeWhile<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -158,7 +158,7 @@ export function takeWhileByCollectionHolder<const T, >(collection: Nullable<Coll
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#takeWhile(java.util.function.DoublePredicate) Java DoubleStream.takeWhile(predicate)
  * @typescriptDefinition
  */
-export function takeWhileByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function takeWhileByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} having the first elements satisfying the given {@link predicate}
  *
@@ -170,8 +170,8 @@ export function takeWhileByArray<const T, const S extends T, >(collection: Nulla
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/LongStream.html#takeWhile(java.util.function.LongPredicate) Java LongStream.takeWhile(predicate)
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#takeWhile(java.util.function.DoublePredicate) Java DoubleStream.takeWhile(predicate)
  */
-export function takeWhileByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function takeWhileByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
+export function takeWhileByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function takeWhileByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
 
@@ -188,7 +188,7 @@ export function takeWhileByArray<const T, >(collection: Nullable<readonly T[]>, 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,): readonly T[] {
+function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
@@ -199,7 +199,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return newArray
 }
 
-function __with0ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: () => boolean,): readonly T[] {
+function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: () => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size)
@@ -211,7 +211,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], size: numbe
 }
 
 
-function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T,) => boolean,): readonly T[] {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T,) => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {
@@ -224,7 +224,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return newArray
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (value: T,) => boolean,): readonly T[] {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T,) => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {
@@ -238,7 +238,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], size: numbe
 }
 
 
-function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T, index: number,) => boolean,): readonly T[] {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (value: T, index: number,) => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {
@@ -251,7 +251,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return newArray
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (value: T, index: number,) => boolean,): readonly T[] {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (value: T, index: number,) => boolean,) {
     const newArray = new Array<T>(size,)
     let index = -1
     while (++index < size) {

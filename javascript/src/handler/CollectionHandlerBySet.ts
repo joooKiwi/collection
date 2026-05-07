@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Set} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 import type {ValueHolder}      from "./value/ValueHolder"
 
@@ -33,7 +35,7 @@ import {UnderZeroIndexAfterCalculationValueHolder} from "./value/UnderZeroIndexA
  * @deprecated Replace with {@link SetAsCollectionHolder}. This will be removed in v2.1
  */
 export class CollectionHandlerBySet<const T = unknown,
-    const REFERENCE extends ReadonlySet<T> = ReadonlySet<T>,
+    const REFERENCE extends Set<T> = Set<T>,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandler<T, REFERENCE, COLLECTION> {
 

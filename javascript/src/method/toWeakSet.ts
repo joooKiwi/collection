@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, WeakSet} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): Readonly<WeakSet<T>> {
+export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): WeakSet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_WEAK_SET
     if (isCollectionHolder(collection,))
@@ -55,7 +55,7 @@ export function toWeakSet<const T extends WeakKey, >(collection: Nullable<| Mini
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Readonly<WeakSet<T>> {
+export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >(collection: Nullable<MinimalistCollectionHolder<T>>,): WeakSet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_WEAK_SET
 
@@ -71,7 +71,7 @@ export function toWeakSetByMinimalistCollectionHolder<const T extends WeakKey, >
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): Readonly<WeakSet<T>> {
+export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collection: Nullable<CollectionHolder<T>>,): WeakSet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_WEAK_SET
     if (collection.isEmpty)
@@ -87,7 +87,7 @@ export function toWeakSetByCollectionHolder<const T extends WeakKey, >(collectio
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable<readonly T[]>,): Readonly<WeakSet<T>> {
+export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable<Array<T>>,): WeakSet<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_WEAK_SET
 
@@ -100,16 +100,16 @@ export function toWeakSetByArray<const T extends WeakKey, >(collection: Nullable
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
+function __withDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(new WeakSet(__uniqueValues(collection, size,),),)
 }
 
-function __withDuplicateByArray<const T extends WeakKey, >(collection: readonly T[], size: number,): Readonly<WeakSet<T>> {
+function __withDuplicateByArray<const T extends WeakKey, >(collection: Array<T>, size: number,) {
     return Object.freeze(new WeakSet(__uniqueValuesByArray(collection, size,),),)
 }
 
 
-function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,): Readonly<WeakSet<T>> {
+function __withoutDuplicate<const T extends WeakKey, >(collection: MinimalistCollectionHolder<T>, size: number,) {
     return Object.freeze(new WeakSet(__values(collection, size,),),)
 }
 

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {findFirstOrNull, findFirstOrNullByArray, findFirstOrNullByCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T>
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -46,7 +46,7 @@ export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollecti
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+export function firstOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -60,8 +60,8 @@ export function firstOrNull<const T, const S extends T, >(collection: Nullable<|
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function firstOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstOrNull(collection,)
     return findFirstOrNull(collection, predicate,)
@@ -170,7 +170,7 @@ export function firstOrNullByCollectionHolder<const T, >(collection: Nullable<Co
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNullByArray<const T, >(collection: Nullable<readonly T[]>,): NullOr<T>
+export function firstOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -185,7 +185,7 @@ export function firstOrNullByArray<const T, >(collection: Nullable<readonly T[]>
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNullByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
+export function firstOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<RestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -199,8 +199,8 @@ export function firstOrNullByArray<const T, const S extends T, >(collection: Nul
  * @extensionFunction
  * @facadeFunction
  */
-export function firstOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
-export function firstOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function firstOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<BooleanCallback<T>>,): NullOr<T>
+export function firstOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstOrNullByArray(collection,)
     return findFirstOrNullByArray(collection, predicate,)

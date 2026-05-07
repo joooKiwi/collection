@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -44,7 +44,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, element: T,): number
+export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * between the {@link from starting index} and the end of the {@link collection}
@@ -66,7 +66,7 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber,): number
+export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, element: T, from: NullableNumber,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * between the {@link from starting} and the {@link to ending} index
@@ -90,8 +90,8 @@ export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollect
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber, to: NullableNumber,): number
-export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,) {
+export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, element: T, from: NullableNumber, to: NullableNumber,): number
+export function firstIndexOf<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (to == null)
@@ -276,7 +276,7 @@ export function firstIndexOfByCollectionHolder<const T, >(collection: Nullable<C
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T,): number
+export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, element: T,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * between the {@link from starting index} and the end of the {@link collection}
@@ -298,7 +298,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber,): number
+export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, element: T, from: NullableNumber,): number
 /**
  * Get the <b>first</b> occurrence equivalent to the value received
  * between the {@link from starting} and the {@link to ending} index
@@ -322,8 +322,8 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber, to: NullableNumber,): number
-export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]>, element: T, from: NullableNumber = null, to: NullableNumber = null,) {
+export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, element: T, from: NullableNumber, to: NullableNumber,): number
+export function firstIndexOfByArray<const T, >(collection: Nullable<Array<T>>, element: T, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (to == null)
@@ -341,7 +341,7 @@ export function firstIndexOfByArray<const T, >(collection: Nullable<readonly T[]
 
 //#region -------------------- element --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T,) {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, element,)
     if (isArray(collection,))
@@ -369,7 +369,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, 0, collection.size - 1,)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[], element: T,) {
+function __core0ByArray<const T, >(collection: Array<T>, element: T,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -379,7 +379,7 @@ function __core0ByArray<const T, >(collection: readonly T[], element: T,) {
 //#endregion -------------------- element --------------------
 //#region -------------------- element, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number,) {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, element, from,)
     if (isArray(collection,))
@@ -409,7 +409,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], element: T, from: number,) {
+function __core1ByArray<const T, >(collection: Array<T>, element: T, from: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -419,7 +419,7 @@ function __core1ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from --------------------
 //#region -------------------- element, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, from: number, to: number,) {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, element, from, to,)
     if (isArray(collection,))
@@ -456,7 +456,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, e
     return __findInRange(collection, element, startingIndex, endingIndex,)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], element: T, from: number, to: number,) {
+function __core2ByArray<const T, >(collection: Array<T>, element: T, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -470,7 +470,7 @@ function __core2ByArray<const T, >(collection: readonly T[], element: T, from: n
 //#endregion -------------------- element, from, to --------------------
 //#region -------------------- element, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], element: T, to: number,) {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, element: T, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, element, to,)
     if (isArray(collection,))
@@ -498,7 +498,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return __findInRange(collection, element, 0, __endingIndex(to, collection.size,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], element: T, to: number,) {
+function __coreWithNoFromByArray<const T, >(collection: Array<T>, element: T, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -518,7 +518,7 @@ function __findInRange<const T, >(collection: MinimalistCollectionHolder<T>, ele
     throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
-function __findInRangeByArray<const T, >(collection: readonly T[], element: T, startingIndex: number, endingIndex: number,) {
+function __findInRangeByArray<const T, >(collection: Array<T>, element: T, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (collection[index] === element)

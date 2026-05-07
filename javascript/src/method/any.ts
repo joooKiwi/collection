@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -83,8 +83,8 @@ export function any<const T, const COLLECTION extends MinimalistCollectionHolder
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return isNotEmpty(collection,)
     return __any(collection, predicate,)
@@ -178,7 +178,7 @@ export function anyByCollectionHolder<const T, >(collection: Nullable<Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any()
  * @extensionFunction
  */
-export function anyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: Nullable<COLLECTION>,): COLLECTION["length"] extends 0 ? false : COLLECTION["length"] extends number ? boolean : true
+export function anyByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: Nullable<COLLECTION>,): COLLECTION["length"] extends 0 ? false : COLLECTION["length"] extends number ? boolean : true
 /**
  * Check if <b>one</b> of the elements in the {@link collection}
  * match the given {@link predicate}
@@ -195,8 +195,8 @@ export function anyByArray<const T, const COLLECTION extends readonly T[] = read
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.any C# Any(predicate)
  * @extensionFunction
  */
-export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<BooleanCallback<T>>,): boolean
-export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<BooleanCallback<T>>,) {
+export function anyByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<BooleanCallback<T>>,): boolean
+export function anyByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<BooleanCallback<T>>,) {
     if (predicate == null)
         return isNotEmptyByArray(collection,)
     return __anyByArray(collection, predicate,)
@@ -205,7 +205,7 @@ export function anyByArray<const T, >(collection: Nullable<readonly T[]>, predic
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean {
+function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -221,7 +221,7 @@ function __any<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> |
     return __anyByMinimalistCollectionHolder(collection, predicate,)
 }
 
-function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return false
 
@@ -235,7 +235,7 @@ function __anyByMinimalistCollectionHolder<const T, >(collection: Nullable<Minim
     return __with0Argument(predicate as () => boolean, size,)
 }
 
-function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,): boolean {
+function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return false
     if (collection.isEmpty)
@@ -247,7 +247,7 @@ function __anyByCollectionHolder<const T, >(collection: Nullable<CollectionHolde
     return __with0Argument(predicate as () => boolean, collection.size,)
 }
 
-function __anyByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): boolean {
+function __anyByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return false
 
@@ -281,7 +281,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return false
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T,) => boolean, size: number,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection[index] as T,))
@@ -298,7 +298,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return false
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (predicate(collection[index] as T, index,))

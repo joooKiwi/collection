@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
@@ -34,7 +34,7 @@ import {findFirstIndexed, findFirstIndexedByArray, findFirstIndexedByCollectionH
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -51,7 +51,7 @@ export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollect
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function firstIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -67,8 +67,8 @@ export function firstIndexed<const T, const S extends T, >(collection: Nullable<
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function firstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getFirst(collection,)
     return findFirstIndexed(collection, predicate,)
@@ -194,7 +194,7 @@ export function firstIndexedByCollectionHolder<const T, >(collection: Nullable<C
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedByArray<const T, >(collection: Nullable<readonly T[]>,): T
+export function firstIndexedByArray<const T, >(collection: Nullable<Array<T>>,): T
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -211,7 +211,7 @@ export function firstIndexedByArray<const T, >(collection: Nullable<readonly T[]
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function firstIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Get the first element in the {@link collection}
  * matching the given {@link predicate}
@@ -227,8 +227,8 @@ export function firstIndexedByArray<const T, const S extends T, >(collection: Nu
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function firstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function firstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function firstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstByArray(collection,)
     return findFirstIndexedByArray(collection, predicate,)

@@ -32,7 +32,7 @@ export class CollectionHolder_Lazy<const T, >
     /** The internal instance that is tested */
     public readonly instance: LazyCollectionHolderForTest<T>
 
-    public constructor(/** The array received in the constructor */ public readonly array: readonly T[],) {
+    public constructor(/** The array received in the constructor */ public readonly array: Array<T>,) {
         super()
         const $this = this
         this.instance = new class CollectionHolder_CountingGetOnLazy

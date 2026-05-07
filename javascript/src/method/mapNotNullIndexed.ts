@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}             from "../CollectionHolder"
 import type {MinimalistCollectionHolder}   from "../MinimalistCollectionHolder"
@@ -41,7 +41,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+export function mapNotNullIndexed<const T, const U extends NonNullable<unknown>, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -130,7 +130,7 @@ export function mapNotNullIndexedByCollectionHolder<const T, const U extends Non
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.select C# Select(transform)
  * @extensionFunction
  */
-export function mapNotNullIndexedByArray<const T, const U extends NonNullable<unknown>, >(collection: Nullable<readonly T[]>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
+export function mapNotNullIndexedByArray<const T, const U extends NonNullable<unknown>, >(collection: Nullable<Array<T>>, transform: IndexValueWithReturnCallback<T, Nullable<U>>,): CollectionHolder<U> {
     if (collection == null)
         return EmptyCollectionHolder.get
 
@@ -181,7 +181,7 @@ function __with2Argument<const T, const U extends NonNullable<unknown>, >(collec
     return newArray
 }
 
-function __with2ArgumentByArray<const T, const U extends NonNullable<unknown>, >(collection: readonly T[], transform: (index: number, value: T,) => Nullable<U>, size: number,) {
+function __with2ArgumentByArray<const T, const U extends NonNullable<unknown>, >(collection: Array<T>, transform: (index: number, value: T,) => Nullable<U>, size: number,) {
     const newArray: U[] = []
     let index = -1
     while (++index < size) {

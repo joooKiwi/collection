@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptyMutableWeakMap, EmptyMutableWeakSet, EmptySet, EmptyWeakMap, EmptyWeakSet, Nullable, NullableString, NumericOrObject, TemplateOrNumber} from "@joookiwi/type"
+import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptyMutableWeakMap, EmptyMutableWeakSet, EmptySet, EmptyWeakMap, EmptyWeakSet, Nullable, NullableString, NumericOrObject, Set, TemplateOrNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "./CollectionHolder"
 import type {CollectionIterator}                                 from "./iterator/CollectionIterator"
@@ -79,93 +79,93 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Get --------------------
 
-    public get(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public get(index?: Nullable<NumericOrObject>, ..._: Array<unknown>): never
     public get(index?: Nullable<NumericOrObject>,) {
         throw new EmptyCollectionException(null, index,)
     }
 
-    public at(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public at(index?: Nullable<NumericOrObject>, ..._: Array<unknown>): never
     public at(index?: Nullable<NumericOrObject>,) { return this.get(index,) }
 
-    public elementAt(index?: Nullable<NumericOrObject>, ..._: readonly unknown[]): never
+    public elementAt(index?: Nullable<NumericOrObject>, ..._: Array<unknown>): never
     public elementAt(index?: Nullable<NumericOrObject>,) { return this.get(index,) }
 
-    public getFirst(..._: readonly unknown[]): never
+    public getFirst(..._: Array<unknown>): never
     public getFirst() { throw new EmptyCollectionException() }
 
-    public getLast(..._: readonly unknown[]): never
+    public getLast(..._: Array<unknown>): never
     public getLast() { throw new EmptyCollectionException() }
 
 
-    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
-    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
+    public getOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: Array<unknown>): U
+    public getOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: Array<unknown>): never
     public getOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) {
         return defaultValue(index,)
     }
 
-    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
-    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
+    public atOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: Array<unknown>): U
+    public atOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: Array<unknown>): never
     public atOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,) { return this.getOrElse(index, defaultValue,) }
 
-    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: readonly unknown[]): U
-    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: readonly unknown[]): never
+    public elementAtOrElse<const U, >(index: number, defaultValue: IndexWithReturnCallback<U>, ..._: Array<unknown>): U
+    public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<never>, ..._: Array<unknown>): never
     public elementAtOrElse(index: number, defaultValue: IndexWithReturnCallback<unknown>,)  { return this.getOrElse(index, defaultValue,) }
 
 
-    public getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: readonly unknown[]): U
-    public getFirstOrElse(defaultValue: ReturnCallback<never>, ..._: readonly unknown[]): never
+    public getFirstOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: Array<unknown>): U
+    public getFirstOrElse(defaultValue: ReturnCallback<never>, ..._: Array<unknown>): never
     public getFirstOrElse(defaultValue: ReturnCallback<unknown>,) {
         return defaultValue()
     }
 
 
-    public getLastOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: readonly unknown[]): U
-    public getLastOrElse(defaultValue: ReturnCallback<never>, ..._: readonly unknown[]): never
+    public getLastOrElse<const U, >(defaultValue: ReturnCallback<U>, ..._: Array<unknown>): U
+    public getLastOrElse(defaultValue: ReturnCallback<never>, ..._: Array<unknown>): never
     public getLastOrElse(defaultValue: ReturnCallback<unknown>,) {
         return defaultValue()
     }
 
 
-    public getOrNull(..._: readonly unknown[]): null
+    public getOrNull(..._: Array<unknown>): null
     public getOrNull() { return null }
 
-    public atOrNull(..._: readonly unknown[]): null
+    public atOrNull(..._: Array<unknown>): null
     public atOrNull() { return this.getOrNull() }
 
-    public elementAtOrNull(..._: readonly unknown[]): null
+    public elementAtOrNull(..._: Array<unknown>): null
     public elementAtOrNull() { return this.getOrNull() }
 
-    public getFirstOrNull(..._: readonly unknown[]): null
+    public getFirstOrNull(..._: Array<unknown>): null
     public getFirstOrNull() { return null }
 
-    public getLastOrNull(..._: readonly unknown[]): null
+    public getLastOrNull(..._: Array<unknown>): null
     public getLastOrNull() { return null }
 
     //#endregion -------------------- Get --------------------
     //#region -------------------- First --------------------
 
-    public first<const S, >(..._: readonly unknown[]): never
+    public first<const S, >(..._: Array<unknown>): never
     public first() {
         if (arguments.length == 0)
             this.getFirst()
         this.findFirst()
     }
 
-    public firstOrNull<const S, >(..._: readonly unknown[]): null
+    public firstOrNull<const S, >(..._: Array<unknown>): null
     public firstOrNull() {
         if (arguments.length == 0)
             return this.getFirstOrNull()
         return this.findFirstOrNull()
     }
 
-    public firstIndexed<const S, >(..._: readonly unknown[]): never
+    public firstIndexed<const S, >(..._: Array<unknown>): never
     public firstIndexed() {
         if (arguments.length == 0)
             this.getFirst()
         this.findFirstIndexed()
     }
 
-    public firstIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public firstIndexedOrNull<const S, >(..._: Array<unknown>): null
     public firstIndexedOrNull() {
         if (arguments.length == 0)
             return this.getFirstOrNull()
@@ -175,28 +175,28 @@ export class EmptyCollectionHolder
     //#endregion -------------------- First --------------------
     //#region -------------------- Last --------------------
 
-    public last<const S, >(..._: readonly unknown[]): never
+    public last<const S, >(..._: Array<unknown>): never
     public last() {
         if (arguments.length == 0)
             this.getLast()
         this.findLast()
     }
 
-    public lastOrNull<const S, >(..._: readonly unknown[]): null
+    public lastOrNull<const S, >(..._: Array<unknown>): null
     public lastOrNull() {
         if (arguments.length == 0)
             return this.getLastOrNull()
         return this.findLastOrNull()
     }
 
-    public lastIndexed<const S, >(..._: readonly unknown[]): never
+    public lastIndexed<const S, >(..._: Array<unknown>): never
     public lastIndexed() {
         if (arguments.length == 0)
             this.getLast()
         this.findLastIndexed()
     }
 
-    public lastIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public lastIndexedOrNull<const S, >(..._: Array<unknown>): null
     public lastIndexedOrNull() {
         if (arguments.length == 0)
             return this.getLastOrNull()
@@ -206,58 +206,58 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Last --------------------
     //#region -------------------- Find first --------------------
 
-    public findFirst(..._: readonly unknown[]): never
-    public findFirst<const S, >(..._: readonly unknown[]): never
+    public findFirst(..._: Array<unknown>): never
+    public findFirst<const S, >(..._: Array<unknown>): never
     public findFirst() { throw new EmptyCollectionException() }
 
-    public find(..._: readonly unknown[]): never
-    public find<const S, >(..._: readonly unknown[]): never
+    public find(..._: Array<unknown>): never
+    public find<const S, >(..._: Array<unknown>): never
     public find() { this.findFirst() }
 
 
-    public findFirstOrNull(..._: readonly unknown[]): null
-    public findFirstOrNull<const S, >(..._: readonly unknown[]): null
+    public findFirstOrNull(..._: Array<unknown>): null
+    public findFirstOrNull<const S, >(..._: Array<unknown>): null
     public findFirstOrNull() { return null }
 
-    public findOrNull(..._: readonly unknown[]): null
-    public findOrNull<const S, >(..._: readonly unknown[]): null
+    public findOrNull(..._: Array<unknown>): null
+    public findOrNull<const S, >(..._: Array<unknown>): null
     public findOrNull() { return this.findFirstOrNull() }
 
 
-    public findFirstIndexed(..._: readonly unknown[]): never
-    public findFirstIndexed<const S, >(..._: readonly unknown[]): never
+    public findFirstIndexed(..._: Array<unknown>): never
+    public findFirstIndexed<const S, >(..._: Array<unknown>): never
     public findFirstIndexed() { throw new EmptyCollectionException() }
 
-    public findIndexed(..._: readonly unknown[]): never
-    public findIndexed<const S, >(..._: readonly unknown[]): never
+    public findIndexed(..._: Array<unknown>): never
+    public findIndexed<const S, >(..._: Array<unknown>): never
     public findIndexed() { this.findFirstIndexed() }
 
 
-    public findFirstIndexedOrNull(..._: readonly unknown[]): null
-    public findFirstIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findFirstIndexedOrNull(..._: Array<unknown>): null
+    public findFirstIndexedOrNull<const S, >(..._: Array<unknown>): null
     public findFirstIndexedOrNull() { return null }
 
-    public findIndexedOrNull(..._: readonly unknown[]): null
-    public findIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findIndexedOrNull(..._: Array<unknown>): null
+    public findIndexedOrNull<const S, >(..._: Array<unknown>): null
     public findIndexedOrNull() { return this.findFirstIndexedOrNull() }
 
     //#endregion -------------------- Find first --------------------
     //#region -------------------- Find last --------------------
 
-    public findLast(..._: readonly unknown[]): never
-    public findLast<const S, >(..._: readonly unknown[]): never
+    public findLast(..._: Array<unknown>): never
+    public findLast<const S, >(..._: Array<unknown>): never
     public findLast() { throw new EmptyCollectionException() }
 
-    public findLastOrNull(..._: readonly unknown[]): null
-    public findLastOrNull<const S, >(..._: readonly unknown[]): null
+    public findLastOrNull(..._: Array<unknown>): null
+    public findLastOrNull<const S, >(..._: Array<unknown>): null
     public findLastOrNull() { return null }
 
-    public findLastIndexed(..._: readonly unknown[]): never
-    public findLastIndexed<const S, >(..._: readonly unknown[]): never
+    public findLastIndexed(..._: Array<unknown>): never
+    public findLastIndexed<const S, >(..._: Array<unknown>): never
     public findLastIndexed() { throw new EmptyCollectionException() }
 
-    public findLastIndexedOrNull(..._: readonly unknown[]): null
-    public findLastIndexedOrNull<const S, >(..._: readonly unknown[]): null
+    public findLastIndexedOrNull(..._: Array<unknown>): null
+    public findLastIndexedOrNull<const S, >(..._: Array<unknown>): null
     public findLastIndexedOrNull() { return null }
 
     //#endregion -------------------- Find last --------------------
@@ -267,99 +267,99 @@ export class EmptyCollectionHolder
 
     //#region -------------------- First index of --------------------
 
-    public firstIndexOf(..._: readonly unknown[]): never
+    public firstIndexOf(..._: Array<unknown>): never
     public firstIndexOf() { throw new EmptyCollectionException() }
 
-    public indexOf(..._: readonly unknown[]): never
+    public indexOf(..._: Array<unknown>): never
     public indexOf() { return this.firstIndexOf() }
 
 
-    public firstIndexOfOrNull(..._: readonly unknown[]): null
+    public firstIndexOfOrNull(..._: Array<unknown>): null
     public firstIndexOfOrNull() { return null }
 
-    public indexOfOrNull(..._: readonly unknown[]): null
+    public indexOfOrNull(..._: Array<unknown>): null
     public indexOfOrNull() { return this.firstIndexOfOrNull() }
 
     //#endregion -------------------- First index of --------------------
     //#region -------------------- Last index of --------------------
 
-    public lastIndexOf(..._: readonly unknown[]): never
+    public lastIndexOf(..._: Array<unknown>): never
     public lastIndexOf() { throw new EmptyCollectionException() }
 
 
-    public lastIndexOfOrNull(..._: readonly unknown[]): null
+    public lastIndexOfOrNull(..._: Array<unknown>): null
     public lastIndexOfOrNull() { return null }
 
     //#endregion -------------------- Last index of --------------------
     //#region -------------------- Index of first --------------------
 
-    public indexOfFirst(..._: readonly unknown[]): never
+    public indexOfFirst(..._: Array<unknown>): never
     public indexOfFirst() { throw new EmptyCollectionException() }
 
-    public findFirstIndex(..._: readonly unknown[]): never
+    public findFirstIndex(..._: Array<unknown>): never
     public findFirstIndex() { return this.indexOfFirst() }
 
-    public findIndex(..._: readonly unknown[]): never
+    public findIndex(..._: Array<unknown>): never
     public findIndex() { return this.indexOfFirst() }
 
 
-    public indexOfFirstOrNull(..._: readonly unknown[]): null
+    public indexOfFirstOrNull(..._: Array<unknown>): null
     public indexOfFirstOrNull() { return null }
 
-    public findFirstIndexOrNull(..._: readonly unknown[]): null
+    public findFirstIndexOrNull(..._: Array<unknown>): null
     public findFirstIndexOrNull() { return this.indexOfFirstOrNull() }
 
-    public findIndexOrNull(..._: readonly unknown[]): null
+    public findIndexOrNull(..._: Array<unknown>): null
     public findIndexOrNull() { return this.indexOfFirstOrNull() }
 
 
-    public indexOfFirstIndexed(..._: readonly unknown[]): never
+    public indexOfFirstIndexed(..._: Array<unknown>): never
     public indexOfFirstIndexed() { throw new EmptyCollectionException() }
 
-    public findFirstIndexIndexed(..._: readonly unknown[]): never
+    public findFirstIndexIndexed(..._: Array<unknown>): never
     public findFirstIndexIndexed() { return this.indexOfFirstIndexed() }
 
-    public findIndexIndexed(..._: readonly unknown[]): never
+    public findIndexIndexed(..._: Array<unknown>): never
     public findIndexIndexed() { return this.indexOfFirstIndexed() }
 
 
-    public indexOfFirstIndexedOrNull(..._: readonly unknown[]): null
+    public indexOfFirstIndexedOrNull(..._: Array<unknown>): null
     public indexOfFirstIndexedOrNull() { return null }
 
-    public findFirstIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findFirstIndexIndexedOrNull(..._: Array<unknown>): null
     public findFirstIndexIndexedOrNull() { return this.indexOfFirstIndexedOrNull() }
 
-    public findIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findIndexIndexedOrNull(..._: Array<unknown>): null
     public findIndexIndexedOrNull() { return this.indexOfFirstIndexedOrNull() }
 
     //#endregion -------------------- Index of first --------------------
     //#region -------------------- Index of last --------------------
 
-    public indexOfLast(..._: readonly unknown[]): never
+    public indexOfLast(..._: Array<unknown>): never
     public indexOfLast() { throw new EmptyCollectionException() }
 
-    public findLastIndex(..._: readonly unknown[]): never
+    public findLastIndex(..._: Array<unknown>): never
     public findLastIndex() { return this.indexOfLast() }
 
 
-    public indexOfLastOrNull(..._: readonly unknown[]): null
+    public indexOfLastOrNull(..._: Array<unknown>): null
     public indexOfLastOrNull() { return null }
 
-    public findLastIndexOrNull(..._: readonly unknown[]): null
+    public findLastIndexOrNull(..._: Array<unknown>): null
     public findLastIndexOrNull() { return this.indexOfLastOrNull() }
 
 
-    public indexOfLastIndexed(..._: readonly unknown[]): never
+    public indexOfLastIndexed(..._: Array<unknown>): never
     public indexOfLastIndexed() { throw new EmptyCollectionException() }
 
-    public findLastIndexIndexed(..._: readonly unknown[]): never
+    public findLastIndexIndexed(..._: Array<unknown>): never
     public findLastIndexIndexed() { return this.indexOfLastIndexed() }
 
 
-    public indexOfLastIndexedOrNull(..._: readonly unknown[]): null
+    public indexOfLastIndexedOrNull(..._: Array<unknown>): null
     public indexOfLastIndexedOrNull() { return null }
 
-    public findLastIndexIndexedOrNull(..._: readonly unknown[]): null
+    public findLastIndexIndexedOrNull(..._: Array<unknown>): null
     public findLastIndexIndexedOrNull() { return this.indexOfLastIndexedOrNull() }
 
     //#endregion -------------------- Index of last --------------------
@@ -370,15 +370,15 @@ export class EmptyCollectionHolder
     //#region -------------------- All --------------------
 
     /** @return {true} */
-    public all<const S extends never, >(..._: readonly unknown[]): this is EmptyCollectionHolder
-    public all(..._: readonly unknown[]): true
+    public all<const S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
+    public all(..._: Array<unknown>): true
     public all() {
         return true
     }
 
     /** @return {true} */
-    public every<const S extends never, >(..._: readonly unknown[]): this is EmptyCollectionHolder
-    public every(..._: readonly unknown[]): true
+    public every<const S extends never, >(..._: Array<unknown>): this is EmptyCollectionHolder
+    public every(..._: Array<unknown>): true
     public every() {
         return this.all()
     }
@@ -386,16 +386,16 @@ export class EmptyCollectionHolder
     //#endregion -------------------- All --------------------
     //#region -------------------- Any --------------------
 
-    public any(..._: readonly unknown[]): false
+    public any(..._: Array<unknown>): false
     public any() { return false }
 
-    public some(..._: readonly unknown[]): false
+    public some(..._: Array<unknown>): false
     public some() { return this.any() }
 
     //#endregion -------------------- Any --------------------
     //#region -------------------- None --------------------
 
-    public none(..._: readonly unknown[]): true
+    public none(..._: Array<unknown>): true
     public none() { return true }
 
     //#endregion -------------------- None --------------------
@@ -439,62 +439,62 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Has --------------------
 
-    public has(..._: readonly unknown[]): false
+    public has(..._: Array<unknown>): false
     public has() { return false }
 
-    public includes(..._: readonly unknown[]): false
+    public includes(..._: Array<unknown>): false
     public includes() { return this.has() }
 
-    public contains(..._: readonly unknown[]): false
+    public contains(..._: Array<unknown>): false
     public contains() { return this.has() }
 
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has not --------------------
 
-    public hasNot(..._: readonly unknown[]): true
+    public hasNot(..._: Array<unknown>): true
     public hasNot() { return true }
 
-    public includesNot(..._: readonly unknown[]): true
+    public includesNot(..._: Array<unknown>): true
     public includesNot() { return this.hasNot() }
 
-    public containsNot(..._: readonly unknown[]): true
+    public containsNot(..._: Array<unknown>): true
     public containsNot() { return this.hasNot() }
 
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public hasOne(..._: readonly unknown[]): false
+    public hasOne(..._: Array<unknown>): false
     public hasOne() { return false }
 
-    public includesOne(..._: readonly unknown[]): false
+    public includesOne(..._: Array<unknown>): false
     public includesOne() { return this.hasOne() }
 
-    public containsOne(..._: readonly unknown[]): false
+    public containsOne(..._: Array<unknown>): false
     public containsOne() { return this.hasOne() }
 
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public hasNotOne(..._: readonly unknown[]): true
+    public hasNotOne(..._: Array<unknown>): true
     public hasNotOne() { return true }
 
-    public includesNotOne(..._: readonly unknown[]): true
+    public includesNotOne(..._: Array<unknown>): true
     public includesNotOne() { return this.hasNotOne() }
 
-    public containsNotOne(..._: readonly unknown[]): true
+    public containsNotOne(..._: Array<unknown>): true
     public containsNotOne() { return this.hasNotOne() }
 
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public hasAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public hasAll(values: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
         if (values == null)
             return true
@@ -527,37 +527,37 @@ export class EmptyCollectionHolder
         return values[Symbol.iterator]().next().done
     }
 
-    public includesAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public includesAll(values: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public includesAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasAll(values,) }
 
-    public containsAll(values: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public containsAll(values: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public containsAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasAll(values,) }
 
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public hasNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public hasNotAll(values?: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public hasNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) {
         if (values == null)
             return false
@@ -590,31 +590,31 @@ export class EmptyCollectionHolder
         return !values[Symbol.iterator]().next().done
     }
 
-    public includesNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public includesNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public includesNotAll(values?: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public includesNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public includesNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasNotAll(values,) }
 
-    public containsNotAll(values?: Nullable<readonly unknown[]>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<ReadonlySet<unknown>>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<CollectionHolder>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<CollectionIterator>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: readonly unknown[]): boolean
-    public containsNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: readonly unknown[]): boolean
+    public containsNotAll(values?: Nullable<Array<unknown>>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<Set<unknown>>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<CollectionHolder>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<MinimalistCollectionHolder>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<CollectionIterator>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<Iterator<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<Iterable<unknown, unknown, unknown>>, ..._: Array<unknown>): boolean
+    public containsNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>, ..._: Array<unknown>): boolean
     public containsNotAll(values?: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<unknown>>,) { return this.hasNotAll(values,) }
 
     //#endregion -------------------- Has not all --------------------
 
     //#region -------------------- Require no nulls --------------------
 
-    public requireNoNulls(..._: readonly unknown[]): this
+    public requireNoNulls(..._: Array<unknown>): this
     public requireNoNulls() { return this }
 
     //#endregion -------------------- Require no nulls --------------------
@@ -624,141 +624,141 @@ export class EmptyCollectionHolder
 
     //#region -------------------- Filter --------------------
 
-    public filter(..._: readonly unknown[]): this
-    public filter<const S, >(..._: readonly unknown[]): this
+    public filter(..._: Array<unknown>): this
+    public filter<const S, >(..._: Array<unknown>): this
     public filter() { return this }
 
-    public filterIndexed(..._: readonly unknown[]): this
-    public filterIndexed<const S, >(..._: readonly unknown[]): this
+    public filterIndexed(..._: Array<unknown>): this
+    public filterIndexed<const S, >(..._: Array<unknown>): this
     public filterIndexed() { return this }
 
 
-    public filterNot(..._: readonly unknown[]): this
-    public filterNot<const S, >(..._: readonly unknown[]): this
+    public filterNot(..._: Array<unknown>): this
+    public filterNot<const S, >(..._: Array<unknown>): this
     public filterNot() { return this }
 
-    public filterNotIndexed(..._: readonly unknown[]): this
-    public filterNotIndexed<const S, >(..._: readonly unknown[]): this
+    public filterNotIndexed(..._: Array<unknown>): this
+    public filterNotIndexed<const S, >(..._: Array<unknown>): this
     public filterNotIndexed() { return this }
 
 
-    public filterNotNull(..._: readonly unknown[]): this
+    public filterNotNull(..._: Array<unknown>): this
     public filterNotNull() { return this }
 
     //#endregion -------------------- Filter --------------------
     //#region -------------------- Slice --------------------
 
-    public slice(..._: readonly unknown[]): this
+    public slice(..._: Array<unknown>): this
     public slice() { return this }
 
     //#endregion -------------------- Slice --------------------
 
     //#region -------------------- Take --------------------
 
-    public take(..._: readonly unknown[]): this
+    public take(..._: Array<unknown>): this
     public take() { return this }
 
-    public limit(..._: readonly unknown[]): this
+    public limit(..._: Array<unknown>): this
     public limit() { return this.take() }
 
 
-    public takeWhile(..._: readonly unknown[]): this
+    public takeWhile(..._: Array<unknown>): this
     public takeWhile() { return this }
 
-    public limitWhile(..._: readonly unknown[]): this
+    public limitWhile(..._: Array<unknown>): this
     public limitWhile() { return this.takeWhile() }
 
 
-    public takeWhileIndexed(..._: readonly unknown[]): this
+    public takeWhileIndexed(..._: Array<unknown>): this
     public takeWhileIndexed() { return this }
 
-    public limitWhileIndexed(..._: readonly unknown[]): this
+    public limitWhileIndexed(..._: Array<unknown>): this
     public limitWhileIndexed() { return this.takeWhileIndexed() }
 
     //#endregion -------------------- Take --------------------
     //#region -------------------- Take last --------------------
 
-    public takeLast(..._: readonly unknown[]): this
+    public takeLast(..._: Array<unknown>): this
     public takeLast() { return this }
 
-    public limitLast(..._: readonly unknown[]): this
+    public limitLast(..._: Array<unknown>): this
     public limitLast() { return this.takeLast() }
 
 
-    public takeLastWhile(..._: readonly unknown[]): this
+    public takeLastWhile(..._: Array<unknown>): this
     public takeLastWhile() { return this }
 
-    public limitLastWhile(..._: readonly unknown[]): this
+    public limitLastWhile(..._: Array<unknown>): this
     public limitLastWhile() { return this.takeLastWhile() }
 
 
-    public takeLastWhileIndexed(..._: readonly unknown[]): this
+    public takeLastWhileIndexed(..._: Array<unknown>): this
     public takeLastWhileIndexed() { return this }
 
-    public limitLastWhileIndexed(..._: readonly unknown[]): this
+    public limitLastWhileIndexed(..._: Array<unknown>): this
     public limitLastWhileIndexed() { return this.takeLastWhileIndexed() }
 
     //#endregion -------------------- Take last --------------------
     //#region -------------------- Drop --------------------
 
-    public drop(..._: readonly unknown[]): this
+    public drop(..._: Array<unknown>): this
     public drop() { return this }
 
-    public skip(..._: readonly unknown[]): this
+    public skip(..._: Array<unknown>): this
     public skip() { return this.drop() }
 
 
-    public dropWhile(..._: readonly unknown[]): this
+    public dropWhile(..._: Array<unknown>): this
     public dropWhile() { return this }
 
-    public skipWhile(..._: readonly unknown[]): this
+    public skipWhile(..._: Array<unknown>): this
     public skipWhile() { return this.dropWhile() }
 
 
-    public dropWhileIndexed(..._: readonly unknown[]): this
+    public dropWhileIndexed(..._: Array<unknown>): this
     public dropWhileIndexed() { return this }
 
-    public skipWhileIndexed(..._: readonly unknown[]): this
+    public skipWhileIndexed(..._: Array<unknown>): this
     public skipWhileIndexed() { return this.dropWhileIndexed() }
 
     //#endregion -------------------- Drop --------------------
     //#region -------------------- Drop last --------------------
 
-    public dropLast(..._: readonly unknown[]): this
+    public dropLast(..._: Array<unknown>): this
     public dropLast() { return this }
 
-    public skipLast(..._: readonly unknown[]): this
+    public skipLast(..._: Array<unknown>): this
     public skipLast() { return this.dropLast() }
 
 
-    public dropLastWhile(..._: readonly unknown[]): this
+    public dropLastWhile(..._: Array<unknown>): this
     public dropLastWhile() { return this }
 
-    public skipLastWhile(..._: readonly unknown[]): this
+    public skipLastWhile(..._: Array<unknown>): this
     public skipLastWhile() { return this.dropLastWhile() }
 
 
-    public dropLastWhileIndexed(..._: readonly unknown[]): this
+    public dropLastWhileIndexed(..._: Array<unknown>): this
     public dropLastWhileIndexed() { return this }
 
-    public skipLastWhileIndexed(..._: readonly unknown[]): this
+    public skipLastWhileIndexed(..._: Array<unknown>): this
     public skipLastWhileIndexed() { return this.dropLastWhileIndexed() }
 
     //#endregion -------------------- Drop last --------------------
 
     //#region -------------------- Map --------------------
 
-    public map<const U, >(..._: readonly unknown[]): CollectionHolder<U>
+    public map<const U, >(..._: Array<unknown>): CollectionHolder<U>
     public map() { return this }
 
-    public mapIndexed<const U, >(..._: readonly unknown[]): CollectionHolder<U>
+    public mapIndexed<const U, >(..._: Array<unknown>): CollectionHolder<U>
     public mapIndexed() { return this }
 
 
-    public mapNotNull<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
+    public mapNotNull<const U extends NonNullable<unknown>, >(..._: Array<unknown>): CollectionHolder<U>
     public mapNotNull() { return this }
 
-    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: readonly unknown[]): CollectionHolder<U>
+    public mapNotNullIndexed<const U extends NonNullable<unknown>, >(..._: Array<unknown>): CollectionHolder<U>
     public mapNotNullIndexed() { return this }
 
     //#endregion -------------------- Map --------------------
@@ -768,19 +768,19 @@ export class EmptyCollectionHolder
 
     //#region -------------------- For each --------------------
 
-    public forEach(..._: readonly unknown[]): void
+    public forEach(..._: Array<unknown>): void
     public forEach() {}
 
-    public forEachIndexed(..._: readonly unknown[]): void
+    public forEachIndexed(..._: Array<unknown>): void
     public forEachIndexed() {}
 
     //#endregion -------------------- For each --------------------
     //#region -------------------- On each --------------------
 
-    public onEach(..._: readonly unknown[]): this
+    public onEach(..._: Array<unknown>): this
     public onEach() { return this }
 
-    public onEachIndexed(..._: readonly unknown[]): this
+    public onEachIndexed(..._: Array<unknown>): this
     public onEachIndexed() { return this }
 
     //#endregion -------------------- On each --------------------
@@ -790,13 +790,13 @@ export class EmptyCollectionHolder
 
     //#region -------------------- to reverse --------------------
 
-    public toReverse(..._: readonly unknown[]): this
+    public toReverse(..._: Array<unknown>): this
     public toReverse() { return this }
 
-    public toReversed(..._: readonly unknown[]): this
+    public toReversed(..._: Array<unknown>): this
     public toReversed() { return this.toReverse() }
 
-    public reversed(..._: readonly unknown[]): this
+    public reversed(..._: Array<unknown>): this
     public reversed() { return this.toReverse() }
 
     //#endregion -------------------- to reverse --------------------
@@ -804,7 +804,7 @@ export class EmptyCollectionHolder
     //#endregion -------------------- Reordering methods --------------------
     //#region -------------------- JavaScript methods --------------------
 
-    public [Symbol.iterator](..._: readonly unknown[]): EmptyCollectionIterator
+    public [Symbol.iterator](..._: Array<unknown>): EmptyCollectionIterator
     public [Symbol.iterator]() { return this.toIterator() }
 
     public get [Symbol.toStringTag](): CollectionHolderName { return "CollectionHolder" }
@@ -814,85 +814,85 @@ export class EmptyCollectionHolder
 
     //#region -------------------- To iterator --------------------
 
-    public toIterator(..._: readonly unknown[]): EmptyCollectionIterator
+    public toIterator(..._: Array<unknown>): EmptyCollectionIterator
     public toIterator() { return EmptyCollectionIterator.get }
 
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
 
-    public toArray(..._: readonly unknown[]): EmptyArray
+    public toArray(..._: Array<unknown>): EmptyArray
     public toArray() { return CollectionConstants.EMPTY_ARRAY }
 
-    public toMutableArray(..._: readonly unknown[]): EmptyMutableArray
+    public toMutableArray(..._: Array<unknown>): EmptyMutableArray
     public toMutableArray() { return [] }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
-    public toSet(..._: readonly unknown[]): EmptySet
+    public toSet(..._: Array<unknown>): EmptySet
     public toSet() { return CollectionConstants.EMPTY_SET }
 
-    public toMutableSet(..._: readonly unknown[]): EmptyMutableSet
+    public toMutableSet(..._: Array<unknown>): EmptyMutableSet
     public toMutableSet() { return new Set() }
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To weak set --------------------
 
-    public toWeakSet(..._: readonly unknown[]): EmptyWeakSet
+    public toWeakSet(..._: Array<unknown>): EmptyWeakSet
     public toWeakSet() { return CollectionConstants.EMPTY_WEAK_SET }
 
-    public toMutableWeakSet(..._: readonly unknown[]): EmptyMutableWeakSet
+    public toMutableWeakSet(..._: Array<unknown>): EmptyMutableWeakSet
     public toMutableWeakSet() { return new WeakSet() }
 
     //#endregion -------------------- To weak set --------------------
     //#region -------------------- To map --------------------
 
-    public toMap(..._: readonly unknown[]): EmptyMap
+    public toMap(..._: Array<unknown>): EmptyMap
     public toMap() { return CollectionConstants.EMPTY_MAP }
 
-    public toMutableMap(..._: readonly unknown[]): EmptyMutableMap
+    public toMutableMap(..._: Array<unknown>): EmptyMutableMap
     public toMutableMap() { return new Map() }
 
     //#endregion -------------------- To map --------------------
     //#region -------------------- To weak map --------------------
 
-    public toWeakMap(..._: readonly unknown[]): EmptyWeakMap
+    public toWeakMap(..._: Array<unknown>): EmptyWeakMap
     public toWeakMap() { return CollectionConstants.EMPTY_WEAK_MAP }
 
-    public toMutableWeakMap(..._: readonly unknown[]): EmptyMutableWeakMap
+    public toMutableWeakMap(..._: Array<unknown>): EmptyMutableWeakMap
     public toMutableWeakMap() { return new WeakMap() }
 
     //#endregion -------------------- To weak map --------------------
 
     //#region -------------------- To string --------------------
 
-    public toString(..._: readonly unknown[]): "[]"
+    public toString(..._: Array<unknown>): "[]"
     public toString() { return "[]" }
 
-    public toLocaleString(..._: readonly unknown[]): "[]"
+    public toLocaleString(..._: Array<unknown>): "[]"
     public toLocaleString() { return "[]" }
 
-    public toLowerCaseString(..._: readonly unknown[]): "[]"
+    public toLowerCaseString(..._: Array<unknown>): "[]"
     public toLowerCaseString() { return "[]" }
 
-    public toLocaleLowerCaseString(..._: readonly unknown[]): "[]"
+    public toLocaleLowerCaseString(..._: Array<unknown>): "[]"
     public toLocaleLowerCaseString() { return "[]" }
 
-    public toUpperCaseString(..._: readonly unknown[]): "[]"
+    public toUpperCaseString(..._: Array<unknown>): "[]"
     public toUpperCaseString() { return "[]" }
 
-    public toLocaleUpperCaseString(..._: readonly unknown[]): "[]"
+    public toLocaleUpperCaseString(..._: Array<unknown>): "[]"
     public toLocaleUpperCaseString() { return "[]" }
 
     //#endregion -------------------- To string --------------------
     //#region -------------------- Join to string --------------------
 
-    public joinToString(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public joinToString(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: Array<unknown>): string
     public joinToString(_separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
         return prefixAndPostfixOnly(prefix, postfix,)
     }
 
-    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: readonly unknown[]): string
+    public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString, ..._: Array<unknown>): string
     public join(separator?: unknown, prefix?: NullableString, postfix?: NullableString,) {
         return this.joinToString(separator, prefix, postfix,)
     }

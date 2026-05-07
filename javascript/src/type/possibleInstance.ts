@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array, Set} from "@joookiwi/type"
+
 import type {CollectionHolder}                  from "../CollectionHolder"
 import type {GenericCollectionHolder}           from "../GenericCollectionHolder"
 import type {GenericMinimalistCollectionHolder} from "../GenericMinimalistCollectionHolder"
@@ -48,7 +50,7 @@ export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistColl
  * @see IterableWithCount
  * @see IterableWithPossibleSize
  */
-export type PossibleIterableIteratorArraySetOrCollectionHolder<T, > = | readonly T[] | ReadonlySet<T>
+export type PossibleIterableIteratorArraySetOrCollectionHolder<T, > = | Array<T> | Set<T>
                                                                       | MinimalistCollectionHolder<T> | CollectionHolder<T>
                                                                       | CollectionIterator<T> | Iterator<T, unknown, unknown>
                                                                       | Iterable<T, unknown, unknown> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T> | IterableWithPossibleSize<T>

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
-export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T> {
+export function getLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T> {
     if (collection == null)
         return null
     if (isCollectionHolder(collection,))
@@ -95,7 +95,7 @@ export function getLastOrNullByCollectionHolder<const T, >(collection: Nullable<
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault()
  * @extensionFunction
  */
-export function getLastOrNullByArray<const T, >(collection: Nullable<readonly T[]>,): NullOr<T> {
+export function getLastOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T> {
     if (collection == null)
         return null
 

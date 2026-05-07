@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {findFirstIndexedOrNull, findFirstIndexedOrNullByArray, findFirstIndexedO
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): NullOr<T>
+export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -46,7 +46,7 @@ export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistC
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+export function firstIndexedOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -60,8 +60,8 @@ export function firstIndexedOrNull<const T, const S extends T, >(collection: Nul
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
-export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+export function firstIndexedOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstOrNull(collection,)
     return findFirstIndexedOrNull(collection, predicate,)
@@ -170,7 +170,7 @@ export function firstIndexedOrNullByCollectionHolder<const T, >(collection: Null
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNullByArray<const T, >(collection: Nullable<readonly T[]>,): NullOr<T>
+export function firstIndexedOrNullByArray<const T, >(collection: Nullable<Array<T>>,): NullOr<T>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -185,7 +185,7 @@ export function firstIndexedOrNullByArray<const T, >(collection: Nullable<readon
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNullByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
+export function firstIndexedOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): NullOr<S>
 /**
  * Find the first element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -199,8 +199,8 @@ export function firstIndexedOrNullByArray<const T, const S extends T, >(collecti
  * @extensionFunction
  * @facadeFunction
  */
-export function firstIndexedOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
-export function firstIndexedOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function firstIndexedOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): NullOr<T>
+export function firstIndexedOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getFirstOrNullByArray(collection,)
     return findFirstIndexedOrNullByArray(collection, predicate,)

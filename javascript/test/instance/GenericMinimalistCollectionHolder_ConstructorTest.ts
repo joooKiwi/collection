@@ -10,12 +10,14 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import {GenericMinimalistCollectionHolder} from "../../src/GenericMinimalistCollectionHolder"
 
 export class GenericMinimalistCollectionHolder_ConstructorTest<const T, >
     extends GenericMinimalistCollectionHolder<T> {
 
-    public get array(): readonly T[] {
+    public get array(): Array<T> {
         return this._array
     }
 

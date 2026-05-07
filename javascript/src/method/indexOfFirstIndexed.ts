@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -43,7 +43,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
+export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>,): number
 /**
  * Get the first index matching the {@link predicate}
  * between the {@link from starting index} and the end of the {@link collection}
@@ -63,7 +63,7 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<| Minimalist
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
 /**
  * Get the first index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
@@ -85,8 +85,8 @@ export function indexOfFirstIndexed<const T, >(collection: Nullable<| Minimalist
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
-export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfFirstIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (to == null)
@@ -257,7 +257,7 @@ export function indexOfFirstIndexedByCollectionHolder<const T, >(collection: Nul
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,): number
+export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>,): number
 /**
  * Get the first index matching the {@link predicate}
  * between the {@link from starting index} and the end of the {@link collection}
@@ -277,7 +277,7 @@ export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<reado
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
+export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber,): number
 /**
  * Get the first index matching the {@link predicate}
  * between the {@link from starting} and the {@link to ending} index
@@ -299,8 +299,8 @@ export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<reado
  * @onlyGivePositiveValue
  * @extensionFunction
  */
-export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
-export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber, to: NullableNumber,): number
+export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         throw new NullCollectionException()
     if (to == null)
@@ -318,7 +318,7 @@ export function indexOfFirstIndexedByArray<const T, >(collection: Nullable<reado
 
 //#region -------------------- predicate --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>,) {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: ReverseBooleanCallback<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection, predicate,)
     if (isArray(collection,))
@@ -354,7 +354,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, 0, collection.size - 1,)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>,) {
+function __core0ByArray<const T, >(collection: Array<T>, predicate: ReverseBooleanCallback<T>,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -368,7 +368,7 @@ function __core0ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate --------------------
 //#region -------------------- predicate, from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, predicate, from,)
     if (isArray(collection,))
@@ -406,7 +406,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, __startingIndex(from, size,), size - 1,)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number,) {
+function __core1ByArray<const T, >(collection: Array<T>, predicate: ReverseBooleanCallback<T>, from: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -420,7 +420,7 @@ function __core1ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from --------------------
 //#region -------------------- predicate, from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, predicate, from, to,)
     if (isArray(collection,))
@@ -465,7 +465,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, p
     return __with0Argument(predicate as () => boolean, startingIndex, endingIndex,)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
+function __core2ByArray<const T, >(collection: Array<T>, predicate: ReverseBooleanCallback<T>, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -483,7 +483,7 @@ function __core2ByArray<const T, >(collection: readonly T[], predicate: ReverseB
 //#endregion -------------------- predicate, from, to --------------------
 //#region -------------------- predicate, to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, predicate, to,)
     if (isArray(collection,))
@@ -519,7 +519,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return __with0Argument(predicate as () => boolean, 0, __endingIndex(to, collection.size,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], predicate: ReverseBooleanCallback<T>, to: number,) {
+function __coreWithNoFromByArray<const T, >(collection: Array<T>, predicate: ReverseBooleanCallback<T>, to: number,) {
     const size = collection.length
     if (size === 0)
         throw new EmptyCollectionException()
@@ -561,7 +561,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     throw new IndexOutOfBoundsException(`Index out of bound. No index could be found from the starting (“${startingIndex}”) to the ending (“${endingIndex}”) indexes in the collection.`, index,)
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (index: number, value: T,) => boolean, startingIndex: number, endingIndex: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (index: number, value: T,) => boolean, startingIndex: number, endingIndex: number,) {
     let index = startingIndex - 1
     while (++index <= endingIndex)
         if (predicate(index, collection[index] as T,))

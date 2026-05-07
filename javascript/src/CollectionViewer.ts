@@ -256,7 +256,7 @@ export class CollectionViewer<const T = unknown,
     //#region -------------------- Has not all --------------------
 
     public override hasNotAll(values: Nullable<Array<T>>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean

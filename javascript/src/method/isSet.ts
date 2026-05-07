@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Set} from "@joookiwi/type"
+
 /**
  * Tell that the value is an {@link ReadonlySet Set}
  *
@@ -17,6 +19,6 @@
  * @see isSetByStructure
  * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export function isSet<const T, const INSTANCE extends ReadonlySet<T> = ReadonlySet<T>, >(value: unknown,): value is INSTANCE {
+export function isSet<const T, const INSTANCE extends Set<T> = Set<T>, >(value: unknown,): value is INSTANCE {
     return value instanceof Set
 }

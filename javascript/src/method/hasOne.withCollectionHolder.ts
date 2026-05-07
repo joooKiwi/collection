@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
+export function hasOneWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -95,7 +95,7 @@ export function hasOneWithCollectionHolderByCollectionHolder<const T, >(collecti
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
+export function hasOneWithCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
         return false
 
@@ -124,7 +124,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: CollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

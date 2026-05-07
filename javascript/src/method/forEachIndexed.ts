@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -39,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,): void {
+export function forEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, action: IndexValueCallback<T>,): void {
     if (collection == null)
         return
     if (isCollectionHolder(collection,))
@@ -132,7 +132,7 @@ export function forEachIndexedByCollectionHolder<const T, >(collection: Nullable
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function forEachIndexedByArray<const T, >(collection: Nullable<readonly T[]>, action: IndexValueCallback<T>,): void {
+export function forEachIndexedByArray<const T, >(collection: Nullable<Array<T>>, action: IndexValueCallback<T>,): void {
     if (collection == null)
         return
 
@@ -170,7 +170,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, a
         action(index, collection.get(index,),)
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], action: (index: number, value: T,) => void, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection[index] as T,)

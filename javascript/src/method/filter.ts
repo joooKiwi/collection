@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -43,7 +43,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filter<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function filter<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
@@ -59,8 +59,8 @@ export function filter<const T, const S extends T, >(collection: Nullable<| Mini
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
  */
-export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filter<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -186,7 +186,7 @@ export function filterByCollectionHolder<const T, >(collection: Nullable<Collect
  * @typescriptDefinition
  * @extensionFunction
  */
-export function filterByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function filterByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder}
  * matching only the given {@link predicate}
@@ -202,8 +202,8 @@ export function filterByArray<const T, const S extends T, >(collection: Nullable
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.where C# Where(predicate)
  * @extensionFunction
  */
-export function filterByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): CollectionHolder<T>
-export function filterByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
+export function filterByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,): CollectionHolder<T>
+export function filterByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
 
@@ -230,7 +230,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
-function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
+function __with0ArgumentByArray<const T, >(collection: Array<T>, predicate: () => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
     let amountOfItemsAdded = -1
     let index = -1
@@ -253,7 +253,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T,) => boolean, size: number,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
     let amountOfItemsAdded = -1
     let index = -1
@@ -278,7 +278,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return __reduceTo(tempArray, amountOfItemsAdded + 1,)
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     const tempArray = new Array<T>(size,)
     let amountOfItemsAdded = -1
     let index = -1

@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -40,7 +40,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#skip(long) Java DoubleStream.skip(n)
  * @canReceiveNegativeValue
  */
-export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, n: number,): CollectionHolder<T> {
+export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -53,8 +53,8 @@ export function drop<const T, >(collection: Nullable<| MinimalistCollectionHolde
     if (isCollectionHolderByStructure<T>(collection,))
         return __coreByCollectionHolder(collection, n,)
     if (isArrayByStructure<T>(collection,))
-        return __coreByArray(collection, n,)
-    return __coreByMinimalistCollectionHolder(collection, n,)
+        return __coreByArray<T>(collection, n,)
+    return __coreByMinimalistCollectionHolder<T>(collection, n,)
 }
 
 
@@ -109,7 +109,7 @@ export function dropByCollectionHolder<const T, >(collection: Nullable<Collectio
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#skip(long) Java DoubleStream.skip(n)
  * @canReceiveNegativeValue
  */
-export function dropByArray<const T, >(collection: Nullable<readonly T[]>, n: number,): CollectionHolder<T> {
+export function dropByArray<const T, >(collection: Nullable<Array<T>>, n: number,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     return __coreByArray(collection, n,)
@@ -118,7 +118,7 @@ export function dropByArray<const T, >(collection: Nullable<readonly T[]>, n: nu
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Core method --------------------
 
-function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCollectionHolder<T>, n: number,) {
     const size = collection.size
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -148,7 +148,7 @@ function __coreByMinimalistCollectionHolder<const T, >(collection: MinimalistCol
     return new LazyCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
-function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,): CollectionHolder<T> {
+function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n: number,) {
     if (collection.isEmpty)
         return EmptyCollectionHolder.get
     if (Number.isNaN(n,))
@@ -178,7 +178,7 @@ function __coreByCollectionHolder<const T, >(collection: CollectionHolder<T>, n:
     return new LazyCollectionHolder(() => __getAll(collection, size, n2,),)
 }
 
-function __coreByArray<const T, >(collection: readonly T[], n: number,): CollectionHolder<T> {
+function __coreByArray<const T, >(collection: Array<T>, n: number,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -211,7 +211,7 @@ function __coreByArray<const T, >(collection: readonly T[], n: number,): Collect
 //#endregion -------------------- Core method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, size: number, amount: number,): readonly T[] {
+function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, size: number, amount: number,) {
     const newArray = new Array<T>(size - amount,)
     let indexAdded = 0
     let index = amount - 1
@@ -221,7 +221,7 @@ function __getAll<const T, >(collection: MinimalistCollectionHolder<T>, size: nu
 
 }
 
-function __getAllByArray<const T, >(collection: readonly T[], size: number, amount: number,): readonly T[] {
+function __getAllByArray<const T, >(collection: Array<T>, size: number, amount: number,) {
     const newArray = new Array<T>(size - amount,)
     let indexAdded = 0
     let index = amount - 1

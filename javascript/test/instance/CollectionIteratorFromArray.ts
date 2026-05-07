@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {CollectionIterator}      from "../../src/iterator/CollectionIterator"
 import type {CollectionIteratorValue} from "../../src/iterator/value/CollectionIteratorValue"
 
@@ -30,7 +32,7 @@ export class CollectionIteratorFromArray<const T, >
     public readonly array
     public readonly collection
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         super()
         this.array = array
         this.collection = new CollectionHolderFromArray(array,)

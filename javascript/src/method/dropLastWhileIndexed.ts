@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
@@ -35,7 +35,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
  */
-export function dropLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function dropLastWhileIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
@@ -43,8 +43,8 @@ export function dropLastWhileIndexed<const T, const S extends T, >(collection: N
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
-export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function dropLastWhileIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -130,7 +130,7 @@ export function dropLastWhileIndexedByCollectionHolder<const T, >(collection: Nu
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  * @typescriptDefinition
  */
-export function dropLastWhileIndexedByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+export function dropLastWhileIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
 /**
  * Get a new {@link CollectionHolder} <b>not</b> having the last elements satisfying the given {@link predicate}
  *
@@ -138,8 +138,8 @@ export function dropLastWhileIndexedByArray<const T, const S extends T, >(collec
  * @param predicate  The given predicate
  * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/drop-last-while.html Kotlin dropLastWhile(predicate)
  */
-export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: ReverseBooleanCallback<T>,) {
+export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: ReverseBooleanCallback<T>,) {
     if (collection == null)
         return EmptyCollectionHolder.get
 
@@ -156,7 +156,7 @@ export function dropLastWhileIndexedByArray<const T, >(collection: Nullable<read
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,): readonly T[] {
+function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: () => boolean,) {
     let index = size
     while (--index >= 0)
         if (!predicate()) {
@@ -169,7 +169,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return CollectionConstants.EMPTY_ARRAY
 }
 
-function __with0ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: () => boolean,): readonly T[] {
+function __with0ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: () => boolean,) {
     let index = size
     while (--index >= 0)
         if (!predicate()) {
@@ -183,7 +183,7 @@ function __with0ArgumentByArray<const T, >(collection: readonly T[], size: numbe
 }
 
 
-function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number,) => boolean,): readonly T[] {
+function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number,) => boolean,) {
     let index = size
     while (--index >= 0)
         if (!predicate(index,)) {
@@ -196,7 +196,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return CollectionConstants.EMPTY_ARRAY
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (index: number,) => boolean,): readonly T[] {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (index: number,) => boolean,) {
     let index = size
     while (--index >= 0)
         if (!predicate(index,)) {
@@ -210,7 +210,7 @@ function __with1ArgumentByArray<const T, >(collection: readonly T[], size: numbe
 }
 
 
-function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number, value: T,) => boolean,): readonly T[] {
+function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, size: number, predicate: (index: number, value: T,) => boolean,) {
     let index = size
     while (--index >= 0) {
         const value = collection.get(index,)
@@ -226,7 +226,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, s
     return CollectionConstants.EMPTY_ARRAY
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], size: number, predicate: (index: number, value: T,) => boolean,): readonly T[] {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, size: number, predicate: (index: number, value: T,) => boolean,) {
     let index = size
     while (--index >= 0) {
         const value = collection[index] as T

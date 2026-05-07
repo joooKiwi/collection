@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                         from "../MinimalistCollectionHolder"
@@ -49,7 +49,7 @@ import {isSetByStructure}                                                       
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -60,7 +60,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -71,7 +71,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -82,7 +82,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -93,7 +93,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -104,7 +104,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -115,7 +115,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -127,8 +127,8 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (values == null)
         return true
 
@@ -172,7 +172,7 @@ export function hasAll<const T, >(collection: Nullable<| MinimalistCollectionHol
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -183,7 +183,7 @@ export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -294,7 +294,7 @@ export function hasAllByMinimalistCollectionHolder<const T, >(collection: Nullab
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean
+export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -305,7 +305,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasAllByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -416,7 +416,7 @@ export function hasAllByCollectionHolder<const T, >(collection: Nullable<Collect
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Array<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -427,7 +427,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<ReadonlySet<T>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Set<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -438,7 +438,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -449,7 +449,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -460,7 +460,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -471,7 +471,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -482,7 +482,7 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Iterable<T, unknown, unknown>>,): boolean
 /**
  * Tell that all the {@link values} exist in the {@link collection}
  *
@@ -494,8 +494,8 @@ export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, val
  * @extensionFunction
  * @facadeFunction
  */
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-export function hasAllByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+export function hasAllByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
     if (values == null)
         return true
 

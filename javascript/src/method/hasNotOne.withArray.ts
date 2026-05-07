@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasNotOneWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -55,7 +55,7 @@ export function hasNotOneWithArray<const T, >(collection: Nullable<| MinimalistC
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasNotOneWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return true
 
@@ -78,7 +78,7 @@ export function hasNotOneWithArrayByMinimalistCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasNotOneWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return true
     if (collection.isEmpty)
@@ -99,7 +99,7 @@ export function hasNotOneWithArrayByCollectionHolder<const T, >(collection: Null
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasNotOneWithArrayByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return true
 
@@ -118,7 +118,7 @@ export function hasNotOneWithArrayByArray<const T, >(collection: Nullable<readon
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: readonly T[], size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Array<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
@@ -130,7 +130,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: readonly T[], size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: Array<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values[valueIndex]

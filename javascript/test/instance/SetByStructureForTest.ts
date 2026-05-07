@@ -21,7 +21,7 @@ import type {ValueCallback} from "../set.types"
  * @see SetForTest
  */
 export class SetByStructureForTest<const T, >
-    implements ReadonlySet<T> {
+    implements Set<T> {
 
     //#region -------------------- Fields --------------------
 

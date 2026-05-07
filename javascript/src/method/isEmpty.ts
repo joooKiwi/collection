@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                     from "../CollectionHolder"
 import type {IsEmptyOn, IsEmptyOnArray, IsEmptyOnCollectionHolder, IsEmptyOnMinimalistCollectionHolder, IsEmptyOnNullable, IsEmptyOnNullableArray, IsEmptyOnNullableCollectionHolder, IsEmptyOnNullableMinimalistCollectionHolder} from "../type/isEmpty"
@@ -57,7 +57,7 @@ export function isEmpty<const T, const COLLECTION extends MinimalistCollectionHo
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
+export function isEmpty<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
 /**
  * The {@link collection} has no values
  *
@@ -69,7 +69,7 @@ export function isEmpty<const T, const COLLECTION extends readonly T[] = readonl
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[] = | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], >(collection: COLLECTION,): IsEmptyOn<COLLECTION>
+export function isEmpty<const T, const COLLECTION extends | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T> = | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, >(collection: COLLECTION,): IsEmptyOn<COLLECTION>
 /**
  * The {@link collection} has no values
  *
@@ -105,7 +105,7 @@ export function isEmpty<const T, const COLLECTION extends Nullable<MinimalistCol
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
+export function isEmpty<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
 /**
  * The {@link collection} has no values
  *
@@ -117,8 +117,8 @@ export function isEmpty<const T, const COLLECTION extends Nullable<readonly T[]>
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullable<COLLECTION>
-export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,) {
+export function isEmpty<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION,): IsEmptyOnNullable<COLLECTION>
+export function isEmpty<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,) {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -231,7 +231,7 @@ export function isEmptyByCollectionHolder<const T, >(collection: Nullable<Collec
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmptyByArray<const T, const COLLECTION extends readonly T[] = readonly T[], >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
+export function isEmptyByArray<const T, const COLLECTION extends Array<T> = Array<T>, >(collection: COLLECTION,): IsEmptyOnArray<COLLECTION>
 /**
  * The {@link collection} has no values
  *
@@ -243,8 +243,8 @@ export function isEmptyByArray<const T, const COLLECTION extends readonly T[] = 
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
  * @extensionFunction
  */
-export function isEmptyByArray<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
-export function isEmptyByArray<const T, >(collection: Nullable<readonly T[]>,) {
+export function isEmptyByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION,): IsEmptyOnNullableArray<COLLECTION>
+export function isEmptyByArray<const T, >(collection: Nullable<Array<T>>,) {
     if (collection == null)
         return true
     return collection.length == 0

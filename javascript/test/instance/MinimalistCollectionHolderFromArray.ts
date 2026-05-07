@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import {AbstractMinimalistCollectionHolder} from "../../src/AbstractMinimalistCollectionHolder"
 
 /**
@@ -22,7 +24,7 @@ export class MinimalistCollectionHolderFromArray<const T, >
     public readonly array
     readonly #size
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         super()
         this.#size = (this.array = array).length
     }

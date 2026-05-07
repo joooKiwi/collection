@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                                         from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                               from "../MinimalistCollectionHolder"
@@ -33,7 +33,7 @@ import {findLastIndexed, findLastIndexedByArray, findLastIndexedByCollectionHold
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): T
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -48,7 +48,7 @@ export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollecti
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function lastIndexed<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -62,8 +62,8 @@ export function lastIndexed<const T, const S extends T, >(collection: Nullable<|
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function lastIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getLast(collection,)
     return findLastIndexed(collection, predicate,)
@@ -179,7 +179,7 @@ export function lastIndexedByCollectionHolder<const T, >(collection: Nullable<Co
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexedByArray<const T, >(collection: Nullable<readonly T[]>,): T
+export function lastIndexedByArray<const T, >(collection: Nullable<Array<T>>,): T
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -194,7 +194,7 @@ export function lastIndexedByArray<const T, >(collection: Nullable<readonly T[]>
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexedByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
+export function lastIndexedByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseRestrainedBooleanCallback<T, S>>,): S
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  *
@@ -208,8 +208,8 @@ export function lastIndexedByArray<const T, const S extends T, >(collection: Nul
  * @extensionFunction
  * @facadeFunction
  */
-export function lastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
-export function lastIndexedByArray<const T, >(collection: Nullable<readonly T[]>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
+export function lastIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate: Nullable<ReverseBooleanCallback<T>>,): T
+export function lastIndexedByArray<const T, >(collection: Nullable<Array<T>>, predicate?: Nullable<ReverseBooleanCallback<T>>,) {
     if (predicate == null)
         return getLastByArray(collection,)
     return findLastIndexedByArray(collection, predicate,)

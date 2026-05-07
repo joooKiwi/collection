@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {ArrayAsCollectionHolder}       from "./ArrayAsCollectionHolder"
 import type {CollectionHolderOf1}           from "./CollectionHolderOf1"
 import type {CollectionHolderOf2}           from "./CollectionHolderOf2"
@@ -104,6 +106,6 @@ export interface LateRetriever {
      * @param _ Any possible arguments sent
      * @throws {EvalError} The class cannot be created
      */
-    new(..._: readonly unknown[]): never
+    new(..._: Array<unknown>): never
 
 }

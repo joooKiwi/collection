@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): boolean {
+export function hasDuplicate<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -93,7 +93,7 @@ export function hasDuplicateByCollectionHolder<const T, >(collection: Nullable<C
  * @return {boolean} <b>true</b> only if one element is equal (===) to another one
  * @extensionFunction
  */
-export function hasDuplicateByArray<const T, >(collection: Nullable<readonly T[]>,): boolean {
+export function hasDuplicateByArray<const T, >(collection: Nullable<Array<T>>,): boolean {
     if (collection == null)
         return false
 
@@ -125,7 +125,7 @@ function __validate(collection: MinimalistCollectionHolder, size: number,) {
     return false
 }
 
-function __validateByArray(collection: readonly unknown[], size: number,) {
+function __validateByArray(collection: Array<unknown>, size: number,) {
     const temporaryArray = new Array(size,)
     temporaryArray[0] = collection[0]
     let amountOfItemAdded = 1

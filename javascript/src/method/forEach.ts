@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -39,7 +39,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function forEach<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: ValueIndexCallback<T>,): void {
+export function forEach<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, action: ValueIndexCallback<T>,): void {
     if (collection == null)
         return
     if (isCollectionHolder(collection,))
@@ -131,7 +131,7 @@ export function forEachByCollectionHolder<const T, >(collection: Nullable<Collec
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function forEachByArray<const T, >(collection: Nullable<readonly T[]>, action: ValueIndexCallback<T>,): void {
+export function forEachByArray<const T, >(collection: Nullable<Array<T>>, action: ValueIndexCallback<T>,): void {
     if (collection == null)
         return
 
@@ -162,7 +162,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, a
         action(collection.get(index,),)
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], action: (value: T,) => void, size: number,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, action: (value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection[index] as T,)
@@ -175,7 +175,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, a
         action(collection.get(index,), index,)
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], action: (value: T, index: number,) => void, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, action: (value: T, index: number,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(collection[index] as T, index,)

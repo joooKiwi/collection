@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, MutableNumberKeyMap, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): Map<number, T> {
+export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): MutableNumberKeyMap<T> {
     if (collection == null)
         return new Map()
     if (isCollectionHolder(collection,))
@@ -54,7 +54,7 @@ export function toMutableMap<const T, >(collection: Nullable<| MinimalistCollect
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Map<number, T> {
+export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): MutableNumberKeyMap<T> {
     if (collection == null)
         return new Map()
 
@@ -70,7 +70,7 @@ export function toMutableMapByMinimalistCollectionHolder<const T, >(collection: 
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Map<number, T> {
+export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): MutableNumberKeyMap<T> {
     if (collection == null)
         return new Map()
     if (collection.isEmpty)
@@ -84,7 +84,7 @@ export function toMutableMapByCollectionHolder<const T, >(collection: Nullable<C
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableMapByArray<const T, >(collection: Nullable<readonly T[]>,): Map<number, T> {
+export function toMutableMapByArray<const T, >(collection: Nullable<Array<T>>,): MutableNumberKeyMap<T> {
     if (collection == null)
         return new Map()
 
@@ -101,7 +101,7 @@ function __newMutableMap<const T, >(collection: MinimalistCollectionHolder<T>, s
     return new Map(__associativeValues(collection, size,),)
 }
 
-function __newMutableMapByArray<const T, >(collection: readonly T[], size: number,) {
+function __newMutableMapByArray<const T, >(collection: Array<T>, size: number,) {
     return new Map(__associativeValuesByArray(collection, size,),)
 }
 

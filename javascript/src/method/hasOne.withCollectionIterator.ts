@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
+export function hasOneWithCollectionIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return false
     if (isCollectionHolder(collection,))
@@ -96,7 +96,7 @@ export function hasOneWithCollectionIteratorByCollectionHolder<const T, >(collec
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasOneWithCollectionIteratorByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionIterator<T>>,): boolean {
+export function hasOneWithCollectionIteratorByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionIterator<T>>,): boolean {
     if (collection == null)
         return false
 
@@ -125,7 +125,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return false
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: CollectionIterator<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: CollectionIterator<T>, size: number, valuesSize: number,) {
     let valueIndex = valuesSize
     while (valueIndex-- > 0) {
         const value = values.nextValue

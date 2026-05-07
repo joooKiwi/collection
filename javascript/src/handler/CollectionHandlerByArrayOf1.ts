@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {CollectionHolder} from "../CollectionHolder"
 
 import {AbstractCollectionHandlerBy1Value} from "./AbstractCollectionHandlerBy1Value"
@@ -26,7 +28,7 @@ export class CollectionHandlerByArrayOf1<const T = unknown,
     const COLLECTION extends CollectionHolder<T> = CollectionHolder<T>, >
     extends AbstractCollectionHandlerBy1Value<T, REFERENCE, COLLECTION> {
 
-    public constructor(collection: COLLECTION, reference: readonly T[], size: number = reference.length,) {
+    public constructor(collection: COLLECTION, reference: Array<T>, size: number = reference.length,) {
         super(collection, reference as REFERENCE,)
         if (size !== 1)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 1.`,)

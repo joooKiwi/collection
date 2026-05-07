@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -74,7 +74,7 @@ export function all<const T, const S extends T, >(collection: Nullable<Collectio
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function all<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): collection is readonly S[]
+export function all<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is Array<S>
 /**
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
@@ -91,8 +91,8 @@ export function all<const T, const S extends T, >(collection: Nullable<readonly 
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): boolean
-export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,): boolean
+export function all<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -220,7 +220,7 @@ export function allByCollectionHolder<const T, >(collection: Nullable<Collection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function allByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): collection is readonly S[]
+export function allByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): collection is Array<S>
 /**
  * Check if <b>every</b> element in the {@link collection}
  * match the given {@link predicate}
@@ -237,8 +237,8 @@ export function allByArray<const T, const S extends T, >(collection: Nullable<re
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.all C# All(predicate)
  * @extensionFunction
  */
-export function allByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): boolean
-export function allByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
+export function allByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,): boolean
+export function allByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return true
 
@@ -272,7 +272,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return true
 }
 
-function __with1ArgumentByArray<const T, >(array: readonly T[], predicate: (value: T,) => boolean, size: number,) {
+function __with1ArgumentByArray<const T, >(array: Array<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (!predicate(array[index] as T,))
@@ -289,7 +289,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return true
 }
 
-function __with2ArgumentByArray<const T, >(array: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2ArgumentByArray<const T, >(array: Array<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = -1
     while (++index < size)
         if (!predicate(array[index] as T, index,))

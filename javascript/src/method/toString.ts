@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -33,7 +33,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see Object.toString
  * @extensionFunction
  */
-export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): string {
+export function toString<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): string {
     if (collection == null)
         return "[]"
     if (isCollectionHolder(collection,))
@@ -96,7 +96,7 @@ export function toStringByCollectionHolder<const T, >(collection: Nullable<Colle
  * @see Object.toString
  * @extensionFunction
  */
-export function toStringByArray<const T, >(collection: Nullable<readonly T[]>,): string {
+export function toStringByArray<const T, >(collection: Nullable<Array<T>>,): string {
     if (collection == null)
         return "[]"
 
@@ -118,7 +118,7 @@ function __toString(collection: MinimalistCollectionHolder, size: number,) {
     return `[${string}${asString(collection.get(index),)}]`
 }
 
-function __toStringByArray(collection: readonly unknown[], size: number,) {
+function __toStringByArray(collection: Array<unknown>, size: number,) {
     let string = ""
     const sizeMinus1 = size - 1
     let index = -1

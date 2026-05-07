@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, NumberSet} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -66,7 +66,7 @@ export function sliceWithSet<const T, >(collection: Nullable<| MinimalistCollect
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (collection.size == 0)
@@ -89,7 +89,7 @@ export function sliceWithSetByMinimalistCollectionHolder<const T, >(collection: 
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (collection.isEmpty)
@@ -112,7 +112,7 @@ export function sliceWithSetByCollectionHolder<const T, >(collection: Nullable<C
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithSetByArray<const T, >(collection: Nullable<readonly T[]>, indices: ReadonlySet<number>,): CollectionHolder<T> {
+export function sliceWithSetByArray<const T, >(collection: Nullable<Array<T>>, indices: NumberSet,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (collection.length == 0)
@@ -127,7 +127,7 @@ export function sliceWithSetByArray<const T, >(collection: Nullable<readonly T[]
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: ReadonlySet<number>, indicesSize: number,) {
+function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indices: NumberSet, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]()
     let index = -1
@@ -136,7 +136,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indice
     return Object.freeze(newArray,)
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], indices: ReadonlySet<number>, indicesSize: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, indices: NumberSet, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     const iterator = indices[Symbol.iterator]()
     let index = -1

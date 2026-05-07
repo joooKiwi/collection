@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined} from "@joookiwi/type"
+import type {Array, MutableArray, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrNumber, NullOrUndefined, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -412,8 +412,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -459,12 +459,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Array<T>)} */
-    protected _hasOneByArray(values: readonly T[],): boolean {
+    protected _hasOneByArray(values: Array<T>,): boolean {
         return hasOneWithArrayByCollectionHolder(this, values,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasOne CollectionHolder.hasOne(values: Set<T>)} */
-    protected _hasOneBySet(values: ReadonlySet<T>,): boolean {
+    protected _hasOneBySet(values: Set<T>,): boolean {
         return hasOneWithSetByCollectionHolder(this, values,)
     }
 
@@ -496,8 +496,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -543,12 +543,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
-    protected _hasNotOneByArray(values: readonly T[],): boolean {
+    protected _hasNotOneByArray(values: Array<T>,): boolean {
         return hasNotOneWithArrayByCollectionHolder(this, values,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Set<T>)} */
-    protected _hasNotOneBySet(values: ReadonlySet<T>,): boolean {
+    protected _hasNotOneBySet(values: Set<T>,): boolean {
         return hasNotOneWithSetByCollectionHolder(this, values,)
     }
 
@@ -580,8 +580,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -627,12 +627,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Array<T>)} */
-    protected _hasAllByArray(values: readonly T[],): boolean {
+    protected _hasAllByArray(values: Array<T>,): boolean {
         return hasAllWithArrayByCollectionHolder(this, values,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Set<T>)} */
-    protected _hasAllBySet(values: ReadonlySet<T>,): boolean {
+    protected _hasAllBySet(values: Set<T>,): boolean {
         return hasAllWithSetByCollectionHolder(this, values,)
     }
 
@@ -664,8 +664,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -710,12 +710,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Array<T>)} */
-    protected _hasNotAllByArray(values: readonly T[],): boolean {
+    protected _hasNotAllByArray(values: Array<T>,): boolean {
         return hasNotAllWithArrayByCollectionHolder(this, values,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotAll CollectionHolder.hasNotAll(values: Set<T>)} */
-    protected _hasNotAllBySet(values: ReadonlySet<T>,): boolean {
+    protected _hasNotAllBySet(values: Set<T>,): boolean {
         return hasNotAllWithSetByCollectionHolder(this, values,)
     }
 
@@ -793,8 +793,8 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
@@ -940,12 +940,12 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
-    protected _sliceByArray(indices: readonly number[],): CollectionHolder<T> {
+    protected _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
         return sliceWithArrayByCollectionHolder(this, indices,)
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberSet)} */
-    protected _sliceBySet(indices: ReadonlySet<number>,): CollectionHolder<T> {
+    protected _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
         return sliceWithSetByCollectionHolder(this, indices,)
     }
 
@@ -1111,33 +1111,33 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     //#endregion -------------------- To iterator --------------------
     //#region -------------------- To array --------------------
 
-    public override toArray(): readonly T[] {
+    public override toArray(): Array<T> {
         return toArrayByCollectionHolder(this,)
     }
 
-    public override toMutableArray(): T[] {
+    public override toMutableArray(): MutableArray<T> {
         return toMutableArrayByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To array --------------------
     //#region -------------------- To set --------------------
 
-    public override toSet(): ReadonlySet<T> {
+    public override toSet(): Set<T> {
         return toSetByCollectionHolder(this,)
     }
 
-    public override toMutableSet(): Set<T> {
+    public override toMutableSet(): MutableSet<T> {
         return toMutableSetByCollectionHolder(this,)
     }
 
     //#endregion -------------------- To set --------------------
     //#region -------------------- To map --------------------
 
-    public override toMap(): ReadonlyMap<number, T> {
+    public override toMap(): NumberKeyMap<T> {
         return toMapByCollectionHolder(this,)
     }
 
-    public override toMutableMap(): Map<number, T> {
+    public override toMutableMap(): MutableNumberKeyMap<T> {
         return toMutableMapByCollectionHolder(this,)
     }
 

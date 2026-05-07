@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber, NumberArray, NumberSet, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                   from "../../src/CollectionHolder"
 import type {MinimalistCollectionHolder}                         from "../../src/MinimalistCollectionHolder"
@@ -37,8 +37,8 @@ export interface CollectionHolder_FromExtension<out T, >
      */
     set amountOfCall(_: unknown,)
 
-    hasOneWithArray(values: Nullable<readonly T[]>,): boolean
-    hasOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean
+    hasOneWithArray(values: Nullable<Array<T>>,): boolean
+    hasOneWithSet(values: Nullable<Set<T>>,): boolean
     hasOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean
     hasOneWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     hasOneWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean
@@ -46,8 +46,8 @@ export interface CollectionHolder_FromExtension<out T, >
     hasOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    hasNotOneWithArray(values: Nullable<readonly T[]>,): boolean
-    hasNotOneWithSet(values: Nullable<ReadonlySet<T>>,): boolean
+    hasNotOneWithArray(values: Nullable<Array<T>>,): boolean
+    hasNotOneWithSet(values: Nullable<Set<T>>,): boolean
     hasNotOneWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean
     hasNotOneWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     hasNotOneWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean
@@ -55,8 +55,8 @@ export interface CollectionHolder_FromExtension<out T, >
     hasNotOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    hasAllWithArray(values: Nullable<readonly T[]>,): boolean
-    hasAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean
+    hasAllWithArray(values: Nullable<Array<T>>,): boolean
+    hasAllWithSet(values: Nullable<Set<T>>,): boolean
     hasAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean
     hasAllWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     hasAllWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean
@@ -64,8 +64,8 @@ export interface CollectionHolder_FromExtension<out T, >
     hasAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
 
-    hasNotAllWithArray(values: Nullable<readonly T[]>,): boolean
-    hasNotAllWithSet(values: Nullable<ReadonlySet<T>>,): boolean
+    hasNotAllWithArray(values: Nullable<Array<T>>,): boolean
+    hasNotAllWithSet(values: Nullable<Set<T>>,): boolean
     hasNotAllWithCollectionHolder(values: Nullable<CollectionHolder<T>>,): boolean
     hasNotAllWithMinimalistCollectionHolder(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     hasNotAllWithCollectionIterator(values: Nullable<CollectionIterator<T>>,): boolean
@@ -75,8 +75,8 @@ export interface CollectionHolder_FromExtension<out T, >
 
     slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
     sliceWithARange(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    sliceWithArray(indices: readonly number[],): CollectionHolder<T>
-    sliceWithSet(indices: ReadonlySet<number>,): CollectionHolder<T>
+    sliceWithArray(indices: NumberArray,): CollectionHolder<T>
+    sliceWithSet(indices: NumberSet,): CollectionHolder<T>
     sliceWithCollectionHolder(indices: CollectionHolder<number>,): CollectionHolder<T>
     sliceWithMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     sliceWithCollectionIterator(indices: CollectionIterator<number>,): CollectionHolder<T>

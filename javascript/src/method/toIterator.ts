@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array})
  * @extensionFunction
  */
-export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionIterator<T> {
+export function toIterator<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): CollectionIterator<T> {
     if (collection == null)
         return EmptyCollectionIterator.get
     if (isCollectionHolder(collection,))
@@ -83,7 +83,7 @@ export function toIteratorByCollectionHolder<const T, >(collection: Nullable<Col
  * @param collection The nullable collection
  * @extensionFunction
  */
-export function toIteratorByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionIterator<T> {
+export function toIteratorByArray<const T, >(collection: Nullable<Array<T>>,): CollectionIterator<T> {
     if (collection == null)
         return EmptyCollectionIterator.get
     if (collection.length == 0)

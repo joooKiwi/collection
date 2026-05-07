@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasAllWithArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithArrayByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -57,7 +57,7 @@ export function hasAllWithArray<const T, >(collection: Nullable<| MinimalistColl
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasAllWithArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (values == null)
         return true
 
@@ -82,7 +82,7 @@ export function hasAllWithArrayByMinimalistCollectionHolder<const T, >(collectio
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<readonly T[]>,): boolean {
+export function hasAllWithArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>, values: Nullable<Array<T>>,): boolean {
     if (values == null)
         return true
 
@@ -105,7 +105,7 @@ export function hasAllWithArrayByCollectionHolder<const T, >(collection: Nullabl
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithArrayByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<readonly T[]>,): boolean {
+export function hasAllWithArrayByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<Array<T>>,): boolean {
     if (values == null)
         return true
 
@@ -124,7 +124,7 @@ export function hasAllWithArrayByArray<const T, >(collection: Nullable<readonly 
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: readonly T[], size: number, valuesSize: number,) {
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Array<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values[valueIndex]
@@ -137,7 +137,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: readonly T[], size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: Array<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values[valueIndex]

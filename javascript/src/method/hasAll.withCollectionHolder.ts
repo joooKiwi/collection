@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -32,7 +32,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
+export function hasAllWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (isCollectionHolder(collection,))
         return hasAllWithCollectionHolderByCollectionHolder(collection, values,)
     if (isArray(collection,))
@@ -102,7 +102,7 @@ export function hasAllWithCollectionHolderByCollectionHolder<const T, >(collecti
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
  * @extensionFunction
  */
-export function hasAllWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<CollectionHolder<T>>,): boolean {
+export function hasAllWithCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<CollectionHolder<T>>,): boolean {
     if (values == null)
         return true
     if (values.isEmpty)
@@ -132,7 +132,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

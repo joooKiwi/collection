@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullableNumber} from "@joookiwi/type"
+import type {Array, Nullable, NullableNumber} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -38,7 +38,7 @@ import {isMinimalistCollectionHolder}                      from "./isMinimalistC
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the end of the {@link collection}
@@ -55,7 +55,7 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from an {@link to ending} to a {@link from starting} index
@@ -74,8 +74,8 @@ export function toReverse<const T, >(collection: Nullable<| MinimalistCollection
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
-export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function toReverse<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (to == null)
@@ -224,7 +224,7 @@ export function toReverseByCollectionHolder<const T, >(collection: Nullable<Coll
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from the end of the {@link collection}
@@ -242,7 +242,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>,)
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber,): CollectionHolder<T>
 /**
  * Reverse to a new {@link CollectionHolder}
  * from an {@link to ending} to a {@link from starting} index
@@ -261,8 +261,8 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.reverse C# Reverse()
  * @canReceiveNegativeValue
  */
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
-export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, from: NullableNumber = null, to: NullableNumber = null,) {
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber, to: NullableNumber,): CollectionHolder<T>
+export function toReverseByArray<const T, >(collection: Nullable<Array<T>>, from: NullableNumber = null, to: NullableNumber = null,) {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (to == null)
@@ -280,7 +280,7 @@ export function toReverseByArray<const T, >(collection: Nullable<readonly T[]>, 
 
 //#region -------------------- ∅ --------------------
 
-function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[],) {
+function __core0<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>,) {
     if (isCollectionHolder(collection,))
         return __core0ByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -314,7 +314,7 @@ function __core0ByCollectionHolder<const T, >(collection: CollectionHolder<T>,) 
     return new LazyCollectionHolder(() => __all(collection, size,),)
 }
 
-function __core0ByArray<const T, >(collection: readonly T[],) {
+function __core0ByArray<const T, >(collection: Array<T>,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -326,7 +326,7 @@ function __core0ByArray<const T, >(collection: readonly T[],) {
 //#endregion -------------------- ∅ --------------------
 //#region -------------------- from --------------------
 
-function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number,) {
+function __core1<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number,) {
     if (isCollectionHolder(collection,))
         return __core1ByCollectionHolder(collection, from,)
     if (isArray(collection,))
@@ -364,7 +364,7 @@ function __core1ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     return new LazyCollectionHolder(() => __fromStart(collection, size, startingIndex,),)
 }
 
-function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
+function __core1ByArray<const T, >(collection: Array<T>, from: number,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -379,7 +379,7 @@ function __core1ByArray<const T, >(collection: readonly T[], from: number,) {
 //#endregion -------------------- from --------------------
 //#region -------------------- from, to --------------------
 
-function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], from: number, to: number,) {
+function __core2<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, from: number, to: number,) {
     if (isCollectionHolder(collection,))
         return __core2ByCollectionHolder(collection, from, to,)
     if (isArray(collection,))
@@ -420,7 +420,7 @@ function __core2ByCollectionHolder<const T, >(collection: CollectionHolder<T>, f
     return new LazyCollectionHolder(() => __fromStartToEnd(collection, startingIndex, endingIndex,),)
 }
 
-function __core2ByArray<const T, >(collection: readonly T[], from: number, to: number,) {
+function __core2ByArray<const T, >(collection: Array<T>, from: number, to: number,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -436,7 +436,7 @@ function __core2ByArray<const T, >(collection: readonly T[], from: number, to: n
 //#endregion -------------------- from, to --------------------
 //#region -------------------- to --------------------
 
-function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[], to: number,) {
+function __coreWithNoFrom<const T, >(collection: | MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>, to: number,) {
     if (isCollectionHolder(collection,))
         return __coreWithNoFromByCollectionHolder(collection, to,)
     if (isArray(collection,))
@@ -472,7 +472,7 @@ function __coreWithNoFromByCollectionHolder<const T, >(collection: CollectionHol
     return new LazyCollectionHolder(() => __toEnd(collection, endingIndex,),)
 }
 
-function __coreWithNoFromByArray<const T, >(collection: readonly T[], to: number,) {
+function __coreWithNoFromByArray<const T, >(collection: Array<T>, to: number,) {
     const size = collection.length
     if (size === 0)
         return EmptyCollectionHolder.get
@@ -497,7 +497,7 @@ function __all<const T, >(collection: MinimalistCollectionHolder<T>, size: numbe
     return newArray
 }
 
-function __allByArray<const T, >(collection: readonly T[], size: number,) {
+function __allByArray<const T, >(collection: Array<T>, size: number,) {
     const newArray = new Array<T>(size,)
     let indexAdded = -1
     let index = size
@@ -516,7 +516,7 @@ function __fromStart<const T, >(collection: MinimalistCollectionHolder<T>, size:
     return newArray
 }
 
-function __fromStartByArray<const T, >(collection: readonly T[], size: number, startingIndex: number,) {
+function __fromStartByArray<const T, >(collection: Array<T>, size: number, startingIndex: number,) {
     const newArray = new Array<T>(size - startingIndex,)
     let indexAdded = -1
     let index = size
@@ -535,7 +535,7 @@ function __fromStartToEnd<const T, >(collection: MinimalistCollectionHolder<T>, 
     return newArray
 }
 
-function __fromStartToEndByArray<const T, >(collection: readonly T[], startingIndex: number, endingIndex: number,) {
+function __fromStartToEndByArray<const T, >(collection: Array<T>, startingIndex: number, endingIndex: number,) {
     const newArray = new Array<T>(endingIndex - startingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1
@@ -554,7 +554,7 @@ function __toEnd<const T, >(collection: MinimalistCollectionHolder<T>, endingInd
     return newArray
 }
 
-function __toEndByArray<const T, >(collection: readonly T[], endingIndex: number,) {
+function __toEndByArray<const T, >(collection: Array<T>, endingIndex: number,) {
     const newArray = new Array<T>(endingIndex + 1,)
     let indexAdded = -1
     let index = endingIndex + 1

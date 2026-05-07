@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -36,7 +36,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): T {
+export function getLast<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): T {
     if (collection == null)
         throw new NullCollectionException()
     if (isCollectionHolder(collection,))
@@ -109,7 +109,7 @@ export function getLastByCollectionHolder<const T, >(collection: Nullable<Collec
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.last C# Last()
  * @extensionFunction
  */
-export function getLastByArray<const T, >(collection: Nullable<readonly T[]>,): T {
+export function getLastByArray<const T, >(collection: Nullable<Array<T>>,): T {
     if (collection == null)
         throw new NullCollectionException()
 

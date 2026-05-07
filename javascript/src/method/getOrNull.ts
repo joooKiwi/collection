@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -34,7 +34,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, index: number,): NullOr<T> {
+export function getOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, index: number,): NullOr<T> {
     if (collection == null)
         return null
     if (isCollectionHolder(collection,))
@@ -135,7 +135,7 @@ export function getOrNullByCollectionHolder<const T, >(collection: Nullable<Coll
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function getOrNullByArray<const T, >(collection: Nullable<readonly T[]>, index: number,): NullOr<T> {
+export function getOrNullByArray<const T, >(collection: Nullable<Array<T>>, index: number,): NullOr<T> {
     if (collection == null)
         return null
     if (Number.isNaN(index,))

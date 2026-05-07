@@ -10,9 +10,9 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Lazy}                                                                                                                                                                                                        from "@joookiwi/lazy"
-import type {EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
-import {lazy}                                                                                                                                                                                                             from "@joookiwi/lazy"
+import type {Lazy}                                                                                                                                                                                                                                       from "@joookiwi/lazy"
+import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
+import {lazy}                                                                                                                                                                                                                                            from "@joookiwi/lazy"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "./CollectionHolder"
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
@@ -228,8 +228,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Has --------------------
     //#region -------------------- Has one --------------------
 
-    public override hasOne(values: Nullable<readonly T[]>,): boolean
-    public override hasOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -241,8 +241,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Has one --------------------
     //#region -------------------- Has not one --------------------
 
-    public override hasNotOne(values: Nullable<readonly T[]>,): boolean
-    public override hasNotOne(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
@@ -254,8 +254,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Has not one --------------------
     //#region -------------------- Has all --------------------
 
-    public override hasAll(values: Nullable<readonly T[]>,): boolean
-    public override hasAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -267,8 +267,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Has all --------------------
     //#region -------------------- Has not all --------------------
 
-    public override hasNotAll(values: Nullable<readonly T[]>,): boolean
-    public override hasNotAll(values: Nullable<ReadonlySet<T>>,): boolean
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
@@ -318,8 +318,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: readonly number[],): CollectionHolder<T>
-    public override slice(indices: ReadonlySet<number>,): CollectionHolder<T>
+    public override slice(indices: NumberArray,): CollectionHolder<T>
+    public override slice(indices: NumberSet,): CollectionHolder<T>
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>

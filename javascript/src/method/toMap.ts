@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable, NumberKeyMap} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): ReadonlyMap<number, T> {
+export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): NumberKeyMap<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
     if (isCollectionHolder(collection,))
@@ -55,7 +55,7 @@ export function toMap<const T, >(collection: Nullable<| MinimalistCollectionHold
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): ReadonlyMap<number, T> {
+export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): NumberKeyMap<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
 
@@ -71,7 +71,7 @@ export function toMapByMinimalistCollectionHolder<const T, >(collection: Nullabl
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): ReadonlyMap<number, T> {
+export function toMapByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): NumberKeyMap<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
     if (collection.isEmpty)
@@ -85,7 +85,7 @@ export function toMapByCollectionHolder<const T, >(collection: Nullable<Collecti
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMapByArray<const T, >(collection: Nullable<readonly T[]>,): ReadonlyMap<number, T> {
+export function toMapByArray<const T, >(collection: Nullable<Array<T>>,): NumberKeyMap<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_MAP
 
@@ -102,7 +102,7 @@ function __newMap<const T, >(collection: MinimalistCollectionHolder<T>, size: nu
     return Object.freeze(new Map(__associativeValues(collection, size,),),)
 }
 
-function __newMapByArray<const T, >(collection: readonly T[], size: number,) {
+function __newMapByArray<const T, >(collection: Array<T>, size: number,) {
     return Object.freeze(new Map(__associativeValuesByArray(collection, size,),),)
 }
 

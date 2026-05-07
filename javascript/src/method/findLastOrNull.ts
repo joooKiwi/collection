@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable, NullOr} from "@joookiwi/type"
+import type {Array, Nullable, NullOr} from "@joookiwi/type"
 
 import type {CollectionHolder}                           from "../CollectionHolder"
 import type {MinimalistCollectionHolder}                 from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastOrNull<const T, const S extends T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -50,8 +50,8 @@ export function findLastOrNull<const T, const S extends T, >(collection: Nullabl
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,): NullOr<T>
-export function findLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, predicate: BooleanCallback<T>,) {
+export function findLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastOrNull<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return null
     if (isCollectionHolder(collection,))
@@ -162,7 +162,7 @@ export function findLastOrNullByCollectionHolder<const T, >(collection: Nullable
  * @typescriptDefinition
  * @extensionFunction
  */
-export function findLastOrNullByArray<const T, const S extends T, >(collection: Nullable<readonly T[]>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
+export function findLastOrNullByArray<const T, const S extends T, >(collection: Nullable<Array<T>>, predicate: RestrainedBooleanCallback<T, S>,): NullOr<S>
 /**
  * Find the last element from the {@link predicate} in the {@link collection}
  * or <b>null</b> otherwise
@@ -175,8 +175,8 @@ export function findLastOrNullByArray<const T, const S extends T, >(collection: 
  * @see https://learn.microsoft.com/dotnet/api/system.linq.enumerable.lastordefault C# LastOrDefault(predicate)
  * @extensionFunction
  */
-export function findLastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,): NullOr<T>
-export function findLastOrNullByArray<const T, >(collection: Nullable<readonly T[]>, predicate: BooleanCallback<T>,) {
+export function findLastOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,): NullOr<T>
+export function findLastOrNullByArray<const T, >(collection: Nullable<Array<T>>, predicate: BooleanCallback<T>,) {
     if (collection == null)
         return null
 
@@ -201,7 +201,7 @@ function __with0Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return null
 }
 
-function __with0ArgumentByArray<const T, >(collection: readonly T[], predicate: () => boolean, size: number,) {
+function __with0ArgumentByArray<const T, >(collection: Array<T>, predicate: () => boolean, size: number,) {
     let index = size
     while (index-- > 0)
         if (predicate())
@@ -220,7 +220,7 @@ function __with1Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return null
 }
 
-function __with1ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T,) => boolean, size: number,) {
+function __with1ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T,) => boolean, size: number,) {
     let index = size
     while (index-- > 0) {
         const value = collection[index] as T
@@ -241,7 +241,7 @@ function __with2Argument<const T, >(collection: MinimalistCollectionHolder<T>, p
     return null
 }
 
-function __with2ArgumentByArray<const T, >(collection: readonly T[], predicate: (value: T, index: number,) => boolean, size: number,) {
+function __with2ArgumentByArray<const T, >(collection: Array<T>, predicate: (value: T, index: number,) => boolean, size: number,) {
     let index = size
     while (index-- > 0) {
         const value = collection[index] as T

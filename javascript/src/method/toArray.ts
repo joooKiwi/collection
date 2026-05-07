@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -31,7 +31,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): readonly T[] {
+export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): Array<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
     if (isCollectionHolder(collection,))
@@ -55,7 +55,7 @@ export function toArray<const T, >(collection: Nullable<| MinimalistCollectionHo
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): readonly T[] {
+export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Array<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
 
@@ -71,7 +71,7 @@ export function toArrayByMinimalistCollectionHolder<const T, >(collection: Nulla
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): readonly T[] {
+export function toArrayByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Array<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
     if (collection.isEmpty)
@@ -85,7 +85,7 @@ export function toArrayByCollectionHolder<const T, >(collection: Nullable<Collec
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toArrayByArray<const T, >(collection: Nullable<readonly T[]>,): readonly T[] {
+export function toArrayByArray<const T, >(collection: Nullable<Array<T>>,): Array<T> {
     if (collection == null)
         return CollectionConstants.EMPTY_ARRAY
 
@@ -102,7 +102,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, size: 
     return Object.freeze(__values(collection, size,),)
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], size: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, size: number,) {
     return Object.freeze(__valuesByArray(collection, size,),)
 }
 

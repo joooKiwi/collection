@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -37,7 +37,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, indices: CollectionHolder<number>,): CollectionHolder<T> {
+export function sliceWithCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (isCollectionHolder(collection,))
@@ -108,7 +108,7 @@ export function sliceWithCollectionHolderByCollectionHolder<const T, >(collectio
  * @canReceiveNegativeValue
  * @extensionFunction
  */
-export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, indices: CollectionHolder<number>,): CollectionHolder<T> {
+export function sliceWithCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, indices: CollectionHolder<number>,): CollectionHolder<T> {
     if (collection == null)
         return EmptyCollectionHolder.get
     if (collection.length == 0)
@@ -129,7 +129,7 @@ function __newArray<const T, >(collection: MinimalistCollectionHolder<T>, indice
     return Object.freeze(newArray,)
 }
 
-function __newArrayByArray<const T, >(collection: readonly T[], indices: MinimalistCollectionHolder<number>, indicesSize: number,) {
+function __newArrayByArray<const T, >(collection: Array<T>, indices: MinimalistCollectionHolder<number>, indicesSize: number,) {
     const newArray = new Array<T>(indicesSize,)
     let index = indicesSize
     while (index-- > 0)

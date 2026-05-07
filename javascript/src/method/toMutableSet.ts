@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, MutableSet, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}                    from "./isMinimalistCol
  * @param collection The {@link Nullable nullable} collection ({@link MinimalistCollectionHolder}, {@link CollectionHolder} or {@link ReadonlyArray Array}) to convert
  * @extensionFunction
  */
-export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>,): Set<T> {
+export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): MutableSet<T> {
     if (collection == null)
         return new Set()
     if (isCollectionHolder(collection,))
@@ -54,7 +54,7 @@ export function toMutableSet<const T, >(collection: Nullable<MinimalistCollectio
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): Set<T> {
+export function toMutableSetByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): MutableSet<T> {
     if (collection == null)
         return new Set()
 
@@ -70,7 +70,7 @@ export function toMutableSetByMinimalistCollectionHolder<const T, >(collection: 
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): Set<T> {
+export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): MutableSet<T> {
     if (collection == null)
         return new Set()
     if (collection.isEmpty)
@@ -86,7 +86,7 @@ export function toMutableSetByCollectionHolder<const T, >(collection: Nullable<C
  * @param collection The nullable collection to convert
  * @extensionFunction
  */
-export function toMutableSetByArray<const T, >(collection: Nullable<readonly T[]>,): Set<T> {
+export function toMutableSetByArray<const T, >(collection: Nullable<Array<T>>,): MutableSet<T> {
     if (collection == null)
         return new Set()
 
@@ -103,7 +103,7 @@ function __withDuplicate<const T, >(collection: MinimalistCollectionHolder<T>, s
     return new Set(__uniqueValues(collection, size,),)
 }
 
-function __withDuplicateByArray<const T, >(collection: readonly T[], size: number,) {
+function __withDuplicateByArray<const T, >(collection: Array<T>, size: number,) {
     return new Set(__uniqueValuesByArray(collection, size,),)
 }
 

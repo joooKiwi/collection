@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -30,7 +30,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolder<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
     if (isCollectionHolder(collection,))
@@ -99,7 +99,7 @@ export function hasNotOneWithMinimalistCollectionHolderByCollectionHolder<const 
  * @param values     The values to compare
  * @extensionFunction
  */
-export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<readonly T[]>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
+export function hasNotOneWithMinimalistCollectionHolderByArray<const T, >(collection: Nullable<Array<T>>, values: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
         return true
 
@@ -130,7 +130,7 @@ function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values
     return true
 }
 
-function __validateByArray<const T, >(collection: readonly T[], values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
+function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
     let valueIndex = -1
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)

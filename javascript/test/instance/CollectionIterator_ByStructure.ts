@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
+import type {Array, NullOrNumber, NullOrZeroNumber} from "@joookiwi/type"
 
 import type {CollectionIterator}                                                                   from "../../src/iterator/CollectionIterator"
 import type {IndexValueCallback, ValueIndexCallback}                                               from "../../src/type/callback"
@@ -31,7 +31,7 @@ export class CollectionIterator_ByStructure<const T, >
 
     public readonly reference
 
-    public constructor(array: readonly T[],) { this.reference = new CollectionIteratorFromArray(array,) }
+    public constructor(array: Array<T>,) { this.reference = new CollectionIteratorFromArray(array,) }
 
     //#region -------------------- Size methods --------------------
 

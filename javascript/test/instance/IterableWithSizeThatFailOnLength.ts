@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {IterableWithPossibleSize} from "../../src/iterable/IterableWithPossibleSize"
 
 export class IterableWithSizeThatFailOnLength<const T, >
@@ -19,7 +21,7 @@ export class IterableWithSizeThatFailOnLength<const T, >
     public readonly size
     public readonly count = null
 
-    public constructor(array: readonly T[],) {
+    public constructor(array: Array<T>,) {
         this.array = array
         this.size = array.length
     }

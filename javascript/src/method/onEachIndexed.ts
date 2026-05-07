@@ -10,7 +10,7 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Nullable} from "@joookiwi/type"
+import type {Array, Nullable} from "@joookiwi/type"
 
 import type {CollectionHolder}           from "../CollectionHolder"
 import type {MinimalistCollectionHolder} from "../MinimalistCollectionHolder"
@@ -40,8 +40,8 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function onEachIndexed<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION
-export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | readonly T[]>, action: IndexValueCallback<T>,) {
+export function onEachIndexed<const T, const COLLECTION extends Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>> = Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION
+export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>, action: IndexValueCallback<T>,) {
     if (collection == null)
         return collection
     if (isCollectionHolder(collection,))
@@ -57,7 +57,6 @@ export function onEachIndexed<const T, >(collection: Nullable<| MinimalistCollec
         return onEachIndexedByArray(collection, action,)
     return onEachIndexedByMinimalistCollectionHolder(collection, action,)
 }
-
 
 /**
  * Perform a given {@link action} on each element
@@ -133,7 +132,7 @@ export function onEachIndexedByCollectionHolder<const T, const COLLECTION extend
  * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/DoubleStream.html#forEach(java.util.function.DoubleConsumer) Java DoubleStream.forEach(action)
  * @extensionFunction
  */
-export function onEachIndexedByArray<const T, const COLLECTION extends Nullable<readonly T[]> = Nullable<readonly T[]>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
+export function onEachIndexedByArray<const T, const COLLECTION extends Nullable<Array<T>> = Nullable<Array<T>>, >(collection: COLLECTION, action: IndexValueCallback<T>,): COLLECTION {
     if (collection == null)
         return collection
 
@@ -173,7 +172,7 @@ function __with2Argument<const T, const COLLECTION extends MinimalistCollectionH
     return collection
 }
 
-function __with2ArgumentByArray<const T, const COLLECTION extends readonly T[], >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
+function __with2ArgumentByArray<const T, const COLLECTION extends Array<T>, >(collection: COLLECTION, action: (index: number, value: T,) => void, size: number,) {
     let index = -1
     while (++index < size)
         action(index, collection[index] as T,)

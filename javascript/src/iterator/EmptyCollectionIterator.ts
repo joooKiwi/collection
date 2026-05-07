@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import type {CollectionIterator}                                                                   from "./CollectionIterator"
 import type {OutsideIteratorValue}                                                                 from "./value/OutsideIteratorValue"
 import type {AfterLastValueInCollectionIteratorSymbol, BeforeFirstValueInCollectionIteratorSymbol} from "../type/symbol"
@@ -64,7 +66,7 @@ export class EmptyCollectionIterator
     public get nextIndex(): null { return null }
     public get nextValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
-    public next(... _: readonly unknown[]): OutsideIteratorValue<AfterLastValueInCollectionIteratorSymbol>
+    public next(... _: Array<unknown>): OutsideIteratorValue<AfterLastValueInCollectionIteratorSymbol>
     public next() { return GenericAfterLastIteratorValue.get }
 
     //#endregion -------------------- Next methods --------------------
@@ -75,23 +77,23 @@ export class EmptyCollectionIterator
     public get previousIndex(): null { return null }
     public get previousValue(): never { throw new NoElementFoundInCollectionException("An empty collection iterator has no value to retrieve",) }
 
-    public previous(... _: readonly unknown[]): OutsideIteratorValue<BeforeFirstValueInCollectionIteratorSymbol>
+    public previous(... _: Array<unknown>): OutsideIteratorValue<BeforeFirstValueInCollectionIteratorSymbol>
     public previous() { return GenericBeforeFirstIteratorValue.get }
 
     //#endregion -------------------- Previous methods --------------------
     //#region -------------------- Reset methods --------------------
 
-    public reset(... _: readonly unknown[]): void
+    public reset(... _: Array<unknown>): void
     public reset() {}
 
     //#endregion -------------------- Reset methods --------------------
 
     //#region -------------------- Loop methods --------------------
 
-    public forEach(... _: readonly unknown[]): this
+    public forEach(... _: Array<unknown>): this
     public forEach() { return this }
 
-    public forEachIndexed(... _: readonly unknown[]): this
+    public forEachIndexed(... _: Array<unknown>): this
     public forEachIndexed() { return this }
 
     //#endregion -------------------- Loop methods --------------------
