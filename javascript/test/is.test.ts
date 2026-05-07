@@ -14,11 +14,21 @@ import {Holder}                                 from "./Holder"
 import {CollectionHolderFromArray}              from "./instance/CollectionHolderFromArray"
 import {CollectionHolder_ByStructure}           from "./instance/CollectionHolder_ByStructure"
 import {CollectionIterator_ByStructure}         from "./instance/CollectionIterator_ByStructure"
+import {CollectionIteratorFromArray}            from "./instance/CollectionIteratorFromArray"
 import {MinimalistCollectionHolder_ByStructure} from "./instance/MinimalistCollectionHolder_ByStructure"
+import {MinimalistCollectionHolderFromArray}    from "./instance/MinimalistCollectionHolderFromArray"
 
+import {ArrayAsCollectionHolder}                 from "../src/ArrayAsCollectionHolder"
+import {CollectionViewer}                        from "../src/CollectionViewer"
+import {IteratorAsCollectionHolder}              from "../src/IteratorAsCollectionHolder"
+import {JsIterableAsCollectionHolder}            from "../src/JsIterableAsCollectionHolder"
+import {JsIteratorAsCollectionHolder}            from "../src/JsIteratorAsCollectionHolder"
 import {GenericCollectionHolder}                 from "../src/GenericCollectionHolder"
 import {GenericMinimalistCollectionHolder}       from "../src/GenericMinimalistCollectionHolder"
 import {LazyCollectionHolder}                    from "../src/LazyCollectionHolder"
+import {MinimalistAsCollectionHolder}            from "../src/MinimalistAsCollectionHolder"
+import {MinimalistCollectionViewer}              from "../src/MinimalistCollectionViewer"
+import {SetAsCollectionHolder}                   from "../src/SetAsCollectionHolder"
 import {GenericCollectionIterator}               from "../src/iterator/GenericCollectionIterator"
 import {isArray}                                 from "../src/method/isArray"
 import {isArrayByStructure}                      from "../src/method/isArrayByStructure"
@@ -63,49 +73,57 @@ describe("is", () => {
         new Holder(() => {}, "function",),
     ] as const
     const everyInstances = [
-        new Holder([],                                                                 "array",),
+        new Holder([],                                                                             "array",),
         //TODO add array by structure
-        new Holder(new Int8Array(),                                                    "typed array (byte)",),
-        new Holder(new Uint8Array(),                                                   "typed array (ubyte)",),
-        new Holder(new Uint8ClampedArray(),                                            "typed array (ubyte-clamped)",),
-        new Holder(new Int16Array(),                                                   "typed array (short)",),
-        new Holder(new Uint16Array(),                                                  "typed array (ushort)",),
-        new Holder(new Int32Array(),                                                   "typed array (long)",),
-        new Holder(new Uint32Array(),                                                  "typed array (ulong)",),
-        new Holder(new BigInt64Array(),                                                "typed array (bigint)",),
-        new Holder(new BigUint64Array(),                                               "typed array (ubigint)",),
-        new Holder(new Float32Array(),                                                 "typed array (float)",),
-        new Holder(new Float64Array(),                                                 "typed array (double)",),
+        new Holder(new Int8Array(),                                                                "typed array (byte)",),
+        new Holder(new Uint8Array(),                                                               "typed array (ubyte)",),
+        new Holder(new Uint8ClampedArray(),                                                        "typed array (ubyte-clamped)",),
+        new Holder(new Int16Array(),                                                               "typed array (short)",),
+        new Holder(new Uint16Array(),                                                              "typed array (ushort)",),
+        new Holder(new Int32Array(),                                                               "typed array (long)",),
+        new Holder(new Uint32Array(),                                                              "typed array (ulong)",),
+        new Holder(new BigInt64Array(),                                                            "typed array (bigint)",),
+        new Holder(new BigUint64Array(),                                                           "typed array (ubigint)",),
+        new Holder(new Float32Array(),                                                             "typed array (float)",),
+        new Holder(new Float64Array(),                                                             "typed array (double)",),
         //TODO add typedArray by structure
-        new Holder(new Set(),                                                          "set",),
+        new Holder(new Set(),                                                                      "set",),
         //TODO add set by structure
-        new Holder(new WeakSet(),                                                      "weak set",),
+        new Holder(new WeakSet(),                                                                  "weak set",),
         //TODO add weakSet by structure
-        new Holder(new Map(),                                                          "map",),
+        new Holder(new Map(),                                                                      "map",),
         //TODO add map by structure
-        new Holder(new WeakMap(),                                                      "weak map",),
+        new Holder(new WeakMap(),                                                                  "weak map",),
         //TODO add weakMap by structure
-        new Holder(new GenericMinimalistCollectionHolder([],),                         "minimalist collection holder (normal)",),
-        new Holder(new GenericCollectionHolder([],),                                   "collection holder (normal)",),
-        new Holder(new LazyCollectionHolder([],),                                      "collection holder (lazy)",),
-        new Holder(new MinimalistCollectionHolder_ByStructure([],),                    "minimalist collection holder (by structure)",),
-        new Holder(new CollectionHolder_ByStructure([],),                              "collection holder (by structure)",),
-        new Holder([][Symbol.iterator](),                                              "iterator (array)",),
-        new Holder(new Int8Array()[Symbol.iterator](),                                 "iterator (byte array)",),
-        new Holder(new Uint8Array()[Symbol.iterator](),                                "iterator (ubyte array)",),
-        new Holder(new Uint8ClampedArray()[Symbol.iterator](),                         "iterator (ubyte-clamped array)",),
-        new Holder(new Int16Array()[Symbol.iterator](),                                "iterator (short array)",),
-        new Holder(new Uint16Array()[Symbol.iterator](),                               "iterator (ushort array)",),
-        new Holder(new Int32Array()[Symbol.iterator](),                                "iterator (long array)",),
-        new Holder(new Uint32Array()[Symbol.iterator](),                               "iterator (ulong array)",),
-        new Holder(new BigInt64Array()[Symbol.iterator](),                             "iterator (bigint array)",),
-        new Holder(new BigUint64Array()[Symbol.iterator](),                            "iterator (ubigint array)",),
-        new Holder(new Float32Array()[Symbol.iterator](),                              "iterator (float array)",),
-        new Holder(new Float64Array()[Symbol.iterator](),                              "iterator (double array)",),
-        new Holder(new Set()[Symbol.iterator](),                                       "iterator (set)",),
-        new Holder(new Map()[Symbol.iterator](),                                       "iterator (map)",),
-        new Holder(new GenericCollectionIterator(new CollectionHolderFromArray([],),), "collection iterator (normal)",),
-        new Holder(new CollectionIterator_ByStructure([],),                            "collection iterator (by structure)",),
+        new Holder(new GenericMinimalistCollectionHolder([],),                                     "minimalist collection holder (normal)",),
+        new Holder(new GenericCollectionHolder([],),                                               "collection holder (normal)",),
+        new Holder(new LazyCollectionHolder([],),                                                  "collection holder (lazy)",),
+        new Holder(new MinimalistAsCollectionHolder(new MinimalistCollectionHolderFromArray([]),), "collection adaptor (minimalist)",),
+        new Holder(new ArrayAsCollectionHolder([],),                                               "collection adaptor (array)",),
+        new Holder(new SetAsCollectionHolder(new Set(),),                                          "collection adaptor (set)",),
+        new Holder(new IteratorAsCollectionHolder(new CollectionIteratorFromArray([],),),          "collection adaptor (iterator)",),
+        new Holder(new JsIteratorAsCollectionHolder([][Symbol.iterator](),),                       "collection adaptor (js iterator)",),
+        new Holder(new JsIterableAsCollectionHolder([],),                                          "collection adaptor (js iterable)",),
+        new Holder(new MinimalistCollectionViewer(new MinimalistCollectionHolderFromArray([]),),   "minimalist collection viewer",),
+        new Holder(new CollectionViewer(new CollectionHolderFromArray([]),),                       "collection viewer",),
+        new Holder(new MinimalistCollectionHolder_ByStructure([],),                                "minimalist collection holder (by structure)",),
+        new Holder(new CollectionHolder_ByStructure([],),                                          "collection holder (by structure)",),
+        new Holder([][Symbol.iterator](),                                                          "iterator (array)",),
+        new Holder(new Int8Array()[Symbol.iterator](),                                             "iterator (byte array)",),
+        new Holder(new Uint8Array()[Symbol.iterator](),                                            "iterator (ubyte array)",),
+        new Holder(new Uint8ClampedArray()[Symbol.iterator](),                                     "iterator (ubyte-clamped array)",),
+        new Holder(new Int16Array()[Symbol.iterator](),                                            "iterator (short array)",),
+        new Holder(new Uint16Array()[Symbol.iterator](),                                           "iterator (ushort array)",),
+        new Holder(new Int32Array()[Symbol.iterator](),                                            "iterator (long array)",),
+        new Holder(new Uint32Array()[Symbol.iterator](),                                           "iterator (ulong array)",),
+        new Holder(new BigInt64Array()[Symbol.iterator](),                                         "iterator (bigint array)",),
+        new Holder(new BigUint64Array()[Symbol.iterator](),                                        "iterator (ubigint array)",),
+        new Holder(new Float32Array()[Symbol.iterator](),                                          "iterator (float array)",),
+        new Holder(new Float64Array()[Symbol.iterator](),                                          "iterator (double array)",),
+        new Holder(new Set()[Symbol.iterator](),                                                   "iterator (set)",),
+        new Holder(new Map()[Symbol.iterator](),                                                   "iterator (map)",),
+        new Holder(new GenericCollectionIterator(new CollectionHolderFromArray([],),),             "collection iterator (normal)",),
+        new Holder(new CollectionIterator_ByStructure([],),                                        "collection iterator (by structure)",),
     ] as const
 
     describe.each(everyNonInstances,)("%s", ({value: it,},) => {
@@ -145,11 +163,11 @@ describe("is", () => {
         /** Tell that the instance is structurally a {@link MinimalistCollectionHolder} */
         const isMinimalistCollectionHolderStructurally = type.includes("collection holder",)
         /** Tell that it instance is a {@link MinimalistCollectionHolder} or is a child an instance of {@link AbstractMinimalistCollectionHolder} from its type */
-        const isMinimalistCollectionHolderInstance =     type.includes("collection holder",) && !type.endsWith("(by structure)",)
+        const isMinimalistCollectionHolderInstance =     (type.includes("collection holder",) || type.startsWith("collection adaptor",) || type.endsWith("collection viewer",)) && !type.endsWith("(by structure)",)
         /** Tell that the instance is structurally a {@link CollectionHolder} */
         const isCollectionHolderStructurally =           type === "collection holder (by structure)"
-        /** Tell that the instance is a {@link CollectionHolder}  or is a child instance of {@link AbstractCollectionHolder} from its type */
-        const isCollectionHolderInstance =               type.startsWith("collection holder",) && !type.endsWith("(by structure)",)
+        /** Tell that the instance is a {@link CollectionHolder} or is a child instance of {@link AbstractCollectionHolder} from its type */
+        const isCollectionHolderInstance =               (type.startsWith("collection holder",) || type.startsWith("collection adaptor",) || type.endsWith("collection viewer",)) && !type.endsWith("(by structure)",)
         /** Tell that the instance is a {@link CollectionIterator} or is a child instance of {@link AbstractCollectionIterator} from its type */
         const isCollectionIteratorInstance =             type.startsWith("collection iterator",) && !type.endsWith("(by structure)",)
         /** Tell that the instance is structurally a {@link CollectionIterator} */
