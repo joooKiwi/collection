@@ -32,6 +32,14 @@ import {EmptyCollectionHandler}                 from "./handler/EmptyCollectionH
  *
  * Note that attempting to create it will result in a {@link EvalError}
  * due to being a utility class and not a namespace.
+ *
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array Array
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray TypedArray
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set Set
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet WeakSet
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map Map
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap WeakMap
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator Iterator
  */
 export class CollectionConstants {
 
@@ -192,7 +200,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (collection holder) --------------------
     //#region -------------------- Members references (array) --------------------
 
-    /** Every method applicable to an {@link ReadonlyArray Array} */
+    /**
+     * Every method applicable to an {@link ReadonlyArray Array}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+     */
     public static get ARRAY_MEMBERS(): CollectionHolder<KeyOfArray> {
         return CollectionConstants.#ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfArray>([
             "length",
@@ -220,7 +232,11 @@ export class CollectionConstants {
     }
 
 
-    /** Every method applicable to an {@link Array MutableArray} */
+    /**
+     * Every method applicable to an {@link Array MutableArray}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+     */
     public static get MUTABLE_ARRAY_MEMBERS(): CollectionHolder<KeyOfMutableArray> {
         return CollectionConstants.#MUTABLE_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableArray>([
             "length",
@@ -253,7 +269,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (array) --------------------
     //#region -------------------- Members references (typed array) --------------------
 
-    /** Every method applicable to a {@link TypedArray} */
+    /**
+     * Every method applicable to a {@link TypedArray}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+     */
     public static get TYPED_ARRAY_MEMBERS(): CollectionHolder<KeyOfTypedArray> {
         return CollectionConstants.#TYPED_ARRAY_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfTypedArray>([
             "length",
@@ -286,7 +306,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (typed array) --------------------
     //#region -------------------- Members references (set) --------------------
 
-    /** Every method applicable to an {@link ReadonlySet Set} */
+    /**
+     * Every method applicable to an {@link ReadonlySet Set}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
+     */
     public static get SET_MEMBERS(): CollectionHolder<KeyOfSet> {
         return CollectionConstants.#SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfSet>([
             "size",
@@ -302,7 +326,11 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /** Every method applicable to an {@link Set MutableSet} */
+    /**
+     * Every method applicable to an {@link Set MutableSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set
+     */
     public static get MUTABLE_SET_MEMBERS(): CollectionHolder<KeyOfMutableSet> {
         return CollectionConstants.#MUTABLE_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableSet>([
             "size",
@@ -323,7 +351,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (set) --------------------
     //#region -------------------- Members references (weak set) --------------------
 
-    /** Every method applicable to an immutable {@link WeakSet} */
+    /**
+     * Every method applicable to an immutable {@link WeakSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+     */
     public static get WEAK_SET_MEMBERS(): CollectionHolder<KeyOfWeakSet> {
         return CollectionConstants.#WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.CollectionHolderOf2<KeyOfWeakSet>(
             "has",
@@ -331,7 +363,11 @@ export class CollectionConstants {
         ),)
     }
 
-    /** Every method applicable to a mutable {@link WeakSet} */
+    /**
+     * Every method applicable to a mutable {@link WeakSet}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
+     */
     public static get MUTABLE_WEAK_SET_MEMBERS(): CollectionHolder<KeyOfMutableWeakSet> {
         return CollectionConstants.#MUTABLE_WEAK_SET_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakSet>([
             "add", "delete",
@@ -343,7 +379,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (weak set) --------------------
     //#region -------------------- Members references (map) --------------------
 
-    /** Every method applicable to an {@link ReadonlyMap Map} */
+    /**
+     * Every method applicable to an {@link ReadonlyMap Map}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+     */
     public static get MAP_MEMBERS(): CollectionHolder<KeyOfMap> {
         return CollectionConstants.#MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMap>([
             "size",
@@ -356,7 +396,11 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /** Every method applicable to an {@link Map MutableMap} */
+    /**
+     * Every method applicable to an {@link Map MutableMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map
+     */
     public static get MUTABLE_MAP_MEMBERS(): CollectionHolder<KeyOfMutableMap> {
         return CollectionConstants.#MUTABLE_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableMap>([
             "size",
@@ -374,7 +418,11 @@ export class CollectionConstants {
     //#endregion -------------------- Members references (map) --------------------
     //#region -------------------- Members references (weak map) --------------------
 
-    /** Every method applicable to an immutable {@link WeakMap} */
+    /**
+     * Every method applicable to an immutable {@link WeakMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+     */
     public static get WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfWeakMap> {
         return CollectionConstants.#WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfWeakMap>([
             "get",
@@ -383,7 +431,11 @@ export class CollectionConstants {
         ] as const,),)
     }
 
-    /** Every method applicable to a mutable {@link WeakMap} */
+    /**
+     * Every method applicable to a mutable {@link WeakMap}
+     *
+     * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
+     */
     public static get MUTABLE_WEAK_MAP_MEMBERS(): CollectionHolder<KeyOfMutableWeakMap> {
         return CollectionConstants.#MUTABLE_WEAK_MAP_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfMutableWeakMap>([
             "get",
