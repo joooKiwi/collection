@@ -127,17 +127,12 @@ export type KeyOfCollectionHolder = keyof CollectionHolder
 //#endregion -------------------- Collection holder key --------------------
 //#region -------------------- Iterator key --------------------
 
-/** The keys applicable to an {@link Iterator} that are mandatory */
-export type KeyOfIterator = Exclude<keyof Iterator<unknown, unknown, unknown>, | "return" | "throw">
-// export type KeyOfIterator = "next"
-//                             | "every" | "some"
-//                             | "find" | "filter" | "reduce"
-//                             | "take" | "drop"
-//                             | "forEach"
-//                             | "map" | "flatMap"
-//                             | "toArray"
-//                             | typeof Symbol["iterator"] | typeof Symbol["toStringTag"]
-//export type KeyOfIterator = Exclude<keyof IteratorObject<unknown, unknown, unknown>, Symbol["dispose"]>
+/**
+ * The keys applicable to an {@link Iterator} that are mandatory
+ *
+ * @see https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Iterator
+ */
+export type KeyOfIterator = Exclude<keyof IteratorObject<unknown, unknown, unknown>, | "return" | "throw">
 
 //#endregion -------------------- Iterator key --------------------
 //#region -------------------- Collection iterator key --------------------
