@@ -104,17 +104,14 @@ import {indexOfLastByArray}                             from "./method/indexOfLa
 import {indexOfLastIndexedByArray}                      from "./method/indexOfLastIndexed"
 import {indexOfLastIndexedOrNullByArray}                from "./method/indexOfLastIndexedOrNull"
 import {indexOfLastOrNullByArray}                       from "./method/indexOfLastOrNull"
-import {isArray}                                        from "./method/isArray"
 import {isArrayByStructure}                             from "./method/isArrayByStructure"
 import {isCollectionIterator}                           from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}                from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                             from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}                  from "./method/isCollectionHolderByStructure"
-import {isIterator}                                     from "./method/isIterator"
 import {isIteratorByStructure}                          from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}                   from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure}        from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                          from "./method/isSet"
 import {isSetByStructure}                               from "./method/isSetByStructure"
 import {joinToStringByArray}                            from "./method/joinToString"
 import {lastIndexOfByArray}                             from "./method/lastIndexOf"
@@ -223,7 +220,7 @@ export class GenericCollectionHolder<const T = unknown, >
 
         //#region -------------------- Initialization from Array --------------------
 
-        if (isArray(reference,)) {
+        if (reference instanceof Array) {
             const size = this.#size = reference.length
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -274,7 +271,7 @@ export class GenericCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from Array --------------------
         //#region -------------------- Initialization from Set --------------------
 
-        if (isSet(reference,)) {
+        if (reference instanceof Set) {
             this.#hasDuplicate = false
             const size = this.#size = reference.size
 
@@ -479,7 +476,7 @@ export class GenericCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from CollectionIterator --------------------
         //#region -------------------- Initialization from Iterator --------------------
 
-        if (isIterator(reference,)) {
+        if (reference instanceof Iterator) {
             let iteratorResult = reference.next()
 
             //#region -------------------- Initialization (size = 0) --------------------

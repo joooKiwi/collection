@@ -36,17 +36,14 @@ import type {LazyCollectionHolderOf1}            from "./LazyCollectionHolderOf1
 import type {LazyCollectionHolderOf2}            from "./LazyCollectionHolderOf2"
 import type {MinimalistAsCollectionHolder}       from "./MinimalistAsCollectionHolder"
 import type {SetAsCollectionHolder}              from "./SetAsCollectionHolder"
-import {isArray}                                 from "./method/isArray"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
 import {isCollectionHolder}                      from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
-import {isIterator}                              from "./method/isIterator"
 import {isIteratorByStructure}                   from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                   from "./method/isSet"
 import {isSetByStructure}                        from "./method/isSetByStructure"
 import {Couple}                                  from "./tuple/Couple"
 
@@ -105,7 +102,7 @@ export class LazyCollectionHolder<const T = unknown, >
 
         //#region -------------------- Initialization from Array --------------------
 
-        if (isArray(reference,)) {
+        if (reference instanceof Array) {
             this.#reference = lazyOf(new WeakRef(reference,),)
             this.#innerCollection = lazy(() => instanceByArray(reference,),)
             return
@@ -114,7 +111,7 @@ export class LazyCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from Array --------------------
         //#region -------------------- Initialization from Set --------------------
 
-        if (isSet(reference,)) {
+        if (reference instanceof Set) {
             this.#reference = lazyOf(new WeakRef(reference,),)
             this.#innerCollection = lazy(() => instanceBySet(reference,),)
             return
@@ -150,7 +147,7 @@ export class LazyCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from CollectionIterator --------------------
         //#region -------------------- Initialization from Iterator --------------------
 
-        if (isIterator(reference,)) {
+        if (reference instanceof Iterator) {
             this.#reference = lazyOf(new WeakRef(reference,),)
             this.#innerCollection = lazy(() => new LateRetriever.JsIteratorAsCollectionHolder<T>(reference,),)
             return
@@ -219,9 +216,9 @@ export class LazyCollectionHolder<const T = unknown, >
             this.#innerCollection = lazy(() => {
                 const referenceFound = lazyReference.value
 
-                if (isArray(referenceFound,))
+                if (referenceFound instanceof Array)
                     return instanceByArray(referenceFound,)
-                if (isSet(referenceFound,))
+                if (referenceFound instanceof Set)
                     return instanceBySet(referenceFound,)
                 if (isCollectionHolder(referenceFound,))
                     return instanceByCollectionHolder(referenceFound,)
@@ -229,7 +226,7 @@ export class LazyCollectionHolder<const T = unknown, >
                     return instanceByMinimalistCollectionHolder(referenceFound,)
                 if (isCollectionIterator(referenceFound,))
                     return instanceByCollectionIterator(referenceFound,)
-                if (isIterator(referenceFound,))
+                if (referenceFound instanceof Iterator)
                     return new LateRetriever.JsIteratorAsCollectionHolder<T>(referenceFound,)
 
                 if (isArrayByStructure<T>(referenceFound,))

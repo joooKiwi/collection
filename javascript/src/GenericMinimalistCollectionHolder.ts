@@ -26,17 +26,14 @@ import {MinimalistCollectionHolder}              from "./MinimalistCollectionHol
 import {EmptyCollectionException}                from "./exception/EmptyCollectionException"
 import {ForbiddenIndexException}                 from "./exception/ForbiddenIndexException"
 import {IndexOutOfBoundsException}               from "./exception/IndexOutOfBoundsException"
-import {isArray}                                 from "./method/isArray"
 import {isArrayByStructure}                      from "./method/isArrayByStructure"
 import {isCollectionHolder}                      from "./method/isCollectionHolder"
 import {isCollectionHolderByStructure}           from "./method/isCollectionHolderByStructure"
 import {isCollectionIterator}                    from "./method/isCollectionIterator"
 import {isCollectionIteratorByStructure}         from "./method/isCollectionIteratorByStructure"
-import {isIterator}                              from "./method/isIterator"
 import {isIteratorByStructure}                   from "./method/isIteratorByStructure"
 import {isMinimalistCollectionHolder}            from "./method/isMinimalistCollectionHolder"
 import {isMinimalistCollectionHolderByStructure} from "./method/isMinimalistCollectionHolderByStructure"
-import {isSet}                                   from "./method/isSet"
 import {isSetByStructure}                        from "./method/isSetByStructure"
 
 /**
@@ -103,7 +100,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
 
         //#region -------------------- Initialization from Array --------------------
 
-        if (isArray(reference,)) {
+        if (reference instanceof Array) {
             const size = this.#size = reference.length
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -145,7 +142,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from Array --------------------
         //#region -------------------- Initialization from Set --------------------
 
-        if (isSet(reference,)) {
+        if (reference instanceof Set) {
             const size = this.#size = reference.size
 
             //#region -------------------- Initialization (size = 0) --------------------
@@ -315,7 +312,7 @@ export class GenericMinimalistCollectionHolder<const T = unknown, >
         //#endregion -------------------- Initialization from CollectionIterator --------------------
         //#region -------------------- Initialization from Iterator --------------------
 
-        if (isIterator(reference,)) {
+        if (reference instanceof Iterator) {
             let iteratorResult = reference.next()
 
             //#region -------------------- Initialization (size = 0) --------------------
