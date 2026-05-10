@@ -11,14 +11,12 @@
 //··························································
 
 /**
- * All the possible typed-{@link ReadonlyArray array} defined in JavaScript
+ * Tell that the value is an {@link Float16Array}
  *
- * @see https://developer.mozilla.org/docs/Web/JavaScript/Guide/Typed_arrays
+ * @param value The value to identify
+ * @see isTypedArray
+ * @note Giving a type to the method is only here to help the implementation, but it will not change the behaviour in JavaScript
  */
-export type TypedArray = | Int8Array | Uint8Array | Uint8ClampedArray
-                         | Int16Array | Uint16Array
-                         | Int32Array | Uint32Array
-                         | BigInt64Array | BigUint64Array
-                         | Float16Array
-                         | Float32Array
-                         | Float64Array
+export function isFloat16Array<const INSTANCE extends Float16Array, >(value: unknown,): value is INSTANCE {
+    return value instanceof Float16Array
+}

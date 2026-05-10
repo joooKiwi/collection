@@ -17,7 +17,7 @@ import type {TypedArray} from "../type/TypedArray"
  * ({@link Int8Array byte}, {@link Uint8Array ubyte}, {@link Uint8ClampedArray ubyte-clamped},
  * {@link Int16Array short}, {@link Uint16Array ushort},
  * {@link Int32Array long}, {@link Uint32Array ulong},
- * {@link Float32Array float}, {@link Float64Array double},
+ * {@link Float16Array small float}, {@link Float32Array float}, {@link Float64Array double},
  * {@link BigInt64Array bigint} or {@link BigUint64Array ubigint} array)
  *
  * @param value The value to identify
@@ -44,6 +44,8 @@ export function isTypedArray<const INSTANCE extends TypedArray, >(value: unknown
     if (value instanceof BigInt64Array)
         return true
     if (value instanceof BigUint64Array)
+        return true
+    if (value instanceof Float16Array)
         return true
     if (value instanceof Float32Array)
         return true
