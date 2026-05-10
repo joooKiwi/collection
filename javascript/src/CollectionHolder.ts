@@ -2348,6 +2348,14 @@ export interface CollectionHolder<out T = unknown, >
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
      *
      * @param values The values to compare
+     * @typescriptDefinition
+     */
+    hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
      */
     hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -2407,6 +2415,15 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasOne
      */
     includesOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
+     * @typescriptDefinition
+     */
+    includesOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2479,6 +2496,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasOne
+     * @typescriptDefinition
+     */
+    containsOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that one of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasOne
      */
     containsOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -2538,6 +2564,14 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      */
     hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @typescriptDefinition
+     */
+    hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2608,6 +2642,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasNotOne
+     * @typescriptDefinition
+     */
+    includesNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
      */
     includesNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -2668,6 +2711,15 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNotOne
      */
     containsNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotOne
+     * @typescriptDefinition
+     */
+    containsNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that none of the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2750,6 +2802,16 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
+     * @typescriptDefinition
+     */
+    hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/contains-all.html Kotlin containsAll(values)
+     * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#containsAll(java.util.Collection) Java containsAll(values)
      */
     hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -2813,6 +2875,15 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasAll
      */
     includesAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
+     * @typescriptDefinition
+     */
+    includesAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
@@ -2885,6 +2956,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasAll
+     * @typescriptDefinition
+     */
+    containsAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that all the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasAll
      */
     containsAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -2944,6 +3024,14 @@ export interface CollectionHolder<out T = unknown, >
      * @param values The values to compare
      */
     hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @typescriptDefinition
+     */
+    hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3014,6 +3102,15 @@ export interface CollectionHolder<out T = unknown, >
      *
      * @param values The values to compare
      * @alias CollectionHolder.hasNotAll
+     * @typescriptDefinition
+     */
+    includesNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
      */
     includesNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
 
@@ -3074,6 +3171,15 @@ export interface CollectionHolder<out T = unknown, >
      * @alias CollectionHolder.hasNotAll
      */
     containsNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+
+    /**
+     * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
+     *
+     * @param values The values to compare
+     * @alias CollectionHolder.hasNotAll
+     * @typescriptDefinition
+     */
+    containsNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
 
     /**
      * Tell that not a single item in the {@link values} exist in the current {@link CollectionHolder instance}
@@ -3373,6 +3479,19 @@ export interface CollectionHolder<out T = unknown, >
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
      */
     slice(indices: CollectionIterator<number>,): CollectionHolder<T>
+
+    /**
+     * Create a new {@link CollectionHolder} from the {@link indices}
+     * in the current {@link CollectionHolder instance}
+     *
+     * @param indices The given indices
+     * @throws IndexOutOfBoundsException An indice is not in the current {@link CollectionHolder instance}
+     * @throws ForbiddenIndexException   An indice a forbidden {@link Number} (±∞ / {@link Number.NaN NaN})
+     * @see ReadonlyArray.slice
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/slice.html Kotlin slice(indices)
+     * @typescriptDefinition
+     */
+    slice(indices: IteratorObject<number, unknown, unknown>,): CollectionHolder<T>
 
     /**
      * Create a new {@link CollectionHolder} from the {@link indices}

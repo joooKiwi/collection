@@ -10,13 +10,11 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import type {Array, EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberArray, NumberKeyMap, NumberSet, Set} from "@joookiwi/type"
+import type {EmptyArray, EmptyMap, EmptyMutableArray, EmptyMutableMap, EmptyMutableSet, EmptySet, MutableNumberKeyMap, MutableSet, Nullable, NullableNumber, NullableString, NullOr, NullOrZeroNumber, NumberKeyMap, Set} from "@joookiwi/type"
 
 import type {CollectionHolder}                                                                                                                                                                                                                                                  from "../../src/CollectionHolder"
-import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "../../src/MinimalistCollectionHolder"
 import type {CollectionHolderOf1}                                                                                                                                                                                                                                               from "../../src/CollectionHolderOf1"
 import type {EmptyCollectionHolder}                                                                                                                                                                                                                                             from "../../src/EmptyCollectionHolder"
-import type {CollectionIterator}                                                                                                                                                                                                                                                from "../../src/iterator/CollectionIterator"
 import type {CollectionIteratorOf1}                                                                                                                                                                                                                                             from "../../src/iterator/CollectionIteratorOf1"
 import type {EmptyCollectionIterator}                                                                                                                                                                                                                                           from "../../src/iterator/EmptyCollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "../../src/type/callback"
@@ -192,45 +190,13 @@ export class CollectionHolder_LazyOf0Or1<const T, >
 
     public override hasNot(value: T,): boolean { return this.instance.hasNot(value,) }
 
-    public override hasOne(values: Nullable<Array<T>>,): boolean
-    public override hasOne(values: Nullable<Set<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasOne(values,) }
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.instance.hasOne(values,) }
 
-    public override hasNotOne(values: Nullable<Array<T>>,): boolean
-    public override hasNotOne(values: Nullable<Set<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotOne(values,) }
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.instance.hasNotOne(values,) }
 
-    public override hasAll(values: Nullable<Array<T>>,): boolean
-    public override hasAll(values: Nullable<Set<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasAll(values,) }
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.instance.hasAll(values,) }
 
-    public override hasNotAll(values: Nullable<Array<T>>,): boolean
-    public override hasNotAll(values: Nullable<Set<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
-    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) { return this.instance.hasNotAll(values,) }
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean { return this.instance.hasNotAll(values,) }
 
 
     public override requireNoNulls(): CollectionHolder<NonNullable<T>> {
@@ -272,15 +238,7 @@ export class CollectionHolder_LazyOf0Or1<const T, >
     //#region -------------------- Slice --------------------
 
     public override slice(from?: NullableNumber, to?: NullableNumber,): CollectionHolder<T>
-    public override slice(indices: NumberArray,): CollectionHolder<T>
-    public override slice(indices: NumberSet,): CollectionHolder<T>
-    public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
-    public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
-    public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
-    public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,): CollectionHolder<T>
     public override slice(indicesOrFrom?: Nullable<| PossibleIterableIteratorArraySetOrCollectionHolder<number> | number>, to?: NullableNumber,) {
         if (arguments.length === 0)
             return this.instance.slice()

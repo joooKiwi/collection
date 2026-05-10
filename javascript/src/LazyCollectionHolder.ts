@@ -481,6 +481,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
@@ -494,6 +495,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
@@ -507,6 +509,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
@@ -520,6 +523,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
     public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
     public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
@@ -570,6 +574,7 @@ export class LazyCollectionHolder<const T = unknown, >
     public override slice(indices: CollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T>
     public override slice(indices: CollectionIterator<number>,): CollectionHolder<T>
+    public override slice(indices: IteratorObject<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: Iterator<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: Iterable<number, unknown, unknown>,): CollectionHolder<T>
     public override slice(indices: PossibleIterableIteratorArraySetOrCollectionHolder<number>,): CollectionHolder<T>
