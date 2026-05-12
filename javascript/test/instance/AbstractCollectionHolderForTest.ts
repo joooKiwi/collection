@@ -119,8 +119,78 @@ export abstract class AbstractCollectionHolderForTest<const T, >
         throw new Error("The getter method “count” was not expected to be called.",)
     }
 
+
     public abstract readonly isEmpty: boolean
+
     public abstract readonly isNotEmpty: boolean
+
+
+    public get hasAtLeast1Element(): never {
+        throw new Error("The getter method “hasAtLeast1Element” was not expected to be called.",)
+    }
+
+    public get containsAtLeast1Element(): never {
+        throw new Error("The getter method “containsAtLeast1Element” was not expected to be called.",)
+    }
+
+    public get includesAtLeast1Element(): never {
+        throw new Error("The getter method “includesAtLeast1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasExactly1Element: boolean
+
+    public get containsExactly1Element(): never {
+        throw new Error("The getter method “containsExactly1Element” was not expected to be called.",)
+    }
+
+    public get includesExactly1Element(): never {
+        throw new Error("The getter method “includesExactly1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtMost1Element: boolean
+
+    public get containsAtMost1Element(): never {
+        throw new Error("The getter method “containsAtMost1Element” was not expected to be called.",)
+    }
+
+    public get includesAtMost1Element(): never {
+        throw new Error("The getter method “includesAtMost1Element” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtLeast2Elements: boolean
+
+    public get containsAtLeast2Elements(): never {
+        throw new Error("The getter method “containsAtLeast2Elements” was not expected to be called.",)
+    }
+
+    public get includesAtLeast2Elements(): never {
+        throw new Error("The getter method “includesAtLeast2Elements” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasExactly2Elements: boolean
+
+    public get containsExactly2Elements(): never {
+        throw new Error("The getter method “containsExactly2Elements” was not expected to be called.",)
+    }
+
+    public get includesExactly2Elements(): never {
+        throw new Error("The getter method “includesExactly2Elements” was not expected to be called.",)
+    }
+
+
+    public abstract readonly hasAtMost2Elements: boolean
+
+    public get containsAtMost2Elements(): never {
+        throw new Error("The getter method “containsAtMost2Elements” was not expected to be called.",)
+    }
+
+    public get includesAtMost2Elements(): never {
+        throw new Error("The getter method “includesAtMost2Elements” was not expected to be called.",)
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

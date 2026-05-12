@@ -61,7 +61,12 @@ import {hasAllWithMinimalistCollectionHolderByArray}    from "../../src/method/h
 import {hasAllWithCollectionIteratorByArray}            from "../../src/method/hasAll.withCollectionIterator"
 import {hasAllWithIteratorByArray}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithIterableByArray}                      from "../../src/method/hasAll.withIterable"
+import {hasAtLeast2ElementsByArray}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByArray}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByArray}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByArray}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByArray}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByArray}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByArray}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByArray}                              from "../../src/method/hasNoNulls"
 import {hasNotByArray}                                  from "../../src/method/hasNot"
@@ -171,12 +176,35 @@ export class CollectionHolder_FromArrayExtensionFunction<const T , >
         return this.array.length
     }
 
+
     public override get isEmpty(): boolean {
         return isEmptyByArray(this.array,)
     }
 
     public override get isNotEmpty(): boolean {
         return isNotEmptyByArray(this.array,)
+    }
+
+
+    public override get hasExactly1Element(): boolean {
+        return hasExactly1ElementByArray(this.array,)
+    }
+
+    public override get hasAtMost1Element(): boolean {
+        return hasAtMost1ElementByArray(this.array,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByArray(this.array,)
+    }
+
+    public override get hasExactly2Elements(): boolean {
+        return hasExactly2ElementsByArray(this.array,)
+    }
+
+    public override get hasAtMost2Elements(): boolean {
+        return hasAtMost2ElementsByArray(this.array,)
     }
 
     //#endregion -------------------- Size methods --------------------

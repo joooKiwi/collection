@@ -52,7 +52,12 @@ import {getOrElseByMinimalistCollectionHolder}                 from "../../src/m
 import {getOrNullByMinimalistCollectionHolder}                 from "../../src/method/getOrNull"
 import {hasByMinimalistCollectionHolder}                       from "../../src/method/has"
 import {hasAllByMinimalistCollectionHolder}                    from "../../src/method/hasAll"
+import {hasAtLeast2ElementsByMinimalistCollectionHolder}       from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByMinimalistCollectionHolder}         from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByMinimalistCollectionHolder}        from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByMinimalistCollectionHolder}              from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByMinimalistCollectionHolder}        from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByMinimalistCollectionHolder}       from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByMinimalistCollectionHolder}           from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByMinimalistCollectionHolder}                from "../../src/method/hasNoNulls"
 import {hasNotByMinimalistCollectionHolder}                    from "../../src/method/hasNot"
@@ -119,6 +124,28 @@ export abstract class AbstractMinimalistCollectionHolderForTest<const T,
 
     public override get isNotEmpty(): boolean {
         return isNotEmptyByMinimalistCollectionHolder(this,)
+    }
+
+
+    public override get hasExactly1Element(): boolean {
+        return hasExactly1ElementByMinimalistCollectionHolder(this,)
+    }
+
+    public override get hasAtMost1Element(): boolean {
+        return hasAtMost1ElementByMinimalistCollectionHolder(this,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByMinimalistCollectionHolder(this,)
+    }
+
+    public override get hasExactly2Elements(): boolean {
+        return hasExactly2ElementsByMinimalistCollectionHolder(this,)
+    }
+
+    public override get hasAtMost2Elements(): boolean {
+        return hasAtMost2ElementsByMinimalistCollectionHolder(this,)
     }
 
     //#endregion -------------------- Size methods --------------------

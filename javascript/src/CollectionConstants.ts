@@ -141,6 +141,11 @@ export class CollectionConstants {
         return CollectionConstants.#COLLECTION_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionHolder>([
             "size", "length", "count",
             "isEmpty", "isNotEmpty",
+            "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
             "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
             "get", "at", "elementAt",
             "getFirst",
@@ -266,7 +271,6 @@ export class CollectionConstants {
             "toString", "toLocaleString",
         ] as const,),)
     }
-
 
     /**
      * Every method applicable to an {@link Array MutableArray}
@@ -509,7 +513,13 @@ export class CollectionConstants {
     public static get COLLECTION_ITERATOR_MEMBERS(): CollectionHolder<KeyOfCollectionIterator> {
         return CollectionConstants.#COLLECTION_ITERATOR_MEMBERS ??= Object.freeze(new LateRetriever.ArrayAsCollectionHolder<KeyOfCollectionIterator>([
             "size", "length", "count",
-            "isEmpty", "isNotEmpty",
+            "isEmpty",
+            "isNotEmpty", "hasAtLeast1Element", "includesAtLeast1Element", "containsAtLeast1Element",
+            "hasExactly1Element", "includesExactly1Element", "containsExactly1Element",
+            "hasAtMost1Element", "includesAtMost1Element", "containsAtMost1Element",
+            "hasAtLeast2Elements", "includesAtLeast2Elements", "containsAtLeast2Elements",
+            "hasExactly2Elements", "includesExactly2Elements", "containsExactly2Elements",
+            "hasAtMost2Elements", "includesAtMost2Elements", "containsAtMost2Elements",
             "currentIndex", "index",
             "hasNext",
             "nextIndex",

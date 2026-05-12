@@ -16,6 +16,10 @@ import type {CollectionHolder}                                                  
 import type {MinimalistCollectionHolder}                                                                                                                                                                                                                                        from "./MinimalistCollectionHolder"
 import type {CollectionIterator}                                                                                                                                                                                                                                                from "./iterator/CollectionIterator"
 import type {BooleanCallback, IndexValueCallback, IndexValueWithReturnCallback, IndexWithReturnCallback, RestrainedBooleanCallback, ReturnCallback, ReverseBooleanCallback, ReverseRestrainedBooleanCallback, StringCallback, ValueIndexCallback, ValueIndexWithReturnCallback} from "./type/callback"
+import type {HasAtMost1ElementOnArray}                                                                                                                                                                                                                                          from "./type/hasAtMost1Element"
+import type {HasAtMost2ElementsOnArray}                                                                                                                                                                                                                                         from "./type/hasAtMost2Elements"
+import type {HasExactly1ElementOnArray}                                                                                                                                                                                                                                         from "./type/hasExactly1Element"
+import type {HasExactly2ElementsOnArray}                                                                                                                                                                                                                                        from "./type/hasExactly2Elements"
 import type {IsEmptyOnArray}                                                                                                                                                                                                                                                    from "./type/isEmpty"
 import type {IsNotEmptyOnArray}                                                                                                                                                                                                                                                 from "./type/isNotEmpty"
 
@@ -163,7 +167,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
         super()
         this.#reference = new WeakRef(reference,)
         const size = this.#size = reference.length
-        if (this.#isEmpty = size == 0)
+        if (this.#isEmpty = size === 0)
             return
 
         let index = size
@@ -194,6 +198,22 @@ export class ArrayAsCollectionHolder<const T = unknown,
     public override get isEmpty(): IsEmptyOnArray<REFERENCE> { return this.#isEmpty as IsEmptyOnArray<REFERENCE> }
 
     public override get isNotEmpty(): IsNotEmptyOnArray<REFERENCE> { return !this.isEmpty as IsNotEmptyOnArray<REFERENCE> }
+
+    public override get hasExactly1Element(): HasExactly1ElementOnArray<REFERENCE> { return (this.size === 1) as HasExactly1ElementOnArray<REFERENCE> }
+
+    public override get hasAtMost1Element(): HasAtMost1ElementOnArray<REFERENCE> { return (this.isEmpty || this.size === 1) as HasAtMost1ElementOnArray<REFERENCE> }
+
+    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+
+    public override get hasExactly2Elements(): HasExactly2ElementsOnArray<REFERENCE> { return (this.size === 2) as HasExactly2ElementsOnArray<REFERENCE> }
+
+    public override get hasAtMost2Elements(): HasAtMost2ElementsOnArray<REFERENCE> {
+        if (this.isEmpty)
+            return true as HasAtMost2ElementsOnArray<REFERENCE>
+
+        const size = this.size
+        return (size === 1 || size === 2) as HasAtMost2ElementsOnArray<REFERENCE>
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

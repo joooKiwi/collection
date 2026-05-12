@@ -179,6 +179,13 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     public override get isEmpty(): false { return false }
     public override get isNotEmpty(): true { return true }
 
+    public override get hasExactly1Element(): true { return true }
+    public override get hasAtMost1Element(): true { return true }
+
+    public override get hasAtLeast2Elements(): false { return false }
+    public override get hasExactly2Elements(): false { return false }
+    public override get hasAtMost2Elements(): true { return true }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 

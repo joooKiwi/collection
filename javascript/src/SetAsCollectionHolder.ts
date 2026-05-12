@@ -12,8 +12,12 @@
 
 import type {NullOr, NullOrNumber, Set} from "@joookiwi/type"
 
-import type {IsEmptyOnSet}    from "./type/isEmpty"
-import type {IsNotEmptyOnSet} from "./type/isNotEmpty"
+import type {HasAtMost1ElementOnSet}   from "./type/hasAtMost1Element"
+import type {HasAtMost2ElementsOnSet}  from "./type/hasAtMost2Elements"
+import type {HasExactly1ElementOnSet}  from "./type/hasExactly1Element"
+import type {HasExactly2ElementsOnSet} from "./type/hasExactly2Elements"
+import type {IsEmptyOnSet}             from "./type/isEmpty"
+import type {IsNotEmptyOnSet}          from "./type/isNotEmpty"
 
 import {AbstractCollectionHolder}  from "./AbstractCollectionHolder"
 import {EmptyCollectionException}  from "./exception/EmptyCollectionException"
@@ -72,6 +76,25 @@ export class SetAsCollectionHolder<const T = unknown,
     public override get isEmpty(): IsEmptyOnSet<REFERENCE> { return this.#isEmpty as IsEmptyOnSet<REFERENCE> }
 
     public override get isNotEmpty(): IsNotEmptyOnSet<REFERENCE> { return !this.isEmpty as IsNotEmptyOnSet<REFERENCE> }
+
+
+    public override get hasExactly1Element(): HasExactly1ElementOnSet<REFERENCE> { return (this.size === 1) as HasExactly1ElementOnSet<REFERENCE> }
+
+    public override get hasAtMost1Element(): HasAtMost1ElementOnSet<REFERENCE> {
+        return (this.isEmpty || this.size === 1) as HasAtMost1ElementOnSet<REFERENCE>
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+
+    public override get hasExactly2Elements(): HasExactly2ElementsOnSet<REFERENCE> { return (this.size === 2) as HasExactly2ElementsOnSet<REFERENCE> }
+
+    public override get hasAtMost2Elements(): HasAtMost2ElementsOnSet<REFERENCE> {
+        if (this.isEmpty)
+            return true as HasAtMost2ElementsOnSet<REFERENCE>
+        const size = this.size
+        return (size === 1 || size === 2) as HasAtMost2ElementsOnSet<REFERENCE>
+    }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

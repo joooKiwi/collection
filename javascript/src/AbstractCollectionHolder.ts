@@ -60,7 +60,12 @@ import {hasAllWithIterableByCollectionHolder}                      from "./metho
 import {hasAllWithIteratorByCollectionHolder}                      from "./method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolderByCollectionHolder}    from "./method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByCollectionHolder}                           from "./method/hasAll.withSet"
+import {hasAtLeast2ElementsByCollectionHolder}                     from "./method/hasAtLeast2Elements"
+import {hasAtMost1ElementByCollectionHolder}                       from "./method/hasAtMost1Element"
+import {hasAtMost2ElementsByCollectionHolder}                      from "./method/hasAtMost2Elements"
 import {hasDuplicateByCollectionHolder}                            from "./method/hasDuplicate"
+import {hasExactly1ElementByCollectionHolder}                      from "./method/hasExactly1Element"
+import {hasExactly2ElementsByCollectionHolder}                     from "./method/hasExactly2Elements"
 import {hasNoDuplicatesByCollectionHolder}                         from "./method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                              from "./method/hasNoNulls"
 import {hasNotByCollectionHolder}                                  from "./method/hasNot"
@@ -175,6 +180,13 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public override get isEmpty(): boolean { return isEmptyByCollectionHolder(this,) }
 
     public override get isNotEmpty(): boolean { return isNotEmptyByCollectionHolder(this,) }
+
+    public override get hasExactly1Element(): boolean { return hasExactly1ElementByCollectionHolder(this,) }
+    public override get hasAtMost1Element(): boolean { return hasAtMost1ElementByCollectionHolder(this,) }
+
+    public override get hasAtLeast2Elements(): boolean { return hasAtLeast2ElementsByCollectionHolder(this,) }
+    public override get hasExactly2Elements(): boolean { return hasExactly2ElementsByCollectionHolder(this,) }
+    public override get hasAtMost2Elements(): boolean { return hasAtMost2ElementsByCollectionHolder(this,) }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

@@ -61,7 +61,12 @@ import {hasAllWithMinimalistCollectionHolderByCollectionHolder}    from "../../s
 import {hasAllWithCollectionIteratorByCollectionHolder}            from "../../src/method/hasAll.withCollectionIterator"
 import {hasAllWithIteratorByCollectionHolder}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithIterableByCollectionHolder}                      from "../../src/method/hasAll.withIterable"
+import {hasAtLeast2ElementsByCollectionHolder}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByCollectionHolder}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByCollectionHolder}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByCollectionHolder}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByCollectionHolder}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByCollectionHolder}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByCollectionHolder}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                              from "../../src/method/hasNoNulls"
 import {hasNotByCollectionHolder}                                  from "../../src/method/hasNot"
@@ -171,12 +176,35 @@ export class CollectionHolder_FromExtensionFunction<const T, >
         return this.array.length
     }
 
+
     public get isEmpty(): boolean {
         return isEmptyByCollectionHolder(this,)
     }
 
     public get isNotEmpty(): boolean {
         return isNotEmptyByCollectionHolder(this,)
+    }
+
+
+    public override get hasExactly1Element(): boolean {
+        return hasExactly1ElementByCollectionHolder(this,)
+    }
+
+    public override get hasAtMost1Element(): boolean {
+        return hasAtMost1ElementByCollectionHolder(this,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByCollectionHolder(this,)
+    }
+
+    public override get hasExactly2Elements(): boolean {
+        return hasExactly2ElementsByCollectionHolder(this,)
+    }
+
+    public override get hasAtMost2Elements(): boolean {
+        return hasAtMost2ElementsByCollectionHolder(this,)
     }
 
     //#endregion -------------------- Size methods --------------------
@@ -408,7 +436,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public hasOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasOneWithIterableByCollectionHolder(this, values,)
     }
-    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean {
+    public override hasOne(values: Nullable<Array<T>>,): boolean
+    public override hasOne(values: Nullable<Set<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return hasOneByCollectionHolder(this, values,)
     }
 
@@ -433,7 +470,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public hasNotOneWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasNotOneWithIterableByCollectionHolder(this, values,)
     }
-    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean {
+    public override hasNotOne(values: Nullable<Array<T>>,): boolean
+    public override hasNotOne(values: Nullable<Set<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotOne(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotOne(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return hasNotOneByCollectionHolder(this, values,)
     }
 
@@ -458,7 +504,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public hasAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasAllWithIterableByCollectionHolder(this, values,)
     }
-    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean {
+    public override hasAll(values: Nullable<Array<T>>,): boolean
+    public override hasAll(values: Nullable<Set<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return hasAllByCollectionHolder(this, values,)
     }
 
@@ -483,7 +538,16 @@ export class CollectionHolder_FromExtensionFunction<const T, >
     public hasNotAllWithIterable(values: Nullable<Iterable<T, unknown, unknown>>,): boolean {
         return hasNotAllWithIterableByCollectionHolder(this, values,)
     }
-    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean {
+    public override hasNotAll(values: Nullable<Array<T>>,): boolean
+    public override hasNotAll(values: Nullable<Set<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<MinimalistCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<CollectionIterator<T>>,): boolean
+    public override hasNotAll(values: Nullable<IteratorObject<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterator<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<Iterable<T, unknown, unknown>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,): boolean
+    public override hasNotAll(values: Nullable<PossibleIterableIteratorArraySetOrCollectionHolder<T>>,) {
         return hasNotAllByCollectionHolder(this, values,)
     }
 

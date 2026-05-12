@@ -60,7 +60,12 @@ import {hasAllWithIterableByCollectionHolder}                      from "../../s
 import {hasAllWithIteratorByCollectionHolder}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolderByCollectionHolder}    from "../../src/method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByCollectionHolder}                           from "../../src/method/hasAll.withSet"
+import {hasAtLeast2ElementsByCollectionHolder}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByCollectionHolder}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByCollectionHolder}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByCollectionHolder}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByCollectionHolder}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByCollectionHolder}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByCollectionHolder}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByCollectionHolder}                              from "../../src/method/hasNoNulls"
 import {hasNotByCollectionHolder}                                  from "../../src/method/hasNot"
@@ -158,6 +163,28 @@ export class CollectionHolder_FromNullExtensionFunction<const T, >
 
     public get isNotEmpty(): false {
         return isNotEmptyByCollectionHolder(null,)
+    }
+
+
+    public override get hasExactly1Element(): false {
+        return hasExactly1ElementByCollectionHolder(null,)
+    }
+
+    public override get hasAtMost1Element(): true {
+        return hasAtMost1ElementByCollectionHolder(null,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByCollectionHolder(null,)
+    }
+
+    public override get hasExactly2Elements(): false {
+        return hasExactly2ElementsByCollectionHolder(null,)
+    }
+
+    public override get hasAtMost2Elements(): true {
+        return hasAtMost2ElementsByCollectionHolder(null,)
     }
 
     //#endregion -------------------- Size methods --------------------

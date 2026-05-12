@@ -60,7 +60,12 @@ import {hasAllWithIterableByArray}                      from "../../src/method/h
 import {hasAllWithIteratorByArray}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolderByArray}    from "../../src/method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSetByArray}                           from "../../src/method/hasAll.withSet"
+import {hasAtLeast2ElementsByArray}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1ElementByArray}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2ElementsByArray}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicateByArray}                            from "../../src/method/hasDuplicate"
+import {hasExactly1ElementByArray}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2ElementsByArray}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicatesByArray}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNullsByArray}                              from "../../src/method/hasNoNulls"
 import {hasNotByArray}                                  from "../../src/method/hasNot"
@@ -158,6 +163,28 @@ export class CollectionHolder_FromNullArrayExtensionFunction<const T, >
 
     public override get isNotEmpty(): false {
         return isNotEmptyByArray(null,)
+    }
+
+
+    public override get hasExactly1Element(): false {
+        return hasExactly1ElementByArray(null,)
+    }
+
+    public override get hasAtMost1Element(): true {
+        return hasAtMost1ElementByArray(null,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2ElementsByArray(null,)
+    }
+
+    public override get hasExactly2Elements(): false {
+        return hasExactly2ElementsByArray(null,)
+    }
+
+    public override get hasAtMost2Elements(): true {
+        return hasAtMost2ElementsByArray(null,)
     }
 
     //#endregion -------------------- Size methods --------------------

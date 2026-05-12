@@ -45,8 +45,46 @@ export abstract class AbstractUnimplementedCollectionIterator<const T, >
     public get count(): this["size"] { return this.size }
 
 
-    public get isEmpty(): boolean { return this.size == 0 }
-    public get isNotEmpty(): boolean { return this.size != 0 }
+    public get isEmpty(): boolean { return this.size === 0 }
+    public get isNotEmpty(): boolean { return this.size !== 0 }
+
+
+    public get hasAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get includesAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get containsAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+
+
+    public get hasExactly1Element(): boolean { return this.size === 1 }
+    public get includesExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+    public get containsExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+
+
+    public get hasAtMost1Element(): boolean {
+        const size = this.size
+
+        return size === 0 || size === 1
+    }
+    public get includesAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+    public get containsAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+
+
+    public get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+    public get includesAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+    public get containsAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+
+
+    public get hasExactly2Elements(): boolean { return this.size === 2 }
+    public get includesExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+    public get containsExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+
+
+    public get hasAtMost2Elements(): boolean {
+        const size = this.size
+
+        return size === 0 || size === 1 || size === 2
+    }
+    public get includesAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
+    public get containsAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------

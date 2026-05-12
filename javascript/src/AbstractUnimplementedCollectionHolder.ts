@@ -56,6 +56,30 @@ export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
 
     public abstract readonly isNotEmpty: boolean
 
+    public get hasAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get includesAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get containsAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+
+    public abstract readonly hasExactly1Element: boolean
+    public get includesExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+    public get containsExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+
+    public abstract readonly hasAtMost1Element: boolean
+    public get includesAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+    public get containsAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+
+    public abstract readonly hasAtLeast2Elements: boolean
+    public get includesAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+    public get containsAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+
+    public abstract readonly hasExactly2Elements: boolean
+    public get includesExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+    public get containsExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+
+    public abstract readonly hasAtMost2Elements: boolean
+    public get includesAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
+    public get containsAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 

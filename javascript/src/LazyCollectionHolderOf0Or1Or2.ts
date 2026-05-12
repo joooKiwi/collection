@@ -112,6 +112,13 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     public override get isEmpty(): boolean { return this._innerCollection.isEmpty }
     public override get isNotEmpty():  boolean { return this._innerCollection.isNotEmpty }
 
+    public override get hasExactly1Element(): boolean { return this._innerCollection.hasExactly1Element }
+    public override get hasAtMost1Element(): boolean { return this._innerCollection.hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): boolean { return this._innerCollection.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): boolean { return this._innerCollection.hasExactly2Elements }
+    public override get hasAtMost2Elements(): true { return true }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 

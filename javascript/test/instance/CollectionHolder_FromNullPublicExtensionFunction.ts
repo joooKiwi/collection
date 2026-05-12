@@ -60,7 +60,12 @@ import {hasAllWithIterable}                      from "../../src/method/hasAll.w
 import {hasAllWithIterator}                      from "../../src/method/hasAll.withIterator"
 import {hasAllWithMinimalistCollectionHolder}    from "../../src/method/hasAll.withMinimalistCollectionHolder"
 import {hasAllWithSet}                           from "../../src/method/hasAll.withSet"
+import {hasAtLeast2Elements}                     from "../../src/method/hasAtLeast2Elements"
+import {hasAtMost1Element}                       from "../../src/method/hasAtMost1Element"
+import {hasAtMost2Elements}                      from "../../src/method/hasAtMost2Elements"
 import {hasDuplicate}                            from "../../src/method/hasDuplicate"
+import {hasExactly1Element}                      from "../../src/method/hasExactly1Element"
+import {hasExactly2Elements}                     from "../../src/method/hasExactly2Elements"
 import {hasNoDuplicates}                         from "../../src/method/hasNoDuplicates"
 import {hasNoNulls}                              from "../../src/method/hasNoNulls"
 import {hasNot}                                  from "../../src/method/hasNot"
@@ -158,6 +163,28 @@ export class CollectionHolder_FromNullPublicExtensionFunction<const T, >
 
     public get isNotEmpty(): false {
         return isNotEmpty(null,)
+    }
+
+
+    public override get hasExactly1Element(): false {
+        return hasExactly1Element(null,)
+    }
+
+    public override get hasAtMost1Element(): true {
+        return hasAtMost1Element(null,)
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean {
+        return hasAtLeast2Elements(null,)
+    }
+
+    public override get hasExactly2Elements(): false {
+        return hasExactly2Elements(null,)
+    }
+
+    public override get hasAtMost2Elements(): true {
+        return hasAtMost2Elements(null,)
     }
 
     //#endregion -------------------- Size methods --------------------

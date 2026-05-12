@@ -49,8 +49,16 @@ export class CollectionHolder_LazyOf1<const T, >
     //#region -------------------- Size methods --------------------
 
     public override get size(): 1 { return this.instance.size }
+
     public override get isEmpty(): false { return this.instance.isEmpty }
     public override get isNotEmpty(): true { return this.instance.isNotEmpty }
+
+    public override get hasExactly1Element(): true { return this.instance.hasExactly1Element }
+    public override get hasAtMost1Element(): true { return this.instance.hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): false { return this.instance.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): false { return this.instance.hasExactly2Elements }
+    public override get hasAtMost2Elements(): true { return this.instance.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

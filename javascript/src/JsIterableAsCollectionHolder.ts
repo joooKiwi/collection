@@ -99,6 +99,24 @@ export class JsIterableAsCollectionHolder<const T = unknown,
 
     public override get isNotEmpty(): boolean { return !this.isEmpty }
 
+
+    public override get hasExactly1Element(): boolean { return this.size === 1 }
+
+    public override get hasAtMost1Element(): boolean {
+        const size = this.size
+        return size === 0 || size === 1
+    }
+
+
+    public override get hasAtLeast2Elements(): boolean { return this.size >= 2 }
+
+    public override get hasExactly2Elements(): boolean { return this.size === 2 }
+
+    public override get hasAtMost2Elements(): boolean {
+        const size = this.size
+        return size === 0 || size === 1 || size === 2
+    }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------
 

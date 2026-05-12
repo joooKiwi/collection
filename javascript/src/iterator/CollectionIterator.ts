@@ -70,29 +70,150 @@ export interface CollectionIterator<out T = unknown, >
 
     //#region -------------------- Size methods --------------------
 
-    /** The {@link CollectionIterator iterator} size */
-    get size(): number
+    /** The current {@link CollectionIterator instance} size */
+    readonly size: number
 
     /**
-     * The {@link CollectionIterator iterator} size
+     * The current {@link CollectionIterator instance} size
      *
      * @alias size
      */
-    get length(): this["size"]
+    readonly length: this["size"]
 
     /**
-     * The {@link CollectionIterator iterator} size
+     * The current {@link CollectionIterator iterator} size
      *
      * @alias size
      */
-    get count(): this["size"]
+    readonly count: this["size"]
 
 
-    /** The {@link CollectionIterator iterator} is empty */
-    get isEmpty(): boolean
+    /** The current {@link CollectionIterator instance} has no values */
+    readonly isEmpty: boolean
 
-    /** The {@link CollectionIterator iterator} is not empty */
-    get isNotEmpty(): boolean
+    /** The current {@link CollectionIterator instance} has a minimum of 1 value */
+    readonly isNotEmpty: boolean
+
+
+    /**
+     * The current {@link CollectionIterator instance} has a minimum of 1 value
+     *
+     * @alias CollectionIterator.isNotEmpty
+     */
+    readonly hasAtLeast1Element: this["isNotEmpty"]
+
+    /**
+     * The current {@link CollectionIterator instance} has a minimum of 1 value
+     *
+     * @alias CollectionIterator.isNotEmpty
+     */
+    readonly containsAtLeast1Element: this["isNotEmpty"]
+
+    /**
+     * The current {@link CollectionIterator instance} has a minimum of 1 value
+     *
+     * @alias CollectionIterator.isNotEmpty
+     */
+    readonly includesAtLeast1Element: this["isNotEmpty"]
+
+
+    /** The current {@link CollectionIterator instance} has exactly 1 value */
+    readonly hasExactly1Element: boolean
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 1 value
+     *
+     * @alias CollectionIterator.hasExactly1Element
+     */
+    readonly containsExactly1Element: this["hasExactly1Element"]
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 1 value
+     *
+     * @alias CollectionIterator.hasExactly1Element
+     */
+    readonly includesExactly1Element: this["hasExactly1Element"]
+
+
+    /** The current {@link CollectionIterator instance} has exactly 0 or 1 value */
+    readonly hasAtMost1Element: boolean
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 0 or 1 value
+     *
+     * @alias CollectionIterator.hasAtMost1Element
+     */
+    readonly containsAtMost1Element: this["hasAtMost1Element"]
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 0 or 1 value
+     *
+     * @alias CollectionIterator.hasAtMost1Element
+     */
+    readonly includesAtMost1Element: this["hasAtMost1Element"]
+
+
+    /** The current {@link CollectionIterator instance} has a minimum of 2 values */
+    readonly hasAtLeast2Elements: boolean
+
+    /**
+     * The current {@link CollectionIterator instance} has a minimum of 2 values
+     *
+     * @alias CollectionIterator.hasAtLeast2Elements
+     */
+    readonly containsAtLeast2Elements: this["hasAtLeast2Elements"]
+
+    /**
+     * The current {@link CollectionIterator instance} has a minimum of 2 values
+     *
+     * @alias CollectionIterator.hasAtLeast2Elements
+     */
+    readonly includesAtLeast2Elements: this["hasAtLeast2Elements"]
+
+
+    /** The current {@link CollectionIterator instance} has exactly 2 values */
+    readonly hasExactly2Elements: boolean
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 2 values
+     *
+     * @alias CollectionIterator.hasExactly2Elements
+     */
+    readonly containsExactly2Elements: this["hasExactly2Elements"]
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 2 values
+     *
+     * @alias CollectionIterator.hasExactly2Elements
+     */
+    readonly includesExactly2Elements: this["hasExactly2Elements"]
+
+
+    /** The current {@link CollectionIterator instance} has exactly 0, 1 or 2 values */
+    readonly hasAtMost2Elements: boolean
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 0, 1 or 2 values
+     *
+     * @alias CollectionIterator.hasAtMost2Elements
+     */
+    readonly containsAtMost2Elements: this["hasAtMost2Elements"]
+
+    /**
+     * The current {@link CollectionIterator instance} has exactly 0, 1 or 2 values
+     *
+     * @alias CollectionIterator.hasAtMost2Elements
+     */
+    readonly includesAtMost2Elements: this["hasAtMost2Elements"]
+
+
+    // new : hasAtLeast1Element()
+    // new : hasExactly1Element()
+    // new : hasAtMost1Element()
+
+    // new : hasAtLeast2Elements()
+    // new : hasExactly2Elements()
+    // new : hasAtMost2Elements()
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------

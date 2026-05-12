@@ -61,8 +61,16 @@ export class CollectionHolder_ByGenericCollection<const T, >
     //#region -------------------- Size methods --------------------
 
     public override get size(): number { return this.instance.size }
+
     public override get isEmpty(): boolean { return this.instance.isEmpty }
     public override get isNotEmpty(): boolean { return this.instance.isNotEmpty }
+
+    public override get hasExactly1Element(): boolean { return this.instance.hasExactly1Element }
+    public override get hasAtMost1Element(): boolean { return this.instance.hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): boolean { return this.instance.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): boolean { return this.instance.hasExactly2Elements }
+    public override get hasAtMost2Elements(): boolean { return this.instance.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

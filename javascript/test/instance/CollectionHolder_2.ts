@@ -54,8 +54,16 @@ export class CollectionHolder_2<const T,
     //#region -------------------- Size methods --------------------
 
     public override get size(): 2 { return this.instance.size }
+
     public override get isEmpty(): false { return this.instance.isEmpty }
     public override get isNotEmpty(): true { return this.instance.isNotEmpty }
+
+    public override get hasExactly1Element(): false { return this.instance.hasExactly1Element }
+    public override get hasAtMost1Element(): false { return this.instance.hasAtMost1Element }
+
+    public override get hasAtLeast2Elements(): true { return this.instance.hasAtLeast2Elements }
+    public override get hasExactly2Elements(): true { return this.instance.hasExactly2Elements }
+    public override get hasAtMost2Elements(): true { return this.instance.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

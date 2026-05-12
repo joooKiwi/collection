@@ -62,13 +62,6 @@ export abstract class AbstractCollectionIterator<const T, >
     /** The {@link size} minus 2 */
     protected get _sizeMinus2(): number { return this.size - 2 }
 
-
-    /** Tell that the {@link size} is only of <b>1</b> */
-    protected get _hasOnly1Element(): boolean { return this.size == 1 }
-
-    /** Tell that the {@link size} is only of <b>2</b> */
-    protected get _hasOnly2Elements(): boolean { return this.size == 2 }
-
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
 
@@ -170,7 +163,7 @@ export abstract class AbstractCollectionIterator<const T, >
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -183,13 +176,13 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getValue(0,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
         if (this._nextIndex == null) // At the end of the line
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or after the end of the line.",)
 
         if (this._previousIndex == null) { // At the start of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = 0
                 this._currentIndex = 1
                 this._nextIndex = null
@@ -224,7 +217,7 @@ export abstract class AbstractCollectionIterator<const T, >
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from start to end
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -237,13 +230,13 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getIteratorValue(0,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             return GenericAfterLastIteratorValue.get
         if (this._nextIndex == null) // At the end of the line
             return GenericAfterLastIteratorValue.get
 
         if (this._previousIndex == null) { // At the start of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = 0
                 this._nextIndex = null
                 return this._getIteratorValue(this._currentIndex = 1,)
@@ -317,7 +310,7 @@ export abstract class AbstractCollectionIterator<const T, >
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -330,13 +323,13 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getValue(previousCurrentIndex,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
         if (this._previousIndex == null) // At the start of the line
             throw new NoElementFoundInCollectionException("No element found. The collection iterator is at or before the start of the line.",)
 
         if (this._nextIndex == null) { // At the end of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = 1
@@ -371,7 +364,7 @@ export abstract class AbstractCollectionIterator<const T, >
         const currentIndex = this._currentIndex
         if (currentIndex == null) {
             // The direction has not been determined yet, it will set up the CollectionIterator to be from end to start
-            if (this._hasOnly1Element) {
+            if (this.hasExactly1Element) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = null
@@ -384,13 +377,13 @@ export abstract class AbstractCollectionIterator<const T, >
             return this._getIteratorValue(previousCurrentIndex,)
         }
 
-        if (this._hasOnly1Element)
+        if (this.hasExactly1Element)
             return GenericBeforeFirstIteratorValue.get
         if (this._previousIndex == null) // At the start of the line
             return GenericBeforeFirstIteratorValue.get
 
         if (this._nextIndex == null) { // At the end of the line
-            if (this._hasOnly2Elements) {
+            if (this.hasExactly2Elements) {
                 this._previousIndex = null
                 this._currentIndex = 0
                 this._nextIndex = 1
@@ -451,7 +444,7 @@ export abstract class AbstractCollectionIterator<const T, >
         if (this.isEmpty)
             return this
 
-        if (this._hasOnly1Element) {
+        if (this.hasExactly1Element) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -463,7 +456,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this
         }
 
-        if (this._hasOnly2Elements) {
+        if (this.hasExactly2Elements) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -492,7 +485,7 @@ export abstract class AbstractCollectionIterator<const T, >
         if (this.isEmpty)
             return this
 
-        if (this._hasOnly1Element) {
+        if (this.hasExactly1Element) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this
@@ -504,7 +497,7 @@ export abstract class AbstractCollectionIterator<const T, >
             return this
         }
 
-        if (this._hasOnly2Elements) {
+        if (this.hasExactly2Elements) {
             const currentIndex = this._currentIndex
             if (currentIndex != null)
                 return this

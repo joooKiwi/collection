@@ -28,8 +28,11 @@ export class GenericCollectionIterator<const T = unknown,
     #sizeMinus2?: number
     #isEmpty?: REFERENCE["isEmpty"]
     #isNotEmpty?: REFERENCE["isNotEmpty"]
-    #hasOnly1Element?: boolean
-    #hasOnly2Elements?: boolean
+    #hasExactly1Element?: REFERENCE["hasExactly1Element"]
+    #hasAtMost1Element?: REFERENCE["hasAtMost1Element"]
+    #hasAtLeast2Elements?: REFERENCE["hasAtLeast2Elements"]
+    #hasExactly2Elements?: REFERENCE["hasExactly2Elements"]
+    #hasAtMost2Elements?: REFERENCE["hasAtMost2Elements"]
 
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
@@ -63,9 +66,15 @@ export class GenericCollectionIterator<const T = unknown,
     public override get isNotEmpty(): REFERENCE["isNotEmpty"] { return this.#isNotEmpty ??= this._reference.isNotEmpty }
 
     /** @initializedOnFirstCall */
-    protected override get _hasOnly1Element(): boolean { return this.#hasOnly1Element ??= super._hasOnly1Element }
+    public override get hasExactly1Element(): REFERENCE["hasExactly1Element"] { return this.#hasExactly1Element ??= this._reference.hasExactly1Element }
     /** @initializedOnFirstCall */
-    protected override get _hasOnly2Elements(): boolean { return this.#hasOnly2Elements ??= super._hasOnly2Elements }
+    public override get hasAtMost1Element(): REFERENCE["hasAtMost1Element"] { return this.#hasAtMost1Element ??= this._reference.hasAtMost1Element }
+    /** @initializedOnFirstCall */
+    public override get hasAtLeast2Elements(): REFERENCE["hasAtLeast2Elements"] { return this.#hasAtLeast2Elements ??= this._reference.hasAtLeast2Elements }
+    /** @initializedOnFirstCall */
+    public override get hasExactly2Elements(): REFERENCE["hasExactly2Elements"] { return this.#hasExactly2Elements ??= this._reference.hasExactly2Elements }
+    /** @initializedOnFirstCall */
+    public override get hasAtMost2Elements(): REFERENCE["hasAtMost2Elements"] { return this.#hasAtMost2Elements ??= this._reference.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
 

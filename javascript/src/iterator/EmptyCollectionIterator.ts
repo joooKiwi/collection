@@ -44,6 +44,30 @@ export class EmptyCollectionIterator
     public get isEmpty(): true { return true }
     public get isNotEmpty(): false { return false }
 
+    public get hasAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get includesAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+    public get containsAtLeast1Element(): this["isNotEmpty"] { return this.isNotEmpty }
+
+    public get hasExactly1Element(): false { return false }
+    public get includesExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+    public get containsExactly1Element(): this["hasExactly1Element"] { return this.hasExactly1Element }
+
+    public get hasAtMost1Element(): true { return true }
+    public get includesAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+    public get containsAtMost1Element(): this["hasAtMost1Element"] { return this.hasAtMost1Element }
+
+    public get hasAtLeast2Elements(): false { return false }
+    public get includesAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+    public get containsAtLeast2Elements(): this["hasAtLeast2Elements"] { return this.hasAtLeast2Elements }
+
+    public get hasExactly2Elements(): false { return false }
+    public get includesExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+    public get containsExactly2Elements(): this["hasExactly2Elements"] { return this.hasExactly2Elements }
+
+    public get hasAtMost2Elements(): true { return true }
+    public get includesAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
+    public get containsAtMost2Elements(): this["hasAtMost2Elements"] { return this.hasAtMost2Elements }
+
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- End-point index methods --------------------
 

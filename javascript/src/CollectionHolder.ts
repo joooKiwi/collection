@@ -53,7 +53,7 @@ export interface CollectionHolder<out T = unknown, >
     //#region -------------------- Size methods --------------------
 
     /**
-     * Get the size ({@link CollectionHolder.length length} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder instance}
+     * Get the size of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -67,7 +67,7 @@ export interface CollectionHolder<out T = unknown, >
     readonly size: number
 
     /**
-     * Get the length ({@link CollectionHolder.size size} or {@link CollectionHolder.count count}) of the current {@link CollectionHolder instance}
+     * Get the size of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -82,7 +82,7 @@ export interface CollectionHolder<out T = unknown, >
     readonly length: this["size"]
 
     /**
-     * Get the count ({@link CollectionHolder.size size} or {@link CollectionHolder.length length}) of the current {@link CollectionHolder instance}
+     * Get the size of the current {@link CollectionHolder instance}
      *
      * @see ReadonlyArray.length
      * @see ReadonlySet.size
@@ -98,24 +98,137 @@ export interface CollectionHolder<out T = unknown, >
 
 
     /**
-     * The {@link CollectionHolder collection} has no values
+     * The current {@link CollectionHolder instance} has no values
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-empty.html Kotlin isEmpty()
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/is-empty.html Kotlin Collection.isEmpty()
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-map/is-empty.html Kotlin Map.isEmpty()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Collection.html#isEmpty() Java Collection.isEmpty()
      * @see https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Map.html#isEmpty Java Map.isEmpty()
-     * @see CollectionHolder.isNotEmpty
      */
     readonly isEmpty: boolean
 
     /**
-     * The {@link CollectionHolder collection} has at least one value
+     * The current {@link CollectionHolder instance} has a minimum of 1 value
      *
      * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
-     * @see CollectionHolder.isEmpty
      */
     readonly isNotEmpty: boolean
+
+
+    /**
+     * The current {@link CollectionHolder instance} has a minimum of 1 value
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
+     * @alias CollectionHolder.isNotEmpty
+     */
+    readonly hasAtLeast1Element: this["isNotEmpty"]
+
+    /**
+     * The current {@link CollectionHolder instance} has a minimum of 1 value
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
+     * @alias CollectionHolder.isNotEmpty
+     */
+    readonly containsAtLeast1Element: this["isNotEmpty"]
+
+    /**
+     * The current {@link CollectionHolder instance} has a minimum of 1 value
+     *
+     * @see https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/is-not-empty.html Kotlin isNotEmpty()
+     * @alias CollectionHolder.isNotEmpty
+     */
+    readonly includesAtLeast1Element: this["isNotEmpty"]
+
+
+    /** The current {@link CollectionHolder instance} has exactly 1 value */
+    readonly hasExactly1Element: boolean
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 1 value
+     *
+     * @alias CollectionHolder.hasExactly1Element
+     */
+    readonly containsExactly1Element: this["hasExactly1Element"]
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 1 value
+     *
+     * @alias CollectionHolder.hasExactly1Element
+     */
+    readonly includesExactly1Element: this["hasExactly1Element"]
+
+
+    /** The current {@link CollectionHolder instance} has exactly 0 or 1 value */
+    readonly hasAtMost1Element: boolean
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 0 or 1 value
+     *
+     * @alias CollectionHolder.hasAtMost1Element
+     */
+    readonly containsAtMost1Element: this["hasAtMost1Element"]
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 0 or 1 value
+     *
+     * @alias CollectionHolder.hasAtMost1Element
+     */
+    readonly includesAtMost1Element: this["hasAtMost1Element"]
+
+
+    /** The current {@link CollectionHolder instance} has a minimum of 2 values */
+    readonly hasAtLeast2Elements: boolean
+
+    /**
+     * The current {@link CollectionHolder instance} has a minimum of 2 values
+     *
+     * @alias CollectionHolder.hasAtLeast2Elements
+     */
+    readonly containsAtLeast2Elements: this["hasAtLeast2Elements"]
+
+    /**
+     * The current {@link CollectionHolder instance} has a minimum of 2 values
+     *
+     * @alias CollectionHolder.hasAtLeast2Elements
+     */
+    readonly includesAtLeast2Elements: this["hasAtLeast2Elements"]
+
+
+    /** The current {@link CollectionHolder instance} has exactly 2 values */
+    readonly hasExactly2Elements: boolean
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 2 values
+     *
+     * @alias CollectionHolder.hasExactly2Elements
+     */
+    readonly containsExactly2Elements: this["hasExactly2Elements"]
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 2 values
+     *
+     * @alias CollectionHolder.hasExactly2Elements
+     */
+    readonly includesExactly2Elements: this["hasExactly2Elements"]
+
+
+    /** The current {@link CollectionHolder instance} has exactly 0, 1 or 2 values */
+    readonly hasAtMost2Elements: boolean
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 0, 1 or 2 values
+     *
+     * @alias CollectionHolder.hasAtMost2Elements
+     */
+    readonly containsAtMost2Elements: this["hasAtMost2Elements"]
+
+    /**
+     * The current {@link CollectionHolder instance} has exactly 0, 1 or 2 values
+     *
+     * @alias CollectionHolder.hasAtMost2Elements
+     */
+    readonly includesAtMost2Elements: this["hasAtMost2Elements"]
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

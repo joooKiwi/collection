@@ -59,9 +59,22 @@ export class CollectionViewer<const T = unknown,
 
     public override get size(): REFERENCE["size"] { return this.reference.size }
 
+
     public override get isEmpty(): REFERENCE["isEmpty"] { return this.reference.isEmpty }
 
     public override get isNotEmpty(): REFERENCE["isNotEmpty"] { return this.reference.isNotEmpty }
+
+
+    public override get hasExactly1Element(): REFERENCE["hasExactly1Element"] { return this.reference.hasExactly1Element }
+
+    public override get hasAtMost1Element(): REFERENCE["hasAtMost1Element"] { return this.reference.hasAtMost1Element }
+
+
+    public override get hasAtLeast2Elements(): REFERENCE["hasAtLeast2Elements"] { return this.reference.hasAtLeast2Elements }
+
+    public override get hasExactly2Elements(): REFERENCE["hasExactly2Elements"] { return this.reference.hasExactly2Elements }
+
+    public override get hasAtMost2Elements(): REFERENCE["hasAtMost2Elements"] { return this.reference.hasAtMost2Elements }
 
     //#endregion -------------------- Size methods --------------------
     //#region -------------------- Research methods --------------------

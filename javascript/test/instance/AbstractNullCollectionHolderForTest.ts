@@ -46,6 +46,12 @@ export abstract class AbstractNullCollectionHolderForTest<const T, >
     public abstract override get isEmpty(): true
     public abstract override get isNotEmpty(): false
 
+    public abstract override get hasExactly1Element(): false
+    public abstract override get hasAtMost1Element(): true
+
+    public abstract override get hasExactly2Elements(): false
+    public abstract override get hasAtMost2Elements(): true
+
     public override get(..._: Array<unknown>): never {
         throw new Error("The method “get” was not expected to be called directly.",)
     }
