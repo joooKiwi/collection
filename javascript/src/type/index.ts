@@ -11,6 +11,10 @@
 //··························································
 
 export type * from "./callback"
+export type * from "./hasAtMost1Element"
+export type * from "./hasAtMost2Elements"
+export type * from "./hasExactly1Element"
+export type * from "./hasExactly2Elements"
 export type * from "./isEmpty"
 export type * from "./isNotEmpty"
 export type * from "./iteratorValue"
