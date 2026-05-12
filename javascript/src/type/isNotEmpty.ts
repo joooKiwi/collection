@@ -53,6 +53,7 @@ export type IsNotEmptyOn<T extends | MinimalistCollectionHolder | Array<unknown>
     : T extends Uint32Array                ? IsNotEmptyOnUint32Array<T>
     : T extends BigInt64Array              ? IsNotEmptyOnBigInt64Array<T>
     : T extends BigUint64Array             ? IsNotEmptyOnBigUint64Array<T>
+    : T extends Float16Array               ? IsNotEmptyOnFloat16Array<T>
     : T extends Float32Array               ? IsNotEmptyOnFloat32Array<T>
     : T extends Float64Array               ? IsNotEmptyOnFloat64Array<T>
     : T extends Set<unknown>               ? IsNotEmptyOnSet<T>
@@ -95,6 +96,7 @@ export type IsNotEmptyOnNullable<T extends Nullable<| MinimalistCollectionHolder
     : T extends Uint32Array                ? IsNotEmptyOnUint32Array<T>
     : T extends BigInt64Array              ? IsNotEmptyOnBigInt64Array<T>
     : T extends BigUint64Array             ? IsNotEmptyOnBigUint64Array<T>
+    : T extends Float16Array               ? IsNotEmptyOnFloat16Array<T>
     : T extends Float32Array               ? IsNotEmptyOnFloat32Array<T>
     : T extends Float64Array               ? IsNotEmptyOnFloat64Array<T>
     : T extends Set<unknown>               ? IsNotEmptyOnSet<T>
@@ -160,7 +162,7 @@ export type IsNotEmptyOnCollectionIterator<T extends CollectionIterator, >
  * @see IsNotEmptyOnCollectionIterator
  */
 export type IsNotEmptyOnNullableCollectionIterator<T extends Nullable<CollectionIterator>, >
-    = T extends NullOrUndefined  ? false
+    = T extends NullOrUndefined    ? false
     : T extends CollectionIterator ? IsNotEmptyOnCollectionIterator<T> : never
 
 //#endregion -------------------- Collection iterator --------------------
@@ -384,6 +386,28 @@ export type IsNotEmptyOnNullableBigUint64Array<T extends Nullable<BigUint64Array
     : T extends BigUint64Array  ? IsNotEmptyOnBigUint64Array<T> : never
 
 //#endregion -------------------- BigUint64 array --------------------
+//#region -------------------- Float16 array --------------------
+
+/**
+ * Tell that the {@link Float16Array collection} is not empty
+ *
+ * @see IsNotEmptyOnNullableFloat16Array
+ * @see IsNotEmptyOn
+ */
+export type IsNotEmptyOnFloat16Array<T extends Float16Array, >
+    = T["length"] extends 0 ? false : T["length"] extends number ? boolean : true
+
+/**
+ * Tell that the {@link Nullable nullable} {@link Float16Array collection} is not empty
+ *
+ * @see IsNotEmptyOnFloat16Array
+ * @see IsNotEmptyOnNullable
+ */
+export type IsNotEmptyOnNullableFloat16Array<T extends Nullable<Float16Array>, >
+    = T extends NullOrUndefined ? false
+    : T extends Float16Array    ? IsNotEmptyOnFloat16Array<T> : never
+
+//#endregion -------------------- Float16 array --------------------
 //#region -------------------- Float32 array --------------------
 
 /**
@@ -446,8 +470,8 @@ export type IsNotEmptyOnSet<T extends Set<unknown>, >
  * @see IsNotEmptyOnNullable
  */
 export type IsNotEmptyOnNullableSet<T extends Nullable<Set<unknown>>, >
-    = T extends NullOrUndefined      ? false
-    : T extends Set<unknown> ? IsNotEmptyOnSet<T> : never
+    = T extends NullOrUndefined ? false
+    : T extends Set<unknown>    ? IsNotEmptyOnSet<T> : never
 
 //#endregion -------------------- Set --------------------
 //#region -------------------- Map --------------------
@@ -468,7 +492,7 @@ export type IsNotEmptyOnMap<T extends Map<unknown, unknown>, >
  * @see IsNotEmptyOnNullable
  */
 export type IsNotEmptyOnNullableMap<T extends Nullable<Map<unknown, unknown>>, >
-    = T extends NullOrUndefined               ? false
+    = T extends NullOrUndefined       ? false
     : T extends Map<unknown, unknown> ? IsNotEmptyOnMap<T> : never
 
 //#endregion -------------------- Set --------------------
