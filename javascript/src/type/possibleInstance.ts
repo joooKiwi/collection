@@ -46,6 +46,7 @@ export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistColl
  * @see MinimalistCollectionHolder
  * @see CollectionIterator
  * @see Iterator
+ * @see IteratorObject
  * @see Iterable
  * @see IterableWithSize
  * @see IterableWithLength
@@ -54,5 +55,5 @@ export type PossibleCollectionHolderConstructor = | typeof GenericMinimalistColl
  */
 export type PossibleIterableIteratorArraySetOrCollectionHolder<T, > = | Array<T> | Set<T>
                                                                       | MinimalistCollectionHolder<T> | CollectionHolder<T>
-                                                                      | CollectionIterator<T> | Iterator<T, unknown, unknown>
+                                                                      | CollectionIterator<T> | Iterator<T, unknown, unknown> | IteratorObject<T, unknown, unknown>
                                                                       | Iterable<T, unknown, unknown> | IterableWithSize<T> | IterableWithLength<T> | IterableWithCount<T> | IterableWithPossibleSize<T>
