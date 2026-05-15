@@ -630,7 +630,6 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
     //#endregion -------------------- Has ‥ --------------------
-
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
@@ -1641,7 +1640,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): CollectionHolder<T> {
+    public override take(n: number,): | this | EmptyCollectionHolder {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -1695,7 +1694,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
 
-    public override takeLast(n: number,): CollectionHolder<T> {
+    public override takeLast(n: number,): | this | EmptyCollectionHolder {
         return this.take(n,)
     }
 
@@ -1714,7 +1713,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): CollectionHolder<T> {
+    public override drop(n: number,): | this | EmptyCollectionHolder {
         if (Number.isNaN(n,))
             throw new ForbiddenIndexException("Forbidden index. The number cannot be determined with NaN.", n,)
         if (n === Number.NEGATIVE_INFINITY)
@@ -1773,7 +1772,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
     }
 
 
-    public override dropLast(n: number,): CollectionHolder<T> {
+    public override dropLast(n: number,): | this | EmptyCollectionHolder {
         return this.drop(n,)
     }
 

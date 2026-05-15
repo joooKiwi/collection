@@ -230,7 +230,6 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     public override get hasNoDuplicates(): true { return this._innerCollection.hasNoDuplicates }
 
     //#endregion -------------------- Has ‥ --------------------
-
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean { return this._innerCollection.has(value,) }
@@ -349,7 +348,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Slice --------------------
     //#region -------------------- Take --------------------
 
-    public override take(n: number,): CollectionHolder<T> { return this._innerCollection.take(n,) }
+    public override take(n: number,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.take(n,) }
 
     public override takeWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -360,7 +359,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.takeWhileIndexed(predicate,) }
 
 
-    public override takeLast(n: number,): CollectionHolder<T> { return this._innerCollection.take(n,) }
+    public override takeLast(n: number,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.take(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -373,7 +372,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     //#endregion -------------------- Take --------------------
     //#region -------------------- Drop --------------------
 
-    public override drop(n: number,): CollectionHolder<T> { return this._innerCollection.drop(n,) }
+    public override drop(n: number,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.drop(n,) }
 
     public override dropWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -384,7 +383,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this._innerCollection.dropWhileIndexed(predicate,) }
 
 
-    public override dropLast(n: number,): CollectionHolder<T> { return this._innerCollection.drop(n,) }
+    public override dropLast(n: number,): | CollectionHolderOf1<T> | EmptyCollectionHolder { return this._innerCollection.drop(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>

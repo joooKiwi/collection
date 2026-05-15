@@ -36,6 +36,7 @@ export class LazyCollectionHolderOf1<const T = unknown, >
         this.#value = lazy(lateValue,)
     }
 
+    /** The internal value passed through the {@link constructor} */
     public override get 0() { return this.value }
 
     /** The internal value passed through the {@link constructor} */
