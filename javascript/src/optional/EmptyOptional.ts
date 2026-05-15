@@ -10,6 +10,8 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
+import type {Array} from "@joookiwi/type"
+
 import {Optional} from "./Optional"
 
 export class EmptyOptional
@@ -34,10 +36,10 @@ export class EmptyOptional
     public override get get(): never { throw new ReferenceError("Value not found exception. No value exist in an “EmptyOptional”.",) }
 
 
-    public override ifPresent(..._: readonly unknown[]): void
+    public override ifPresent(..._: Array<unknown>): void
     public override ifPresent() {}
 
-    public override ifPresentOrElse(_1: unknown, emptyAction: () => void, ..._2: readonly unknown[]): void
+    public override ifPresentOrElse(_1: unknown, emptyAction: () => void, ..._2: Array<unknown>): void
     public override ifPresentOrElse(_: unknown, emptyAction: () => void,): void { emptyAction() }
 
 

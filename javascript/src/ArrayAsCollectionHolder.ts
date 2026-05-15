@@ -430,7 +430,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     public override get hasNull(): boolean {
         return hasNullByArray(this._reference,)
@@ -440,8 +440,6 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return hasNoNullsByArray(this._reference,)
     }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean {
         return hasDuplicateByArray(this._reference,)
@@ -451,8 +449,7 @@ export class ArrayAsCollectionHolder<const T = unknown,
         return hasNoDuplicatesByArray(this._reference,)
     }
 
-    //#endregion -------------------- Has duplicate --------------------
-
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {
