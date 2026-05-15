@@ -404,7 +404,6 @@ export abstract class AbstractCollectionHolder<const T = unknown, >
     public override get hasNoDuplicates(): boolean { return hasNoDuplicatesByCollectionHolder(this,) }
 
     //#endregion -------------------- Has ‥ --------------------
-
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {

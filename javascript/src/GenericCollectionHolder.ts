@@ -1389,21 +1389,18 @@ export class GenericCollectionHolder<const T = unknown, >
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     public override get hasNull(): boolean { return this.#hasNull ??= hasNullByArray(this._array,) }
 
     public override get hasNoNulls(): boolean { return !(this.#hasNull ??= !hasNoNullsByArray(this._array,)) }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): boolean { return this.#hasDuplicate ??= hasDuplicateByArray(this._array,) }
 
     public override get hasNoDuplicates(): boolean { return !(this.#hasDuplicate ??= !hasNoDuplicatesByArray(this._array,)) }
 
-    //#endregion -------------------- Has duplicate --------------------
-
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {

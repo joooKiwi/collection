@@ -2114,7 +2114,6 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
     //#endregion -------------------- Has ‥ --------------------
-
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean {

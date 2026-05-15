@@ -96,6 +96,9 @@ export interface CollectionHolder<out T = unknown, >
      */
     readonly count: this["size"]
 
+    // TODO: update : CollectionHolder.count()
+    // TODO: new : CollectionHolder.count(predicate)
+
 
     /**
      * The current {@link CollectionHolder instance} has no values

@@ -205,21 +205,18 @@ export class CollectionViewer<const T = unknown,
 
     //#endregion -------------------- None --------------------
 
-    //#region -------------------- Has null --------------------
+    //#region -------------------- Has ‥ --------------------
 
     public override get hasNull(): REFERENCE["hasNull"] { return this.reference.hasNull }
 
     public override get hasNoNulls(): REFERENCE["hasNoNulls"] { return this.reference.hasNoNulls }
 
-    //#endregion -------------------- Has null --------------------
-    //#region -------------------- Has duplicate --------------------
 
     public override get hasDuplicate(): REFERENCE["hasDuplicate"] { return this.reference.hasDuplicate }
 
     public override get hasNoDuplicates(): REFERENCE["hasNoDuplicates"] { return this.reference.hasNoDuplicates }
 
-    //#endregion -------------------- Has duplicate --------------------
-
+    //#endregion -------------------- Has ‥ --------------------
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean { return this.reference.has(value,) }

@@ -245,7 +245,6 @@ export class LazyCollectionHolderOf1Or2<const T = unknown, >
     public override get hasNoDuplicates(): boolean { return this._innerCollection.hasNoDuplicates }
 
     //#endregion -------------------- Has ‥ --------------------
-
     //#region -------------------- Has --------------------
 
     public override has(value: T,): boolean { return this._innerCollection.has(value,) }
