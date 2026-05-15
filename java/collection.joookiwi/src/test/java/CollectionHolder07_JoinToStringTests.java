@@ -26,6 +26,7 @@ import static helper.InvokeMethod.invokeMethod;
 import static joookiwi.collection.java.method.Join.join;
 import static joookiwi.collection.java.method.JoinToString.joinToString;
 import static joookiwi.collection.java.CollectionConstants.DEFAULT_EMPTY_COLLECTION;
+import static joookiwi.collection.java.CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 import static value.Arrays.A;
@@ -909,7 +910,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("[a>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("[a;b>",     invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[a;b;c;d>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -938,10 +939,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus6Limit_arguments")
@@ -952,10 +953,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus5Limit_arguments")
@@ -966,10 +967,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus4Limit_arguments")
@@ -980,10 +981,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus3Limit_arguments")
@@ -994,10 +995,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, …]",                 invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, …]",                       invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus2Limit_arguments")
@@ -1008,10 +1009,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, …]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, …]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_minus1Limit_arguments")
@@ -1022,10 +1023,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[a, …]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, c, …]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[a, …]",                       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, c, …]",                 invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_0Limit_arguments")
@@ -1036,10 +1037,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_arguments")
@@ -1148,10 +1149,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_arguments")
@@ -1218,10 +1219,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_arguments")
@@ -1288,10 +1289,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_arguments")
@@ -1302,7 +1303,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",     invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("{a>",    invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("{a, …>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{a, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1316,7 +1317,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",        invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("{a>",       invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("{a, b>",    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{a, b, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1330,7 +1331,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("{a>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("{a, b>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{a, b, c, …>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1344,7 +1345,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",           invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("{a>",          invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("{a, b>",       invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("{a, b, c, d>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1358,10 +1359,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_arguments")
@@ -1428,10 +1429,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_arguments")
@@ -1498,10 +1499,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_arguments")
@@ -1568,10 +1569,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_arguments")
@@ -1667,10 +1668,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_arguments")
@@ -1681,7 +1682,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("[a]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("[a, ‥]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[a, ‥]",                 invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1695,7 +1696,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("[a]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("[a, b]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, ‥]",              invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1709,7 +1710,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("[a]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("[a, b]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, c, ‥]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1723,7 +1724,7 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-            @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
             @DisplayName("1 field")  @Test void test1() { assertEquals("[a]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
             @DisplayName("2 fields") @Test void test2() { assertEquals("[a, b]",                 invokeMethod(newInstance(AB),    "joinToString", types, values)); }
             @DisplayName("4 fields") @Test void test4() { assertEquals("[a, b, c, d]",           invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
@@ -1752,9 +1753,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_arguments")
@@ -1835,10 +1836,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_arguments")
@@ -1919,10 +1920,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_arguments")
@@ -2004,9 +2005,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_arguments")
@@ -2088,9 +2089,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_arguments")
@@ -2171,10 +2172,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_arguments")
@@ -2255,10 +2256,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
 
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_arguments")
@@ -2367,10 +2368,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform2 extends AbstractReflectionTests {
@@ -2433,9 +2434,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -2523,10 +2524,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -2588,10 +2589,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -2680,9 +2681,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -2744,10 +2745,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -2835,10 +2836,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -2900,10 +2901,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -2991,10 +2992,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("separator + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform2 extends AbstractReflectionTests {
@@ -3057,9 +3058,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("separator + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -3147,10 +3148,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -3212,10 +3213,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -3303,10 +3304,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -3368,10 +3369,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -3459,10 +3460,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_2Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform2 extends AbstractReflectionTests {
@@ -3524,10 +3525,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_2Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform (T, int) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform2 extends AbstractReflectionTests {
@@ -3616,10 +3617,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform1 extends AbstractReflectionTests {
@@ -3682,9 +3683,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -3772,10 +3773,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("postfix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -3837,10 +3838,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("postfix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -3928,10 +3929,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("prefix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -3993,10 +3994,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("prefix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4084,10 +4085,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -4149,10 +4150,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4240,10 +4241,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("separator + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform1 extends AbstractReflectionTests {
@@ -4306,9 +4307,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("separator + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4396,10 +4397,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -4461,10 +4462,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4552,10 +4553,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -4617,10 +4618,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4708,10 +4709,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_1Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform1 extends AbstractReflectionTests {
@@ -4773,10 +4774,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_1Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform (T) → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform1 extends AbstractReflectionTests {
@@ -4865,10 +4866,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Transform0 extends AbstractReflectionTests {
@@ -4931,9 +4932,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5021,10 +5022,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5086,10 +5087,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5177,10 +5178,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5242,10 +5243,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5333,10 +5334,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5398,10 +5399,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#nullSeparator_prefix_postfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5489,10 +5490,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION,       invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_ZERO_FILLED_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("separator + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5555,9 +5556,9 @@ import static value.Arrays.EMPTY;
             //#endregion -------------------- Required test constructor --------------------
 
                                      @Test void empty() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals(DEFAULT_EMPTY_COLLECTION, invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥]",                    invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥]",                    invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥]",                    invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_nullPostfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("separator + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5645,10 +5646,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5710,10 +5711,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("[>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("[>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("[>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("[>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("[>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("[‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("[‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("[‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_nullPrefix_postfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("separator + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5801,10 +5802,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<…]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<…]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<…]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -5866,10 +5867,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("<]", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("<]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("<]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("<]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("<]",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("<‥]", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("<‥]", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("<‥]", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_nullPostfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("separator + prefix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
@@ -5957,10 +5958,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{…>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{…>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{…>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_nullTruncated_0Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Transform0 extends AbstractReflectionTests {
@@ -6022,10 +6023,10 @@ import static value.Arrays.EMPTY;
 
             //#endregion -------------------- Required test constructor --------------------
 
-                                     @Test void empty() { assertEquals("{>", invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
-            @DisplayName("1 field")  @Test void test1() { assertEquals("{>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
-            @DisplayName("2 fields") @Test void test2() { assertEquals("{>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
-            @DisplayName("4 fields") @Test void test4() { assertEquals("{>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
+                                     @Test void empty() { assertEquals("{>",  invokeMethod(newInstance(EMPTY), "joinToString", types, values)); }
+            @DisplayName("1 field")  @Test void test1() { assertEquals("{‥>", invokeMethod(newInstance(A),     "joinToString", types, values)); }
+            @DisplayName("2 fields") @Test void test2() { assertEquals("{‥>", invokeMethod(newInstance(AB),    "joinToString", types, values)); }
+            @DisplayName("4 fields") @Test void test4() { assertEquals("{‥>", invokeMethod(newInstance(ABCD),  "joinToString", types, values)); }
         }
         @FieldSource("value.JoinToStringValues#separator_prefix_postfix_1Limit_truncated_0Transform_arguments")
         @DisplayName("separator + prefix + postfix + limit 1 + truncated + transform () → String") @ParameterizedClass(name = "{0}")/* @TestInstance(PER_CLASS)*/ @Nested class Separator_Prefix_Postfix_Limit1_Truncated_Transform0 extends AbstractReflectionTests {
