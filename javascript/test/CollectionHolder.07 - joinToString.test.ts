@@ -1432,57 +1432,57 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("-∞ limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -Infinity,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("-500 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -500,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("-6 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -6,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("-5 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -5,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("-4 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -4,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("-3 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -3,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -3,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -3,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -3,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -3,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
             test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -3,),).toBe("[a, …]",),)
         },)
         describe("-2 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
             test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -2,),).toBe("[a, b, …]",),)
         },)
         describe("-1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, -1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, -1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
             test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, -1,),).toBe("[a, …]",),)
             test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, -1,),).toBe("[a, b, c, …]",),)
         },)
         describe("0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -1540,9 +1540,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0,),).toBe("[…>",),)
         },)
         describe("postfix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1,),).toBe("[>",),)
@@ -1570,9 +1570,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0,),).toBe("<…]",),)
         },)
         describe("prefix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1,),).toBe("<]",),)
@@ -1600,9 +1600,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0,),).toBe("{…>",),)
         },)
         describe("prefix + postfix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1,),).toBe("{>",),)
@@ -1630,9 +1630,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("separator + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -1660,9 +1660,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0,),).toBe("[…>",),)
         },)
         describe("separator + postfix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1,),).toBe("[>",),)
@@ -1690,9 +1690,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0,),).toBe("<…]",),)
         },)
         describe("separator + prefix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1,),).toBe("<]",),)
@@ -1720,9 +1720,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + 0 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0,),).toBe("{…>",),)
         },)
         describe("separator + prefix + postfix + 1 limit", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1,),).toBe("{>",),)
@@ -1769,9 +1769,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥',),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥',),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥',),).toBe("[‥]",),)
         },)
         describe("limit 1 + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -1805,9 +1805,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, '‥',),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥',),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥',),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥',),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥',),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥',),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥',),).toBe("[‥>",),)
         },)
         describe("postfix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, '‥',),).toBe("[>",),)
@@ -1841,9 +1841,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, '‥',),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥',),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥',),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥',),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥',),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥',),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥',),).toBe("<‥]",),)
         },)
         describe("prefix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, '‥',),).toBe("<]",),)
@@ -1877,9 +1877,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, '‥',),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥',),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥',),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥',),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥',),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥',),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥',),).toBe("{‥>",),)
         },)
         describe("prefix + postfix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, '‥',),).toBe("{>",),)
@@ -1913,9 +1913,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥',),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥',),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥',),).toBe("[‥]",),)
         },)
         describe("separator + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, '‥',),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -1949,9 +1949,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, '‥',),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥',),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥',),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥',),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥',),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥',),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥',),).toBe("[‥>",),)
         },)
         describe("separator + postfix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, '‥',),).toBe("[>",),)
@@ -1985,9 +1985,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, '‥',),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥',),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥',),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥',),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥',),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥',),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥',),).toBe("<‥]",),)
         },)
         describe("separator + prefix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, '‥',),).toBe("<]",),)
@@ -2021,9 +2021,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + 0 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, '‥',),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥',),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥',),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥',),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥',),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥',),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥',),).toBe("{‥>",),)
         },)
         describe("separator + prefix + postfix + 1 limit + truncated", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, '‥',),).toBe("{>",),)
@@ -2077,9 +2077,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2107,9 +2107,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
         },)
         describe("limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2149,9 +2149,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
         },)
         describe("postfix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, null, callbackAsFail2,),).toBe("[>",),)
@@ -2179,9 +2179,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
         },)
         describe("postfix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, '‥', callbackAsFail2,),).toBe("[>",),)
@@ -2221,9 +2221,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
         },)
         describe("prefix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, null, callbackAsFail2,),).toBe("<]",),)
@@ -2251,9 +2251,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
         },)
         describe("prefix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, '‥', callbackAsFail2,),).toBe("<]",),)
@@ -2293,9 +2293,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
         },)
         describe("prefix + postfix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, null, callbackAsFail2,),).toBe("{>",),)
@@ -2323,9 +2323,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
         },)
         describe("prefix + postfix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, '‥', callbackAsFail2,),).toBe("{>",),)
@@ -2365,9 +2365,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("separator + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, null, callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2395,9 +2395,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail2,),).toBe("[‥]",),)
         },)
         describe("separator + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, '‥', callbackAsFail2,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2437,9 +2437,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail2,),).toBe("[…>",),)
         },)
         describe("separator + postfix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, null, callbackAsFail2,),).toBe("[>",),)
@@ -2467,9 +2467,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail2,),).toBe("[‥>",),)
         },)
         describe("separator + postfix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, '‥', callbackAsFail2,),).toBe("[>",),)
@@ -2509,9 +2509,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail2,),).toBe("<…]",),)
         },)
         describe("separator + prefix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, null, callbackAsFail2,),).toBe("<]",),)
@@ -2539,9 +2539,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail2,),).toBe("<‥]",),)
         },)
         describe("separator + prefix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, '‥', callbackAsFail2,),).toBe("<]",),)
@@ -2581,9 +2581,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail2,),).toBe("{…>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, null, callbackAsFail2,),).toBe("{>",),)
@@ -2611,9 +2611,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail2,),).toBe("{‥>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + truncated + transform (T, number) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, '‥', callbackAsFail2,),).toBe("{>",),)
@@ -2654,9 +2654,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2684,9 +2684,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
         },)
         describe("limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2726,9 +2726,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
         },)
         describe("postfix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, null, callbackAsFail1,),).toBe("[>",),)
@@ -2756,9 +2756,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
         },)
         describe("postfix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, '‥', callbackAsFail1,),).toBe("[>",),)
@@ -2798,9 +2798,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
         },)
         describe("prefix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, null, callbackAsFail1,),).toBe("<]",),)
@@ -2828,9 +2828,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
         },)
         describe("prefix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, '‥', callbackAsFail1,),).toBe("<]",),)
@@ -2870,9 +2870,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
         },)
         describe("prefix + postfix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, null, callbackAsFail1,),).toBe("{>",),)
@@ -2900,9 +2900,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
         },)
         describe("prefix + postfix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, '‥', callbackAsFail1,),).toBe("{>",),)
@@ -2942,9 +2942,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("separator + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, null, callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -2972,9 +2972,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail1,),).toBe("[‥]",),)
         },)
         describe("separator + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, '‥', callbackAsFail1,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -3014,9 +3014,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail1,),).toBe("[…>",),)
         },)
         describe("separator + postfix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, null, callbackAsFail1,),).toBe("[>",),)
@@ -3044,9 +3044,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail1,),).toBe("[‥>",),)
         },)
         describe("separator + postfix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, '‥', callbackAsFail1,),).toBe("[>",),)
@@ -3086,9 +3086,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail1,),).toBe("<…]",),)
         },)
         describe("separator + prefix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, null, callbackAsFail1,),).toBe("<]",),)
@@ -3116,9 +3116,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail1,),).toBe("<‥]",),)
         },)
         describe("separator + prefix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, '‥', callbackAsFail1,),).toBe("<]",),)
@@ -3158,9 +3158,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail1,),).toBe("{…>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, null, callbackAsFail1,),).toBe("{>",),)
@@ -3188,9 +3188,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail1,),).toBe("{‥>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + truncated + transform (T) → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, '‥', callbackAsFail1,),).toBe("{>",),)
@@ -3231,9 +3231,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -3261,9 +3261,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
         },)
         describe("limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, null, 1, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -3303,9 +3303,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
         },)
         describe("postfix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, null, callbackAsFail0,),).toBe("[>",),)
@@ -3333,9 +3333,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("postfix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
         },)
         describe("postfix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, null, '>', 1, '‥', callbackAsFail0,),).toBe("[>",),)
@@ -3375,9 +3375,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
         },)
         describe("prefix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, null, callbackAsFail0,),).toBe("<]",),)
@@ -3405,9 +3405,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
         },)
         describe("prefix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '<', null, 1, '‥', callbackAsFail0,),).toBe("<]",),)
@@ -3447,9 +3447,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
         },)
         describe("prefix + postfix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, null, callbackAsFail0,),).toBe("{>",),)
@@ -3477,9 +3477,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("prefix + postfix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(null, '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
         },)
         describe("prefix + postfix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(null, '{', '>', 1, '‥', callbackAsFail0,),).toBe("{>",),)
@@ -3519,9 +3519,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_ZERO_FILLED_COLLECTION,),)
         },)
         describe("separator + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, null, callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -3549,9 +3549,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, null, 0, '‥', callbackAsFail0,),).toBe("[‥]",),)
         },)
         describe("separator + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, null, 1, '‥', callbackAsFail0,),).toBe(CollectionConstants.DEFAULT_EMPTY_COLLECTION,),)
@@ -3591,9 +3591,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, null, callbackAsFail0,),).toBe("[…>",),)
         },)
         describe("separator + postfix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, null, callbackAsFail0,),).toBe("[>",),)
@@ -3621,9 +3621,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + postfix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', null, '>', 0, '‥', callbackAsFail0,),).toBe("[‥>",),)
         },)
         describe("separator + postfix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', null, '>', 1, '‥', callbackAsFail0,),).toBe("[>",),)
@@ -3663,9 +3663,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, null, callbackAsFail0,),).toBe("<…]",),)
         },)
         describe("separator + prefix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, null, callbackAsFail0,),).toBe("<]",),)
@@ -3693,9 +3693,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<]",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '<', null, 0, '‥', callbackAsFail0,),).toBe("<‥]",),)
         },)
         describe("separator + prefix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '<', null, 1, '‥', callbackAsFail0,),).toBe("<]",),)
@@ -3735,9 +3735,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, null, callbackAsFail0,),).toBe("{…>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, null, callbackAsFail0,),).toBe("{>",),)
@@ -3765,9 +3765,9 @@ describe("CollectionHolderTest (joinToString)", () => {
         },)
         describe("separator + prefix + postfix + limit 0 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
-            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{>",),)
+            test("1 field",  () => expect(new instance(A,)    .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
+            test("2 fields", () => expect(new instance(AB,)   .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
+            test("4 fields", () => expect(new instance(ABCD,) .joinToString(';', '{', '>', 0, '‥', callbackAsFail0,),).toBe("{‥>",),)
         },)
         describe("separator + prefix + postfix + limit 1 + truncated + transform () → string", () => {
             test("empty",    () => expect(new instance(EMPTY,).joinToString(';', '{', '>', 1, '‥', callbackAsFail0,),).toBe("{>",),)

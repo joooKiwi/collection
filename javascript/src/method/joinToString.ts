@@ -24,7 +24,6 @@ import {isCollectionHolderByStructure} from "./isCollectionHolderByStructure"
 import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
 
 //#region -------------------- Facade method --------------------
-//FIXME: Give […] instead of [] when the limit is 0 on a non-empty collection
 
 /**
  * Create a new {@link String} from every element in the {@link collection} using a {@link separator}
@@ -234,7 +233,7 @@ function __coreWithLimitByCollectionHolder(collection: CollectionHolder, separat
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated + postfix
     if (lastIndex == size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -247,7 +246,7 @@ function __coreWithLimitByMinimalistCollectionHolder(collection: MinimalistColle
 
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated + postfix
     if (lastIndex == size)
         return __withNothing(collection, separator, prefix, postfix, size,)
     return __withTruncated(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -260,7 +259,7 @@ function __coreWithLimitByArray(collection: Array<unknown>, separator: string, p
 
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated + postfix
     if (lastIndex == size)
         return __withNothingByArray(collection, separator, prefix, postfix, size,)
     return __withTruncatedByArray(collection, separator, prefix, postfix, lastIndex, truncated,)
@@ -276,7 +275,7 @@ function __coreWithLimitAndTransformByCollectionHolder<const T, >(collection: Co
     const size = collection.size
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
@@ -298,7 +297,7 @@ function __coreWithLimitAndTransformByMinimalistCollectionHolder<const T, >(coll
 
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated  + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1Argument(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
@@ -320,7 +319,7 @@ function __coreWithLimitAndTransformByArray<const T, >(collection: Array<T>, sep
 
     const lastIndex = __lastIndex(limit, size,)
     if (lastIndex == 0)
-        return prefix + postfix
+        return prefix + truncated + postfix
     if (lastIndex == size)
         if (transform.length == 1)
             return __with1ArgumentByArray(collection, separator, prefix, postfix, size, transform as (value: T,) => string,)
