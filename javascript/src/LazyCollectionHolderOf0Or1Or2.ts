@@ -29,6 +29,7 @@ import type {CollectionHolderOf1}              from "./CollectionHolderOf1"
 import type {CollectionHolderOf2}              from "./CollectionHolderOf2"
 import {LateRetriever}                         from "./LateRetriever"
 import {EmptyCollectionHolder}                 from "./EmptyCollectionHolder"
+import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 import {Couple}                                from "./tuple/Couple"
 
 /**
@@ -43,8 +44,10 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
 
     //#region -------------------- Field --------------------
 
-    #firstValue?: Lazy<T>
-    #secondValue?: Lazy<T>
+    #firstValue?: T
+    #firstValueInitialized: boolean
+    #secondValue?: T
+    #secondValueInitialized: boolean
     readonly #innerCollection: Lazy<| CollectionHolderOf2<T> | CollectionHolderOf1<T> | EmptyCollectionHolder>
 
     //#endregion -------------------- Field --------------------
@@ -54,6 +57,7 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     public constructor(latePossibleValue: () => Optional<Couple<Optional<T>>>,)
     public constructor(latePossibleValue: () => | Nullable<Couple<Optional<T>>> | Optional<Couple<Optional<T>>>,) {
         super()
+        this.#firstValueInitialized = this.#secondValueInitialized = false
         this.#innerCollection = lazy(() => {
             const value = latePossibleValue()
             if (value == null)
@@ -88,21 +92,27 @@ export class LazyCollectionHolderOf0Or1Or2<const T = unknown, >
     public get 1(): T { return this.value2 }
 
     public get value1(): T {
-        return (this.#firstValue ??= lazy(() => {
-            const innerCollection = this._innerCollection
-            if (innerCollection.size === 0)
-                throw new TypeError(`The inner collection received in the “${this.constructor.name}” does not have an existing second value.`,)
-            return innerCollection[0]
-        },)).value
+        if (this.#firstValueInitialized)
+            return this.#firstValue as T
+
+        const innerCollection = this._innerCollection
+        if (innerCollection.size === 0)
+            throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing first value.`, 0,)
+        this.#firstValueInitialized = true
+        return this.#firstValue = innerCollection[0]
     }
 
     public get value2(): T {
-        return (this.#secondValue ??= lazy(() => {
-            const innerCollection = this._innerCollection
-            if (innerCollection.size === 2)
-                return innerCollection[1]
-            throw new TypeError(`The inner collection received in the “${this.constructor.name}” does not have an existing second value.`,)
-        },)).value
+        if (this.#secondValueInitialized)
+            return this.#secondValue as T
+
+        const innerCollection = this._innerCollection
+        if (innerCollection.size === 0)
+            throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing value.`, 1,)
+        if (innerCollection.size === 1)
+            throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing second value.`, 1,)
+        this.#secondValueInitialized = true
+        return this.#secondValue = innerCollection[1]
     }
 
     //#region -------------------- Size methods --------------------

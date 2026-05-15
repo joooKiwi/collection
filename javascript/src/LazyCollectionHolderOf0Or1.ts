@@ -27,6 +27,7 @@ import {AbstractUnimplementedCollectionHolder} from "./AbstractUnimplementedColl
 import type {CollectionHolderOf1}              from "./CollectionHolderOf1"
 import {LateRetriever}                         from "./LateRetriever"
 import {EmptyCollectionHolder}                 from "./EmptyCollectionHolder"
+import {IndexOutOfBoundsException}             from "./exception/IndexOutOfBoundsException"
 
 /**
  * An instance of {@link CollectionHolder} with only 2 possible inner-collection.
@@ -40,7 +41,8 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     //#region -------------------- Field --------------------
 
-    #firstValue?: Lazy<T>
+    #firstValue?: T
+    #firstValueInitialized: boolean
     readonly #innerCollection: Lazy<| CollectionHolderOf1<T> | EmptyCollectionHolder>
 
     //#endregion -------------------- Field --------------------
@@ -48,6 +50,7 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
 
     public constructor(latePossibleValue: () => Optional<T>,) {
         super()
+        this.#firstValueInitialized = false
         this.#innerCollection = lazy(() => {
             const value = latePossibleValue()
             if (value.isPresent)
@@ -67,12 +70,14 @@ export class LazyCollectionHolderOf0Or1<const T = unknown, >
     public get 0(): T { return this.value }
 
     public get value(): T {
-        return (this.#firstValue ??= lazy(() => {
-            const innerCollection = this._innerCollection
-            if (innerCollection.size === 0)
-                throw new TypeError(`The inner collection received in the “${this.constructor.name}” does not have an existing second value.`,)
-            return innerCollection[0]
-        },)).value
+        if (this.#firstValueInitialized)
+            return this.#firstValue as T
+
+        const innerCollection = this._innerCollection
+        if (innerCollection.size === 0)
+            throw new IndexOutOfBoundsException(`The inner collection received in the “${this.constructor.name}” does not have an existing value.`, 0,)
+        this.#firstValueInitialized = true
+        return this.#firstValue = innerCollection[0]
     }
 
     //#region -------------------- Size methods --------------------
