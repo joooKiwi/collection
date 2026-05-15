@@ -10,10 +10,26 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_AllAlias}                                                                                    from "./instance/GenericCollectionHolder_AllAlias"
-import {GenericCollectionHolder_AnyAlias}                                                                                    from "./instance/GenericCollectionHolder_AnyAlias"
-import {LazyCollectionHolder_AnyAlias}                                                                                       from "./instance/LazyCollectionHolder_AnyAlias"
-import {LazyCollectionHolder_AllAlias}                                                                                       from "./instance/LazyCollectionHolder_AllAlias"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_1Follower}                                                                                          from "./instance/CollectionHolder_1.follower"
+import {CollectionHolder_2Follower}                                                                                          from "./instance/CollectionHolder_2.follower"
+import {CollectionHolder_ByViewerFollower}                                                                                   from "./instance/CollectionHolder_ByViewer.follower"
+import {CollectionHolder_ByGenericCollectionFollower}                                                                        from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfIteratorFollower}                                                                          from "./instance/CollectionHolder_AdaptorOfIterator.follower"
+import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
+import {CollectionHolder_AdaptorOfJsIterableFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_LazyFollower}                                                                                       from "./instance/CollectionHolder_Lazy.follower"
+import {CollectionHolder_LazyOf0Or1Follower}                                                                                 from "./instance/CollectionHolder_LazyOf0Or1.follower"
+import {CollectionHolder_LazyOf0Or1Or2Follower}                                                                              from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
+import {CollectionHolder_LazyOf1Follower}                                                                                    from "./instance/CollectionHolder_LazyOf1.follower"
+import {CollectionHolder_LazyOf1Or2Follower}                                                                                 from "./instance/CollectionHolder_LazyOf1Or2.follower"
+import {CollectionHolder_LazyOf2Follower}                                                                                    from "./instance/CollectionHolder_LazyOf2.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_SetOf1Follower}                                                                                     from "./instance/CollectionHolder_SetOf1.follower"
+import {CollectionHolder_SetOf2Follower}                                                                                     from "./instance/CollectionHolder_SetOf2.follower"
 import {A, AB, ABCD, EMPTY, NULL_UNDEFINED}                                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                   from "./value/callbacks (fail)"
@@ -40,13 +56,85 @@ describe("CollectionHolderTest (all / any / none)", () => {
     },)
 
     describe("aliases", () => {
+        describe("ArrayAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfArrayFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfArrayFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("ArrayOf1AsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_ArrayOf1Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_ArrayOf1Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("ArrayOf2AsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_ArrayOf2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_ArrayOf2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionHolderOf1", () => {
+            test("every", () => expect(new CollectionHolder_1Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_1Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionHolderOf2", () => {
+            test("every", () => expect(new CollectionHolder_2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionViewer", () => {
+            test("every", () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
         describe("GenericCollectionHolder", () => {
-            test("every", () => expect(new GenericCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("some",  () => expect(new GenericCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("every", () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("IteratorAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfIteratorFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfIteratorFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("JsIterableAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfJsIterableFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfJsIterableFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("JsIteratorAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfJsIteratorFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfJsIteratorFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
         },)
         describe("LazyCollectionHolder", () => {
-            test("every", () => expect(new LazyCollectionHolder_AllAlias().execute(it => it.every(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-            test("some",  () => expect(new LazyCollectionHolder_AnyAlias().execute(it => it.some(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            test("every", () => expect(new CollectionHolder_LazyFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf0Or1", () => {
+            test("every", () => expect(new CollectionHolder_LazyOf0Or1Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyOf0Or1Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf0Or1Or2", () => {
+            test("every", () => expect(new CollectionHolder_LazyOf0Or1Or2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyOf0Or1Or2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf1", () => {
+            test("every", () => expect(new CollectionHolder_LazyOf1Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyOf1Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf1Or2", () => {
+            test("every", () => expect(new CollectionHolder_LazyOf1Or2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyOf1Or2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf2", () => {
+            test("every", () => expect(new CollectionHolder_LazyOf2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_LazyOf2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("MinimalistAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfMinimalistFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfMinimalistFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetAsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_AdaptorOfSetFollower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_AdaptorOfSetFollower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetOf1AsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_SetOf1Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_SetOf1Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetOf2AsCollectionHolder", () => {
+            test("every", () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.every(callbackAsFalse0,),).all_amountOfCall,).toBe(1,),)
+            test("some",  () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.some(callbackAsFalse0,),).any_amountOfCall,).toBe(1,),)
         },)
 
         describe("every", () => {

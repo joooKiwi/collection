@@ -10,8 +10,26 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_ToReverseAlias}                               from "./instance/GenericCollectionHolder_ToReverseAlias"
-import {LazyCollectionHolder_ToReverseAlias}                                  from "./instance/LazyCollectionHolder_ToReverseAlias"
+import {CollectionHolder_AdaptorOfArrayFollower}                              from "./instance/CollectionHolder_AdaptorOfArray.follower"
+import {CollectionHolder_ArrayOf1Follower}                                    from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                    from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_1Follower}                                           from "./instance/CollectionHolder_1.follower"
+import {CollectionHolder_2Follower}                                           from "./instance/CollectionHolder_2.follower"
+import {CollectionHolder_ByViewerFollower}                                    from "./instance/CollectionHolder_ByViewer.follower"
+import {CollectionHolder_ByGenericCollectionFollower}                         from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfIteratorFollower}                           from "./instance/CollectionHolder_AdaptorOfIterator.follower"
+import {CollectionHolder_AdaptorOfJsIteratorFollower}                         from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
+import {CollectionHolder_AdaptorOfJsIterableFollower}                         from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_LazyFollower}                                        from "./instance/CollectionHolder_Lazy.follower"
+import {CollectionHolder_LazyOf0Or1Follower}                                  from "./instance/CollectionHolder_LazyOf0Or1.follower"
+import {CollectionHolder_LazyOf0Or1Or2Follower}                               from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
+import {CollectionHolder_LazyOf1Follower}                                     from "./instance/CollectionHolder_LazyOf1.follower"
+import {CollectionHolder_LazyOf1Or2Follower}                                  from "./instance/CollectionHolder_LazyOf1Or2.follower"
+import {CollectionHolder_LazyOf2Follower}                                     from "./instance/CollectionHolder_LazyOf2.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                         from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_SetOf1Follower}                                      from "./instance/CollectionHolder_SetOf1.follower"
+import {CollectionHolder_SetOf2Follower}                                      from "./instance/CollectionHolder_SetOf2.follower"
 import {A, AB, ABCD, B, BA, C, CB, CBA, D, DC, DCB, DCBA, EMPTY}              from "./value/arrays"
 import {emptyCollectionHolder, everyExtensionMethodInstances, everyInstances} from "./value/instances"
 
@@ -34,13 +52,85 @@ describe("CollectionHolderTest (reverse)", () => {
     },)
 
     describe("aliases", () => {
+        describe("ArrayAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfArrayFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfArrayFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("ArrayOf1AsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_ArrayOf1Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_ArrayOf1Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("ArrayOf2AsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_ArrayOf2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_ArrayOf2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionHolderOf1", () => {
+            test("toReversed", () => expect(new CollectionHolder_1Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_1Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionHolderOf2", () => {
+            test("toReversed", () => expect(new CollectionHolder_2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("CollectionHolder_2Follower", () => {
+            test("toReversed", () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_ByViewerFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
         describe("GenericCollectionHolder", () => {
-            test("toReversed", () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
-            test("reversed",   () => expect(new GenericCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
+            test("toReversed", () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("IteratorAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfIteratorFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfIteratorFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("JsIterableAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfJsIterableFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfJsIterableFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("JsIteratorAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfJsIteratorFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfJsIteratorFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
         },)
         describe("LazyCollectionHolder", () => {
-            test("toReversed", () => expect(new LazyCollectionHolder_ToReverseAlias().execute(it => it.toReversed(),).amountOfCall,).toBe(1,),)
-            test("reversed",   () => expect(new LazyCollectionHolder_ToReverseAlias().execute(it => it.reversed(),)  .amountOfCall,).toBe(1,),)
+            test("toReversed", () => expect(new CollectionHolder_LazyFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf0Or1", () => {
+            test("toReversed", () => expect(new CollectionHolder_LazyOf0Or1Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyOf0Or1Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf0Or1Or2", () => {
+            test("toReversed", () => expect(new CollectionHolder_LazyOf0Or1Or2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyOf0Or1Or2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf1", () => {
+            test("toReversed", () => expect(new CollectionHolder_LazyOf1Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyOf1Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf1Or2", () => {
+            test("toReversed", () => expect(new CollectionHolder_LazyOf1Or2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyOf1Or2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("LazyCollectionHolderOf2", () => {
+            test("toReversed", () => expect(new CollectionHolder_LazyOf2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_LazyOf2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("MinimalistAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfMinimalistFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfMinimalistFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetAsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_AdaptorOfSetFollower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_AdaptorOfSetFollower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetOf1AsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_SetOf1Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_SetOf1Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
+        },)
+        describe("SetOf2AsCollectionHolder", () => {
+            test("toReversed", () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.toReversed(),).toReverse_amountOfCall,).toBe(1,),)
+            test("reversed",   () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.reversed(),)  .toReverse_amountOfCall,).toBe(1,),)
         },)
 
         describe("toReversed", () => {

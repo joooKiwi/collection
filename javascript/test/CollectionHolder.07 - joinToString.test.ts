@@ -10,8 +10,26 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {GenericCollectionHolder_JoinToStringAlias}                                                                                  from "./instance/GenericCollectionHolder_JoinToStringAlias"
-import {LazyCollectionHolder_JoinToStringAlias}                                                                                     from "./instance/LazyCollectionHolder_JoinToStringAlias"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                                                    from "./instance/CollectionHolder_AdaptorOfArray.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                                          from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                                          from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_1Follower}                                                                                                 from "./instance/CollectionHolder_1.follower"
+import {CollectionHolder_2Follower}                                                                                                 from "./instance/CollectionHolder_2.follower"
+import {CollectionHolder_ByViewerFollower}                                                                                          from "./instance/CollectionHolder_ByViewer.follower"
+import {CollectionHolder_ByGenericCollectionFollower}                                                                               from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfIteratorFollower}                                                                                 from "./instance/CollectionHolder_AdaptorOfIterator.follower"
+import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
+import {CollectionHolder_AdaptorOfJsIterableFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_LazyFollower}                                                                                              from "./instance/CollectionHolder_Lazy.follower"
+import {CollectionHolder_LazyOf0Or1Follower}                                                                                        from "./instance/CollectionHolder_LazyOf0Or1.follower"
+import {CollectionHolder_LazyOf0Or1Or2Follower}                                                                                     from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
+import {CollectionHolder_LazyOf1Follower}                                                                                           from "./instance/CollectionHolder_LazyOf1.follower"
+import {CollectionHolder_LazyOf1Or2Follower}                                                                                        from "./instance/CollectionHolder_LazyOf1Or2.follower"
+import {CollectionHolder_LazyOf2Follower}                                                                                           from "./instance/CollectionHolder_LazyOf2.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                                                      from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_SetOf1Follower}                                                                                            from "./instance/CollectionHolder_SetOf1.follower"
+import {CollectionHolder_SetOf2Follower}                                                                                            from "./instance/CollectionHolder_SetOf2.follower"
 import {A, AB, ABCD, EMPTY}                                                                                                         from "./value/arrays"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                          from "./value/callbacks (fail)"
 import {callbackAsString0, callbackAsString1, callbackAsString2, callbackToString0, callbackToUpperString1, callbackToUpperString2} from "./value/callbacks (string)"
@@ -38,8 +56,26 @@ describe("CollectionHolderTest (joinToString)", () => {
     },)
 
     describe("alias (join)", () => {
-        test("GenericCollectionHolder", () => expect(new GenericCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
-        test("LazyCollectionHolder",    () => expect(new LazyCollectionHolder_JoinToStringAlias().execute(it => it.join(),).amountOfCall,).toBe(1,),)
+        test("ArrayAsCollectionHolder",       () => expect(new CollectionHolder_AdaptorOfArrayFollower()     .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("ArrayOf1AsCollectionHolder",    () => expect(new CollectionHolder_ArrayOf1Follower()           .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("ArrayOf2AsCollectionHolder",    () => expect(new CollectionHolder_ArrayOf2Follower()           .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("CollectionHolderOf1",           () => expect(new CollectionHolder_1Follower()                  .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("CollectionHolderOf2",           () => expect(new CollectionHolder_2Follower()                  .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("CollectionViewer",              () => expect(new CollectionHolder_ByViewerFollower()           .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("GenericCollectionHolder",       () => expect(new CollectionHolder_ByGenericCollectionFollower().execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("IteratorAsCollectionHolder",    () => expect(new CollectionHolder_AdaptorOfIteratorFollower()  .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("JsIterableAsCollectionHolder",  () => expect(new CollectionHolder_AdaptorOfJsIterableFollower().execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("JsIteratorAsCollectionHolder",  () => expect(new CollectionHolder_AdaptorOfJsIteratorFollower().execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolder",          () => expect(new CollectionHolder_LazyFollower()               .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolderOf0Or1",    () => expect(new CollectionHolder_LazyOf0Or1Follower()         .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolderOf0Or1Or2", () => expect(new CollectionHolder_LazyOf0Or1Or2Follower()      .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolderOf1",       () => expect(new CollectionHolder_LazyOf1Follower()            .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolderOf1Or2",    () => expect(new CollectionHolder_LazyOf1Or2Follower()         .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("LazyCollectionHolderOf2",       () => expect(new CollectionHolder_LazyOf2Follower()            .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("MinimalistAsCollectionHolder",  () => expect(new CollectionHolder_AdaptorOfMinimalistFollower().execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("SetAsCollectionHolder",         () => expect(new CollectionHolder_AdaptorOfSetFollower()       .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("SetOf1AsCollectionHolder",      () => expect(new CollectionHolder_SetOf1Follower()             .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
+        test("SetOf2AsCollectionHolder",      () => expect(new CollectionHolder_SetOf2Follower()             .execute(it => it.join(),).joinToString_amountOfCall,).toBe(1,),)
 
         test("all", () => {
             const method = jest.spyOn(joinToStringModule, "joinToString",)
