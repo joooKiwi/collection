@@ -32,7 +32,26 @@ import {CollectionHolder_SetOf1Follower}                                        
 import {CollectionHolder_SetOf2Follower}                                                                   from "./instance/CollectionHolder_SetOf2.follower"
 import {every0Instances, every1Instances, every2Instances, everyExtensionMethodInstances, everyNInstances} from "./value/instances"
 
-import {EmptyCollectionHolder} from "../src/EmptyCollectionHolder"
+import {EmptyCollectionHolder}                                                                                                                                       from "../src/EmptyCollectionHolder"
+import {containsAtLeast1Element, containsAtLeast1ElementByArray, containsAtLeast1ElementByCollectionHolder, containsAtLeast1ElementByMinimalistCollectionHolder}     from "../src/method/containsAtLeast1Element"
+import {containsAtLeast2Elements, containsAtLeast2ElementsByArray, containsAtLeast2ElementsByCollectionHolder, containsAtLeast2ElementsByMinimalistCollectionHolder} from "../src/method/containsAtLeast2Elements"
+import {containsAtMost1Element, containsAtMost1ElementByArray, containsAtMost1ElementByCollectionHolder, containsAtMost1ElementByMinimalistCollectionHolder}         from "../src/method/containsAtMost1Element"
+import {containsAtMost2Elements, containsAtMost2ElementsByArray, containsAtMost2ElementsByCollectionHolder, containsAtMost2ElementsByMinimalistCollectionHolder}     from "../src/method/containsAtMost2Elements"
+import {containsExactly1Element, containsExactly1ElementByArray, containsExactly1ElementByCollectionHolder, containsExactly1ElementByMinimalistCollectionHolder}     from "../src/method/containsExactly1Element"
+import {containsExactly2Elements, containsExactly2ElementsByArray, containsExactly2ElementsByCollectionHolder, containsExactly2ElementsByMinimalistCollectionHolder} from "../src/method/containsExactly2Elements"
+import * as isNotEmptyModule                                                                                                                                         from "../src/method/isNotEmpty"
+import {hasAtLeast1Element, hasAtLeast1ElementByArray, hasAtLeast1ElementByCollectionHolder, hasAtLeast1ElementByMinimalistCollectionHolder}                         from "../src/method/hasAtLeast1Element"
+import * as hasAtLeast2ElementsModule                                                                                                                                from "../src/method/hasAtLeast2Elements"
+import * as hasAtMost1ElementModule                                                                                                                                  from "../src/method/hasAtMost1Element"
+import * as hasAtMost2ElementsModule                                                                                                                                 from "../src/method/hasAtMost2Elements"
+import * as hasExactly1ElementModule                                                                                                                                 from "../src/method/hasExactly1Element"
+import * as hasExactly2ElementsModule                                                                                                                                from "../src/method/hasExactly2Elements"
+import {includesAtLeast1Element, includesAtLeast1ElementByArray, includesAtLeast1ElementByCollectionHolder, includesAtLeast1ElementByMinimalistCollectionHolder}     from "../src/method/includesAtLeast1Element"
+import {includesAtLeast2Elements, includesAtLeast2ElementsByArray, includesAtLeast2ElementsByCollectionHolder, includesAtLeast2ElementsByMinimalistCollectionHolder} from "../src/method/includesAtLeast2Elements"
+import {includesAtMost1Element, includesAtMost1ElementByArray, includesAtMost1ElementByCollectionHolder, includesAtMost1ElementByMinimalistCollectionHolder}         from "../src/method/includesAtMost1Element"
+import {includesAtMost2Elements, includesAtMost2ElementsByArray, includesAtMost2ElementsByCollectionHolder, includesAtMost2ElementsByMinimalistCollectionHolder}     from "../src/method/includesAtMost2Elements"
+import {includesExactly1Element, includesExactly1ElementByArray, includesExactly1ElementByCollectionHolder, includesExactly1ElementByMinimalistCollectionHolder}     from "../src/method/includesExactly1Element"
+import {includesExactly2Elements, includesExactly2ElementsByArray, includesExactly2ElementsByCollectionHolder, includesExactly2ElementsByMinimalistCollectionHolder} from "../src/method/includesExactly2Elements"
 
 describe("CollectionHolderTest (size)", () => {
 
@@ -405,37 +424,349 @@ describe("CollectionHolderTest (size)", () => {
             test("containsAtMost2Elements",  () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.containsAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
             test("includesAtMost2Elements",  () => expect(new CollectionHolder_SetOf2Follower().execute(it => it.includesAtMost2Elements,) .hasAtMost2Elements_amountOfCall,) .toBe(1,),)
         },)
+
+        describe("hasAtLeast1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmpty",)
+                hasAtLeast1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByMinimalistCollectionHolder",)
+                hasAtLeast1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByCollectionHolder",)
+                hasAtLeast1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByArray",)
+                hasAtLeast1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("containsAtLeast1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmpty",)
+                containsAtLeast1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByMinimalistCollectionHolder",)
+                containsAtLeast1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByCollectionHolder",)
+                containsAtLeast1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByArray",)
+                containsAtLeast1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesAtLeast1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmpty",)
+                includesAtLeast1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByMinimalistCollectionHolder",)
+                includesAtLeast1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByCollectionHolder",)
+                includesAtLeast1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(isNotEmptyModule, "isNotEmptyByArray",)
+                includesAtLeast1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("containsExactly1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1Element",)
+                containsExactly1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByMinimalistCollectionHolder",)
+                containsExactly1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByCollectionHolder",)
+                containsExactly1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByArray",)
+                containsExactly1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesExactly1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1Element",)
+                includesExactly1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByMinimalistCollectionHolder",)
+                includesExactly1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByCollectionHolder",)
+                includesExactly1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasExactly1ElementModule, "hasExactly1ElementByArray",)
+                includesExactly1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("containsAtMost1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1Element",)
+                containsAtMost1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByMinimalistCollectionHolder",)
+                containsAtMost1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByCollectionHolder",)
+                containsAtMost1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByArray",)
+                containsAtMost1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesAtMost1Element", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1Element",)
+                includesAtMost1Element(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByMinimalistCollectionHolder",)
+                includesAtMost1ElementByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByCollectionHolder",)
+                includesAtMost1ElementByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtMost1ElementModule, "hasAtMost1ElementByArray",)
+                includesAtMost1ElementByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("containsAtLeast2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2Elements",)
+                containsAtLeast2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByMinimalistCollectionHolder",)
+                containsAtLeast2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByCollectionHolder",)
+                containsAtLeast2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByArray",)
+                containsAtLeast2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesAtLeast2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2Elements",)
+                includesAtLeast2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByMinimalistCollectionHolder",)
+                includesAtLeast2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByCollectionHolder",)
+                includesAtLeast2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtLeast2ElementsModule, "hasAtLeast2ElementsByArray",)
+                includesAtLeast2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("containsExactly2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2Elements",)
+                containsExactly2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByMinimalistCollectionHolder",)
+                containsExactly2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByCollectionHolder",)
+                containsExactly2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByArray",)
+                containsExactly2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesExactly2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2Elements",)
+                includesExactly2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByMinimalistCollectionHolder",)
+                includesExactly2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByCollectionHolder",)
+                includesExactly2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasExactly2ElementsModule, "hasExactly2ElementsByArray",)
+                includesExactly2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+
+        describe("containsAtMost2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2Elements",)
+                containsAtMost2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByMinimalistCollectionHolder",)
+                containsAtMost2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByCollectionHolder",)
+                containsAtMost2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByArray",)
+                containsAtMost2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
+        describe("includesAtMost2Elements", () => {
+            test("all", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2Elements",)
+                includesAtMost2Elements(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("minimalist collection holder", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByMinimalistCollectionHolder",)
+                includesAtMost2ElementsByMinimalistCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("collection holder", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByCollectionHolder",)
+                includesAtMost2ElementsByCollectionHolder(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+            test("array", () => {
+                const method = jest.spyOn(hasAtMost2ElementsModule, "hasAtMost2ElementsByArray",)
+                includesAtMost2ElementsByArray(null,)
+                expect(method,).toHaveBeenCalledOnce()
+            },)
+        },)
     },)
 
     describe("methods", () => {
     describe.each(everyExtensionMethodInstances,)("%s", ({value: {instance,},},) => {
-        test("isEmpty",    () => expect(instance.isEmpty,)   .toBeTrue(),)
-        test("isNotEmpty", () => expect(instance.isNotEmpty,).toBeFalse(),)
+        test("isEmpty",             () => expect(instance.isEmpty,)            .toBeTrue(),)
+        test("isNotEmpty",          () => expect(instance.isNotEmpty,)         .toBeFalse(),)
+        test("hasExactly1Element",  () => expect(instance.hasExactly1Element,) .toBeFalse(),)
+        test("hasAtMost1Element",   () => expect(instance.hasAtMost1Element,)  .toBeTrue(),)
+        test("hasAtLeast2Elements", () => expect(instance.hasAtLeast2Elements,).toBeFalse(),)
+        test("hasExactly2Elements", () => expect(instance.hasExactly2Elements,).toBeFalse(),)
+        test("hasAtMost2Elements",  () => expect(instance.hasAtMost2Elements,) .toBeTrue(),)
     },)},)
 
     describe("instances", () => {
         describe("empty", () => {
             describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
-                test("size",       () => expect(newInstance().size,)      .toBe(0,),)
-                test("isEmpty",    () => expect(newInstance().isEmpty,)   .toBeTrue(),)
-                test("isNotEmpty", () => expect(newInstance().isNotEmpty,).toBeFalse(),)
+                test("size",                () => expect(newInstance().size,)               .toBe(0,),)
+                test("isEmpty",             () => expect(newInstance().isEmpty,)            .toBeTrue(),)
+                test("isNotEmpty",          () => expect(newInstance().isNotEmpty,)         .toBeFalse(),)
+                test("hasExactly1Element",  () => expect(newInstance().hasExactly1Element,) .toBeFalse(),)
+                test("hasAtMost1Element",   () => expect(newInstance().hasAtMost1Element,)  .toBeTrue(),)
+                test("hasAtLeast2Elements", () => expect(newInstance().hasAtLeast2Elements,).toBeFalse(),)
+                test("hasExactly2Elements", () => expect(newInstance().hasExactly2Elements,).toBeFalse(),)
+                test("hasAtMost2Elements",  () => expect(newInstance().hasAtMost2Elements,) .toBeTrue(),)
             },)
         },)
         describe("1 field", () => {
             const value = Symbol("1 field: value",)
             describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
-                test("size",       () => expect(newInstance(value,).size,)      .toBe(1,),)
-                test("isEmpty",    () => expect(newInstance(value,).isEmpty,)   .toBeFalse(),)
-                test("isNotEmpty", () => expect(newInstance(value,).isNotEmpty,).toBeTrue(),)
+                test("size",                () => expect(newInstance(value,).size,)               .toBe(1,),)
+                test("isEmpty",             () => expect(newInstance(value,).isEmpty,)            .toBeFalse(),)
+                test("isNotEmpty",          () => expect(newInstance(value,).isNotEmpty,)         .toBeTrue(),)
+                test("hasExactly1Element",  () => expect(newInstance(value,).hasExactly1Element,) .toBeTrue(),)
+                test("hasAtMost1Element",   () => expect(newInstance(value,).hasAtMost1Element,)  .toBeTrue(),)
+                test("hasAtLeast2Elements", () => expect(newInstance(value,).hasAtLeast2Elements,).toBeFalse(),)
+                test("hasExactly2Elements", () => expect(newInstance(value,).hasExactly2Elements,).toBeFalse(),)
+                test("hasAtMost2Elements",  () => expect(newInstance(value,).hasAtMost2Elements,) .toBeTrue(),)
             },)
         },)
         describe("2 fields", () => {
             const value2 = Symbol("2 fields: 1st value",)
             const value1 = Symbol("2 fields: 2nd value",)
             describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
-                test("size",       () => expect(newInstance(value1, value2,).size,)      .toBe(2,),)
-                test("isEmpty",    () => expect(newInstance(value1, value2,).isEmpty,)   .toBeFalse(),)
-                test("isNotEmpty", () => expect(newInstance(value1, value2,).isNotEmpty,).toBeTrue(),)
+                test("size",                () => expect(newInstance(value1, value2,).size,)               .toBe(2,),)
+                test("isEmpty",             () => expect(newInstance(value1, value2,).isEmpty,)            .toBeFalse(),)
+                test("isNotEmpty",          () => expect(newInstance(value1, value2,).isNotEmpty,)         .toBeTrue(),)
+                test("hasExactly1Element",  () => expect(newInstance(value1, value2,).hasExactly1Element,) .toBeFalse(),)
+                test("hasAtMost1Element",   () => expect(newInstance(value1, value2,).hasAtMost1Element,)  .toBeFalse(),)
+                test("hasAtLeast2Elements", () => expect(newInstance(value1, value2,).hasAtLeast2Elements,).toBeTrue(),)
+                test("hasExactly2Elements", () => expect(newInstance(value1, value2,).hasExactly2Elements,).toBeTrue(),)
+                test("hasAtMost2Elements",  () => expect(newInstance(value1, value2,).hasAtMost2Elements,) .toBeTrue(),)
             },)
         },)
         describe("N fields", () => {
@@ -446,9 +777,14 @@ describe("CollectionHolderTest (size)", () => {
                 Symbol("4 fields: 4th value",),
             ]
             describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
-                test("size",       () => expect(new instance(values,).size,)      .toBe(4,),)
-                test("isEmpty",    () => expect(new instance(values,).isEmpty,)   .toBeFalse(),)
-                test("isNotEmpty", () => expect(new instance(values,).isNotEmpty,).toBeTrue(),)
+                test("size",                () => expect(new instance(values,).size,)               .toBe(4,),)
+                test("isEmpty",             () => expect(new instance(values,).isEmpty,)            .toBeFalse(),)
+                test("isNotEmpty",          () => expect(new instance(values,).isNotEmpty,)         .toBeTrue(),)
+                test("hasExactly1Element",  () => expect(new instance(values,).hasExactly1Element,) .toBeFalse(),)
+                test("hasAtMost1Element",   () => expect(new instance(values,).hasAtMost1Element,)  .toBeFalse(),)
+                test("hasAtLeast2Elements", () => expect(new instance(values,).hasAtLeast2Elements,).toBeTrue(),)
+                test("hasExactly2Elements", () => expect(new instance(values,).hasExactly2Elements,).toBeFalse(),)
+                test("hasAtMost2Elements",  () => expect(new instance(values,).hasAtMost2Elements,) .toBeFalse(),)
             },)
         },)
     },)
