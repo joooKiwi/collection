@@ -32,7 +32,7 @@ export class ArrayOf2AsCollectionHolder<const T = unknown,
     readonly #hasDuplicate: boolean
     readonly #hasNoDuplicates: boolean
 
-    public constructor(reference: REFERENCE) {
+    public constructor(reference: REFERENCE,) {
         super()
         if (reference.length !== 2)
             throw new TypeError(`The array received in the “${this.constructor.name}” cannot have a different size than 2.`,)
