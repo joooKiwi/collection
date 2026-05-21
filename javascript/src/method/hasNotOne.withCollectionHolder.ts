@@ -113,25 +113,57 @@ export function hasNotOneWithCollectionHolderByArray<const T, >(collection: Null
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.getFirst()
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) == firstValue)
+            return false
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
-                return false
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return false
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    return false
     }
     return true
 }
 
 function __validateByArray<const T, >(collection: Array<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    const firstValue = values.getFirst()
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) == firstValue)
+            return false
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
-                return false
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value)
+                    return false
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    return false
     }
     return true
 }

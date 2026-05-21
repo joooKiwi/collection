@@ -119,26 +119,74 @@ export function hasAllWithCollectionHolderByArray<const T, >(collection: Nullabl
 //#endregion -------------------- Facade method --------------------
 //#region -------------------- Loop methods --------------------
 
-function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    firstValueValidation: {
+        const firstValue = values.getFirst()
+        let index1 = -1
+        while (++index1 < size)
+            if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+                break firstValueValidation
+        return false
+    }
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
+        let index2 = -1
+        if (tempArrayIndex !== sizeMinus1) {
+            // We retrieve in tempArray until tempArrayIndex and then continue assigning to tempArray
+            while (++index2 <= tempArrayIndex)
+                if (tempArray[index2] === value)
+                    continue valueLoop
+            index2--
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value)
+                    continue valueLoop
+            return false
+        }
+        // We just loop through the tempArray since we have already reached all the elements for validation
+        while (++index2 < size)
+            if (tempArray[index2] === value)
                 continue valueLoop
         return false
     }
     return true
 }
 
-function __validateByArray<const T, >(collection: Array<T>, values: MinimalistCollectionHolder<T>, size: number, valuesSize: number,) {
-    let valueIndex = -1
+function __validateByArray<const T, >(collection: Array<T>, values: CollectionHolder<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
+    firstValueValidation: {
+        const firstValue = values.getFirst()
+        let index1 = -1
+        while (++index1 < size)
+            if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+                break firstValueValidation
+        return false
+    }
+
+    const sizeMinus1 = size - 1
+    let valueIndex = 0
     valueLoop: while (++valueIndex < valuesSize) {
         const value = values.get(valueIndex,)
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
+        let index2 = -1
+        if (tempArrayIndex !== sizeMinus1) {
+            // We retrieve in tempArray until tempArrayIndex and then continue assigning to tempArray
+            while (++index2 <= tempArrayIndex)
+                if (tempArray[index2] === value)
+                    continue valueLoop
+            index2--
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value)
+                    continue valueLoop
+            return false
+        }
+        // We just loop through the tempArray since we have already reached all the elements for validation
+        while (++index2 < size)
+            if (tempArray[index2] === value)
                 continue valueLoop
         return false
     }

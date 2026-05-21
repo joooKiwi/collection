@@ -119,27 +119,59 @@ export function hasOneWithSetByArray<const T, >(collection: Nullable<Array<T>>, 
 //#region -------------------- Loop methods --------------------
 
 function __validate<const T, >(collection: MinimalistCollectionHolder<T>, values: Set<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
     const iterator = values[Symbol.iterator]()
-    let valueIndex = valuesSize + 1
+    const firstValue = iterator.next().value
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection.get(index1,)) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = valuesSize
     while (--valueIndex > 0) {
-        const value = iterator.next().value
-        let index = -1
-        while (++index < size)
-            if (collection.get(index,) === value)
-                return true
+        const value2 = iterator.next().value
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value2)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection.get(index2,)) === value2)
+                    return true
     }
     return false
 }
 
 function __validateByArray<const T, >(collection: Array<T>, values: Set<T>, size: number, valuesSize: number,) {
+    let tempArrayIndex = -1
+    const tempArray = new Array<T>(size,)
     const iterator = values[Symbol.iterator]()
-    let valueIndex = valuesSize + 1
+    const firstValue = iterator.next().value
+    let index1 = -1
+    while (++index1 < size)
+        if ((tempArray[++tempArrayIndex] = collection[index1] as T) === firstValue)
+            return true
+
+    const sizeMinus1 = size - 1
+    let valueIndex = valuesSize
     while (--valueIndex > 0) {
-        const value = iterator.next().value
-        let index = -1
-        while (++index < size)
-            if (collection[index] === value)
-                return true
+        const value2 = iterator.next().value
+        let index2 = -1
+        if (tempArrayIndex === sizeMinus1)
+            // We just loop through the tempArray since we have already reached all the elements for validation
+            while (++index2 < size)
+                if (tempArray[index2] === value2)
+                    return true
+                else;
+        else
+            while (++index2 < size)
+                if ((tempArray[++tempArrayIndex] = collection[index2] as T) === value2)
+                    return true
     }
     return false
 }
