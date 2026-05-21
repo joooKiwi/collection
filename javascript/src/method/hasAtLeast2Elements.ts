@@ -29,7 +29,7 @@ import {isMinimalistCollectionHolder}  from "./isMinimalistCollectionHolder"
  */
 export function hasAtLeast2Elements<const T, >(collection: Nullable<| MinimalistCollectionHolder<T> | CollectionHolder<T> | Array<T>>,): boolean {
     if (collection == null)
-        return true
+        return false
     if (isCollectionHolder(collection,))
         return hasAtLeast2ElementsByCollectionHolder(collection,)
     if (isArray(collection,))
@@ -53,10 +53,8 @@ export function hasAtLeast2Elements<const T, >(collection: Nullable<| Minimalist
  */
 export function hasAtLeast2ElementsByMinimalistCollectionHolder<const T, >(collection: Nullable<MinimalistCollectionHolder<T>>,): boolean {
     if (collection == null)
-        return true
-
-    const size = collection.size
-    return size == 0 || size == 1 || size == 2
+        return false
+    return collection.size >= 2
 }
 
 /**
@@ -67,8 +65,8 @@ export function hasAtLeast2ElementsByMinimalistCollectionHolder<const T, >(colle
  */
 export function hasAtLeast2ElementsByCollectionHolder<const T, >(collection: Nullable<CollectionHolder<T>>,): boolean {
     if (collection == null)
-        return true
-    return collection.isEmpty || collection.hasExactly1Element || collection.hasExactly2Elements
+        return false
+    return collection.size >= 2
 }
 
 /**
@@ -79,8 +77,6 @@ export function hasAtLeast2ElementsByCollectionHolder<const T, >(collection: Nul
  */
 export function hasAtLeast2ElementsByArray<const T, >(collection: Nullable<Array<T>>,): boolean {
     if (collection == null)
-        return true
-
-    const size = collection.length
-    return size == 0 || size == 1 || size == 2
+        return false
+    return collection.length >= 2
 }
