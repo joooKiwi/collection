@@ -2353,7 +2353,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: NullOrUndefined)} */
-    protected _hasNotOneByNull(_values: NullOrUndefined): true { return true }
+    protected _hasNotOneByNull(_values: NullOrUndefined,): false { return false }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
     protected _hasNotOneByArray(values: Array<T>,): boolean {
@@ -2589,6 +2589,7 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         return true
     }
 
+    /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: MinimalistCollectionHolder<T>)} */
     protected _hasAllByMinimalistCollectionHolder(values: MinimalistCollectionHolder<T>,): boolean {
         const size = values.size
         if (size === 0)
@@ -2671,9 +2672,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 continue
             if (value2 === value)
                 continue
-            return true
+            return false
         }
-        return false
+        return true
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T>)} */
@@ -2700,9 +2701,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 continue
             if (value2 === value)
                 continue
-            return true
+            return false
         }
-        return false
+        return true
     }
 
     //#endregion -------------------- Has all --------------------

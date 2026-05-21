@@ -837,7 +837,7 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
 
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: NullOrUndefined)} */
-    protected _hasNotOneByNull(_values: NullOrUndefined,): true { return true }
+    protected _hasNotOneByNull(_values: NullOrUndefined,): false { return false }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasNotOne CollectionHolder.hasNotOne(values: Array<T>)} */
     protected _hasNotOneByArray(values: Array<T>,): boolean {
@@ -1079,18 +1079,15 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return true
 
         const value = this.value
-        firstValueIf: {
-            if (value === iteratorResult.value)
-                break firstValueIf
+        if (value !== iteratorResult.value)
             return false
-        }
 
         while (!(iteratorResult = values.next()).done)
             if (value === iteratorResult.value)
                 continue
             else
-                return true
-        return false
+                return false
+        return true
     }
 
     /** An additional method to be the equivalent of {@link CollectionHolder.hasAll CollectionHolder.hasAll(values: Iterable<T>)} */
@@ -1101,18 +1098,15 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return true
 
         const value = this.value
-        firstValueIf: {
-            if (value === iteratorResult.value)
-                break firstValueIf
+        if (value !== iteratorResult.value)
             return false
-        }
 
         while (!(iteratorResult = iterator.next()).done)
             if (value === iteratorResult.value)
                 continue
             else
-                return true
-        return false
+                return false
+        return true
     }
 
     //#endregion -------------------- Has all --------------------
@@ -1253,11 +1247,8 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return false
 
         const value = this.value
-        firstValueIf: {
-            if (value === iteratorResult.value)
-                break firstValueIf
+        if (value !== iteratorResult.value)
             return true
-        }
 
         while (!(iteratorResult = values.next()).done)
             if (value === iteratorResult.value)
@@ -1275,11 +1266,8 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return false
 
         const value = this.value
-        firstValueIf: {
-            if (value === iteratorResult.value)
-                break firstValueIf
+        if (value !== iteratorResult.value)
             return true
-        }
 
         while (!(iteratorResult = iterator.next()).done)
             if (value === iteratorResult.value)
