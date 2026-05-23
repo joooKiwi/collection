@@ -12,7 +12,7 @@
 
 import type {Array, MutableSet} from "@joookiwi/type"
 
-import type {MutableValueCallback} from "../set.types"
+import type {MutableValueCallback} from "../type/set"
 
 /**
  * An {@link globalThis.Set MutableSet} made for the tests
