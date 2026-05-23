@@ -1,4 +1,4 @@
-import {_01, _45, A_A, A_NULL, A_UNDEFINED, AA, AB, AC, BA, BC, BD, CB, CD, DC, EF, NULL_A, NULL_B, NULL_UNDEFINED, NULL_x2, UNDEFINED_A, UNDEFINED_x2, UPPER_EE} from "../value/arrays"
+import {_01, _45, A_A, A_NULL, A_UNDEFINED, AA, AB, AC, BA, BC, BD, CB, CD, DC, EF, NULL_A, NULL_B, NULL_UNDEFINED, NULL_x2, UNDEFINED_A, UNDEFINED_NULL, UNDEFINED_x2, UPPER_EE} from "../value/arrays"
 
 /**
  * An intermediate method to create or reuse an {@link ReadonlyArray Array} of 2
@@ -70,6 +70,8 @@ export function arrayOf2(value1: unknown, value2: unknown,) {
             return UNDEFINED_A
         else if (value2 === undefined)
             return UNDEFINED_x2
+        else if (value2 === null)
+            return UNDEFINED_NULL
         else
             return [value1, value2,]
     if (value1 === 0)
