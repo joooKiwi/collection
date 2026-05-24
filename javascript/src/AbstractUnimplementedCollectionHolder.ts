@@ -30,6 +30,11 @@ import {AbstractMinimalistCollectionHolder} from "./AbstractMinimalistCollection
  * @note This class should be inherited if new classes are being made to be more usable by the tools
  * @typeParam T The type
  * @see AbstractCollectionHolder
+ * @see CollectionViewer
+ * @see LazyCollectionHolder
+ * @see LazyCollectionHolderOf0Or1
+ * @see LazyCollectionHolderOf0Or1Or2
+ * @see LazyCollectionHolderOf1Or2
  */
 export abstract class AbstractUnimplementedCollectionHolder<const T = unknown, >
     extends AbstractMinimalistCollectionHolder<T>

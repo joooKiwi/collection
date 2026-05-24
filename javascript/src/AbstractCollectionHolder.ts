@@ -163,7 +163,6 @@ import {toUpperCaseStringByCollectionHolder}                       from "./metho
  * @see ArrayAsCollectionHolder
  * @see SetAsCollectionHolder
  * @see GenericCollectionHolder
- * @see LazyCollectionHolder
  */
 export abstract class AbstractCollectionHolder<const T = unknown, >
     extends AbstractUnimplementedCollectionHolder<T> {
