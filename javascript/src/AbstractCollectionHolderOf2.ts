@@ -2086,10 +2086,10 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     /** An additional method to be the equivalent of {@link CollectionHolder.none CollectionHolder.none(predicate)} */
     protected _none(predicate: BooleanCallback<T>,): boolean {
         if (predicate.length === 1)
-            return !(predicate as (value: T,) => boolean)(this.value1,) || !(predicate as (value: T,) => boolean)(this.value2,)
+            return !(predicate as (value: T,) => boolean)(this.value1,) && !(predicate as (value: T,) => boolean)(this.value2,)
         if (predicate.length >= 2)
-            return !predicate(this.value1, 0,) || !predicate(this.value2, 1,)
-        return !(predicate as () => boolean)() || !(predicate as () => boolean)()
+            return !predicate(this.value1, 0,) && !predicate(this.value2, 1,)
+        return !(predicate as () => boolean)() && !(predicate as () => boolean)()
     }
 
     //#endregion -------------------- None --------------------
