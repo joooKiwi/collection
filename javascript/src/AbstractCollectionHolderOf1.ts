@@ -1301,42 +1301,6 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
             return new LazyCollectionHolderOf0Or1(() => {
                 const value = this.value
                 if ((predicate as (value: T,) => boolean)(value,))
-                    return EmptyOptional.get
-                return new Optional(value,)
-            },)
-        if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1(() => {
-                const value = this.value
-                if (predicate(value, 0,))
-                    return EmptyOptional.get
-                return new Optional(value,)
-            },)
-        return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? EmptyOptional.get : new Optional(this.value,),)
-    }
-
-    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1(() => (predicate as (index: number,) => boolean)(0,) ? EmptyOptional.get : new Optional(this.value,),)
-        if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1(() => {
-                const value = this.value
-                if (predicate(0, value,))
-                    return EmptyOptional.get
-                return new Optional(value,)
-            },)
-        return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? EmptyOptional.get : new Optional(this.value,),)
-    }
-
-
-    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T> {
-        if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1(() => {
-                const value = this.value
-                if ((predicate as (value: T,) => boolean)(value,))
                     return new Optional(value,)
                 return EmptyOptional.get
             },)
@@ -1350,9 +1314,9 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
         return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? new Optional(this.value,) : EmptyOptional.get,)
     }
 
-    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T> {
+    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
         if (predicate.length === 1)
             return new LazyCollectionHolderOf0Or1(() => (predicate as (index: number,) => boolean)(0,) ? new Optional(this.value,) : EmptyOptional.get,)
         if (predicate.length >= 2)
@@ -1363,6 +1327,42 @@ export abstract class AbstractCollectionHolderOf1<const T = unknown, >
                 return EmptyOptional.get
             },)
         return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? new Optional(this.value,) : EmptyOptional.get,)
+    }
+
+
+    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T> {
+        if (predicate.length === 1)
+            return new LazyCollectionHolderOf0Or1(() => {
+                const value = this.value
+                if ((predicate as (value: T,) => boolean)(value,))
+                    return EmptyOptional.get
+                return new Optional(value,)
+            },)
+        if (predicate.length >= 2)
+            return new LazyCollectionHolderOf0Or1(() => {
+                const value = this.value
+                if (predicate(value, 0,))
+                    return EmptyOptional.get
+                return new Optional(value,)
+            },)
+        return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? EmptyOptional.get : new Optional(this.value,),)
+    }
+
+    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T> {
+        if (predicate.length === 1)
+            return new LazyCollectionHolderOf0Or1(() => (predicate as (index: number,) => boolean)(0,) ? EmptyOptional.get : new Optional(this.value,),)
+        if (predicate.length >= 2)
+            return new LazyCollectionHolderOf0Or1(() => {
+                const value = this.value
+                if (predicate(0, value,))
+                    return EmptyOptional.get
+                return new Optional(value,)
+            },)
+        return new LazyCollectionHolderOf0Or1(() => (predicate as () => boolean)() ? EmptyOptional.get : new Optional(this.value,),)
     }
 
 

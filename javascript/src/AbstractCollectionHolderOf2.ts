@@ -2940,78 +2940,6 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 const value2 = this.value2
                 if ((predicate as (value: T,) => boolean)(value1,))
                     if ((predicate as (value: T,) => boolean)(value2,))
-                        return null
-                    else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
-                if ((predicate as (value: T,) => boolean)(value2,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
-            },)
-        if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
-                const value1 = this.value1
-                const value2 = this.value2
-                if (predicate(value1, 0,))
-                    if (predicate(value2, 1,))
-                        return null
-                    else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
-                if (predicate(value2, 1,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
-            },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
-            ? (predicate as () => boolean)()
-                ? null
-                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
-            : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
-    }
-
-    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
-        if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as (index: number,) => boolean)(0,)
-                ? (predicate as (index: number,) => boolean)(1,)
-                    ? null
-                    : new Couple(new Optional(this.value2,), EmptyOptional.get,)
-                : (predicate as (index: number,) => boolean)(1,)
-                    ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                    : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
-        if (predicate.length >= 2)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
-                const value1 = this.value1
-                const value2 = this.value2
-                if (predicate(0, value1,))
-                    if (predicate(1, value2,))
-                        return null
-                    else
-                        return new Couple(new Optional(value2,), EmptyOptional.get,)
-                if (predicate(1, value2,))
-                    return new Couple(new Optional(value1,), EmptyOptional.get,)
-                return new Couple(new Optional(value1,), new Optional(value2,),)
-            },)
-        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
-            ? (predicate as () => boolean)()
-                ? null
-                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
-            : (predicate as () => boolean)()
-                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
-                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
-    }
-
-
-    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
-    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T> {
-        if (predicate.length === 1)
-            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
-                const value1 = this.value1
-                const value2 = this.value2
-                if ((predicate as (value: T,) => boolean)(value1,))
-                    if ((predicate as (value: T,) => boolean)(value2,))
                         return new Couple(new Optional(value1,), new Optional(value2,),)
                     else
                         return new Couple(new Optional(value1,), EmptyOptional.get,)
@@ -3041,9 +2969,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
                 : null,)
     }
 
-    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
-    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T> {
+    public override filterIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<S>
+    public override filterIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override filterIndexed(predicate: ReverseBooleanCallback<T>,) {
         if (predicate.length === 1)
             return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as (index: number,) => boolean)(0,)
                 ? (predicate as (index: number,) => boolean)(1,)
@@ -3075,9 +3003,88 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     }
 
 
+    public override filterNot<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T>
+    public override filterNot(predicate: BooleanCallback<T>,): CollectionHolder<T> {
+        if (predicate.length === 1)
+            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+                const value1 = this.value1
+                const value2 = this.value2
+                if ((predicate as (value: T,) => boolean)(value1,))
+                    if ((predicate as (value: T,) => boolean)(value2,))
+                        return null
+                    else
+                        return new Couple(new Optional(value2,), EmptyOptional.get,)
+                if ((predicate as (value: T,) => boolean)(value2,))
+                    return new Couple(new Optional(value1,), EmptyOptional.get,)
+                return new Couple(new Optional(value1,), new Optional(value2,),)
+            },)
+        if (predicate.length >= 2)
+            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+                const value1 = this.value1
+                const value2 = this.value2
+                if (predicate(value1, 0,))
+                    if (predicate(value2, 1,))
+                        return null
+                    else
+                        return new Couple(new Optional(value2,), EmptyOptional.get,)
+                if (predicate(value2, 1,))
+                    return new Couple(new Optional(value1,), EmptyOptional.get,)
+                return new Couple(new Optional(value1,), new Optional(value2,),)
+            },)
+        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+            ? (predicate as () => boolean)()
+                ? null
+                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+            : (predicate as () => boolean)()
+                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+    }
+
+    public override filterNotIndexed<const S extends T, >(predicate: ReverseRestrainedBooleanCallback<T, S>,): CollectionHolder<Exclude<T, S>>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T>
+    public override filterNotIndexed(predicate: ReverseBooleanCallback<T>,): CollectionHolder<T> {
+        if (predicate.length === 1)
+            return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as (index: number,) => boolean)(0,)
+                ? (predicate as (index: number,) => boolean)(1,)
+                    ? null
+                    : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+                : (predicate as (index: number,) => boolean)(1,)
+                    ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                    : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+        if (predicate.length >= 2)
+            return new LazyCollectionHolderOf0Or1Or2<T>(() => {
+                const value1 = this.value1
+                const value2 = this.value2
+                if (predicate(0, value1,))
+                    if (predicate(1, value2,))
+                        return null
+                    else
+                        return new Couple(new Optional(value2,), EmptyOptional.get,)
+                if (predicate(1, value2,))
+                    return new Couple(new Optional(value1,), EmptyOptional.get,)
+                return new Couple(new Optional(value1,), new Optional(value2,),)
+            },)
+        return new LazyCollectionHolderOf0Or1Or2<T>(() => (predicate as () => boolean)()
+            ? (predicate as () => boolean)()
+                ? null
+                : new Couple(new Optional(this.value2,), EmptyOptional.get,)
+            : (predicate as () => boolean)()
+                ? new Couple(new Optional(this.value1,), EmptyOptional.get,)
+                : new Couple(new Optional(this.value1,), new Optional(this.value2,),),)
+    }
+
+
     public override filterNotNull(): CollectionHolder<NonNullable<T>> {
-        if (this.hasNull)
-            return EmptyCollectionHolder.get
+        const value1 = this.value1
+        const value2 = this.value2
+        if (value1 == null)
+            if (value2 == null)
+                return EmptyCollectionHolder.get
+            else
+                return new CollectionHolderOf1(value2,)
+        if (value2 == null)
+            return new CollectionHolderOf1(value1,)
         return this as CollectionHolder<NonNullable<T>>
     }
 
