@@ -336,11 +336,9 @@ export class CollectionHolder_AdaptorOfArrayFollower
         return super.all(predicate,)
     }
 
-    public override any(): this["isNotEmpty"]
-    public override any(predicate: Nullable<BooleanCallback<string>>,): boolean
-    public override any(predicate?: Nullable<BooleanCallback<string>>,) {
+    protected override _any(predicate: BooleanCallback<string>,): boolean {
         this.any_amountOfCall++
-        return super.any(predicate,)
+        return super._any(predicate,)
     }
 
 
