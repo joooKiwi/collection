@@ -20,7 +20,9 @@ import type {BooleanCallback, IndexWithReturnCallback, RestrainedBooleanCallback
 import type {PossibleIterableIteratorArraySetOrCollectionHolder}                                                                                            from "../../src/type/possibleInstance"
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
-import {LazyCollectionHolderOf0Or1Or2}                                   from "../../src/LazyCollectionHolderOf0Or1Or2"
+import {LazyCollectionHolderOf0Or1Or2} from "../../src/LazyCollectionHolderOf0Or1Or2"
+import {Optional}                      from "../../src/optional/Optional"
+import {Couple}                        from "../../src/tuple/Couple"
 
 /**
  * An inherited instance of {@link LazyCollectionHolderOf0Or1Or2}
@@ -110,7 +112,7 @@ export class CollectionHolder_LazyOf0Or1Or2Follower
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor() { super(() => null,) }
+    public constructor() { super(() => new Couple(new Optional('a',), new Optional('b',),),) }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------

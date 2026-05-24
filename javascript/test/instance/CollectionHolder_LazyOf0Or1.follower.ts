@@ -20,7 +20,7 @@ import type {PossibleIterableIteratorArraySetOrCollectionHolder}                
 import type {CollectionHolderFollower}                                                                                                                      from "./CollectionHolderFollower"
 
 import {LazyCollectionHolderOf0Or1} from "../../src/LazyCollectionHolderOf0Or1"
-import {EmptyOptional}              from "../../src/optional/EmptyOptional"
+import {Optional}                   from "../../src/optional/Optional"
 
 /**
  * An inherited instance of {@link LazyCollectionHolderOf0Or1}
@@ -110,7 +110,7 @@ export class CollectionHolder_LazyOf0Or1Follower
     //#endregion -------------------- Fields --------------------
     //#region -------------------- Constructor --------------------
 
-    public constructor() { super(() => EmptyOptional.get,) }
+    public constructor() { super(() => new Optional('a',),) }
 
     //#endregion -------------------- Constructor --------------------
     //#region -------------------- Methods --------------------
