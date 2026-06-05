@@ -1,4 +1,4 @@
-import {_01, _45, A_A, A_NULL, A_UNDEFINED, AA, AB, AC, BA, BC, BD, CB, CD, DC, EF, NULL_A, NULL_B, NULL_UNDEFINED, NULL_x2, UNDEFINED_A, UNDEFINED_NULL, UNDEFINED_x2, UPPER_EE} from "../value/arrays"
+import {_00, _01, _11, _22, _33, _45, A_A, A_NULL, A_UNDEFINED, AA, AB, AC, BA, BB, BC, BD, CB, CC, CD, DC, DD, EF, NULL_A, NULL_B, NULL_UNDEFINED, NULL_x2, UNDEFINED_A, UNDEFINED_NULL, UNDEFINED_x2, UPPER_EE} from "../value/arrays"
 
 /**
  * An intermediate method to create or reuse an {@link ReadonlyArray Array} of 2
@@ -26,6 +26,8 @@ export function arrayOf2(value1: unknown, value2: unknown,) {
     if (value1 === 'b')
         if (value2 === 'a')
             return BA
+        else if (value2 === 'b')
+            return BB
         else if (value2 === 'c')
             return BC
         else if (value2 === 'd')
@@ -35,6 +37,8 @@ export function arrayOf2(value1: unknown, value2: unknown,) {
     if (value1 === 'c')
         if (value2 === 'b')
             return CB
+        else if (value2 === 'c')
+            return CC
         else if (value2 === 'd')
             return CD
         else
@@ -42,6 +46,8 @@ export function arrayOf2(value1: unknown, value2: unknown,) {
     if (value1 === 'd')
         if (value2 === 'c')
             return DC
+        else if (value2 === 'd')
+            return DD
         else
             return [value1, value2,]
     if (value1 === 'e')
@@ -75,8 +81,25 @@ export function arrayOf2(value1: unknown, value2: unknown,) {
         else
             return [value1, value2,]
     if (value1 === 0)
-        if (value2 === 2)
+        if (value2 === 0)
+            return _00
+        else if (value2 === 1)
             return _01
+        else
+            return [value1, value2,]
+    if (value1 === 1)
+        if (value2 === 1)
+            return _11
+        else
+            return [value1, value2,]
+    if (value1 === 2)
+        if (value2 === 2)
+            return _22
+        else
+            return [value1, value2,]
+    if (value1 === 3)
+        if (value2 === 3)
+            return _33
         else
             return [value1, value2,]
     if (value1 === 4)
