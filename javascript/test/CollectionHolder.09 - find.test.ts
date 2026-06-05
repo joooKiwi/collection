@@ -10,29 +10,31 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_AdaptorOfArrayFollower}                                                                                                                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
-import {CollectionHolder_ArrayOf1Follower}                                                                                                                                                                                   from "./instance/CollectionHolder_ArrayOf1.follower"
-import {CollectionHolder_ArrayOf2Follower}                                                                                                                                                                                   from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_1Follower}                                                                                                                                                                                          from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                                                                                                                          from "./instance/CollectionHolder_2.follower"
-import {CollectionHolder_ByViewerFollower}                                                                                                                                                                                   from "./instance/CollectionHolder_ByViewer.follower"
-import {CollectionHolder_ByGenericCollectionFollower}                                                                                                                                                                        from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                                                                                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                                                                                                                                          from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                                                                                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
 import {CollectionHolder_AdaptorOfJsIterableFollower}                                                                                                                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                                                                                                                        from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                                                                                                                                   from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                                                                                                                                   from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByGenericCollectionFollower}                                                                                                                                                                        from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                             from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewerFollower}                                                                                                                                                                                   from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_LazyFollower}                                                                                                                                                                                       from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                                                                                                                                                 from "./instance/CollectionHolder_LazyOf0Or1.follower"
 import {CollectionHolder_LazyOf0Or1Or2Follower}                                                                                                                                                                              from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
 import {CollectionHolder_LazyOf1Follower}                                                                                                                                                                                    from "./instance/CollectionHolder_LazyOf1.follower"
 import {CollectionHolder_LazyOf1Or2Follower}                                                                                                                                                                                 from "./instance/CollectionHolder_LazyOf1Or2.follower"
 import {CollectionHolder_LazyOf2Follower}                                                                                                                                                                                    from "./instance/CollectionHolder_LazyOf2.follower"
-import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                                                                                                                        from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
-import {CollectionHolder_AdaptorOfSetFollower}                                                                                                                                                                               from "./instance/CollectionHolder_AdaptorOfSet.follower"
 import {CollectionHolder_SetOf1Follower}                                                                                                                                                                                     from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                                                                                                                                                                                     from "./instance/CollectionHolder_SetOf2.follower"
 import {CollectionHolderFromArray}                                                                                                                                                                                           from "./instance/CollectionHolderFromArray"
 import {MinimalistCollectionHolderFromArray}                                                                                                                                                                                 from "./instance/MinimalistCollectionHolderFromArray"
-import {A, ABCD}                                                                                                                                                                                                             from "./value/arrays"
+import {A, AB, ABCD, EMPTY}                                                                                                                                                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"
 import {callbackIsA, callbackIsAAlt, callbackIsB, callbackIsBAlt, callbackIsC, callbackIsCAlt, callbackIsD, callbackIsDAlt, callbackIsE, callbackIsEAlt}                                                                     from "./value/callbacks (string)"
@@ -645,57 +647,508 @@ describe("CollectionHolderTest (find)", () => {
         test("findLastIndexedOrNull",  () => expect(instance.findLastIndexedOrNull(callbackAsFail0,),).toBeNull(),)
     },)},)
 
+    describe("get() being called", () => {
+        //README: The adaptor classes are ignored since they rely on the apdated class instead.
+        //        The lazy classes are ignored since they use inner class(es) instead.
+        //        The viewer instances are ignored since they rely on the viewed class instead.
+        //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
+
+        describe("empty ~ collection (by minimalist)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("empty ~ collection (by normal)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findFirstIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → boolean",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",     () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.findLastIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("1 field ~ collection (by minimalist)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("1 field ~ collection (by normal)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",      () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",            () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",     () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("2 fields ~ collection (by minimalist)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("2 fields ~ collection (by normal)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("N fields ~ collection (by minimalist)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("N fields ~ collection (by normal)", () => {
+            describe("findFirst", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findFirstIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("findLast", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastOrNull", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("findLastIndexedOrNull", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, isLazy, isViewer, isAdaptor,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("findFirst", () => {
-                        test("(T, number) → boolean",  () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",          () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirst(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstOrNull", () => {
-                        test("(T, number) → boolean",  () => expect(newInstance().execute(it => it.findFirstOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",          () => expect(newInstance().execute(it => it.findFirstOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().execute(it => it.findFirstOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexed", () => {
-                        test("(number, T) → boolean",  () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",     () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findFirstIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexedOrNull", () => {
-                        test("(number, T) → boolean",  () => expect(newInstance().execute(it => it.findFirstIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",     () => expect(newInstance().execute(it => it.findFirstIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().execute(it => it.findFirstIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("findLast", () => {
-                        test("(T, number) → boolean",  () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",          () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLast(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastOrNull", () => {
-                        test("(T, number) → boolean",  () => expect(newInstance().execute(it => it.findLastOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",          () => expect(newInstance().execute(it => it.findLastOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().execute(it => it.findLastOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexed", () => {
-                        test("(number, T) → boolean",  () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",     () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().executeWhileExpectingEmptyException(it =>  it.findLastIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexedOrNull", () => {
-                        test("(number, T) → boolean",  () => expect(newInstance().execute(it => it.findLastIndexedOrNull(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",     () => expect(newInstance().execute(it => it.findLastIndexedOrNull(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",           () => expect(newInstance().execute(it => it.findLastIndexedOrNull(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("findFirst", () => {
                 test("(T, number) → boolean", () => expect(() => newInstance().findFirst(callbackAsFail2,),).toThrow(EmptyCollectionException,),)
@@ -741,80 +1194,7 @@ describe("CollectionHolderTest (find)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf1, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 1 are ignored since the get() is never called, it is "get value1" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf1 && !isViewer)
-                describe("get() being called", () => {
-                    describe("findFirst", () => {
-                        test("(T, number) → true",   () => expect(newInstance('a',).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",           () => expect(newInstance('a',).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false",  () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",          () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",           () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstOrNull", () => {
-                        test("(T, number) → true",   () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",           () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false",  () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",          () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",           () => expect(newInstance('a',).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexed", () => {
-                        test("(number, T) → true",   () => expect(newInstance('a',).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",      () => expect(newInstance('a',).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false",  () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",     () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",           () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexedOrNull", () => {
-                        test("(number, T) → true",   () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",      () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false",  () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",     () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",           () => expect(newInstance('a',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("findLast", () => {
-                        test("(T, number) → true",   () => expect(newInstance('a',).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",           () => expect(newInstance('a',).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false",  () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",          () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",           () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastOrNull", () => {
-                        test("(T, number) → true",   () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",           () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false",  () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",          () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",           () => expect(newInstance('a',).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexed", () => {
-                        test("(number, T) → true",   () => expect(newInstance('a',).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",      () => expect(newInstance('a',).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false",  () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",     () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",           () => expect(newInstance('a',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexedOrNull", () => {
-                        test("(number, T) → true",   () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",      () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",            () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false",  () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",     () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",           () => expect(newInstance('a',).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("findFirst", () => {
                 test("(T, number) → true",  () => expect(      newInstance('a',).findFirst(callbackAsTrue2,),)  .toBe('a',),)
@@ -932,80 +1312,7 @@ describe("CollectionHolderTest (find)", () => {
 
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf2, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 2 are ignored since the get() is never called, it is "get value1|2" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf2 && !isViewer)
-                describe("get() being called", () => {
-                    describe("findFirst", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstOrNull", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexedOrNull", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("findLast", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastOrNull", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexedOrNull", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("findFirst", () => {
                 test("(T, number) → true",  () => expect(      newInstance('a', 'b',).findFirst(callbackAsTrue2,),)  .toBe('a',),)
@@ -1139,79 +1446,7 @@ describe("CollectionHolderTest (find)", () => {
 
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, isAdaptor, isLazy, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("findFirst", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it =>                              it.findFirst(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirst(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstOrNull", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.findFirstOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexed", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it =>                              it.findFirstIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findFirstIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findFirstIndexedOrNull", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.findFirstIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("findLast", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it =>                              it.findLast(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it =>                              it.findLast(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it =>                              it.findLast(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLast(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastOrNull", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.findLastOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexed", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it =>                              it.findLastIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileExpectingIndexOutOfBound(it => it.findLastIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("findLastIndexedOrNull", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.findLastIndexedOrNull(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
 
             describe("findFirst", () => {
                 test("(T, number) → true",  () => expect(      new instance(ABCD,).findFirst(callbackAsTrue2,),)  .toBe('a',),)
