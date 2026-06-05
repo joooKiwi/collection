@@ -3260,12 +3260,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberArray)} */
     protected _sliceByArray(indices: NumberArray,): CollectionHolder<T> {
-        const size = indices.length
-        if (size === 0)
+        const indicesSize = indices.length
+        if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const newArray = new Array<T>(size,)
-            let index = size
+            const newArray = new Array<T>(indicesSize,)
+            let index = indicesSize
             while (index-- > 0)
                 newArray[index] = this.get(indices[index]!,)
             return Object.freeze(newArray,)
@@ -3274,14 +3274,14 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: NumberSet)} */
     protected _sliceBySet(indices: NumberSet,): CollectionHolder<T> {
-        const size = indices.size
-        if (size === 0)
+        const indicesSize = indices.size
+        if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const newArray = new Array<T>(size,)
+            const newArray = new Array<T>(indicesSize,)
             const iterator = indices[Symbol.iterator]()
-            let index = size
-            while (index-- > 0)
+            let index = -1
+            while (++index < indicesSize)
                 newArray[index] = this.get(iterator.next().value!,)
             return Object.freeze(newArray,)
         },)
@@ -3289,12 +3289,12 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
 
     /** An additional method to be the equivalent of {@link CollectionHolder.slice CollectionHolder.slice(indices: MinimalistCollectionHolder<number>)} */
     protected _sliceByMinimalistCollectionHolder(indices: MinimalistCollectionHolder<number>,): CollectionHolder<T> {
-        const size = indices.size
-        if (size === 0)
+        const indicesSize = indices.size
+        if (indicesSize === 0)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const newArray = new Array<T>(size,)
-            let index = size
+            const newArray = new Array<T>(indicesSize,)
+            let index = indicesSize
             while (index-- > 0)
                 newArray[index] = this.get(indices.get(index,),)
             return Object.freeze(newArray,)
@@ -3306,9 +3306,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const size = indices.size
-            const newArray = new Array<T>(size,)
-            let index = size
+            const indicesSize = indices.size
+            const newArray = new Array<T>(indicesSize,)
+            let index = indicesSize
             while (index-- > 0)
                 newArray[index] = this.get(indices.get(index,),)
             return Object.freeze(newArray,)
@@ -3320,9 +3320,9 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
         if (indices.isEmpty)
             return EmptyCollectionHolder.get
         return new LazyCollectionHolder(() => {
-            const size = indices.size
-            const newArray = new Array<T>(size,)
-            let index = size
+            const indicesSize = indices.size
+            const newArray = new Array<T>(indicesSize,)
+            let index = indicesSize
             while (index-- > 0)
                 newArray[index] = this.get(indices.previousValue,)
             return Object.freeze(newArray,)
