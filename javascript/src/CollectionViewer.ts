@@ -345,7 +345,7 @@ export class CollectionViewer<const T = unknown,
     public override takeWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.takeWhileIndexed(predicate,) }
 
 
-    public override takeLast(n: number,): CollectionHolder<T> { return this.reference.take(n,) }
+    public override takeLast(n: number,): CollectionHolder<T> { return this.reference.takeLast(n,) }
 
     public override takeLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override takeLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
@@ -369,7 +369,7 @@ export class CollectionViewer<const T = unknown,
     public override dropWhileIndexed(predicate: ReverseBooleanCallback<T>,) { return this.reference.dropWhileIndexed(predicate,) }
 
 
-    public override dropLast(n: number,): CollectionHolder<T> { return this.reference.drop(n,) }
+    public override dropLast(n: number,): CollectionHolder<T> { return this.reference.dropLast(n,) }
 
     public override dropLastWhile<const S extends T, >(predicate: RestrainedBooleanCallback<T, S>,): CollectionHolder<S>
     public override dropLastWhile(predicate: BooleanCallback<T>,): CollectionHolder<T>
