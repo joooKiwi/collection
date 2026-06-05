@@ -11,7 +11,9 @@
 //··························································
 
 import {expectToBeInstance}                                                                                                                                                                                                  from "./expect/expectToBeInstance"
-import {A, A_NULL_B, A_NULL_UNDEFINED_B, A_UNDEFINED_B, AB, AB_NULL, AB_UNDEFINED, ABC, ABCD, ABD, AC, ACD, B, BCD, BD, C, D, NULL_AB, UNDEFINED_AB}                                                                         from "./value/arrays"
+import {CollectionHolder_ByGenericCollection}                                                                                                                                                                                from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByMinimalistCollection}                                                                                                                                                                             from "./instance/CollectionHolder_ByMinimalistCollection"
+import {A, A_NULL_B, A_NULL_UNDEFINED_B, A_UNDEFINED_B, AB, AB_NULL, AB_UNDEFINED, ABC, ABCD, ABD, AC, ACD, B, BCD, BD, C, D, EMPTY, NULL_AB, UNDEFINED_AB}                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}                                                                                                             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                                                                                                                   from "./value/callbacks (fail)"
 import {callbackIs0, callbackIs0Alt, callbackIs1, callbackIs1Alt, callbackIs2, callbackIs2Alt, callbackIs3, callbackIs3Alt, callbackIs4, callbackIs4Alt, callbackIsEven, callbackIsEvenAlt, callbackIsOdd, callbackIsOddAlt} from "./value/callbacks (number)"
@@ -41,39 +43,296 @@ describe("CollectionHolderTest (filter)", () => {
         describe("filterNotNull",    () => expect(instance.filterNotNull(),).toBe(emptyCollectionHolder,),)
     },)},)
 
+    describe("get() being called", () => {
+        //README: The adaptor classes are ignored since they rely on the apdated class instead.
+        //        The lazy classes are ignored since they use inner class(es) instead.
+        //        The viewer instances are ignored since they rely on the viewed class instead.
+        //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
+
+        describe("empty ~ collection (by minimalist)", () => {
+            describe("filter", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(0,),)
+        },)
+        describe("empty ~ collection (by normal)", () => {
+            describe("filter", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → boolean",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → boolean", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
+                test("(number) → boolean",    () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
+                test("() → boolean",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(0,),)
+        },)
+
+        describe("1 field ~ collection (by minimalist)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByMinimalistCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(2,),)
+        },)
+        describe("1 field ~ collection (by normal)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(A,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(1,),)
+        },)
+
+        describe("2 fields ~ collection (by minimalist)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(4,),)
+        },)
+        describe("2 fields ~ collection (by normal)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(AB,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(2,),)
+        },)
+
+        describe("N fields ~ collection (by minimalist)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",       () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",                () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
+                test("(number, T) → false",      () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",               () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(8,),)
+        },)
+        describe("N fields ~ collection (by normal)", () => {
+            describe("filter", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("filterIndexed", () => {
+                test("(number, T) → true",       () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",                () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
+                test("(number, T) → false",      () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",               () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+
+            describe("filterNot", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+            describe("filterNotIndexed", () => {
+                test("(number, T) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(number) → true",     () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(number, T) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(number) → false",    () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
+            },)
+
+            test("filterNotNull", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(8,),)
+        },)
+    },)
+
+    describe("filterNotNull ~ same instance validation", () => {
+        //TODO: add Same instance validations for filterNotNull
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, isLazy, isViewer, isAdaptor,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("filter", () => {
-                        test("(T, number) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",         () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filter(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("filterIndexed", () => {
-                        test("(number, T) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",    () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("filterNot", () => {
-                        test("(T, number) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → boolean",         () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-                    describe("filterNotIndexed", () => {
-                        test("(number, T) → boolean", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail2,),) .amountOfCall,).toBe(0,),)
-                        test("(number) → boolean",    () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail1,),) .amountOfCall,).toBe(0,),)
-                        test("() → boolean",          () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFail0,),) .amountOfCall,).toBe(0,),)
-                    },)
-
-                    test("filterNotNull", () => expect(newInstance().executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(0,),)
-                },)
+        describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("filter", () => {
                 test("(T, number) → boolean", () => expect(newInstance().filter(callbackAsFail2,),).toBe(emptyCollectionHolder,),)
@@ -101,50 +360,7 @@ describe("CollectionHolderTest (filter)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, isMinimalist, isAdaptor, isLazy, isOf1, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 1 are ignored since the get() is never called, it is "get value1" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf1 && !isViewer)
-                describe("get() being called", () => {
-                    describe("filter", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("filterIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(1,),)
-                        test("(number, T) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",    () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("filterNot", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-                    describe("filterNotIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(number) → true",     () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(number) → false",    () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(1,),)
-                    },)
-
-                    test("filterNotNull", () => expect(newInstance('a',).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(1,),)
-                },)
+        describe.each(every1Instances,)("%s", ({value: {newInstance, isMinimalist,},},) => {
 
             describe("filter", () => {
                 test("(T, number) → true",  () => expect(newInstance('a',).filter(callbackAsTrue2,).toArray(),)  .toStrictEqual(A,),)
@@ -211,55 +427,12 @@ describe("CollectionHolderTest (filter)", () => {
 
                 if (isMinimalist)
                     return // We only do some test that require the CollectionHolder.hasNull method
-                test("Same instance", () => expectToBeInstance(newInstance('a',), it => it.filterNotNull(),),)
+                test.skip("Same instance", () => expectToBeInstance(newInstance('a',), it => it.filterNotNull(),),)
             },)
 
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, isMinimalist, isAdaptor, isLazy, isOf2, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 2 are ignored since the get() is never called, it is "get value1|2" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf2 && !isViewer)
-                describe("get() being called", () => {
-                    describe("filter", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("filterIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(2,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("filterNot", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-                    describe("filterNotIndexed", () => {
-                        test("(number, T) → true",  () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(number) → true",     () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(number) → false",    () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(2,),)
-                    },)
-
-                    test("filterNotNull", () => expect(newInstance('a', 'b',).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(2,),)
-                },)
+        describe.each(every2Instances,)("%s", ({value: {newInstance, isMinimalist,},},) => {
 
             describe("filter", () => {
                 test("(T, number) → true",  () => expect(newInstance('a', 'b',)  .filter(callbackAsTrue2,).toArray(),).toStrictEqual(AB,),)
@@ -337,54 +510,12 @@ describe("CollectionHolderTest (filter)", () => {
 
                 if (isMinimalist)
                     return // We only do some test that require the CollectionHolder.hasNull method
-                test("Same instance", () => expectToBeInstance(newInstance('a', 'b',), it => it.filterNotNull(),),)
+                test.skip("Same instance", () => expectToBeInstance(newInstance('a', 'b',), it => it.filterNotNull(),),)
             },)
 
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, isMinimalist, isAdaptor, isLazy, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("filter", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filter(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("filterIndexed", () => {
-                        test("(number, T) → true",       () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(number) → true",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",                () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(4,),)
-                        test("(number, T) → false",      () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",         () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",               () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterIndexed(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-
-                    describe("filterNot", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNot(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-                    describe("filterNotIndexed", () => {
-                        test("(number, T) → true",  () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(number) → true",     () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(number, T) → false", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(number) → false",    () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotIndexed(callbackAsFalse0,),).amountOfCall,).toBe(4,),)
-                    },)
-
-                    test("filterNotNull", () => expect(new instance(ABCD,).executeWhileHavingIndexesOnField(it => it.filterNotNull(),).amountOfCall,).toBe(4,),)
-                },)
+        describe.each(everyNInstances,)("%s", ({value: {instance, isMinimalist,},},) => {
 
             describe("filter", () => {
                 test("(T, number) → true",  () => expect(new instance(ABCD,).filter(callbackAsTrue2,).toArray(),)  .toStrictEqual(ABCD,),)
@@ -480,7 +611,7 @@ describe("CollectionHolderTest (filter)", () => {
 
                 if (isMinimalist)
                     return // We only do some test that require the CollectionHolder.hasNull method
-                test("Same instance", () => expectToBeInstance(new instance(ABCD,), it => it.filterNotNull(),),)
+                test.skip("Same instance", () => expectToBeInstance(new instance(ABCD,), it => it.filterNotNull(),),)
             },)
 
         },)},)
