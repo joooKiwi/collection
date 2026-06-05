@@ -21,6 +21,7 @@ import {CollectionHolder_AdaptorOfSetFollower}          from "./instance/Collect
 import {CollectionHolder_ArrayOf1Follower}              from "./instance/CollectionHolder_ArrayOf1.follower"
 import {CollectionHolder_ArrayOf2Follower}              from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_ByGenericCollectionFollower}   from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByViewerFollower}              from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_SetOf1Follower}                from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                from "./instance/CollectionHolder_SetOf2.follower"
 import {CollectionHolder_LazyFollower}                  from "./instance/CollectionHolder_Lazy.follower"
@@ -109,6 +110,7 @@ describe("CollectionHolderTest (javascript exclusive)", () => {
             test("LazyCollectionHolderOf0Or1",    () => expect(new CollectionHolder_LazyOf0Or1Follower()         .execute(it => it[Symbol.iterator](),).toIterator_amountOfCall,).toBe(1,),)
             test("LazyCollectionHolderOf0Or1Or2", () => expect(new CollectionHolder_LazyOf0Or1Or2Follower()      .execute(it => it[Symbol.iterator](),).toIterator_amountOfCall,).toBe(1,),)
             test("LazyCollectionHolderOf1Or2",    () => expect(new CollectionHolder_LazyOf1Or2Follower()         .execute(it => it[Symbol.iterator](),).toIterator_amountOfCall,).toBe(1,),)
+            test("CollectionViewer",              () => expect(new CollectionHolder_ByViewerFollower()           .execute(it => it[Symbol.iterator](),).toIterator_amountOfCall,).toBe(1,),)
         },)
     },)
 
