@@ -16,11 +16,10 @@ import type {CollectionHolder_FromExtension} from "../instance/CollectionHolder_
 import {EmptyCollectionHolder}                                     from "../../src/EmptyCollectionHolder"
 import {EmptyCollectionException}                                  from "../../src/exception/EmptyCollectionException"
 import {NullCollectionException}                                   from "../../src/exception/NullCollectionException"
+import {EmptyCollectionIterator}                                   from "../../src/iterator/EmptyCollectionIterator"
 import {Holder}                                                    from "../Holder"
 import {arrayOf1}                                                  from "../helper/arrayOf1"
 import {arrayOf2}                                                  from "../helper/arrayOf2"
-import {ArrayByStructureForTest}                                   from "../instance/ArrayByStructureForTest"
-import {ArrayForTest}                                              from "../instance/ArrayForTest"
 import {CollectionHolder_1}                                        from "../instance/CollectionHolder_1"
 import {CollectionHolder_2}                                        from "../instance/CollectionHolder_2"
 import {CollectionHolder_AdaptorOfArray}                           from "../instance/CollectionHolder_AdaptorOfArray"
@@ -34,7 +33,6 @@ import {CollectionHolder_ArrayOf2}                                 from "../inst
 import {CollectionHolder_ByGenericCollection}                      from "../instance/CollectionHolder_ByGenericCollection"
 import {CollectionHolder_ByMinimalistCollection}                   from "../instance/CollectionHolder_ByMinimalistCollection"
 import {CollectionHolder_ByMinimalistViewer}                       from "../instance/CollectionHolder_ByMinimalistViewer"
-import {CollectionHolder_ByStructure}                              from "../instance/CollectionHolder_ByStructure"
 import {CollectionHolder_ByViewer}                                 from "../instance/CollectionHolder_ByViewer"
 import {CollectionHolder_FromArrayExtensionFunction}               from "../instance/CollectionHolder_FromArrayExtensionFunction"
 import {CollectionHolder_FromExtensionFunction}                    from "../instance/CollectionHolder_FromExtensionFunction"
@@ -55,25 +53,12 @@ import {CollectionHolder_LazyOf1Or2}                               from "../inst
 import {CollectionHolder_LazyOf2}                                  from "../instance/CollectionHolder_LazyOf2"
 import {CollectionHolder_SetOf1}                                   from "../instance/CollectionHolder_SetOf1"
 import {CollectionHolder_SetOf2}                                   from "../instance/CollectionHolder_SetOf2"
-import {CollectionHolderFromArray}                                 from "../instance/CollectionHolderFromArray"
-import {CollectionIterator_ByStructure}                            from "../instance/CollectionIterator_ByStructure"
-import {CollectionIteratorFromArray}                               from "../instance/CollectionIteratorFromArray"
-import {IterableForTest}                                           from "../instance/IterableForTest"
-import {IterableWithCountForTest}                                  from "../instance/IterableWithCountForTest"
-import {IterableWithLengthForTest}                                 from "../instance/IterableWithLengthForTest"
-import {IterableWithLengthThatFailOnCount}                         from "../instance/IterableWithLengthThatFailOnCount"
-import {IterableWithNullPossibleSize}                              from "../instance/IterableWithNullPossibleSize"
-import {IterableWithSizeForTest}                                   from "../instance/IterableWithSizeForTest"
-import {IterableWithSizeThatFailOnLength}                          from "../instance/IterableWithSizeThatFailOnLength"
-import {IteratorForTest}                                           from "../instance/IteratorForTest"
-import {MinimalistCollectionHolder_ByStructure}                    from "../instance/MinimalistCollectionHolder_ByStructure"
-import {MinimalistCollectionHolderFromArray}                       from "../instance/MinimalistCollectionHolderFromArray"
-import {SetByStructureForTest}                                     from "../instance/SetByStructureForTest"
-import {SetForTest}                                                from "../instance/SetForTest"
 import {EMPTY}                                                     from "./arrays"
 
 /** A constant to give the {@link EmptyCollectionHolder} instance directly */
 export const emptyCollectionHolder = EmptyCollectionHolder.get
+/** A constant to give the {@link EmptyCollectionIterator} instance directly */
+export const emptyCollectionIterator = EmptyCollectionIterator.get
 
 /**
  * The possible instances and extension function currently exported to the public as a mocked {@link CollectionHolder}
@@ -217,21 +202,6 @@ export const everyNInstances = [
 ] as const
 
 /**
- * The possible instances currently exported to the public as a mocked {@link CollectionHolder}
- * to apply on tests
- *
- * @deprecated It should be replaced with {@link every0Instances}, {@link every1Instances}, {@link every2Instances} and {@link everyNInstances}
- */
-export const everyInstances = [
-    new Holder({isNull: false, isMinimalist: true,  isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist",         instance: CollectionHolder_ByMinimalistCollection, }, "collection (by minimalist)",),
-    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "normal",             instance: CollectionHolder_ByGenericCollection, },    "collection (by normal)",),
-    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "array adaptor",      instance: CollectionHolder_AdaptorOfArray, },         "collection (array adaptor)",),
-    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "set adaptor",        instance: CollectionHolder_AdaptorOfSet, },           "collection (set adaptor)",),
-    new Holder({isNull: false, isMinimalist: false, isLazy: false, isAdaptor: true,  isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "minimalist adaptor", instance: CollectionHolder_AdaptorOfMinimalist, },    "collection (minimalist adaptor)",),
-    new Holder({isNull: false, isMinimalist: false, isLazy: true,  isAdaptor: false, isOf0: false, isOf1: false, isOf2: false, isViewer: false, isExtension: false, emptyException: EmptyCollectionException, type: "lazy",               instance: CollectionHolder_Lazy, },                   "collection (by lazy)",),
-] as const satisfies readonly Holder<{isNull: false, readonly isExtension: false, emptyException: typeof EmptyCollectionException, }, string>[]
-
-/**
  * The possible instances as extension function currently exported to the public as a mocked {@link CollectionHolder}
  * to apply on tests
  */
@@ -248,30 +218,3 @@ export const everyExtensionMethodInstances = [
     new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "null extension",                 instance: new CollectionHolder_FromNullPublicExtensionFunction(),},                          "null extension",),
     new Holder({isNull: true,  isMinimalist: false, isLazy: false, isAdaptor: false, isOf0: true,  isOf1: false, isOf2: false, isViewer: false, isExtension: true, emptyException: NullCollectionException,  type: "undefined extension",            instance: new CollectionHolder_FromUndefinedPublicExtensionFunction(),},                "undefined extension",),
 ] as const satisfies readonly Holder<{readonly isLazy: false, readonly isAdaptor: false, isOf1: false, isOf2: false, readonly isViewer: false, readonly isExtension: true, readonly instance: CollectionHolder_FromExtension<unknown>,}, string>[]
-
-
-/**
- * The possible instances applicable to the type-alias {@link PossibleIterableIteratorArraySetOrCollectionHolder}
- * to apply on tests
- */
-export const everyIterableInstances = [
-    new Holder(ArrayForTest,                           "array",),
-    new Holder(ArrayByStructureForTest,                "array (by structure)",),
-    new Holder(SetForTest,                             "set",),
-    new Holder(SetByStructureForTest,                  "set (by structure)",),
-    new Holder(IterableForTest,                        "iterable",),
-    new Holder(IterableWithSizeForTest,                "iterable with size",),
-    new Holder(IterableWithLengthForTest,              "iterable with length",),
-    new Holder(IterableWithCountForTest,               "iterable with count",),
-    new Holder(IterableWithNullPossibleSize,           "iterable with possible size (all null)",),
-    new Holder(IterableWithSizeThatFailOnLength,       "iterable with possible size (with size & fail on length)",),
-    new Holder(IterableWithLengthThatFailOnCount,      "iterable with possible size (with length & fail on count)",),
-    new Holder(IteratorForTest,                        "iterator",),
-    //TODO add iterator by structure
-    new Holder(CollectionIteratorFromArray,            "collection iterator",),
-    new Holder(CollectionIterator_ByStructure,         "collection iterator (by structure)",),
-    new Holder(CollectionHolderFromArray,              "collection holder",),
-    new Holder(CollectionHolder_ByStructure,           "collection holder (by structure)",),
-    new Holder(MinimalistCollectionHolderFromArray,    "minimalist collection holder",),
-    new Holder(MinimalistCollectionHolder_ByStructure, "minimalist collection holder (by structure)",),
-] as const
