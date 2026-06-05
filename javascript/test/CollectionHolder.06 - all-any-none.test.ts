@@ -10,27 +10,29 @@
 //  - https://github.com/joooKiwi/enumeration
 //··························································
 
-import {CollectionHolder_AdaptorOfArrayFollower}                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
-import {CollectionHolder_ArrayOf1Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf1.follower"
-import {CollectionHolder_ArrayOf2Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf2.follower"
 import {CollectionHolder_1Follower}                                                                                          from "./instance/CollectionHolder_1.follower"
 import {CollectionHolder_2Follower}                                                                                          from "./instance/CollectionHolder_2.follower"
-import {CollectionHolder_ByViewerFollower}                                                                                   from "./instance/CollectionHolder_ByViewer.follower"
-import {CollectionHolder_ByGenericCollectionFollower}                                                                        from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_AdaptorOfArrayFollower}                                                                             from "./instance/CollectionHolder_AdaptorOfArray.follower"
 import {CollectionHolder_AdaptorOfIteratorFollower}                                                                          from "./instance/CollectionHolder_AdaptorOfIterator.follower"
 import {CollectionHolder_AdaptorOfJsIteratorFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterator.follower"
 import {CollectionHolder_AdaptorOfJsIterableFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfJsIterable.follower"
+import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
+import {CollectionHolder_AdaptorOfSetFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfSet.follower"
+import {CollectionHolder_ArrayOf1Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf1.follower"
+import {CollectionHolder_ArrayOf2Follower}                                                                                   from "./instance/CollectionHolder_ArrayOf2.follower"
+import {CollectionHolder_ByGenericCollection}                                                                                from "./instance/CollectionHolder_ByGenericCollection"
+import {CollectionHolder_ByGenericCollectionFollower}                                                                        from "./instance/CollectionHolder_ByGenericCollection.follower"
+import {CollectionHolder_ByMinimalistCollection}                                                                             from "./instance/CollectionHolder_ByMinimalistCollection"
+import {CollectionHolder_ByViewerFollower}                                                                                   from "./instance/CollectionHolder_ByViewer.follower"
 import {CollectionHolder_LazyFollower}                                                                                       from "./instance/CollectionHolder_Lazy.follower"
 import {CollectionHolder_LazyOf0Or1Follower}                                                                                 from "./instance/CollectionHolder_LazyOf0Or1.follower"
 import {CollectionHolder_LazyOf0Or1Or2Follower}                                                                              from "./instance/CollectionHolder_LazyOf0Or1Or2.follower"
 import {CollectionHolder_LazyOf1Follower}                                                                                    from "./instance/CollectionHolder_LazyOf1.follower"
 import {CollectionHolder_LazyOf1Or2Follower}                                                                                 from "./instance/CollectionHolder_LazyOf1Or2.follower"
 import {CollectionHolder_LazyOf2Follower}                                                                                    from "./instance/CollectionHolder_LazyOf2.follower"
-import {CollectionHolder_AdaptorOfMinimalistFollower}                                                                        from "./instance/CollectionHolder_AdaptorOfMinimalist.follower"
-import {CollectionHolder_AdaptorOfSetFollower}                                                                               from "./instance/CollectionHolder_AdaptorOfSet.follower"
 import {CollectionHolder_SetOf1Follower}                                                                                     from "./instance/CollectionHolder_SetOf1.follower"
 import {CollectionHolder_SetOf2Follower}                                                                                     from "./instance/CollectionHolder_SetOf2.follower"
-import {ABCD}                                                                                                                from "./value/arrays"
+import {A, AB, ABCD, EMPTY}                                                                                                  from "./value/arrays"
 import {callbackAsFalse0, callbackAsFalse1, callbackAsFalse2, callbackAsTrue0, callbackAsTrue1, callbackAsTrue2}             from "./value/callbacks (boolean)"
 import {callbackAsFail0, callbackAsFail1, callbackAsFail2}                                                                   from "./value/callbacks (fail)"
 import {callbackIs0Alt, callbackIs1Alt, callbackIs2Alt, callbackIs3Alt, callbackIs4Alt, callbackIsEvenAlt, callbackIsOddAlt} from "./value/callbacks (number)"
@@ -190,42 +192,245 @@ describe("CollectionHolderTest (all / any / none)", () => {
         test("none", () => expect(instance.none(),).toBeTrue(),)
     },)},)
 
+    describe("get() being called", () => {
+        //README: The adaptor classes are ignored since they rely on the apdated class instead.
+        //        The lazy classes are ignored since they use inner class(es) instead.
+        //        The viewer instances are ignored since they rely on the viewed class instead.
+        //        The instances of 1 or 2 are ignored since they use "get value1|2" instead of get()
+
+        describe("empty ~ collection (by minimalist)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(EMPTY,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("empty ~ collection (by normal)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(EMPTY,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("1 field ~ collection (by minimalist)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(A,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("1 field ~ collection (by normal)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(A,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("2 fields ~ collection (by minimalist)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(AB,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("2 fields ~ collection (by normal)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(AB,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+        describe("N fields ~ collection (by minimalist)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByMinimalistCollection(ABCD,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+        describe("N fields ~ collection (by normal)", () => {
+            describe("all", () => {
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("any", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+            describe("none", () => {
+                test('∅',                   () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
+                test("(T, number) → true",  () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
+                test("(T) → true",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
+                test("() → true",           () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
+                test("(T, number) → false", () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
+                test("(T) → false",         () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
+                test("() → false",          () => expect(new CollectionHolder_ByGenericCollection(ABCD,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
+            },)
+        },)
+
+    },)
+
     describe("instances", () => {
         describe("empty", () => {
-        describe.each(every0Instances,)("%s", ({value: {newInstance, isLazy, isViewer, isAdaptor,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("all", () => {
-                        test("(T, number) → true",  () => expect(newInstance().execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → true",          () => expect(newInstance().execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance().execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance().execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
-                        test("(T) → false",         () => expect(newInstance().execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance().execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("any", () => {
-                        test('∅',                   () => expect(newInstance().execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance().execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → true",          () => expect(newInstance().execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance().execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance().execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
-                        test("(T) → false",         () => expect(newInstance().execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance().execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("none", () => {
-                        test('∅',                   () => expect(newInstance().execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance().execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(0,),)
-                        test("(T) → true",          () => expect(newInstance().execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(0,),)
-                        test("() → true",           () => expect(newInstance().execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance().execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(0,),)
-                        test("(T) → false",         () => expect(newInstance().execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(0,),)
-                        test("() → false",          () => expect(newInstance().execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every0Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("all", () => {
                 test("(T, number) → boolean", () => expect(newInstance().all(callbackAsFail2,),).toBeTrue(),)
@@ -251,41 +456,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
 
         },)},)
         describe("1 field", () => {
-        describe.each(every1Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf1, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 1 are ignored since the get() is never called, it is "get value1" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf1 && !isViewer)
-                describe("get() being called", () => {
-                    describe("all", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a',).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("any", () => {
-                        test('∅',                   () => expect(newInstance('a',).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance('a',).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("none", () => {
-                        test('∅',                   () => expect(newInstance('a',).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance('a',).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a',).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a',).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a',).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a',).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a',).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every1Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("all", () => {
                 test("(T, number) → true",   () => expect(newInstance('a',).all(callbackAsTrue2,),)  .toBeTrue(),)
@@ -338,41 +509,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
 
         },)},)
         describe("2 fields", () => {
-        describe.each(every2Instances,)("%s", ({value: {newInstance, isAdaptor, isLazy, isOf2, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The instances of 2 are ignored since the get() is never called, it is "get value1|2" being called
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isOf2 && !isViewer)
-                describe("get() being called", () => {
-                    describe("all", () => {
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(2,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(2,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("any", () => {
-                        test('∅',                   () => expect(newInstance('a', 'b',).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("none", () => {
-                        test('∅',                   () => expect(newInstance('a', 'b',).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(2,),)
-                        test("(T) → false",         () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(2,),)
-                        test("() → false",          () => expect(newInstance('a', 'b',).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(every2Instances,)("%s", ({value: {newInstance,},},) => {
 
             describe("all", () => {
                 test("(T, number) → true",  () => expect(newInstance('a', 'b',).all(callbackAsTrue2,),)  .toBeTrue(),)
@@ -436,40 +573,7 @@ describe("CollectionHolderTest (all / any / none)", () => {
 
         },)},)
         describe("N fields", () => {
-        describe.each(everyNInstances,)("%s", ({value: {instance, isAdaptor, isLazy, isViewer,},},) => {
-
-            // The adaptor instances are ignored since they do not rely on get() directly
-            // The lazy instances are ignored since they are only an encapsulator class
-            // The viewer instances are ignored since they do rely on inner instances
-            if (!isAdaptor && !isLazy && !isViewer)
-                describe("get() being called", () => {
-                    describe("all", () => {
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it => it.all(callbackAsTrue2,),) .amountOfCall,).toBe(4,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it => it.all(callbackAsTrue1,),) .amountOfCall,).toBe(4,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.all(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).execute(it => it.all(callbackAsFalse2,),).amountOfCall,).toBe(1,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).execute(it => it.all(callbackAsFalse1,),).amountOfCall,).toBe(1,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.all(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("any", () => {
-                        test('∅',                   () => expect(new instance(ABCD,).execute(it => it.any(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it => it.any(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it => it.any(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.any(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).execute(it => it.any(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).execute(it => it.any(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.any(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                    describe("none", () => {
-                        test('∅',                   () => expect(new instance(ABCD,).execute(it => it.none(),)                 .amountOfCall,).toBe(0,),)
-                        test("(T, number) → true",  () => expect(new instance(ABCD,).execute(it => it.none(callbackAsTrue2,),) .amountOfCall,).toBe(1,),)
-                        test("(T) → true",          () => expect(new instance(ABCD,).execute(it => it.none(callbackAsTrue1,),) .amountOfCall,).toBe(1,),)
-                        test("() → true",           () => expect(new instance(ABCD,).execute(it => it.none(callbackAsTrue0,),) .amountOfCall,).toBe(0,),)
-                        test("(T, number) → false", () => expect(new instance(ABCD,).execute(it => it.none(callbackAsFalse2,),).amountOfCall,).toBe(4,),)
-                        test("(T) → false",         () => expect(new instance(ABCD,).execute(it => it.none(callbackAsFalse1,),).amountOfCall,).toBe(4,),)
-                        test("() → false",          () => expect(new instance(ABCD,).execute(it => it.none(callbackAsFalse0,),).amountOfCall,).toBe(0,),)
-                    },)
-                },)
+        describe.each(everyNInstances,)("%s", ({value: {instance,},},) => {
 
             describe("all", () => {
                 test("(T, number) → true",  () => expect(new instance(ABCD,).all(callbackAsTrue2,),)  .toBeTrue(),)
