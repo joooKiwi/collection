@@ -17,21 +17,20 @@ import {callbackToString0}        from "./value/callbacks (string)"
 import {ForbiddenIndexException} from "../src/exception/ForbiddenIndexException"
 
 describe("CollectionHolderTest (∞ iterator)", () => {
-    // README: The duplicate cannot be tested since it gives a Jest heap exception (too much arguments),
-    // And as such, it should work as intended
-    // const newNonDuplicateCollection = () => new LazyCollectionHolderThatCanRetrieveHandler<number>({ *[Symbol.iterator]() {
-    //     let value = 0
-    //     while (true) {
-    //         yield value
-    //         value += 0.000_000_000_1
-    //     }
-    // },},)
 
     // A stack overflow exception is expected to be done (and it may take a while → ≈9-10 seconds)
-    test.concurrent("size",          async () => expect(() => new InfiniteCollectionHolder().size,).toThrow(RangeError,),)
-    test(           "is empty",      () => expect(new InfiniteCollectionHolder().isEmpty,).toBeFalse(),)
-    test.concurrent("has null",      async () => expect(() => new InfiniteCollectionHolder().hasNull,).toThrow(RangeError,),)
-    test           ("has duplicate", () => expect(new InfiniteCollectionHolder().hasDuplicate,).toBeTrue(),)
+    test.concurrent("size",         async () => expect(() => new InfiniteCollectionHolder().size,)               .toThrow(RangeError,),)
+    test(           "is empty",                 () => expect(new InfiniteCollectionHolder().isEmpty,)            .toBeFalse(),)
+    test(           "is not empty",             () => expect(new InfiniteCollectionHolder().isEmpty,)            .toBeTrue(),)
+    test(           "has exactly 1 element",    () => expect(new InfiniteCollectionHolder().hasExactly1Element,) .toBeFalse(),)
+    test(           "has at most 1 element",    () => expect(new InfiniteCollectionHolder().hasAtMost1Element,)  .toBeFalse(),)
+    test(           "has at least 2 elements",  () => expect(new InfiniteCollectionHolder().hasAtLeast2Elements,).toBeTrue(),)
+    test(           "has exactly 2 elements",   () => expect(new InfiniteCollectionHolder().hasExactly2Elements,).toBeFalse(),)
+    test(           "has at most 2 elements",   () => expect(new InfiniteCollectionHolder().hasAtMost2Elements,) .toBeFalse(),)
+    test.concurrent("has null",     async () => expect(() => new InfiniteCollectionHolder().hasNull,)            .toThrow(RangeError,),)
+    test.concurrent("has no nulls", async () => expect(() => new InfiniteCollectionHolder().hasNoNulls,)         .toThrow(RangeError,),)
+    test           ("has duplicate",            () => expect(new InfiniteCollectionHolder().hasDuplicate,)       .toBeTrue(),)
+    test           ("has no duplicates",        () => expect(new InfiniteCollectionHolder().hasDuplicate,)       .toBeFalse(),)
 
     test("get: NaN", () => expect(() => new InfiniteCollectionHolder().get(NaN,),).toThrow(ForbiddenIndexException,),)
     test("get: -∞",  () => expect(() => new InfiniteCollectionHolder().get(-Infinity,),).toThrow(ForbiddenIndexException,),)
@@ -50,4 +49,5 @@ describe("CollectionHolderTest (∞ iterator)", () => {
     test("getOrNull: -1",  () => expect(() => new InfiniteCollectionHolder().getOrNull(-1,),).toThrow(RangeError,),)
     test("getOrNull: 0",   () => expect(new InfiniteCollectionHolder().getOrNull(0,),).toBe('a',),)
     test("getOrNull: +∞",  () => expect(new InfiniteCollectionHolder().getOrNull(Infinity,),).toBeNull(),)
+
 },)
