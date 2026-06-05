@@ -4083,11 +4083,11 @@ export abstract class AbstractCollectionHolderOf2<const T = unknown,
     //#region -------------------- To string --------------------
 
     public override toString(): string {
-        return `[${asString(this.value1,)},${asString(this.value2,)}]`
+        return `[${asString(this.value1,)}, ${asString(this.value2,)}]`
     }
 
     public override toLocaleString(locale?: NullableString,): string {
-        return `[${asLocaleString(this.value1, locale,)},${asLocaleString(this.value2, locale,)}]`
+        return `[${asLocaleString(this.value1, locale,)}, ${asLocaleString(this.value2, locale,)}]`
     }
 
 
