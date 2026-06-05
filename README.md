@@ -81,7 +81,12 @@ Another note: _Some parts may be incomplete due to some research that has to be 
 The methods directly associated to a size
  - `size`|`length`|`count`()
  - `isEmpty`()
- - `isNotEmpty`()
+ - `isNotEmpty`|`hasAtLeast1Element`|`containsAtLeast1Element`|`includesAtLeast1Element`()
+ - `hasExactly1Element`|`containsExactly1Element`|`includesExactly1Element`()
+ - `hasAtMost1Element`|`containsAtMost1Element`|`includesAtMost1Element`()
+ - `hasAtLeast2Elements`|`containsAtLeast2Elements`|`includesAtLeast2Elements`()
+ - `hasExactly2Elements`|`containsExactly2Elements`|`includesExactly2Elements`()
+ - `hasAtMost2Elements`|`containsAtMost2Elements`|`includesAtMost2Elements`()
 
 <details><summary>get size()<br/>get length()<br/>get count()</summary>
 
@@ -117,6 +122,63 @@ The methods directly associated to a size
 | **C#**         | `!iEnumerable.Any()`                                                  |
 
 </details>
+<br/>
+<details><summary>get hasExactly1Element()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length === 1`<br/>`set.size === 1`                 |
+| **Java**       | `array.length == 1`<br/>`collection.size() == 1`          |
+| **Kotlin**     | `array.size === 1`<br/>`collection.size === 1`            |
+| **PHP**        | `sizeof($array) == 1`                                     |
+| **C#**         | `iEnumerable.Count() == 1`<br/>`iCollection.Count() == 1` |
+
+</details>
+<details><summary>get hasAtMost1Element()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length <= 1`<br/>`set.size <= 1`                   |
+| **Java**       | `array.length <= 1`<br/>`collection.size() <= 1`          |
+| **Kotlin**     | `array.size <= 1`<br/>`collection.size <= 1`              |
+| **PHP**        | `sizeof($array) <= 1`                                     |
+| **C#**         | `iEnumerable.Count() <= 1`<br/>`iCollection.Count() <= 1` |
+
+</details>
+<br/>
+<details><summary>get hasAtLeast2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length >= 2`<br/>`set.size >= 2`                   |
+| **Java**       | `array.length >= 2`<br/>`collection.size() >= 2`          |
+| **Kotlin**     | `array.size >= 2`<br/>`collection.size >= 2`              |
+| **PHP**        | `sizeof($array) >= 2`                                     |
+| **C#**         | `iEnumerable.Count() >= 2`<br/>`iCollection.Count() >= 2` |
+
+</details>
+<details><summary>get hasExactly2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length === 2`<br/>`set.size === 2`                 |
+| **Java**       | `array.length == 2`<br/>`collection.size() == 2`          |
+| **Kotlin**     | `array.size === 2`<br/>`collection.size === 2`            |
+| **PHP**        | `sizeof($array) == 2`                                     |
+| **C#**         | `iEnumerable.Count() == 2`<br/>`iCollection.Count() == 2` |
+
+</details>
+<details><summary>get hasAtMost2Elements()</summary>
+
+| Language       | Equivalent                                                |
+|:---------------|:----------------------------------------------------------|
+| **Javascript** | `array.length <= 2`<br/>`set.size <= 2`                   |
+| **Java**       | `array.length <= 2`<br/>`collection.size() <= 2`          |
+| **Kotlin**     | `array.size <= 2`<br/>`collection.size <= 2`              |
+| **PHP**        | `sizeof($array) <= 2`                                     |
+| **C#**         | `iEnumerable.Count() <= 2`<br/>`iCollection.Count() <= 2` |
+
+</details>
 
 ### Research methods
 
@@ -125,6 +187,8 @@ The methods are made to find an element or giving a value
  - `getFirst`|`first`()
  - `getLast`|`last`()
  - `getOrElse`|`atOrElse`|`elementAtOrElse`(index, defaultValue)
+ - `getFirstOrElse`(defaultValue)
+ - `getLastOrElse`(defaultValue)
  - `getOrDefault`|`atOrDefault`|`elementAtOrDefault`(index)
  - `getOrNull`|`atOrNull`|`elementAtOrNull`(index)
  - `getFirstOrDefault`|`firstOrDefault`()
@@ -184,6 +248,28 @@ The methods are made to find an element or giving a value
 | **Kotlin**     | <ul><li>[Array.elementAtOrElse(index, defaultValue)<br/>Iterable.elementAtOrElse(index, defaultValue)<br/>List.elementAtOrElse(index, defaultValue)][kotlin-get-or-else-2]<li>[Array.getOrElse(index, defaultValue)<br/>List.getOrElse(index, defaultValue)][kotlin-get-or-else-1] |
 | **PHP**        | `array_key_exists($index, $array) ? $array[$index] : defaultValue()`                                                                                                                                                                                                               |
 | **C#**         | `enumerable.ElementAtOrDefault(index) ?? defaultValue()`                                                                                                                                                                                                                           |
+
+</details>
+<details><summary>getFirstOrElse(defaultValue)</summary>
+
+| Language       | Equivalent                                                 |
+|:---------------|:-----------------------------------------------------------|
+| **Javascript** | `0 in array ? array[0] : defaultValue()`                   |
+| **Java**       | `size >= 1 ? array[0] : defaultValue()`                    |
+| **Kotlin**     | `array.getOrElse(0, defaultValue)`                         |
+| **PHP**        | `array_key_exists(0, $array) ? $array[0] : defaultValue()` |
+| **C#**         | `enumerable.ElementAtOrDefault(0) ?? defaultValue()`       |
+
+</details>
+<details><summary>getLastOrElse(defaultValue)</summary>
+
+| Language       | Equivalent                                                               |
+|:---------------|:-------------------------------------------------------------------------|
+| **Javascript** | `size - 1 in array[size - 1] : throw `                                   |
+| **Java**       | `collection.stream().reduce((_, it) -> it).orElse(defaultValue)`         |
+| **Kotlin**     | `array.getOrElse(size - 1, defaultValue)`                                |
+| **PHP**        | `array_key_exists(size - 1, $array) ? $array[size - 1] : defaultValue()` |
+| **C#**         | `enumerable.ElementAtOrDefault(size - 1) ?? defaultValue()`              |
 
 </details>
 <br/>
@@ -1267,11 +1353,15 @@ The methods are made to do validation on type, value or comparison
  - `any`|`some`(predicate?)
  - `none`(predicate?)
  - `hasNull`|`containsNull`|`includesNull`()
+ - `hasNoNulls`|`containsNoNulls`|`includesNoNulls`()
  - `hasDuplicate`|`containsDuplicate`|`includesDuplicate`()
+ - `hasNoDuplicates`|`containsNoDuplicates`|`includesNoDuplicates`()
  - `has`|`contains`|`includes`(value)
  - `hasNot`|`containsNot`|`includesNot`(value)
  - `hasOne`|`containsOne`|`includesOne`(values)
+ - `hasNotOne`|`containsNotOne`|`includesNotOne`(values)
  - `hasAll`|`containsAll`|`includesAll`(values)
+ - `hasNotAll`|`containsNotAll`|`includesNotAll`(values)
  - `requireNoNulls`()
 
 <details><summary>all(predicate)</summary>
@@ -1339,6 +1429,16 @@ The methods are made to do validation on type, value or comparison
 | **Kotlin**     | _N/A_                                                                          |
 | **PHP**        | `in_array(null, $array, true)`                                                 |
 | **C#**         | `enumerable.Contains(null)`<br/>`list.Contains(null)`<br/>`set.Contains(null)` |
+</details>
+<details><summary>hasNoNull()</summary>
+
+| Language       | Equivalent                                                                        |
+|:---------------|:----------------------------------------------------------------------------------|
+| **Javascript** | `!array.includes(null,)`                                                          |
+| **Java**       | `!collection.contains(null)`                                                      |
+| **Kotlin**     | _N/A_                                                                             |
+| **PHP**        | `!in_array(null, $array, true)`                                                   |
+| **C#**         | `!enumerable.Contains(null)`<br/>`!list.Contains(null)`<br/>`!set.Contains(null)` |
 </details>
 <details><summary>hasDuplicate()</summary><table>
 <tr><th>Language</th><th>Equivalent</th></tr>
@@ -1416,6 +1516,82 @@ return false
 ```
 </td></tr>
 </table></details>
+<details><summary>hasNoDuplicates()</summary><table>
+<tr><th>Language</th><th>Equivalent</th></tr>
+<tr><th>Javascript</th><td>
+
+```javascript
+const temporaryArray = new Array(size,)
+temporaryArray[0] = array[0]
+let amountOfItemAdded = 1
+let index = 0
+while (++index < size) {
+    const value = array[index]
+    let index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] === value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>Java</th><td>
+
+```java
+final var temporaryArray = (T[]) new Object[size]
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    final var value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>Kotlin</th><td>
+
+```kotlin
+val temporaryArray = arrayOfNulls<T>(size,)
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    val value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+<tr><th>PHP</th><td></td></tr>
+<tr><th>C#</th><td>
+
+```csharp
+var temporaryArray = new T[size]
+temporaryArray[0] = array[0]
+var amountOfItemAdded = 1
+var index = 0
+while (++index < size) {
+    var value = array[index]
+    var index2 = -1
+    while (++index2 < amountOfItemAdded)
+        if (temporaryArray[index2] == value)
+            return false
+  temporaryArray[amountOfItemAdded++] = value
+}
+return true
+```
+</td></tr>
+</table></details>
 <br/>
 
 <details><summary>has(value)</summary>
@@ -1451,6 +1627,17 @@ return false
 | **C#**         | `enumerable.Any(it => values.Contains(it))` |
 
 </details>
+<details><summary>hasNotOne(values)</summary>
+
+| Language       | Equivalent                                   |
+|:---------------|:---------------------------------------------|
+| **Javascript** | `!array.some(it => values.includes(it,),)`   |
+| **Java**       | `!list.stream().anyMatch(values::contains)`  |
+| **Kotlin**     | `!array.any { it in values }`                |
+| **PHP**        |                                              |
+| **C#**         | `!enumerable.Any(it => values.Contains(it))` |
+
+</details>
 <details><summary>hasAll(values)</summary>
 
 | Language       | Equivalent                                               |
@@ -1460,6 +1647,17 @@ return false
 | **Kotlin**     | <ul><li>[Collection.containsAll(values)][kotlin-has-all] |
 | **PHP**        |                                                          |
 | **C#**         | `enumerable.All(it => values.Contains(it))`              |
+
+</details>
+<details><summary>hasNotAll(values)</summary>
+
+| Language       | Equivalent                                   |
+|:---------------|:---------------------------------------------|
+| **Javascript** | `!array.every(it => values.includes(it,),)`  |
+| **Java**       | `!collection.containsAll(it)`                |
+| **Kotlin**     | `!collection.containsAll(it)`                |
+| **PHP**        |                                              |
+| **C#**         | `!enumerable.All(it => values.Contains(it))` |
 
 </details>
 <br/>
